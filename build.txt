@@ -1,0 +1,3 @@
+author = Xahlicem
+version = 0.1
+displayName = Xahlicem's Mod
