@@ -9,12 +9,11 @@ namespace XahlicemMod.Projectiles {
     public class EaterProj : ModProjectile {
 
         public override void SetStaticDefaults() {
-            //ProjectileID.Sets.Homing[projectile.type] = true;
+            ProjectileID.Sets.Homing[projectile.type] = true;
             Main.projFrames[projectile.type] = 2;
         }
 
         public override void SetDefaults() {
-            //projectile.CloneDefaults(ProjectileID.TinyEater);
             projectile.friendly = true;
             projectile.tileCollide = true;
             projectile.ignoreWater = true;
@@ -22,27 +21,32 @@ namespace XahlicemMod.Projectiles {
             projectile.width = 14;
             projectile.height = 16;
             projectile.penetrate = -1;
-			projectile.timeLeft = 120;
+            projectile.timeLeft = 240;
         }
-		
-		public override bool OnTileCollide(Vector2 velocityChange) {
-           int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, 1);
-           Main.dust[dust].velocity *= Main.rand.NextFloat();
-           if (projectile.velocity.X != velocityChange.X) {
-               projectile.velocity.X = -velocityChange.X/1.5F; //Goes in the opposite direction with half of its x velocity
-           }
-           if (projectile.velocity.Y != velocityChange.Y) {
-               projectile.velocity.Y = -velocityChange.Y/1.5F; //Goes in the opposite direction with half of its y velocity
-           }
-           return false;
-       }
 
+        public override bool OnTileCollide(Vector2 velocityChange) {
+            int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, 1);
+            Main.dust[dust].velocity *= Main.rand.NextFloat();
+            if (projectile.velocity.X != velocityChange.X) {
+                projectile.velocity.X = -velocityChange.X / 1.5F; //Goes in the opposite direction with half of its x velocity
+            }
+            if (projectile.velocity.Y != velocityChange.Y) {
+                projectile.velocity.Y = -velocityChange.Y / 1.5F; //Goes in the opposite direction with half of its y velocity
+            }
+            return false;
+        }
+        bool hit = false;
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) {
-            //target.StrikeNPCNoInteraction(target.lifeMax, knockback, -target.direction, crit);
-            if (projectile.ai[1] == 3)
-                target.AddBuff(BuffID.CursedInferno, 150);
-			//Main.player[projectile.owner].AddBuff(BuffID.WaterCandle, 5 * 60);
+            if (!hit) {
+                hit = true;
+                projectile.timeLeft = 60;
+            }
+            target.AddBuff(BuffID.BrokenArmor, 3);
+
+            projectile.damage = (int)(projectile.damage * 1.1);
+            projectile.scale += 0.025f;
+            projectile.timeLeft += 3;
         }
 
         public override void AI() {
@@ -60,18 +64,19 @@ namespace XahlicemMod.Projectiles {
                 AdjustMagnitude(ref projectile.velocity);
                 projectile.localAI[0] = 1.9f;
             }
-			
+
             projectile.localAI[0] -= 0.1f;
             Vector2 move = Vector2.Zero;
-            float distance = 150f;
+            float distance = 300f;
             bool target = false;
 
             for (int k = 0; k < 200; k++) {
-                if (Main.npc[k].active && !Main.npc[k].dontTakeDamage && !Main.npc[k].friendly && Main.npc[k].lifeMax > 5) {
-                    Vector2 newMove = Main.npc[k].Center - projectile.Center;
+                NPC targetNPC = Main.npc[k];
+                if (targetNPC.active && !targetNPC.dontTakeDamage && !targetNPC.friendly) {
+                    Vector2 newMove = targetNPC.Center - projectile.Center;
                     float distanceTo = (float)Math.Sqrt(newMove.X * newMove.X + newMove.Y * newMove.Y);
 
-                    if (distanceTo < distance) {
+                    if (projectile.AI_137_CanHit(targetNPC.Center) && distanceTo < distance && targetNPC.FindBuffIndex(BuffID.BrokenArmor) == -1) {
                         move = newMove;
                         distance = distanceTo;
                         target = true;
@@ -81,15 +86,15 @@ namespace XahlicemMod.Projectiles {
 
             if (target) {
                 AdjustMagnitude(ref move);
-                projectile.velocity = (25 * projectile.velocity + move) / 26f;
+                if (hit) projectile.velocity = (5 * projectile.velocity + move) / 6f;
+                else projectile.velocity = (15 * projectile.velocity + move) / 16f;
                 AdjustMagnitude(ref projectile.velocity);
             }
 
             if (projectile.localAI[0] <= 0.5f) {
                 int dust = 0;
                 switch ((int)projectile.ai[1]) {
-                    case 1:
-                    case 2:
+                    default:
                         dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, 1);
                         break;
                     case 3:
@@ -109,8 +114,7 @@ namespace XahlicemMod.Projectiles {
             for (int i = 0; i < 5; i++) {
                 int dust = 0;
                 switch ((int)projectile.ai[1]) {
-                    case 1:
-                    case 2:
+                    default:
                         dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, 1);
                         break;
                     case 3:
@@ -126,10 +130,10 @@ namespace XahlicemMod.Projectiles {
 
         private void AdjustMagnitude(ref Vector2 vector) {
             float magnitude = (float)Math.Sqrt(vector.X * vector.X + vector.Y * vector.Y);
-            if (magnitude > 6f) {
-                vector *= 6f / magnitude;
+            if (magnitude > ((hit) ? 12f : 8f)) {
+                vector *= ((hit) ? 12f : 8f) / magnitude;
             }
         }
-		
+
     }
 }

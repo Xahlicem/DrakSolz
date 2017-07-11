@@ -11,14 +11,12 @@ namespace XahlicemMod.Items {
 			Tooltip.SetDefault("Shoots flaming tiny eaters!.");
 		}
 		public override void SetDefaults() {
-			item.CloneDefaults(ItemID.BeeGun);
-			item.damage = 32;
-            item.shoot = mod.ProjectileType("EaterProj");
-            item.mana = 15;
-			item.knockBack = 1f;
-            item.shootSpeed = 5.5f;
-
-		}
+            item.CloneDefaults(mod.ItemType("Eater3"));
+            item.damage *= 2;
+            item.mana = (int)(item.mana * 1.25);
+            item.value = (int)(item.value * 5);
+            item.rare++;
+        }
 
         public override void AddRecipes() {
 			ModRecipe recipe = new ModRecipe(mod);
@@ -40,7 +38,7 @@ namespace XahlicemMod.Items {
 		}
 		
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack) {
-			int numberProjectiles = 2; 
+			int numberProjectiles = 1; 
 			numberProjectiles += Main.rand.Next(2); // 4 or 5 shots
 			for (int i = 0; i < numberProjectiles; i++) {
 				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(30)); // 30 degree spread.
@@ -48,7 +46,7 @@ namespace XahlicemMod.Items {
 				float scale = 1f - (Main.rand.NextFloat() * .3f);
 				perturbedSpeed = perturbedSpeed * scale; 
 				int pro = Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
-                Main.projectile[pro].ai[1] = 3;
+                Main.projectile[pro].ai[1] = 4;
 			}
 			return false; // return false because we don't want tmodloader to shoot projectile
 		}
