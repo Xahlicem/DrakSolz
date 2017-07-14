@@ -91,8 +91,21 @@ namespace XahlicemMod.Projectiles
             {
                 projectile.rotation -= MathHelper.ToRadians(90f);
             }
-
-
+            
         }
+
+        bool hit = false;
+
+
+            public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		{
+			if (Main.rand.Next(2) == 0)
+			{
+				Main.player[projectile.owner].AddBuff(mod.BuffType("ChannelBuff"), 40);
+             }
+		}
     }
 }
+
+        
+
