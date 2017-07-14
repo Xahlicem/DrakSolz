@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace XahlicemMod.Items {
+namespace XahlicemMod.Items.Magic.Eater {
     public class Eater1 : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Midget Eater");

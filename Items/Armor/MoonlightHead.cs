@@ -1,7 +1,8 @@
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
-namespace ExampleMod.Items.Armor
+namespace XahlicemMod.Items
 {
     [AutoloadEquip(EquipType.Head)]
     public class MoonlightHead : ModItem
@@ -22,7 +23,7 @@ namespace ExampleMod.Items.Armor
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
         {
-            return body.type == mod.ItemType("MoonlightChest") && legs.type == mod.ItemType("MoonlightLeggings_Legs");
+            return body.type == mod.ItemType("MoonlightChest") && legs.type == mod.ItemType("MoonlightLeggings");
         }
 
         public override void UpdateArmorSet(Player player)
@@ -38,15 +39,6 @@ namespace ExampleMod.Items.Armor
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.RottenChunk, 15);
-            recipe.AddIngredient(ItemID.VilePowder, 30);
-            recipe.AddIngredient(ItemID.WormTooth, 10);
-            recipe.AddIngredient(ItemID.Emerald, 1);
-            recipe.AddTile(TileID.DemonAltar);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-            recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.DirtBlock, 1);
             recipe.SetResult(this);
             recipe.AddRecipe();

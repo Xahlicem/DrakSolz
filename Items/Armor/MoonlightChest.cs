@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace XahlicemMod.Items.Armor
+namespace XahlicemMod.Items
 {
     [AutoloadEquip(EquipType.Body)]
     public class MoonlightChest : ModItem
@@ -10,7 +10,7 @@ namespace XahlicemMod.Items.Armor
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Example Breastplate");
+            //DisplayName.SetDefault("Example Breastplate");
             Tooltip.SetDefault("This is a modded body armor."
                 + "\nImmunity to 'On Fire!'"
                 + "\n+20 max mana and +1 max minions");
@@ -37,19 +37,9 @@ namespace XahlicemMod.Items.Armor
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.RottenChunk, 15);
-            recipe.AddIngredient(ItemID.VilePowder, 30);
-            recipe.AddIngredient(ItemID.WormTooth, 10);
-            recipe.AddIngredient(ItemID.Emerald, 1);
-            recipe.AddTile(TileID.DemonAltar);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-            recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.DirtBlock, 1);
             recipe.SetResult(this);
             recipe.AddRecipe();
-            
         }
     }
 }
