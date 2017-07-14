@@ -14,7 +14,7 @@ namespace XahlicemMod.Projectiles
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Channeler's Trident");
-            Main.projFrames[projectile.type] = 4;
+            Main.projFrames[projectile.type] = 5;
         }
 
         public override void SetDefaults()
@@ -31,6 +31,7 @@ namespace XahlicemMod.Projectiles
             projectile.ownerHitCheck = true;
             projectile.melee = true;
             projectile.alpha = 0;
+            projectile.light = 0.5f;
         }
 
         // In here the AI uses this example, to make the code more organized and readible
@@ -44,12 +45,15 @@ namespace XahlicemMod.Projectiles
 
         public override void AI()
         {
-            projectile.frame = (int)(projectile.ai[0] * 2f);
+            if (projectile.ai[0] <= 3f) projectile.frame = 0;
+            else projectile.frame = (int)(projectile.ai[0] / 8);
             // Since we access the owner player instance so much, it's useful to create a helper local variable for this
             // Sadly, Projectile/ModProjectile does not have its own
             Player projOwner = Main.player[projectile.owner];
             // Here we set some of the projectile's owner properties, such as held item and itemtime, along with projectile directio and position based on the player
-            Vector2 ownerMountedCenter = projOwner.RotatedRelativePoint(projOwner.MountedCenter, true);
+            Vector2 mountedCenter = projOwner.MountedCenter;
+            mountedCenter.X -= 10;
+            Vector2 ownerMountedCenter = projOwner.RotatedRelativePoint(mountedCenter, true);
             projectile.direction = projOwner.direction;
             projOwner.heldProj = projectile.whoAmI;
             projOwner.itemTime = projOwner.itemAnimation;
@@ -63,9 +67,9 @@ namespace XahlicemMod.Projectiles
                     movementFactor = 3f; // Make sure the spear moves forward when initially thrown out
                     projectile.netUpdate = true; // Make sure to netUpdate this spear
                 }
-                if (projOwner.itemAnimation < projOwner.itemAnimationMax / 3) // Somewhere along the item animation, make sure the spear moves back
+                if (projOwner.itemAnimation < projOwner.itemAnimationMax / 2) // Somewhere along the item animation, make sure the spear moves back
                 {
-                    movementFactor -= 2.4f;
+                    movementFactor -= 1.0f;
                 }
                 else // Otherwise, increase the movement factor
                 {
@@ -75,7 +79,7 @@ namespace XahlicemMod.Projectiles
             // Change the spear position based off of the velocity and the movementFactor
             projectile.position += projectile.velocity * movementFactor;
             // When we reach the end of the animation, we can kill the spear projectile
-            if (projOwner.itemAnimation == 0)
+            if (projOwner.itemAnimation <= 0)
             {
                 projectile.Kill();
             }
