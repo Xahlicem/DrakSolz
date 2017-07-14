@@ -43,7 +43,12 @@
     <Compile Include="Items\Magic\Leecher\Leecher3.cs" />
     <Compile Include="Items\Magic\Leecher\Leecher4.cs" />
     <Compile Include="Items\Magic\Leecher\Leecher5.cs" />
+    <Compile Include="Projectiles\ChannelTProj.cs" />
+    <Compile Include="Projectiles\CSProj.cs" />
+    <Compile Include="Projectiles\CSProj2.cs" />
     <Compile Include="Projectiles\EaterProj.cs" />
+    <Compile Include="Projectiles\MGSProj.cs" />
+    <Compile Include="Projectiles\MoonSpProj.cs" />
     <Compile Include="Projectiles\TinierLeech.cs" />
     <Compile Include="Projectiles\TinyLeech.cs" />
     <Compile Include="XahlicemMod.cs" />
