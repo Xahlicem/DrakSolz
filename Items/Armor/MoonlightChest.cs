@@ -11,25 +11,24 @@ namespace XahlicemMod.Items
         {
             base.SetStaticDefaults();
             //DisplayName.SetDefault("Example Breastplate");
-            Tooltip.SetDefault("This is a modded body armor."
-                + "\nImmunity to 'On Fire!'"
-                + "\n+20 max mana and +1 max minions");
+            Tooltip.SetDefault("Armor forged with pure moonlight."
+                + "\n+20% Max Health"
+                + "\n+20 Max Mana");
         }
 
         public override void SetDefaults()
         {
             item.width = 18;
             item.height = 18;
-            item.value = 10000;
-            item.rare = 2;
-            item.defense = 60;
+            item.value = 10000000;
+            item.rare = 9;
+            item.defense = 25;
         }
 
         public override void UpdateEquip(Player player)
         {
-            player.buffImmune[BuffID.OnFire] = true;
             player.statManaMax2 += 20;
-            player.maxMinions++;
+            player.AddBuff(BuffID.Lifeforce, 2);
         }
 
 
