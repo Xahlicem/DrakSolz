@@ -51,9 +51,9 @@ namespace XahlicemMod.Projectiles
             // Sadly, Projectile/ModProjectile does not have its own
             Player projOwner = Main.player[projectile.owner];
             //projOwner.AddBuff(mod.BuffType("ChannelBuff"), 40);
-            float distance = 225f;
+            float distance = 325f;
 
-            for (int k = 0; k < 300; k++)
+            for (int k = 0; k < 200; k++)
             {
                 if (Main.player[k].active && Main.player[k].team == projOwner.team)
                 {
