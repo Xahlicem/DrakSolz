@@ -27,6 +27,7 @@ namespace XahlicemMod.Projectiles
             projectile.height = 7;
             projectile.penetrate = -1;
             projectile.timeLeft = 120;
+            projectile.damage = 10;
         }
 
         public override void AI()
@@ -45,26 +46,109 @@ namespace XahlicemMod.Projectiles
 
         }
 
+        public override bool OnTileCollide(Vector2 oldVelocity) {
+            // Set to transparant. This projectile technically lives as  transparant for about 3 frames
+
+            projectile.tileCollide = false;
+				projectile.alpha = 255;
+
+				// change the hitbox size, centered about the original projectile center. This makes the projectile damage enemies during the explosion.
+
+				projectile.position.X = projectile.position.X + (float)(projectile.width / 2);
+
+				projectile.position.Y = projectile.position.Y + (float)(projectile.height / 2);
+
+				projectile.width = 100;
+
+				projectile.height = 100;
+
+				projectile.position.X = projectile.position.X - (float)(projectile.width / 2);
+
+				projectile.position.Y = projectile.position.Y - (float)(projectile.height / 2);
+
+				projectile.damage = 10;
+
+				projectile.knockBack = 10f;
+                projectile.velocity = new Vector2(0f, 0f);
+                projectile.timeLeft = 3;
+            return false;
+        }
+
         public override void Kill(int timeLeft)
         {
-            for (int i = 0; i < 5; i++)
-            {
-                int dust = 0;
-                switch ((int)projectile.ai[1])
-                {
-                    case 1:
-                    case 2:
-                        dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, 1);
-                        break;
-                    case 3:
-                        dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, 6);
-                        break;
-                    case 4:
-                        dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, 74);
-                        break;
-                }
-                
-            }
+            // Play explosion sound
+
+			Main.PlaySound(SoundID.Item15, projectile.position);
+
+			// Smoke Dust spawn
+
+			for (int i = 0; i < 50; i++)
+
+			{
+
+				int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 31, 0f, 0f, 100, default(Color), 2f);
+
+				Main.dust[dustIndex].velocity *= 1.4f;
+
+			}
+
+			// Fire Dust spawn
+
+			for (int i = 0; i < 80; i++)
+
+			{
+
+				int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 15, 0f, 0f, 100, default(Color), 3f);
+
+				Main.dust[dustIndex].noGravity = true;
+
+				Main.dust[dustIndex].velocity *= 2f;
+
+				dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 15, 0f, 0f, 100, default(Color), 2f);
+
+				Main.dust[dustIndex].velocity *= 1.5f;
+
+			}
+
+			// Large Smoke Gore spawn
+
+			for (int g = 0; g < 2; g++)
+
+			{
+
+				int goreIndex = Gore.NewGore(new Vector2(projectile.position.X + (float)(projectile.width / 2) - 24f, projectile.position.Y + (float)(projectile.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+
+				Main.gore[goreIndex].scale = 1.5f;
+
+				Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X + 1.5f;
+
+				Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y + 1.5f;
+
+				goreIndex = Gore.NewGore(new Vector2(projectile.position.X + (float)(projectile.width / 2) - 24f, projectile.position.Y + (float)(projectile.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+
+				Main.gore[goreIndex].scale = 1.5f;
+
+				Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X - 1.5f;
+
+				Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y + 1.5f;
+
+				goreIndex = Gore.NewGore(new Vector2(projectile.position.X + (float)(projectile.width / 2) - 24f, projectile.position.Y + (float)(projectile.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+
+				Main.gore[goreIndex].scale = 1.5f;
+
+				Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X + 1.5f;
+
+				Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y - 1.5f;
+
+				goreIndex = Gore.NewGore(new Vector2(projectile.position.X + (float)(projectile.width / 2) - 24f, projectile.position.Y + (float)(projectile.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+
+				Main.gore[goreIndex].scale = 1.5f;
+
+				Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X - 1.5f;
+
+				Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y - 1.5f;
+
+			}
         }
 
         private void AdjustMagnitude(ref Vector2 vector)
