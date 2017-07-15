@@ -15,6 +15,7 @@ namespace XahlicemMod.Projectiles
         }
         public override void Update(Player player, ref int buffIndex)
         {
+            player.moveSpeed += 0.05f;
             player.magicDamage *= 1.25f;
             player.thrownDamage *= 1.25f;
             player.rangedDamage *= 1.25f;

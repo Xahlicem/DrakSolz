@@ -53,7 +53,7 @@ namespace XahlicemMod.Projectiles
             //projOwner.AddBuff(mod.BuffType("ChannelBuff"), 40);
             float distance = 225f;
 
-            for (int k = 0; k < 200; k++)
+            for (int k = 0; k < 300; k++)
             {
                 if (Main.player[k].active && Main.player[k].team == projOwner.team)
                 {
