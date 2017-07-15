@@ -9,7 +9,8 @@ namespace XahlicemMod.Items
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("Armor forged with pure moonlight.");
+            Tooltip.SetDefault("Armor forged with pure moonlight."
+                + "\n+NightVision");
         }
 
         public override void SetDefaults()
@@ -19,6 +20,11 @@ namespace XahlicemMod.Items
             item.value = 10000000;
             item.rare = 9;
             item.defense = 15;
+        }
+
+        public override void UpdateEquip(Player player)
+        {
+            player.AddBuff(BuffID.NightOwl, 2);
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)

@@ -9,7 +9,7 @@ namespace XahlicemMod.Items
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("Armor forged with pure moonlight.."
+            Tooltip.SetDefault("Armor forged with pure moonlight."
                 + "\n+Water Walking"
                 + "\n10% increased movement speed");
         }

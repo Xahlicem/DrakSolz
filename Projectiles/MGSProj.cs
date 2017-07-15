@@ -24,15 +24,25 @@ namespace XahlicemMod.Projectiles
             projectile.ignoreWater = true;
             projectile.magic = true;
             projectile.width = 25;
-            projectile.height = 7;
+            projectile.height = 55;
             projectile.penetrate = -1;
             projectile.timeLeft = 120;
             projectile.damage = 10;
+
+            //projectile.position.X = projectile.position.X + (float)(projectile.width / 2);
+            //projectile.position.Y = projectile.position.Y + (float)(projectile.height / 2);
         }
+
+        bool shot = false;
 
         public override void AI()
         {
 
+            if (!shot)
+            {
+                projectile.position.Y -= 15;
+                shot = true;
+            }
             projectile.frame = (int)projectile.localAI[0];
             projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + MathHelper.ToRadians(90f);
 

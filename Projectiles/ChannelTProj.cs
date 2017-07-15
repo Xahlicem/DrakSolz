@@ -50,6 +50,19 @@ namespace XahlicemMod.Projectiles
             // Since we access the owner player instance so much, it's useful to create a helper local variable for this
             // Sadly, Projectile/ModProjectile does not have its own
             Player projOwner = Main.player[projectile.owner];
+            //projOwner.AddBuff(mod.BuffType("ChannelBuff"), 40);
+            float distance = 225f;
+
+            for (int k = 0; k < 200; k++)
+            {
+                if (Main.player[k].active && Main.player[k].team == projOwner.team)
+                {
+                    if (projOwner.WithinRange(Main.player[k].Center, distance)) {
+                        Main.player[k].AddBuff(mod.BuffType("ChannelBuff"), 40);
+                    }
+                }
+            }
+
             // Here we set some of the projectile's owner properties, such as held item and itemtime, along with projectile directio and position based on the player
             Vector2 mountedCenter = projOwner.MountedCenter;
             mountedCenter.X -= 10;
@@ -101,7 +114,7 @@ namespace XahlicemMod.Projectiles
 		{
 			if (Main.rand.Next(2) == 0)
 			{
-				Main.player[projectile.owner].AddBuff(mod.BuffType("ChannelBuff"), 40);
+				//Main.player[projectile.owner].AddBuff(mod.BuffType("ChannelBuff"), 40);
              }
 		}
     }
