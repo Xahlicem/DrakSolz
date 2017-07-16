@@ -29,7 +29,7 @@ namespace XahlicemMod.NPCs
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return SpawnCondition.HardmodeJungle.Chance * 0.5f;
+            return SpawnCondition.Dungeon.Chance * 0.5f;
             //return SpawnCondition.OverworldNightMonster.Chance * 0.5f;
         }
 
