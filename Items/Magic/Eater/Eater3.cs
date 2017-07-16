@@ -24,14 +24,15 @@ namespace XahlicemMod.Items.Magic.Eater {
             recipe.AddIngredient(ItemID.Fireblossom, 10);
             recipe.AddIngredient(ItemID.Obsidian, 20);
             recipe.AddIngredient(ItemID.Hellstone, 5);
+            recipe.AddIngredient(mod.ItemType("Soul"), 7000);
             recipe.AddTile(TileID.Hellforge);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
-            recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("Eater2"), 1);
-            recipe.AddIngredient(ItemID.DirtBlock, 1);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            //recipe = new ModRecipe(mod);
+            //recipe.AddIngredient(mod.ItemType("Eater2"), 1);
+            //recipe.AddIngredient(ItemID.DirtBlock, 1);
+            //recipe.SetResult(this);
+            //recipe.AddRecipe();
         }
 		
 		public override Vector2? HoldoutOffset() {

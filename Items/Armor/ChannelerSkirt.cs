@@ -26,7 +26,8 @@ namespace XahlicemMod.Items
         public override void UpdateEquip(Player player)
         {
             player.moveSpeed += 0.10f;
-            player.AddBuff(BuffID.WaterWalking, 2);
+            player.waterWalk = true;
+            //player.AddBuff(BuffID.WaterWalking, 2);
         }
 
         public override void AddRecipes()

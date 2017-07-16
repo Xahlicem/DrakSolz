@@ -25,14 +25,15 @@ namespace XahlicemMod.Items {
             recipe.AddIngredient(ItemID.SoulofSight, 5);
             recipe.AddIngredient(ItemID.SoulofNight, 15);
             recipe.AddIngredient(ItemID.Ichor, 5);
+            recipe.AddIngredient(mod.ItemType("Soul"), 30000);
             recipe.AddTile(TileID.AdamantiteForge);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
-            recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("Leecher4"), 1);
-            recipe.AddIngredient(ItemID.DirtBlock, 1);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            //recipe = new ModRecipe(mod);
+            //recipe.AddIngredient(mod.ItemType("Leecher4"), 1);
+            //recipe.AddIngredient(ItemID.DirtBlock, 1);
+            //recipe.SetResult(this);
+            //recipe.AddRecipe();
         }
 		
 		public override Vector2? HoldoutOffset() {

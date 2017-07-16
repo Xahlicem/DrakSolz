@@ -24,14 +24,14 @@ namespace XahlicemMod.Items {
             recipe.AddIngredient(ItemID.Vertebrae, 15);
             recipe.AddIngredient(ItemID.ViciousPowder, 30);
             recipe.AddIngredient(ItemID.Deathweed, 1);
-            recipe.AddIngredient(ItemID.Ruby, 1);
+            recipe.AddIngredient(mod.ItemType("Soul"), 500);
             recipe.AddTile(TileID.DemonAltar);
 			recipe.SetResult(this);
-            recipe.AddRecipe();
-            recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.DirtBlock, 1);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            //recipe.AddRecipe();
+            //recipe = new ModRecipe(mod);
+            //recipe.AddIngredient(ItemID.DirtBlock, 1);
+            //recipe.SetResult(this);
+            //recipe.AddRecipe();
         }
 		
 		public override Vector2? HoldoutOffset() {

@@ -27,14 +27,14 @@ namespace XahlicemMod.Items.Magic.Eater {
             recipe.AddIngredient(ItemID.RottenChunk, 15);
             recipe.AddIngredient(ItemID.VilePowder, 30);
             recipe.AddIngredient(ItemID.WormTooth, 10);
-            recipe.AddIngredient(ItemID.Emerald, 1);
+            recipe.AddIngredient(mod.ItemType("Soul"), 500);
             recipe.AddTile(TileID.DemonAltar);
             recipe.SetResult(this);
             recipe.AddRecipe();
-            recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.DirtBlock, 1);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            //recipe = new ModRecipe(mod);
+            //recipe.AddIngredient(mod.ItemType("Soul"), 5000);
+            //recipe.SetResult(this);
+            //recipe.AddRecipe();
         }
 
         public override Vector2? HoldoutOffset() {

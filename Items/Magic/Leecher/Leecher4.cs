@@ -12,7 +12,7 @@ namespace XahlicemMod.Items {
 		}
 		public override void SetDefaults() {
 			item.CloneDefaults(ItemID.WaterBolt);
-			item.damage = 10;
+			item.damage = 70;
             item.shoot = mod.ProjectileType("TinyLeech");
             item.mana = 20;
 			item.knockBack = 5f;
@@ -24,14 +24,15 @@ namespace XahlicemMod.Items {
             recipe.AddIngredient(mod.ItemType("Leecher3"), 1);
             recipe.AddIngredient(ItemID.SoulofNight, 15);
             recipe.AddIngredient(ItemID.Ichor, 10);
+            recipe.AddIngredient(mod.ItemType("Soul"), 15000);
             recipe.AddTile(TileID.MythrilAnvil);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
-            recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("Leecher3"), 1);
-            recipe.AddIngredient(ItemID.DirtBlock, 1);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            //recipe = new ModRecipe(mod);
+            //recipe.AddIngredient(mod.ItemType("Leecher3"), 1);
+            //recipe.AddIngredient(ItemID.DirtBlock, 1);
+            //recipe.SetResult(this);
+            //recipe.AddRecipe();
         }
 		
 		public override Vector2? HoldoutOffset() {

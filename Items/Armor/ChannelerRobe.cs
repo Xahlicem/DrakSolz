@@ -12,8 +12,8 @@ namespace XahlicemMod.Items
             base.SetStaticDefaults();
             //DisplayName.SetDefault("Example Breastplate");
             Tooltip.SetDefault("Description!"
-                + "\n+20% Max Health"
-                + "\n+20 Max Mana");
+                + "\n+40 Max Health"
+                + "\n+40 Max Mana");
         }
 
         public override void SetDefaults()
@@ -27,8 +27,8 @@ namespace XahlicemMod.Items
 
         public override void UpdateEquip(Player player)
         {
-            player.statManaMax2 += 20;
-            player.AddBuff(BuffID.Lifeforce, 2);
+            player.statManaMax2 += 40;
+            player.statLifeMax2 += 40;
         }
 
 

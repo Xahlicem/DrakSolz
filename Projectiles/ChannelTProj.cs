@@ -58,7 +58,9 @@ namespace XahlicemMod.Projectiles
                 if (Main.player[k].active && Main.player[k].team == projOwner.team)
                 {
                     if (projOwner.WithinRange(Main.player[k].Center, distance)) {
-                        Main.player[k].AddBuff(mod.BuffType("ChannelBuff"), 40);
+                        if (projOwner.setBonus.Contains("Channeler's Perfect Dance"))
+                            Main.player[k].AddBuff(mod.BuffType("ChannelBuff2"), 40);
+                        else Main.player[k].AddBuff(mod.BuffType("ChannelBuff"), 40);
                     }
                 }
             }

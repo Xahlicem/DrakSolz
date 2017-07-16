@@ -10,7 +10,8 @@ namespace XahlicemMod.Items
         public override void SetStaticDefaults()
         {
             Tooltip.SetDefault("Description!"
-                + "\n+NightVision");
+                + "\n+20% Magic Damage"
+                + "\n+20% Melee Damage");
         }
 
         public override void SetDefaults()
@@ -24,7 +25,8 @@ namespace XahlicemMod.Items
 
         public override void UpdateEquip(Player player)
         {
-            player.AddBuff(BuffID.NightOwl, 2);
+            player.magicDamage *= 1.2f;
+            player.meleeDamage *= 1.2f;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -35,19 +37,7 @@ namespace XahlicemMod.Items
         public override void UpdateArmorSet(Player player)
         {
             player.setBonus = ("Moonlight Prayer"
-                + "\n+20% Magic Damage"
-                + "\n+20% Melee Damage"
-                + "\n+60 Max Mana"
-                + "\n-20% Mana Cost"
-                + "\n+Channeler's Perfect Dance"
-                + "\n+20% Max Life"
-                + "\n+Immunity to Curse");
-            player.magicDamage *= 1.2f;
-            player.meleeDamage *= 1.2f;
-            player.statManaMax2 += 60;
-            player.manaCost *= 0.8f;
-            player.manaRegen += 60;
-            player.AddBuff(mod.BuffType("ChannelBuff2"), 2);
+                + "\n+Channeler's Perfect Dance");
         }
 
         public override void AddRecipes()

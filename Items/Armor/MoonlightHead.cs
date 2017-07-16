@@ -24,7 +24,8 @@ namespace XahlicemMod.Items
 
         public override void UpdateEquip(Player player)
         {
-            player.AddBuff(BuffID.NightOwl, 2);
+            //player.AddBuff(BuffID.NightOwl, 2);
+            player.nightVision = true;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -36,16 +37,14 @@ namespace XahlicemMod.Items
         {
             player.setBonus = ("Moonlight Prayer"
                 + "\n+20% Magic Damage"
-                + "\n+60 Max Mana"
                 + "\n+100% Mana Cost"
                 + "\n+Instant Mana Regen"
-                + "\n+20% Max Life"
                 + "\n+Immunity to Curse");
             player.magicDamage *= 1.2f;
-            player.statManaMax2 += 60;
             player.manaCost *= 2.0f;
             player.manaRegen += 60;
-            player.AddBuff(BuffID.ManaRegeneration, 2);
+            player.manaRegenBuff = true;
+            //player.AddBuff(BuffID.ManaRegeneration, 2);
             player.AddBuff(BuffID.Shine, 2);
             player.buffImmune[BuffID.Cursed] = true;
         }

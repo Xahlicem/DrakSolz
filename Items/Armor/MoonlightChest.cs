@@ -12,7 +12,7 @@ namespace XahlicemMod.Items
             base.SetStaticDefaults();
             //DisplayName.SetDefault("Example Breastplate");
             Tooltip.SetDefault("Armor forged with pure moonlight."
-                + "\n+20% Max Health"
+                + "\n+20 Max Health"
                 + "\n+20 Max Mana");
         }
 
@@ -28,7 +28,7 @@ namespace XahlicemMod.Items
         public override void UpdateEquip(Player player)
         {
             player.statManaMax2 += 20;
-            player.AddBuff(BuffID.Lifeforce, 2);
+            player.statLifeMax2 += 20;
         }
 
 

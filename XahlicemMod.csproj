@@ -33,6 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Items\Armor\ChannelerHelmet.cs" />
+    <Compile Include="Items\Armor\ChannelerRobe.cs" />
+    <Compile Include="Items\Armor\ChannelerSkirt.cs" />
+    <Compile Include="Items\Armor\MoonlightChest.cs" />
+    <Compile Include="Items\Armor\MoonlightHead.cs" />
+    <Compile Include="Items\Armor\MoonlightLeggings.cs" />
     <Compile Include="Items\Magic\Eater\Eater1.cs" />
     <Compile Include="Items\Magic\Eater\Eater2.cs" />
     <Compile Include="Items\Magic\Eater\Eater3.cs" />
@@ -43,6 +49,13 @@
     <Compile Include="Items\Magic\Leecher\Leecher3.cs" />
     <Compile Include="Items\Magic\Leecher\Leecher4.cs" />
     <Compile Include="Items\Magic\Leecher\Leecher5.cs" />
+    <Compile Include="Items\Melee\ChannelT.cs" />
+    <Compile Include="Items\Melee\CorruptSpear1.cs" />
+    <Compile Include="Items\Melee\CorruptSpear2.cs" />
+    <Compile Include="Items\Melee\MorianBlade.cs" />
+    <Compile Include="NPCs\Channeler.cs" />
+    <Compile Include="Projectiles\ChannelBuff.cs" />
+    <Compile Include="Projectiles\ChannelBuff2.cs" />
     <Compile Include="Projectiles\ChannelTProj.cs" />
     <Compile Include="Projectiles\CSProj.cs" />
     <Compile Include="Projectiles\CSProj2.cs" />
@@ -75,9 +88,7 @@
       <HintPath>C:\Program Files (x86)\Steam\steamapps\common\terraria\Terraria.exe</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Items\NewFolder1\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>"C:\Program Files (x86)\Steam\steamapps\common\terraria\Terraria.exe" -build "$(ProjectDir)\" -eac "$(TargetPath)"</PostBuildEvent>

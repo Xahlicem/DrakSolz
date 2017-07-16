@@ -23,14 +23,15 @@ namespace XahlicemMod.Items.Magic.Eater {
             recipe.AddIngredient(mod.ItemType("Eater3"), 1);
             recipe.AddIngredient(ItemID.SoulofNight, 15);
             recipe.AddIngredient(ItemID.CursedFlame, 10);
+            recipe.AddIngredient(mod.ItemType("Soul"), 15000);
             recipe.AddTile(TileID.MythrilAnvil);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
-            recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("Eater3"), 1);
-            recipe.AddIngredient(ItemID.DirtBlock, 1);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            //recipe = new ModRecipe(mod);
+            //recipe.AddIngredient(mod.ItemType("Eater3"), 1);
+            //recipe.AddIngredient(ItemID.DirtBlock, 1);
+            //recipe.SetResult(this);
+            //recipe.AddRecipe();
         }
 		
 		public override Vector2? HoldoutOffset() {
