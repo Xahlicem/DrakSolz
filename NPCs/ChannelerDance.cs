@@ -212,7 +212,7 @@ namespace XahlicemMod.NPCs
                     AI_SpellTime = 0;
                     if (Main.netMode != 1)
                     {
-                        Projectile.NewProjectile(npc.Center.X + 6, npc.Center.Y - 16, speed.X, speed.Y, ProjectileID.DD2DarkMageBolt, npc.damage, 0f);
+                        Projectile.NewProjectile(npc.Center.X + 6, npc.Center.Y - 16, speed.X, speed.Y, mod.ProjectileType("SoulSpearProj"), npc.damage, 0f);
                     }
                 }
             }

@@ -37,7 +37,9 @@ namespace XahlicemMod.Items
         public override void UpdateArmorSet(Player player)
         {
             player.setBonus = ("Moonlight Prayer"
+                + "\n+1 Accessory Slot"
                 + "\n+Channeler's Perfect Dance");
+            player.extraAccessorySlots += 1;
         }
 
         public override void AddRecipes()

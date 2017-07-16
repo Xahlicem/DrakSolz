@@ -33,6 +33,30 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Items\Accessory\RingBlueTear.cs" />
+    <Compile Include="Items\Accessory\RingLoyds.cs" />
+    <Compile Include="Items\Accessory\RingMagicPower.cs" />
+    <Compile Include="Items\Accessory\RingMeleePower.cs" />
+    <Compile Include="Items\Accessory\RingThrowingPower.cs" />
+    <Compile Include="Items\Accessory\RingRangePower.cs" />
+    <Compile Include="Items\Accessory\RingSummonPower.cs" />
+    <Compile Include="Items\Accessory\RingPoisBite.cs" />
+    <Compile Include="Items\Accessory\RingSteelProt.cs" />
+    <Compile Include="Items\Accessory\RingTinyBeing.cs" />
+    <Compile Include="Items\Accessory\RingPriestess.cs" />
+    <Compile Include="Items\Accessory\RingCalamity.cs" />
+    <Compile Include="Items\Accessory\SkullLantern.cs" />
+    <Compile Include="Items\Accessory\RingCat.cs" />
+    <Compile Include="Items\Accessory\RingCharred.cs" />
+    <Compile Include="Items\Accessory\RingClearBlue.cs" />
+    <Compile Include="Items\Accessory\RingDuskCrown.cs" />
+    <Compile Include="Items\Accessory\RingEvilEye.cs" />
+    <Compile Include="Items\Accessory\RingFavor.cs" />
+    <Compile Include="Items\Accessory\RingHavels.cs" />
+    <Compile Include="Items\Accessory\RingBlades.cs" />
+    <Compile Include="Items\Accessory\RingCloranthy.cs" />
+    <Compile Include="Items\Accessory\RingDarkGrain.cs" />
+    <Compile Include="Items\Accessory\RingRedTear.cs" />
     <Compile Include="Items\Armor\ChannelerHelmet.cs" />
     <Compile Include="Items\Armor\ChannelerRobe.cs" />
     <Compile Include="Items\Armor\ChannelerSkirt.cs" />
@@ -63,6 +87,7 @@
     <Compile Include="Projectiles\EaterProj.cs" />
     <Compile Include="Projectiles\MGSProj.cs" />
     <Compile Include="Projectiles\MoonSpProj.cs" />
+    <Compile Include="Projectiles\SoulSpearProj.cs" />
     <Compile Include="Projectiles\TinierLeech.cs" />
     <Compile Include="Projectiles\TinyLeech.cs" />
     <Compile Include="XahlicemMod.cs" />
