@@ -9,6 +9,7 @@ namespace XahlicemMod.Items {
     {
         public override void SetStaticDefaults()
         {
+            DisplayName.SetDefault("Channeler's Trident");
             Tooltip.SetDefault("A unique trident which spins around when thrust.");
         }
 

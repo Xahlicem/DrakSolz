@@ -7,9 +7,9 @@ namespace XahlicemMod.Items.Accessory
     {
         public override void SetStaticDefaults()
         {
+            DisplayName.SetDefault("Tiny Being's Ring");
             Tooltip.SetDefault("This is a modded ring."
-                + "\n+30% Max Move Speed"
-                +"\n+15% Melee Speed");
+                + "\n+20 Max Life");
         }
 
         public override void SetDefaults()
@@ -23,8 +23,7 @@ namespace XahlicemMod.Items.Accessory
         //these wings use the same values as the solar wings
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.maxRunSpeed += 0.30f;
-            player.meleeSpeed += 0.15f;
+            player.statLifeMax2 += 20;
         }
 
         public override void AddRecipes()

@@ -10,7 +10,7 @@ namespace XahlicemMod.Items
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            //DisplayName.SetDefault("Example Breastplate");
+            DisplayName.SetDefault("Channeler's Robe");
             Tooltip.SetDefault("Description!"
                 + "\n+40 Max Health"
                 + "\n+40 Max Mana");

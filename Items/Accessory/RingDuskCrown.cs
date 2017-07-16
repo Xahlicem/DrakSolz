@@ -1,4 +1,5 @@
 ﻿using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace XahlicemMod.Items.Accessory
@@ -7,14 +8,15 @@ namespace XahlicemMod.Items.Accessory
     {
         public override void SetStaticDefaults()
         {
+            DisplayName.SetDefault("Dusk Crown Ring");
             Tooltip.SetDefault("This is a modded ring."
-                + "\n+30% Max Move Speed"
-                +"\n+15% Melee Speed");
+                + "\n-50% Mana Cost");
         }
 
         public override void SetDefaults()
         {
             item.width = 22;
+            item.defense = -30;
             item.height = 20;
             item.value = 10000;
             item.rare = 2;
@@ -23,8 +25,8 @@ namespace XahlicemMod.Items.Accessory
         //these wings use the same values as the solar wings
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.maxRunSpeed += 0.30f;
-            player.meleeSpeed += 0.15f;
+            player.manaCost *= 0.5f;
+
         }
 
         public override void AddRecipes()

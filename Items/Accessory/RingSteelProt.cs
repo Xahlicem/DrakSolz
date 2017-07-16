@@ -7,15 +7,15 @@ namespace XahlicemMod.Items.Accessory
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("This is a modded ring."
-                + "\n+30% Max Move Speed"
-                +"\n+15% Melee Speed");
+            DisplayName.SetDefault("Ring of Steel Protection");
+            Tooltip.SetDefault("This is a modded ring.");
         }
 
         public override void SetDefaults()
         {
             item.width = 22;
             item.height = 20;
+            item.defense = 5;
             item.value = 10000;
             item.rare = 2;
             item.accessory = true;
@@ -23,8 +23,7 @@ namespace XahlicemMod.Items.Accessory
         //these wings use the same values as the solar wings
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.maxRunSpeed += 0.30f;
-            player.meleeSpeed += 0.15f;
+         
         }
 
         public override void AddRecipes()

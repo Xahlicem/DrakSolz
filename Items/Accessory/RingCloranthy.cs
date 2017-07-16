@@ -7,6 +7,7 @@ namespace XahlicemMod.Items.Accessory
     {
         public override void SetStaticDefaults()
         {
+            DisplayName.SetDefault("Ring of Cloranthy");
             Tooltip.SetDefault("This is a modded ring."
                 + "\n+30% Max Move Speed"
                 +"\n+15% Melee Speed");

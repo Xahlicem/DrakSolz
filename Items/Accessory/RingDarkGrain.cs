@@ -7,6 +7,7 @@ namespace XahlicemMod.Items.Accessory
     {
         public override void SetStaticDefaults()
         {
+            DisplayName.SetDefault("Darkwood Grain Ring");
             Tooltip.SetDefault("This is a modded ring."
                 + "\n+Reflexes");
         }

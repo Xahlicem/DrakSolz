@@ -7,9 +7,9 @@ namespace XahlicemMod.Items.Accessory
     {
         public override void SetStaticDefaults()
         {
+            DisplayName.SetDefault("Evil Eye Ring");
             Tooltip.SetDefault("This is a modded ring."
-                + "\n+30% Max Move Speed"
-                +"\n+15% Melee Speed");
+                + "\n+Heals you when you kill an enemy");
         }
 
         public override void SetDefaults()
@@ -26,6 +26,9 @@ namespace XahlicemMod.Items.Accessory
             player.maxRunSpeed += 0.30f;
             player.meleeSpeed += 0.15f;
         }
+
+                    
+        
 
         public override void AddRecipes()
         {

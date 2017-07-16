@@ -7,9 +7,9 @@ namespace XahlicemMod.Items.Accessory
     {
         public override void SetStaticDefaults()
         {
+            DisplayName.SetDefault("Loyd's Sword Ring");
             Tooltip.SetDefault("This is a modded ring."
-                + "\n+30% Max Move Speed"
-                +"\n+15% Melee Speed");
+                + "\n+20% Damage when at Max Life");
         }
 
         public override void SetDefaults()
@@ -23,8 +23,14 @@ namespace XahlicemMod.Items.Accessory
         //these wings use the same values as the solar wings
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.maxRunSpeed += 0.30f;
-            player.meleeSpeed += 0.15f;
+            if (player.statLife >= (player.statLifeMax * 1))
+            {
+                player.meleeDamage += 0.20f;
+                player.magicDamage += 0.20f;
+                player.thrownDamage += 0.20f;
+                player.rangedDamage += 0.20f;
+                player.minionDamage += 0.20f;
+            }
         }
 
         public override void AddRecipes()

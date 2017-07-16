@@ -7,9 +7,8 @@ namespace XahlicemMod.Items.Accessory
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("This is a modded ring."
-                + "\n+30% Max Move Speed"
-                +"\n+15% Melee Speed");
+            DisplayName.SetDefault("Skull Lantern");
+            Tooltip.SetDefault("Gives off light.");
         }
 
         public override void SetDefaults()
@@ -24,7 +23,6 @@ namespace XahlicemMod.Items.Accessory
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.maxRunSpeed += 0.30f;
-            player.meleeSpeed += 0.15f;
         }
 
         public override void AddRecipes()

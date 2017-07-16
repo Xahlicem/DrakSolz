@@ -9,8 +9,8 @@ namespace XahlicemMod.Items
     {
         public override void SetStaticDefaults()
         {
+            DisplayName.SetDefault("Channeler's Skirt");
             Tooltip.SetDefault("Description!"
-                + "\n+Water Walking"
                 + "\n10% increased movement speed");
         }
 
@@ -26,8 +26,7 @@ namespace XahlicemMod.Items
         public override void UpdateEquip(Player player)
         {
             player.moveSpeed += 0.10f;
-            player.waterWalk = true;
-            //player.AddBuff(BuffID.WaterWalking, 2);
+            player.maxRunSpeed += 0.10f;
         }
 
         public override void AddRecipes()

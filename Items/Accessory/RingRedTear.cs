@@ -7,6 +7,7 @@ namespace XahlicemMod.Items.Accessory
     {
         public override void SetStaticDefaults()
         {
+            DisplayName.SetDefault("Red Tearstone Ring");
             Tooltip.SetDefault("This is a modded ring."
                 + "\n+25% Damage when near death");
         }

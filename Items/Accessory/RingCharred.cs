@@ -1,4 +1,5 @@
 ﻿using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace XahlicemMod.Items.Accessory
@@ -7,9 +8,10 @@ namespace XahlicemMod.Items.Accessory
     {
         public override void SetStaticDefaults()
         {
+            DisplayName.SetDefault("Ring");
             Tooltip.SetDefault("This is a modded ring."
-                + "\n+30% Max Move Speed"
-                +"\n+15% Melee Speed");
+                + "\n+Immunity to Fire"
+                + "\n+Inflict Fire on hit");
         }
 
         public override void SetDefaults()
@@ -23,8 +25,9 @@ namespace XahlicemMod.Items.Accessory
         //these wings use the same values as the solar wings
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.maxRunSpeed += 0.30f;
-            player.meleeSpeed += 0.15f;
+            player.lavaRose = true;
+            player.fireWalk = true;
+            player.AddBuff(BuffID.WeaponImbueFire, 2);
         }
 
         public override void AddRecipes()

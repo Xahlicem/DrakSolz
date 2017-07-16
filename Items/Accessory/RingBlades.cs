@@ -7,9 +7,10 @@ namespace XahlicemMod.Items.Accessory
     {
         public override void SetStaticDefaults()
         {
+            DisplayName.SetDefault("Ring of Blades");
             Tooltip.SetDefault("This is a modded ring."
-                + "\n+30% Max Move Speed"
-                +"\n+15% Melee Speed");
+                + "\n+5% Damage"
+                +"\n+5% Crit Chance");
         }
 
         public override void SetDefaults()
@@ -23,8 +24,15 @@ namespace XahlicemMod.Items.Accessory
         //these wings use the same values as the solar wings
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.maxRunSpeed += 0.30f;
-            player.meleeSpeed += 0.15f;
+            player.meleeDamage += 0.05f;
+            player.magicDamage += 0.05f;
+            player.thrownDamage += 0.05f;
+            player.rangedDamage += 0.05f;
+            player.minionDamage += 0.05f;
+            player.meleeCrit += 5;
+            player.magicCrit += 5;
+            player.thrownCrit += 5;
+            player.rangedCrit += 5;
         }
 
         public override void AddRecipes()

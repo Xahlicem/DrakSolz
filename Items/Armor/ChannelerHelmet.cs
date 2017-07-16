@@ -9,6 +9,7 @@ namespace XahlicemMod.Items
     {
         public override void SetStaticDefaults()
         {
+            DisplayName.SetDefault("Channeler's Helmet");
             Tooltip.SetDefault("Description!"
                 + "\n+20% Magic Damage"
                 + "\n+20% Melee Damage");

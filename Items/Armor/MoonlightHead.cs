@@ -9,6 +9,7 @@ namespace XahlicemMod.Items
     {
         public override void SetStaticDefaults()
         {
+            DisplayName.SetDefault("Moonlight Helm");
             Tooltip.SetDefault("Armor forged with pure moonlight."
                 + "\n+NightVision");
         }

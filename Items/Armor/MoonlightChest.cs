@@ -10,7 +10,7 @@ namespace XahlicemMod.Items
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            //DisplayName.SetDefault("Example Breastplate");
+            DisplayName.SetDefault("Moonlight Chestplate");
             Tooltip.SetDefault("Armor forged with pure moonlight."
                 + "\n+20 Max Health"
                 + "\n+20 Max Mana");
