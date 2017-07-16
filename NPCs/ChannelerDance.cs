@@ -29,6 +29,8 @@ namespace XahlicemMod.NPCs
             //npc.color = new Color(0, 80, 255, 100);
             npc.value = 25f;
             npc.knockBackResist = 0.2f;
+            npc.teleporting = true;
+            npc.teleportTime = 2f;
             npc.buffImmune[BuffID.Poisoned] = true;
             npc.buffImmune[BuffID.Confused] = false; // npc default to being immune to the Confused debuff. Allowing confused could be a little more work depending on the AI. npc.confused is true while the npc is confused.
         }
@@ -74,7 +76,7 @@ namespace XahlicemMod.NPCs
             set { npc.ai[AI_Timer_Slot] = value; }
         }
 
-        public float AI_FlutterTime
+        public float AI_SpellTime
         {
             get { return npc.ai[AI_Dance_Time_Slot]; }
             set { npc.ai[AI_Dance_Time_Slot] = value; }
@@ -150,13 +152,13 @@ namespace XahlicemMod.NPCs
                 if (AI_Timer == 1)
                 {
                     // For reference: without proper syncing: https://gfycat.com/BackAnxiousFerret and with proper syncing: https://gfycat.com/TatteredKindlyDalmatian
-                    AI_FlutterTime = 50;
+                    AI_SpellTime = 50;
                     npc.netUpdate = true;
                 }
                 // Here we add a tiny bit of upward velocity to our npc.
-                
 
-                if (AI_Timer > AI_FlutterTime)
+
+                if (AI_Timer > AI_SpellTime)
                 {
                     // after fluttering for 100 ticks (1.66 seconds), our Flutter Slime is tired, so he decides to go into the Fall state.
                     AI_State = State_Dance;
@@ -187,12 +189,15 @@ namespace XahlicemMod.NPCs
             {
                 // npc.frame.Y is the goto way of changing animation frames. npc.frame starts from the top left corner in pixel coordinates, so keep that in mind.
                 npc.frame.Y = Frame_Teleport * frameHeight;
+                Vector2 pos = npc.position;
+                pos.X += (Main.rand.NextBool()) ? 80 : -80;
+                npc.Teleport(pos, 0, 0);
             }
             else if (AI_State == State_Spell)
             {
-                AI_FlutterTime++;
+                AI_SpellTime++;
                 // Going from Notice to Asleep makes our npc look like it's crouching to jump.
-                if (AI_FlutterTime < 10)
+                if (AI_SpellTime < 10)
                 {
                     npc.frame.Y = Frame_Teleport * frameHeight;
                 }
@@ -200,16 +205,36 @@ namespace XahlicemMod.NPCs
                 {
                     npc.frame.Y = Frame_Spell * frameHeight;
                 }
-                if (AI_FlutterTime >= 60)
+                if (AI_SpellTime >= 60)
                 {
                     Vector2 speed = Main.player[npc.target].Center - npc.Center;
-                    AI_FlutterTime = 0;
-                    if (Main.netMode != 1) Projectile.NewProjectile(npc.Center.X, npc.Center.Y, speed.X / 20, speed.Y / 20, ProjectileID.ShadowBeamHostile, npc.damage, 2f, npc.whoAmI, Main.player[npc.target].Center.X, Main.player[npc.target].Center.Y);
+                    AdjustMagnitude(ref speed);
+                    AI_SpellTime = 0;
+                    if (Main.netMode != 1)
+                    {
+                        Projectile.NewProjectile(npc.Center.X + 6, npc.Center.Y - 16, speed.X, speed.Y, ProjectileID.DD2DarkMageBolt, npc.damage, 0f);
+                    }
                 }
             }
             else if (AI_State == State_Dance)
             {
                 // Here we have 3 frames that we want to cycle through.
+
+                float distance = 800f;
+
+                for (int k = 0; k < 200; k++)
+                {
+                    if (Main.player[k].active)
+                    {
+                        if (npc.WithinRange(Main.player[k].Center, distance))
+                        {
+                            Main.player[k].AddBuff(BuffID.WitheredArmor, 300);
+                            Main.player[k].AddBuff(BuffID.WitheredWeapon, 300);
+                            Main.player[k].AddBuff(BuffID.WaterCandle, 300);
+                        }
+                    }
+                }
+
                 npc.frameCounter++;
                 if (npc.frameCounter < 8)
                 {
@@ -272,8 +297,16 @@ namespace XahlicemMod.NPCs
 
             }
 
-            
-        
+        }
+
+
+        private void AdjustMagnitude(ref Vector2 vector)
+        {
+            float magnitude = (float)Math.Sqrt(vector.X * vector.X + vector.Y * vector.Y);
+            if (magnitude > 7.5f)
+            {
+                vector *= 7.5f / magnitude;
+            }
         }
     }
 }
