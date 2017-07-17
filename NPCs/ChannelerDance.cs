@@ -20,19 +20,24 @@ namespace XahlicemMod.NPCs
             npc.width = 40;
             npc.height = 56;
             npc.aiStyle = -1; // This npc has a completely unique AI, so we set this to -1.
-            npc.damage = 1;
-            npc.defense = 1;
-            npc.lifeMax = 2500;
+            npc.damage = 25;
+            npc.defense = 25;
+            npc.lifeMax = 250;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             //npc.alpha = 175;
             //npc.color = new Color(0, 80, 255, 100);
             npc.value = 25f;
-            npc.knockBackResist = 0.2f;
+            npc.knockBackResist = 0.0f;
             npc.teleporting = true;
             npc.teleportTime = 2f;
             npc.buffImmune[BuffID.Poisoned] = true;
             npc.buffImmune[BuffID.Confused] = false; // npc default to being immune to the Confused debuff. Allowing confused could be a little more work depending on the AI. npc.confused is true while the npc is confused.
+            npc.localAI[0] = 0f;
+            npc.localAI[1] = 0f;
+            npc.localAI[2] = 0f;
+            npc.localAI[3] = 0f;
+            npc.ai[3] = -1f;
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
@@ -90,6 +95,31 @@ namespace XahlicemMod.NPCs
             // The npc starts in the asleep state, waiting for a player to enter range
             if (AI_State == State_Dance)
             {
+                float distance = 800f;
+                float closest = 1000f, last = 800f;
+                Player p;
+
+                for (int k = 0; k < 200; k++)
+                {
+                    p = Main.player[k];
+                    if (p.active)
+                    {
+                        if (npc.WithinRange(p.Center, distance))
+                        {
+                            if ((last = npc.Distance(p.Center)) < closest && last >= 150)
+                            {
+                                closest = last;
+                                npc.localAI[0] = p.position.X;
+                                npc.localAI[1] = p.position.Y - 24;
+                                npc.ai[3] = 1f;
+                            }
+                            p.AddBuff(BuffID.WitheredArmor, 300);
+                            p.AddBuff(BuffID.WitheredWeapon, 300);
+                            p.AddBuff(BuffID.WaterCandle, 300);
+                        }
+                    }
+                }
+
                 // TargetClosest sets npc.target to the player.whoAmI of the closest player. the faceTarget parameter means that npc.direction will automatically be 1 or -1 if the targetted player is to the right or left. This is also automatically flipped if npc.confused
                 npc.TargetClosest(true);
                 // Now we check the make sure the target is still valid and within our specified notice range (500)
@@ -104,14 +134,12 @@ namespace XahlicemMod.NPCs
             else if (AI_State == State_Spell)
             {
                 /// If the targeted player is in attack range (250).
-                if (Main.player[npc.target].Distance(npc.Center) < 60f)
+                AI_Timer++;
+                if (Main.player[npc.target].Distance(npc.Center) < 100f)
                 {
-                    // Here we use our Timer to wait .33 seconds before actually jumping. In FindFrame you'll notice AI_Timer also being used to animate the pre-jump crouch
-                    AI_Timer++;
-                    if (AI_Timer >= 20)
+                    if (AI_Timer >= 60)
                     {
                         AI_State = State_Teleport;
-                        AI_Timer = 0;
                     }
                 }
                 else
@@ -123,23 +151,32 @@ namespace XahlicemMod.NPCs
                         AI_State = State_Dance;
                         AI_Timer = 0;
                     }
+
+
+                    if (AI_Timer >= 60)
+                    {
+                        Vector2 speed = Main.player[npc.target].Center - npc.Center;
+                        AdjustMagnitude(ref speed);
+                        AI_Timer = 0;
+                        if (Main.netMode != 1)
+                        {
+                            Projectile.NewProjectile(npc.Center.X + 6, npc.Center.Y - 16, speed.X, speed.Y, mod.ProjectileType("SoulSpearProjHostile"), npc.damage, 0f);
+                        }
+                    }
                 }
             }
             // In this state, we are in the jump. 
             else if (AI_State == State_Teleport)
             {
-                AI_Timer++;
-                if (AI_Timer == 1)
-                {
-                    // We apply an initial velocity the first tick we are in the Jump frame. Remember that -Y is up. 
-                    npc.velocity = new Vector2(npc.direction * 2, +10f);
-                }
-                else if (AI_Timer > 40)
-                {
-                    // after .66 seconds, we go to the hover state. // TODO, gravity?
-                    AI_State = State_Still;
-                    AI_Timer = 0;
-                }
+                Vector2 pos;
+                if (npc.ai[3] == 1f) pos = new Vector2(npc.localAI[0], npc.localAI[1]);
+                else if (npc.ai[3] == 0f && npc.Distance(new Vector2(npc.localAI[2], npc.localAI[3])) >= 150) pos = new Vector2(npc.localAI[2], npc.localAI[3]);
+                else pos = new Vector2(npc.position.X + ((Main.rand.NextBool()) ? +200 : -200), npc.position.Y);
+                npc.localAI[2] = npc.position.X;
+                npc.localAI[3] = npc.position.Y;
+                npc.Teleport(pos, 0, 0);
+                npc.ai[3] = 0f;
+                AI_State = State_Spell;
             }
             // In this state, our npc starts to flutter/fly a little to make it's movement a little bit interesting.
             else if (AI_State == State_Still)
@@ -189,9 +226,6 @@ namespace XahlicemMod.NPCs
             {
                 // npc.frame.Y is the goto way of changing animation frames. npc.frame starts from the top left corner in pixel coordinates, so keep that in mind.
                 npc.frame.Y = Frame_Teleport * frameHeight;
-                Vector2 pos = npc.position;
-                pos.X += (Main.rand.NextBool()) ? 80 : -80;
-                npc.Teleport(pos, 0, 0);
             }
             else if (AI_State == State_Spell)
             {
@@ -207,33 +241,18 @@ namespace XahlicemMod.NPCs
                 }
                 if (AI_SpellTime >= 60)
                 {
-                    Vector2 speed = Main.player[npc.target].Center - npc.Center;
-                    AdjustMagnitude(ref speed);
+                    //Vector2 speed = Main.player[npc.target].Center - npc.Center;
+                    //AdjustMagnitude(ref speed);
                     AI_SpellTime = 0;
-                    if (Main.netMode != 1)
-                    {
-                        Projectile.NewProjectile(npc.Center.X + 6, npc.Center.Y - 16, speed.X, speed.Y, mod.ProjectileType("SoulSpearProj"), npc.damage, 0f);
-                    }
+                    //if (Main.netMode != 1)
+                    //{
+                    //    Projectile.NewProjectile(npc.Center.X + 6, npc.Center.Y - 16, speed.X, speed.Y, mod.ProjectileType("SoulSpearProjHostile"), 15, 0f);
+                    //}
                 }
             }
             else if (AI_State == State_Dance)
             {
                 // Here we have 3 frames that we want to cycle through.
-
-                float distance = 800f;
-
-                for (int k = 0; k < 200; k++)
-                {
-                    if (Main.player[k].active)
-                    {
-                        if (npc.WithinRange(Main.player[k].Center, distance))
-                        {
-                            Main.player[k].AddBuff(BuffID.WitheredArmor, 300);
-                            Main.player[k].AddBuff(BuffID.WitheredWeapon, 300);
-                            Main.player[k].AddBuff(BuffID.WaterCandle, 300);
-                        }
-                    }
-                }
 
                 npc.frameCounter++;
                 if (npc.frameCounter < 8)
