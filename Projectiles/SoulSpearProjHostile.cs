@@ -20,7 +20,7 @@ namespace XahlicemMod.Projectiles
         public override void SetDefaults()
         {
             projectile.friendly = false;
-            projectile.tileCollide = false;
+            projectile.tileCollide = true;
             projectile.ignoreWater = true;
             projectile.magic = true;
             projectile.width = 24;
@@ -29,12 +29,13 @@ namespace XahlicemMod.Projectiles
             projectile.penetrate = 1;
         }
 
-        public override void OnHitPlayer(Player target, int damage, bool crit) {
+        /*public override void OnHitPlayer(Player target, int damage, bool crit) {
             projectile.Kill();
-        }
+        }*/
 
         public override void AI()
         {
+            projectile.ai[0]++;
             projectile.hostile = true;
             projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + MathHelper.ToRadians(90f);
 
@@ -56,6 +57,7 @@ namespace XahlicemMod.Projectiles
             float distance = 225f;
             bool target = false;
 
+            if (projectile.ai[0] <= 30)
             for (int k = 0; k < 200; k++)
             {
                 if (Main.player[k].active && CanHitPlayer(Main.player[k]))
@@ -75,7 +77,7 @@ namespace XahlicemMod.Projectiles
             if (target)
             {
                 AdjustMagnitude(ref move);
-                projectile.velocity = (10 * projectile.velocity + move) / 11f;
+                projectile.velocity = (25 * projectile.velocity + move) / 26f;
                 AdjustMagnitude(ref projectile.velocity);
             }
                 int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, DustID.AncientLight);
