@@ -257,6 +257,7 @@ namespace XahlicemMod.NPCs
                 npc.frameCounter++;
                 if (npc.frameCounter < 8)
                 {
+                    npc.velocity = new Vector2(0, -1);
                     npc.frame.Y = Frame_Dance_1 * frameHeight;
                 }
                 else if (npc.frameCounter < 16)
@@ -265,6 +266,7 @@ namespace XahlicemMod.NPCs
                 }
                 else if (npc.frameCounter < 24)
                 {
+                    npc.velocity = new Vector2(0, -1);
                     npc.frame.Y = Frame_Dance_1 * frameHeight;
                 }
                 else if (npc.frameCounter < 32)
@@ -281,6 +283,7 @@ namespace XahlicemMod.NPCs
                 }
                 else if (npc.frameCounter < 56)
                 {
+                    npc.velocity = new Vector2(0, -1);
                     npc.frame.Y = Frame_Dance_4 * frameHeight;
                 }
                 else if (npc.frameCounter < 64)
@@ -289,6 +292,7 @@ namespace XahlicemMod.NPCs
                 }
                 else if (npc.frameCounter < 72)
                 {
+                    npc.velocity = new Vector2(0, -1);
                     npc.frame.Y = Frame_Dance_4 * frameHeight;
                 }
                 else if (npc.frameCounter < 80)
