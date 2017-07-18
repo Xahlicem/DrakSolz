@@ -1,4 +1,4 @@
-﻿using Terraria;
+M﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -11,17 +11,17 @@ namespace XahlicemMod.NPCs
         {
             get
             {
-                return "Xahlicemod/NPCs/Pilgrim";
+                return "XahlicemMod/NPCs/Pilgrim";
             }
         }
 
-        /*public override string[] AltTextures
+        public override string[] AltTextures
          {
         get
          {
-        return new string[] { "Xahlicem/NPCs/Pilgrim_Alt_1" };
+        return new string[] { "XahlicemMod/NPCs/Pilgrim_Alt_1" };
         }
-        }*/
+        }
 
         public override bool Autoload(ref string name)
         {
