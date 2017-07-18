@@ -79,6 +79,7 @@
     <Compile Include="Items\Melee\MorianBlade.cs" />
     <Compile Include="NPCs\Channeler.cs" />
     <Compile Include="NPCs\ChannelerDance.cs" />
+    <Compile Include="NPCs\Pilgrim.cs" />
     <Compile Include="Projectiles\ChannelBuff.cs" />
     <Compile Include="Projectiles\ChannelBuff2.cs" />
     <Compile Include="Projectiles\ChannelTProj.cs" />
