@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace XahlicemMod.Items {
+namespace XahlicemMod.Items.Magic.Leecher {
     public class Leecher3 : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Poison Leecher");

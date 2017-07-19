@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace XahlicemMod.Items {
+namespace XahlicemMod.Items.Melee {
     public class MorianBlade : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Morian Blade");

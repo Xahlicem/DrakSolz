@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace XahlicemMod.Items {
+namespace XahlicemMod.Items.Melee {
     public class CorruptSpear1 : ModItem {
         public override void SetStaticDefaults() {
             Tooltip.SetDefault("An example spear");

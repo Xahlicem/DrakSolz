@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace XahlicemMod.Items {
+namespace XahlicemMod.Items.Magic {
     public class MoonSp : ModItem {
         public override void SetStaticDefaults() {
             Tooltip.SetDefault("An example spear");
