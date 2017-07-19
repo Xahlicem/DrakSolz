@@ -7,7 +7,7 @@ namespace XahlicemMod.NPCs
     [AutoloadHead]
     public class Pilgrim : ModNPC
     {
-        public override string Texture
+        /*public override string Texture
         {
             get
             {
@@ -16,12 +16,12 @@ namespace XahlicemMod.NPCs
         }
 
         public override string[] AltTextures
-         {
-        get
-         {
-        return new string[] { "XahlicemMod/NPCs/Pilgrim_Alt_1" };
-        }
-        }
+        {
+            get
+            {
+                return new string[] { "XahlicemMod/NPCs/Pilgrim_Alt_1" };
+            }
+        }*/
 
         public override bool Autoload(ref string name)
         {
@@ -69,6 +69,7 @@ namespace XahlicemMod.NPCs
 
         public override bool CanTownNPCSpawn(int numTownNPCs, int money)
         {
+            bool soul = false, lantern = false;
             for (int k = 0; k < 255; k++)
             {
                 Player player = Main.player[k];
@@ -76,35 +77,17 @@ namespace XahlicemMod.NPCs
                 {
                     for (int j = 0; j < player.inventory.Length; j++)
                     {
-                        if (player.inventory[j].type == mod.ItemType("Soul") || player.inventory[j].type == mod.ItemType("SkullLantern"))
-                        {
-                            return true;
-                        }
+                        if (player.inventory[j].type == mod.ItemType("Soul")) soul = true;
+                        if (player.inventory[j].type == mod.ItemType("SkullLantern")) lantern = true;
                     }
                 }
             }
-            return false;
+            return soul && lantern;
         }
 
         public override bool CheckConditions(int left, int right, int top, int bottom)
         {
-            int score = 0;
-            for (int x = left; x <= right; x++)
-            {
-                for (int y = top; y <= bottom; y++)
-                {
-                    int type = Main.tile[x, y].type;
-                    if (type == TileID.WoodBlock || type == TileID.Chairs || type == TileID.WorkBenches || type == TileID.Beds || type == TileID.OpenDoor || type == TileID.ClosedDoor)
-                    {
-                        score++;
-                    }
-                    if (Main.tile[x, y].wall == WallID.Wood)
-                    {
-                        score++;
-                    }
-                }
-            }
-            return score >= (right - left) * (bottom - top) / 2;
+            return true;
         }
 
         public override string TownNPCName()
@@ -120,19 +103,6 @@ namespace XahlicemMod.NPCs
                 default:
                     return "Gael";
             }
-        }
-
-        public override void FindFrame(int frameHeight)
-        {
-            /*npc.frame.Width = 36;
-			if (((int)Main.time / 10) % 2 == 0)
-			{
-				npc.frame.X = 36;
-			}
-			else
-			{
-				npc.frame.X = 0;
-			}*/
         }
 
         public override string GetChat()
