@@ -1,20 +1,17 @@
-using Microsoft.Xna.Framework;
 using System;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace XahlicemMod.Items {
-    public class ChannelT : ModItem
-    {
-        public override void SetStaticDefaults()
-        {
+    public class ChannelT : ModItem {
+        public override void SetStaticDefaults() {
             DisplayName.SetDefault("Channeler's Trident");
             Tooltip.SetDefault("A unique trident which spins around when thrust.");
         }
 
-        public override void SetDefaults()
-        {
+        public override void SetDefaults() {
             item.damage = 25;
             item.useStyle = 5;
             item.useAnimation = 30;
@@ -34,8 +31,7 @@ namespace XahlicemMod.Items {
             item.autoReuse = true; // Most spears dont autoReuse, but it's possible
         }
 
-        public override void AddRecipes()
-        {
+        public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
             recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.RottenChunk, 15);
@@ -51,14 +47,12 @@ namespace XahlicemMod.Items {
             recipe.AddRecipe();
         }
 
-        public override Vector2? HoldoutOffset()
-        {
+        public override Vector2? HoldoutOffset() {
             return new Vector2(20, 0);
         }
 
-        public override bool CanUseItem(Player player)
-        {
+        public override bool CanUseItem(Player player) {
             return player.ownedProjectileCounts[item.shoot] < 1; // This is to ensure the spear doesn't bug out when using autoReuse = true
         }
-        }
     }
+}

@@ -1,9 +1,10 @@
-﻿using Terraria.ModLoader;
-using Terraria.ID;
-using Terraria;
+﻿using System;
 using Microsoft.Xna.Framework;
-using System;
+using Terraria;
 using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.ModLoader;
+
 
 namespace XahlicemMod.Projectiles {
     public class EaterProj : ModProjectile {
@@ -51,8 +52,8 @@ namespace XahlicemMod.Projectiles {
 
         public override void AI() {
 
-            projectile.frame = (int)projectile.localAI[0];
-            projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + MathHelper.ToRadians(90f);
+            projectile.frame = (int) projectile.localAI[0];
+            projectile.rotation = (float) Math.Atan2((double) projectile.velocity.Y, (double) projectile.velocity.X) + MathHelper.ToRadians(90f);
 
             // Offset by 90 degrees here
 
@@ -74,7 +75,7 @@ namespace XahlicemMod.Projectiles {
                 NPC targetNPC = Main.npc[k];
                 if (targetNPC.active && !targetNPC.dontTakeDamage && !targetNPC.friendly) {
                     Vector2 newMove = targetNPC.Center - projectile.Center;
-                    float distanceTo = (float)Math.Sqrt(newMove.X * newMove.X + newMove.Y * newMove.Y);
+                    float distanceTo = (float) Math.Sqrt(newMove.X * newMove.X + newMove.Y * newMove.Y);
 
                     if (projectile.AI_137_CanHit(targetNPC.Center) && distanceTo < distance && targetNPC.FindBuffIndex(BuffID.BrokenArmor) == -1) {
                         move = newMove;
@@ -93,15 +94,14 @@ namespace XahlicemMod.Projectiles {
 
             if (projectile.localAI[0] <= 0.5f) {
                 int dust = 0;
-                switch ((int)projectile.ai[1]) {
-                    default:
-                        dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, 1);
-                        break;
+                switch ((int) projectile.ai[1]) {
+                    default : dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, 1);
+                    break;
                     case 3:
-                        dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, 60);
+                            dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, 60);
                         break;
                     case 4:
-                        dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, 75);
+                            dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, 75);
                         break;
                 }
                 Main.dust[dust].velocity /= 1f + Main.rand.NextFloat();
@@ -113,15 +113,14 @@ namespace XahlicemMod.Projectiles {
         public override void Kill(int timeLeft) {
             for (int i = 0; i < 5; i++) {
                 int dust = 0;
-                switch ((int)projectile.ai[1]) {
-                    default:
-                        dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, 1);
-                        break;
+                switch ((int) projectile.ai[1]) {
+                    default : dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, 1);
+                    break;
                     case 3:
-                        dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, 6);
+                            dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, 6);
                         break;
                     case 4:
-                        dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, 74);
+                            dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, 74);
                         break;
                 }
                 Main.dust[dust].velocity *= Main.rand.NextFloat();
@@ -129,8 +128,8 @@ namespace XahlicemMod.Projectiles {
         }
 
         private void AdjustMagnitude(ref Vector2 vector) {
-            float magnitude = (float)Math.Sqrt(vector.X * vector.X + vector.Y * vector.Y);
-            if (magnitude > ((hit) ? 12f : 8f)) {
+            float magnitude = (float) Math.Sqrt(vector.X * vector.X + vector.Y * vector.Y);
+            if (magnitude >((hit) ? 12f : 8f)) {
                 vector *= ((hit) ? 12f : 8f) / magnitude;
             }
         }

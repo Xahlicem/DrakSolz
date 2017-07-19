@@ -1,27 +1,24 @@
-﻿using Microsoft.Xna.Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ModLoader;
 using Terraria.ID;
+using Terraria.ModLoader;
 
-namespace XahlicemMod.Projectiles
-{
-    public class PrismStoneProj : ModProjectile
-    {
+
+namespace XahlicemMod.Projectiles {
+    public class PrismStoneProj : ModProjectile {
         // Brought to you with <3 by Gorateron
-        public override void SetStaticDefaults()
-        {
+        public override void SetStaticDefaults() {
             DisplayName.SetDefault("Prism Stone");
         }
 
-        public override void SetDefaults()
-        {
+        public override void SetDefaults() {
             //projectile.ai[1] = 0;
-           // projectile.ai[2] = 0;
-           // projectile.ai[3] = 0;
+            // projectile.ai[2] = 0;
+            // projectile.ai[3] = 0;
             projectile.tileCollide = true;
             projectile.width = 16;
             projectile.height = 16;
@@ -32,16 +29,14 @@ namespace XahlicemMod.Projectiles
             projectile.timeLeft = 600;
         }
 
-        public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough)
-        {
+        public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough) {
             // For going through platforms and such, javelins use a tad smaller size
             width = 10;
             height = 10;
             return true;
         }
 
-        public override bool OnTileCollide(Vector2 oldVelocity)
-        {
+        public override bool OnTileCollide(Vector2 oldVelocity) {
             projectile.ai[1] = 1;
             //projectile.ai[2] = projectile.position.X;
             //projectile.ai[3] = projectile.position.Y;
@@ -51,21 +46,19 @@ namespace XahlicemMod.Projectiles
             return false;
         }
 
-        public override void Kill(int timeLeft)
-        {
-            Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y, 1, 1f, 0f); // Play a death sound
+        public override void Kill(int timeLeft) {
+            Main.PlaySound(0, (int) projectile.position.X, (int) projectile.position.Y, 1, 1f, 0f); // Play a death sound
             Vector2 usePos = projectile.position; // Position to use for dusts
-                                                  // Please note the usage of MathHelper, please use this! We add 90 degrees as radians to the rotation vector to offset the sprite as its default rotation in the sprite isn't aligned properly.
+            // Please note the usage of MathHelper, please use this! We add 90 degrees as radians to the rotation vector to offset the sprite as its default rotation in the sprite isn't aligned properly.
             Vector2 rotVector = (projectile.rotation - MathHelper.ToRadians(90f)).ToRotationVector2(); // rotation vector to use for dust velocity
             usePos += rotVector * 16f;
 
             // Spawn some dusts upon javelin death
-            for (int i = 0; i < 20; i++)
-            {
+            for (int i = 0; i < 20; i++) {
                 // Create a new dust
                 int dustIndex = Dust.NewDust(projectile.position, projectile.width, projectile.height, 68);
                 Dust currentDust = Main.dust[dustIndex]; // If you plan to access the dust often, it's a smart idea to make this local variable to make your life a bit easier
-                                                         // Modify some of the dust behaviour
+                // Modify some of the dust behaviour
                 currentDust.position = (currentDust.position + projectile.Center) / 2f;
                 currentDust.velocity += rotVector * 2f;
                 currentDust.velocity *= 0.5f;
@@ -75,12 +68,8 @@ namespace XahlicemMod.Projectiles
 
         }
 
-
         // Here's an example on how you could make your AI even more readable, by giving AI fields more descriptive names
         // These are not used in AI, but it is good practice to apply some form like this to keep things organized
-
-
-
 
         // Added these 2 constant to showcase how you could make AI code cleaner by doing this
         // Change this number if you want to alter how long the javelin can travel at a constant speed
@@ -88,26 +77,22 @@ namespace XahlicemMod.Projectiles
         // Change this number if you want to alter how the alpha changes
         private const int alphaReduction = 25;
 
-        public override void AI()
-        {
-            for (int i = 0; i < 20; i++)
-            {
+        public override void AI() {
+            for (int i = 0; i < 20; i++) {
                 // Create a new dust
                 int dustIndex;
                 if (projectile.ai[1] == 1) dustIndex = Dust.NewDust(projectile.position, projectile.width, projectile.height, 59);
                 //if (projectile.ai[1] == 1) dustIndex = Dust.NewDust(new Vector2(projectile.ai[2], projectile.ai[3]), projectile.width, projectile.height, 59);
                 else dustIndex = Dust.NewDust(projectile.position, projectile.width, projectile.height, 59);
                 Dust currentDust = Main.dust[dustIndex]; // If you plan to access the dust often, it's a smart idea to make this local variable to make your life a bit easier
-                                                         // Modify some of the dust behaviour
+                // Modify some of the dust behaviour
                 currentDust.position = (currentDust.position + projectile.Center) / 2f;
                 currentDust.velocity *= 1.5f;
                 currentDust.noGravity = true;
-            }
-            {
+            } {
                 projectile.ai[0] += 1f;
                 // For a little while, the javelin will travel with the same speed, but after this, the javelin drops velocity very quickly.
-                if (projectile.ai[0] >= maxTicks)
-                {
+                if (projectile.ai[0] >= maxTicks) {
                     // Change these multiplication factors to alter the javelin's movement change after reaching maxTicks
                     float velXmult = 0.98f; // x velocity factor, every AI update the x velocity will be 98% of the original speed
                     float velYmult = 0.35f; // y velocity factor, every AI update the y velocity will be be 0.35f bigger of the original speed, causing the javelin to drop to the ground

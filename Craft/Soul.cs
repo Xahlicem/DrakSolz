@@ -4,12 +4,9 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace XahlicemMod.Craft
-{
-    public class Soul : ModItem
-    {
-        public override void SetStaticDefaults()
-        {
+namespace XahlicemMod.Craft {
+    public class Soul : ModItem {
+        public override void SetStaticDefaults() {
             //DisplayName.SetDefault("Soul");
             Tooltip.SetDefault("'Souls of the Fallen'");
             // ticksperframe, frameCount
@@ -20,8 +17,7 @@ namespace XahlicemMod.Craft
         }
 
         // TODO -- Velocity Y smaller, post NewItem?
-        public override void SetDefaults()
-        {
+        public override void SetDefaults() {
             Item refItem = new Item();
             refItem.SetDefaults(ItemID.SoulofSight);
             item.width = refItem.width;
@@ -33,13 +29,11 @@ namespace XahlicemMod.Craft
         }
 
         // The following 2 methods are purely to show off these 2 hooks. Don't use them in your own code.
-        public override void GrabRange(Player player, ref int grabRange)
-        {
+        public override void GrabRange(Player player, ref int grabRange) {
             grabRange *= 3;
         }
 
-        public override bool GrabStyle(Player player)
-        {
+        public override bool GrabStyle(Player player) {
             Vector2 vectorItemToPlayer = item.Center - player.Center;
             Vector2 movement = -vectorItemToPlayer.SafeNormalize(default(Vector2)) * 0.1f;
             item.velocity = item.velocity + movement;
@@ -47,14 +41,11 @@ namespace XahlicemMod.Craft
             return true;
         }
 
-        public override void PostUpdate()
-        {
+        public override void PostUpdate() {
             Lighting.AddLight(item.Center, Color.WhiteSmoke.ToVector3() * 0.55f * Main.essScale);
         }
 
-
-        public override void AddRecipes()
-        {
+        public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
             recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.RottenChunk, 15);
@@ -72,11 +63,9 @@ namespace XahlicemMod.Craft
 
     }
 
-    public class SoulGlobalNPC : GlobalNPC
-    {
-        public override void NPCLoot(NPC npc)
-        {
-            if (npc.lifeMax >= 5) Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Soul"), (npc.defense + npc.damage + 1) * npc.lifeMax / 80);
+    public class SoulGlobalNPC : GlobalNPC {
+        public override void NPCLoot(NPC npc) {
+            if (npc.lifeMax >= 5) Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType("Soul"), (npc.defense + npc.damage + 1) * npc.lifeMax / 80);
         }
     }
 }

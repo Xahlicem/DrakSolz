@@ -7,12 +7,12 @@ using Terraria.ModLoader;
 namespace XahlicemMod.NPCs.Enemy {
     // This ModNPC serves as an example of a complete AI example.
     public class Channeler : ModNPC {
-        public override void SetStaticDefaults () {
-            DisplayName.SetDefault ("Channeler");
+        public override void SetStaticDefaults() {
+            DisplayName.SetDefault("Channeler");
             Main.npcFrameCount[npc.type] = 7; // make sure to set this for your modnpcs.
         }
 
-        public override void SetDefaults () {
+        public override void SetDefaults() {
             npc.width = 40;
             npc.height = 56;
             npc.aiStyle = -1; // This npc has a completely unique AI, so we set this to -1.
@@ -36,7 +36,7 @@ namespace XahlicemMod.NPCs.Enemy {
             npc.ai[3] = -1f;
         }
 
-        public override float SpawnChance (NPCSpawnInfo spawnInfo) {
+        public override float SpawnChance(NPCSpawnInfo spawnInfo) {
             // we would like this npc to spawn in the overworld.
             return SpawnCondition.Overworld.Chance * 5.9f;
         }
@@ -82,7 +82,7 @@ namespace XahlicemMod.NPCs.Enemy {
         // AdvancedFlutterSlime will need: float in water, diminishing aggo, spawn projectiles.
 
         // Our AI here makes our NPC sit waiting for a player to enter range, jumps to attack, flutter mid-fall to stay afloat a little longer, then falls to the ground. Note that animation should happen in FindFrame
-        public override void AI () {
+        public override void AI() {
             // The npc starts in the asleep state, waiting for a player to enter range
             if (AI_State == State_Dance) {
                 float distance = 800f;
@@ -92,24 +92,24 @@ namespace XahlicemMod.NPCs.Enemy {
                 for (int k = 0; k < 200; k++) {
                     p = Main.player[k];
                     if (p.active) {
-                        if (npc.WithinRange (p.Center, distance)) {
-                            if ((last = npc.Distance (p.Center)) < closest && last >= 150) {
+                        if (npc.WithinRange(p.Center, distance)) {
+                            if ((last = npc.Distance(p.Center)) < closest && last >= 150) {
                                 closest = last;
                                 npc.localAI[0] = p.position.X;
                                 npc.localAI[1] = p.position.Y - 24;
                                 npc.ai[3] = 1f;
                             }
-                            p.AddBuff (BuffID.WitheredArmor, 300);
-                            p.AddBuff (BuffID.WitheredWeapon, 300);
-                            p.AddBuff (BuffID.WaterCandle, 300);
+                            p.AddBuff(BuffID.WitheredArmor, 300);
+                            p.AddBuff(BuffID.WitheredWeapon, 300);
+                            p.AddBuff(BuffID.WaterCandle, 300);
                         }
                     }
                 }
 
                 // TargetClosest sets npc.target to the player.whoAmI of the closest player. the faceTarget parameter means that npc.direction will automatically be 1 or -1 if the targetted player is to the right or left. This is also automatically flipped if npc.confused
-                npc.TargetClosest (true);
+                npc.TargetClosest(true);
                 // Now we check the make sure the target is still valid and within our specified notice range (500)
-                if (npc.HasValidTarget && Main.player[npc.target].Distance (npc.Center) < 350f) {
+                if (npc.HasValidTarget && Main.player[npc.target].Distance(npc.Center) < 350f) {
                     // Since we have a target in range, we change to the Notice state. (and zero out the Timer for good measure)
                     AI_State = State_Spell;
                     AI_Timer = 0;
@@ -119,13 +119,13 @@ namespace XahlicemMod.NPCs.Enemy {
             else if (AI_State == State_Spell) {
                 /// If the targeted player is in attack range (250).
                 AI_Timer++;
-                if (Main.player[npc.target].Distance (npc.Center) < 100f) {
+                if (Main.player[npc.target].Distance(npc.Center) < 100f) {
                     if (AI_Timer >= 60) {
                         AI_State = State_Teleport;
                     }
                 } else {
-                    npc.TargetClosest (true);
-                    if (!npc.HasValidTarget || Main.player[npc.target].Distance (npc.Center) > 350f) {
+                    npc.TargetClosest(true);
+                    if (!npc.HasValidTarget || Main.player[npc.target].Distance(npc.Center) > 350f) {
                         // Out targetted player seems to have left our range, so we'll go back to sleep.
                         AI_State = State_Dance;
                         AI_Timer = 0;
@@ -133,10 +133,10 @@ namespace XahlicemMod.NPCs.Enemy {
 
                     if (AI_Timer >= 60) {
                         Vector2 speed = Main.player[npc.target].Center - npc.Center;
-                        AdjustMagnitude (ref speed);
+                        AdjustMagnitude(ref speed);
                         AI_Timer = 0;
                         if (Main.netMode != 1) {
-                            Projectile.NewProjectile (npc.Center.X + 6, npc.Center.Y - 16, speed.X, speed.Y, mod.ProjectileType ("SoulSpearProj"), npc.damage, 0f);
+                            Projectile.NewProjectile(npc.Center.X + 6, npc.Center.Y - 16, speed.X, speed.Y, mod.ProjectileType("SoulSpearProj"), npc.damage, 0f);
                         }
                     }
                 }
@@ -144,12 +144,12 @@ namespace XahlicemMod.NPCs.Enemy {
             // In this state, we are in the jump. 
             else if (AI_State == State_Teleport) {
                 Vector2 pos;
-                if (npc.ai[3] == 1f) pos = new Vector2 (npc.localAI[0], npc.localAI[1]);
-                else if (npc.ai[3] == 0f && npc.Distance (new Vector2 (npc.localAI[2], npc.localAI[3])) >= 150) pos = new Vector2 (npc.localAI[2], npc.localAI[3]);
-                else pos = new Vector2 (npc.position.X + ((Main.rand.NextBool ()) ? +200 : -200), npc.position.Y);
+                if (npc.ai[3] == 1f) pos = new Vector2(npc.localAI[0], npc.localAI[1]);
+                else if (npc.ai[3] == 0f && npc.Distance(new Vector2(npc.localAI[2], npc.localAI[3])) >= 150) pos = new Vector2(npc.localAI[2], npc.localAI[3]);
+                else pos = new Vector2(npc.position.X + ((Main.rand.NextBool()) ? +200 : -200), npc.position.Y);
                 npc.localAI[2] = npc.position.X;
                 npc.localAI[3] = npc.position.Y;
-                npc.Teleport (pos, 0, 0);
+                npc.Teleport(pos, 0, 0);
                 npc.ai[3] = 0f;
                 AI_State = State_Spell;
             }
@@ -187,7 +187,7 @@ namespace XahlicemMod.NPCs.Enemy {
 
         // Here in FindFrame, we want to set the animation frame our npc will use depending on what it is doing.
         // We set npc.frame.Y to x * frameHeight where x is the xth frame in our spritesheet, counting from 0. For convinience, I have defined some consts above.
-        public override void FindFrame (int frameHeight) {
+        public override void FindFrame(int frameHeight) {
             // This makes the sprite flip horizontally in conjunction with the npc.direction.
             npc.spriteDirection = npc.direction;
 
@@ -217,12 +217,12 @@ namespace XahlicemMod.NPCs.Enemy {
 
                 npc.frameCounter++;
                 if (npc.frameCounter < 8) {
-                    npc.velocity = new Vector2 (0, -1);
+                    npc.velocity = new Vector2(0, -1);
                     npc.frame.Y = Frame_Dance_1 * frameHeight;
                 } else if (npc.frameCounter < 16) {
                     npc.frame.Y = Frame_Dance_2 * frameHeight;
                 } else if (npc.frameCounter < 24) {
-                    npc.velocity = new Vector2 (0, -1);
+                    npc.velocity = new Vector2(0, -1);
                     npc.frame.Y = Frame_Dance_1 * frameHeight;
                 } else if (npc.frameCounter < 32) {
                     npc.frame.Y = Frame_Dance_2 * frameHeight;
@@ -231,12 +231,12 @@ namespace XahlicemMod.NPCs.Enemy {
                 } else if (npc.frameCounter < 48) {
                     npc.frame.Y = Frame_Dance_3 * frameHeight;
                 } else if (npc.frameCounter < 56) {
-                    npc.velocity = new Vector2 (0, -1);
+                    npc.velocity = new Vector2(0, -1);
                     npc.frame.Y = Frame_Dance_4 * frameHeight;
                 } else if (npc.frameCounter < 64) {
                     npc.frame.Y = Frame_Dance_5 * frameHeight;
                 } else if (npc.frameCounter < 72) {
-                    npc.velocity = new Vector2 (0, -1);
+                    npc.velocity = new Vector2(0, -1);
                     npc.frame.Y = Frame_Dance_4 * frameHeight;
                 } else if (npc.frameCounter < 80) {
                     npc.frame.Y = Frame_Dance_5 * frameHeight;
@@ -255,8 +255,8 @@ namespace XahlicemMod.NPCs.Enemy {
 
         }
 
-        private void AdjustMagnitude (ref Vector2 vector) {
-            float magnitude = (float) Math.Sqrt (vector.X * vector.X + vector.Y * vector.Y);
+        private void AdjustMagnitude(ref Vector2 vector) {
+            float magnitude = (float) Math.Sqrt(vector.X * vector.X + vector.Y * vector.Y);
             if (magnitude > 7.5f) {
                 vector *= 7.5f / magnitude;
             }

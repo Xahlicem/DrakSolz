@@ -21,13 +21,13 @@ namespace XahlicemMod.NPCs.Town {
             }
         }*/
 
-        public override bool Autoload (ref string name) {
+        public override bool Autoload(ref string name) {
             name = "Pilgrim";
             return mod.Properties.Autoload;
         }
 
-        public override void SetStaticDefaults () {
-            DisplayName.SetDefault ("Pilgrim");
+        public override void SetStaticDefaults() {
+            DisplayName.SetDefault("Pilgrim");
             Main.npcFrameCount[npc.type] = 25;
             NPCID.Sets.ExtraFramesCount[npc.type] = 9;
             NPCID.Sets.AttackFrameCount[npc.type] = 4;
@@ -38,7 +38,7 @@ namespace XahlicemMod.NPCs.Town {
             NPCID.Sets.HatOffsetY[npc.type] = 4;
         }
 
-        public override void SetDefaults () {
+        public override void SetDefaults() {
             npc.townNPC = true;
             npc.friendly = true;
             npc.width = 18;
@@ -53,33 +53,33 @@ namespace XahlicemMod.NPCs.Town {
             animationType = NPCID.Guide;
         }
 
-        public override void HitEffect (int hitDirection, double damage) {
+        public override void HitEffect(int hitDirection, double damage) {
             int num = npc.life > 0 ? 1 : 5;
             for (int k = 0; k < num; k++) {
-                Dust.NewDust (npc.position, npc.width, npc.height, DustID.Smoke);
+                Dust.NewDust(npc.position, npc.width, npc.height, DustID.Smoke);
             }
         }
 
-        public override bool CanTownNPCSpawn (int numTownNPCs, int money) {
+        public override bool CanTownNPCSpawn(int numTownNPCs, int money) {
             bool soul = false, lantern = false;
             for (int k = 0; k < 255; k++) {
                 Player player = Main.player[k];
                 if (player.active) {
                     for (int j = 0; j < player.inventory.Length; j++) {
-                        if (player.inventory[j].type == mod.ItemType ("Soul")) soul = true;
-                        if (player.inventory[j].type == mod.ItemType ("SkullLantern")) lantern = true;
+                        if (player.inventory[j].type == mod.ItemType("Soul")) soul = true;
+                        if (player.inventory[j].type == mod.ItemType("SkullLantern")) lantern = true;
                     }
                 }
             }
             return soul && lantern;
         }
 
-        public override bool CheckConditions (int left, int right, int top, int bottom) {
+        public override bool CheckConditions(int left, int right, int top, int bottom) {
             return true;
         }
 
-        public override string TownNPCName () {
-            switch (WorldGen.genRand.Next (4)) {
+        public override string TownNPCName() {
+            switch (WorldGen.genRand.Next(4)) {
                 case 0:
                     return "Yoel";
                 case 1:
@@ -91,12 +91,12 @@ namespace XahlicemMod.NPCs.Town {
             }
         }
 
-        public override string GetChat () {
-            int partyGirl = NPC.FindFirstNPC (NPCID.PartyGirl);
-            if (partyGirl >= 0 && Main.rand.Next (4) == 0) {
+        public override string GetChat() {
+            int partyGirl = NPC.FindFirstNPC(NPCID.PartyGirl);
+            if (partyGirl >= 0 && Main.rand.Next(4) == 0) {
                 return "Can you please tell " + Main.npc[partyGirl].GivenName + " to stop decorating my house with colors?";
             }
-            switch (Main.rand.Next (3)) {
+            switch (Main.rand.Next(3)) {
                 case 0:
                     return "Oh, sweet champion, you've returned.";
                 case 1:
@@ -111,7 +111,7 @@ namespace XahlicemMod.NPCs.Town {
 		// The WeightedRandom class needs "using Terraria.Utilities;" to use
 		public override string GetChat ()
 		{
-			WeightedRandom<string> chat = new WeightedRandom<string> ();
+			WeightedRandom<string> chat = new WeightedRandom<string>();
 			int partyGirl = NPC.FindFirstNPC (NPCID.PartyGirl);
 			if (partyGirl >= 0 && Main.rand.Next (4) == 0)
 			{
@@ -126,30 +126,17 @@ namespace XahlicemMod.NPCs.Town {
 		}
 		*/
 
-        public override void SetChatButtons (ref string button, ref string button2) {
+        public override void SetChatButtons(ref string button, ref string button2) {
             button = Lang.inter[28].Value;
         }
 
-        public override void OnChatButtonClicked (bool firstButton, ref bool shop) {
+        public override void OnChatButtonClicked(bool firstButton, ref bool shop) {
             if (firstButton) {
                 shop = true;
             }
         }
 
-<<<<<<< HEAD:NPCs/Town/Pilgrim.cs
-        public override void SetupShop (Chest shop, ref int nextSlot) {
-            shop.item[nextSlot].SetDefaults (mod.ItemType ("Eater1"));
-            nextSlot++;
-            shop.item[nextSlot].SetDefaults (mod.ItemType ("Leecher1"));
-            nextSlot++;
-            shop.item[nextSlot].SetDefaults (mod.ItemType ("RingFavor"));
-            nextSlot++;
-            shop.item[nextSlot].SetDefaults (mod.ItemType ("RingCalamity"));
-            nextSlot++;
-            shop.item[nextSlot].SetDefaults (mod.ItemType ("RingRedTear"));
-=======
-        public override void SetupShop(Chest shop, ref int nextSlot)
-        {
+        public override void SetupShop(Chest shop, ref int nextSlot) {
             shop.item[nextSlot].SetDefaults(mod.ItemType("ScrollHolyHomeward"));
             nextSlot++;
             shop.item[nextSlot].SetDefaults(mod.ItemType("GreenBlossom"));
@@ -159,36 +146,35 @@ namespace XahlicemMod.NPCs.Town {
             shop.item[nextSlot].SetDefaults(mod.ItemType("Lifegem"));
             nextSlot++;
             shop.item[nextSlot].SetDefaults(mod.ItemType("PrismStone"));
->>>>>>> 84908fc90e3e9f2cb65e836cb9e9d52240c9e798:NPCs/Pilgrim.cs
             nextSlot++;
-            shop.item[nextSlot].SetDefaults (mod.ItemType ("RingBlueTear"));
+            shop.item[nextSlot].SetDefaults(mod.ItemType("RingBlueTear"));
             nextSlot++;
-            shop.item[nextSlot].SetDefaults (mod.ItemType ("RingCloranthy"));
+            shop.item[nextSlot].SetDefaults(mod.ItemType("RingCloranthy"));
             nextSlot++;
-            shop.item[nextSlot].SetDefaults (mod.ItemType ("RingCat"));
+            shop.item[nextSlot].SetDefaults(mod.ItemType("RingCat"));
             nextSlot++;
-            shop.item[nextSlot].SetDefaults (mod.ItemType ("RingSteelProt"));
+            shop.item[nextSlot].SetDefaults(mod.ItemType("RingSteelProt"));
             nextSlot++;
-            shop.item[nextSlot].SetDefaults (mod.ItemType ("MorianBlade"));
+            shop.item[nextSlot].SetDefaults(mod.ItemType("MorianBlade"));
             nextSlot++;
         }
 
-        public override void TownNPCAttackStrength (ref int damage, ref float knockback) {
+        public override void TownNPCAttackStrength(ref int damage, ref float knockback) {
             damage = 20;
             knockback = 4f;
         }
 
-        public override void TownNPCAttackCooldown (ref int cooldown, ref int randExtraCooldown) {
+        public override void TownNPCAttackCooldown(ref int cooldown, ref int randExtraCooldown) {
             cooldown = 30;
             randExtraCooldown = 30;
         }
 
-        public override void TownNPCAttackProj (ref int projType, ref int attackDelay) {
+        public override void TownNPCAttackProj(ref int projType, ref int attackDelay) {
             projType = ProjectileID.BoneDagger;
             attackDelay = 1;
         }
 
-        public override void TownNPCAttackProjSpeed (ref float multiplier, ref float gravityCorrection, ref float randomOffset) {
+        public override void TownNPCAttackProjSpeed(ref float multiplier, ref float gravityCorrection, ref float randomOffset) {
             multiplier = 12f;
             randomOffset = 2f;
         }

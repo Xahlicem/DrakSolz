@@ -1,5 +1,5 @@
-using Microsoft.Xna.Framework;
 using System;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -46,7 +46,7 @@ namespace XahlicemMod.Items.Magic.Eater {
             //numberProjectiles += Main.rand.Next(2); // 4 or 5 shots
             //for (int i = 0; i < numberProjectiles; i++) {
             Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(30)); // 30 degree spread.
-                                                                                                            // If you want to randomize the speed to stagger the projectiles
+            // If you want to randomize the speed to stagger the projectiles
             float scale = 1f - (Main.rand.NextFloat() * .3f);
             perturbedSpeed = perturbedSpeed * scale;
             int pro = Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
