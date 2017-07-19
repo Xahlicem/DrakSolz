@@ -1,7 +1,0 @@
-V.0.0.0.1
-
-Changed recipe ingrediant for Midget Eater: 5 Deathweed >>> 10 Worm Tooth.
-Tried getting 5 Deathweed and didn't even get 5 after 2hrs of searching.
-Temporarily going to change Midget Eater to not take 5 Deathweed as well, but not sure what to finalize it as.
-
-Added Changelog
