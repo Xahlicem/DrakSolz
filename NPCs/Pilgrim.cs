@@ -158,15 +158,15 @@ namespace XahlicemMod.NPCs
 
         public override void SetupShop(Chest shop, ref int nextSlot)
         {
-            shop.item[nextSlot].SetDefaults(mod.ItemType("Eater1"));
+            shop.item[nextSlot].SetDefaults(mod.ItemType("ScrollHolyHomeward"));
             nextSlot++;
-            shop.item[nextSlot].SetDefaults(mod.ItemType("Leecher1"));
+            shop.item[nextSlot].SetDefaults(mod.ItemType("GreenBlossom"));
             nextSlot++;
-            shop.item[nextSlot].SetDefaults(mod.ItemType("RingFavor"));
+            shop.item[nextSlot].SetDefaults(mod.ItemType("HomewardBone"));
             nextSlot++;
-            shop.item[nextSlot].SetDefaults(mod.ItemType("RingCalamity"));
+            shop.item[nextSlot].SetDefaults(mod.ItemType("Lifegem"));
             nextSlot++;
-            shop.item[nextSlot].SetDefaults(mod.ItemType("RingRedTear"));
+            shop.item[nextSlot].SetDefaults(mod.ItemType("PrismStone"));
             nextSlot++;
             shop.item[nextSlot].SetDefaults(mod.ItemType("RingBlueTear"));
             nextSlot++;

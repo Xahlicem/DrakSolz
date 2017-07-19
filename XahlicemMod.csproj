@@ -33,6 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CustomLoot\Loot1.cs" />
     <Compile Include="Items\Accessory\RingBlueTear.cs" />
     <Compile Include="Items\Accessory\RingLoyds.cs" />
     <Compile Include="Items\Accessory\RingMagicPower.cs" />
@@ -77,6 +78,11 @@
     <Compile Include="Items\Melee\CorruptSpear1.cs" />
     <Compile Include="Items\Melee\CorruptSpear2.cs" />
     <Compile Include="Items\Melee\MorianBlade.cs" />
+    <Compile Include="Items\Shop\Lifegem.cs" />
+    <Compile Include="Items\Shop\GreenBlossom.cs" />
+    <Compile Include="Items\Shop\HomewardBone.cs" />
+    <Compile Include="Items\Shop\PrismStone.cs" />
+    <Compile Include="Items\Shop\ScrollHolyHomeward.cs" />
     <Compile Include="NPCs\Channeler.cs" />
     <Compile Include="NPCs\ChannelerDance.cs" />
     <Compile Include="NPCs\Pilgrim.cs" />
@@ -88,9 +94,11 @@
     <Compile Include="Projectiles\EaterProj.cs" />
     <Compile Include="Projectiles\MGSProj.cs" />
     <Compile Include="Projectiles\MoonSpProj.cs" />
+    <Compile Include="Projectiles\PrismStoneProj.cs" />
     <Compile Include="Projectiles\SoulSpearProj.cs" />
     <Compile Include="Projectiles\TinierLeech.cs" />
     <Compile Include="Projectiles\TinyLeech.cs" />
+    <Compile Include="Soul.cs" />
     <Compile Include="XahlicemMod.cs" />
   </ItemGroup>
   <ItemGroup>
