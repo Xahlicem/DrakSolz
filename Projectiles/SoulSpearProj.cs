@@ -6,7 +6,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace XahlicemMod.Projectiles {
-    public class SoulSpearProjHostile : ModProjectile {
+    public class SoulSpearProj : ModProjectile {
 
         public override void SetStaticDefaults() {
             ProjectileID.Sets.Homing[projectile.type] = true;
