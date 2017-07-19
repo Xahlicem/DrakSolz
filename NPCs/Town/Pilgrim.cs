@@ -136,6 +136,7 @@ namespace XahlicemMod.NPCs.Town {
             }
         }
 
+<<<<<<< HEAD:NPCs/Town/Pilgrim.cs
         public override void SetupShop (Chest shop, ref int nextSlot) {
             shop.item[nextSlot].SetDefaults (mod.ItemType ("Eater1"));
             nextSlot++;
@@ -146,6 +147,19 @@ namespace XahlicemMod.NPCs.Town {
             shop.item[nextSlot].SetDefaults (mod.ItemType ("RingCalamity"));
             nextSlot++;
             shop.item[nextSlot].SetDefaults (mod.ItemType ("RingRedTear"));
+=======
+        public override void SetupShop(Chest shop, ref int nextSlot)
+        {
+            shop.item[nextSlot].SetDefaults(mod.ItemType("ScrollHolyHomeward"));
+            nextSlot++;
+            shop.item[nextSlot].SetDefaults(mod.ItemType("GreenBlossom"));
+            nextSlot++;
+            shop.item[nextSlot].SetDefaults(mod.ItemType("HomewardBone"));
+            nextSlot++;
+            shop.item[nextSlot].SetDefaults(mod.ItemType("Lifegem"));
+            nextSlot++;
+            shop.item[nextSlot].SetDefaults(mod.ItemType("PrismStone"));
+>>>>>>> 84908fc90e3e9f2cb65e836cb9e9d52240c9e798:NPCs/Pilgrim.cs
             nextSlot++;
             shop.item[nextSlot].SetDefaults (mod.ItemType ("RingBlueTear"));
             nextSlot++;
