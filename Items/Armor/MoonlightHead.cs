@@ -21,6 +21,7 @@ namespace XahlicemMod.Items.Armor {
 
         public override void UpdateEquip(Player player) {
             //player.AddBuff(BuffID.NightOwl, 2);
+            player.magicCrit += 10;
             player.nightVision = true;
         }
 
