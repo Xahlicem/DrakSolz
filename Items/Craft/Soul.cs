@@ -4,7 +4,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace XahlicemMod.Craft {
+namespace XahlicemMod.Items.Craft {
     public class Soul : ModItem {
         public override void SetStaticDefaults() {
             //DisplayName.SetDefault("Soul");
