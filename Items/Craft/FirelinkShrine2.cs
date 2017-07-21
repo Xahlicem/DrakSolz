@@ -16,45 +16,38 @@ namespace XahlicemMod.Items.Craft {
             Main.tileNoAttach[Type] = true;
             Main.tileTable[Type] = true;
             Main.tileLavaDeath[Type] = true;
-			
+		
             TileObjectData.newTile.CopyFrom(TileObjectData.Style3x3);
             TileObjectData.newTile.Height = 3;
             TileObjectData.newTile.Width = 3;
             TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16 };
             TileObjectData.addTile(Type);
+		
             AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
             AddToArray(ref TileID.Sets.RoomNeeds.CountsAsChair);
             AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
+		
             ModTranslation name = CreateMapEntryName();
-            name.SetDefault("Example Workbench");
+            name.SetDefault("Firelink Shrine");
             AddMapEntry(new Color(200, 200, 200), name);
+		
             dustType = DustID.AmberBolt;
             disableSmartCursor = true;
             adjTiles = new int[] { TileID.WorkBenches };
             animationFrameHeight = 54;
         }
 
-        int animationFrameWidth = 54;
-        bool on = true;
-
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b) {
-            r = 0.93f;
-            g = 0.11f;
-            b = 0.12f;
+	    (Main.tile[i, j].frameY >= 54) {
+                r = 0.93f;
+                g = 0.11f;
+                b = 0.12f;
+	    }
         }
 
         public override void AnimateTile(ref int frame, ref int frameCounter) {
-            /*frameCounter++;
-            if (frameCounter > Main.rand.NextFloat() * 10) {
-                frameCounter = 0;
-                frame++;
-                if (frame > 8) {
-                    frame = 1;
-                }
-            }*/
             frame = Main.tileFrame[TileID.Campfire];
             frameCounter = Main.tileFrameCounter[TileID.Campfire];
-            //if (!on) frame = 0;
         }
 
         public override void NumDust(int i, int j, bool fail, ref int num) {
@@ -88,7 +81,6 @@ namespace XahlicemMod.Items.Craft {
 				animate = Main.tileFrame[Type] * animationFrameHeight;
 			}
 			Main.spriteBatch.Draw(texture, new Vector2(i * 16 - (int)Main.screenPosition.X, j * 16 - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY + animate, 16, 16), Lighting.GetColor(i, j), 0f, default(Vector2), 1f, SpriteEffects.None, 1f);
-			//Main.spriteBatch.Draw(mod.GetTexture("Tiles/VoidMonolith_Glow"), new Vector2(i * 16 - (int)Main.screenPosition.X, j * 16 - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY + animate, 16, height), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
 			return false;
 		}
 
@@ -106,7 +98,7 @@ namespace XahlicemMod.Items.Craft {
         public override void HitWire(int i, int j) {
             int x = i - (Main.tile[i, j].frameX / 18) % 3;
             int y = j - (Main.tile[i, j].frameY / 18) % 3;
-            for (int l = x; l < x + 2; l++) {
+            for (int l = x; l < x + 3; l++) {
                 for (int m = y; m < y + 3; m++) {
                     if (Main.tile[l, m] == null) {
                         Main.tile[l, m] = new Tile();
@@ -127,6 +119,9 @@ namespace XahlicemMod.Items.Craft {
                 Wiring.SkipWire(x + 1, y);
                 Wiring.SkipWire(x + 1, y + 1);
                 Wiring.SkipWire(x + 1, y + 2);
+                Wiring.SkipWire(x + 2, y);
+                Wiring.SkipWire(x + 2, y + 1);
+                Wiring.SkipWire(x + 2, y + 2);
             }
             NetMessage.SendTileSquare(-1, x, y + 1, 3);
         }
