@@ -5,8 +5,8 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace XahlicemMod.Projectiles {
-    public class SorcSwordProj : ModProjectile {
+namespace XahlicemMod.Projectiles.Soul {
+    public class SoulArrowProj2 : ModProjectile {
 
         public override void SetStaticDefaults() {
             //ProjectileID.Sets.Homing[projectile.type] = false;
@@ -22,7 +22,8 @@ namespace XahlicemMod.Projectiles {
             projectile.width = 10;
             projectile.height = 10;
             projectile.penetrate = 1;
-            projectile.timeLeft = 30;
+            projectile.timeLeft = 20;
+            projectile.scale *= 1.2f;
 
             //projectile.position.X = projectile.position.X + (float)(projectile.width / 2);
             //projectile.position.Y = projectile.position.Y + (float)(projectile.height / 2);
@@ -36,11 +37,6 @@ namespace XahlicemMod.Projectiles {
                 AdjustMagnitude(ref mouse);
                 projectile.velocity = mouse;
 
-                for (int i = 0; i < 25; i++) {
-                    int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 15, 0f, 0f, 100, default(Color), 3f);
-                    Main.dust[dustIndex].noGravity = true;
-                    Main.dust[dustIndex].scale *= 0.5f;
-                }
             }
             projectile.frame = (int) projectile.localAI[0];
             projectile.rotation = (float) Math.Atan2((double) projectile.velocity.Y, (double) projectile.velocity.X) + MathHelper.ToRadians(270f);
@@ -82,7 +78,7 @@ namespace XahlicemMod.Projectiles {
 
         private void AdjustMagnitude(ref Vector2 vector) {
             float magnitude = (float) Math.Sqrt(vector.X * vector.X + vector.Y * vector.Y); {
-                vector *= 25f / magnitude;
+                vector *= 18f / magnitude;
             }
         }
 

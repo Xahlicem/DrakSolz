@@ -22,7 +22,7 @@ namespace XahlicemMod.Items.Magic.SoulBlades {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.ItemType("ScrollSoulBlades1"), 1);
             recipe.AddIngredient(mod.ItemType("Soul"), 30000);
-            recipe.AddTile(TileID.Campfire);
+            recipe.AddTile(mod.TileType("FirelinkShrine2"));
             recipe.SetResult(this);
             recipe.AddRecipe();
             /*recipe = new ModRecipe(mod);

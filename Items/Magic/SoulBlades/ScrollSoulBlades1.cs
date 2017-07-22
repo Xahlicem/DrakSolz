@@ -22,13 +22,13 @@ namespace XahlicemMod.Items.Magic.SoulBlades {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.ItemType("ScrollSoulBlades"), 1);
             recipe.AddIngredient(mod.ItemType("Soul"), 10000);
-            recipe.AddTile(TileID.Campfire);
+            recipe.AddTile(mod.TileType("FirelinkShrine2"));
             recipe.SetResult(this);
             recipe.AddRecipe();
-            recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.DirtBlock, 1);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            //recipe = new ModRecipe(mod);
+            //recipe.AddIngredient(ItemID.DirtBlock, 1);
+            //recipe.SetResult(this);
+            //recipe.AddRecipe();
         }
 
         public override Vector2? HoldoutOffset() {
