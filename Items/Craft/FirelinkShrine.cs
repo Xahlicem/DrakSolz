@@ -8,7 +8,7 @@ namespace XahlicemMod.Items.Craft
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("This is a modded workbench.");
+			Tooltip.SetDefault("Bonfire with a unique blade. A pleasent respite.");
 		}
 
 		public override void SetDefaults()
@@ -23,7 +23,7 @@ namespace XahlicemMod.Items.Craft
 			item.useTime = 10;
 			item.useStyle = 1;
 			item.consumable = true;
-			item.value = 150;
+			item.value = Item.buyPrice(0, 0, 0, 1);
 			item.createTile = mod.TileType("FirelinkShrine2");
 		}
 public override void AddRecipes()
