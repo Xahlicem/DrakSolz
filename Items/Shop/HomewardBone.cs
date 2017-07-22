@@ -19,7 +19,7 @@ namespace XahlicemMod.Items.Shop
             item.useTime = 120;
             item.useStyle = 4;
             item.maxStack = 99;
-            item.value = Item.buyPrice(0, 0, 10, 0);
+            item.value = Item.buyPrice(0, 0, 50, 0);
             item.rare = 2;
             item.consumable = true;
         }

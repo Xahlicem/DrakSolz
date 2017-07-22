@@ -20,7 +20,7 @@ namespace XahlicemMod.Items.Shop {
             item.useAnimation = 20;
             item.useTime = 20;
             item.maxStack = 99;
-            item.value = Item.buyPrice(0, 0, 5, 0);
+            item.value = Item.buyPrice(0, 0, 10, 0);
             item.rare = 0;
             item.consumable = true;
         }

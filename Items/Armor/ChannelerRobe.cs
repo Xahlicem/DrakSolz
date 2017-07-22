@@ -16,7 +16,7 @@ namespace XahlicemMod.Items.Armor {
         public override void SetDefaults() {
             item.width = 18;
             item.height = 18;
-            item.value = 5000000;
+            item.value = Item.buyPrice(0, 50, 0, 0);
             item.rare = 9;
             item.defense = 15;
         }
