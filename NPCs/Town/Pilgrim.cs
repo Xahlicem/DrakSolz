@@ -67,7 +67,7 @@ namespace XahlicemMod.NPCs.Town {
                 if (player.active) {
                     for (int j = 0; j < player.inventory.Length; j++) {
                         if (player.inventory[j].type == mod.ItemType("Soul")) soul = true;
-                        if (player.inventory[j].type == mod.ItemType("SkullLantern")) lantern = true;
+                        if (player.inventory[j].type == mod.ItemType("HomewardBone")) lantern = true;
                     }
                 }
             }
@@ -147,15 +147,15 @@ namespace XahlicemMod.NPCs.Town {
             nextSlot++;
             shop.item[nextSlot].SetDefaults(mod.ItemType("PrismStone"));
             nextSlot++;
-            shop.item[nextSlot].SetDefaults(mod.ItemType("RingBlueTear"));
+            shop.item[nextSlot].SetDefaults(mod.ItemType("ScrollSoulDart"));
             nextSlot++;
             shop.item[nextSlot].SetDefaults(mod.ItemType("RingCloranthy"));
             nextSlot++;
-            shop.item[nextSlot].SetDefaults(mod.ItemType("RingCat"));
+            shop.item[nextSlot].SetDefaults(mod.ItemType("RingBlades"));
             nextSlot++;
-            shop.item[nextSlot].SetDefaults(mod.ItemType("RingSteelProt"));
+            shop.item[nextSlot].SetDefaults(mod.ItemType("RingTinyBeing"));
             nextSlot++;
-            shop.item[nextSlot].SetDefaults(mod.ItemType("MorianBlade"));
+            shop.item[nextSlot].SetDefaults(ItemID.Silk);
             nextSlot++;
         }
 

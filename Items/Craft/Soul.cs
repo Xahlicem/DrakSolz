@@ -3,11 +3,12 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using System;
 
 namespace XahlicemMod.Items.Craft {
     public class Soul : ModItem {
         public override void SetStaticDefaults() {
-            //DisplayName.SetDefault("Soul");
+            //DisplayName.SetDefault(" ");
             Tooltip.SetDefault("'Souls of the Fallen'");
             // ticksperframe, frameCount
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(8, 4));
@@ -23,26 +24,28 @@ namespace XahlicemMod.Items.Craft {
             item.width = refItem.width;
             item.height = refItem.height;
             item.maxStack = 999999;
-            item.value = 1;
+            item.value = Item.buyPrice(0, 0, 0, 1);
             item.rare = 0;
             item.alpha = 64;
         }
 
         // The following 2 methods are purely to show off these 2 hooks. Don't use them in your own code.
         public override void GrabRange(Player player, ref int grabRange) {
-            grabRange *= 3;
+            grabRange *= 7;
         }
 
         public override bool GrabStyle(Player player) {
-            Vector2 vectorItemToPlayer = item.Center - player.Center;
-            Vector2 movement = -vectorItemToPlayer.SafeNormalize(default(Vector2)) * 0.1f;
-            item.velocity = item.velocity + movement;
-            item.velocity = Collision.TileCollision(item.position, item.velocity, item.width, item.height);
+            Vector2 vectorItemToPlayer = player.Center - item.Center;
+            Vector2 movement = vectorItemToPlayer.SafeNormalize(default(Vector2)) * 0.7f;
+            item.velocity = movement;
+            float magnitude = (float) Math.Sqrt(item.velocity.X * item.velocity.X + item.velocity.Y * item.velocity.Y);
+            item.velocity *= 16f / magnitude; 
+            //item.velocity = Collision.TileCollision(item.position, item.velocity, item.width, item.height);
             return true;
         }
 
         public override void PostUpdate() {
-            Lighting.AddLight(item.Center, Color.WhiteSmoke.ToVector3() * 0.55f * Main.essScale);
+            Lighting.AddLight(item.Center, Color.White.ToVector3() * 0.04f * Main.essScale);
         }
 
         public override void AddRecipes() {
