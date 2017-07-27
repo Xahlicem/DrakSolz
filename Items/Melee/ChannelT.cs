@@ -54,5 +54,14 @@ namespace XahlicemMod.Items.Melee {
         public override bool CanUseItem(Player player) {
             return player.ownedProjectileCounts[item.shoot] < 1; // This is to ensure the spear doesn't bug out when using autoReuse = true
         }
+        public class ChannelTGlobalNPC : GlobalNPC {
+            public override void NPCLoot(NPC npc) {
+                if (Main.rand.Next(20) == 0) {
+                    if (npc.type == mod.NPCType("Channeler")) {
+                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType("ChannelT"), 1);
+                    }
+                }
+            }
+        }
     }
 }

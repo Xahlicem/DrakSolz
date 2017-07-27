@@ -21,7 +21,7 @@ namespace XahlicemMod.NPCs.Enemy
             npc.scale *= 3;
 			npc.height = 32;
 			npc.aiStyle = -1; // This npc has a completely unique AI, so we set this to -1.
-			npc.damage = 7;
+			npc.damage = 700;
 			npc.defense = 125;
 			npc.lifeMax = 20000;
 			npc.HitSound = SoundID.NPCHit1;
@@ -37,7 +37,7 @@ namespace XahlicemMod.NPCs.Enemy
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
 			// we would like this npc to spawn in the overworld.
-			return SpawnCondition.OverworldDaySlime.Chance * 0.8f;
+			return SpawnCondition.DungeonGuardian.Chance * 0.8f;
 		}
 
 		// These const ints are for the benefit of the programmer. Organization is key to making an AI that behaves properly without driving you crazy.

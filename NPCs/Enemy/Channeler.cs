@@ -38,7 +38,7 @@ namespace XahlicemMod.NPCs.Enemy {
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
             // we would like this npc to spawn in the overworld.
-            return SpawnCondition.Dungeon.Chance * 0.4f;
+            return SpawnCondition.Dungeon.Chance * 0.05f;
         }
 
         // These const ints are for the benefit of the programmer. Organization is key to making an AI that behaves properly without driving you crazy.

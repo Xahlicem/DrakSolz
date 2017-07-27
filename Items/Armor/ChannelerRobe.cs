@@ -32,5 +32,14 @@ namespace XahlicemMod.Items.Armor {
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
+        public class ChannelerRobeGlobalNPC : GlobalNPC {
+            public override void NPCLoot(NPC npc) {
+                if (Main.rand.Next(10) == 0) {
+                    if (npc.type == mod.NPCType("Channeler")) {
+                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType("ChannelerRobe"), 1);
+                    }
+                }
+            }
+        }
     }
 }
