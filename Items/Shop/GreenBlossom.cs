@@ -28,7 +28,7 @@ namespace XahlicemMod.Items.Shop {
         public override bool UseItem(Player player) {
             player.AddBuff(BuffID.Panic, 3600);
             //player.AddBuff(mod.BuffType("Undead2"), 2);
-
+            player.GetModPlayer<XahlicemPlayer>().DoStuff();
             return true;
         }
 
