@@ -14,51 +14,72 @@ namespace XahlicemMod {
 
     public class XahlicemPlayer : ModPlayer {
 
-        public XahlicemRace xahlicemRace = XahlicemRace.Human;
-        public bool xahlicemWet = false;
-        public int xahlicemHair = -1;
-        public int xahlicemHead = 0;
-        public Color xahlicemHairColor = default(Color);
-        public Color xahlicemEye = default(Color);
-        public Color xahlicemSkin = default(Color);
+        public enum Race : byte {
+            Human,
+            Demon,
+            Ant,
+            Slime,
+            Zombie,
+            Goblin,
+            Skeleton
+        }
+        public Race race = Race.Human;
+        public int hair = -1;
+        public int head = 0;
+        public Color cHair = default(Color);
+        public Color cEye = default(Color);
+        public Color cSkin = default(Color);
+        public bool wet = false;
+        public float lifeMod = 1f;
 
         public override TagCompound Save() {
-            return new TagCompound { { "xahlicemRace", (byte) xahlicemRace }, { "xahlicemHair", xahlicemHair }, { "xahlicemHairColor", xahlicemHairColor }, { "xahlicemEye", xahlicemEye }, { "xahlicemSkin", xahlicemSkin }
+            return new TagCompound { { "xahlicemRace", race }, { "xahlicemHair", hair }, { "xahlicemCHair", cHair }, { "xahlicemCEye", cEye }, { "xahlicemCSkin", cSkin }, { "xahlicemLifeMod", lifeMod }
             };
         }
 
         public override void Load(TagCompound tag) {
-            xahlicemRace = (XahlicemRace) tag.GetByte("xahlicemRace");
-            xahlicemHair = tag.GetInt("xahlicemHair");
-            xahlicemHairColor = tag.Get<Color>("xahlicemHairColor");
-            xahlicemEye = tag.Get<Color>("xahlicemEye");
-            xahlicemSkin = tag.Get<Color>("xahlicemSkin");
+            race = tag.Get<Race>("xahlicemRace");
+            hair = tag.GetInt("xahlicemHair");
+            cHair = tag.Get<Color>("xahlicemCHair");
+            cEye = tag.Get<Color>("xahlicemCEye");
+            cSkin = tag.Get<Color>("xahlicemCSkin");
+            lifeMod = tag.GetFloat("xahlicemLifeMod");
         }
 
+        /*public override void OnRespawn(Player player) {
+            player.AddBuff(mod.BuffType<Buffs.Homeward>(), 60);
+        }*/
+
         public override void ResetEffects() {
-            xahlicemWet = false;
+            wet = false;
         }
 
         public override void UpdateDead() {
-            xahlicemWet = false;
+            wet = false;
+            lifeMod = 0.2f;
         }
 
         public override void PreUpdateBuffs() {
-            xahlicemWet = (player.FindBuffIndex(BuffID.Wet)) != -1 || player.wet;
+            wet = (player.FindBuffIndex(BuffID.Wet)) != -1 || player.wet;
             if (player.lavaWet || player.honeyWet) {
-                xahlicemWet = false;
+                wet = false;
                 player.ClearBuff(BuffID.Wet);
             }
+            if (Main.time % 60 == 0) {
+                lifeMod += (player.FindBuffIndex(mod.BuffType<Buffs.Firelink>()) != -1) ? 0.1f : 0.002f;
+                if (lifeMod > 1.5f) lifeMod = 1.5f;
+            }
+            player.statLifeMax2 = (int)(player.statLifeMax2 * lifeMod);
 
-            switch (xahlicemRace) {
-                case XahlicemRace.Human:
-                    if (xahlicemHair != -1) player.hair = xahlicemHair;
-                    if (xahlicemHairColor != default(Color)) player.hairColor = xahlicemHairColor;
-                    if (xahlicemEye != default(Color)) player.eyeColor = xahlicemEye;
-                    if (xahlicemSkin != default(Color)) player.skinColor = xahlicemSkin;
-                    xahlicemHead = 0;
+            switch (race) {
+                case Race.Human:
+                    if (hair != -1) player.hair = hair;
+                    if (cHair != default(Color)) player.hairColor = cHair;
+                    if (cEye != default(Color)) player.eyeColor = cEye;
+                    if (cSkin != default(Color)) player.skinColor = cSkin;
+                    head = 0;
                     break;
-                case XahlicemRace.Demon:
+                case Race.Demon:
                     player.rangedDamage *= 0.8f;
                     player.magicDamage *= 1.25f;
                     player.manaCost *= 1.25f;
@@ -69,18 +90,18 @@ namespace XahlicemMod {
                     player.fireWalk = true;
                     player.lavaMax = 600;
                     XahlicemPlayer p = player.GetModPlayer<XahlicemPlayer>();
-                    if (Main.myPlayer == player.whoAmI && Main.time % 30 == 0 && p.xahlicemWet) {
+                    if (Main.myPlayer == player.whoAmI && Main.time % 30 == 0 && p.wet) {
                         player.Hurt(PlayerDeathReason.ByCustomReason(player.name + " couldn't stand the water."), 5, 0);
                     }
 
-                    if (xahlicemHair != -1) player.hair = xahlicemHair;
+                    if (hair != -1) player.hair = hair;
                     player.hairColor = Color.Black;
                     player.skinColor = Color.DarkRed;
                     player.eyeColor = Color.Red;
-                    xahlicemHead = 0;
+                    head = 0;
                     break;
 
-                case XahlicemRace.Ant:
+                case Race.Ant:
                     player.pickSpeed *= 0.75f;
                     player.maxRunSpeed += 1;
                     player.spikedBoots = 2;
@@ -88,10 +109,10 @@ namespace XahlicemMod {
                     player.hair = 15;
                     player.skinColor = new Color(75, 35, 15);
                     player.eyeColor = Color.Black;
-                    xahlicemHead = 0;
+                    head = 0;
                     break;
 
-                case XahlicemRace.Slime:
+                case Race.Slime:
                     player.noFallDmg = true;
                     player.jumpSpeedBoost += 1;
                     player.jumpBoost = true;
@@ -102,13 +123,13 @@ namespace XahlicemMod {
                         player.gravity = -0.5f;
                     }
 
-                    if (xahlicemHair != -1) player.hair = xahlicemHair;
+                    if (hair != -1) player.hair = hair;
                     player.hairColor = new Color(0, 50, 250, 50);
                     player.skinColor = new Color(100, 150, 255, 50);
                     player.eyeColor = new Color(0, 50, 250, 50);
-                    xahlicemHead = 0;
+                    head = 0;
                     break;
-                case XahlicemRace.Zombie:
+                case Race.Zombie:
                     player.ignoreWater = true;
                     player.breath = 100000;
                     player.moveSpeed *= 0.75f;
@@ -123,22 +144,22 @@ namespace XahlicemMod {
                     player.lifeRegenTime = 5;
                     player.lifeRegen += player.statLifeMax2 / 25;
 
-                    if (xahlicemHair != -1) player.hair = xahlicemHair;
+                    if (hair != -1) player.hair = hair;
                     player.hairColor = Color.DarkGray;
                     player.skinColor = new Color(205, 255, 150);
                     player.eyeColor = Color.Red;
-                    xahlicemHead = 0;
+                    head = 0;
                     break;
-                case XahlicemRace.Goblin:
+                case Race.Goblin:
                     player.rangedDamage *= 1.25f;
 
-                    if (xahlicemHair != -1) player.hair = xahlicemHair;
+                    if (hair != -1) player.hair = hair;
                     player.hairColor = Color.Gray;
                     player.skinColor = new Color(94, 152, 161);
                     player.eyeColor = Color.Red;
-                    xahlicemHead = 217;
+                    head = 217;
                     break;
-                case XahlicemRace.Skeleton:
+                case Race.Skeleton:
                     player.ignoreWater = true;
                     player.breath = 100000;
                     player.lifeRegenCount = 0;
@@ -146,36 +167,31 @@ namespace XahlicemMod {
                     player.hair = 15;
                     player.skinColor = new Color(153, 153, 117);
                     player.eyeColor = Color.Black;
-                    xahlicemHead = 93;
+                    head = 93;
                     break;
             }
         }
 
-        public override void FrameEffects() {
-            if (xahlicemHead != 0)
-                player.head = xahlicemHead;
-                //player.face = head;
+        public override void Hurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit) {
+            lifeMod -= (float)(damage / player.statLifeMax2) / 2.5f;
+            if (lifeMod < 0.2f) lifeMod = 0.2f;
         }
-        sbyte head = 0;
+
+        public override void FrameEffects() {
+            if (head != 0)
+                player.head = head;
+            //player.face = head;
+        }
+        sbyte headNum = 0;
         public void DoStuff() {
-            if (xahlicemEye == default(Color)) xahlicemEye = player.eyeColor;
-            if (xahlicemSkin == default(Color)) xahlicemSkin = player.skinColor;
-            if (xahlicemHairColor == default(Color)) xahlicemHairColor = player.hairColor;
-            if (xahlicemHair == -1) xahlicemHair = player.hair;
-            xahlicemRace = xahlicemRace.NextEnum();
-            Main.NewText("Race = " + xahlicemRace, 255, 255, 255);
-            head++;
+            if (cEye == default(Color)) cEye = player.eyeColor;
+            if (cSkin == default(Color)) cSkin = player.skinColor;
+            if (cHair == default(Color)) cHair = player.hairColor;
+            if (hair == -1) hair = player.hair;
+            race = race.NextEnum();
+            Main.NewText("Race = " + race, 255, 255, 255);
+            headNum++;
             Main.NewText(head.ToString(), 255, 255, 255);
         }
-    }
-
-    public enum XahlicemRace : byte {
-        Human,
-        Demon,
-        Ant,
-        Slime,
-        Zombie,
-        Goblin,
-        Skeleton
     }
 }
