@@ -21,7 +21,10 @@ namespace XahlicemMod {
             Slime,
             Zombie,
             Goblin,
-            Skeleton
+            Skeleton,
+            Lizardman,
+            Shade,
+            Robot
         }
         public Race race = Race.Human;
         public int hair = -1;
@@ -89,8 +92,7 @@ namespace XahlicemMod {
                     player.lavaRose = true;
                     player.fireWalk = true;
                     player.lavaMax = 600;
-                    XahlicemPlayer p = player.GetModPlayer<XahlicemPlayer>();
-                    if (Main.myPlayer == player.whoAmI && Main.time % 30 == 0 && p.wet) {
+                    if (Main.myPlayer == player.whoAmI && Main.time % 30 == 0 && wet) {
                         player.Hurt(PlayerDeathReason.ByCustomReason(player.name + " couldn't stand the water."), 5, 0);
                     }
 
@@ -168,6 +170,61 @@ namespace XahlicemMod {
                     player.skinColor = new Color(153, 153, 117);
                     player.eyeColor = Color.Black;
                     head = 93;
+                    break;
+                case Race.Lizardman:
+                    player.breathMax = 400;
+                    player.moveSpeed *= 1.1f;
+                    player.maxRunSpeed *= 1.20f;
+                    player.accRunSpeed *= 1.1f;
+                    player.thrownVelocity *= 0.5f;
+                    player.statLifeMax2 = (int)(player.statLifeMax2 * 1.2);
+                    player.lifeRegenTime = 2;
+                    player.lifeRegen += player.statLifeMax2 / 50;
+
+                    if (hair != -1) player.hair = hair;
+                    player.hairColor = Color.DarkGray;
+                    player.skinColor = new Color(75, 135, 50);
+                    player.eyeColor = Color.Red;
+                    head = 0;
+                    break;
+                case Race.Shade:
+                    player.ignoreWater = true;
+                    player.breath = 100000;
+                    player.noKnockback = true;
+                    player.thrownVelocity *= 0.1f;
+                    player.minionDamage *= 1.25f;
+                    player.statLifeMax2 = (int)(player.statLifeMax2 * 0.5);
+
+                    if (hair != -1) player.hair = hair;
+                    player.hairColor = Color.Black;
+                    player.skinColor = new Color(0, 0, 0);
+                    player.eyeColor = Color.White;
+                    head = 0;
+                    break;
+                case Race.Robot:
+                    player.ignoreWater = true;
+                    player.breath = 100000;
+                    //player.runAcceleration *= 0.5f;
+                    player.rangedDamage *= (0.75f + (((player.statMana + 1) / player.statManaMax2) * 0.5f));
+                    player.minionDamage *= 0.50f;
+                    player.thrownVelocity *= 1.5f;
+
+                    /*if (Main.time % 30 == 0) {
+                        player.statMana -= 1;
+                        if (Main.myPlayer == player.whoAmI && wet)
+                            player.Hurt(PlayerDeathReason.ByCustomReason(player.name + " couldn't stand the water."), 5, 0);
+                        player.statMana -= 1;
+                    }*/
+                    player.manaRegenCount = -10;
+                    player.manaRegenDelay = 100;
+                    player.manaRegen = -10;
+                    player.manaRegenBonus = (int)(player.manaRegenBonus * -3);
+
+                    if (hair != -1) player.hair = hair;
+                    player.hairColor = Color.DarkGray;
+                    player.skinColor = new Color(120, 120, 120);
+                    player.eyeColor = Color.Green;
+                    head = 0;
                     break;
             }
         }
