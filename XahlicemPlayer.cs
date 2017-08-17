@@ -34,6 +34,7 @@ namespace XahlicemMod {
         public Color cEye = default(Color);
         public Color cSkin = default(Color);
         public bool wet = false;
+        public bool falling = false;
         public float lifeMod = 1f;
 
         public override TagCompound Save() {
@@ -81,11 +82,6 @@ namespace XahlicemMod {
             if (race != Race.Human) player.AddBuff(mod.BuffType(race.ToString()), 10);
         }
 
-        public override void Hurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit) {
-            lifeMod -= (float)(damage / player.statLifeMax2) / 2.5f;
-            if (lifeMod < 0.2f) lifeMod = 0.2f;
-        }
-
         public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource) {
             if (race == Race.Slime && damageSource.SourceNPCIndex >= 0)
                 if (Main.npc[damageSource.SourceNPCIndex].FullName.Contains("Slime")) {
@@ -94,11 +90,18 @@ namespace XahlicemMod {
             return true;
         }
 
+        public override void Hurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit) {
+            lifeMod -= (float)(damage / player.statLifeMax2) / 2.5f;
+            if (lifeMod < 0.2f) lifeMod = 0.2f;
+        }
+
         public override void FrameEffects() {
             if (head != 0)
                 player.head = (head == 93) ? head : mod.GetItem(race.ToString() + "Head").item.headSlot;
+
+            if (falling) player.wingFrame = 2;
         }
-        int headNum = 217;
+        //int num = 0;
         public void DoStuff() {
             if (cEye == default(Color)) cEye = player.eyeColor;
             if (cSkin == default(Color)) cSkin = player.skinColor;
@@ -106,8 +109,19 @@ namespace XahlicemMod {
             if (hair == -1) hair = player.hair;
             ChangeRace(race.NextEnum(), true);
             Main.NewText("Race = " + race, 255, 255, 255);
-            headNum++;
-            Main.NewText(headNum.ToString(), 255, 255, 255);
+            //num++;
+            //Main.NewText(num.ToString(), 255, 255, 255);
+        }
+
+        public override void SetupStartInventory(IList<Item> items) {
+            Item item = new Item();
+            item.SetDefaults(mod.ItemType<Items.Misc.SoulVessel>());
+            item.stack = 1;
+            items.Add(item);
+        }
+
+        public override void ProcessTriggers(TriggersSet triggersSet) {
+            falling = (!player.justJumped && triggersSet.Jump && player.velocity.Y >= 0.01f);
         }
 
         public void ChangeRace(Race r, bool force = false) {

@@ -20,10 +20,9 @@ namespace XahlicemMod.Buffs.Race
 
         public override void Update(Player player, ref int buffIndex) {
             XahlicemPlayer modPlayer = player.GetModPlayer<XahlicemPlayer>();
-            player.rangedDamage *= 0.8f;
+            player.rangedDamage *= 0.75f;
             player.magicDamage *= 1.25f;
-            player.manaCost *= 1.25f;
-            player.statLifeMax2 = (int)(player.statLifeMax2 * 0.8);
+            player.manaCost *= 1.50f - (player.position.Y / Main.bottomWorld);
 
             player.buffImmune[BuffID.OnFire] = true;
             player.lavaRose = true;
@@ -31,6 +30,11 @@ namespace XahlicemMod.Buffs.Race
             player.lavaMax = 600;
             if (Main.myPlayer == player.whoAmI && Main.time % 30 == 0 && modPlayer.wet) {
                 player.Hurt(PlayerDeathReason.ByCustomReason(player.name + " couldn't stand the water."), 5, 0, false, false, false, 0);
+            }
+            player.wings = 1;
+            if (modPlayer.falling) {
+                player.velocity.Y = 0.025f;
+                player.fallStart = (int) player.position.Y >> 4;
             }
         }
     }
