@@ -26,6 +26,7 @@ namespace XahlicemMod.Buffs.Race
             player.thrownVelocity *= 0.1f;
             player.minionDamage *= 1.25f;
             player.statLifeMax2 = (int)(player.statLifeMax2 * 0.5);
+            player.dash += 1;
         }
     }
 }
