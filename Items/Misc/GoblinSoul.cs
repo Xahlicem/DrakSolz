@@ -22,7 +22,7 @@ namespace XahlicemMod.Items.Misc {
         }
 
         public override bool UseItem(Player player) {
-            player.GetModPlayer<XahlicemPlayer>().changeRace(XahlicemPlayer.Race.Goblin);
+            player.GetModPlayer<XahlicemPlayer>().ChangeRace(XahlicemPlayer.Race.Goblin);
             return true;
         }
 
