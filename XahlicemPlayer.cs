@@ -33,12 +33,12 @@ namespace XahlicemMod {
         public float lifeMod = 1f;
 
         public override TagCompound Save() {
-            return new TagCompound { { "xahlicemRace", race }, { "xahlicemHair", hair }, { "xahlicemCHair", cHair }, { "xahlicemCEye", cEye }, { "xahlicemCSkin", cSkin }, { "xahlicemLifeMod", lifeMod }
+            return new TagCompound { { "xahlicemRace", (byte) race }, { "xahlicemHair", hair }, { "xahlicemCHair", cHair }, { "xahlicemCEye", cEye }, { "xahlicemCSkin", cSkin }, { "xahlicemLifeMod", lifeMod }
             };
         }
 
         public override void Load(TagCompound tag) {
-            race = tag.Get<Race>("xahlicemRace");
+            race = (Race) tag.GetByte("xahlicemRace");
             hair = tag.GetInt("xahlicemHair");
             cHair = tag.Get<Color>("xahlicemCHair");
             cEye = tag.Get<Color>("xahlicemCEye");
@@ -180,7 +180,7 @@ namespace XahlicemMod {
         public override void FrameEffects() {
             if (head != 0)
                 player.head = head;
-            //player.face = head;
+            //player.face = headNum;
         }
         sbyte headNum = 0;
         public void DoStuff() {
@@ -192,6 +192,22 @@ namespace XahlicemMod {
             Main.NewText("Race = " + race, 255, 255, 255);
             headNum++;
             Main.NewText(head.ToString(), 255, 255, 255);
+        }
+
+        public void changeRace(Race r) {
+            if (race != Race.Human) {
+                player.KillMe(PlayerDeathReason.ByCustomReason(player.name + " angered the gods by trying to interbreed!"), 10000, 0);
+                return;
+            }
+            if (cEye == default(Color)) cEye = player.eyeColor;
+            if (cSkin == default(Color)) cSkin = player.skinColor;
+            if (cHair == default(Color)) cHair = player.hairColor;
+            if (hair == -1) hair = player.hair;
+            for (int i = 0; i < 150; i++) {
+                Dust.NewDust(player.position, 8, 8, DustID.Blood, Main.rand.NextFloat() * 10 - 5, Main.rand.NextFloat() * 10 - 5);
+            }
+            player.KillMe(PlayerDeathReason.ByCustomReason(player.name + " sheds their human flesh!"), 10000, 0);
+            race = r;
         }
     }
 }

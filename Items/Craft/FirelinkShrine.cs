@@ -39,6 +39,12 @@ namespace XahlicemMod.Items.Craft {
             recipe.AddIngredient(null, "HomewardBone", 5);
             recipe.SetResult(this);
             recipe.AddRecipe();
+            recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.Campfire);
+            recipe.AddIngredient(ItemID.LeadBar);
+            recipe.AddIngredient(null, "HomewardBone", 5);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
     }
 
