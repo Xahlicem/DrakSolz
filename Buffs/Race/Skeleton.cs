@@ -23,7 +23,6 @@ namespace XahlicemMod.Buffs.Race
             player.ignoreWater = true;
             player.breath = 100000;
             player.lifeRegenCount = 0;
-
         }
     }
 }
