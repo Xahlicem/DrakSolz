@@ -37,13 +37,12 @@ namespace XahlicemMod {
         public float lifeMod = 1f;
 
         public override TagCompound Save() {
-            return new TagCompound { { "xahlicemRace", (byte) race }, { "xahlicemRaceBuff", raceBuff }, { "xahlicemHead", head }, { "xahlicemHair", hair }, { "xahlicemCHair", cHair }, { "xahlicemCEye", cEye }, { "xahlicemCSkin", cSkin }, { "xahlicemLifeMod", lifeMod }
+            return new TagCompound { { "xahlicemRace", (byte) race }, { "xahlicemHead", head }, { "xahlicemHair", hair }, { "xahlicemCHair", cHair }, { "xahlicemCEye", cEye }, { "xahlicemCSkin", cSkin }, { "xahlicemLifeMod", lifeMod }
             };
         }
 
         public override void Load(TagCompound tag) {
             race = (Race) tag.GetByte("xahlicemRace");
-            raceBuff = tag.GetInt("xahlicemRaceBuff");
             hair = tag.GetInt("xahlicemHair");
             head = tag.GetInt("xahlicemHead");
             cHair = tag.Get<Color>("xahlicemCHair");
@@ -79,7 +78,7 @@ namespace XahlicemMod {
             if (player.statLife < 0) player.statLife = 0;
             if (player.statMana < 0) player.statMana = 0;
 
-            if (raceBuff != -1) player.AddBuff(raceBuff, 10);
+            if (race != Race.Human) player.AddBuff(mod.BuffType(race.ToString()), 10);
         }
 
         public override void Hurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit) {
@@ -87,10 +86,17 @@ namespace XahlicemMod {
             if (lifeMod < 0.2f) lifeMod = 0.2f;
         }
 
+        public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource) {
+            if (race == Race.Slime && damageSource.SourceNPCIndex >= 0)
+                if (Main.npc[damageSource.SourceNPCIndex].FullName.Contains("Slime")) {
+                    if (damage <= player.statDefense) return false;
+                }
+            return true;
+        }
+
         public override void FrameEffects() {
             if (head != 0)
-                player.head = head;
-            //player.head = headNum;
+                player.head = (head == 93) ? head : mod.GetItem(race.ToString() + "Head").item.headSlot;
         }
         int headNum = 217;
         public void DoStuff() {
@@ -133,14 +139,12 @@ namespace XahlicemMod {
                     player.skinColor = Color.DarkRed;
                     player.eyeColor = Color.Red;
                     head = 0;
-                    raceBuff = mod.BuffType<Buffs.Race.Demon>();
                     break;
                 case Race.Ant:
                     player.hair = 15;
                     player.skinColor = new Color(75, 35, 15);
                     player.eyeColor = Color.Black;
                     head = 0;
-                    raceBuff = mod.BuffType<Buffs.Race.Ant>();
                     break;
                 case Race.Slime:
                     if (hair != -1) player.hair = hair;
@@ -148,7 +152,6 @@ namespace XahlicemMod {
                     player.skinColor = new Color(100, 150, 255, 50);
                     player.eyeColor = new Color(0, 50, 250, 50);
                     head = 0;
-                    raceBuff = mod.BuffType<Buffs.Race.Slime>();
                     break;
                 case Race.Zombie:
                     if (hair != -1) player.hair = hair;
@@ -156,46 +159,40 @@ namespace XahlicemMod {
                     player.skinColor = new Color(205, 255, 150);
                     player.eyeColor = Color.Red;
                     head = 0;
-                    raceBuff = mod.BuffType<Buffs.Race.Zombie>();
                     break;
                 case Race.Goblin:
                     if (hair != -1) player.hair = hair;
                     player.hairColor = Color.Gray;
                     player.skinColor = new Color(94, 152, 161);
                     player.eyeColor = Color.Red;
-                    head = 217;
-                    raceBuff = mod.BuffType<Buffs.Race.Goblin>();
+                    head = 1;
                     break;
                 case Race.Skeleton:
                     player.hair = 15;
                     player.skinColor = new Color(153, 153, 117);
                     player.eyeColor = Color.Black;
                     head = 93;
-                    raceBuff = mod.BuffType<Buffs.Race.Skeleton>();
                     break;
                 case Race.Lizardman:
                     if (hair != -1) player.hair = hair;
                     player.hairColor = Color.DarkGray;
                     player.skinColor = new Color(75, 135, 50);
                     player.eyeColor = Color.Red;
-                    head = 218;
-                    raceBuff = mod.BuffType<Buffs.Race.LizardMan>();
+                    head = 1;
                     break;
                 case Race.Shade:
                     if (hair != -1) player.hair = hair;
                     player.hairColor = Color.Black;
                     player.skinColor = new Color(0, 0, 0);
                     player.eyeColor = Color.White;
-                    head = 221;
-                    raceBuff = mod.BuffType<Buffs.Race.Shade>();
+                    head = 1;
                     break;
                 case Race.Robot:
                     if (hair != -1) player.hair = hair;
                     player.hairColor = Color.DarkGray;
                     player.skinColor = new Color(120, 120, 120);
                     player.eyeColor = Color.Green;
-                    head = 220;
-                    raceBuff = mod.BuffType<Buffs.Race.Robot>();
+                    head = 1;
                     break;
             }
         }
