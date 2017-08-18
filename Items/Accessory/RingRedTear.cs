@@ -33,12 +33,5 @@ namespace XahlicemMod.Items.Accessory {
             }
 
         }
-
-        public override void AddRecipes() {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("Soul"), 500);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-        }
     }
 }

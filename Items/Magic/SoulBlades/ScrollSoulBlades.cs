@@ -26,7 +26,8 @@ namespace XahlicemMod.Items.Magic.SoulBlades {
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.ItemType("Soul"), 2000);
-            recipe.AddTile(mod.TileType("FirelinkShrine2"));
+            recipe.AddIngredient(mod.ItemType<Items.Craft.Scroll>());
+            recipe.AddTile(mod.TileType<Items.Craft.FirelinkShrineTile>());
             recipe.SetResult(this);
             recipe.AddRecipe();
             /*recipe = new ModRecipe(mod);

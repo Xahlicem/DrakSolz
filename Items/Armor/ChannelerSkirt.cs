@@ -23,13 +23,6 @@ namespace XahlicemMod.Items.Armor {
             player.moveSpeed += 0.10f;
             player.maxRunSpeed += 0.10f;
         }
-
-        public override void AddRecipes() {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.DirtBlock, 1);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-        }
         public class ChannelerSkirtGlobalNPC : GlobalNPC {
             public override void NPCLoot(NPC npc) {
                 if (Main.rand.Next(10) == 0) {

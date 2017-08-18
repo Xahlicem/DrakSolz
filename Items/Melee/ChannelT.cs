@@ -30,23 +30,6 @@ namespace XahlicemMod.Items.Melee {
             item.melee = true;
             item.autoReuse = true; // Most spears dont autoReuse, but it's possible
         }
-
-        public override void AddRecipes() {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.RottenChunk, 15);
-            recipe.AddIngredient(ItemID.VilePowder, 30);
-            recipe.AddIngredient(ItemID.WormTooth, 10);
-            recipe.AddIngredient(ItemID.Emerald, 1);
-            recipe.AddTile(TileID.DemonAltar);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-            recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.DirtBlock, 1);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-        }
-
         public override Vector2? HoldoutOffset() {
             return new Vector2(20, 0);
         }

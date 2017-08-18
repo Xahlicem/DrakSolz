@@ -24,12 +24,5 @@ namespace XahlicemMod.Items.Accessory {
             player.noKnockback = true;
             player.buffImmune[BuffID.Stoned] = true;
         }
-
-        public override void AddRecipes() {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("Soul"), 500);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-        }
     }
 }

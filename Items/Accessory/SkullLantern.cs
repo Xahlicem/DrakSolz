@@ -31,9 +31,9 @@ namespace XahlicemMod.Items.Accessory {
 
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("Soul"), 2000);
+            recipe.AddIngredient(mod.ItemType("Soul"), 1500);
             recipe.AddIngredient(ItemID.Torch, 10);
-            recipe.AddIngredient(mod.ItemType("HomewardBone"), 5);
+            recipe.AddIngredient(mod.ItemType("HomewardBone"), 2);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

@@ -25,13 +25,5 @@ namespace XahlicemMod.Items.Armor {
             player.waterWalk = true;
             //player.AddBuff(BuffID.WaterWalking, 2);
         }
-
-        public override void AddRecipes() {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.DirtBlock, 1);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-        }
     }
-
 }

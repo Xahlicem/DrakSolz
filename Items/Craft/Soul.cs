@@ -47,25 +47,7 @@ namespace XahlicemMod.Items.Craft {
         public override void PostUpdate() {
             Lighting.AddLight(item.Center, Color.White.ToVector3() * 0.04f * Main.essScale);
         }
-
-        public override void AddRecipes() {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.RottenChunk, 15);
-            recipe.AddIngredient(ItemID.VilePowder, 30);
-            recipe.AddIngredient(ItemID.WormTooth, 10);
-            recipe.AddIngredient(ItemID.Emerald, 1);
-            recipe.AddTile(TileID.DemonAltar);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-            recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.DirtBlock, 1);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-        }
-
     }
-
     public class SoulGlobalNPC : GlobalNPC {
         public override void NPCLoot(NPC npc) {
             if (npc.lifeMax >= 5) Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType("Soul"), (npc.defense + npc.damage + 1) * npc.lifeMax / 80);

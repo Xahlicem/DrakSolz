@@ -26,8 +26,8 @@ namespace XahlicemMod.Items.Magic.SoulArrow {
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.ItemType("Soul"), 100);
-            recipe.AddIngredient(ItemID.FallenStar, 1);
-            recipe.AddTile(mod.TileType("FirelinkShrine2"));
+            recipe.AddIngredient(mod.ItemType<Items.Craft.Scroll>());
+            recipe.AddTile(mod.TileType<Items.Craft.FirelinkShrineTile>());
             recipe.SetResult(this);
             recipe.AddRecipe();
             /*recipe = new ModRecipe(mod);

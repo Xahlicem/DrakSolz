@@ -35,13 +35,6 @@ namespace XahlicemMod.Items.Armor {
                 "\n+Channeler's Perfect Dance");
             player.extraAccessorySlots += 1;
         }
-
-        public override void AddRecipes() {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.DirtBlock, 1);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-        }
         public class ChannelerHelmetGlobalNPC : GlobalNPC {
             public override void NPCLoot(NPC npc) {
                 if (Main.rand.Next(10) == 0) {

@@ -26,7 +26,7 @@ public override void AddRecipes()
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.Silk, 1);
 			recipe.AddIngredient(mod.ItemType("Soul"), 100);
-            recipe.AddTile(mod.TileType("FirelinkShrine2"));
+            recipe.AddTile(mod.TileType<Items.Craft.FirelinkShrineTile>());
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

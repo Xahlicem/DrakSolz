@@ -35,13 +35,7 @@ namespace XahlicemMod.Items.Craft {
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.Campfire);
-            recipe.AddIngredient(ItemID.IronBar);
-            recipe.AddIngredient(null, "HomewardBone", 5);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-            recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Campfire);
-            recipe.AddIngredient(ItemID.LeadBar);
+            recipe.AddRecipeGroup("IronBar", 5);
             recipe.AddIngredient(null, "HomewardBone", 5);
             recipe.SetResult(this);
             recipe.AddRecipe();
@@ -190,7 +184,7 @@ namespace XahlicemMod.Items.Craft {
         }
     }
 
-public class ExampleStatueModWorld : ModWorld
+/*public class ExampleStatueModWorld : ModWorld
 	{
 		public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
 		{
@@ -218,5 +212,5 @@ public class ExampleStatueModWorld : ModWorld
 				}));
 			}
 		}
-	}
+	}*/
 }
