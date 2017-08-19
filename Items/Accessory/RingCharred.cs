@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace XahlicemMod.Items.Accessory {
     public class RingCharred : ModItem {
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault("Ring");
+            DisplayName.SetDefault("Orange Charred Ring");
             Tooltip.SetDefault("This is a modded ring." +
                 "\n+Immunity to Fire" +
                 "\n+Inflict Fire on hit");
@@ -24,13 +24,6 @@ namespace XahlicemMod.Items.Accessory {
             player.fireWalk = true;
             player.AddBuff(BuffID.WeaponImbueFire, 2);
             player.AddBuff(BuffID.Warmth, 2);
-        }
-
-        public override void AddRecipes() {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("Soul"), 500);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
         }
     }
 }

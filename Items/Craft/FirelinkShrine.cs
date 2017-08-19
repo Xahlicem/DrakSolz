@@ -1,16 +1,17 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Linq;
-using Terraria.World.Generation;
-using Terraria.GameContent.Generation;
-using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.Enums;
+using Terraria.GameContent.Generation;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
+using Terraria.World.Generation;
+
 
 namespace XahlicemMod.Items.Craft {
     public class FirelinkShrine : ModItem {
@@ -35,20 +36,14 @@ namespace XahlicemMod.Items.Craft {
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.Campfire);
-            recipe.AddIngredient(ItemID.IronBar);
-            recipe.AddIngredient(null, "HomewardBone", 5);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-            recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Campfire);
-            recipe.AddIngredient(ItemID.LeadBar);
+            recipe.AddRecipeGroup("IronBar", 5);
             recipe.AddIngredient(null, "HomewardBone", 5);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
     }
 
-	public class FirelinkShrineTile : ModTile {
+    public class FirelinkShrineTile : ModTile {
         public override void SetDefaults() {
             Main.tileLighted[Type] = true;
             //Main.tileSolidTop[Type] = true;
@@ -73,7 +68,7 @@ namespace XahlicemMod.Items.Craft {
 
             dustType = DustID.AmberBolt;
             disableSmartCursor = true;
-            adjTiles = new int[] { TileID.WorkBenches, TileID.Beds };
+            adjTiles = new int[] { TileID.WorkBenches, TileID.Beds, TileID.Campfire };
             bed = true;
             animationFrameHeight = 54;
         }
@@ -121,7 +116,7 @@ namespace XahlicemMod.Items.Craft {
 
         public override void NearbyEffects(int i, int j, bool closer) {
             Player player = Main.LocalPlayer;
-            if (closer && player.Distance(new Vector2(i<<4,j<<4)) < 50) {
+            if (closer && player.Distance(new Vector2(i << 4, j << 4)) < 50) {
                 player.AddBuff(mod.BuffType<Buffs.Firelink>(), 30);
             }
         }
@@ -129,26 +124,23 @@ namespace XahlicemMod.Items.Craft {
         public override void RightClick(int i, int j) {
             HitWire(i, j);
             Player player = Main.LocalPlayer;
-			Tile tile = Main.tile[i, j];
-			int spawnX = i - tile.frameX / 18 + 1;
-			int spawnY = j;
-			//spawnX += tile.frameX >= 72 ? 5 : 2;
-			if (tile.frameY % 38 != 0)
-			{
-				spawnY--;
-			}
-			player.FindSpawn();
-			if (player.SpawnX == spawnX && player.SpawnY == spawnY)
-			{
-				//player.RemoveSpawn();
-				//Main.NewText("Spawn point removed!", 255, 240, 20, false);
-			}
-			else //if (Player.CheckSpawn(spawnX, spawnY))
-			{
-				player.RemoveSpawn();
-				player.ChangeSpawn(spawnX, spawnY);
-				Main.NewText((Player.CheckSpawn(spawnX, spawnY)?"Permanent ":"Temporary ") + "spawn point set!", 255, 240, 20, false);
-			}
+            Tile tile = Main.tile[i, j];
+            int spawnX = i - tile.frameX / 18 + 1;
+            int spawnY = j;
+            //spawnX += tile.frameX >= 72 ? 5 : 2;
+            if (tile.frameY % 38 != 0) {
+                spawnY--;
+            }
+            player.FindSpawn();
+            if (player.SpawnX == spawnX && player.SpawnY == spawnY) {
+                //player.RemoveSpawn();
+                //Main.NewText("Spawn point removed!", 255, 240, 20, false);
+            } else //if (Player.CheckSpawn(spawnX, spawnY))
+            {
+                player.RemoveSpawn();
+                player.ChangeSpawn(spawnX, spawnY);
+                Main.NewText((Player.CheckSpawn(spawnX, spawnY) ? "Permanent " : "Temporary ") + "spawn point set!", 255, 240, 20, false);
+            }
         }
 
         public override void MouseOver(int i, int j) {
@@ -190,33 +182,33 @@ namespace XahlicemMod.Items.Craft {
         }
     }
 
-public class ExampleStatueModWorld : ModWorld
-	{
-		public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
-		{
-			int ResetIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Reset"));
-			if (ResetIndex != -1)
-			{
-				tasks.Insert(ResetIndex + 1, new PassLegacy("Kindling the Flame", delegate (GenerationProgress progress)
-				{
-					progress.Message = "Kindling the Flame";
+    /*public class ExampleStatueModWorld : ModWorld
+    	{
+    		public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
+    		{
+    			int ResetIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Reset"));
+    			if (ResetIndex != -1)
+    			{
+    				tasks.Insert(ResetIndex + 1, new PassLegacy("Kindling the Flame", delegate (GenerationProgress progress)
+    				{
+    					progress.Message = "Kindling the Flame";
 
-					// Not necessary, just a precaution.
-					if (WorldGen.statueList.Any(point => point.X == mod.TileType<FirelinkShrineTile>()))
-					{
-						return;
-					}
-					// Make space in the statueList array, and then add a Point16 of (TileID, PlaceStyle)
-					Array.Resize(ref WorldGen.statueList, WorldGen.statueList.Length + 1);
-					for (int i = 0; i < WorldGen.statueList.Length; i++)
-					{
-                        
-						WorldGen.statueList[i] = new Point16(mod.TileType<FirelinkShrineTile>(), 0);
-						// Do this if you want the statue to spawn with wire and pressure plate
-						// WorldGen.StatuesWithTraps.Add(i);
-					}
-				}));
-			}
-		}
-	}
+    					// Not necessary, just a precaution.
+    					if (WorldGen.statueList.Any(point => point.X == mod.TileType<FirelinkShrineTile>()))
+    					{
+    						return;
+    					}
+    					// Make space in the statueList array, and then add a Point16 of (TileID, PlaceStyle)
+    					Array.Resize(ref WorldGen.statueList, WorldGen.statueList.Length + 1);
+    					for (int i = 0; i < WorldGen.statueList.Length; i++)
+    					{
+                            
+    						WorldGen.statueList[i] = new Point16(mod.TileType<FirelinkShrineTile>(), 0);
+    						// Do this if you want the statue to spawn with wire and pressure plate
+    						// WorldGen.StatuesWithTraps.Add(i);
+    					}
+    				}));
+    			}
+    		}
+    	}*/
 }

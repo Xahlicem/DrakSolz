@@ -25,13 +25,6 @@ namespace XahlicemMod.Items.Armor {
             player.statManaMax2 += 40;
             player.statLifeMax2 += 40;
         }
-
-        public override void AddRecipes() {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.DirtBlock, 1);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-        }
         public class ChannelerRobeGlobalNPC : GlobalNPC {
             public override void NPCLoot(NPC npc) {
                 if (Main.rand.Next(10) == 0) {

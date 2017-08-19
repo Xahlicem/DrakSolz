@@ -43,12 +43,5 @@ namespace XahlicemMod.Items.Armor {
             player.AddBuff(BuffID.Shine, 2);
             player.buffImmune[BuffID.Cursed] = true;
         }
-
-        public override void AddRecipes() {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.DirtBlock, 1);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-        }
     }
 }

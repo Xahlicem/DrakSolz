@@ -26,12 +26,5 @@ namespace XahlicemMod.Items.Accessory {
             player.maxRunSpeed += 0.15f;
             player.moveSpeed += 0.15f;
         }
-
-        public override void AddRecipes() {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("Soul"), 500);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-        }
     }
 }

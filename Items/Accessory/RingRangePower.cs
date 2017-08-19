@@ -20,12 +20,5 @@ namespace XahlicemMod.Items.Accessory {
         public override void UpdateAccessory(Player player, bool hideVisual) {
             player.rangedDamage += 0.20f;
         }
-
-        public override void AddRecipes() {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("Soul"), 500);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-        }
     }
 }
