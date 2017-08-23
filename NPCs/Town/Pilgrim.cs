@@ -142,6 +142,8 @@ namespace XahlicemMod.NPCs.Town {
             shop.item[nextSlot].SetDefaults(mod.ItemType("GreenBlossom"));
             nextSlot++;
             shop.item[nextSlot].SetDefaults(mod.ItemType("HomewardBone"));
+            shop.item[nextSlot].shopCustomPrice = new int?(100);
+            shop.item[nextSlot].shopSpecialCurrency = XahlicemMod.SoulCustomCurrencyID;
             nextSlot++;
             shop.item[nextSlot].SetDefaults(mod.ItemType("Lifegem"));
             nextSlot++;

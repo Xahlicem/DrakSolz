@@ -9,6 +9,7 @@ using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
+using XahlicemMod.UI;
 
 namespace XahlicemMod {
 
@@ -18,6 +19,15 @@ namespace XahlicemMod {
         public override TagCompound Save() {
             return new TagCompound { { "xahlicemLifeMod", lifeMod }
             };
+        }
+
+        public override void PostUpdate() {
+            XUI.visible = !Main.playerInventory;
+            int souls = 0;
+            for (int i = 0; i < player.inventory.Length; i++) {
+                if (player.inventory[i].type == mod.ItemType<Items.Craft.Soul>()) souls += player.inventory[i].stack;
+            }
+            (mod as XahlicemMod).xUI.updateValue(souls);
         }
 
         public override void Load(TagCompound tag) {
