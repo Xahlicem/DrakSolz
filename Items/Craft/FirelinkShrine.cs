@@ -55,7 +55,7 @@ namespace XahlicemMod.Items.Craft {
             TileObjectData.newTile.CopyFrom(TileObjectData.Style3x3);
             TileObjectData.newTile.Height = 3;
             TileObjectData.newTile.Width = 3;
-            TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16 };
+            TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 18 };
             TileObjectData.addTile(Type);
 
             AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
@@ -70,11 +70,11 @@ namespace XahlicemMod.Items.Craft {
             disableSmartCursor = true;
             adjTiles = new int[] { TileID.WorkBenches, TileID.Beds, TileID.Campfire };
             bed = true;
-            animationFrameHeight = 54;
+            animationFrameHeight = 56;
         }
 
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b) {
-            if (Main.tile[i, j].frameY >= 54) {
+            if (Main.tile[i, j].frameY >= 56) {
                 r = 0.93f;
                 g = 0.80f;
                 b = 0.60f;
@@ -107,7 +107,7 @@ namespace XahlicemMod.Items.Craft {
                 zero = Vector2.Zero;
             }
             int animate = 0;
-            if (tile.frameY >= 54) {
+            if (tile.frameY >= 56) {
                 animate = Main.tileFrame[Type] * animationFrameHeight;
             }
             Main.spriteBatch.Draw(texture, new Vector2(i * 16 - (int) Main.screenPosition.X, j * 16 - (int) Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY + animate, 16, 16), Lighting.GetColor(i, j), 0f, default(Vector2), 1f, SpriteEffects.None, 1f);
@@ -159,10 +159,10 @@ namespace XahlicemMod.Items.Craft {
                         Main.tile[l, m] = new Tile();
                     }
                     if (Main.tile[l, m].active() && Main.tile[l, m].type == Type) {
-                        if (Main.tile[l, m].frameY < 54) {
-                            Main.tile[l, m].frameY += 54;
+                        if (Main.tile[l, m].frameY < 56) {
+                            Main.tile[l, m].frameY += 56;
                         } else {
-                            Main.tile[l, m].frameY -= 54;
+                            Main.tile[l, m].frameY -= 56;
                         }
                     }
                 }
