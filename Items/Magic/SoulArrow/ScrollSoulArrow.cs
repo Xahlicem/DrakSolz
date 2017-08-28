@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.ModLoader.IO;
 
 namespace XahlicemMod.Items.Magic.SoulArrow {
     public class ScrollSoulArrow : ModItem {
@@ -24,11 +25,9 @@ namespace XahlicemMod.Items.Magic.SoulArrow {
         }
 
         public override void AddRecipes() {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("Soul"), 500);
+            ModRecipe recipe = new SoulRecipe(mod, this, 500);
             recipe.AddIngredient(mod.ItemType<Items.Craft.Scroll>());
             recipe.AddTile(mod.TileType<Items.Craft.FirelinkShrineTile>());
-            recipe.SetResult(this);
             recipe.AddRecipe();
             /*recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.DirtBlock, 1);
@@ -36,8 +35,13 @@ namespace XahlicemMod.Items.Magic.SoulArrow {
             recipe.AddRecipe();*/
         }
 
+        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> tooltips) {
+            if (item.GetGlobalItem<XItem>().owned) return;
+            tooltips[0].text += " (500 Souls required)";
+        }
+
         //public override Vector2? HoldoutOffset() {
-            //return new Vector2(-5, 0);
+        //return new Vector2(-5, 0);
         //}
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack) {

@@ -25,6 +25,7 @@ namespace XahlicemMod.UI {
             panel.BackgroundColor = new Color(73, 94, 171);
             panel.OnMouseDown += new UIElement.MouseEvent(DragStart);
             panel.OnMouseUp += new UIElement.MouseEvent(DragEnd);
+            panel.OnClick += Click;
 
             Texture2D buttonPlayTexture = ModLoader.GetTexture("XahlicemMod/Items/Craft/SoulSingle");
             UIImage playButton = new UIImage(buttonPlayTexture);
@@ -43,6 +44,23 @@ namespace XahlicemMod.UI {
             panel.Append(num);
 
             base.Append(panel);
+        }
+
+        private void Click(UIMouseEvent evt, UIElement listeningElement) {
+            
+            XahlicemPlayer player = Main.LocalPlayer.GetModPlayer<XahlicemPlayer>();
+            if (!Main.playerInventory) return;
+            int type = ModLoader.GetMod("XahlicemMod").ItemType<Items.Craft.Soul>();
+            if (Main.mouseItem.type == type) {
+                player.Souls += Main.mouseItem.stack;
+                Main.mouseItem.stack = 0;
+                Main.mouseItem.type = 0;
+            } else if (Main.mouseItem.type == 0) {
+                Main.mouseItem.netDefaults(type);
+                Main.mouseItem.stack = player.Souls;
+                player.Souls = 0;
+            }
+            Recipe.FindRecipes();
         }
 
         Vector2 offset;
@@ -82,6 +100,7 @@ namespace XahlicemMod.UI {
 
         public void updateValue(int carrying) {
             num.SetText(carrying.ToString());
+            Recipe.FindRecipes();
         }
     }
 }

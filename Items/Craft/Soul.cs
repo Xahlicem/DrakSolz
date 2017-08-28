@@ -1,9 +1,10 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using System;
+
 
 namespace XahlicemMod.Items.Craft {
     public class Soul : ModItem {
@@ -29,9 +30,18 @@ namespace XahlicemMod.Items.Craft {
             item.alpha = 64;
         }
 
+        public override bool CanPickup(Player player) {
+            return true;
+        }
+
         // The following 2 methods are purely to show off these 2 hooks. Don't use them in your own code.
         public override void GrabRange(Player player, ref int grabRange) {
             grabRange *= 7;
+        }
+
+        public override bool OnPickup(Player player) {
+            player.GetModPlayer<XahlicemPlayer>().Souls += item.stack;
+            return false;
         }
 
         public override bool GrabStyle(Player player) {
@@ -39,7 +49,7 @@ namespace XahlicemMod.Items.Craft {
             Vector2 movement = vectorItemToPlayer.SafeNormalize(default(Vector2)) * 0.7f;
             item.velocity = movement;
             float magnitude = (float) Math.Sqrt(item.velocity.X * item.velocity.X + item.velocity.Y * item.velocity.Y);
-            item.velocity *= 16f / magnitude; 
+            item.velocity *= 16f / magnitude;
             //item.velocity = Collision.TileCollision(item.position, item.velocity, item.width, item.height);
             return true;
         }

@@ -1,7 +1,6 @@
 using System;
 using System.IO;
 using Microsoft.Xna.Framework.Graphics;
-using ReLogic.Graphics;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent.UI;
@@ -48,6 +47,22 @@ namespace XahlicemMod {
                     },
                     InterfaceScaleType.UI));
             }
+        }
+    }
+
+    public class SoulRecipe : ModRecipe {
+        private int requiredSouls;
+        public SoulRecipe(Mod mod, ModItem modItem, int souls) : base(mod) {
+            requiredSouls = souls;
+            SetResult(modItem);
+        }
+
+        public override bool RecipeAvailable() {
+            return (Main.LocalPlayer.GetModPlayer<XahlicemPlayer>().Souls >= requiredSouls);
+        }
+
+        public override void OnCraft(Item item) {
+            Main.LocalPlayer.GetModPlayer<XahlicemPlayer>().Souls -= requiredSouls;
         }
     }
 }
