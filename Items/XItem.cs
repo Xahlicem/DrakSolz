@@ -18,7 +18,7 @@ namespace XahlicemMod.Items {
         public override GlobalItem Clone(Item item, Item itemClone) {
             var source = item.GetGlobalItem<XItem>();
             var destination = itemClone.GetGlobalItem<XItem>();
-            destination.owned = source.owned;
+            if (source != null && destination != null) destination.owned = source.owned;
             return destination;
         }
 

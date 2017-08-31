@@ -11,9 +11,17 @@ using Terraria.UI;
 namespace XahlicemMod.UI {
 
     class XUI : UIState {
+        private bool RightClicking = false;
+        private int RightTime = 0;
+        private int Time = 0;
         public UIPanel panel;
         public UIText num;
         public static bool visible = true;
+        private Item item;
+
+        public XUI(ModItem modItem) {
+            item = modItem.item;
+        }
 
         public override void OnInitialize() {
             panel = new UIPanel();
@@ -23,9 +31,9 @@ namespace XahlicemMod.UI {
             panel.Width.Set(135f, 0f);
             panel.Height.Set(35f, 0f);
             panel.BackgroundColor = new Color(73, 94, 171);
-            panel.OnMouseDown += new UIElement.MouseEvent(DragStart);
-            panel.OnMouseUp += new UIElement.MouseEvent(DragEnd);
             panel.OnClick += Click;
+            panel.OnRightMouseDown += RightDown;
+            panel.OnRightMouseUp += RightUp;
 
             Texture2D buttonPlayTexture = ModLoader.GetTexture("XahlicemMod/Items/Craft/SoulSingle");
             UIImage playButton = new UIImage(buttonPlayTexture);
@@ -46,56 +54,67 @@ namespace XahlicemMod.UI {
             base.Append(panel);
         }
 
+        private void RightDown(UIMouseEvent evt, UIElement listeningElement) {
+            RightClicking = true;
+        }
+
+        private void RightUp(UIMouseEvent evt, UIElement listeningElement) {
+            RightClicking = false;
+        }
+
         private void Click(UIMouseEvent evt, UIElement listeningElement) {
-            
             XahlicemPlayer player = Main.LocalPlayer.GetModPlayer<XahlicemPlayer>();
             if (!Main.playerInventory) return;
-            int type = ModLoader.GetMod("XahlicemMod").ItemType<Items.Craft.Soul>();
-            if (Main.mouseItem.type == type) {
+            if (Main.mouseItem.type == item.type) {
                 player.Souls += Main.mouseItem.stack;
                 Main.mouseItem.stack = 0;
-                Main.mouseItem.type = 0;
             } else if (Main.mouseItem.type == 0) {
-                Main.mouseItem.netDefaults(type);
+                Main.mouseItem.netDefaults(item.type);
                 Main.mouseItem.stack = player.Souls;
                 player.Souls = 0;
             }
             Recipe.FindRecipes();
         }
 
-        Vector2 offset;
+        public override void Update(GameTime gameTime) {
+            if (!RightClicking || !Main.playerInventory) {
+                if (Main.mouseItem.type == 0 || Main.mouseItem.stack == 0) Main.mouseItem = new Item();
+                RightClicking = false;
+                return;
+            }
+            if (RightClicking) {
+                XahlicemPlayer player = Main.LocalPlayer.GetModPlayer<XahlicemPlayer>();
+                Main.playerInventory = true;
+                if (Main.stackSplit <= 1 && item.type > 0 && (Main.mouseItem.type == item.type || Main.mouseItem.type == 0)) {
+                    int num2 = Main.superFastStack + 1;
+                    for (int j = 0; j < num2; j++) {
+                        if ((Main.mouseItem.stack < 9999 || Main.mouseItem.type == 0) && player.Souls > 0) {
+                            if (j == 0) {
+                                Main.PlaySound(18, -1, -1, 1);
+                            }
+                            if (Main.mouseItem.type == 0) {
+                                Main.mouseItem.netDefaults(item.type);
+                                Main.mouseItem.type = item.type;
+                                Main.mouseItem.stack = 0;
+                            }
+                            Main.mouseItem.stack++;
+                            player.Souls--;
+                            if (Main.stackSplit == 0) {
+                                Main.stackSplit = 15;
+                            } else {
+                                Main.stackSplit = Main.stackDelay;
+                            }
+                        }
+                    }
+                }
+            }
 
-        public bool dragging = false;
-
-        private void DragStart(UIMouseEvent evt, UIElement listeningElement) {
-            offset = new Vector2(evt.MousePosition.X - panel.Left.Pixels, evt.MousePosition.Y - panel.Top.Pixels);
-            dragging = true;
-        }
-
-        private void DragEnd(UIMouseEvent evt, UIElement listeningElement) {
-            Vector2 end = evt.MousePosition;
-            dragging = false;
-            panel.Left.Set(end.X - offset.X, 0f);
-            panel.Top.Set(end.Y - offset.Y, 0f);
-            Recalculate();
         }
 
         protected override void DrawSelf(SpriteBatch spriteBatch) {
-            Vector2 MousePosition = new Vector2((float) Main.mouseX, (float) Main.mouseY);
-            if (panel.ContainsPoint(MousePosition)) {
-                Main.LocalPlayer.mouseInterface = true;
-            }
-            if (dragging) {
-                panel.Left.Set(MousePosition.X - offset.X, 0f);
-                panel.Top.Set(MousePosition.Y - offset.Y, 0f);
-                Recalculate();
-            }
-
-            if (panel.Left.Pixels > Main.screenWidth - 160 || panel.Top.Pixels > Main.screenHeight - 50) {
-                panel.Left.Set(Main.screenWidth - 160, 0f);
-                panel.Top.Set(Main.screenHeight - 50, 0f);
-                Recalculate();
-            }
+            panel.Left.Set(500, 0f);
+            panel.Top.Set(25, 0f);
+            Recalculate();
         }
 
         public void updateValue(int carrying) {

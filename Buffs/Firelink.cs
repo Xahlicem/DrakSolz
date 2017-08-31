@@ -11,7 +11,7 @@ namespace XahlicemMod.Buffs
         public override void SetDefaults() {
             DisplayName.SetDefault("Firelinked");
             Description.SetDefault("So nice and toasty.");
-            Main.debuff[Type] = false;
+            Main.debuff[Type] = true;
             Main.buffNoSave[Type] = true;
             Main.buffNoTimeDisplay[Type] = true;
             canBeCleared = false;

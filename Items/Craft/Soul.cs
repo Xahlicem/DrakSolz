@@ -1,10 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-
 
 namespace XahlicemMod.Items.Craft {
     public class Soul : ModItem {
@@ -24,14 +24,17 @@ namespace XahlicemMod.Items.Craft {
             refItem.SetDefaults(ItemID.SoulofSight);
             item.width = refItem.width;
             item.height = refItem.height;
-            item.maxStack = 999999;
+            item.maxStack = 1;
             item.value = Item.buyPrice(0, 0, 0, 1);
             item.rare = 0;
             item.alpha = 64;
+            item.ammo = 1;
+            item.noGrabDelay = 1;
         }
 
         public override bool CanPickup(Player player) {
-            return true;
+            int fromPlayer = item.GetGlobalItem<Items.Craft.SoulGlobalItem>().FromPlayer;
+            return (fromPlayer == -1) ? true : (player.whoAmI == fromPlayer);
         }
 
         // The following 2 methods are purely to show off these 2 hooks. Don't use them in your own code.
@@ -40,7 +43,9 @@ namespace XahlicemMod.Items.Craft {
         }
 
         public override bool OnPickup(Player player) {
+            if (!player.Equals(Main.LocalPlayer)) return false;
             player.GetModPlayer<XahlicemPlayer>().Souls += item.stack;
+            player.ManaEffect(item.stack);
             return false;
         }
 
@@ -60,7 +65,46 @@ namespace XahlicemMod.Items.Craft {
     }
     public class SoulGlobalNPC : GlobalNPC {
         public override void NPCLoot(NPC npc) {
-            if (npc.lifeMax >= 5) Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType("Soul"), (npc.defense + npc.damage + 1) * npc.lifeMax / 80);
+            if (npc.lifeMax < 5) return;
+            double num = Math.Ceiling((float)(npc.defense + npc.damage + 1) * npc.lifeMax / 80f);
+            //Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Craft.Soul>(), (int) num);
+            List<int> players = new List<int>();
+            for (int i = 0; i < Main.player.Length; i++)
+                if (Main.player[i] != null) {
+                    if (Main.player[i].Distance(npc.position) < 1000) players.Add(Main.player[i].whoAmI);
+                }
+            if (players.Count == 0) Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Craft.Soul>(), (int) num);
+            else
+                foreach (int i in players) {
+                    int item = Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Craft.Soul>(), (int)(num / (float) players.Count));
+                    Main.item[item].GetGlobalItem<Items.Craft.SoulGlobalItem>().FromPlayer = i;
+                }
+
+        }
+    }
+
+    public class SoulGlobalItem : GlobalItem {
+        private int fromPlayer = -1;
+        public int FromPlayer { get { return fromPlayer; } set { fromPlayer = value; } }
+
+        public override void NetSend(Item item, System.IO.BinaryWriter writer) {
+            writer.Write(fromPlayer);
+        }
+
+        public override void NetReceive(Item item, System.IO.BinaryReader reader) {
+            fromPlayer = reader.ReadInt32();
+        }
+
+        public override bool InstancePerEntity {
+            get {
+                return true;
+            }
+        }
+
+        public override GlobalItem Clone(Item item, Item itemClone) {
+            SoulGlobalItem myClone = (SoulGlobalItem) base.Clone(item, itemClone);
+            myClone.fromPlayer = fromPlayer;
+            return myClone;
         }
     }
 }

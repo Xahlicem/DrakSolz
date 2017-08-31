@@ -14,29 +14,43 @@ using XahlicemMod.UI;
 namespace XahlicemMod {
 
     public class XahlicemPlayer : ModPlayer {
-        const float LifeModMax = 1.25f;
-        private float lifeMod = 1f;
         private long lastHurt = 0;
+        public long LastHurt { get { return lastHurt; } set { lastHurt = value; } }
 
         public int Souls { get; set; }
 
         public override TagCompound Save() {
-            return new TagCompound { { "xahlicemLifeMod", lifeMod }, { "XSouls", Souls }
+            return new TagCompound { { "XSouls", Souls }
             };
         }
 
         public override void PostUpdate() {
-            //XUI.visible = !Main.playerInventory;
-            (mod as XahlicemMod).xUI.updateValue(Souls);
-
-            for (int i = 0; i < player.inventory.Length; i++) {
-                if (player.inventory[i].stack != 0) Main.NewText(i + " " + player.inventory[i].Name + " " + player.inventory[i].active, Color.Yellow);
+            if (Main.netMode == NetmodeID.MultiplayerClient && player.Equals(Main.LocalPlayer)) {
+                GetPacket((byte) XModMessageType.FromClient).Send();
             }
-            Main.NewText(player.inventory.Length.ToString());
+            if (player.Equals(Main.LocalPlayer))(mod as XahlicemMod).xUI.updateValue(Souls);
+        }
+
+        public override void clientClone(ModPlayer clone) {
+            base.clientClone(clone);
+            (clone as XahlicemPlayer).Souls = Souls;
+            (clone as XahlicemPlayer).lastHurt = lastHurt;
+            int index = player.FindBuffIndex(mod.BuffType<Buffs.Hollow>());
+            if (index != -1) clone.player.AddBuff(mod.BuffType<Buffs.Hollow>(), player.buffTime[index]);
+        }
+
+        public ModPacket GetPacket(byte packetType) {
+            ModPacket packet = this.mod.GetPacket();
+
+            packet.Write((byte) packetType);
+            packet.Write(this.player.whoAmI);
+            packet.Write(Souls);
+            packet.Write(lastHurt);
+
+            return packet;
         }
 
         public override void Load(TagCompound tag) {
-            lifeMod = tag.GetFloat("xahlicemLifeMod");
             Souls = tag.GetInt("XSouls");
         }
 
@@ -45,24 +59,34 @@ namespace XahlicemMod {
         }
 
         public override void UpdateDead() {
-            lifeMod = 0.2f;
+            player.AddBuff(mod.BuffType<Buffs.Hollow>(), 60);
+
+            if (Souls != 0) {
+                int i = Item.NewItem((int) player.position.X, (int) player.position.Y, player.width, player.height, mod.ItemType("Soul"), Souls);
+                Main.item[i].GetGlobalItem<Items.Craft.SoulGlobalItem>().FromPlayer = player.whoAmI;
+                Souls = 0;
+                if (player.Equals(Main.LocalPlayer))(mod as XahlicemMod).xUI.updateValue(Souls);
+            }
         }
 
         public override void PreUpdateBuffs() {
             lastHurt++;
-            if (Main.time % 60 == 0 && lastHurt >= 300) {
-                lifeMod += (player.FindBuffIndex(mod.BuffType<Buffs.Firelink>()) != -1) ? 0.1f : 0.002f;
-                if (lifeMod > LifeModMax) lifeMod = LifeModMax;
-            }
-            player.statLifeMax2 = (int)(player.statLifeMax2 * lifeMod);
-            if (player.statLife < 0) player.statLife = 0;
-            if (player.statMana < 0) player.statMana = 0;
         }
 
         public override void Hurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit) {
-            lifeMod -= (float)(damage / player.statLifeMax2) / 2.5f;
-            if (lifeMod < 0.2f) lifeMod = 0.2f;
             lastHurt = 0;
+            player.AddBuff(mod.BuffType<Buffs.Hollow>(), (int)(damage * 120.0));
         }
+
+        public override bool PreItemCheck() {
+
+            return base.PreItemCheck();
+        }
+
+        public override void PostItemCheck() {
+
+        }
+
+        public override void Kill(double damage, int hitDirection, bool pvp, PlayerDeathReason damageSource) { }
     }
 }

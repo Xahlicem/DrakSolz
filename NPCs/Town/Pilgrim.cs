@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 namespace XahlicemMod.NPCs.Town {
     [AutoloadHead]
@@ -127,7 +128,7 @@ namespace XahlicemMod.NPCs.Town {
 		*/
 
         public override void SetChatButtons(ref string button, ref string button2) {
-            button = Lang.inter[28].Value;
+            button = Language.GetText("Shop").Value;
         }
 
         public override void OnChatButtonClicked(bool firstButton, ref bool shop) {
