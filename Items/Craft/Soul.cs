@@ -5,6 +5,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Net;
 
 namespace XahlicemMod.Items.Craft {
     public class Soul : ModItem {
@@ -29,7 +30,7 @@ namespace XahlicemMod.Items.Craft {
             item.rare = 0;
             item.alpha = 64;
             item.ammo = 1;
-            item.noGrabDelay = 1;
+            item.noGrabDelay = 200;
         }
 
         public override bool CanPickup(Player player) {
@@ -46,6 +47,7 @@ namespace XahlicemMod.Items.Craft {
             if (!player.Equals(Main.LocalPlayer)) return false;
             player.GetModPlayer<XahlicemPlayer>().Souls += item.stack;
             player.ManaEffect(item.stack);
+            Main.NewText(item.GetGlobalItem<Items.Craft.SoulGlobalItem>().FromPlayer.ToString(), Color.Beige);
             return false;
         }
 
@@ -62,6 +64,16 @@ namespace XahlicemMod.Items.Craft {
         public override void PostUpdate() {
             Lighting.AddLight(item.Center, Color.White.ToVector3() * 0.04f * Main.essScale);
         }
+
+        public ModPacket GetPacket(int item, int player) {
+            ModPacket packet = this.mod.GetPacket();
+
+            packet.Write((byte) XModMessageType.Soul);
+            packet.Write(player);
+            packet.Write(item);
+
+            return packet;
+        }
     }
     public class SoulGlobalNPC : GlobalNPC {
         public override void NPCLoot(NPC npc) {
@@ -75,9 +87,11 @@ namespace XahlicemMod.Items.Craft {
                 }
             if (players.Count == 0) Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Craft.Soul>(), (int) num);
             else
-                foreach (int i in players) {
+                for (int i = 0; i < players.Count; i++) {
                     int item = Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Craft.Soul>(), (int)(num / (float) players.Count));
-                    Main.item[item].GetGlobalItem<Items.Craft.SoulGlobalItem>().FromPlayer = i;
+                    Main.item[item].GetGlobalItem<Items.Craft.SoulGlobalItem>().FromPlayer = players[i];
+                    Main.NewText(i.ToString(), Color.Beige);
+                    if (Main.netMode == NetmodeID.Server)(Main.item[item].modItem as Soul).GetPacket(item, players[i]);
                 }
 
         }
