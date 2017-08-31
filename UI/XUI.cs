@@ -112,6 +112,10 @@ namespace XahlicemMod.UI {
         }
 
         protected override void DrawSelf(SpriteBatch spriteBatch) {
+            Vector2 MousePosition = new Vector2((float) Main.mouseX, (float) Main.mouseY);
+            if (panel.ContainsPoint(MousePosition)) {
+                Main.LocalPlayer.mouseInterface = true;
+            }
             panel.Left.Set(500, 0f);
             panel.Top.Set(25, 0f);
             Recalculate();
