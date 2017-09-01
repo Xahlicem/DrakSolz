@@ -90,10 +90,6 @@ namespace XahlicemMod {
                     }
                     break;
 
-                case XModMessageType.Soul:
-                    Main.item[reader.ReadInt32()].GetGlobalItem<Items.Craft.SoulGlobalItem>().FromPlayer = player.whoAmI;
-                    break;
-
                 default:
                     ErrorLogger.Log("XRaces: Unknown Message type: " + msgType);
                     break;
@@ -105,8 +101,7 @@ namespace XahlicemMod {
         FromServer,
         FromClient,
         FromServBuff,
-        FromClieBuff,
-        Soul
+        FromClieBuff
     }
 
     public class SoulRecipe : ModRecipe {

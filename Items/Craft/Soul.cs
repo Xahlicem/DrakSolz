@@ -4,18 +4,16 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.Net;
 
 namespace XahlicemMod.Items.Craft {
     public class Soul : ModItem {
         public override void SetStaticDefaults() {
-            //DisplayName.SetDefault(" ");
             Tooltip.SetDefault("'Souls of the Fallen'");
-            // ticksperframe, frameCount
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(8, 4));
             ItemID.Sets.AnimatesAsSoul[item.type] = true;
-            //ItemID.Sets.ItemIconPulse[item.type] = true;
             ItemID.Sets.ItemNoGravity[item.type] = true;
         }
 
@@ -30,7 +28,6 @@ namespace XahlicemMod.Items.Craft {
             item.rare = 0;
             item.alpha = 64;
             item.ammo = 1;
-            item.noGrabDelay = 200;
         }
 
         public override bool CanPickup(Player player) {
@@ -38,7 +35,6 @@ namespace XahlicemMod.Items.Craft {
             return (fromPlayer == -1) ? true : (player.whoAmI == fromPlayer);
         }
 
-        // The following 2 methods are purely to show off these 2 hooks. Don't use them in your own code.
         public override void GrabRange(Player player, ref int grabRange) {
             grabRange *= 7;
         }
@@ -64,16 +60,6 @@ namespace XahlicemMod.Items.Craft {
         public override void PostUpdate() {
             Lighting.AddLight(item.Center, Color.White.ToVector3() * 0.04f * Main.essScale);
         }
-
-        public ModPacket GetPacket(int item, int player) {
-            ModPacket packet = this.mod.GetPacket();
-
-            packet.Write((byte) XModMessageType.Soul);
-            packet.Write(player);
-            packet.Write(item);
-
-            return packet;
-        }
     }
     public class SoulGlobalNPC : GlobalNPC {
         public override void NPCLoot(NPC npc) {
@@ -82,24 +68,31 @@ namespace XahlicemMod.Items.Craft {
             //Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Craft.Soul>(), (int) num);
             List<int> players = new List<int>();
             for (int i = 0; i < Main.player.Length; i++)
-                if (Main.player[i] != null) {
-                    if (Main.player[i].Distance(npc.position) < 1000) players.Add(Main.player[i].whoAmI);
-                }
-            if (players.Count == 0) Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Craft.Soul>(), (int) num);
-            else
+                if (Main.player[i] != null)
+                    if (npc.WithinRange(Main.player[i].Center, 800f))
+                        players.Add(Main.player[i].whoAmI);
+            if (players.Count == 0) {
+                int item = Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Craft.Soul>(), (int) num);
+                Main.item[item].GetGlobalItem<Items.Craft.SoulGlobalItem>().FromPlayer = -1;
+            } else
                 for (int i = 0; i < players.Count; i++) {
                     int item = Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Craft.Soul>(), (int)(num / (float) players.Count));
                     Main.item[item].GetGlobalItem<Items.Craft.SoulGlobalItem>().FromPlayer = players[i];
-                    Main.NewText(i.ToString(), Color.Beige);
-                    if (Main.netMode == NetmodeID.Server)(Main.item[item].modItem as Soul).GetPacket(item, players[i]);
                 }
 
         }
     }
 
     public class SoulGlobalItem : GlobalItem {
-        private int fromPlayer = -1;
+        internal int fromPlayer;
         public int FromPlayer { get { return fromPlayer; } set { fromPlayer = value; } }
+
+        public SoulGlobalItem() {
+            if (Main.netMode == NetmodeID.SinglePlayer) fromPlayer = -1;
+            else fromPlayer = -2;
+        }
+
+        public override bool InstancePerEntity { get { return true; } }
 
         public override void NetSend(Item item, System.IO.BinaryWriter writer) {
             writer.Write(fromPlayer);
@@ -109,15 +102,9 @@ namespace XahlicemMod.Items.Craft {
             fromPlayer = reader.ReadInt32();
         }
 
-        public override bool InstancePerEntity {
-            get {
-                return true;
-            }
-        }
-
         public override GlobalItem Clone(Item item, Item itemClone) {
             SoulGlobalItem myClone = (SoulGlobalItem) base.Clone(item, itemClone);
-            myClone.fromPlayer = fromPlayer;
+            myClone.FromPlayer = fromPlayer;
             return myClone;
         }
     }
