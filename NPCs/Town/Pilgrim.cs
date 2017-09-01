@@ -1,7 +1,8 @@
 using Terraria;
 using Terraria.ID;
-using Terraria.ModLoader;
 using Terraria.Localization;
+using Terraria.ModLoader;
+using Terraria.Utilities;
 
 namespace XahlicemMod.NPCs.Town {
     [AutoloadHead]
@@ -93,47 +94,30 @@ namespace XahlicemMod.NPCs.Town {
         }
 
         public override string GetChat() {
+            WeightedRandom<string> chat = new WeightedRandom<string>();
+
             int partyGirl = NPC.FindFirstNPC(NPCID.PartyGirl);
             if (partyGirl >= 0 && Main.rand.Next(4) == 0) {
-                return "Can you please tell " + Main.npc[partyGirl].GivenName + " to stop decorating my house with colors?";
+                chat.Add("Can you please tell " + Main.npc[partyGirl].GivenName + " to stop decorating my house with colors?");
             }
-            switch (Main.rand.Next(3)) {
-                case 0:
-                    return "Oh, sweet champion, you've returned.";
-                case 1:
-                    return "May the dark sigil guide your way.";
-                default:
-                    return "Stay safe champion.";
-            }
-        }
+            chat.Add("Oh, sweet champion, you've returned.");
+            chat.Add("May the dark sigil guide your way.");
+            chat.Add("Stay safe champion.");
 
-        /* 
-		// Consider using this alternate approach to choosing a random thing. Very useful for a variety of use cases.
-		// The WeightedRandom class needs "using Terraria.Utilities;" to use
-		public override string GetChat ()
-		{
-			WeightedRandom<string> chat = new WeightedRandom<string>();
-			int partyGirl = NPC.FindFirstNPC (NPCID.PartyGirl);
-			if (partyGirl >= 0 && Main.rand.Next (4) == 0)
-			{
-				chat.Add ("Can you please tell " + Main.npc[partyGirl].GivenName + " to stop decorating my house with colors?");
-			}
-			chat.Add ("Sometimes I feel like I'm different from everyone else here.");
-			chat.Add ("What's your favorite color? My favorite colors are white and black.");
-			chat.Add ("What? I don't have any arms or legs? Oh, don't be ridiculous!");
-			chat.Add ("This message has a weight of 5, meaning it appears 5 times more often.", 5.0);
-			chat.Add ("This message has a weight of 0.1, meaning it appears 10 times as rare.", 0.1);
-			return chat; // chat is implicitly cast to a string. You can also do "return chat.Get();" if that makes you feel better
-		}
-		*/
+            return chat.Get();
+        }
 
         public override void SetChatButtons(ref string button, ref string button2) {
             button = Language.GetText("Shop").Value;
+            XahlicemPlayer player = Main.LocalPlayer.GetModPlayer<XahlicemPlayer>();
+            if (player.Souls >= player.SoulCost) button2 = "Level Up!";
         }
 
         public override void OnChatButtonClicked(bool firstButton, ref bool shop) {
             if (firstButton) {
                 shop = true;
+            } else {
+                Main.NewText("Level Up!!!", Colors.CoinGold);
             }
         }
 
@@ -143,7 +127,7 @@ namespace XahlicemMod.NPCs.Town {
             shop.item[nextSlot].SetDefaults(mod.ItemType("GreenBlossom"));
             nextSlot++;
             shop.item[nextSlot].SetDefaults(mod.ItemType("HomewardBone"));
-            shop.item[nextSlot].shopCustomPrice = new int?(100);
+            shop.item[nextSlot].shopCustomPrice = new int ? (100);
             shop.item[nextSlot].shopSpecialCurrency = XahlicemMod.SoulCustomCurrencyID;
             nextSlot++;
             shop.item[nextSlot].SetDefaults(mod.ItemType("Lifegem"));

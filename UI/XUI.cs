@@ -15,7 +15,7 @@ namespace XahlicemMod.UI {
         private int RightTime = 0;
         private int Time = 0;
         public UIPanel panel;
-        public UIText num;
+        public UIText num, numLevel;
         public static bool visible = true;
         private Item item;
 
@@ -35,18 +35,26 @@ namespace XahlicemMod.UI {
             panel.OnRightMouseDown += RightDown;
             panel.OnRightMouseUp += RightUp;
 
-            Texture2D buttonPlayTexture = ModLoader.GetTexture("XahlicemMod/Items/Craft/SoulSingle");
-            UIImage playButton = new UIImage(buttonPlayTexture);
-            playButton.Left.Set(10, 0f);
-            playButton.Top.Set(10, 0f);
-            playButton.Width.Set(25, 0f);
-            playButton.Height.Set(25, 0f);
-            panel.Append(playButton);
+            numLevel = new UIText("0");
+            numLevel.Left.Set(10, 0f);
+            numLevel.Top.Set(10, 0f);
+            numLevel.Width.Set(25, 0f);
+            numLevel.Height.Set(25, 0f);
+            numLevel.HAlign = UIAlign.Left;
+            panel.Append(numLevel);
+
+            Texture2D soulTex = ModLoader.GetTexture("XahlicemMod/Items/Craft/SoulSingle");
+            UIImage soul = new UIImage(soulTex);
+            soul.Left.Set(45, 0f);
+            soul.Top.Set(10, 0f);
+            soul.Width.Set(25, 0f);
+            soul.Height.Set(25, 0f);
+            panel.Append(soul);
 
             num = new UIText("0");
-            num.Left.Set(35, 0f);
+            num.Left.Set(60, 0f);
             num.Top.Set(10, 0f);
-            num.Width.Set(90, 0f);
+            num.Width.Set(65, 0f);
             num.Height.Set(25, 0f);
             num.HAlign = UIAlign.Left;
             panel.Append(num);
@@ -121,8 +129,9 @@ namespace XahlicemMod.UI {
             Recalculate();
         }
 
-        public void updateValue(int carrying) {
+        public void updateValue(int carrying, int level) {
             num.SetText(carrying.ToString());
+            numLevel.SetText(level.ToString());
             Recipe.FindRecipes();
         }
     }

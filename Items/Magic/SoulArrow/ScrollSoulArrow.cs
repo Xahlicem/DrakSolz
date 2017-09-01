@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
 namespace XahlicemMod.Items.Magic.SoulArrow {
-    public class ScrollSoulArrow : ModItem {
+    public class ScrollSoulArrow : SoulItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Soul Arrow");
             Tooltip.SetDefault("Sorcery that projects a soul arrow toward your target.");
@@ -22,22 +22,16 @@ namespace XahlicemMod.Items.Magic.SoulArrow {
             item.mana = 5;
             item.knockBack = 2f;
             item.shootSpeed = 20.0f;
+            SoulValue = 500;
         }
 
         public override void AddRecipes() {
-            ModRecipe recipe = new SoulRecipe(mod, this, 500);
+            ModRecipe recipe = new SoulRecipe(mod, this);
             recipe.AddIngredient(mod.ItemType<Items.Craft.Scroll>());
             recipe.AddTile(mod.TileType<Items.Craft.FirelinkShrineTile>());
             recipe.AddRecipe();
-            /*recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.DirtBlock, 1);
-            recipe.SetResult(this);
-            recipe.AddRecipe();*/
-        }
-
-        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> tooltips) {
-            if (item.GetGlobalItem<XItem>().owned) return;
-            tooltips[0].text += " (500 Souls required)";
+            recipe = new SoulRecipe(mod, this);
+            recipe.AddRecipe();
         }
 
         //public override Vector2? HoldoutOffset() {

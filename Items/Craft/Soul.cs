@@ -63,20 +63,20 @@ namespace XahlicemMod.Items.Craft {
     }
     public class SoulGlobalNPC : GlobalNPC {
         public override void NPCLoot(NPC npc) {
-            if (npc.lifeMax < 5) return;
-            double num = Math.Ceiling((float)(npc.defense + npc.damage + 1) * npc.lifeMax / 80f);
+            double num = Math.Ceiling(Math.Pow(Math.Sqrt(npc.defDamage) + Math.Sqrt(npc.defDefense) + Math.Sqrt(npc.lifeMax) - 1, 4) / (Math.Sqrt(npc.lifeMax) * 200)); //(float)(npc.defDefense * npc.lifeMax + 1) / (npc.defDamage +1));
             //Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Craft.Soul>(), (int) num);
             List<int> players = new List<int>();
             for (int i = 0; i < Main.player.Length; i++)
                 if (Main.player[i] != null)
                     if (npc.WithinRange(Main.player[i].Center, 800f))
                         players.Add(Main.player[i].whoAmI);
+            num = Math.Ceiling(num / ((players.Count == 0) ? 1d : (double) players.Count));
             if (players.Count == 0) {
                 int item = Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Craft.Soul>(), (int) num);
                 Main.item[item].GetGlobalItem<Items.Craft.SoulGlobalItem>().FromPlayer = -1;
             } else
                 for (int i = 0; i < players.Count; i++) {
-                    int item = Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Craft.Soul>(), (int)(num / (float) players.Count));
+                    int item = Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Craft.Soul>(), (int) num);
                     Main.item[item].GetGlobalItem<Items.Craft.SoulGlobalItem>().FromPlayer = players[i];
                 }
 

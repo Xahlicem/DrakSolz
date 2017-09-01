@@ -103,20 +103,4 @@ namespace XahlicemMod {
         FromServBuff,
         FromClieBuff
     }
-
-    public class SoulRecipe : ModRecipe {
-        private int requiredSouls;
-        public SoulRecipe(Mod mod, ModItem modItem, int souls) : base(mod) {
-            requiredSouls = souls;
-            SetResult(modItem);
-        }
-
-        public override bool RecipeAvailable() {
-            return (Main.LocalPlayer.GetModPlayer<XahlicemPlayer>().Souls >= requiredSouls);
-        }
-
-        public override void OnCraft(Item item) {
-            Main.LocalPlayer.GetModPlayer<XahlicemPlayer>().Souls -= requiredSouls;
-        }
-    }
 }
