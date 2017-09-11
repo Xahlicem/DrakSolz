@@ -87,4 +87,11 @@ namespace XahlicemMod.Items {
             Main.LocalPlayer.GetModPlayer<XahlicemPlayer>().Souls -= requiredSouls;
         }
     }
+
+    public class ManaHealth : GlobalItem {
+        public override bool CanUseItem(Item item, Player player) {
+            if (item.type == ItemID.LifeCrystal || item.type == ItemID.LifeFruit || item.type == ItemID.ManaCrystal) return false;
+            else return base.ConsumeItem(item, player);
+        }
+    }
 }
