@@ -16,7 +16,6 @@ namespace XahlicemMod {
         internal XUI xUI;
         private UserInterface userInterfacePlayer;
         internal XPlayerUI xPUI;
-        public static int SoulCustomCurrencyID;
 
         public XahlicemMod() {
 
@@ -28,7 +27,6 @@ namespace XahlicemMod {
         }
 
         public override void Load() {
-            SoulCustomCurrencyID = CustomCurrencyManager.RegisterCurrency(new SoulCustomCurrency(ItemType<Items.Craft.Soul>(), 999L));
             if (Main.dedServ) return;
             xUI = new XUI(GetItem<Items.Craft.Soul>());
             xUI.Activate();
