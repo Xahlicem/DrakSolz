@@ -80,6 +80,27 @@ namespace XahlicemMod {
             items.Add(item);
         }
 
+        public override void SetControls() {
+            if (UI.XPlayerUI.visible) {
+                player.controlDown = false;
+                player.controlUp = false;
+                player.controlLeft = false;
+                player.controlRight = false;
+                player.controlMount = false;
+                player.controlThrow = false;
+                player.controlSmart = false;
+                player.controlTorch = false;
+                player.controlMap = false;
+                player.controlHook = false;
+                player.controlInv = false;
+                player.controlJump = false;
+                player.controlQuickHeal = false;
+                player.controlQuickMana = false;
+                player.controlUseItem = false;
+                player.controlUseTile = false;
+            }
+        }
+
         public void UpdateStats() {
             player.meleeDamage *= Melee;
             player.rangedDamage *= Ranged;

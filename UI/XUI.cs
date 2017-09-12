@@ -24,7 +24,8 @@ namespace XahlicemMod.UI {
         public static bool visible = false;
         public UIText Level { get; set; }
         public UIText Cost { get; set; }
-        public UIImageButton Exit { get; set; }
+        public UIToggleImage Exit { get; set; }
+
         StatPanel Vit { get; set; }
         StatPanel Str { get; set; }
         StatPanel Dex { get; set; }
@@ -32,48 +33,89 @@ namespace XahlicemMod.UI {
         StatPanel Int { get; set; }
         StatPanel Fth { get; set; }
 
+        internal UIPanel tooltip;
+        internal UIText tooltipTitle = new UIText(string.Empty);
+        internal UIText tooltipText = new UIText(string.Empty);
+        internal UIText tooltipText1 = new UIText(string.Empty);
+
         public override void OnInitialize() {
             panel = new UIPanel();
             panel.SetPadding(0);
             panel.Left.Set((Main.screenWidth - 200) / 2, 0f);
             panel.Top.Set((Main.screenHeight - 150) / 2, 0f);
-            panel.Width.Set(200, 0f);
+            panel.Width.Set(160, 0f);
             panel.Height.Set(150, 0f);
-            panel.BackgroundColor = new Color(73, 94, 171);
+            panel.BackgroundColor = new Color(50, 50, 50); //73, 94, 171);
 
-            Level = new UIText("");
-            Level.Left.Set(10, 0f);
+            UIText text = new UIText("lvl");
+            text.Left.Set(10, 0f);
+            text.Top.Set(10, 0f);
+            text.Width.Set(25, 0f);
+            text.Height.Set(20, 0f);
+            text.HAlign = UIAlign.Left;
+            panel.Append(text);
+            Level = new UIText(string.Empty);
+            Level.Left.Set(35, 0f);
             Level.Top.Set(10, 0f);
             Level.Width.Set(25, 0f);
-            Level.Height.Set(25, 0f);
+            Level.Height.Set(20, 0f);
             Level.HAlign = UIAlign.Left;
             panel.Append(Level);
 
-            Cost = new UIText("");
-            Cost.Left.Set(40, 0f);
-            Cost.Top.Set(10, 0f);
-            Cost.Width.Set(120, 0f);
-            Cost.Height.Set(25, 0f);
-            Cost.HAlign = UIAlign.Left;
-            panel.Append(Cost);
+            UIPanel p = new UIPanel();
+            p.SetPadding(0);
+            p.BackgroundColor = new Color(50, 50, 50);
+            p.Left.Set(60, 0f);
+            p.Top.Set(0, 0f);
+            p.Width.Set(68, 0f);
+            p.Height.Set(30, 0f);
+            panel.Append(p);
 
-            Texture2D soulTex = ModLoader.GetTexture("XahlicemMod/Items/Craft/SoulSingle");
-            Exit = new UIImageButton(soulTex);
-            Exit.Left.Set(165, 0f);
+            Cost = new UIText(string.Empty, 0.9f);
+            Cost.Left.Set(0, 0f);
+            Cost.Top.Set(8, 0f);
+            Cost.Width.Set(68, 0f);
+            Cost.Height.Set(25, 0f);
+            p.Append(Cost);
+
+            Texture2D texture = ModLoader.GetTexture("XahlicemMod/UI/AttributeGUI");
+            Exit = new UIToggleImage(texture, 20, 20, new Point(43, 1), new Point(43, 1));
+            Exit.Left.Set(130, 0f);
             Exit.Top.Set(10, 0f);
-            Exit.Width.Set(25, 0f);
-            Exit.Height.Set(25, 0f);
+            Exit.Width.Set(20, 0f);
+            Exit.Height.Set(20, 0f);
             Exit.OnClick += Apply;
             panel.Append(Exit);
 
-            Vit = new StatPanel(10, 45, panel);
-            Str = new StatPanel(10, 80, panel);
-            Dex = new StatPanel(10, 115, panel);
-            Att = new StatPanel(115, 45, panel);
-            Int = new StatPanel(115, 80, panel);
-            Fth = new StatPanel(115, 115, panel);
+            Vit = new StatPanel(10, 35, panel, texture, new Point(1, 22));
+            Str = new StatPanel(10, 70, panel, texture, new Point(1, 43));
+            Dex = new StatPanel(10, 105, panel, texture, new Point(1, 64));
+            Att = new StatPanel(90, 35, panel, texture, new Point(22, 22));
+            Int = new StatPanel(90, 70, panel, texture, new Point(22, 43));
+            Fth = new StatPanel(90, 105, panel, texture, new Point(22, 64));
 
             base.Append(panel);
+
+            tooltip = new UIPanel();
+            tooltip.SetPadding(0);
+            tooltip.Width.Set(200, 0f);
+            tooltip.Height.Set(60, 0f);
+            tooltip.BackgroundColor = new Color(50, 50, 50);
+            tooltipTitle.Left.Set(0, 0f);
+            tooltipTitle.Top.Set(10, 0f);
+            tooltipTitle.Width.Set(200, 0f);
+            tooltipTitle.Height.Set(30, 0f);
+            tooltip.Append(tooltipTitle);
+            tooltipText.Left.Set(0, 0f);
+            tooltipText.Top.Set(35, 0f);
+            tooltipText.Width.Set(200, 0f);
+            tooltipText.Height.Set(30, 0f);
+            tooltip.Append(tooltipText);
+            tooltipText1.Left.Set(0, 0f);
+            tooltipText1.Top.Set(60, 0f);
+            tooltipText1.Width.Set(200, 0f);
+            tooltipText1.Height.Set(30, 0f);
+            tooltip.Append(tooltipText1);
         }
 
         private void Apply(UIMouseEvent evt, UIElement listeningElement) {
@@ -113,59 +155,111 @@ namespace XahlicemMod.UI {
         }
 
         protected override void DrawSelf(SpriteBatch spriteBatch) {
-            Main.playerInventory = false;
-            Main.LocalPlayer.frozen = true;
-            Main.LocalPlayer.headcovered = true;
-            Main.LocalPlayer.mouseInterface = true;
-            Main.LocalPlayer.talkNPC = -1;
+            setControls();
+            Vector2 MousePosition = new Vector2((float) Main.mouseX, (float) Main.mouseY);
+            tooltip.Top.Set(MousePosition.Y + 15, 0f);
+            tooltip.Left.Set(MousePosition.X + 15, 0f);
+            string s = "";
+            bool throwing = false;
+            if (!HasChild(tooltip)) Append(tooltip);
+            if (Vit.icon.ContainsPoint(MousePosition)) {
+                tooltipTitle.SetText("Vitality");
+                s = ("+" + (Vit.Stat + Vit.StatAdd) * 10 + " Health");
+            } else if (Str.icon.ContainsPoint(MousePosition)) {
+                tooltipTitle.SetText("Strength");
+                s = ("+" + (Str.Stat + Str.StatAdd - 20) * 2 + "% Melee Damage");
+                throwing = true;
+            } else if (Dex.icon.ContainsPoint(MousePosition)) {
+                tooltipTitle.SetText("Dexterity");
+                s = ("+" + (Dex.Stat + Dex.StatAdd - 20) * 2 + "% Ranged Damage");
+                throwing = true;
+            } else if (Att.icon.ContainsPoint(MousePosition)) {
+                tooltipTitle.SetText("Attunement");
+                s = ("+" + (Att.Stat + Att.StatAdd) * 5 + " Mana");
+            } else if (Int.icon.ContainsPoint(MousePosition)) {
+                tooltipTitle.SetText("Intelligence");
+                s = ("+" + (Int.Stat + Int.StatAdd - 20) * 2 + "% Magic Damage");
+            } else if (Fth.icon.ContainsPoint(MousePosition)) {
+                tooltipTitle.SetText("Faith");
+                s = ("+" + (Fth.Stat + Fth.StatAdd - 20) * 2 + "% Summon Damage");
+            } else RemoveChild(tooltip);
+            if (HasChild(tooltip)) {
+                tooltipText.SetText((s[1] == '-') ? s.Substring(1) : s);
+                if (throwing) {
+                    string t = ("+" + ((Dex.Stat + Dex.StatAdd < Str.Stat + Str.StatAdd) ? (Dex.Stat + Dex.StatAdd - 10) : (Str.Stat + Str.StatAdd - 10)) * 4 + "% Thrown Damage");
+                    tooltipText1.SetText((t[1] == '-') ? t.Substring(1) : t);
+                    tooltip.Height.Set(85, 0f);
+                } else {
+                    tooltipText1.SetText(string.Empty);
+                    tooltip.Height.Set(60, 0f);
+                }
+            }
+
             Recalculate();
             if (Player == null) return;
-            if (int.Parse(Cost.Text) > Player.Souls) Level.Parent.RemoveChild(Exit);
-            else Level.Parent.Append(Exit);
+            if (int.Parse(Cost.Text) > Player.Souls) {
+                Level.Parent.RemoveChild(Exit);
+                Cost.TextColor = Color.Red;
+            } else {
+                Level.Parent.Append(Exit);
+                Cost.TextColor = Color.White;
+            }
+        }
+
+        private void setControls() {
+            Main.playerInventory = false;
+
+            Player p = Main.LocalPlayer;
+            p.mouseInterface = true;
+            p.talkNPC = -1;
+            p.headcovered = true;
         }
 
         private class StatPanel {
             public int Stat { get; set; }
             public int StatAdd { get; set; }
 
-            public UIText Up { get; set; }
-            public UIText Down { get; set; }
+            internal UIToggleImage up, down, icon;
             public UIText StatText { get; set; }
 
-            public StatPanel(int x, int y, UIPanel panel) {
+            public StatPanel(int x, int y, UIPanel panel, Texture2D texture, Point point) {
                 Stat = 0;
                 StatAdd = 0;
 
-                Up = new UIText("-");
-                Up.Left.Set(x, 0f);
-                Up.Top.Set(y, 0f);
-                Up.Width.Set(20, 0f);
-                Up.Height.Set(25, 0f);
-                Up.OnMouseOver += OnOver;
-                Up.OnMouseOut += OnOut;
-                Up.OnMouseDown += OnDown;
-                Up.OnMouseUp += OnUp;
-                Up.TextColor = Color.Gray;
-                panel.Append(Up);
-
-                StatText = new UIText("");
-                StatText.Left.Set(x + 20, 0f);
+                StatText = new UIText(string.Empty);
+                StatText.Left.Set(x, 0f);
                 StatText.Top.Set(y, 0f);
-                StatText.Width.Set(35, 0f);
-                StatText.Height.Set(25, 0f);
+                StatText.Width.Set(60, 0f);
+                StatText.Height.Set(20, 0f);
                 panel.Append(StatText);
 
-                Down = new UIText("+");
-                Down.Left.Set(x + 55, 0f);
-                Down.Top.Set(y, 0f);
-                Down.Width.Set(20, 0f);
-                Down.Height.Set(25, 0f);
-                Down.OnMouseOver += OnOver;
-                Down.OnMouseOut += OnOut;
-                Down.OnMouseDown += OnDown;
-                Down.OnMouseUp += OnUp;
-                Down.TextColor = Color.Gray;
-                panel.Append(Down);
+                Point p = new Point(1, 1);
+                up = new UIToggleImage(texture, 20, 20, p, p);
+                up.Left.Set(x, 0f);
+                up.Top.Set(y + 15, 0f);
+                up.Width.Set(20, 0f);
+                up.Height.Set(20, 0f);
+                up.SetState(false);
+                up.OnClick += OnClick;
+                panel.Append(up);
+
+                icon = new UIToggleImage(texture, 20, 20, point, point);
+                icon.Left.Set(x + 20, 0f);
+                icon.Top.Set(y + 15, 0f);
+                icon.Width.Set(20, 0f);
+                icon.Height.Set(20, 0f);
+                icon.OnClick += Reset;
+                panel.Append(icon);
+
+                p = new Point(22, 1);
+                down = new UIToggleImage(texture, 20, 20, p, p);
+                down.Left.Set(x + 40, 0f);
+                down.Top.Set(y + 15, 0f);
+                down.Width.Set(20, 0f);
+                down.Height.Set(20, 0f);
+                down.SetState(true);
+                down.OnClick += OnClick;
+                panel.Append(down);
             }
 
             public void Set(int stat) {
@@ -178,32 +272,21 @@ namespace XahlicemMod.UI {
                 StatText.SetText((Stat + StatAdd).ToString());
             }
 
-            public void Reset() {
+            public void Reset(UIMouseEvent evt, UIElement listeningElement) {
                 StatAdd = 0;
                 Set();
             }
 
-            private void OnOver(UIMouseEvent evt, UIElement listeningElement) {
-                UIText text = listeningElement as UIText;
-                text.TextColor = Color.LightGray;
+            public void Reset() {
+                Reset(null, icon);
             }
 
-            private void OnOut(UIMouseEvent evt, UIElement listeningElement) {
-                UIText text = listeningElement as UIText;
-                text.TextColor = Color.Gray;
-            }
-
-            private void OnDown(UIMouseEvent evt, UIElement listeningElement) {
-                UIText text = listeningElement as UIText;
-                text.TextColor = Color.White;
-            }
-
-            private void OnUp(UIMouseEvent evt, UIElement listeningElement) {
-                UIText text = listeningElement as UIText;
-                text.TextColor = Color.LightGray;
-                if (text.Text.Equals("-")) StatAdd--;
+            private void OnClick(UIMouseEvent evt, UIElement listeningElement) {
+                UIToggleImage button = listeningElement as UIToggleImage;
+                if (button.IsOn) StatAdd--;
                 else StatAdd++;
                 Set();
+                button.SetState(!button.IsOn);
             }
         }
     }
