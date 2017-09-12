@@ -63,6 +63,7 @@ namespace XahlicemMod.Items.Craft {
     }
     public class SoulGlobalNPC : GlobalNPC {
         public override void NPCLoot(NPC npc) {
+            if (npc.aiStyle == 9 || npc.aiStyle == 50) return;
             double num = Math.Ceiling(Math.Pow(Math.Sqrt(npc.defDamage) + Math.Sqrt(npc.defDefense) + Math.Sqrt(npc.lifeMax) - 1, 4) / (Math.Sqrt(npc.lifeMax) * 200)); //(float)(npc.defDefense * npc.lifeMax + 1) / (npc.defDamage +1));
             //Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Craft.Soul>(), (int) num);
             List<int> players = new List<int>();
