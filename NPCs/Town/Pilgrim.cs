@@ -63,17 +63,7 @@ namespace XahlicemMod.NPCs.Town {
         }
 
         public override bool CanTownNPCSpawn(int numTownNPCs, int money) {
-            bool soul = false, lantern = false;
-            for (int k = 0; k < 255; k++) {
-                Player player = Main.player[k];
-                if (player.active) {
-                    for (int j = 0; j < player.inventory.Length; j++) {
-                        if (player.inventory[j].type == mod.ItemType("Soul")) soul = true;
-                        if (player.inventory[j].type == mod.ItemType("HomewardBone")) lantern = true;
-                    }
-                }
-            }
-            return soul && lantern;
+            return true;
         }
 
         public override bool CheckConditions(int left, int right, int top, int bottom) {
