@@ -97,10 +97,9 @@ namespace XahlicemMod.UI {
 
         public override void Update(GameTime gameTime) {
             if (Player == null) return;
-            int level = Vit.Stat + Str.Stat + Dex.Stat + Att.Stat + Int.Stat + Fth.Stat;
-            level += Vit.StatAdd + Str.StatAdd + Dex.StatAdd + Att.StatAdd + Int.StatAdd + Fth.StatAdd;
+            int level = Vit.Stat + Str.Stat + Dex.Stat + Att.Stat + Int.Stat + Fth.Stat + Vit.StatAdd + Str.StatAdd + Dex.StatAdd + Att.StatAdd + Int.StatAdd + Fth.StatAdd;
             int totalCost = 0;
-            for (int i = 0; i < level; i++) {
+            for (int i = Player.Level; i < level; i++) {
                 totalCost += Player.SoulCost(i);
             }
             Level.SetText((level).ToString());
