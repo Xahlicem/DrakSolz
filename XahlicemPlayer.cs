@@ -75,7 +75,7 @@ namespace XahlicemMod {
         public override void SetupStartInventory(IList<Item> items) {
             items.Clear();
             Item item = new Item();
-            item.SetDefaults(ItemID.CopperAxe); //mod.ItemType<Items.Shop.HomewardBone>());
+            item.netDefaults(mod.ItemType<Items.Melee.SwordHilt>()); //mod.ItemType<Items.Shop.HomewardBone>());
             item.prefix = PrefixID.Broken;
             items.Add(item);
         }
