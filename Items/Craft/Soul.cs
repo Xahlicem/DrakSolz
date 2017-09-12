@@ -43,7 +43,6 @@ namespace XahlicemMod.Items.Craft {
             if (!player.Equals(Main.LocalPlayer)) return false;
             player.GetModPlayer<XahlicemPlayer>().Souls += item.stack;
             player.ManaEffect(item.stack);
-            Main.NewText(item.GetGlobalItem<Items.Craft.SoulGlobalItem>().FromPlayer.ToString(), Color.Beige);
             return false;
         }
 
