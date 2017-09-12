@@ -20,25 +20,56 @@ namespace XahlicemMod {
 
         public int Level { get; set; }
         public int Souls { get; set; }
-        public int SoulCost {
-            get {
-                return (int)(Math.Round((Math.Pow(0.02 * Level, 3) + Math.Pow(3.06 * Level, 2) + 105.6 * Level) * 0.1, 0) * 10);
-            }
+        public int SoulCost(int level) {
+            return (int)(Math.Round((Math.Pow(0.02 * level, 3) + Math.Pow(3.06 * level, 2) + 105.6 * level) * 0.1, 0) * 10);
         }
-        public int Melee { get; set; }
-        public int Ranged { get; set; }
-        public int Throwing { get; set; }
-        public int Magic { get; set; }
-        public int Summon { get; set; }
+        public int Str { get; set; }
+        public float Melee { get { return 0.6f + Str * 0.02f; } }
+        public int Dex { get; set; }
+        public float Ranged { get { return 0.6f + Dex * 0.02f; } }
+        public float Throwing { get { return 0.6f + ((Str < Dex) ? Str : Dex) * 0.02f; } }
+        public int Int { get; set; }
+        public float Magic { get { return 0.6f + Int * 0.02f; } }
+        public int Fth { get; set; }
+        public float Summon { get { return 0.6f + Fth * 0.01f; } }
+        public int Vit { get; set; }
+        public int Health { get { return Vit * 10; } }
+        public int Att { get; set; }
+        public int Mana { get { return Att * 5; } }
 
         public override void Initialize() {
             Level = 0;
             Souls = 0;
-            Melee = 0;
-            Ranged = 0;
-            Throwing = 0;
-            Magic = 0;
-            Summon = 0;
+            Str = 0;
+            Dex = 0;
+            Int = 0;
+            Fth = 0;
+            Vit = 0;
+            Att = 0;
+        }
+
+        public override TagCompound Save() {
+            TagCompound save = new TagCompound();
+            save.Add("XLevel", Level);
+            save.Add("XSouls", Souls);
+            save.Add("XStr", Str);
+            save.Add("XDex", Dex);
+            save.Add("XInt", Int);
+            save.Add("XFth", Fth);
+            save.Add("XVit", Vit);
+            save.Add("XAtt", Att);
+            return save;
+        }
+
+        public override void Load(TagCompound tag) {
+            Level = tag.GetInt("XLevel");
+            Souls = tag.GetInt("XSouls");
+            Str = tag.GetInt("XStr");
+            Dex = tag.GetInt("XDex");
+            Int = tag.GetInt("XInt");
+            Fth = tag.GetInt("XFth");
+            Vit = tag.GetInt("XVit");
+            Att = tag.GetInt("XAtt");
         }
 
         public override void SetupStartInventory(IList<Item> items) {
@@ -49,17 +80,14 @@ namespace XahlicemMod {
             items.Add(item);
         }
 
-        public override TagCompound Save() {
-            return new TagCompound { { "XSouls", Souls }
-            };
-        }
-
         public void UpdateStats() {
-            player.meleeDamage = player.meleeDamage * (0.6f + Melee * 0.02f);
-            player.rangedDamage = player.rangedDamage * (0.6f + Ranged * 0.02f);
-            player.thrownDamage = player.thrownDamage * (0.6f + Throwing * 0.02f);
-            player.magicDamage = player.magicDamage * (0.6f + Magic * 0.02f);
-            player.minionDamage = player.minionDamage * (0.6f + Summon * 0.02f);
+            player.meleeDamage *= Melee;
+            player.rangedDamage *= Ranged;
+            player.thrownDamage *= Throwing;
+            player.magicDamage *= Magic;
+            player.minionDamage *= Summon;
+            player.statLifeMax = 100 + Health;
+            player.statManaMax = Mana;
         }
 
         public override void PostUpdate() {
@@ -88,10 +116,6 @@ namespace XahlicemMod {
             packet.Write(lastHurt);
 
             return packet;
-        }
-
-        public override void Load(TagCompound tag) {
-            Souls = tag.GetInt("XSouls");
         }
 
         public override void OnRespawn(Player player) {

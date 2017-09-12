@@ -79,7 +79,6 @@ namespace XahlicemMod.Items.Craft {
                     int item = Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Craft.Soul>(), (int) num);
                     Main.item[item].GetGlobalItem<Items.Craft.SoulGlobalItem>().FromPlayer = players[i];
                 }
-
         }
     }
 

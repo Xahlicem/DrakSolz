@@ -12,8 +12,10 @@ using XahlicemMod.UI;
 namespace XahlicemMod {
     public class XahlicemMod : Mod {
 
-        private UserInterface exampleUserInterface;
+        private UserInterface userInterface;
         internal XUI xUI;
+        private UserInterface userInterfacePlayer;
+        internal XPlayerUI xPUI;
         public static int SoulCustomCurrencyID;
 
         public XahlicemMod() {
@@ -30,8 +32,12 @@ namespace XahlicemMod {
             if (Main.dedServ) return;
             xUI = new XUI(GetItem<Items.Craft.Soul>());
             xUI.Activate();
-            exampleUserInterface = new UserInterface();
-            exampleUserInterface.SetState(xUI);
+            userInterface = new UserInterface();
+            userInterface.SetState(xUI);
+            xPUI = new XPlayerUI();
+            xPUI.Activate();
+            userInterfacePlayer = new UserInterface();
+            userInterfacePlayer.SetState(xPUI);
         }
 
         public override void ModifyInterfaceLayers(System.Collections.Generic.List<GameInterfaceLayer> layers) {
@@ -41,8 +47,18 @@ namespace XahlicemMod {
                     "XahlicemMod: Souls",
                     delegate {
                         if (XUI.visible) {
-                            exampleUserInterface.Update(Main._drawInterfaceGameTime);
+                            userInterface.Update(Main._drawInterfaceGameTime);
                             xUI.Draw(Main.spriteBatch);
+                        }
+                        return true;
+                    },
+                    InterfaceScaleType.UI));
+                layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
+                    "XahlicemMod: Level",
+                    delegate {
+                        if (XPlayerUI.visible) {
+                            userInterfacePlayer.Update(Main._drawInterfaceGameTime);
+                            xPUI.Draw(Main.spriteBatch);
                         }
                         return true;
                     },

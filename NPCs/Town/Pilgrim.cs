@@ -110,14 +110,14 @@ namespace XahlicemMod.NPCs.Town {
         public override void SetChatButtons(ref string button, ref string button2) {
             button = Language.GetText("Shop").Value;
             XahlicemPlayer player = Main.LocalPlayer.GetModPlayer<XahlicemPlayer>();
-            if (player.Souls >= player.SoulCost) button2 = "Level Up!";
+            if (player.Souls >= player.SoulCost(player.Level)) button2 = "Level up";
         }
 
         public override void OnChatButtonClicked(bool firstButton, ref bool shop) {
             if (firstButton) {
                 shop = true;
             } else {
-                Main.NewText("Level Up!!!", Colors.CoinGold);
+                UI.XPlayerUI.visible = true;
             }
         }
 
