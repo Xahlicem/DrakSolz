@@ -27,7 +27,7 @@ namespace XahlicemMod {
         public float Melee { get { return 0.6f + Str * 0.02f; } }
         public int Dex { get; set; }
         public float Ranged { get { return 0.6f + Dex * 0.02f; } }
-        public float Throwing { get { return 0.6f + ((Str < Dex) ? Str : Dex) * 0.02f; } }
+        public float Throwing { get { return 0.6f + ((Str < Dex) ? Str : Dex) * 0.04f; } }
         public int Int { get; set; }
         public float Magic { get { return 0.6f + Int * 0.02f; } }
         public int Fth { get; set; }
@@ -36,6 +36,8 @@ namespace XahlicemMod {
         public int Health { get { return Vit * 10; } }
         public int Att { get; set; }
         public int Mana { get { return Att * 5; } }
+
+        public bool SoulSummon { get; set; }
 
         public override void Initialize() {
             Level = 0;
@@ -46,6 +48,8 @@ namespace XahlicemMod {
             Fth = 0;
             Vit = 0;
             Att = 0;
+
+            SoulSummon = false;
         }
 
         public override TagCompound Save() {
@@ -102,13 +106,21 @@ namespace XahlicemMod {
         }
 
         public void UpdateStats() {
-            player.meleeDamage *= Melee;
-            player.rangedDamage *= Ranged;
-            player.thrownDamage *= Throwing;
-            player.magicDamage *= Magic;
-            player.minionDamage *= Summon;
+            player.meleeDamage = Melee;
+            player.rangedDamage = Ranged;
+            player.thrownDamage = Throwing;
+            player.magicDamage = Magic;
+            player.minionDamage = Summon;
             player.statLifeMax = 100 + Health;
             player.statManaMax = Mana;
+        }
+
+        public override void PreUpdate() {
+            UpdateStats();
+        }
+
+        public override void PostUpdateEquips() {
+            player.maxMinions += 0;
         }
 
         public override void PostUpdate() {
@@ -116,8 +128,6 @@ namespace XahlicemMod {
                 GetPacket((byte) XModMessageType.FromClient).Send();
             }
             if (player.Equals(Main.LocalPlayer))(mod as XahlicemMod).xUI.updateValue(Souls, Level);
-
-            UpdateStats();
         }
 
         public override void clientClone(ModPlayer clone) {
@@ -137,6 +147,10 @@ namespace XahlicemMod {
             packet.Write(lastHurt);
 
             return packet;
+        }
+
+        public override void ResetEffects() {
+            SoulSummon = false;
         }
 
         public override void OnRespawn(Player player) {
