@@ -38,6 +38,10 @@ namespace XahlicemMod {
             userInterfacePlayer.SetState(xPUI);
         }
 
+        public override void Unload() {
+            Items.MeleeThrow.list = null;
+        }
+
         public override void ModifyInterfaceLayers(System.Collections.Generic.List<GameInterfaceLayer> layers) {
             int MouseTextIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Mouse Text"));
             if (MouseTextIndex != -1) {

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -33,7 +34,7 @@ namespace XahlicemMod.Items {
             return true;
         }
 
-        public override void ModifyTooltips(Item item, System.Collections.Generic.List<TooltipLine> tooltips) {
+        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips) {
             if (item.GetGlobalItem<XItem>().owned) return;
             SoulItem i = item.modItem as SoulItem;
             if (i == null) return;
@@ -94,7 +95,7 @@ namespace XahlicemMod.Items {
             else return base.ConsumeItem(item, player);
         }
 
-        public override void ModifyTooltips(Item item, System.Collections.Generic.List<TooltipLine> tooltips) {
+        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips) {
             if (item.type == ItemID.LifeCrystal) {
                 tooltips[tooltips.Capacity - 1].text = "Makes you whole and increases life regeneration for 5 minutes";
             }
@@ -108,7 +109,7 @@ namespace XahlicemMod.Items {
 
         public override bool ConsumeItem(Item item, Player player) {
             if (item.type == ItemID.LifeCrystal || item.type == ItemID.LifeFruit) {
-                player.AddBuff(BuffID.Regeneration, 60 * 60 * ((item.type == ItemID.LifeCrystal)?5:1));
+                player.AddBuff(BuffID.Regeneration, 60 * 60 * ((item.type == ItemID.LifeCrystal) ? 5 : 1));
 
                 int index = player.FindBuffIndex(mod.BuffType<Buffs.Hollow>());
                 if (index != -1) player.buffTime[index] = 0;
@@ -122,7 +123,7 @@ namespace XahlicemMod.Items {
 
         public override bool UseItem(Item item, Player player) {
             if (item.type == ItemID.LifeCrystal || item.type == ItemID.LifeFruit) {
-                player.AddBuff(BuffID.Regeneration, 60 * 60 * ((item.type == ItemID.LifeCrystal)?5:1));
+                player.AddBuff(BuffID.Regeneration, 60 * 60 * ((item.type == ItemID.LifeCrystal) ? 5 : 1));
 
                 int index = player.FindBuffIndex(mod.BuffType<Buffs.Hollow>());
                 if (index != -1) player.buffTime[index] = 0;
@@ -133,7 +134,36 @@ namespace XahlicemMod.Items {
                 player.AddBuff(BuffID.MagicPower, 60 * 60 * 1);
                 return true;
             }
-            return base.ConsumeItem(item, player);
+            return base.UseItem(item, player);
         }
+    }
+
+    public class SummonMod : GlobalItem {
+        public override void SetDefaults(Item item) {
+            if (item.type == ItemID.SlimeStaff) {
+                item.mana *= 1;
+
+            }
+        }
+    }
+
+    public class MeleeThrow : GlobalItem {
+
+        public static List<int> list;
+
+        static MeleeThrow() {
+            list = new List<int>();
+            list.AddRange(new int[] { 284, 55, 1918, 1825, 670, 191, 119, 3030, 1324, 561, 1122, 1513, 3054, 1569, 3543 });
+        }
+
+        public override void SetDefaults(Item item) {
+            if (ItemID.Sets.Yoyo[item.type] || list.Contains(item.type)) {
+                item.melee = false;
+                item.thrown = true;
+            }
+        }
+    }
+
+    public class SummonMon : GlobalBuff {
     }
 }
