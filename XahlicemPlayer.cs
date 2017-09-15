@@ -38,6 +38,7 @@ namespace XahlicemMod {
         public int Mana { get { return Att * 5; } }
 
         public bool SoulSummon { get; set; }
+        public bool EvilEye { get; set; }
 
         public override void Initialize() {
             Level = 0;
@@ -50,6 +51,104 @@ namespace XahlicemMod {
             Att = 0;
 
             SoulSummon = false;
+            EvilEye = false;
+        }
+
+        public override void ResetEffects() {
+            SoulSummon = false;
+            EvilEye = false;
+        }
+
+        public override void PreUpdate() { }
+
+        public override void ProcessTriggers(TriggersSet triggersSet) { }
+
+        public override void SetControls() {
+            if (UI.XPlayerUI.visible) {
+                player.controlDown = false;
+                player.controlUp = false;
+                player.controlLeft = false;
+                player.controlRight = false;
+                player.controlMount = false;
+                player.controlThrow = false;
+                player.controlSmart = false;
+                player.controlTorch = false;
+                player.controlMap = false;
+                player.controlHook = false;
+                player.controlInv = false;
+                player.controlJump = false;
+                player.controlQuickHeal = false;
+                player.controlQuickMana = false;
+                player.controlUseItem = false;
+                player.controlUseTile = false;
+            }
+        }
+
+        public override void PreUpdateBuffs() {
+            lastHurt++;
+        }
+
+        public override void PostUpdateBuffs() {
+            if (player.armor[0].type == mod.ItemType<Items.Armor.ChannelerHelmet>() &&
+                player.armor[1].type == mod.ItemType<Items.Armor.ChannelerRobe>() &&
+                player.armor[2].type == mod.ItemType<Items.Armor.ChannelerSkirt>())
+                player.extraAccessorySlots += 1;
+
+            for (int n = 3; n < 8 + player.extraAccessorySlots; n++) {
+                Item item = player.armor[n];
+                if (item.type == mod.ItemType<Items.Accessory.RingTinyBeing>()) {
+                    player.statLifeMax2 += 20;
+                }
+            }
+        }
+
+        public override void UpdateEquips(ref bool wallSpeedBuff, ref bool tileSpeedBuff, ref bool tileRangeBuff) { }
+
+        public override void PostUpdateEquips() { }
+
+        public override void PostUpdateMiscEffects() {
+            UpdateStats();
+        }
+
+        public override void PostUpdateRunSpeeds() { }
+
+        public override void PreUpdateMovement() { }
+
+        public override void PostUpdate() {
+            if (Main.netMode == NetmodeID.MultiplayerClient && player.Equals(Main.LocalPlayer)) {
+                GetPacket((byte) XModMessageType.FromClient).Send();
+            }
+            if (player.Equals(Main.LocalPlayer))(mod as XahlicemMod).xUI.updateValue(Souls, Level);
+        }
+
+        public override void Hurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit) {
+            lastHurt = 0;
+            player.AddBuff(mod.BuffType<Buffs.Hollow>(), (int)(damage * 120.0));
+        }
+
+        public override void UpdateDead() {
+            player.AddBuff(mod.BuffType<Buffs.Hollow>(), 60);
+
+            if (Souls != 0) {
+                int i = Item.NewItem((int) player.position.X, (int) player.position.Y, player.width, player.height, mod.ItemType("Soul"), Souls);
+                Main.item[i].GetGlobalItem<Items.Craft.SoulGlobalItem>().FromPlayer = player.whoAmI;
+                Souls = 0;
+                if (player.Equals(Main.LocalPlayer))(mod as XahlicemMod).xUI.updateValue(Souls, Level);
+            }
+        }
+
+        public override void OnRespawn(Player player) {
+            lastHurt = 0;
+        }
+
+        public void UpdateStats() {
+            player.meleeDamage *= Melee;
+            player.rangedDamage *= Ranged;
+            player.thrownDamage *= Throwing;
+            player.magicDamage *= Magic;
+            player.minionDamage *= Summon;
+            player.statLifeMax = 100 + Health;
+            player.statManaMax = Mana;
         }
 
         public override TagCompound Save() {
@@ -84,52 +183,6 @@ namespace XahlicemMod {
             items.Add(item);
         }
 
-        public override void SetControls() {
-            if (UI.XPlayerUI.visible) {
-                player.controlDown = false;
-                player.controlUp = false;
-                player.controlLeft = false;
-                player.controlRight = false;
-                player.controlMount = false;
-                player.controlThrow = false;
-                player.controlSmart = false;
-                player.controlTorch = false;
-                player.controlMap = false;
-                player.controlHook = false;
-                player.controlInv = false;
-                player.controlJump = false;
-                player.controlQuickHeal = false;
-                player.controlQuickMana = false;
-                player.controlUseItem = false;
-                player.controlUseTile = false;
-            }
-        }
-
-        public void UpdateStats() {
-            player.meleeDamage = Melee;
-            player.rangedDamage = Ranged;
-            player.thrownDamage = Throwing;
-            player.magicDamage = Magic;
-            player.minionDamage = Summon;
-            player.statLifeMax = 100 + Health;
-            player.statManaMax = Mana;
-        }
-
-        public override void PreUpdate() {
-            UpdateStats();
-        }
-
-        public override void PostUpdateEquips() {
-            player.maxMinions += 0;
-        }
-
-        public override void PostUpdate() {
-            if (Main.netMode == NetmodeID.MultiplayerClient && player.Equals(Main.LocalPlayer)) {
-                GetPacket((byte) XModMessageType.FromClient).Send();
-            }
-            if (player.Equals(Main.LocalPlayer))(mod as XahlicemMod).xUI.updateValue(Souls, Level);
-        }
-
         public override void clientClone(ModPlayer clone) {
             base.clientClone(clone);
             (clone as XahlicemPlayer).Souls = Souls;
@@ -147,34 +200,6 @@ namespace XahlicemMod {
             packet.Write(lastHurt);
 
             return packet;
-        }
-
-        public override void ResetEffects() {
-            SoulSummon = false;
-        }
-
-        public override void OnRespawn(Player player) {
-            lastHurt = 0;
-        }
-
-        public override void UpdateDead() {
-            player.AddBuff(mod.BuffType<Buffs.Hollow>(), 60);
-
-            if (Souls != 0) {
-                int i = Item.NewItem((int) player.position.X, (int) player.position.Y, player.width, player.height, mod.ItemType("Soul"), Souls);
-                Main.item[i].GetGlobalItem<Items.Craft.SoulGlobalItem>().FromPlayer = player.whoAmI;
-                Souls = 0;
-                if (player.Equals(Main.LocalPlayer))(mod as XahlicemMod).xUI.updateValue(Souls, Level);
-            }
-        }
-
-        public override void PreUpdateBuffs() {
-            lastHurt++;
-        }
-
-        public override void Hurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit) {
-            lastHurt = 0;
-            player.AddBuff(mod.BuffType<Buffs.Hollow>(), (int)(damage * 120.0));
         }
     }
 }

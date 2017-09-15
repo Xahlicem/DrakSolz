@@ -43,6 +43,10 @@ namespace XahlicemMod.Items.Craft {
             if (!player.Equals(Main.LocalPlayer)) return false;
             player.GetModPlayer<XahlicemPlayer>().Souls += item.stack;
             player.ManaEffect(item.stack);
+            if (player.GetModPlayer<XahlicemPlayer>().EvilEye) {
+                player.statLife += 5;
+                player.HealEffect(5);
+            }
             return false;
         }
 
