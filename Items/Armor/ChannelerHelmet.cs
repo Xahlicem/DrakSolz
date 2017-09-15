@@ -30,10 +30,8 @@ namespace XahlicemMod.Items.Armor {
         }
 
         public override void UpdateArmorSet(Player player) {
-            player.setBonus = ("Moonlight Prayer" +
-                "\n+1 Accessory Slot" +
-                "\n+Channeler's Perfect Dance");
-            player.extraAccessorySlots += 1;
+            player.setBonus = ("Channeler's Perfect Dance" +
+                "\n+1 Accessory Slot");
         }
         public class ChannelerHelmetGlobalNPC : GlobalNPC {
             public override void NPCLoot(NPC npc) {
