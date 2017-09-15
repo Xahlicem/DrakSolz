@@ -8,6 +8,9 @@ using Terraria.ModLoader.IO;
 
 namespace XahlicemMod.Items {
     public class XItem : GlobalItem {
+        internal int fromPlayer;
+        public int FromPlayer { get { return fromPlayer; } set { fromPlayer = value; } }
+
         public bool owned = false;
         public override bool CloneNewInstances {
             get { return true; }
@@ -16,20 +19,31 @@ namespace XahlicemMod.Items {
             get { return true; }
         }
 
+        public XItem() {
+            if (Main.netMode == NetmodeID.SinglePlayer) fromPlayer = -1;
+            else fromPlayer = -2;
+        }
+
         public override GlobalItem Clone(Item item, Item itemClone) {
             var source = item.GetGlobalItem<XItem>();
             var destination = itemClone.GetGlobalItem<XItem>();
-            if (source != null && destination != null) destination.owned = source.owned;
+            if (source != null && destination != null) {
+                destination.owned = source.owned;
+                destination.FromPlayer = fromPlayer;
+            }
             return destination;
         }
 
         public override void OnCraft(Item item, Recipe recipe) {
             owned = true;
         }
+
         public override void PostReforge(Item item) {
             owned = true;
         }
+
         public override bool OnPickup(Item item, Player player) {
+            fromPlayer = player.whoAmI;
             owned = true;
             return true;
         }
@@ -39,6 +53,14 @@ namespace XahlicemMod.Items {
             SoulItem i = item.modItem as SoulItem;
             if (i == null) return;
             tooltips[0].text += " (" + i.SoulValue + " Souls required)";
+        }
+
+        public override void NetSend(Item item, System.IO.BinaryWriter writer) {
+            writer.Write(fromPlayer);
+        }
+
+        public override void NetReceive(Item item, System.IO.BinaryReader reader) {
+            fromPlayer = reader.ReadInt32();
         }
 
         public override bool NeedsSaving(Item item) {
@@ -53,11 +75,12 @@ namespace XahlicemMod.Items {
                 return null;
             }
             XItem info = item.GetGlobalItem<XItem>();
-            return new TagCompound { { "Xowned", info.owned } };
+            return new TagCompound { { "Xowned", info.owned }, { "XfromPlayer", fromPlayer } };
         }
 
         public override void Load(Item item, TagCompound tag) {
             owned = tag.GetBool("Xowned");
+            fromPlayer = tag.GetInt("XfromPlayer");
         }
     }
 
@@ -150,16 +173,9 @@ namespace XahlicemMod.Items {
 
     public class MeleeThrow : GlobalItem {
 
-        public static List<int> List {get; set;}
-
-        public static void Load() {
-            List = new List<int>();
-            List.AddRange(new int[] { 284, 55, 1918, 1825, 670, 191, 119, 3030, 1324, 561, 1122, 1513, 3054, 1569, 3543 });
-        }
-
         public override void SetDefaults(Item item) {
-            if (item == null || item.type >= ItemID.Sets.Yoyo.Length || List == null) return;
-            if (ItemID.Sets.Yoyo[item.type] || List.Contains(item.type)) {
+            if (item == null || item.type >= ItemID.Sets.Yoyo.Length || XahlicemMod.ListMeleeThrow == null) return;
+            if (ItemID.Sets.Yoyo[item.type] || XahlicemMod.ListMeleeThrow.Contains(item.type)) {
                 item.melee = false;
                 item.thrown = true;
             }

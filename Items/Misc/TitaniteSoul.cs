@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 
 namespace XahlicemMod.Items.Misc {
     public class TitaniteSoul : ModItem {
+        public const int PLACE = 1 << 17;
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Reinforced Soul");
             Tooltip.SetDefault("Soul of the Titanite Demon" +
@@ -27,8 +28,13 @@ namespace XahlicemMod.Items.Misc {
 
         public override bool UseItem(Player player) {
             player.ManaEffect(50000);
-            player.GetModPlayer<XahlicemPlayer>().SoulTicks += 150;
+            player.GetModPlayer<XahlicemPlayer>().BossSoulTicks += 150;
             return true;
+        }
+
+        public override bool CanPickup(Player player) {
+            int fromPlayer = item.GetGlobalItem<Items.XItem>().FromPlayer;
+            return (player.whoAmI == fromPlayer);
         }
     }
 }

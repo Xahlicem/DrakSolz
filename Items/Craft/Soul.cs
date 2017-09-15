@@ -28,10 +28,22 @@ namespace XahlicemMod.Items.Craft {
             item.rare = 0;
             item.alpha = 64;
             item.ammo = 1;
+            item.useAnimation = 20;
+            item.useTime = 20;
+            item.useStyle = 4;
+        }
+
+        public override bool CanUseItem(Player player) {
+            return true;
+        }
+
+        public override bool UseItem(Player player) {
+            player.GetModPlayer<XahlicemPlayer>().Initialize();
+            return true;
         }
 
         public override bool CanPickup(Player player) {
-            int fromPlayer = item.GetGlobalItem<Items.Craft.SoulGlobalItem>().FromPlayer;
+            int fromPlayer = item.GetGlobalItem<Items.XItem>().FromPlayer;
             return (fromPlayer == -1) ? true : (player.whoAmI == fromPlayer);
         }
 
@@ -41,7 +53,7 @@ namespace XahlicemMod.Items.Craft {
 
         public override bool OnPickup(Player player) {
             if (!player.Equals(Main.LocalPlayer)) return false;
-            player.GetModPlayer<XahlicemPlayer>().Souls += item.stack;
+            player.GetModPlayer<XahlicemPlayer>().SoulTicks += item.stack;
             player.ManaEffect(item.stack);
             if (player.GetModPlayer<XahlicemPlayer>().EvilEye) {
                 player.statLife += 5;
@@ -67,8 +79,9 @@ namespace XahlicemMod.Items.Craft {
     public class SoulGlobalNPC : GlobalNPC {
         public override void NPCLoot(NPC npc) {
             if (npc.aiStyle == 9 || npc.aiStyle == 50) return;
-            double num = Math.Ceiling(Math.Pow(Math.Sqrt(npc.defDamage) + Math.Sqrt(npc.defDefense) + Math.Sqrt(npc.lifeMax) - 1, 4) / (Math.Sqrt(npc.lifeMax) * 200)); //(float)(npc.defDefense * npc.lifeMax + 1) / (npc.defDamage +1));
-            //Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Craft.Soul>(), (int) num);
+            if (XahlicemMod.ListBossSoul.Contains(npc.type) || npc.type == mod.NPCType<NPCs.Enemy.Abysswalker>() || npc.type == mod.NPCType<NPCs.Enemy.TitaniteDemon>()) return;
+
+            double num = Math.Ceiling(Math.Pow(Math.Sqrt(npc.defDamage) + Math.Sqrt(npc.defDefense) + Math.Sqrt(npc.lifeMax) - 1, 4) / (Math.Sqrt(npc.lifeMax) * 200));
             List<int> players = new List<int>();
             for (int i = 0; i < Main.player.Length; i++)
                 if (Main.player[i] != null)
@@ -77,38 +90,12 @@ namespace XahlicemMod.Items.Craft {
             num = Math.Ceiling(num / ((players.Count == 0) ? 1d : (double) players.Count));
             if (players.Count == 0) {
                 int item = Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Craft.Soul>(), (int) num);
-                Main.item[item].GetGlobalItem<Items.Craft.SoulGlobalItem>().FromPlayer = -1;
+                Main.item[item].GetGlobalItem<Items.XItem>().FromPlayer = -1;
             } else
                 for (int i = 0; i < players.Count; i++) {
                     int item = Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Craft.Soul>(), (int) num);
-                    Main.item[item].GetGlobalItem<Items.Craft.SoulGlobalItem>().FromPlayer = players[i];
+                    Main.item[item].GetGlobalItem<Items.XItem>().FromPlayer = players[i];
                 }
-        }
-    }
-
-    public class SoulGlobalItem : GlobalItem {
-        internal int fromPlayer;
-        public int FromPlayer { get { return fromPlayer; } set { fromPlayer = value; } }
-
-        public SoulGlobalItem() {
-            if (Main.netMode == NetmodeID.SinglePlayer) fromPlayer = -1;
-            else fromPlayer = -2;
-        }
-
-        public override bool InstancePerEntity { get { return true; } }
-
-        public override void NetSend(Item item, System.IO.BinaryWriter writer) {
-            writer.Write(fromPlayer);
-        }
-
-        public override void NetReceive(Item item, System.IO.BinaryReader reader) {
-            fromPlayer = reader.ReadInt32();
-        }
-
-        public override GlobalItem Clone(Item item, Item itemClone) {
-            SoulGlobalItem myClone = (SoulGlobalItem) base.Clone(item, itemClone);
-            myClone.FromPlayer = fromPlayer;
-            return myClone;
         }
     }
 }

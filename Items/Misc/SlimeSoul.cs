@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 
 namespace XahlicemMod.Items.Misc {
     public class SlimeSoul : ModItem {
+        public const int PLACE = 1 << 0;
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Colossal Soul");
             Tooltip.SetDefault("Soul of the King Slime" +
@@ -27,8 +28,13 @@ namespace XahlicemMod.Items.Misc {
 
         public override bool UseItem(Player player) {
             player.ManaEffect(1000);
-            player.GetModPlayer<XahlicemPlayer>().SoulTicks += 40;
+            player.GetModPlayer<XahlicemPlayer>().BossSoulTicks += 40;
             return true;
+        }
+
+        public override bool CanPickup(Player player) {
+            int fromPlayer = item.GetGlobalItem<Items.XItem>().FromPlayer;
+            return (player.whoAmI == fromPlayer);
         }
     }
 }

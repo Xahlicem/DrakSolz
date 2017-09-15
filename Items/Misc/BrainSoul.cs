@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 
 namespace XahlicemMod.Items.Misc {
     public class BrainSoul : ModItem {
+        public const int PLACE = 1 << 3;
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Crimson Soul");
             Tooltip.SetDefault("Soul of the Brain of Cthulhu" +
@@ -27,8 +28,13 @@ namespace XahlicemMod.Items.Misc {
 
         public override bool UseItem(Player player) {
             player.ManaEffect(2000);
-            player.GetModPlayer<XahlicemPlayer>().SoulTicks += 50;
+            player.GetModPlayer<XahlicemPlayer>().BossSoulTicks += 50;
             return true;
+        }
+
+        public override bool CanPickup(Player player) {
+            int fromPlayer = item.GetGlobalItem<Items.XItem>().FromPlayer;
+            return (player.whoAmI == fromPlayer);
         }
     }
 }

@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 
 namespace XahlicemMod.Items.Misc {
     public class SkeletronSoul : ModItem {
+        public const int PLACE = 1 << 5;
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Bloodless Soul");
             Tooltip.SetDefault("Soul of Skeletron" +
@@ -27,8 +28,13 @@ namespace XahlicemMod.Items.Misc {
 
         public override bool UseItem(Player player) {
             player.ManaEffect(2500);
-            player.GetModPlayer<XahlicemPlayer>().SoulTicks += 55;
+            player.GetModPlayer<XahlicemPlayer>().BossSoulTicks += 55;
             return true;
+        }
+
+        public override bool CanPickup(Player player) {
+            int fromPlayer = item.GetGlobalItem<Items.XItem>().FromPlayer;
+            return (player.whoAmI == fromPlayer);
         }
     }
 }

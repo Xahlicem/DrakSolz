@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 
 namespace XahlicemMod.Items.Misc {
     public class ArtoriasSoul : ModItem {
+        public const int PLACE = 1 << 16;
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Dark Soul");
             Tooltip.SetDefault("Soul of the Abysswalker" +
@@ -27,8 +28,13 @@ namespace XahlicemMod.Items.Misc {
 
         public override bool UseItem(Player player) {
             player.ManaEffect(30000);
-            player.GetModPlayer<XahlicemPlayer>().SoulTicks += 130;
+            player.GetModPlayer<XahlicemPlayer>().BossSoulTicks += 130;
             return true;
+        }
+
+        public override bool CanPickup(Player player) {
+            int fromPlayer = item.GetGlobalItem<Items.XItem>().FromPlayer;
+            return (player.whoAmI == fromPlayer);
         }
     }
 }

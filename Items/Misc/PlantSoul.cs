@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 
 namespace XahlicemMod.Items.Misc {
     public class PlantSoul : ModItem {
+        public const int PLACE = 1 << 11;
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Verdant Soul");
             Tooltip.SetDefault("Soul of Plantera" +
@@ -27,8 +28,13 @@ namespace XahlicemMod.Items.Misc {
 
         public override bool UseItem(Player player) {
             player.ManaEffect(22500);
-            player.GetModPlayer<XahlicemPlayer>().SoulTicks += 115;
+            player.GetModPlayer<XahlicemPlayer>().BossSoulTicks += 115;
             return true;
+        }
+
+        public override bool CanPickup(Player player) {
+            int fromPlayer = item.GetGlobalItem<Items.XItem>().FromPlayer;
+            return (player.whoAmI == fromPlayer);
         }
     }
 }

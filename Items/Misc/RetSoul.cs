@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 
 namespace XahlicemMod.Items.Misc {
     public class RetSoul : ModItem {
+        public const int PLACE = 1 << 8;
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Malevolent Soul");
             Tooltip.SetDefault("Soul of Retinazer" +
@@ -27,8 +28,13 @@ namespace XahlicemMod.Items.Misc {
 
         public override bool UseItem(Player player) {
             player.ManaEffect(7500);
-            player.GetModPlayer<XahlicemPlayer>().SoulTicks += 85;
+            player.GetModPlayer<XahlicemPlayer>().BossSoulTicks += 85;
             return true;
+        }
+
+        public override bool CanPickup(Player player) {
+            int fromPlayer = item.GetGlobalItem<Items.XItem>().FromPlayer;
+            return (player.whoAmI == fromPlayer);
         }
     }
 }

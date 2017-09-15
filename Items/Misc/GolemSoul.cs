@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 
 namespace XahlicemMod.Items.Misc {
     public class GolemSoul : ModItem {
+        public const int PLACE = 1 << 12;
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Hardened Soul");
             Tooltip.SetDefault("Soul of the Golem" +
@@ -27,8 +28,13 @@ namespace XahlicemMod.Items.Misc {
 
         public override bool UseItem(Player player) {
             player.ManaEffect(27500);
-            player.GetModPlayer<XahlicemPlayer>().SoulTicks += 125;
+            player.GetModPlayer<XahlicemPlayer>().BossSoulTicks += 125;
             return true;
+        }
+
+        public override bool CanPickup(Player player) {
+            int fromPlayer = item.GetGlobalItem<Items.XItem>().FromPlayer;
+            return (player.whoAmI == fromPlayer);
         }
     }
 }

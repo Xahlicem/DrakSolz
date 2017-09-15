@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -11,6 +12,8 @@ using XahlicemMod.UI;
 
 namespace XahlicemMod {
     public class XahlicemMod : Mod {
+        public static List<int> ListMeleeThrow { get; set; }
+        public static List<int> ListBossSoul { get; set; }
 
         private UserInterface userInterface;
         internal XUI xUI;
@@ -27,7 +30,18 @@ namespace XahlicemMod {
         }
 
         public override void Load() {
-            Items.MeleeThrow.Load();
+            ListMeleeThrow = new List<int>();
+            ListMeleeThrow.AddRange(new int[] { 284, 55, 1918, 1825, 670, 191, 119, 3030, 1324, 561, 1122, 1513, 3054, 1569, 3543 });
+            ListBossSoul = new List<int>();
+            ListBossSoul.AddRange(new int[] {
+                NPCID.KingSlime, NPCID.EyeofCthulhu, NPCID.EaterofWorldsHead, NPCID.EaterofWorldsBody, NPCID.EaterofWorldsTail, NPCID.BrainofCthulhu,
+                    NPCID.QueenBee, NPCID.SkeletronHead, NPCID.SkeletronHand, NPCID.WallofFlesh, NPCID.WallofFleshEye,
+                    NPCID.TheDestroyer, NPCID.TheDestroyerBody, NPCID.TheDestroyerTail, NPCID.Retinazer, NPCID.Spazmatism,
+                    NPCID.SkeletronPrime, NPCID.PrimeCannon, NPCID.PrimeLaser, NPCID.PrimeSaw, NPCID.PrimeVice, NPCID.Plantera,
+                    NPCID.Golem, NPCID.GolemFistLeft, NPCID.GolemFistRight, NPCID.GolemHead, NPCID.GolemHeadFree, NPCID.CultistBoss, NPCID.DukeFishron,
+                    NPCID.MoonLordCore, NPCID.MoonLordFreeEye, NPCID.MoonLordHand, NPCID.MoonLordHead
+            });
+
             if (Main.dedServ) return;
             xUI = new XUI(GetItem<Items.Craft.Soul>());
             xUI.Activate();
@@ -40,7 +54,8 @@ namespace XahlicemMod {
         }
 
         public override void Unload() {
-            Items.MeleeThrow.List = null;
+            ListMeleeThrow = null;
+            ListBossSoul = null;
         }
 
         public override void ModifyInterfaceLayers(System.Collections.Generic.List<GameInterfaceLayer> layers) {

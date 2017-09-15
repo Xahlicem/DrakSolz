@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 
 namespace XahlicemMod.Items.Misc {
     public class LunaticSoul : ModItem {
+        public const int PLACE = 1 << 13;
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Illusory Soul");
             Tooltip.SetDefault("Soul of the Lunatic Cultist" +
@@ -27,8 +28,13 @@ namespace XahlicemMod.Items.Misc {
 
         public override bool UseItem(Player player) {
             player.ManaEffect(35000);
-            player.GetModPlayer<XahlicemPlayer>().SoulTicks += 135;
+            player.GetModPlayer<XahlicemPlayer>().BossSoulTicks += 135;
             return true;
+        }
+
+        public override bool CanPickup(Player player) {
+            int fromPlayer = item.GetGlobalItem<Items.XItem>().FromPlayer;
+            return (player.whoAmI == fromPlayer);
         }
     }
 }

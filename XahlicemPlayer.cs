@@ -37,7 +37,9 @@ namespace XahlicemMod {
         public int Att { get; set; }
         public int Mana { get { return Att * 5; } }
 
-        public int SoulTicks { get; set; }
+        public float SoulTicks { get; set; }
+        public int BossSoulTicks { get; set; }
+        public int BossSouls { get; set; }
 
         public bool SoulSummon { get; set; }
         public bool EvilEye { get; set; }
@@ -53,6 +55,8 @@ namespace XahlicemMod {
             Att = 0;
 
             SoulTicks = 0;
+            BossSoulTicks = 0;
+            BossSouls = 0;
 
             SoulSummon = false;
             EvilEye = false;
@@ -65,11 +69,22 @@ namespace XahlicemMod {
 
         public override void PreUpdate() {
             if (SoulTicks > 0) {
-                if (SoulTicks <=40) Souls += 25;
-                else if (SoulTicks <=80) Souls += 100;
-                else if (SoulTicks <=130) Souls += 500;
+                float num = 0.5f;
+                if (SoulTicks >= 10000) num = 10000;
+                else if (SoulTicks >= 1000) num = 1000;
+                else if (SoulTicks >= 100) num = 100;
+                else if (SoulTicks >= 10) num = 5;
+                SoulTicks -= num;
+                if (num == 0.5f && SoulTicks % 1 != 0f) num = 1;
+                Souls += (int) Math.Floor(num);
+            }
+
+            if (BossSoulTicks > 0) {
+                if (BossSoulTicks <= 40) Souls += 25;
+                else if (BossSoulTicks <= 80) Souls += 100;
+                else if (BossSoulTicks <= 130) Souls += 500;
                 else Souls += 1000;
-                SoulTicks--;
+                BossSoulTicks--;
             }
         }
 
@@ -143,7 +158,7 @@ namespace XahlicemMod {
 
             if (Souls != 0) {
                 int i = Item.NewItem((int) player.position.X, (int) player.position.Y, player.width, player.height, mod.ItemType("Soul"), Souls);
-                Main.item[i].GetGlobalItem<Items.Craft.SoulGlobalItem>().FromPlayer = player.whoAmI;
+                Main.item[i].GetGlobalItem<Items.XItem>().FromPlayer = player.whoAmI;
                 Souls = 0;
                 if (player.Equals(Main.LocalPlayer))(mod as XahlicemMod).xUI.updateValue(Souls, Level);
             }
@@ -173,6 +188,7 @@ namespace XahlicemMod {
             save.Add("XFth", Fth);
             save.Add("XVit", Vit);
             save.Add("XAtt", Att);
+            save.Add("XBossSouls", BossSouls);
             return save;
         }
 
@@ -185,6 +201,7 @@ namespace XahlicemMod {
             Fth = tag.GetInt("XFth");
             Vit = tag.GetInt("XVit");
             Att = tag.GetInt("XAtt");
+            BossSouls = tag.GetInt("XBossSouls");
         }
 
         public override void SetupStartInventory(IList<Item> items) {

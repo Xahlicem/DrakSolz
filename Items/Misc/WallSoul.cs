@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 
 namespace XahlicemMod.Items.Misc {
     public class WallSoul : ModItem {
+        public const int PLACE = 1 << 6;
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Cadaverous Soul");
             Tooltip.SetDefault("Soul of the Wall of Flesh" +
@@ -27,8 +28,13 @@ namespace XahlicemMod.Items.Misc {
 
         public override bool UseItem(Player player) {
             player.ManaEffect(5000);
-            player.GetModPlayer<XahlicemPlayer>().SoulTicks += 80;
+            player.GetModPlayer<XahlicemPlayer>().BossSoulTicks += 80;
             return true;
+        }
+
+        public override bool CanPickup(Player player) {
+            int fromPlayer = item.GetGlobalItem<Items.XItem>().FromPlayer;
+            return (player.whoAmI == fromPlayer);
         }
     }
 }

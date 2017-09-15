@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 
 namespace XahlicemMod.Items.Misc {
     public class EyeSoul : ModItem {
+        public const int PLACE = 1 << 1;
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Peering Soul");
             Tooltip.SetDefault("Soul of the Eye of Cthulhu" +
@@ -27,8 +28,13 @@ namespace XahlicemMod.Items.Misc {
 
         public override bool UseItem(Player player) {
             player.ManaEffect(1500);
-            player.GetModPlayer<XahlicemPlayer>().SoulTicks += 45;
+            player.GetModPlayer<XahlicemPlayer>().BossSoulTicks += 45;
             return true;
+        }
+
+        public override bool CanPickup(Player player) {
+            int fromPlayer = item.GetGlobalItem<Items.XItem>().FromPlayer;
+            return (player.whoAmI == fromPlayer);
         }
     }
 }

@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 
 namespace XahlicemMod.Items.Misc {
     public class DukeSoul : ModItem {
+        public const int PLACE = 1 << 14;
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Drenched Soul");
             Tooltip.SetDefault("Soul of Duke Fishron" +
@@ -27,8 +28,13 @@ namespace XahlicemMod.Items.Misc {
 
         public override bool UseItem(Player player) {
             player.ManaEffect(50000);
-            player.GetModPlayer<XahlicemPlayer>().SoulTicks += 150;
+            player.GetModPlayer<XahlicemPlayer>().BossSoulTicks += 150;
             return true;
+        }
+
+        public override bool CanPickup(Player player) {
+            int fromPlayer = item.GetGlobalItem<Items.XItem>().FromPlayer;
+            return (player.whoAmI == fromPlayer);
         }
     }
 }
