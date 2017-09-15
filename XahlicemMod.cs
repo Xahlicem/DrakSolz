@@ -27,6 +27,7 @@ namespace XahlicemMod {
         }
 
         public override void Load() {
+            Items.MeleeThrow.Load();
             if (Main.dedServ) return;
             xUI = new XUI(GetItem<Items.Craft.Soul>());
             xUI.Activate();
@@ -39,7 +40,7 @@ namespace XahlicemMod {
         }
 
         public override void Unload() {
-            Items.MeleeThrow.list = null;
+            Items.MeleeThrow.List = null;
         }
 
         public override void ModifyInterfaceLayers(System.Collections.Generic.List<GameInterfaceLayer> layers) {

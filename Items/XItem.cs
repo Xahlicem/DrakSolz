@@ -96,6 +96,7 @@ namespace XahlicemMod.Items {
         }
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips) {
+            if (tooltips.Capacity < 2) return;
             if (item.type == ItemID.LifeCrystal) {
                 tooltips[tooltips.Capacity - 1].text = "Makes you whole and increases life regeneration for 5 minutes";
             }
@@ -149,21 +150,19 @@ namespace XahlicemMod.Items {
 
     public class MeleeThrow : GlobalItem {
 
-        public static List<int> list;
+        public static List<int> List {get; set;}
 
-        static MeleeThrow() {
-            list = new List<int>();
-            list.AddRange(new int[] { 284, 55, 1918, 1825, 670, 191, 119, 3030, 1324, 561, 1122, 1513, 3054, 1569, 3543 });
+        public static void Load() {
+            List = new List<int>();
+            List.AddRange(new int[] { 284, 55, 1918, 1825, 670, 191, 119, 3030, 1324, 561, 1122, 1513, 3054, 1569, 3543 });
         }
 
         public override void SetDefaults(Item item) {
-            if (ItemID.Sets.Yoyo[item.type] || list.Contains(item.type)) {
+            if (item == null || item.type >= ItemID.Sets.Yoyo.Length || List == null) return;
+            if (ItemID.Sets.Yoyo[item.type] || List.Contains(item.type)) {
                 item.melee = false;
                 item.thrown = true;
             }
         }
-    }
-
-    public class SummonMon : GlobalBuff {
     }
 }

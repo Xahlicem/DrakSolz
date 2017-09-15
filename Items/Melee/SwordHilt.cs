@@ -13,12 +13,12 @@ namespace XahlicemMod.Items.Melee {
         public override void SetDefaults() {
             item.CloneDefaults(ItemID.CopperPickaxe);
             item.tileBoost = -2;
-            item.pick = 5;
-            item.axe = 1;
+            item.pick = 10;
+            item.axe = 2;
             item.damage = 2;
-            item.knockBack = 0.5f;
-            item.useTime += 8;
-            item.useAnimation += 8;
+            item.knockBack = 1f;
+            item.useTime += 3;
+            item.useAnimation += 3;
         }
         public override Vector2? HoldoutOffset() {
             return new Vector2(0, 0);
