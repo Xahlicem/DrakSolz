@@ -16,22 +16,20 @@ namespace XahlicemMod.Items.Accessory {
             item.rare = 2;
             item.accessory = true;
         }
-        //these wings use the same values as the solar wings
+
         public override void UpdateAccessory(Player player, bool hideVisual) {
-            if (player.statLife <= (player.statLifeMax * 0.2f)) {
+            int life = 0;
+            if (player.statLifeMax2 <= 20) life = 15;
+            else if (player.statLifeMax2 <= 100) life = 20;
+            else life = (int)(player.statLifeMax2 * 0.2f);
+
+            if (player.statLife <= life) {
                 player.meleeDamage += 0.25f;
                 player.magicDamage += 0.25f;
                 player.thrownDamage += 0.25f;
                 player.rangedDamage += 0.25f;
                 player.minionDamage += 0.25f;
-            } else {
-                player.meleeDamage += 0f;
-                player.magicDamage += 0f;
-                player.thrownDamage += 0f;
-                player.rangedDamage += 0f;
-                player.minionDamage += 0f;
             }
-
         }
     }
 }

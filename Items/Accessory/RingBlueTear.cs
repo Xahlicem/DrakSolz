@@ -17,17 +17,16 @@ namespace XahlicemMod.Items.Accessory {
             item.rare = 2;
             item.accessory = true;
         }
-        //these wings use the same values as the solar wings
+
         public override void UpdateAccessory(Player player, bool hideVisual) {
-            if (player.statLife <= (player.statLifeMax * 0.2f)) {
-                item.defense = 20;
-            } else { item.defense = 1; }
+            int life = 0;
+            if (player.statLifeMax2 <= 20) life = 15;
+            else if (player.statLifeMax2 <= 100) life = 20;
+            else life = (int)(player.statLifeMax2 * 0.2f);
 
-        }
-
-        public override bool CanEquipAccessory(Player player, int slot) {
-            item.defense = 20;
-            return base.CanEquipAccessory(player, slot);
+            if (player.statLife <= life) {
+                player.statDefense *= 2;
+            }
         }
     }
 }

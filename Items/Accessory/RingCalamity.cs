@@ -11,15 +11,11 @@ namespace XahlicemMod.Items.Accessory {
 
         public override void SetDefaults() {
             item.width = 22;
-            item.defense = -200;
+            item.defense = -500;
             item.height = 20;
             item.value = Item.buyPrice(0, 1, 0, 0);
             item.rare = 2;
             item.accessory = true;
-        }
-        //these wings use the same values as the solar wings
-        public override void UpdateAccessory(Player player, bool hideVisual) {
-
         }
     }
 }

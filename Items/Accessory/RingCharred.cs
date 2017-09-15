@@ -18,12 +18,15 @@ namespace XahlicemMod.Items.Accessory {
             item.rare = 2;
             item.accessory = true;
         }
-        //these wings use the same values as the solar wings
+
         public override void UpdateAccessory(Player player, bool hideVisual) {
             player.lavaRose = true;
             player.fireWalk = true;
             player.AddBuff(BuffID.WeaponImbueFire, 2);
             player.AddBuff(BuffID.Warmth, 2);
+
+            int index = player.FindBuffIndex(BuffID.OnFire);
+            if (index != -1) player.buffTime[index] = 0;
         }
     }
 }

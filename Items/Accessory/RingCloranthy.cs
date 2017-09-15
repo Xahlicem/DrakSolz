@@ -17,7 +17,7 @@ namespace XahlicemMod.Items.Accessory {
             item.rare = 2;
             item.accessory = true;
         }
-        //these wings use the same values as the solar wings
+
         public override void UpdateAccessory(Player player, bool hideVisual) {
             player.maxRunSpeed += 0.30f;
             player.meleeSpeed += 0.15f;
