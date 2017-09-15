@@ -7,7 +7,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace XahlicemMod.Projectiles {
+namespace DrakSolz.Projectiles {
     public class ChannelTProj : ModProjectile {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Channeler's Trident");

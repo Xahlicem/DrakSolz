@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace XahlicemMod.Items.Magic.SoulArrow {
+namespace DrakSolz.Items.Magic.SoulArrow {
     public class ScrollSoulArrow2 : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Great Soul Arrow");

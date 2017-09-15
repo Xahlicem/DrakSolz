@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace XahlicemMod.Items.Armor.DesertSorceress {
+namespace DrakSolz.Items.Armor.DesertSorceress {
     [AutoloadEquip(EquipType.Head)]
     public class SorceressHood : ModItem {
         public override void SetStaticDefaults() {

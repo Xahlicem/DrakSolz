@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace XahlicemMod.Projectiles.Minion {
+namespace DrakSolz.Projectiles.Minion {
     public class SoulSummonProj : ModProjectile {
 
         public override void SetStaticDefaults() {
@@ -29,7 +29,7 @@ namespace XahlicemMod.Projectiles.Minion {
 
         public override void AI() {
             Player player = Main.player[projectile.owner];
-            XahlicemPlayer modPlayer = (XahlicemPlayer) player.GetModPlayer<XahlicemPlayer>(mod);
+            DrakSolzPlayer modPlayer = (DrakSolzPlayer) player.GetModPlayer<DrakSolzPlayer>(mod);
 
             if (player.dead) {
                 modPlayer.SoulSummon = false;

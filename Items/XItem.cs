@@ -6,7 +6,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
-namespace XahlicemMod.Items {
+namespace DrakSolz.Items {
     public class XItem : GlobalItem {
         internal int fromPlayer;
         public int FromPlayer { get { return fromPlayer; } set { fromPlayer = value; } }
@@ -104,11 +104,11 @@ namespace XahlicemMod.Items {
         }
 
         public override bool RecipeAvailable() {
-            return (Main.LocalPlayer.GetModPlayer<XahlicemPlayer>().Souls >= requiredSouls);
+            return (Main.LocalPlayer.GetModPlayer<DrakSolzPlayer>().Souls >= requiredSouls);
         }
 
         public override void OnCraft(Item item) {
-            Main.LocalPlayer.GetModPlayer<XahlicemPlayer>().Souls -= requiredSouls;
+            Main.LocalPlayer.GetModPlayer<DrakSolzPlayer>().Souls -= requiredSouls;
         }
     }
 
@@ -174,8 +174,8 @@ namespace XahlicemMod.Items {
     public class MeleeThrow : GlobalItem {
 
         public override void SetDefaults(Item item) {
-            if (item == null || item.type >= ItemID.Sets.Yoyo.Length || XahlicemMod.ListMeleeThrow == null) return;
-            if (ItemID.Sets.Yoyo[item.type] || XahlicemMod.ListMeleeThrow.Contains(item.type)) {
+            if (item == null || item.type >= ItemID.Sets.Yoyo.Length || DrakSolz.ListMeleeThrow == null) return;
+            if (ItemID.Sets.Yoyo[item.type] || DrakSolz.ListMeleeThrow.Contains(item.type)) {
                 item.melee = false;
                 item.thrown = true;
             }

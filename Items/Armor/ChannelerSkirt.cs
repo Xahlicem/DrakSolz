@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace XahlicemMod.Items.Armor {
+namespace DrakSolz.Items.Armor {
     [AutoloadEquip(EquipType.Legs)]
     public class ChannelerSkirt : ModItem {
         public override void SetStaticDefaults() {

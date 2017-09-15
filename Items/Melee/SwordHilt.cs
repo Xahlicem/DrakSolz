@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace XahlicemMod.Items.Melee {
+namespace DrakSolz.Items.Melee {
     public class SwordHilt : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Sword Hilt");

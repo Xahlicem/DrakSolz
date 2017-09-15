@@ -4,7 +4,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace XahlicemMod.Items.Craft {
+namespace DrakSolz.Items.Craft {
     public class ScrollHoly : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Scroll of Miracles");

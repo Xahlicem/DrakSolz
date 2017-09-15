@@ -2,7 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace XahlicemMod.Items.Accessory {
+namespace DrakSolz.Items.Accessory {
     public class RingHavels : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Havel's Ring");

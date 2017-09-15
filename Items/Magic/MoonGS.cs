@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace XahlicemMod.Items.Magic {
+namespace DrakSolz.Items.Magic {
     public class MoonGS : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Moonlight Greatsword");

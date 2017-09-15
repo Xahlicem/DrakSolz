@@ -2,7 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace XahlicemMod.Items.Misc {
+namespace DrakSolz.Items.Misc {
     public class BeeSoul : ModItem {
         public const int PLACE = 1 << 4;
         public override void SetStaticDefaults() {
@@ -28,7 +28,7 @@ namespace XahlicemMod.Items.Misc {
 
         public override bool UseItem(Player player) {
             player.ManaEffect(2200);
-            player.GetModPlayer<XahlicemPlayer>().BossSoulTicks += 52;
+            player.GetModPlayer<DrakSolzPlayer>().BossSoulTicks += 52;
             return true;
         }
 

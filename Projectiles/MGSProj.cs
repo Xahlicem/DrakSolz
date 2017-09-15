@@ -6,7 +6,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 
-namespace XahlicemMod.Projectiles {
+namespace DrakSolz.Projectiles {
     public class MGSProj : ModProjectile {
 
         public override void SetStaticDefaults() {

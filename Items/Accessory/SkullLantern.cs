@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace XahlicemMod.Items.Accessory {
+namespace DrakSolz.Items.Accessory {
     public class SkullLantern : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Skull Lantern");

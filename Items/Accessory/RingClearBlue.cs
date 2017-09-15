@@ -1,7 +1,7 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
 
-namespace XahlicemMod.Items.Accessory {
+namespace DrakSolz.Items.Accessory {
     public class RingClearBlue : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Clear Bluestone Ring");

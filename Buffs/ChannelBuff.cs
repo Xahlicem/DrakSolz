@@ -1,7 +1,7 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
 
-namespace XahlicemMod.Projectiles {
+namespace DrakSolz.Buffs {
     public class ChannelBuff : ModBuff {
         public override void SetDefaults() {
             DisplayName.SetDefault("Channeler's Dance");

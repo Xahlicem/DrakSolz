@@ -7,7 +7,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace XahlicemMod.Projectiles {
+namespace DrakSolz.Projectiles {
     public class PrismStoneProj : ModProjectile {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Prism Stone");

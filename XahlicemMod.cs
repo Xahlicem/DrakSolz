@@ -8,19 +8,19 @@ using Terraria.GameContent.UI;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.UI;
-using XahlicemMod.UI;
+using DrakSolz.UI;
 
-namespace XahlicemMod {
-    public class XahlicemMod : Mod {
+namespace DrakSolz {
+    public class DrakSolz : Mod {
         public static List<int> ListMeleeThrow { get; set; }
         public static List<int> ListBossSoul { get; set; }
 
         private UserInterface userInterface;
-        internal XUI xUI;
+        internal SoulUI ui;
         private UserInterface userInterfacePlayer;
-        internal XPlayerUI xPUI;
+        internal PlayerUI playerUI;
 
-        public XahlicemMod() {
+        public DrakSolz() {
 
             Properties = new ModProperties() {
                 Autoload = true,
@@ -43,14 +43,14 @@ namespace XahlicemMod {
             });
 
             if (Main.dedServ) return;
-            xUI = new XUI(GetItem<Items.Craft.Soul>());
-            xUI.Activate();
+            ui = new SoulUI(GetItem<Items.Craft.Soul>());
+            ui.Activate();
             userInterface = new UserInterface();
-            userInterface.SetState(xUI);
-            xPUI = new XPlayerUI();
-            xPUI.Activate();
+            userInterface.SetState(ui);
+            playerUI = new PlayerUI();
+            playerUI.Activate();
             userInterfacePlayer = new UserInterface();
-            userInterfacePlayer.SetState(xPUI);
+            userInterfacePlayer.SetState(playerUI);
         }
 
         public override void Unload() {
@@ -62,21 +62,21 @@ namespace XahlicemMod {
             int MouseTextIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Mouse Text"));
             if (MouseTextIndex != -1) {
                 layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
-                    "XahlicemMod: Souls",
+                    "DrakSolz: Souls",
                     delegate {
-                        if (XUI.visible) {
+                        if (SoulUI.visible) {
                             userInterface.Update(Main._drawInterfaceGameTime);
-                            xUI.Draw(Main.spriteBatch);
+                            ui.Draw(Main.spriteBatch);
                         }
                         return true;
                     },
                     InterfaceScaleType.UI));
                 layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
-                    "XahlicemMod: Level",
+                    "DrakSolz: Level",
                     delegate {
-                        if (XPlayerUI.visible) {
+                        if (PlayerUI.visible) {
                             userInterfacePlayer.Update(Main._drawInterfaceGameTime);
-                            xPUI.Draw(Main.spriteBatch);
+                            playerUI.Draw(Main.spriteBatch);
                         }
                         return true;
                     },
@@ -85,39 +85,39 @@ namespace XahlicemMod {
         }
 
         public override void HandlePacket(System.IO.BinaryReader reader, int whoAmI) {
-            XModMessageType msgType = (XModMessageType) reader.ReadByte();
+            MessageType msgType = (MessageType) reader.ReadByte();
             Player player = Main.player[reader.ReadInt32()];
-            XahlicemPlayer modPlayer = player.GetModPlayer<XahlicemPlayer>();
+            DrakSolzPlayer modPlayer = player.GetModPlayer<DrakSolzPlayer>();
 
             switch (msgType) {
-                case XModMessageType.FromClient:
+                case MessageType.FromClient:
                     if (Main.netMode == NetmodeID.Server) {
                         modPlayer.Souls = reader.ReadInt32();
                         modPlayer.LastHurt = reader.ReadInt64();
 
-                        modPlayer.GetPacket((byte) XModMessageType.FromServer).Send();
+                        modPlayer.GetPacket((byte) MessageType.FromServer).Send();
                         //NetMessage.BroadcastChatMessage(Terraria.Localization.NetworkText.FromLiteral(player.name + " " + race.ToString()), Microsoft.Xna.Framework.Color.White);
                     }
                     break;
 
-                case XModMessageType.FromClieBuff:
+                case MessageType.FromClieBuff:
                     if (Main.netMode == NetmodeID.Server) {
                         int index = reader.ReadInt32();
                         if (index != -1) player.AddBuff(BuffType<Buffs.Hollow>(), reader.ReadInt32());
 
-                        GetBuff<Buffs.Hollow>().GetPacket(XModMessageType.FromServBuff, player, index).Send();
+                        GetBuff<Buffs.Hollow>().GetPacket(MessageType.FromServBuff, player, index).Send();
                         //NetMessage.BroadcastChatMessage(Terraria.Localization.NetworkText.FromLiteral(player.name + " " + race.ToString()), Microsoft.Xna.Framework.Color.White);
                     }
                     break;
 
-                case XModMessageType.FromServer:
+                case MessageType.FromServer:
                     if (!player.Equals(Main.LocalPlayer)) {
                         modPlayer.Souls = reader.ReadInt32();
                         modPlayer.LastHurt = reader.ReadInt64();
                     }
                     break;
 
-                case XModMessageType.FromServBuff:
+                case MessageType.FromServBuff:
                     if (!player.Equals(Main.LocalPlayer)) {
                         int index = reader.ReadInt32();
                         if (index != -1) player.AddBuff(BuffType<Buffs.Hollow>(), reader.ReadInt32());
@@ -125,13 +125,13 @@ namespace XahlicemMod {
                     break;
 
                 default:
-                    ErrorLogger.Log("XRaces: Unknown Message type: " + msgType);
+                    ErrorLogger.Log("Drak Solz: Unknown Message type: " + msgType);
                     break;
             }
         }
     }
 
-    public enum XModMessageType : byte {
+    public enum MessageType : byte {
         FromServer,
         FromClient,
         FromServBuff,

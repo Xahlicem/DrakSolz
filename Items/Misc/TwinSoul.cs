@@ -2,7 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace XahlicemMod.Items.Misc {
+namespace DrakSolz.Items.Misc {
     public class TwinSoul : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Entangled Soul");
@@ -27,7 +27,7 @@ namespace XahlicemMod.Items.Misc {
 
         public override bool UseItem(Player player) {
             player.ManaEffect(17000);
-            player.GetModPlayer<XahlicemPlayer>().BossSoulTicks += 104;
+            player.GetModPlayer<DrakSolzPlayer>().BossSoulTicks += 104;
             return true;
         }
 

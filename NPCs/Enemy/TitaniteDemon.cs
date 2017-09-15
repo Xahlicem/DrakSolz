@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace XahlicemMod.NPCs.Enemy
+namespace DrakSolz.NPCs.Enemy
 {
 	// This ModNPC serves as an example of a complete AI example.
 	public class TitaniteDemon : ModNPC

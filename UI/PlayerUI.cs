@@ -8,14 +8,14 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.UI;
 
-namespace XahlicemMod.UI {
+namespace DrakSolz.UI {
 
-    class XPlayerUI : UIState {
+    class PlayerUI : UIState {
         private UIPanel panel;
-        private XahlicemPlayer Player {
+        private DrakSolzPlayer Player {
             get {
                 try {
-                    return Main.LocalPlayer.GetModPlayer<XahlicemPlayer>();
+                    return Main.LocalPlayer.GetModPlayer<DrakSolzPlayer>();
                 } catch (Exception) {
                     return null;
                 }
@@ -78,7 +78,7 @@ namespace XahlicemMod.UI {
             Cost.Height.Set(25, 0f);
             p.Append(Cost);
 
-            Texture2D texture = ModLoader.GetTexture("XahlicemMod/UI/AttributeGUI");
+            Texture2D texture = ModLoader.GetTexture("DrakSolz/UI/AttributeGUI");
             Exit = new UIToggleImage(texture, 20, 20, new Point(43, 1), new Point(43, 1));
             Exit.Left.Set(130, 0f);
             Exit.Top.Set(10, 0f);
@@ -213,207 +213,6 @@ namespace XahlicemMod.UI {
             p.mouseInterface = true;
             p.talkNPC = -1;
             p.headcovered = true;
-        }
-
-        private class StatPanel {
-            public int Stat { get; set; }
-            public int StatAdd { get; set; }
-
-            internal UIToggleImage up, down, icon;
-            public UIText StatText { get; set; }
-
-            public StatPanel(int x, int y, UIPanel panel, Texture2D texture, Point point) {
-                Stat = 0;
-                StatAdd = 0;
-
-                StatText = new UIText(string.Empty);
-                StatText.Left.Set(x, 0f);
-                StatText.Top.Set(y, 0f);
-                StatText.Width.Set(60, 0f);
-                StatText.Height.Set(20, 0f);
-                panel.Append(StatText);
-
-                Point p = new Point(1, 1);
-                up = new UIToggleImage(texture, 20, 20, p, p);
-                up.Left.Set(x, 0f);
-                up.Top.Set(y + 15, 0f);
-                up.Width.Set(20, 0f);
-                up.Height.Set(20, 0f);
-                up.SetState(false);
-                up.OnClick += OnClick;
-                panel.Append(up);
-
-                icon = new UIToggleImage(texture, 20, 20, point, point);
-                icon.Left.Set(x + 20, 0f);
-                icon.Top.Set(y + 15, 0f);
-                icon.Width.Set(20, 0f);
-                icon.Height.Set(20, 0f);
-                icon.OnClick += Reset;
-                panel.Append(icon);
-
-                p = new Point(22, 1);
-                down = new UIToggleImage(texture, 20, 20, p, p);
-                down.Left.Set(x + 40, 0f);
-                down.Top.Set(y + 15, 0f);
-                down.Width.Set(20, 0f);
-                down.Height.Set(20, 0f);
-                down.SetState(true);
-                down.OnClick += OnClick;
-                panel.Append(down);
-            }
-
-            public void Set(int stat) {
-                Stat = stat;
-                Set();
-            }
-
-            public void Set() {
-                if (StatAdd < 0) StatAdd = 0;
-                StatText.SetText((Stat + StatAdd).ToString());
-            }
-
-            public void Reset(UIMouseEvent evt, UIElement listeningElement) {
-                StatAdd = 0;
-                Set();
-            }
-
-            public void Reset() {
-                Reset(null, icon);
-            }
-
-            private void OnClick(UIMouseEvent evt, UIElement listeningElement) {
-                UIToggleImage button = listeningElement as UIToggleImage;
-                if (button.IsOn) StatAdd--;
-                else StatAdd++;
-                Set();
-                button.SetState(!button.IsOn);
-            }
-        }
-    }
-
-    class XUI : UIState {
-        private bool RightClicking = false;
-        private int RightTime = 0;
-        private int Time = 0;
-        public UIPanel panel;
-        public UIText num, numLevel;
-        public static bool visible = true;
-        private Item item;
-
-        public XUI(ModItem modItem) {
-            item = modItem.item;
-        }
-
-        public override void OnInitialize() {
-            panel = new UIPanel();
-            panel.SetPadding(0);
-            panel.Left.Set(Main.screenWidth - 160, 0f);
-            panel.Top.Set(Main.screenHeight - 50, 0f);
-            panel.Width.Set(135f, 0f);
-            panel.Height.Set(35f, 0f);
-            panel.BackgroundColor = new Color(73, 94, 171);
-            panel.OnClick += Click;
-            panel.OnRightMouseDown += RightDown;
-            panel.OnRightMouseUp += RightUp;
-
-            numLevel = new UIText("0");
-            numLevel.Left.Set(10, 0f);
-            numLevel.Top.Set(10, 0f);
-            numLevel.Width.Set(25, 0f);
-            numLevel.Height.Set(25, 0f);
-            numLevel.HAlign = UIAlign.Left;
-            panel.Append(numLevel);
-
-            Texture2D soulTex = ModLoader.GetTexture("XahlicemMod/Items/Craft/SoulSingle");
-            UIImage soul = new UIImage(soulTex);
-            soul.Left.Set(45, 0f);
-            soul.Top.Set(10, 0f);
-            soul.Width.Set(25, 0f);
-            soul.Height.Set(25, 0f);
-            panel.Append(soul);
-
-            num = new UIText("0");
-            num.Left.Set(60, 0f);
-            num.Top.Set(10, 0f);
-            num.Width.Set(65, 0f);
-            num.Height.Set(25, 0f);
-            num.HAlign = UIAlign.Left;
-            panel.Append(num);
-
-            base.Append(panel);
-        }
-
-        private void RightDown(UIMouseEvent evt, UIElement listeningElement) {
-            RightClicking = true;
-        }
-
-        private void RightUp(UIMouseEvent evt, UIElement listeningElement) {
-            RightClicking = false;
-        }
-
-        private void Click(UIMouseEvent evt, UIElement listeningElement) {
-            XahlicemPlayer player = Main.LocalPlayer.GetModPlayer<XahlicemPlayer>();
-            if (!Main.playerInventory) return;
-            if (Main.mouseItem.type == item.type) {
-                player.Souls += Main.mouseItem.stack;
-                Main.mouseItem.stack = 0;
-            } else if (Main.mouseItem.type == 0) {
-                Main.mouseItem.netDefaults(item.type);
-                Main.mouseItem.stack = player.Souls;
-                player.Souls = 0;
-            }
-            Recipe.FindRecipes();
-        }
-
-        public override void Update(GameTime gameTime) {
-            if (!RightClicking || !Main.playerInventory) {
-                if (Main.mouseItem.type == 0 || Main.mouseItem.stack == 0) Main.mouseItem = new Item();
-                RightClicking = false;
-                return;
-            }
-            if (RightClicking) {
-                XahlicemPlayer player = Main.LocalPlayer.GetModPlayer<XahlicemPlayer>();
-                Main.playerInventory = true;
-                if (Main.stackSplit <= 1 && item.type > 0 && (Main.mouseItem.type == item.type || Main.mouseItem.type == 0)) {
-                    int num2 = Main.superFastStack + 1;
-                    for (int j = 0; j < num2; j++) {
-                        if ((Main.mouseItem.stack < 9999 || Main.mouseItem.type == 0) && player.Souls > 0) {
-                            if (j == 0) {
-                                Main.PlaySound(18, -1, -1, 1);
-                            }
-                            if (Main.mouseItem.type == 0) {
-                                Main.mouseItem.netDefaults(item.type);
-                                Main.mouseItem.type = item.type;
-                                Main.mouseItem.stack = 0;
-                            }
-                            Main.mouseItem.stack++;
-                            player.Souls--;
-                            if (Main.stackSplit == 0) {
-                                Main.stackSplit = 15;
-                            } else {
-                                Main.stackSplit = Main.stackDelay;
-                            }
-                        }
-                    }
-                }
-            }
-
-        }
-
-        protected override void DrawSelf(SpriteBatch spriteBatch) {
-            Vector2 MousePosition = new Vector2((float) Main.mouseX, (float) Main.mouseY);
-            if (panel.ContainsPoint(MousePosition)) {
-                Main.LocalPlayer.mouseInterface = true;
-            }
-            panel.Left.Set(500, 0f);
-            panel.Top.Set(25, 0f);
-            Recalculate();
-        }
-
-        public void updateValue(int carrying, int level) {
-            num.SetText(carrying.ToString());
-            numLevel.SetText(level.ToString());
-            Recipe.FindRecipes();
         }
     }
 }

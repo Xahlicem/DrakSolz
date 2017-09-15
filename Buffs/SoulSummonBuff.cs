@@ -1,7 +1,7 @@
 using Terraria;
 using Terraria.ModLoader;
 
-namespace XahlicemMod.Buffs {
+namespace DrakSolz.Buffs {
     public class SoulSummonBuff : ModBuff {
         public override void SetDefaults() {
             DisplayName.SetDefault("Soul");
@@ -11,7 +11,7 @@ namespace XahlicemMod.Buffs {
         }
 
         public override void Update(Player player, ref int buffIndex) {
-            XahlicemPlayer modPlayer = (XahlicemPlayer) player.GetModPlayer<XahlicemPlayer>(mod);
+            DrakSolzPlayer modPlayer = (DrakSolzPlayer) player.GetModPlayer<DrakSolzPlayer>(mod);
             if (player.ownedProjectileCounts[mod.ProjectileType<Projectiles.Minion.SoulSummonProj>()] > 0) {
                 modPlayer.SoulSummon = true;
             }

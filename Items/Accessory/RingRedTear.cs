@@ -1,7 +1,7 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
 
-namespace XahlicemMod.Items.Accessory {
+namespace DrakSolz.Items.Accessory {
     public class RingRedTear : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Red Tearstone Ring");

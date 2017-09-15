@@ -5,7 +5,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace XahlicemMod.Projectiles.Soul {
+namespace DrakSolz.Projectiles.Soul {
     public class SoulArrowProj2 : ModProjectile {
 
         public override void SetStaticDefaults() {

@@ -2,7 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace XahlicemMod.Items.Accessory {
+namespace DrakSolz.Items.Accessory {
     public class RingDuskCrown : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Dusk Crown Ring");

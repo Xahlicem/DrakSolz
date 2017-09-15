@@ -12,7 +12,7 @@ using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.World.Generation;
 
-namespace XahlicemMod.Items.Craft {
+namespace DrakSolz.Items.Craft {
     public class FirelinkShrine : ModItem {
     public override void SetStaticDefaults() {
         Tooltip.SetDefault("Bonfire with a unique blade. A pleasent respite.");

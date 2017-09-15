@@ -1,8 +1,8 @@
 using Terraria;
 using Terraria.ModLoader;
 
-namespace XahlicemMod.Projectiles {
-    public class ChannelBuff2 : ModBuff {
+namespace DrakSolz.Buffs {
+    public class PerfectChannelBuff : ModBuff {
         public override void SetDefaults() {
             DisplayName.SetDefault("Channeler's Perfect Dance");
             Description.SetDefault("Damage Increased Greatly!");
@@ -22,6 +22,9 @@ namespace XahlicemMod.Projectiles {
             player.rangedDamage *= 1.4f;
             player.minionDamage *= 1.4f;
             player.meleeDamage *= 1.4f;
+
+            int index = player.FindBuffIndex(mod.BuffType<Buffs.ChannelBuff>());
+            if (index != -1) player.buffTime[index] = 0;
         }
     }
 }

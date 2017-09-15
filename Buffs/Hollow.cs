@@ -4,7 +4,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace XahlicemMod.Buffs
+namespace DrakSolz.Buffs
 
 {
 
@@ -20,12 +20,12 @@ namespace XahlicemMod.Buffs
         }
 
         public override void Update(Player player, ref int buffIndex) {
-            if (player.GetModPlayer<XahlicemPlayer>().LastHurt <= 600) player.buffTime[buffIndex]++;
-            else if (player.GetModPlayer<XahlicemPlayer>().LastHurt >= 3600) player.buffTime[buffIndex]--;
+            if (player.GetModPlayer<DrakSolzPlayer>().LastHurt <= 600) player.buffTime[buffIndex]++;
+            else if (player.GetModPlayer<DrakSolzPlayer>().LastHurt >= 3600) player.buffTime[buffIndex]--;
             int life = (int)((player.buffTime[buffIndex] + 1) / 300f);
             player.statLifeMax2 -= life;
             if (player.statLifeMax2 < 20) player.statLifeMax2 = 20;
-            if (Main.netMode == NetmodeID.MultiplayerClient) GetPacket(XModMessageType.FromClieBuff, player, buffIndex);
+            if (Main.netMode == NetmodeID.MultiplayerClient) GetPacket(MessageType.FromClieBuff, player, buffIndex);
         }
 
         public override bool ReApply(Player player, int time, int buffIndex) {
@@ -33,7 +33,7 @@ namespace XahlicemMod.Buffs
             return true;
         }
 
-        public ModPacket GetPacket(XModMessageType packetType, Player player, int buffIndex) {
+        public ModPacket GetPacket(MessageType packetType, Player player, int buffIndex) {
             int index = player.FindBuffIndex(mod.BuffType<Buffs.Hollow>());
             ModPacket packet = this.mod.GetPacket();
 

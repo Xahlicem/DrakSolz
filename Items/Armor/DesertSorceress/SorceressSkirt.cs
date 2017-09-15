@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace XahlicemMod.Items.Armor.DesertSorceress {
+namespace DrakSolz.Items.Armor.DesertSorceress {
     [AutoloadEquip(EquipType.Legs)]
     public class SorceressSkirt : ModItem {
         public override void SetStaticDefaults() {

@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace XahlicemMod.Items.Summon {
+namespace DrakSolz.Items.Summon {
     public class SoulSummonStaff : ModItem {
 
         public override void SetStaticDefaults() {

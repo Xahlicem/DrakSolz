@@ -1,7 +1,7 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
 
-namespace XahlicemMod.Items.Accessory {
+namespace DrakSolz.Items.Accessory {
     public class RingLoyds : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Loyd's Sword Ring");

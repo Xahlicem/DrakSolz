@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
 
-namespace XahlicemMod.Items.Shop
+namespace DrakSolz.Items.Shop
 {
     public class ScrollHolyHomeward : ModItem
     {

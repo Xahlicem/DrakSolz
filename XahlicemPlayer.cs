@@ -10,11 +10,11 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 using Terraria.UI;
-using XahlicemMod.UI;
+using DrakSolz.UI;
 
-namespace XahlicemMod {
+namespace DrakSolz {
 
-    public class XahlicemPlayer : ModPlayer {
+    public class DrakSolzPlayer : ModPlayer {
         private long lastHurt = 0;
         public long LastHurt { get { return lastHurt; } set { lastHurt = value; } }
 
@@ -91,7 +91,7 @@ namespace XahlicemMod {
         public override void ProcessTriggers(TriggersSet triggersSet) { }
 
         public override void SetControls() {
-            if (UI.XPlayerUI.visible) {
+            if (UI.PlayerUI.visible) {
                 player.controlDown = false;
                 player.controlUp = false;
                 player.controlLeft = false;
@@ -143,9 +143,9 @@ namespace XahlicemMod {
 
         public override void PostUpdate() {
             if (Main.netMode == NetmodeID.MultiplayerClient && player.Equals(Main.LocalPlayer)) {
-                GetPacket((byte) XModMessageType.FromClient).Send();
+                GetPacket((byte) MessageType.FromClient).Send();
             }
-            if (player.Equals(Main.LocalPlayer))(mod as XahlicemMod).xUI.updateValue(Souls, Level);
+            if (player.Equals(Main.LocalPlayer))(mod as DrakSolz).ui.updateValue(Souls, Level);
         }
 
         public override void Hurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit) {
@@ -160,7 +160,7 @@ namespace XahlicemMod {
                 int i = Item.NewItem((int) player.position.X, (int) player.position.Y, player.width, player.height, mod.ItemType("Soul"), Souls);
                 Main.item[i].GetGlobalItem<Items.XItem>().FromPlayer = player.whoAmI;
                 Souls = 0;
-                if (player.Equals(Main.LocalPlayer))(mod as XahlicemMod).xUI.updateValue(Souls, Level);
+                if (player.Equals(Main.LocalPlayer))(mod as DrakSolz).ui.updateValue(Souls, Level);
             }
         }
 
@@ -180,42 +180,41 @@ namespace XahlicemMod {
 
         public override TagCompound Save() {
             TagCompound save = new TagCompound();
-            save.Add("XLevel", Level);
-            save.Add("XSouls", Souls);
-            save.Add("XStr", Str);
-            save.Add("XDex", Dex);
-            save.Add("XInt", Int);
-            save.Add("XFth", Fth);
-            save.Add("XVit", Vit);
-            save.Add("XAtt", Att);
-            save.Add("XBossSouls", BossSouls);
+            save.Add("Level", Level);
+            save.Add("Souls", Souls);
+            save.Add("Str", Str);
+            save.Add("Dex", Dex);
+            save.Add("Int", Int);
+            save.Add("Fth", Fth);
+            save.Add("Vit", Vit);
+            save.Add("Att", Att);
+            save.Add("BossSouls", BossSouls);
             return save;
         }
 
         public override void Load(TagCompound tag) {
-            Level = tag.GetInt("XLevel");
-            Souls = tag.GetInt("XSouls");
-            Str = tag.GetInt("XStr");
-            Dex = tag.GetInt("XDex");
-            Int = tag.GetInt("XInt");
-            Fth = tag.GetInt("XFth");
-            Vit = tag.GetInt("XVit");
-            Att = tag.GetInt("XAtt");
-            BossSouls = tag.GetInt("XBossSouls");
+            Level = tag.GetInt("Level");
+            Souls = tag.GetInt("Souls");
+            Str = tag.GetInt("Str");
+            Dex = tag.GetInt("Dex");
+            Int = tag.GetInt("Int");
+            Fth = tag.GetInt("Fth");
+            Vit = tag.GetInt("Vit");
+            Att = tag.GetInt("Att");
+            BossSouls = tag.GetInt("BossSouls");
         }
 
         public override void SetupStartInventory(IList<Item> items) {
             items.Clear();
             Item item = new Item();
-            item.netDefaults(mod.ItemType<Items.Melee.SwordHilt>()); //mod.ItemType<Items.Shop.HomewardBone>());
+            item.netDefaults(mod.ItemType<Items.Melee.SwordHilt>());
             item.prefix = PrefixID.Broken;
             items.Add(item);
         }
 
         public override void clientClone(ModPlayer clone) {
             base.clientClone(clone);
-            (clone as XahlicemPlayer).Souls = Souls;
-            (clone as XahlicemPlayer).lastHurt = lastHurt;
+            (clone as DrakSolzPlayer).lastHurt = lastHurt;
             int index = player.FindBuffIndex(mod.BuffType<Buffs.Hollow>());
             if (index != -1) clone.player.AddBuff(mod.BuffType<Buffs.Hollow>(), player.buffTime[index]);
         }

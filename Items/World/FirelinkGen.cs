@@ -12,7 +12,7 @@ using Terraria.ModLoader.IO;
 using Terraria.DataStructures;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace XahlicemMod.Items.World
+namespace DrakSolz.Items.World
 {
 	public class FirelinkGen : ModWorld
 	{

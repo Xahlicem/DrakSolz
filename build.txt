@@ -1,6 +1,6 @@
 author = Xahlicem, SolarEclipse28
 version = 0.1
-displayName = Xahlicem's Mod
+displayName = Drak Solz
 hideCode = false
 hideResources = false
 includeSource = true

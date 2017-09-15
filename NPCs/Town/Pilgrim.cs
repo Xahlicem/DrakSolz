@@ -4,14 +4,14 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.Utilities;
 
-namespace XahlicemMod.NPCs.Town {
+namespace DrakSolz.NPCs.Town {
     [AutoloadHead]
     public class Pilgrim : ModNPC {
         /*public override string Texture
         {
             get
             {
-                return "XahlicemMod/NPCs/Pilgrim";
+                return "DrakSolz/NPCs/Pilgrim";
             }
         }
 
@@ -19,7 +19,7 @@ namespace XahlicemMod.NPCs.Town {
         {
             get
             {
-                return new string[] { "XahlicemMod/NPCs/Pilgrim_Alt_1" };
+                return new string[] { "DrakSolz/NPCs/Pilgrim_Alt_1" };
             }
         }*/
 
@@ -99,7 +99,7 @@ namespace XahlicemMod.NPCs.Town {
 
         public override void SetChatButtons(ref string button, ref string button2) {
             button = Language.GetText("Shop").Value;
-            XahlicemPlayer player = Main.LocalPlayer.GetModPlayer<XahlicemPlayer>();
+            DrakSolzPlayer player = Main.LocalPlayer.GetModPlayer<DrakSolzPlayer>();
             button2 = "Level up";
         }
 
@@ -107,7 +107,7 @@ namespace XahlicemMod.NPCs.Town {
             if (firstButton) {
                 shop = true;
             } else {
-                UI.XPlayerUI.visible = true;
+                UI.PlayerUI.visible = true;
             }
         }
 

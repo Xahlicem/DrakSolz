@@ -8,7 +8,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.Net;
 
-namespace XahlicemMod.Items.Craft {
+namespace DrakSolz.Items.Craft {
     public class Soul : ModItem {
         public override void SetStaticDefaults() {
             Tooltip.SetDefault("'Souls of the Fallen'");
@@ -38,7 +38,7 @@ namespace XahlicemMod.Items.Craft {
         }
 
         public override bool UseItem(Player player) {
-            player.GetModPlayer<XahlicemPlayer>().Initialize();
+            player.GetModPlayer<DrakSolzPlayer>().Initialize();
             return true;
         }
 
@@ -53,9 +53,9 @@ namespace XahlicemMod.Items.Craft {
 
         public override bool OnPickup(Player player) {
             if (!player.Equals(Main.LocalPlayer)) return false;
-            player.GetModPlayer<XahlicemPlayer>().SoulTicks += item.stack;
+            player.GetModPlayer<DrakSolzPlayer>().SoulTicks += item.stack;
             player.ManaEffect(item.stack);
-            if (player.GetModPlayer<XahlicemPlayer>().EvilEye) {
+            if (player.GetModPlayer<DrakSolzPlayer>().EvilEye) {
                 player.statLife += 5;
                 player.HealEffect(5);
             }
@@ -79,7 +79,7 @@ namespace XahlicemMod.Items.Craft {
     public class SoulGlobalNPC : GlobalNPC {
         public override void NPCLoot(NPC npc) {
             if (npc.aiStyle == 9 || npc.aiStyle == 50) return;
-            if (XahlicemMod.ListBossSoul.Contains(npc.type) || npc.type == mod.NPCType<NPCs.Enemy.Abysswalker>() || npc.type == mod.NPCType<NPCs.Enemy.TitaniteDemon>()) return;
+            if (DrakSolz.ListBossSoul.Contains(npc.type) || npc.type == mod.NPCType<NPCs.Enemy.Abysswalker>() || npc.type == mod.NPCType<NPCs.Enemy.TitaniteDemon>()) return;
 
             double num = Math.Ceiling(Math.Pow(Math.Sqrt(npc.defDamage) + Math.Sqrt(npc.defDefense) + Math.Sqrt(npc.lifeMax) - 1, 4) / (Math.Sqrt(npc.lifeMax) * 200));
             List<int> players = new List<int>();

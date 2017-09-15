@@ -4,9 +4,9 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using XahlicemMod.Items.Misc;
+using DrakSolz.Items.Misc;
 
-namespace XahlicemMod.NPCs.Enemy {
+namespace DrakSolz.NPCs.Enemy {
     class BossSoulMod : GlobalNPC {
         public override void NPCLoot(NPC npc) {
             int type = -1;
@@ -107,10 +107,10 @@ namespace XahlicemMod.NPCs.Enemy {
                         players.Add(Main.player[i].whoAmI);
             if (players.Count != 0)
                 for (int i = 0; i < players.Count; i++) {
-                    if ((Main.player[players[i]].GetModPlayer<XahlicemPlayer>().BossSouls & num) > 0) continue;
+                    if ((Main.player[players[i]].GetModPlayer<DrakSolzPlayer>().BossSouls & num) > 0) continue;
                     int item = Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, type);
                     Main.item[item].GetGlobalItem<Items.XItem>().FromPlayer = players[i];
-                    Main.player[players[i]].GetModPlayer<XahlicemPlayer>().BossSouls |= num;
+                    Main.player[players[i]].GetModPlayer<DrakSolzPlayer>().BossSouls |= num;
                 }
         }
     }

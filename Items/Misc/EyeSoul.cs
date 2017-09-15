@@ -2,7 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace XahlicemMod.Items.Misc {
+namespace DrakSolz.Items.Misc {
     public class EyeSoul : ModItem {
         public const int PLACE = 1 << 1;
         public override void SetStaticDefaults() {
@@ -28,7 +28,7 @@ namespace XahlicemMod.Items.Misc {
 
         public override bool UseItem(Player player) {
             player.ManaEffect(1500);
-            player.GetModPlayer<XahlicemPlayer>().BossSoulTicks += 45;
+            player.GetModPlayer<DrakSolzPlayer>().BossSoulTicks += 45;
             return true;
         }
 

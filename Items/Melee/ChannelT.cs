@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace XahlicemMod.Items.Melee {
+namespace DrakSolz.Items.Melee {
     public class ChannelT : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Channeler's Trident");

@@ -3,7 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 
-namespace XahlicemMod.Items.Shop {
+namespace DrakSolz.Items.Shop {
     public class GreenBlossom : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Green Blossom");

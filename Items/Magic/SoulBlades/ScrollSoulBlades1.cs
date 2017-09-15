@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace XahlicemMod.Items.Magic.SoulBlades {
+namespace DrakSolz.Items.Magic.SoulBlades {
     public class ScrollSoulBlades1 : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Soul Blades");

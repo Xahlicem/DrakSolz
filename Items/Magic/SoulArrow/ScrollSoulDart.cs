@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace XahlicemMod.Items.Magic.SoulArrow {
+namespace DrakSolz.Items.Magic.SoulArrow {
     public class ScrollSoulDart : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Soul Dart");

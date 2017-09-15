@@ -2,7 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace XahlicemMod.Items.Misc {
+namespace DrakSolz.Items.Misc {
     public class EaterSoul : ModItem {
         public const int PLACE = 1 << 2;
         public override void SetStaticDefaults() {
@@ -28,7 +28,7 @@ namespace XahlicemMod.Items.Misc {
 
         public override bool UseItem(Player player) {
             player.ManaEffect(2000);
-            player.GetModPlayer<XahlicemPlayer>().BossSoulTicks += 50;
+            player.GetModPlayer<DrakSolzPlayer>().BossSoulTicks += 50;
             return true;
         }
 

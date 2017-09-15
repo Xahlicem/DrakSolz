@@ -1,7 +1,7 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
 
-namespace XahlicemMod.Items.Accessory {
+namespace DrakSolz.Items.Accessory {
     public class RingEvilEye : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Evil Eye Ring");
@@ -18,7 +18,7 @@ namespace XahlicemMod.Items.Accessory {
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual) {
-            player.GetModPlayer<XahlicemPlayer>().EvilEye = true;
+            player.GetModPlayer<DrakSolzPlayer>().EvilEye = true;
         }
     }
 }

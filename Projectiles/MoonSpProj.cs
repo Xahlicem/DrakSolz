@@ -7,7 +7,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace XahlicemMod.Projectiles {
+namespace DrakSolz.Projectiles {
     public class MoonSpProj : ModProjectile {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Moonlight Spear");
