@@ -37,6 +37,8 @@ namespace XahlicemMod {
         public int Att { get; set; }
         public int Mana { get { return Att * 5; } }
 
+        public int SoulTicks { get; set; }
+
         public bool SoulSummon { get; set; }
         public bool EvilEye { get; set; }
 
@@ -50,6 +52,8 @@ namespace XahlicemMod {
             Vit = 0;
             Att = 0;
 
+            SoulTicks = 0;
+
             SoulSummon = false;
             EvilEye = false;
         }
@@ -59,7 +63,15 @@ namespace XahlicemMod {
             EvilEye = false;
         }
 
-        public override void PreUpdate() { }
+        public override void PreUpdate() {
+            if (SoulTicks > 0) {
+                if (SoulTicks <=40) Souls += 25;
+                else if (SoulTicks <=80) Souls += 100;
+                else if (SoulTicks <=130) Souls += 500;
+                else Souls += 1000;
+                SoulTicks--;
+            }
+        }
 
         public override void ProcessTriggers(TriggersSet triggersSet) { }
 
