@@ -1,20 +1,16 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-namespace DrakSolz.Items.Shop
-{
-    class PrismStone : ModItem
-    {
+namespace DrakSolz.Items.Misc {
+    class PrismStone : ModItem {
         // TODO, count as explosive for demolitionist spawn
 
-        public override void SetStaticDefaults()
-        {
+        public override void SetStaticDefaults() {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Prism Stone");
         }
 
-        public override void SetDefaults()
-        {
+        public override void SetDefaults() {
             item.useStyle = 1;
             item.shootSpeed = 12f;
             item.shoot = mod.ProjectileType("PrismStoneProj");

@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DrakSolz.Items.Shop {
+namespace DrakSolz.Items.Misc {
     public class HomewardBone : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Homeward Bone");

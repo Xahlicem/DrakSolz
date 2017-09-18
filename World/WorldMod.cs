@@ -56,8 +56,8 @@ namespace DrakSolz.Items.World {
                             if (t == null) continue;
                             if (t.type == TileID.Campfire) {
                                 //WorldGen.KillTile(x, y);
-                                WorldGen.PlaceTile(x, y, mod.TileType<Items.Misc.FirelinkShrineTile>());
-                                WorldGen.Place3x3(x, y, (ushort) mod.TileType<Items.Misc.FirelinkShrineTile>());
+                                WorldGen.PlaceTile(x, y - 1, mod.TileType<Items.Misc.FirelinkShrineTile>());
+                                //WorldGen.Place3x3(x, y, (ushort) mod.TileType<Items.Misc.FirelinkShrineTile>());
 
                             }
                         }

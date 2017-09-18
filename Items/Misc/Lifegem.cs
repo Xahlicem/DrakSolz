@@ -3,7 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 
-namespace DrakSolz.Items.Shop {
+namespace DrakSolz.Items.Misc {
     public class Lifegem : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Lifegem");
