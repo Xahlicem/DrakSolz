@@ -22,13 +22,9 @@ namespace DrakSolz.Items.Magic.SoulBlades {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.ItemType("ScrollSoulBlades1"), 1);
             recipe.AddIngredient(mod.ItemType("Soul"), 30000);
-            recipe.AddTile(mod.TileType<Items.Craft.FirelinkShrineTile>());
+            recipe.AddTile(mod.TileType<Items.Misc.FirelinkShrineTile>());
             recipe.SetResult(this);
             recipe.AddRecipe();
-            /*recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.DirtBlock, 1);
-            recipe.SetResult(this);
-            recipe.AddRecipe();*/
         }
 
         public override Vector2? HoldoutOffset() {

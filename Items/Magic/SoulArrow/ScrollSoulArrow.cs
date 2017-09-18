@@ -27,8 +27,8 @@ namespace DrakSolz.Items.Magic.SoulArrow {
 
         public override void AddRecipes() {
             ModRecipe recipe = new SoulRecipe(mod, this);
-            recipe.AddIngredient(mod.ItemType<Items.Craft.Scroll>());
-            recipe.AddTile(mod.TileType<Items.Craft.FirelinkShrineTile>());
+            recipe.AddIngredient(mod.ItemType<Items.Misc.Scroll>());
+            recipe.AddTile(mod.TileType<Items.Misc.FirelinkShrineTile>());
             recipe.AddRecipe();
             recipe = new SoulRecipe(mod, this);
             recipe.AddRecipe();

@@ -42,7 +42,7 @@ namespace DrakSolz.UI {
             numLevel.HAlign = UIAlign.Left;
             panel.Append(numLevel);
 
-            Texture2D soulTex = ModLoader.GetTexture("DrakSolz/Items/Craft/SoulSingle");
+            Texture2D soulTex = ModLoader.GetTexture("DrakSolz/UI/Soul");
             UIImage soul = new UIImage(soulTex);
             soul.Left.Set(45, 0f);
             soul.Top.Set(10, 0f);

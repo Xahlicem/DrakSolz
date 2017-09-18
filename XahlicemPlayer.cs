@@ -1,16 +1,10 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
-using Terraria.UI;
-using DrakSolz.UI;
 
 namespace DrakSolz {
 
@@ -116,9 +110,9 @@ namespace DrakSolz {
         }
 
         public override void PostUpdateBuffs() {
-            if (player.armor[0].type == mod.ItemType<Items.Armor.ChannelerHelmet>() &&
-                player.armor[1].type == mod.ItemType<Items.Armor.ChannelerRobe>() &&
-                player.armor[2].type == mod.ItemType<Items.Armor.ChannelerSkirt>())
+            if (player.armor[0].type == mod.ItemType<Items.Armor.Channeler.ChannelerHelmet>() &&
+                player.armor[1].type == mod.ItemType<Items.Armor.Channeler.ChannelerRobe>() &&
+                player.armor[2].type == mod.ItemType<Items.Armor.Channeler.ChannelerSkirt>())
                 player.extraAccessorySlots += 1;
 
             for (int n = 3; n < 8 + player.extraAccessorySlots; n++) {

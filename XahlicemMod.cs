@@ -43,7 +43,7 @@ namespace DrakSolz {
             });
 
             if (Main.dedServ) return;
-            ui = new SoulUI(GetItem<Items.Craft.Soul>());
+            ui = new SoulUI(GetItem<Items.Souls.Soul>());
             ui.Activate();
             userInterface = new UserInterface();
             userInterface.SetState(ui);

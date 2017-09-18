@@ -26,14 +26,10 @@ namespace DrakSolz.Items.Magic.SoulArrow {
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.ItemType("Soul"), 100);
-            recipe.AddIngredient(mod.ItemType<Items.Craft.Scroll>());
-            recipe.AddTile(mod.TileType<Items.Craft.FirelinkShrineTile>());
+            recipe.AddIngredient(mod.ItemType<Items.Misc.Scroll>());
+            recipe.AddTile(mod.TileType<Items.Misc.FirelinkShrineTile>());
             recipe.SetResult(this);
             recipe.AddRecipe();
-            /*recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.DirtBlock, 1);
-            recipe.SetResult(this);
-            recipe.AddRecipe();*/
         }
 
         //public override Vector2? HoldoutOffset() {
