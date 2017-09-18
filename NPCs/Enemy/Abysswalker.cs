@@ -9,16 +9,20 @@ namespace DrakSolz.NPCs.Enemy {
     public class Abysswalker : ModNPC {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Abysswalker");
-            Main.npcFrameCount[npc.type] = 14; // make sure to set this for your modnpcs.
+            Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.DD2OgreT2];
+            //Main.npcFrameCount[npc.type] = 48; // make sure to set this for your modnpcs.
         }
 
         public override void SetDefaults() {
+            npc.CloneDefaults(NPCID.DD2OgreT2);
             npc.width = 40;
             npc.scale *= 2f;
             npc.height = 44;
             npc.aiStyle = 107;
-            aiType = NPCID.DD2GoblinT3;
-            animationType = NPCID.DD2GoblinT3;
+            aiType = NPCID.DD2OgreT2;
+            animationType = NPCID.DD2OgreT2;
+            npc.frame = new Rectangle(0,0,118,64);
+            npc.setFrameSize = true;
             npc.damage = 1;
             npc.defense = 50;
             npc.lifeMax = 1750;
@@ -28,7 +32,7 @@ namespace DrakSolz.NPCs.Enemy {
             //npc.color = new Color(0, 80, 255, 100);
             npc.value = 50000f;
             npc.knockBackResist = 0.5f;
-            npc.buffImmune[BuffID.Confused] = false; // npc default to being immune to the Confused debuff. Allowing confused could be a little more work depending on the AI. npc.confused is true while the npc is confused.
+            npc.buffImmune[BuffID.Confused] = true; // npc default to being immune to the Confused debuff. Allowing confused could be a little more work depending on the AI. npc.confused is true while the npc is confused.
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
@@ -37,9 +41,10 @@ namespace DrakSolz.NPCs.Enemy {
         }
         public override void FindFrame(int frameHeight) {
             // This makes the sprite flip horizontally in conjunction with the npc.direction.
+            npc.frame.Width = 118;
             npc.spriteDirection = npc.direction;
         }
-        public override void AI() {
+        /*public override void AI() {
             npc.TargetClosest(true);
             Vector2 enemy = npc.Center;
             enemy.Y = Main.player[npc.target].Center.Y;
@@ -55,6 +60,6 @@ namespace DrakSolz.NPCs.Enemy {
             } else {
 
             }
-        }
+    }*/
     }
 }
