@@ -11,17 +11,18 @@ namespace DrakSolz.Buffs {
 
         }
         public override void Update(Player player, ref int buffIndex) {
+            float increase = 1.3f;
             player.moveSpeed += 0.25f;
             player.maxRunSpeed += 0.50f;
             player.maxFallSpeed += 4.0f;
             player.jumpSpeedBoost += 2.50f;
             player.pickSpeed += 0.50f;
             player.meleeSpeed += 0.25f;
-            player.magicDamage *= 1.4f;
-            player.thrownDamage *= 1.4f;
-            player.rangedDamage *= 1.4f;
-            player.minionDamage *= 1.4f;
-            player.meleeDamage *= 1.4f;
+            player.magicDamage *= increase;
+            player.thrownDamage *= increase;
+            player.rangedDamage *= increase;
+            player.minionDamage *= increase;
+            player.meleeDamage *= increase;
 
             int index = player.FindBuffIndex(mod.BuffType<Buffs.ChannelBuff>());
             if (index != -1) player.buffTime[index] = 0;

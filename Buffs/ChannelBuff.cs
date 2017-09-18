@@ -11,17 +11,18 @@ namespace DrakSolz.Buffs {
 
         }
         public override void Update(Player player, ref int buffIndex) {
+            float increase = 1.15f;
             player.moveSpeed += 0.10f;
             player.maxRunSpeed += 0.25f;
             player.maxFallSpeed += 2.0f;
-            player.jumpSpeedBoost += 1.25f;
-            player.pickSpeed += 0.10f;
+            player.jumpSpeedBoost += 1.5f;
+            player.pickSpeed += 0.20f;
             player.meleeSpeed += 0.10f;
-            player.magicDamage *= 1.25f;
-            player.thrownDamage *= 1.25f;
-            player.rangedDamage *= 1.25f;
-            player.minionDamage *= 1.25f;
-            player.meleeDamage *= 1.25f;
+            player.magicDamage *= increase;
+            player.thrownDamage *= increase;
+            player.rangedDamage *= increase;
+            player.minionDamage *= increase;
+            player.meleeDamage *= increase;
         }
     }
 }
