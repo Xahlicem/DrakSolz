@@ -30,11 +30,6 @@ namespace DrakSolz.NPCs.Enemy {
             npc.buffImmune[BuffID.Confused] = true; // npc default to being immune to the Confused debuff. Allowing confused could be a little more work depending on the AI. npc.confused is true while the npc is confused.
         }
 
-        public override float SpawnChance(NPCSpawnInfo spawnInfo) {
-            // we would like this npc to spawn in the overworld.
-            return SpawnCondition.OverworldDayBirdCritter.Chance * 10.1f;
-        }
-
         // These const ints are for the benefit of the programmer. Organization is key to making an AI that behaves properly without driving you crazy.
         // Here I lay out what I will use each of the 4 npc.ai slots for.
         const int AI_State_Slot = 0;
@@ -91,6 +86,7 @@ namespace DrakSolz.NPCs.Enemy {
             } else AI_Falling_Timer = 0;
             // The npc starts in the asleep state, waiting for a player to enter range
             if (AI_State == State_Still) {
+                
                 // TargetClosest sets npc.target to the player.whoAmI of the closest player. the faceTarget parameter means that npc.direction will automatically be 1 or -1 if the targetted player is to the right or left. This is also automatically flipped if npc.confused
                 npc.TargetClosest(true);
 
