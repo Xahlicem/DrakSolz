@@ -15,7 +15,7 @@ namespace DrakSolz.Items.Melee {
             item.tileBoost = -2;
             item.pick = 10;
             item.axe = 2;
-            item.damage = 2;
+            item.damage = 4;
             item.knockBack = 1f;
             item.useTime += 3;
             item.useAnimation += 3;
