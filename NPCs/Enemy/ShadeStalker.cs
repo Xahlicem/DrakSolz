@@ -6,9 +6,9 @@ using Terraria.ModLoader;
 
 namespace DrakSolz.NPCs.Enemy {
     // This ModNPC serves as an example of a complete AI example.
-    public class AbyssStalker : ModNPC {
+    public class ShadeStalker : ModNPC {
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault("Abyss Stalker");
+            DisplayName.SetDefault("Shade Stalker");
             Main.npcFrameCount[npc.type] = 24; // make sure to set this for your modnpcs.
         }
 
@@ -18,14 +18,13 @@ namespace DrakSolz.NPCs.Enemy {
             npc.height = 45;
             npc.aiStyle = -1; // This npc has a completely unique AI, so we set this to -1.
             npc.damage = 50;
-            npc.defense = 40;
-            npc.lifeMax = 20000;
+            npc.defense = 30;
+            npc.lifeMax = 10000;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
-            //npc.alpha = 175;
+            npc.alpha = 50;
             //npc.color = new Color(0, 80, 255, 100);
             npc.value = 50000f;
-            npc.altTexture = 1;
             npc.knockBackResist = 0f;
             npc.buffImmune[BuffID.Confused] = true; // npc default to being immune to the Confused debuff. Allowing confused could be a little more work depending on the AI. npc.confused is true while the npc is confused.
         }
@@ -110,13 +109,13 @@ namespace DrakSolz.NPCs.Enemy {
                 AI_Away_Timer++;
                 npc.TargetClosest();
                 npc.velocity.X = npc.direction * (9 - ((npc.life + 1) / 5000));
-                if (npc.HasValidTarget && Main.player[npc.target].Distance(npc.Center) < 80f) {
+                if (npc.HasValidTarget && Main.player[npc.target].Distance(npc.Center) < 70f) {
                     npc.velocity.X = 0;
                     AI_Away_Timer = 0;
                     AI_State = State_Attack;
                     npc.frameCounter = 0;
                 }
-                if ((npc.HasValidTarget && Main.player[npc.target].Distance(npc.Center) > 500f) || AI_Away_Timer >= 80) {
+                if ((npc.HasValidTarget && Main.player[npc.target].Distance(npc.Center) > 500f) || AI_Away_Timer >= 70) {
                     AI_State = State_Jump;
                     AI_Away_Timer = 0;
                 }
