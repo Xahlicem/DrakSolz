@@ -9,9 +9,6 @@ namespace DrakSolz.Items.Souls {
             Tooltip.SetDefault("Soul of Skeletron");
         }
 
-        public SkeletronSoul() {
-            Place = 5;
-            Ticks = 55;
-        }
+        public SkeletronSoul() : base(5, 55) { }
     }
 }

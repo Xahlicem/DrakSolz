@@ -9,9 +9,6 @@ namespace DrakSolz.Items.Souls {
             Tooltip.SetDefault("Soul of Spazmatism");
         }
 
-        public SpazSoul() {
-            Place = 9;
-            Ticks = 85;
-        }
+        public SpazSoul() : base(9, 85) { }
     }
 }

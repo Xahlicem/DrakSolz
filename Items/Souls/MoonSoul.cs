@@ -9,9 +9,6 @@ namespace DrakSolz.Items.Souls {
             Tooltip.SetDefault("Soul of the Moon Lord");
         }
 
-        public MoonSoul() {
-            Place = 15;
-            Ticks = 160;
-        }
+        public MoonSoul() : base(15, 160) { }
     }
 }

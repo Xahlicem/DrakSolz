@@ -9,9 +9,6 @@ namespace DrakSolz.Items.Souls {
             Tooltip.SetDefault("Soul of the Eye of Cthulhu");
         }
 
-        public EyeSoul() {
-            Place = 1;
-            Ticks = 45;
-        }
+        public EyeSoul() : base(1, 45) { }
     }
 }

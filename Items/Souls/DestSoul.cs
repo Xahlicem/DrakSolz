@@ -9,9 +9,6 @@ namespace DrakSolz.Items.Souls {
             Tooltip.SetDefault("Soul of the Destroyer");
         }
 
-        public DestSoul() {
-            Place = 7;
-            Ticks = 100;
-        }
+        public DestSoul() : base(7, 100) { }
     }
 }

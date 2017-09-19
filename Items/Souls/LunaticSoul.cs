@@ -9,9 +9,6 @@ namespace DrakSolz.Items.Souls {
             Tooltip.SetDefault("Soul of the Lunatic Cultist");
         }
 
-        public LunaticSoul() {
-            Place = 13;
-            Ticks = 135;
-        }
+        public LunaticSoul() : base(13, 135) { }
     }
 }

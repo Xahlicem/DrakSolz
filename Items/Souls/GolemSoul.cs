@@ -9,9 +9,6 @@ namespace DrakSolz.Items.Souls {
             Tooltip.SetDefault("Soul of the Golem");
         }
 
-        public GolemSoul() {
-            Place = 12;
-            Ticks = 125;
-        }
+        public GolemSoul() : base(12, 125) { }
     }
 }

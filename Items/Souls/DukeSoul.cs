@@ -9,9 +9,6 @@ namespace DrakSolz.Items.Souls {
             Tooltip.SetDefault("Soul of Duke Fishron");
         }
 
-        public DukeSoul() {
-            Place = 14;
-            Ticks = 150;
-        }
+        public DukeSoul() : base(14, 150) { }
     }
 }

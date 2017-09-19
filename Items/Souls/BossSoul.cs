@@ -5,18 +5,13 @@ using Terraria.ModLoader;
 
 namespace DrakSolz.Items.Souls {
     public class BossSoul : ModItem {
-        private int place;
-        public int Place { get { return 1 << place; } set { place = value; } }
-        public int Ticks { get; set; }
+        public int Place { get; internal set; }
+        public int Ticks { get; internal set; }
         public int Total { get { return TicksToInt(); } }
 
-        public override bool CloneNewInstances { get { return true; } }
-
-        public override ModItem Clone() {
-            BossSoul clone = base.Clone() as BossSoul;
-            clone.Place = this.Place;
-            clone.Ticks = this.Ticks;
-            return clone;
+        public BossSoul(int place, int ticks) {
+            Place = 1 << place;
+            Ticks = ticks;
         }
 
         public override void SetStaticDefaults() {

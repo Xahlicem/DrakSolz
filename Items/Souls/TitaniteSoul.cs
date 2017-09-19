@@ -9,9 +9,6 @@ namespace DrakSolz.Items.Souls {
             Tooltip.SetDefault("Soul of the Titanite Demon");
         }
 
-        public TitaniteSoul() {
-            Place = 17;
-            Ticks = 150;
-        }
+        public TitaniteSoul() : base(17, 150) { }
     }
 }

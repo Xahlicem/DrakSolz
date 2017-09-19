@@ -9,9 +9,6 @@ namespace DrakSolz.Items.Souls {
             Tooltip.SetDefault("Soul of Plantera");
         }
 
-        public PlantSoul() {
-            Place = 0;
-            Ticks = 40;
-        }
+        public PlantSoul() : base(11, 115) { }
     }
 }

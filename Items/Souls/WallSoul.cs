@@ -9,9 +9,6 @@ namespace DrakSolz.Items.Souls {
             Tooltip.SetDefault("Soul of the Wall of Flesh");
         }
 
-        public WallSoul() {
-            Place = 6;
-            Ticks = 80;
-        }
+        public WallSoul() : base(6, 80) { }
     }
 }

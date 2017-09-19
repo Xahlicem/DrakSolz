@@ -9,9 +9,6 @@ namespace DrakSolz.Items.Souls {
             Tooltip.SetDefault("Soul of Retinazer");
         }
 
-        public RetSoul() {
-            Place = 8;
-            Ticks = 85;
-        }
+        public RetSoul() : base(8, 85) { }
     }
 }
