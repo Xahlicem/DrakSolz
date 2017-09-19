@@ -5,12 +5,12 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace DrakSolz.NPCs.Enemy {
-    // This ModNPC serves as an example of a complete AI example.
+    // npc ModNPC serves as an example of a complete AI example.
     public class Abysswalker : ModNPC {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Abysswalker");
-            Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.DD2OgreT2];
-            //Main.npcFrameCount[npc.type] = 48; // make sure to set this for your modnpcs.
+            //Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.DD2OgreT2];
+            Main.npcFrameCount[npc.type] = 10; // make sure to set npc for your modnpcs.
         }
 
         public override void SetDefaults() {
@@ -21,7 +21,7 @@ namespace DrakSolz.NPCs.Enemy {
             npc.aiStyle = 107;
             aiType = NPCID.DD2OgreT2;
             animationType = NPCID.DD2OgreT2;
-            npc.frame = new Rectangle(0,0,118,64);
+            npc.frame = new Rectangle(0, 0, 118, 64);
             npc.setFrameSize = true;
             npc.damage = 1;
             npc.defense = 50;
@@ -36,13 +36,13 @@ namespace DrakSolz.NPCs.Enemy {
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
-            // we would like this npc to spawn in the overworld.
+            // we would like npc npc to spawn in the overworld.
             return SpawnCondition.Mummy.Chance * 0.5f;
         }
         public override void FindFrame(int frameHeight) {
-            // This makes the sprite flip horizontally in conjunction with the npc.direction.
-            npc.frame.Width = 118;
+            // npc makes the sprite flip horizontally in conjunction with the npc.direction.
             npc.spriteDirection = npc.direction;
+            npc.frame.Y *= 2;
         }
         /*public override void AI() {
             npc.TargetClosest(true);
