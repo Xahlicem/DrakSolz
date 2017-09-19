@@ -53,9 +53,11 @@ namespace DrakSolz.Items.Souls {
 
         public override bool OnPickup(Player player) {
             if (!player.Equals(Main.LocalPlayer)) return false;
-            player.GetModPlayer<DrakSolzPlayer>().SoulTicks += item.stack;
+            DrakSolzPlayer mPlayer = player.GetModPlayer<DrakSolzPlayer>();
+            item.stack += (int)((float) item.stack * .1f * mPlayer.Avarice);
+            mPlayer.SoulTicks += item.stack;
             player.ManaEffect(item.stack);
-            if (player.GetModPlayer<DrakSolzPlayer>().EvilEye) {
+            if (mPlayer.EvilEye) {
                 player.statLife += 5;
                 player.HealEffect(5);
             }

@@ -1,13 +1,8 @@
-using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DrakSolz.Buffs
-
-{
-
+namespace DrakSolz.Buffs {
     public class Hollow : ModBuff {
         public override void SetDefaults() {
             DisplayName.SetDefault("Hollow");

@@ -2,27 +2,25 @@
 using Terraria.ModLoader;
 
 namespace DrakSolz.Items.Accessory {
-    public class RingDuskCrown : ModItem {
+    public class RingAvarice : ModItem {
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault("Dusk Crown Ring");
+            DisplayName.SetDefault("Ring of Avarice");
             Tooltip.SetDefault("This is a modded ring." +
-                "\n-50% Mana Cost" +
-                "\n-50% Life");
+                "\n+Souls");
         }
+
+        public override string Texture { get { return "DrakSolz/Items/Accessory/RingBlades"; } }
 
         public override void SetDefaults() {
             item.width = 22;
-            item.defense = 0;
             item.height = 20;
-            item.value = Item.buyPrice(0, 40, 0, 0);
+            item.value = Item.buyPrice(0, 15, 0, 0);
             item.rare = 2;
             item.accessory = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual) {
-            player.statLifeMax2 = (int)(player.statLifeMax2 * 0.5f);
-            player.manaCost *= 0.5f;
-
+            player.GetModPlayer<DrakSolzPlayer>().Avarice += 2;
         }
     }
 }

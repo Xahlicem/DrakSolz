@@ -3,38 +3,12 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace DrakSolz.Items.Souls {
-    public class EaterSoul : ModItem {
-        public const int PLACE = 1 << 2;
+    public class EaterSoul : BossSoul {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Corrupt Soul");
-            Tooltip.SetDefault("Soul of the Eater of Worlds" +
-                "\n+2000 Souls when consumed.");
+            Tooltip.SetDefault("Soul of the Eater of Worlds");
         }
 
-        public override void SetDefaults() {
-            Item refItem = new Item();
-            refItem.SetDefaults(ItemID.ManaCrystal);
-            item.width = refItem.width;
-            item.height = refItem.height;
-            item.useStyle = refItem.useStyle;
-            item.UseSound = refItem.UseSound;
-            item.useAnimation = 20;
-            item.useTime = 20;
-            item.maxStack = 1;
-            item.value = Item.buyPrice(0, 0, 0, 0);
-            item.rare = 3;
-            item.consumable = true;
-        }
-
-        public override bool UseItem(Player player) {
-            player.ManaEffect(2000);
-            player.GetModPlayer<DrakSolzPlayer>().BossSoulTicks += 50;
-            return true;
-        }
-
-        public override bool CanPickup(Player player) {
-            int fromPlayer = item.GetGlobalItem<Items.XItem>().FromPlayer;
-            return (player.whoAmI == fromPlayer);
-        }
+        public EaterSoul() : base(2, 50) { }
     }
 }

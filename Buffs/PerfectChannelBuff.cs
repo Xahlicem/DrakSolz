@@ -10,6 +10,7 @@ namespace DrakSolz.Buffs {
             Main.debuff[Type] = true;
 
         }
+
         public override void Update(Player player, ref int buffIndex) {
             float increase = 1.3f;
             player.moveSpeed += 0.25f;

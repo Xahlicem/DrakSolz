@@ -85,14 +85,14 @@ namespace DrakSolz.Items {
     }
 
     public class SoulItem : ModItem {
-        public int SoulValue { get; set; }
+        public int SoulValue { get; internal set; }
 
-        public override bool CloneNewInstances { get { return true; } }
+        public SoulItem(int value) {
+            SoulValue = value;
+        }
 
-        public override ModItem Clone() {
-            SoulItem clone = base.Clone() as SoulItem;
-            clone.SoulValue = this.SoulValue;
-            return clone;
+        public override bool Autoload(ref string name) {
+            return (GetType() == typeof (SoulItem)) ? false : base.Autoload(ref name);
         }
     }
 

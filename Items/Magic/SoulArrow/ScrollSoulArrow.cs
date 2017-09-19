@@ -7,10 +7,13 @@ using Terraria.ModLoader.IO;
 
 namespace DrakSolz.Items.Magic.SoulArrow {
     public class ScrollSoulArrow : SoulItem {
+        public ScrollSoulArrow() : base(500) { }
+        
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Soul Arrow");
             Tooltip.SetDefault("Sorcery that projects a soul arrow toward your target.");
         }
+
         public override void SetDefaults() {
             item.CloneDefaults(ItemID.IceRod);
             item.useStyle = 5;
@@ -22,7 +25,6 @@ namespace DrakSolz.Items.Magic.SoulArrow {
             item.mana = 5;
             item.knockBack = 2f;
             item.shootSpeed = 20.0f;
-            SoulValue = 500;
         }
 
         public override void AddRecipes() {

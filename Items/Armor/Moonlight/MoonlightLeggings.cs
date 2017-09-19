@@ -1,5 +1,4 @@
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace DrakSolz.Items.Armor.Moonlight {
@@ -23,7 +22,6 @@ namespace DrakSolz.Items.Armor.Moonlight {
         public override void UpdateEquip(Player player) {
             player.moveSpeed += 0.10f;
             player.waterWalk = true;
-            //player.AddBuff(BuffID.WaterWalking, 2);
         }
     }
 }

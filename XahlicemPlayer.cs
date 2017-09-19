@@ -37,6 +37,7 @@ namespace DrakSolz {
 
         public bool SoulSummon { get; set; }
         public bool EvilEye { get; set; }
+        public int Avarice { get; set; }
 
         public override void Initialize() {
             Level = 0;
@@ -54,11 +55,13 @@ namespace DrakSolz {
 
             SoulSummon = false;
             EvilEye = false;
+            Avarice = 0;
         }
 
         public override void ResetEffects() {
             SoulSummon = false;
             EvilEye = false;
+            Avarice = 0;
         }
 
         public override void PreUpdate() {
@@ -79,6 +82,7 @@ namespace DrakSolz {
                 else if (BossSoulTicks <= 130) Souls += 500;
                 else Souls += 1000;
                 BossSoulTicks--;
+                Main.dust[Dust.NewDust(player.position, player.width, player.height, DustID.AncientLight)].noGravity = true;
             }
         }
 

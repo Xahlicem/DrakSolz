@@ -33,14 +33,5 @@ namespace DrakSolz.Items.Armor.Channeler {
             player.setBonus = ("Channeler's Perfect Dance" +
                 "\n+1 Accessory Slot");
         }
-        public class ChannelerHelmetGlobalNPC : GlobalNPC {
-            public override void NPCLoot(NPC npc) {
-                if (Main.rand.Next(10) == 0) {
-                    if (npc.type == mod.NPCType("Channeler")) {
-                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType("ChannelerHelmet"), 1);
-                    }
-                }
-            }
-        }
     }
 }
