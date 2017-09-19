@@ -12,8 +12,9 @@ using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.World.Generation;
 
-namespace DrakSolz.Items.Misc {
+namespace DrakSolz.Tiles {
     public class FirelinkShrine : ModItem {
+
         public override void SetStaticDefaults() {
             Tooltip.SetDefault("Bonfire with a unique blade. A pleasent respite.");
         }
@@ -30,12 +31,13 @@ namespace DrakSolz.Items.Misc {
             item.useStyle = 1;
             item.consumable = true;
             item.value = Item.buyPrice(0, 0, 0, 1);
-            item.createTile = mod.TileType("FirelinkShrineTile");
+            item.createTile = mod.TileType<Tiles.FirelinkShrineTile>();
         }
+
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.ItemType<Items.Melee.SwordHilt>());
-            recipe.AddIngredient(null, "HomewardBone", 5);
+            recipe.AddIngredient(mod.ItemType<Items.Misc.HomewardBone>(), 5);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
@@ -46,7 +48,7 @@ namespace DrakSolz.Items.Misc {
             Main.tileLighted[Type] = true;
             Main.tileFrameImportant[Type] = true;
             Main.tileNoAttach[Type] = true;
-            //Main.tileTable[Type] = true;
+            Main.tileTable[Type] = true;
             Main.tileLavaDeath[Type] = true;
 
             TileObjectData.newTile.CopyFrom(TileObjectData.Style3x3);
@@ -88,7 +90,7 @@ namespace DrakSolz.Items.Misc {
         }
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY) {
-            Item.NewItem(i * 16, j * 16, 32, 16, mod.ItemType("FirelinkShrine"));
+            Item.NewItem(i * 16, j * 16, 32, 16, mod.ItemType<Tiles.FirelinkShrine>());
         }
 
         public override bool PreDraw(int i, int j, SpriteBatch spriteBatch) {
@@ -139,7 +141,7 @@ namespace DrakSolz.Items.Misc {
             Player player = Main.LocalPlayer;
             player.noThrow = 2;
             player.showItemIcon = true;
-            player.showItemIcon2 = mod.ItemType("FirelinkShrine");
+            player.showItemIcon2 = mod.ItemType<Tiles.FirelinkShrine>();
         }
 
         public override void HitWire(int i, int j) {

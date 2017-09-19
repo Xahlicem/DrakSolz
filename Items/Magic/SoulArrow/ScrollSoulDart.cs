@@ -5,7 +5,9 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace DrakSolz.Items.Magic.SoulArrow {
-    public class ScrollSoulDart : ModItem {
+    public class ScrollSoulDart : SoulItem {
+        public ScrollSoulDart() : base(100) { }
+
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Soul Dart");
             Tooltip.SetDefault("Sorcery that projects a soul dart toward your target.");
@@ -17,29 +19,23 @@ namespace DrakSolz.Items.Magic.SoulArrow {
             item.damage = 8;
             item.useTime = 20;
             item.useAnimation = 20;
-            item.shoot = mod.ProjectileType("SoulDartProj");
             item.mana = 3;
             item.knockBack = 1f;
             item.shootSpeed = 25.0f;
+            item.shoot = mod.ProjectileType<Projectiles.Magic.SoulProj>();
         }
 
         public override void AddRecipes() {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("Soul"), 100);
+            ModRecipe recipe = new SoulRecipe(mod, this);
             recipe.AddIngredient(mod.ItemType<Items.Misc.Scroll>());
-            recipe.AddTile(mod.TileType<Items.Misc.FirelinkShrineTile>());
-            recipe.SetResult(this);
+            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
             recipe.AddRecipe();
         }
 
-        //public override Vector2? HoldoutOffset() {
-            //return new Vector2(-5, 0);
-        //}
-
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack) {
             int pro = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, damage, knockBack, player.whoAmI);
-            Main.projectile[pro].ai[1] = 1;
-            return false; // return false because we don't want tmodloader to shoot projectile
+            Main.projectile[pro].frame = 0;
+            return false;
         }
     }
 }

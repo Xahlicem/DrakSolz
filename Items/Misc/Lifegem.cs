@@ -2,9 +2,9 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-
 namespace DrakSolz.Items.Misc {
     public class Lifegem : ModItem {
+
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Lifegem");
             Tooltip.SetDefault("Recovers life over time.");
@@ -27,8 +27,9 @@ namespace DrakSolz.Items.Misc {
 
         public override bool UseItem(Player player) {
             player.AddBuff(BuffID.Regeneration, 600);
-            //player.AddBuff(mod.BuffType("Undead2"), 2);
 
+            int index = player.FindBuffIndex(mod.BuffType<Buffs.Hollow>());
+            if (index != -1) player.buffTime[index] -= 30;
             return true;
         }
 
@@ -49,7 +50,7 @@ namespace DrakSolz.Items.Misc {
                         npc.type == NPCID.SmallTwiggyZombie || npc.type == NPCID.SwampZombie ||
                         npc.type == NPCID.TwiggyZombie || npc.type == NPCID.PincushionZombie ||
                         npc.type == NPCID.FemaleZombie || npc.type == NPCID.ArmedZombieCenx) {
-                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType("Lifegem"), 1);
+                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Misc.Lifegem>(), 1);
 
                     }
                 }

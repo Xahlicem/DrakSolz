@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 
 namespace DrakSolz.Items.Melee {
     public class MorianBlade : ModItem {
+
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Morian Blade");
             Tooltip.SetDefault("Thrives off of its wielder's mortality.");
@@ -22,7 +23,7 @@ namespace DrakSolz.Items.Melee {
         }
 
         public override bool UseItem(Player player) {
-            item.damage = 30 + (int)((player.statLifeMax - player.statLife) * 0.1f);
+            item.damage = 30 + (int)((player.statLifeMax2 - player.statLife) * 0.1f);
             return base.UseItem(player);
         }
     }

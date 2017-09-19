@@ -6,31 +6,47 @@ using Terraria.ModLoader;
 
 namespace DrakSolz.Items.Magic {
     public class MoonGS : ModItem {
+
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Moonlight Greatsword");
-            Tooltip.SetDefault("Shoots a tiny eater!.");
+            Tooltip.SetDefault("Shoots a wave!");
         }
+
         public override void SetDefaults() {
-            item.damage = 80;
+            item.damage = 250;
             item.magic = true;
-            item.mana = 18;
+            item.mana = 20;
             item.width = 90;
             item.height = 90;
-            item.useTime = 35;
-            item.useAnimation = 35;
+            item.useTime = 25;
+            item.useAnimation = 25;
             item.useStyle = 1;
-            item.noMelee = false; //so the item's animation doesn't do damage
             item.knockBack = 0;
             item.value = 10000;
             item.rare = 6;
             item.UseSound = SoundID.Item20;
             item.autoReuse = true;
-            item.shoot = mod.ProjectileType("MGSProj");
-            item.shootSpeed = 12f;
+            item.shootSpeed = 18f;
+            item.shoot = mod.ProjectileType<Projectiles.MGSProj>();
         }
 
-        public override Vector2? HoldoutOffset() {
-            return new Vector2(-50, -15);
+        public override bool CanUseItem(Player player) {
+            if (item.mana == 0) item.mana = item.alpha;
+            else item.alpha = item.mana;
+            item.buffTime = item.mana;
+            item.mana = 0;
+            return base.CanUseItem(player);
+        }
+
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack) {
+            if (player.statMana >= item.buffTime * player.manaCost) {
+                damage *= 2;
+                player.statMana -= (int)(item.buffTime * player.manaCost);
+                item.mana = item.buffTime;
+                return true;
+            }
+            item.mana = item.buffTime;
+            return false;
         }
     }
 }

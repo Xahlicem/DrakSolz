@@ -23,12 +23,12 @@ namespace DrakSolz.Items.Magic {
             item.scale = 1f;
             item.rare = 5;
             item.UseSound = SoundID.Item1;
-            item.shoot = mod.ProjectileType("MoonSpProj");
             item.value = 1000;
             item.noMelee = true; // Important because the spear is acutally a projectile instead of an item. This prevents the melee hitbox of this item.
             item.noUseGraphic = true; // Important, it's kind of wired if people see two spears at one time. This prevents the melee animation of this item.
             item.magic = true;
             item.autoReuse = true; // Most spears dont autoReuse, but it's possible
+            item.shoot = mod.ProjectileType<Projectiles.MoonSpProj>();
         }
         public override Vector2? HoldoutOffset() {
             return new Vector2(20, 0);

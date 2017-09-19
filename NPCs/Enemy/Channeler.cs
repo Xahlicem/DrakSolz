@@ -107,7 +107,7 @@ namespace DrakSolz.NPCs.Enemy {
                         AdjustMagnitude(ref speed);
                         AI_Timer = 0;
                         if (Main.netMode != 1) {
-                            Projectile.NewProjectile(npc.Center.X + 6, npc.Center.Y - 16, speed.X, speed.Y, mod.ProjectileType("SoulSpearProj"), npc.damage, 0f);
+                            Projectile.NewProjectile(npc.Center.X + 6, npc.Center.Y - 16, speed.X, speed.Y, mod.ProjectileType<Projectiles.Magic.SoulSpearProj>(), npc.damage, 0f);
                         }
                     }
                 }

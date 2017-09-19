@@ -2,9 +2,9 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-
 namespace DrakSolz.Items.Misc {
     public class GreenBlossom : ModItem {
+
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Green Blossom");
             Tooltip.SetDefault("Stamina Boosting Plant");
@@ -27,7 +27,6 @@ namespace DrakSolz.Items.Misc {
 
         public override bool UseItem(Player player) {
             player.AddBuff(BuffID.Panic, 3600);
-            //player.AddBuff(mod.BuffType("Undead2"), 2);
             return true;
         }
 
@@ -48,7 +47,7 @@ namespace DrakSolz.Items.Misc {
                         npc.type == NPCID.SmallTwiggyZombie || npc.type == NPCID.SwampZombie ||
                         npc.type == NPCID.TwiggyZombie || npc.type == NPCID.PincushionZombie ||
                         npc.type == NPCID.FemaleZombie || npc.type == NPCID.ArmedZombieCenx) {
-                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType("GreenBlossom"), 1);
+                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Misc.GreenBlossom>());
 
                     }
                 }
