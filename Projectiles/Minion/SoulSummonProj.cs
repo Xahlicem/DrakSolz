@@ -21,7 +21,7 @@ namespace DrakSolz.Projectiles.Minion {
             projectile.friendly = true;
             projectile.minion = true;
             projectile.minionSlots = 1f;
-            projectile.penetrate = 1;
+            projectile.penetrate = -1;
             projectile.timeLeft = projectile.timeLeft * 5;
             projectile.ignoreWater = true;
             projectile.tileCollide = true;
