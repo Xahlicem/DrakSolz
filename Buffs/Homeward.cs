@@ -1,12 +1,8 @@
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ModLoader;
 
-namespace DrakSolz.Buffs
-
-{
-
+namespace DrakSolz.Buffs {
     public class Homeward : ModBuff {
         public override void SetDefaults() {
             DisplayName.SetDefault("Homeward");

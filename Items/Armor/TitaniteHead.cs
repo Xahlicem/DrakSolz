@@ -1,5 +1,4 @@
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace DrakSolz.Items.Armor {
@@ -25,11 +24,11 @@ namespace DrakSolz.Items.Armor {
             player.blind = true;
             player.dangerSense = true;
             player.meleeDamage *= 1.5f;
+            player.headcovered = true;
         }
 
-        public override bool DrawHead()
-		{
-			return false;
-		}
+        public override bool DrawHead() {
+            return false;
+        }
     }
 }

@@ -23,14 +23,5 @@ namespace DrakSolz.Items.Armor.Channeler {
             player.moveSpeed += 0.10f;
             player.maxRunSpeed += 0.10f;
         }
-        public class ChannelerSkirtGlobalNPC : GlobalNPC {
-            public override void NPCLoot(NPC npc) {
-                if (Main.rand.Next(10) == 0) {
-                    if (npc.type == mod.NPCType("Channeler")) {
-                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType("ChannelerSkirt"), 1);
-                    }
-                }
-            }
-        }
     }
 }

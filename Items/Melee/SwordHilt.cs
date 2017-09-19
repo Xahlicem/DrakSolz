@@ -10,6 +10,7 @@ namespace DrakSolz.Items.Melee {
             DisplayName.SetDefault("Sword Hilt");
             Tooltip.SetDefault("Why?");
         }
+
         public override void SetDefaults() {
             item.CloneDefaults(ItemID.CopperPickaxe);
             item.tileBoost = -2;
@@ -20,6 +21,7 @@ namespace DrakSolz.Items.Melee {
             item.useTime += 3;
             item.useAnimation += 3;
         }
+
         public override Vector2? HoldoutOffset() {
             return new Vector2(0, 0);
         }
