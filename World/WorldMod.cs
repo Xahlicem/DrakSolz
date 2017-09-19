@@ -156,7 +156,7 @@ namespace DrakSolz.Items.World {
 
             bool placeSuccessful = false;
             Tile t;
-            int tileToPlace = mod.TileType<Items.Misc.FirelinkShrineTile>();
+            int tileToPlace = mod.TileType<Tiles.FirelinkShrineTile>();
             while (!placeSuccessful) {
                 int x2 = WorldGen.genRand.Next(-width + 1, width - 1) + x;
                 int y2 = WorldGen.genRand.Next(1, height) + y;

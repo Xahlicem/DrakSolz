@@ -4,7 +4,9 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace DrakSolz.Items.Accessory {
-    public class SkullLantern : ModItem {
+    public class SkullLantern : SoulItem {
+        public SkullLantern() : base(1500) { }
+
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Skull Lantern");
             Tooltip.SetDefault("Gives off light.");
@@ -30,11 +32,9 @@ namespace DrakSolz.Items.Accessory {
         }
 
         public override void AddRecipes() {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("Soul"), 1500);
+            ModRecipe recipe = new SoulRecipe(mod, this);
             recipe.AddIngredient(ItemID.Torch, 10);
-            recipe.AddIngredient(mod.ItemType("HomewardBone"), 2);
-            recipe.SetResult(this);
+            recipe.AddIngredient(mod.ItemType<Items.Misc.HomewardBone>(), 2);
             recipe.AddRecipe();
         }
 

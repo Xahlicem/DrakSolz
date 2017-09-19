@@ -26,7 +26,7 @@ namespace DrakSolz.Items.Armor.Moonlight {
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs) {
-            return body.type == mod.ItemType("MoonlightChest") && legs.type == mod.ItemType("MoonlightLeggings");
+            return body.type == mod.ItemType<Items.Armor.Moonlight.MoonlightChest>() && legs.type == mod.ItemType<Items.Armor.Moonlight.MoonlightLeggings>();
         }
 
         public override void UpdateArmorSet(Player player) {

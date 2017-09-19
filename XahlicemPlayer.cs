@@ -155,8 +155,8 @@ namespace DrakSolz {
             player.AddBuff(mod.BuffType<Buffs.Hollow>(), 60);
 
             if (Souls != 0) {
-                int i = Item.NewItem((int) player.position.X, (int) player.position.Y, player.width, player.height, mod.ItemType("Soul"), Souls);
-                Main.item[i].GetGlobalItem<Items.XItem>().FromPlayer = player.whoAmI;
+                int i = Item.NewItem((int) player.position.X, (int) player.position.Y, player.width, player.height, mod.ItemType<Items.Souls.Soul>(), Souls);
+                Main.item[i].GetGlobalItem<Items.OwnedItem>().FromPlayer = player.whoAmI;
                 Souls = 0;
                 if (player.Equals(Main.LocalPlayer))(mod as DrakSolz).ui.updateValue(Souls, Level);
             }

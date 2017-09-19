@@ -112,26 +112,13 @@ namespace DrakSolz.NPCs.Town {
         }
 
         public override void SetupShop(Chest shop, ref int nextSlot) {
-            shop.item[nextSlot].SetDefaults(mod.ItemType("ScrollHolyHomeward"));
-            nextSlot++;
-            shop.item[nextSlot].SetDefaults(mod.ItemType("GreenBlossom"));
-            nextSlot++;
-            shop.item[nextSlot].SetDefaults(mod.ItemType("HomewardBone"));
-            nextSlot++;
-            shop.item[nextSlot].SetDefaults(mod.ItemType("Lifegem"));
-            nextSlot++;
-            shop.item[nextSlot].SetDefaults(mod.ItemType("PrismStone"));
-            nextSlot++;
-            shop.item[nextSlot].SetDefaults(mod.ItemType("ScrollSoulDart"));
-            nextSlot++;
-            shop.item[nextSlot].SetDefaults(mod.ItemType("RingCloranthy"));
-            nextSlot++;
-            shop.item[nextSlot].SetDefaults(mod.ItemType("RingBlades"));
-            nextSlot++;
-            shop.item[nextSlot].SetDefaults(mod.ItemType("RingTinyBeing"));
-            nextSlot++;
-            shop.item[nextSlot].SetDefaults(ItemID.Silk);
-            nextSlot++;
+            shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Misc.ScrollHolyHomeward>());
+            shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Misc.GreenBlossom>());
+            shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Misc.HomewardBone>());
+            shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Misc.Lifegem>());
+            shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Misc.PrismStone>());
+            shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Misc.Scroll>());
+            shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Misc.ScrollHoly>());
         }
 
         public override void TownNPCAttackStrength(ref int damage, ref float knockback) {

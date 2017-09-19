@@ -26,7 +26,7 @@ namespace DrakSolz.Items.Armor.Channeler {
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs) {
-            return body.type == mod.ItemType("ChannelerRobe") && legs.type == mod.ItemType("ChannelerSkirt");
+            return body.type == mod.ItemType<Items.Armor.Channeler.ChannelerRobe>() && legs.type == mod.ItemType<Items.Armor.Channeler.ChannelerSkirt>();
         }
 
         public override void UpdateArmorSet(Player player) {

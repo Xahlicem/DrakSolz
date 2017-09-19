@@ -25,14 +25,5 @@ namespace DrakSolz.Items.Armor.DesertSorceress {
             player.waterWalk = true;
             //player.AddBuff(BuffID.WaterWalking, 2);
         }
-        public class SorceressSkirtGlobalNPC : GlobalNPC {
-            public override void NPCLoot(NPC npc) {
-                if (Main.rand.Next(10) == 0) {
-                    if (npc.type == mod.NPCType("DesertSorceress")) {
-                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType("SorceressSkirt"), 1);
-                    }
-                }
-            }
-        }
     }
 }

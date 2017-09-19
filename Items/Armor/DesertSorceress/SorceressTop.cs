@@ -25,14 +25,5 @@ namespace DrakSolz.Items.Armor.DesertSorceress {
             player.statManaMax2 += 20;
             player.statLifeMax2 += 20;
         }
-        public class SorceressTopGlobalNPC : GlobalNPC {
-            public override void NPCLoot(NPC npc) {
-                if (Main.rand.Next(10) == 0) {
-                    if (npc.type == mod.NPCType("DesertSorceress")) {
-                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType("SorceressTop"), 1);
-                    }
-                }
-            }
-        }
     }
 }

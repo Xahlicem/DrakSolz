@@ -5,7 +5,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DrakSolz.Projectiles.Soul {
+namespace DrakSolz.Projectiles.Magic {
     public class SorcSwordProj : ModProjectile {
 
         public override void SetStaticDefaults() {

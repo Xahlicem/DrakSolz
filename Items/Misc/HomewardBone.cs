@@ -5,13 +5,13 @@ using Terraria.ModLoader;
 
 namespace DrakSolz.Items.Misc {
     public class HomewardBone : ModItem {
+
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Homeward Bone");
             Tooltip.SetDefault("Returns one to their place of belonging.");
         }
 
         public override void SetDefaults() {
-            //item.CloneDefaults(ItemID.RecallPotion);
             item.useTime = 120;
             item.useStyle = 4;
             item.maxStack = 99;
@@ -23,8 +23,7 @@ namespace DrakSolz.Items.Misc {
         public override bool UseItem(Player player) {
             player.FindSpawn();
             if (player.SpawnX == -1) return false;
-            if (Main.tile[player.SpawnX, player.SpawnY].type != mod.TileType<Items.Misc.FirelinkShrineTile>()) {
-                //player.RemoveSpawn();
+            if (Main.tile[player.SpawnX, player.SpawnY].type != mod.TileType<Tiles.FirelinkShrineTile>()) {
                 return false;
             }
             player.AddBuff(mod.BuffType<Buffs.Homeward>(), 100);
@@ -49,7 +48,7 @@ namespace DrakSolz.Items.Misc {
                         npc.type == NPCID.TwiggyZombie || npc.type == NPCID.PincushionZombie ||
                         npc.type == NPCID.FemaleZombie || npc.type == NPCID.ArmedZombieCenx)
 
-                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType("HomewardBone"), 1);
+                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Misc.HomewardBone>(), 1);
 
                 }
             }

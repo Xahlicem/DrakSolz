@@ -26,7 +26,7 @@ namespace DrakSolz.Items.Armor.DesertSorceress {
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs) {
-            return body.type == mod.ItemType("MoonlightChest") && legs.type == mod.ItemType("MoonlightLeggings");
+            return body.type == mod.ItemType<Items.Armor.DesertSorceress.SorceressTop>() && legs.type == mod.ItemType<Items.Armor.DesertSorceress.SorceressSkirt>();
         }
 
         public override void UpdateArmorSet(Player player) {
@@ -42,15 +42,6 @@ namespace DrakSolz.Items.Armor.DesertSorceress {
             //player.AddBuff(BuffID.ManaRegeneration, 2);
             player.AddBuff(BuffID.Shine, 2);
             player.buffImmune[BuffID.Cursed] = true;
-        }
-        public class SorceressHoodGlobalNPC : GlobalNPC {
-            public override void NPCLoot(NPC npc) {
-                if (Main.rand.Next(10) == 0) {
-                    if (npc.type == mod.NPCType("DesertSorceress")) {
-                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType("SorceressHood"), 1);
-                    }
-                }
-            }
         }
     }
 }

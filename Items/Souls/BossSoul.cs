@@ -51,7 +51,7 @@ namespace DrakSolz.Items.Souls {
         }
 
         public override bool CanPickup(Player player) {
-            int fromPlayer = item.GetGlobalItem<Items.XItem>().FromPlayer;
+            int fromPlayer = item.GetGlobalItem<Items.OwnedItem>().FromPlayer;
             return (player.whoAmI == fromPlayer);
         }
 
@@ -153,7 +153,7 @@ namespace DrakSolz.Items.Souls {
                 for (int i = 0; i < players.Count; i++) {
                     if ((Main.player[players[i]].GetModPlayer<DrakSolzPlayer>().BossSouls & soul.Place) > 0) continue;
                     int index = Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, item.type);
-                    Main.item[index].GetGlobalItem<Items.XItem>().FromPlayer = players[i];
+                    Main.item[index].GetGlobalItem<Items.OwnedItem>().FromPlayer = players[i];
                     Main.player[players[i]].GetModPlayer<DrakSolzPlayer>().BossSouls |= soul.Place;
                 }
         }
