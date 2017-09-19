@@ -86,7 +86,7 @@ namespace DrakSolz.NPCs.Enemy {
             } else AI_Falling_Timer = 0;
             // The npc starts in the asleep state, waiting for a player to enter range
             if (AI_State == State_Still) {
-                
+
                 // TargetClosest sets npc.target to the player.whoAmI of the closest player. the faceTarget parameter means that npc.direction will automatically be 1 or -1 if the targetted player is to the right or left. This is also automatically flipped if npc.confused
                 npc.TargetClosest(true);
 
@@ -161,9 +161,9 @@ namespace DrakSolz.NPCs.Enemy {
                     AI_State = State_Walk;
                     AI_Timer = 0;
                 }
-                
+
             }
-         
+
         }
 
         // Our texture is 32x32 with 2 pixels of padding vertically, so 34 is the vertical spacing.  These are for my benefit and the numbers could easily be used directly in the code below, but this is how I keep code organized.

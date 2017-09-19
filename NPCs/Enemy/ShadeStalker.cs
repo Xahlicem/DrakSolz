@@ -29,11 +29,6 @@ namespace DrakSolz.NPCs.Enemy {
             npc.buffImmune[BuffID.Confused] = true; // npc default to being immune to the Confused debuff. Allowing confused could be a little more work depending on the AI. npc.confused is true while the npc is confused.
         }
 
-        public override float SpawnChance(NPCSpawnInfo spawnInfo) {
-            // we would like this npc to spawn in the overworld.
-            return SpawnCondition.OverworldDayBirdCritter.Chance * 10.1f;
-        }
-
         // These const ints are for the benefit of the programmer. Organization is key to making an AI that behaves properly without driving you crazy.
         // Here I lay out what I will use each of the 4 npc.ai slots for.
         const int AI_State_Slot = 0;
@@ -164,9 +159,9 @@ namespace DrakSolz.NPCs.Enemy {
                     AI_State = State_Walk;
                     AI_Timer = 0;
                 }
-                
+
             }
-         
+
         }
 
         // Our texture is 32x32 with 2 pixels of padding vertically, so 34 is the vertical spacing.  These are for my benefit and the numbers could easily be used directly in the code below, but this is how I keep code organized.
