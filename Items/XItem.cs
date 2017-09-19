@@ -94,6 +94,10 @@ namespace DrakSolz.Items {
             clone.SoulValue = this.SoulValue;
             return clone;
         }
+
+        public override bool Autoload(ref string name) {
+            return (GetType() == typeof (SoulItem)) ? false : base.Autoload(ref name);
+        }
     }
 
     public class SoulRecipe : ModRecipe {
