@@ -37,6 +37,7 @@ namespace DrakSolz {
 
         public bool SoulSummon { get; set; }
         public bool EvilEye { get; set; }
+        public int Avarice { get; set; }
 
         public override void Initialize() {
             Level = 0;
@@ -54,11 +55,13 @@ namespace DrakSolz {
 
             SoulSummon = false;
             EvilEye = false;
+            Avarice = 0;
         }
 
         public override void ResetEffects() {
             SoulSummon = false;
             EvilEye = false;
+            Avarice = 0;
         }
 
         public override void PreUpdate() {
