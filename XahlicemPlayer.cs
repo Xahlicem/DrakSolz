@@ -79,6 +79,7 @@ namespace DrakSolz {
                 else if (BossSoulTicks <= 130) Souls += 500;
                 else Souls += 1000;
                 BossSoulTicks--;
+                Main.dust[Dust.NewDust(player.position, player.width, player.height, DustID.AncientLight)].noGravity = true;
             }
         }
 
