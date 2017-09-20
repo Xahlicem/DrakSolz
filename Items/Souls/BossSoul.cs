@@ -6,12 +6,17 @@ using Terraria.ModLoader;
 namespace DrakSolz.Items.Souls {
     public class BossSoul : ModItem {
         public int Place { get; internal set; }
+        public int Ring { get; internal set; }
         public int Ticks { get; internal set; }
         public int Total { get { return TicksToInt(); } }
 
         public BossSoul(int place, int ticks) {
             Place = 1 << place;
             Ticks = ticks;
+            Ring = -1;
+        }
+        public T CastExamp1<T>(object input) {
+            return (T) input;
         }
 
         public override void SetStaticDefaults() {
@@ -53,6 +58,15 @@ namespace DrakSolz.Items.Souls {
         public override bool CanPickup(Player player) {
             int fromPlayer = item.GetGlobalItem<Items.OwnedItem>().FromPlayer;
             return (player.whoAmI == fromPlayer);
+        }
+
+        public override void AddRecipes() {
+            if (Ring == -1) return;
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(this);
+            recipe.SetResult(Ring);
+            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.AddRecipe();
         }
 
         private int TicksToInt() {

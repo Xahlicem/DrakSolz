@@ -9,6 +9,8 @@ namespace DrakSolz.Items.Souls {
             Tooltip.SetDefault("Soul of the Eater of Worlds");
         }
 
-        public EaterSoul() : base(2, 50) { }
+        public EaterSoul() : base(2, 50) {
+            Ring = mod.ItemType<Items.Accessory.RingTinyBeing>();
+        }
     }
 }

@@ -9,6 +9,8 @@ namespace DrakSolz.Items.Souls {
             Tooltip.SetDefault("Soul of the Brain of Cthulhu");
         }
 
-        public BrainSoul() : base(3, 50) { }
+        public BrainSoul() : base(3, 50) {
+            Ring = mod.ItemType<Items.Accessory.RingTinyBeing>();
+        }
     }
 }

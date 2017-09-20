@@ -9,6 +9,8 @@ namespace DrakSolz.Items.Souls {
             Tooltip.SetDefault("Soul of Spazmatism");
         }
 
-        public SpazSoul() : base(9, 85) { }
+        public SpazSoul() : base(9, 85) {
+            Ring = mod.ItemType<Items.Accessory.RingTinyBeing>();
+        }
     }
 }

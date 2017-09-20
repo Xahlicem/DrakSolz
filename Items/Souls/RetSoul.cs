@@ -9,6 +9,8 @@ namespace DrakSolz.Items.Souls {
             Tooltip.SetDefault("Soul of Retinazer");
         }
 
-        public RetSoul() : base(8, 85) { }
+        public RetSoul() : base(8, 85) {
+            Ring = mod.ItemType<Items.Accessory.RingTinyBeing>();
+        }
     }
 }

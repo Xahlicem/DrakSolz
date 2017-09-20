@@ -9,6 +9,8 @@ namespace DrakSolz.Items.Souls {
             Tooltip.SetDefault("Soul of the Abysswalker");
         }
 
-        public ArtoriasSoul() : base(16, 130) { }
+        public ArtoriasSoul() : base(16, 130) {
+            Ring = mod.ItemType<Items.Accessory.RingTinyBeing>();
+        }
     }
 }

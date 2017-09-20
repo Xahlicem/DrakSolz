@@ -9,6 +9,8 @@ namespace DrakSolz.Items.Souls {
             Tooltip.SetDefault("Soul of Plantera");
         }
 
-        public PlantSoul() : base(11, 115) { }
+        public PlantSoul() : base(11, 115) {
+            Ring = mod.ItemType<Items.Accessory.RingTinyBeing>();
+        }
     }
 }
