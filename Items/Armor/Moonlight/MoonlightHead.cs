@@ -8,6 +8,8 @@ namespace DrakSolz.Items.Armor.Moonlight {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Moonlight Helm");
             Tooltip.SetDefault("Armor forged with pure moonlight." +
+                "\nIncreases maximum mana by 40" +
+                "\n10% increased magic damage and critical strike chance" +
                 "\n+NightVision");
         }
 
@@ -20,8 +22,9 @@ namespace DrakSolz.Items.Armor.Moonlight {
         }
 
         public override void UpdateEquip(Player player) {
-            //player.AddBuff(BuffID.NightOwl, 2);
+            player.statManaMax2 += 40;
             player.magicCrit += 10;
+            player.magicDamage *= 1.10f;
             player.nightVision = true;
         }
 
@@ -31,11 +34,11 @@ namespace DrakSolz.Items.Armor.Moonlight {
 
         public override void UpdateArmorSet(Player player) {
             player.setBonus = ("Moonlight Prayer" +
-                "\n+20% Magic Damage" +
+                "\n+100% Magic Damage" +
                 "\n+100% Mana Cost" +
                 "\n+Instant Mana Regen" +
                 "\n+Immunity to Curse");
-            player.magicDamage *= 1.2f;
+            player.magicDamage *= 2.0f;
             player.manaCost *= 2.0f;
             player.manaRegen += 60;
             player.manaRegenBuff = true;

@@ -8,6 +8,7 @@ namespace DrakSolz.Items.Armor.Moonlight {
             DisplayName.SetDefault("Moonlight Leggings");
             Tooltip.SetDefault("Armor forged with pure moonlight." +
                 "\n+Water Walking" +
+                "\n+11% increased magic critical strike chance" +
                 "\n10% increased movement speed");
         }
 
@@ -20,6 +21,7 @@ namespace DrakSolz.Items.Armor.Moonlight {
         }
 
         public override void UpdateEquip(Player player) {
+            player.magicCrit += 11;
             player.moveSpeed += 0.10f;
             player.waterWalk = true;
         }
