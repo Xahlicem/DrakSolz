@@ -9,8 +9,6 @@ namespace DrakSolz.Items.Souls {
             Tooltip.SetDefault("Soul of Skeletron");
         }
 
-        public SkeletronSoul() : base(5, 55) {
-            Ring = mod.ItemType<Items.Accessory.RingTinyBeing>();
-        }
+        public SkeletronSoul() : base(5, 55, "RingBlades") { }
     }
 }

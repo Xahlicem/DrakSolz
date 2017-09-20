@@ -9,8 +9,6 @@ namespace DrakSolz.Items.Souls {
             Tooltip.SetDefault("Soul of the Titanite Demon");
         }
 
-        public TitaniteSoul() : base(17, 150) {
-            Ring = mod.ItemType<Items.Accessory.RingTinyBeing>();
-        }
+        public TitaniteSoul() : base(17, 150, "RingTinyBeing") { }
     }
 }

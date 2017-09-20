@@ -9,8 +9,6 @@ namespace DrakSolz.Items.Souls {
             Tooltip.SetDefault("Soul of the Moon Lord");
         }
 
-        public MoonSoul() : base(15, 160) {
-            Ring = mod.ItemType<Items.Accessory.RingTinyBeing>();
-        }
+        public MoonSoul() : base(15, 160, "RingTinyBeing") { }
     }
 }

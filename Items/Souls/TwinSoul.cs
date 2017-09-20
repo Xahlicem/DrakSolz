@@ -9,9 +9,7 @@ namespace DrakSolz.Items.Souls {
             Tooltip.SetDefault("Soul of the Twins");
         }
 
-        public TwinSoul() : base(30, 104) {
-            Ring = mod.ItemType<Items.Accessory.RingAvarice>();
-        }
+        public TwinSoul() : base(30, 104, "RingAvarice") { }
 
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
@@ -21,11 +19,11 @@ namespace DrakSolz.Items.Souls {
             recipe.SetResult(this);
             recipe.AddRecipe();
 
-            /*recipe = new ModRecipe(mod);
+            recipe = new ModRecipe(mod);
             recipe.AddIngredient(this);
             recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
             recipe.SetResult(mod.ItemType<Items.Accessory.RingAvarice>());
-            recipe.AddRecipe();*/
+            recipe.AddRecipe();
         }
     }
 }

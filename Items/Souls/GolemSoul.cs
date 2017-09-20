@@ -9,8 +9,6 @@ namespace DrakSolz.Items.Souls {
             Tooltip.SetDefault("Soul of the Golem");
         }
 
-        public GolemSoul() : base(12, 125) {
-            Ring = mod.ItemType<Items.Accessory.RingTinyBeing>();
-        }
+        public GolemSoul() : base(12, 125, "RingTinyBeing") { }
     }
 }

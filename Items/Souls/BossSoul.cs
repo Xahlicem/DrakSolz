@@ -6,14 +6,14 @@ using Terraria.ModLoader;
 namespace DrakSolz.Items.Souls {
     public class BossSoul : ModItem {
         public int Place { get; internal set; }
-        public int Ring { get; internal set; }
+        public string Ring { get; internal set; }
         public int Ticks { get; internal set; }
         public int Total { get { return TicksToInt(); } }
 
-        public BossSoul(int place, int ticks) {
+        public BossSoul(int place, int ticks, string ring) {
             Place = 1 << place;
             Ticks = ticks;
-            Ring = -1;
+            Ring = ring;
         }
         public T CastExamp1<T>(object input) {
             return (T) input;
@@ -61,10 +61,10 @@ namespace DrakSolz.Items.Souls {
         }
 
         public override void AddRecipes() {
-            if (Ring == -1) return;
+            if (Ring == string.Empty) return;
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(this);
-            recipe.SetResult(Ring);
+            recipe.SetResult(mod.ItemType(Ring));
             recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
             recipe.AddRecipe();
         }
