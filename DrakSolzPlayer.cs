@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
+using DrakSolz.Items;
 using Terraria;
 using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
+
 
 namespace DrakSolz {
 
@@ -156,7 +158,7 @@ namespace DrakSolz {
 
             if (Souls != 0) {
                 int i = Item.NewItem((int) player.position.X, (int) player.position.Y, player.width, player.height, mod.ItemType<Items.Souls.Soul>(), Souls);
-                Main.item[i].GetGlobalItem<Items.OwnedItem>().FromPlayer = player.whoAmI;
+                Main.item[i].GetGlobalItem<Items.DSGlobalItem>().FromPlayer = player.whoAmI;
                 Souls = 0;
                 if (player.Equals(Main.LocalPlayer))(mod as DrakSolz).ui.updateValue(Souls, Level);
             }
@@ -205,8 +207,8 @@ namespace DrakSolz {
         public override void SetupStartInventory(IList<Item> items) {
             items.Clear();
             Item item = new Item();
-            item.netDefaults(mod.ItemType<Items.Melee.SwordHilt>());
-            item.prefix = PrefixID.Broken;
+            item.netDefaults(mod.ItemType<Items.Melee.Sword>());
+            item.GetGlobalItem<DSGlobalItem>().Owned = true;
             items.Add(item);
         }
 

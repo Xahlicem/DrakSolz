@@ -8,8 +8,7 @@ namespace DrakSolz.Items.Armor.Moonlight {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Moonlight Chestplate");
             Tooltip.SetDefault("Armor forged with pure moonlight." +
-                "\n+20 Max Health" +
-                "\n+20 Max Mana");
+                "\n+15% increased magic damage and critical strike chance");
         }
 
         public override void SetDefaults() {
@@ -21,8 +20,8 @@ namespace DrakSolz.Items.Armor.Moonlight {
         }
 
         public override void UpdateEquip(Player player) {
-            player.statManaMax2 += 20;
-            player.statLifeMax2 += 20;
+            player.magicCrit += 15;
+            player.magicDamage *= 1.15f;
         }
     }
 }
