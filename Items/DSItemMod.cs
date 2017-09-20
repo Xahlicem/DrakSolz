@@ -14,16 +14,15 @@ namespace DrakSolz.Items {
         }
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips) {
-            if (tooltips.Capacity < 2) return;
-            if (item.type == ItemID.LifeCrystal) {
-                tooltips[tooltips.Capacity - 1].text = "Makes you whole and increases life regeneration for 5 minutes";
-            }
-            if (item.type == ItemID.LifeFruit) {
-                tooltips[tooltips.Capacity - 2].text = "Makes you whole and increases life regeneration for 1 minute";
-            }
-            if (item.type == ItemID.ManaCrystal) {
-                tooltips[tooltips.Capacity - 2].text = "Increases mana regeneration and magic damage for 1 minute";
-            }
+            for (int i = 0; i < tooltips.Count; i++)
+                if (tooltips[i].Name.Equals("Tooltip0")) {
+                    if (item.type == ItemID.LifeCrystal)
+                        tooltips[i].text = "Makes you whole and increases life regeneration for 5 minutes";
+                    if (item.type == ItemID.LifeFruit)
+                        tooltips[i].text = "Makes you whole and increases life regeneration for 1 minute";
+                    if (item.type == ItemID.ManaCrystal)
+                        tooltips[i].text = "Increases mana regeneration and magic damage for 1 minute";
+                }
         }
 
         public override bool ConsumeItem(Item item, Player player) {
