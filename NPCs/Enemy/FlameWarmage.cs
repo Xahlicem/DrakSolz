@@ -13,8 +13,8 @@ namespace DrakSolz.NPCs.Enemy {
 
         public override void SetDefaults() {
             npc.scale = 2f;
-            npc.width = 40;
-            npc.height = 56;
+            npc.width = 30;
+            npc.height = 52;
             npc.aiStyle = -1;
             npc.damage = 60;
             npc.defense = 35;
