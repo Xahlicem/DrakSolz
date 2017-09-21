@@ -70,6 +70,7 @@ namespace DrakSolz.Tiles {
             adjTiles = new int[] { TileID.WorkBenches, TileID.Beds, TileID.Campfire };
             bed = true;
             animationFrameHeight = 56;
+            minPick = 60;
         }
 
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b) {
