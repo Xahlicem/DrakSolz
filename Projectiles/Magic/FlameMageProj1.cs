@@ -10,7 +10,6 @@ namespace DrakSolz.Projectiles.Magic {
 
         public override void SetStaticDefaults() {
             Main.projFrames[projectile.type] = 1;
-            Main.projHostile[projectile.type] = false;
         }
 
         public override string Texture { get { return "DrakSolz/Projectiles/Magic/SorcSwordProj"; } }
@@ -20,8 +19,8 @@ namespace DrakSolz.Projectiles.Magic {
             projectile.ignoreWater = true;
             projectile.magic = true;
             projectile.width = 24;
-            projectile.height = 10;
-            projectile.timeLeft = 60;
+            projectile.height = 5;
+            projectile.timeLeft = 90;
             projectile.penetrate = -1;
             projectile.alpha = 255;
             projectile.ai[1] = 0;
@@ -34,21 +33,27 @@ namespace DrakSolz.Projectiles.Magic {
 
         public override void AI() {
             projectile.ai[0]++;
-            if (projectile.ai[1] == 1) {
+            if (projectile.ai[1] != 0) {
+                projectile.velocity.Y = 0;
                 int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, 35);
-                Main.dust[dust].velocity *= 0f + Main.rand.NextFloat();
+                Main.dust[dust].velocity *= 1.5f + Main.rand.NextFloat();
                 Main.dust[dust].scale *= 1.5f + Main.rand.NextFloat();
                 Main.dust[dust].noGravity = true;
+                if (projectile.timeLeft <= 40) {
+                    if (projectile.ai[1] == 1) {
+                        //projectile.height = 10;
+                        //projectile.position.Y -= 5;
+                        projectile.ai[1] = 2;
+                    }
+                    /*int dust2 = Dust.NewDust(new Vector2(projectile.position.Y - 20, projectile.position.X), projectile.width, 10, 35, 0, -50f + Main.rand.NextFloat());
+                    Main.dust[dust2].scale *= 1.5f + Main.rand.NextFloat();*/
+                    int proj = Projectile.NewProjectile(projectile.Center, new Vector2(0, -3), ProjectileID.Flames, (int)(projectile.damage * 0.7f), 0.25f, projectile.owner);
+                    Main.projectile[proj].magic = true;
+                }
             } else {
                 projectile.velocity.Y = 30;
-                projectile.timeLeft = 60;
+                projectile.timeLeft = 85;
             }
         }
-
-        public override void Kill(int timeLeft) {
-            int proj = Projectile.NewProjectile(projectile.Center, new Vector2(0, -2), ProjectileID.DD2OgreStomp, projectile.damage, 0.5f, projectile.owner);
-                Main.projectile[proj].hostile = false;
-                Main.projectile[proj].friendly = true;
-        }
     }
- }
+}

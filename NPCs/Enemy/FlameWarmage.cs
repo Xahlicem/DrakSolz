@@ -25,7 +25,7 @@ namespace DrakSolz.NPCs.Enemy {
             npc.knockBackResist = 0.0f;
             npc.teleporting = true;
             npc.teleportTime = 2f;
-            npc.buffImmune[BuffID.Confused] = false;
+            npc.buffImmune[BuffID.Confused] = true;
             npc.localAI[0] = 0f;
             npc.localAI[1] = 0f;
             npc.localAI[2] = 0f;
@@ -34,7 +34,9 @@ namespace DrakSolz.NPCs.Enemy {
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
-            return SpawnCondition.UndergroundMimic.Chance * 0.4f;
+            if (Main.hardMode){
+            return SpawnCondition.Cavern.Chance * 0.2f;}
+            else return 0f;
         }
 
         const int AI_State_Slot = 0;
