@@ -25,5 +25,15 @@ namespace DrakSolz.Items.Melee {
         public override Vector2? HoldoutOffset() {
             return new Vector2(0, 0);
         }
+
+        public override bool CanUseItem(Player player) {
+            int fromPlayer = item.GetGlobalItem<Items.DSGlobalItem>().FromPlayer;
+            return (player.whoAmI == fromPlayer);
+        }
+
+        public override bool CanPickup(Player player) {
+            int fromPlayer = item.GetGlobalItem<Items.DSGlobalItem>().FromPlayer;
+            return (player.whoAmI == fromPlayer);
+        }
     }
 }

@@ -6,49 +6,53 @@ using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
 namespace DrakSolz.Items {
-    public class OwnedItem : GlobalItem {
+    public class DSGlobalItem : GlobalItem {
         internal int fromPlayer;
         public int FromPlayer { get { return fromPlayer; } set { fromPlayer = value; } }
 
-        public bool owned = false;
-        public override bool CloneNewInstances {
-            get { return true; }
-        }
-        public override bool InstancePerEntity {
-            get { return true; }
-        }
+        public bool Owned { get; set; }
+        public bool Used { get; set; }
+        public override bool CloneNewInstances { get { return true; } }
+        public override bool InstancePerEntity { get { return true; } }
 
-        public OwnedItem() {
+        public DSGlobalItem() {
             if (Main.netMode == NetmodeID.SinglePlayer) fromPlayer = -1;
             else fromPlayer = -2;
         }
 
         public override GlobalItem Clone(Item item, Item itemClone) {
-            var source = item.GetGlobalItem<OwnedItem>();
-            var destination = itemClone.GetGlobalItem<OwnedItem>();
+            var source = item.GetGlobalItem<DSGlobalItem>();
+            var destination = itemClone.GetGlobalItem<DSGlobalItem>();
             if (source != null && destination != null) {
-                destination.owned = source.owned;
+                destination.Owned = source.Owned;
+                destination.Used = source.Used;
                 destination.FromPlayer = fromPlayer;
             }
             return destination;
         }
 
         public override void OnCraft(Item item, Recipe recipe) {
-            owned = true;
+            Owned = true;
+        }
+
+        public override bool UseItem(Item item, Player player) {
+            Used = true;
+            return base.UseItem(item, player);
         }
 
         public override void PostReforge(Item item) {
-            owned = true;
+            fromPlayer = item.owner;
+            Owned = true;
         }
 
         public override bool OnPickup(Item item, Player player) {
             fromPlayer = player.whoAmI;
-            owned = true;
+            Owned = true;
             return true;
         }
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips) {
-            if (item.GetGlobalItem<OwnedItem>().owned) return;
+            if (item.GetGlobalItem<DSGlobalItem>().Owned) return;
             SoulItem i = item.modItem as SoulItem;
             if (i == null) return;
             tooltips[0].text += " (" + i.SoulValue + " Souls required)";
@@ -56,10 +60,12 @@ namespace DrakSolz.Items {
 
         public override void NetSend(Item item, System.IO.BinaryWriter writer) {
             writer.Write(fromPlayer);
+            writer.Write(Used);
         }
 
         public override void NetReceive(Item item, System.IO.BinaryReader reader) {
             fromPlayer = reader.ReadInt32();
+            Used = reader.ReadBoolean();
         }
 
         public override bool NeedsSaving(Item item) {
@@ -73,12 +79,13 @@ namespace DrakSolz.Items {
             if (item.type == 0 || item.type == ModLoader.GetMod("ModLoader").ItemType("MysteryItem")) {
                 return null;
             }
-            OwnedItem info = item.GetGlobalItem<OwnedItem>();
-            return new TagCompound { { "owned", info.owned }, { "fromPlayer", fromPlayer } };
+            DSGlobalItem info = item.GetGlobalItem<DSGlobalItem>();
+            return new TagCompound { { "owned", info.Owned }, { "used", info.Used }, { "fromPlayer", fromPlayer } };
         }
 
         public override void Load(Item item, TagCompound tag) {
-            owned = tag.GetBool("owned");
+            Owned = tag.GetBool("owned");
+            Used = tag.GetBool("used");
             fromPlayer = tag.GetInt("fromPlayer");
         }
     }

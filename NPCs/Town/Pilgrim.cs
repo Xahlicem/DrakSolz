@@ -86,6 +86,10 @@ namespace DrakSolz.NPCs.Town {
         public override string GetChat() {
             WeightedRandom<string> chat = new WeightedRandom<string>();
 
+            foreach (Item i in Main.LocalPlayer.inventory) {
+                if (i.type == mod.ItemType<Items.Melee.Sword>()) chat.Add("That sword seems to have potential.");
+                if (i.type == mod.ItemType<Items.Melee.SwordHilt>()) chat.Add("That sword hilt had so much potential.");
+            }
             int partyGirl = NPC.FindFirstNPC(NPCID.PartyGirl);
             if (partyGirl >= 0 && Main.rand.Next(4) == 0) {
                 chat.Add("Can you please tell " + Main.npc[partyGirl].GivenName + " to stop decorating my house with colors?");
