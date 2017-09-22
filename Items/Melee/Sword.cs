@@ -26,6 +26,8 @@ namespace DrakSolz.Items.Melee {
                     if (i == item) {
                         i.netDefaults(mod.ItemType<Items.Melee.SwordHilt>());
                         i.prefix = PrefixID.Broken;
+                        i.GetGlobalItem<DSGlobalItem>().FromPlayer = player.whoAmI;
+                        i.GetGlobalItem<DSGlobalItem>().Owned = true;
                         i.rare = -1;
                     }
                 Gore.NewGore(player.Center, Vector2.Zero, mod.GetGoreSlot("Gores/Hilt"), 1f);
