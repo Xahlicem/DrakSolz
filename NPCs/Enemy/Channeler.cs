@@ -199,6 +199,10 @@ namespace DrakSolz.NPCs.Enemy {
         }
 
         public override void NPCLoot() {
+            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/Channeler_Head"));
+            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/Channeler_Body"));
+            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/Channeler_Legs"));
+            
             if (Main.hardMode && Main.rand.Next(4) == 0) {
                 switch (Main.rand.Next(2)) {
                     case 0:
