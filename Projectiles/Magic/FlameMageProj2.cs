@@ -6,7 +6,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace DrakSolz.Projectiles.Magic {
-    public class FlameMageProj1 : ModProjectile {
+    public class FlameMageProj2 : ModProjectile {
 
         public override void SetStaticDefaults() {
             Main.projFrames[projectile.type] = 1;
@@ -20,7 +20,7 @@ namespace DrakSolz.Projectiles.Magic {
             projectile.magic = true;
             projectile.width = 24;
             projectile.height = 5;
-            projectile.timeLeft = 65;
+            projectile.timeLeft = 95;
             projectile.penetrate = -1;
             projectile.alpha = 255;
             projectile.ai[1] = 0;
@@ -39,21 +39,25 @@ namespace DrakSolz.Projectiles.Magic {
                 Main.dust[dust].velocity *= 1.5f + Main.rand.NextFloat();
                 Main.dust[dust].scale *= 1.5f + Main.rand.NextFloat();
                 Main.dust[dust].noGravity = true;
-                if (projectile.timeLeft <= 20) {
+                if (projectile.timeLeft <= 60) {
                     if (projectile.ai[1] == 1) {
                         //projectile.height = 10;
                         //projectile.position.Y -= 5;
                         projectile.ai[1] = 2;
                     }
-                    if (projectile.timeLeft == 20 || projectile.timeLeft == 15 || projectile.timeLeft == 10 || projectile.timeLeft == 5){
-                    int proj = Projectile.NewProjectile(projectile.Center, new Vector2(0, -2.5f), ProjectileID.Flames, projectile.damage, 0.25f, projectile.owner);
+                    /*int dust2 = Dust.NewDust(new Vector2(projectile.position.Y - 20, projectile.position.X), projectile.width, 10, 35, 0, -50f + Main.rand.NextFloat());
+                    Main.dust[dust2].scale *= 1.5f + Main.rand.NextFloat();*/
+                    if (projectile.timeLeft == 60 || projectile.timeLeft == 55 || projectile.timeLeft == 50 || projectile.timeLeft == 45 || projectile.timeLeft == 40 ||
+                     projectile.timeLeft == 35 || projectile.timeLeft == 30 || projectile.timeLeft == 25 || projectile.timeLeft == 20 || projectile.timeLeft == 15 ||
+                     projectile.timeLeft == 10 || projectile.timeLeft == 5){
+                    int proj = Projectile.NewProjectile(new Vector2(projectile.Center.X, projectile.Center.Y + 10), new Vector2(0, -4f), ProjectileID.Flames, projectile.damage, 0.25f, projectile.owner);
                     Main.projectile[proj].magic = true;
                      }
                     return;
                 }
             } else {
                 projectile.velocity.Y = 30;
-                projectile.timeLeft = 65;
+                projectile.timeLeft = 95;
             }
         }
     }

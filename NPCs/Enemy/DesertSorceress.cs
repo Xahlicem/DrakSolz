@@ -35,7 +35,7 @@ namespace DrakSolz.NPCs.Enemy {
             npc.spriteDirection = npc.direction;
         }
 
-        public override void NPCLoot() {
+        /*public override void NPCLoot() {
             if (Main.hardMode && Main.rand.Next(10) == 0) {
                 switch (Main.rand.Next(2)) {
                     case 0:
@@ -49,6 +49,6 @@ namespace DrakSolz.NPCs.Enemy {
                         break;
                 }
             }
-        }
+        }*/
     }
 }
