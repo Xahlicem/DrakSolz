@@ -19,21 +19,27 @@ namespace DrakSolz.NPCs.Enemy {
             npc.aiStyle = 26;
             aiType = NPCID.Tumbleweed;
             animationType = NPCID.Tumbleweed;
-            npc.damage = 60;
-            npc.defense = 25;
-            npc.lifeMax = 300;
+            npc.damage = 20;
+            npc.defense = 6;
+            npc.lifeMax = 110;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
-            npc.value = 500;
+            npc.value = 100;
             npc.knockBackResist = 1f;
             //npc.buffImmune[BuffID.Confused] = false; // npc default to being immune to the Confused debuff. Allowing confused could be a little more work depending on the AI. npc.confused is true while the npc is confused.
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
-            return SpawnCondition.Wraith.Chance * 0.5f;
+            if (Main.bloodMoon){
+            return SpawnCondition.OverworldNight.Chance * 0.2f;}
+            else return 0f;
         }
         public override void FindFrame(int frameHeight) {
             npc.spriteDirection = npc.direction;
         }
+        public override void NPCLoot() {
+            if (Main.rand.Next(15) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Melee.BoneWheel>());
+        }
+
     }
 }
