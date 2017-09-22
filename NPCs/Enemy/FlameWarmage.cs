@@ -18,7 +18,7 @@ namespace DrakSolz.NPCs.Enemy {
             npc.aiStyle = -1;
             npc.damage = 60;
             npc.defense = 35;
-            npc.lifeMax = 1000;
+            npc.lifeMax = 1500;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 225f;
@@ -34,7 +34,7 @@ namespace DrakSolz.NPCs.Enemy {
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
-            if (Main.hardMode){
+            if (NPC.downedPlantBoss){
             return SpawnCondition.Cavern.Chance * 0.2f;}
             else return 0f;
         }
@@ -149,7 +149,7 @@ namespace DrakSolz.NPCs.Enemy {
         }
 
         public override void NPCLoot() {
-            if (Main.rand.Next(15) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Magic.IT2>());
+            if (Main.rand.Next(15) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Magic.IT>());
         }
 
         private void AdjustMagnitude(ref Vector2 vector) {

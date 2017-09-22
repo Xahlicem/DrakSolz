@@ -30,8 +30,8 @@ namespace DrakSolz.NPCs.Enemy {
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
-            if (Main.bloodMoon){
-            return SpawnCondition.OverworldNight.Chance * 0.2f;}
+            if (NPC.downedBoss3){
+            return SpawnCondition.OverworldNightMonster.Chance * 0.3f;}
             else return 0f;
         }
         public override void FindFrame(int frameHeight) {

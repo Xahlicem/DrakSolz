@@ -117,12 +117,13 @@ namespace DrakSolz.NPCs.Town {
 
         public override void SetupShop(Chest shop, ref int nextSlot) {
             shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Misc.ScrollHolyHomeward>());
-            shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Misc.GreenBlossom>());
+            shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Misc.ScrollHoly>());
+            shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Misc.PyroScroll>());
+            shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Misc.Scroll>());
             shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Misc.HomewardBone>());
             shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Misc.Lifegem>());
+            shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Misc.GreenBlossom>());
             shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Misc.PrismStone>());
-            shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Misc.Scroll>());
-            shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Misc.ScrollHoly>());
         }
 
         public override void TownNPCAttackStrength(ref int damage, ref float knockback) {

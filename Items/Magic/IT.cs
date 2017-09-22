@@ -5,22 +5,23 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace DrakSolz.Items.Magic {
-    public class IT2 : ModItem {
+    public class IT : ModItem {
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Immolation Tinder");
-            Tooltip.SetDefault("Staff used by Flame Warmages, conjures a great pillar of fire.");
+            Tooltip.SetDefault("Staff used by Flame Warmages, conjures a pillar of fire.");
         }
         public override void SetDefaults() {
             //item.CloneDefaults(ItemID.StardustDragonStaff);
             item.useStyle = 1;
+            item.scale *= 0.85f;
             item.magic = true;
-            item.damage = 80;
+            item.damage = 70;
             item.useTime = 55;
             item.useAnimation = 55;
-            item.rare = 10;
+            item.rare = 9;
             item.mana = 20;
-            item.knockBack = 18f;
+            item.knockBack = 10f;
             item.shootSpeed = 0f;
             item.autoReuse = false;
             item.shoot = mod.ProjectileType<Projectiles.Magic.FlameMageProj1>();
@@ -38,7 +39,7 @@ namespace DrakSolz.Items.Magic {
                 damage *= 2;
                 player.statMana -= (int)(item.buffTime * player.manaCost);
                 item.mana = item.buffTime;
-                int pro = Projectile.NewProjectile(Main.mouseX + Main.screenPosition.X, Main.mouseY + Main.screenPosition.Y, 0, 40, type, (int)(damage * 0.5f), 0, player.whoAmI);
+                int pro = Projectile.NewProjectile(Main.mouseX + Main.screenPosition.X, Main.mouseY + Main.screenPosition.Y, 0, 40, type, (int)(damage * 0.6f), 0, player.whoAmI);
                 return false;
             }
             item.mana = item.buffTime;
