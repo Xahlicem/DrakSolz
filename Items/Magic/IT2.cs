@@ -16,16 +16,14 @@ namespace DrakSolz.Items.Magic {
             item.useStyle = 1;
             item.magic = true;
             item.damage = 80;
-            item.useTime = 45;
-            item.useAnimation = 45;
+            item.useTime = 55;
+            item.useAnimation = 55;
             item.rare = 10;
             item.mana = 20;
             item.knockBack = 18f;
             item.shootSpeed = 0f;
             item.autoReuse = false;
             item.shoot = mod.ProjectileType<Projectiles.Magic.FlameMageProj1>();
-            item.buffType = BuffID.OnFire;
-            item.buffTime = 120;
         }
 
         public override bool CanUseItem(Player player) {
