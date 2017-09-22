@@ -1,5 +1,5 @@
 using System;
-using System.Collections.Generic;
+using System.Collections.Concurrent;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
@@ -9,37 +9,41 @@ using Terraria.ModLoader;
 
 namespace DrakSolz.Projectiles {
     public class BoneWheelProj : ModProjectile {
-        public override void SetDefaults() {
 
-            projectile.width = 25;
-            projectile.height = 25;
+        //byte[] enemyCooldown;
+
+        public override void SetDefaults() {
+            projectile.width = 60;
+            projectile.height = 60;
             projectile.friendly = true;
             projectile.penetrate = -1;
-            projectile.scale = 1.2f;
-            projectile.thrown = true;
+            projectile.scale = 1f;
             projectile.timeLeft = 100;
-            projectile.alpha = 0;
-            projectile.light = 0.5f;
-            projectile.damage = 25;
-            projectile.knockBack = 10f;
+            projectile.alpha = 100;
+            //enemyCooldown = new byte[Main.maxNPCs];
         }
 
-        public override bool OnTileCollide(Vector2 oldVelocity) {
-            // This code makes the projectile very bouncy.
-            if (projectile.velocity.X != oldVelocity.X && Math.Abs(oldVelocity.X) > 1f) {
-                projectile.velocity.X = oldVelocity.X * -1f;
-            }
-            if (projectile.velocity.Y != oldVelocity.Y && Math.Abs(oldVelocity.Y) > 1f) {
-                projectile.velocity.Y = oldVelocity.Y * -1f;
-            }
-            return false;
-        }
         public override void AI() {
-            if (projectile.rotation < 0.4) {
-                projectile.rotation = 0.4f;
+            Player player = Main.player[projectile.owner];
+            projectile.Center = player.Center;
+
+            int i = player.FindBuffIndex(mod.BuffType<Buffs.BoneWheelMount>());
+            if (i != -1) {
+                projectile.timeLeft = 5;
             }
-            return;
+
+            /*for (int npc = 0; npc < enemyCooldown.Length; npc++) {
+                if (enemyCooldown[npc] > 0) enemyCooldown[npc]--;
+            }*/
         }
 
+        /*public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) {
+            enemyCooldown[target.whoAmI] = 30;
+        }
+
+        public override bool? CanHitNPC(NPC target) {
+            if (target.townNPC) return false;
+            return (enemyCooldown[target.whoAmI] <= 0);
+        }*/
     }
 }

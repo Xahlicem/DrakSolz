@@ -7,7 +7,6 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
-
 namespace DrakSolz {
 
     public class DrakSolzPlayer : ModPlayer {
@@ -41,6 +40,8 @@ namespace DrakSolz {
         public bool EvilEye { get; set; }
         public int Avarice { get; set; }
 
+        public float Rotation { get; set; }
+
         public override void Initialize() {
             Level = 0;
             Souls = 0;
@@ -58,12 +59,17 @@ namespace DrakSolz {
             SoulSummon = false;
             EvilEye = false;
             Avarice = 0;
+
+            Rotation = 0f;
         }
 
         public override void ResetEffects() {
             SoulSummon = false;
             EvilEye = false;
             Avarice = 0;
+
+            player.fullRotationOrigin = player.Center - player.position;
+            player.fullRotation = Rotation;
         }
 
         public override void PreUpdate() {
@@ -146,6 +152,10 @@ namespace DrakSolz {
                 GetPacket((byte) MessageType.FromClient).Send();
             }
             if (player.Equals(Main.LocalPlayer))(mod as DrakSolz).ui.updateValue(Souls, Level);
+
+            int i = player.FindBuffIndex(mod.BuffType<Buffs.BoneWheelMount>());
+            if (i != -1) Rotation += player.velocity.X * 0.025f;
+            else Rotation = 0f;
         }
 
         public override void Hurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit) {
@@ -209,6 +219,7 @@ namespace DrakSolz {
             Item item = new Item();
             item.netDefaults(mod.ItemType<Items.Melee.Sword>());
             item.GetGlobalItem<DSGlobalItem>().Owned = true;
+            item.GetGlobalItem<DSGlobalItem>().FromPlayer = player.whoAmI;
             items.Add(item);
         }
 

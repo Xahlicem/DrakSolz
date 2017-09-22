@@ -7,7 +7,7 @@ using Terraria.ModLoader.IO;
 
 namespace DrakSolz.Items {
     public class DSGlobalItem : GlobalItem {
-        internal int fromPlayer;
+        private int fromPlayer;
         public int FromPlayer { get { return fromPlayer; } set { fromPlayer = value; } }
 
         public bool Owned { get; set; }
