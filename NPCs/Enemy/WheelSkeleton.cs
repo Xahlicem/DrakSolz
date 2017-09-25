@@ -5,11 +5,11 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace DrakSolz.NPCs.Enemy {
-    // This ModNPC serves as an example of a complete AI example.
+
     public class WheelSkeleton : ModNPC {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Wheel Skeleton");
-            Main.npcFrameCount[npc.type] = 1; // make sure to set this for your modnpcs.
+            Main.npcFrameCount[npc.type] = 1;
         }
 
         public override void SetDefaults() {
@@ -26,13 +26,14 @@ namespace DrakSolz.NPCs.Enemy {
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 100;
             npc.knockBackResist = 1f;
-            //npc.buffImmune[BuffID.Confused] = false; // npc default to being immune to the Confused debuff. Allowing confused could be a little more work depending on the AI. npc.confused is true while the npc is confused.
+            banner = npc.type;
+            bannerItem = mod.ItemType<Items.Banners.WheelSkeletonBanner>();
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
-            if (NPC.downedBoss3){
-            return SpawnCondition.OverworldNightMonster.Chance * 0.3f;}
-            else return 0f;
+            if (NPC.downedBoss3) {
+                return SpawnCondition.OverworldNightMonster.Chance * 0.3f;
+            } else return 0f;
         }
         public override void FindFrame(int frameHeight) {
             npc.spriteDirection = npc.direction;
