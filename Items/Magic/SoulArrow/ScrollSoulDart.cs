@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace DrakSolz.Items.Magic.SoulArrow {
     public class ScrollSoulDart : SoulItem {
-        public ScrollSoulDart() : base(100) { }
+        public ScrollSoulDart() : base(50) { }
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Soul Dart");
@@ -19,7 +19,7 @@ namespace DrakSolz.Items.Magic.SoulArrow {
             item.damage = 8;
             item.useTime = 20;
             item.useAnimation = 20;
-            item.mana = 3;
+            item.mana = 2;
             item.knockBack = 1f;
             item.shootSpeed = 25.0f;
             item.shoot = mod.ProjectileType<Projectiles.Magic.SoulProj>();
