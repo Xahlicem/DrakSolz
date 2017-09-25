@@ -36,7 +36,7 @@ namespace DrakSolz.Tiles
 					item = "NinjaBanner";
 					break;
 				case 1:
-					item = "OctopusBanner";
+					item = "WheelSkeletonBanner";
 					break;
 				default:
 					return;
@@ -57,7 +57,7 @@ namespace DrakSolz.Tiles
 						type = "Ninja";
 						break;
 					case 1:
-						type = "Octopus";
+						type = "WheelSkeleton";
 						break;
 					default:
 						return;
