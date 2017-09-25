@@ -31,6 +31,8 @@ namespace DrakSolz.NPCs.Enemy {
             npc.localAI[2] = 0f;
             npc.localAI[3] = 0f;
             npc.ai[3] = -1f;
+            banner = npc.type;
+            bannerItem = mod.ItemType<Items.Banners.ChannelerBanner>();
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
