@@ -38,7 +38,7 @@ namespace DrakSolz.NPCs.Enemy {
             npc.spriteDirection = npc.direction;
         }
         public override void NPCLoot() {
-            if (Main.rand.Next(15) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Melee.BoneWheel>());
+            if (Main.rand.Next(15) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.BoneWheel>());
         }
 
     }
