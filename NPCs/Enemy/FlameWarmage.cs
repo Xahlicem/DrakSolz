@@ -31,6 +31,8 @@ namespace DrakSolz.NPCs.Enemy {
             npc.localAI[2] = 0f;
             npc.localAI[3] = 0f;
             npc.ai[3] = -1f;
+            banner = npc.type;
+            bannerItem = mod.ItemType<Items.Banners.FlameWarmageBanner>();
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
@@ -87,7 +89,7 @@ namespace DrakSolz.NPCs.Enemy {
                 AI_Timer++;
                 if (AI_Timer == 10 && Main.netMode != 1) {
                     Vector2 playerpos = Main.player[npc.target].Center;
-                    playerpos.Y += 25;
+                    playerpos.Y -= 5;
                     int proj = Projectile.NewProjectile(playerpos, Vector2.Zero, mod.ProjectileType<Projectiles.Magic.FlameMageProj>(), npc.damage, 0f);
                 }
 
