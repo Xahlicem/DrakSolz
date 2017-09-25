@@ -38,6 +38,15 @@ namespace DrakSolz.Tiles
 				case 1:
 					item = "WheelSkeletonBanner";
 					break;
+				case 2:
+					item = "ChannelerBanner";
+					break;
+				case 3:
+					item = "CrystalLizardBanner";
+					break;
+				case 4:
+					item = "FlameWarmageBanner";
+					break;
 				default:
 					return;
 			}
@@ -59,6 +68,15 @@ namespace DrakSolz.Tiles
 					case 1:
 						type = "WheelSkeleton";
 						break;
+				    case 2:
+					    type = "ChannelerBanner";
+						break;
+				    case 3:
+					    type = "CrystalLizardBanner";
+					break;
+				    case 4:
+					    type = "FlameWarmageBanner";
+					break;
 					default:
 						return;
 				}
