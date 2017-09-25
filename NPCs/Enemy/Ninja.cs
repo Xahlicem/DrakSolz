@@ -5,11 +5,11 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace DrakSolz.NPCs.Enemy {
-    // This ModNPC serves as an example of a complete AI example.
+
     public class Ninja : ModNPC {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Ninja");
-            Main.npcFrameCount[npc.type] = 15; // make sure to set this for your modnpcs.
+            Main.npcFrameCount[npc.type] = 15;
         }
 
         public override void SetDefaults() {
@@ -24,12 +24,14 @@ namespace DrakSolz.NPCs.Enemy {
             npc.HitSound = clone.HitSound;
             npc.DeathSound = clone.DeathSound;
             npc.knockBackResist = clone.knockBackResist;
+            clone = null;
 
             npc.damage = 18;
             npc.defense = 5;
             npc.lifeMax = 60;
             npc.value = 100f;
-            clone = null;
+            banner = npc.type;
+            bannerItem = mod.ItemType<Items.Banners.NinjaBanner>();
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
