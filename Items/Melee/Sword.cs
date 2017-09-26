@@ -17,6 +17,7 @@ namespace DrakSolz.Items.Melee {
             item.axe = 100;
             item.damage = 60;
             item.knockBack = 20f;
+            item.scale = 0.75f;
         }
 
         public override bool CanUseItem(Player player) {
@@ -25,7 +26,7 @@ namespace DrakSolz.Items.Melee {
                 foreach (Item i in player.inventory)
                     if (i == item) {
                         i.netDefaults(mod.ItemType<Items.Melee.SwordHilt>());
-                        i.prefix = PrefixID.Broken;
+                        i.Prefix(PrefixID.Broken);
                         i.GetGlobalItem<DSGlobalItem>().FromPlayer = player.whoAmI;
                         i.GetGlobalItem<DSGlobalItem>().Owned = true;
                         i.rare = -1;
