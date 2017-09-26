@@ -21,14 +21,30 @@ namespace DrakSolz.Items.Accessory {
         public override void UpdateAccessory(Player player, bool hideVisual) {
             player.thrownDamage += 0.15f;
         }
-        /*public override void AddRecipes() {
-            ModRecipe recipe = new Terraria.Recipe(mod, ItemID.AvengerEmblem);
+        public override void AddRecipes() {
+            ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.ItemType<Items.Accessory.ThiefEmblem>());        
             recipe.AddIngredient(ItemID.SoulofSight, 5);
             recipe.AddIngredient(ItemID.SoulofMight, 5);
             recipe.AddIngredient(ItemID.SoulofFright, 5);
             recipe.SetResult(ItemID.AvengerEmblem);
             recipe.AddRecipe();
-        }*/
+            recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.WarriorEmblem);
+			recipe.SetResult(this);
+            recipe.AddRecipe();
+            recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.SorcererEmblem);
+			recipe.SetResult(this);
+            recipe.AddRecipe();
+            recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.RangerEmblem);
+			recipe.SetResult(this);
+            recipe.AddRecipe();
+            recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.SummonerEmblem);
+			recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
     }
 }
