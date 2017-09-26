@@ -68,8 +68,12 @@ namespace DrakSolz.Items {
     public class MeleeThrow : GlobalItem {
 
         public override void SetDefaults(Item item) {
-            if (item == null || item.type >= ItemID.Sets.Yoyo.Length || DrakSolz.ListMeleeThrow == null) return;
-            if (ItemID.Sets.Yoyo[item.type] || DrakSolz.ListMeleeThrow.Contains(item.type)) {
+            if (item == null) return;
+            Projectile p = new Projectile();
+            if (item.shoot != 0 || item.shoot != -1) p.CloneDefaults(item.shoot);
+            if (ItemID.Sets.Yoyo[item.type] || p.aiStyle == 99 || p.aiStyle == 3 ||
+                item.type == ItemID.VampireKnives || item.type == ItemID.ShadowFlameKnife ||
+                item.type == ItemID.FlyingKnife || item.type == ItemID.DayBreak) {
                 item.melee = false;
                 item.thrown = true;
             }

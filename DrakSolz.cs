@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using DrakSolz.UI;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.DataStructures;
@@ -8,11 +9,10 @@ using Terraria.GameContent.UI;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.UI;
-using DrakSolz.UI;
+
 
 namespace DrakSolz {
     public class DrakSolz : Mod {
-        public static List<int> ListMeleeThrow { get; set; }
         public static List<int> ListBossSoul { get; set; }
 
         private UserInterface userInterface;
@@ -30,8 +30,6 @@ namespace DrakSolz {
         }
 
         public override void Load() {
-            ListMeleeThrow = new List<int>();
-            ListMeleeThrow.AddRange(new int[] { 284, 55, 1918, 1825, 670, 191, 119, 3030, 1324, 561, 1122, 1513, 3054, 1569, 3543 });
             ListBossSoul = new List<int>();
             ListBossSoul.AddRange(new int[] {
                 NPCID.KingSlime, NPCID.EyeofCthulhu, NPCID.EaterofWorldsHead, NPCID.EaterofWorldsBody, NPCID.EaterofWorldsTail, NPCID.BrainofCthulhu,
@@ -54,7 +52,6 @@ namespace DrakSolz {
         }
 
         public override void Unload() {
-            ListMeleeThrow = null;
             ListBossSoul = null;
         }
 
