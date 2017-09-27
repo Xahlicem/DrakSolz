@@ -124,6 +124,12 @@ namespace DrakSolz.NPCs.Town {
             shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Misc.Lifegem>());
             shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Misc.GreenBlossom>());
             shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Misc.PrismStone>());
+            if (Main.hardMode) {
+                shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Throwing.FireBomb>());
+            }
+            if (NPC.downedPlantBoss) {
+                shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Throwing.BlackFireBomb>());
+            }
         }
 
         public override void TownNPCAttackStrength(ref int damage, ref float knockback) {
