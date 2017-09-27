@@ -11,6 +11,8 @@ namespace DrakSolz.Items {
         public int FromPlayer { get { return fromPlayer; } set { fromPlayer = value; } }
 
         public bool Owned { get; set; }
+        public bool ArcaneRolled { get; set; }
+        public int ArcaneMana { get; set; }
         public bool Used { get; set; }
         public override bool CloneNewInstances { get { return true; } }
         public override bool InstancePerEntity { get { return true; } }
@@ -18,6 +20,8 @@ namespace DrakSolz.Items {
         public DSGlobalItem() {
             if (Main.netMode == NetmodeID.SinglePlayer) fromPlayer = -1;
             else fromPlayer = -2;
+
+            ArcaneRolled = false;
         }
 
         public override GlobalItem Clone(Item item, Item itemClone) {
@@ -27,11 +31,14 @@ namespace DrakSolz.Items {
                 destination.Owned = source.Owned;
                 destination.Used = source.Used;
                 destination.FromPlayer = fromPlayer;
+                destination.ArcaneRolled = ArcaneRolled;
+                destination.ArcaneMana = ArcaneMana;
             }
             return destination;
         }
 
         public override void OnCraft(Item item, Recipe recipe) {
+            ReRoll(item);
             Owned = true;
         }
 
@@ -41,17 +48,49 @@ namespace DrakSolz.Items {
         }
 
         public override void PostReforge(Item item) {
+            ReRoll(item);
             fromPlayer = item.owner;
             Owned = true;
         }
 
         public override bool OnPickup(Item item, Player player) {
+            ReRoll(item);
             fromPlayer = player.whoAmI;
             Owned = true;
             return true;
         }
 
+        public override void UpdateAccessory(Item item, Player player, bool hideVisual) {
+            ReRoll(item);
+            if (ArcaneRolled)
+                player.statManaMax2 += ArcaneMana * 5 + 5;
+        }
+
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips) {
+            ReRoll(item);
+            if (ArcaneRolled) {
+                string name = string.Empty;
+                switch (ArcaneMana) {
+                    case 0:
+                        name = "Attuned ";
+                        break;
+                    case 1:
+                        name = "Magic ";
+                        break;
+                    case 2:
+                        name = "Runic ";
+                        break;
+                    case 3:
+                        name = "Arcane ";
+                        break;
+                }
+                for (int index = 0; index < tooltips.Count; index++) {
+                    if (tooltips[index].Name.Equals("ItemName")) tooltips[index].text = name + item.Name;
+                }
+                TooltipLine t = new TooltipLine(mod, "PrefixAccMaxMana", "+" + (ArcaneMana * 5 + 5) + " mana");
+                t.isModifier = true;
+                tooltips.Add(t);
+            }
             if (item.GetGlobalItem<DSGlobalItem>().Owned) return;
             SoulItem i = item.modItem as SoulItem;
             if (i == null) return;
@@ -61,11 +100,15 @@ namespace DrakSolz.Items {
         public override void NetSend(Item item, System.IO.BinaryWriter writer) {
             writer.Write(fromPlayer);
             writer.Write(Used);
+            writer.Write(ArcaneRolled);
+            writer.Write(ArcaneMana);
         }
 
         public override void NetReceive(Item item, System.IO.BinaryReader reader) {
             fromPlayer = reader.ReadInt32();
             Used = reader.ReadBoolean();
+            ArcaneRolled = reader.ReadBoolean();
+            ArcaneMana = reader.ReadInt32();
         }
 
         public override bool NeedsSaving(Item item) {
@@ -80,13 +123,23 @@ namespace DrakSolz.Items {
                 return null;
             }
             DSGlobalItem info = item.GetGlobalItem<DSGlobalItem>();
-            return new TagCompound { { "owned", info.Owned }, { "used", info.Used }, { "fromPlayer", fromPlayer } };
+            return new TagCompound { { "owned", info.Owned }, { "used", info.Used }, { "fromPlayer", fromPlayer }, { "ArcaneRolled", ArcaneRolled }, { "ArcaneMana", ArcaneMana } };
         }
 
         public override void Load(Item item, TagCompound tag) {
             Owned = tag.GetBool("owned");
             Used = tag.GetBool("used");
             fromPlayer = tag.GetInt("fromPlayer");
+            ArcaneRolled = tag.GetBool("ArcaneRolled");
+            ArcaneMana = tag.GetInt("ArcaneMana");
+        }
+
+        private void ReRoll(Item item) {
+            if (item.prefix != PrefixID.Arcane) return;
+            item.prefix = 0;
+            //item.Prefix(0);
+            ArcaneMana = Main.rand.Next(4);
+            ArcaneRolled = true;
         }
     }
 
