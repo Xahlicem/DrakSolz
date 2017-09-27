@@ -22,7 +22,7 @@ namespace DrakSolz.Items {
 			item.rare = 3;
 			item.UseSound = SoundID.Item79;
 			item.noMelee = true;
-            //item.rare = 7;
+            item.rare = 7;
             item.UseSound = SoundID.Item1;
             item.mountType = mod.MountType<Mounts.BoneWheel>();
         }
