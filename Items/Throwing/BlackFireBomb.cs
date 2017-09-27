@@ -12,7 +12,7 @@ namespace DrakSolz.Items.Throwing {
 
         public override void SetDefaults() {
             item.useStyle = 1;
-            item.damage = 130;
+            item.damage = 100;
             item.thrown = true;
             item.shootSpeed = 13f;
             item.width = 28;
