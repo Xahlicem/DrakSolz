@@ -19,9 +19,9 @@ namespace DrakSolz.NPCs.Enemy {
             npc.aiStyle = 3;
             aiType = NPCID.PossessedArmor;
             animationType = NPCID.PossessedArmor;
-            npc.damage = 115;
-            npc.defense = 50;
-            npc.lifeMax = 2500;
+            npc.damage = 120;
+            npc.defense = 55;
+            npc.lifeMax = 5500;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             //npc.alpha = 175;
@@ -43,7 +43,7 @@ namespace DrakSolz.NPCs.Enemy {
             npc.spriteDirection = npc.direction;
         }
         public override void NPCLoot() {
-            if (Main.rand.Next(15) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Melee.GravelordSword>());
+            if (Main.rand.Next(20) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Melee.GravelordSword>());
         }
 
     }
