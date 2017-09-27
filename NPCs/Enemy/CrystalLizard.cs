@@ -28,7 +28,7 @@ namespace DrakSolz.NPCs.Enemy
 			npc.DeathSound = SoundID.NPCDeath1;
 			//npc.alpha = 175;
 			//npc.color = new Color(0, 80, 255, 100);
-			npc.value = 50000f;
+			npc.value = 100000f;
             npc.knockBackResist = 0.1f;
 			npc.buffImmune[BuffID.Confused] = true; // npc default to being immune to the Confused debuff. Allowing confused the AI. npc.confused is true while the npc is confused.
             banner = npc.type;
@@ -38,7 +38,7 @@ namespace DrakSolz.NPCs.Enemy
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
 			// we would like this npc to spawn in the overworld.
-			return SpawnCondition.MouseCritter.Chance * 0.1f;
+			return SpawnCondition.Cavern.Chance * 0.01f;
 		}
 
 		// These const ints are for the benefit of the programmer. Organization is key to making an AI that behaves properly without driving you crazy.
