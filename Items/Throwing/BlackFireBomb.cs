@@ -14,7 +14,7 @@ namespace DrakSolz.Items.Throwing {
             item.useStyle = 1;
             item.damage = 100;
             item.thrown = true;
-            item.shootSpeed = 13f;
+            item.shootSpeed = 15f;
             item.width = 28;
             item.height = 28;
             item.maxStack = 999;
