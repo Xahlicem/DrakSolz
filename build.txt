@@ -1,5 +1,5 @@
 author = Xahlicem, SolarEclipse28
-version = 0.1
+version = 0.2a
 displayName = Drak Solz
 hideCode = false
 hideResources = false
