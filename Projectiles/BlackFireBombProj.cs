@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -25,7 +20,7 @@ namespace DrakSolz.Projectiles {
             projectile.penetrate = 1;
             projectile.timeLeft = 600;
         }
-        
+
         public override void Kill(int timeLeft) {
             Main.PlaySound(SoundID.Item15, projectile.position);
 
