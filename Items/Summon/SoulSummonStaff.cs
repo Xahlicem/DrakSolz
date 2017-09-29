@@ -4,7 +4,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace DrakSolz.Items.Summon {
-    public class SoulSummonStaff : ModItem {
+    public class SoulSummonStaff : SoulItem {
+        public SoulSummonStaff() : base(100) { }
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Soul Staff");
@@ -51,6 +52,14 @@ namespace DrakSolz.Items.Summon {
 
         public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> tooltips) {
             tooltips.RemoveAt(tooltips.Count - 1);
+        }
+
+        public override void AddRecipes() {
+            ModRecipe recipe = new SoulRecipe(mod, this);
+            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.AddRecipeGroup("IronBar", 2);
+            recipe.AddRecipeGroup("Wood", 5);
+            recipe.AddRecipe();
         }
     }
 }
