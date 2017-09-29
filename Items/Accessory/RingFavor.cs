@@ -1,4 +1,5 @@
 ﻿using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace DrakSolz.Items.Accessory {
@@ -6,9 +7,10 @@ namespace DrakSolz.Items.Accessory {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Ring of Favor and Protection");
             Tooltip.SetDefault("This is a modded ring." +
-                "\n+40 Max Life" +
-                "\n+40 Max Mana" +
-                "\n+15% Move Speed");
+                "\n+50 Max Life" +
+                "\n+50 Max Mana" +
+                "\n+30% Max Move Speed" +
+                "\n+15% Melee Speed");
         }
 
         public override void SetDefaults() {
@@ -21,10 +23,22 @@ namespace DrakSolz.Items.Accessory {
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual) {
-            player.statManaMax2 += 40;
-            player.statLifeMax2 += 40;
-            player.maxRunSpeed += 0.15f;
+            player.statManaMax2 += 50;
+            player.statLifeMax2 += 50;
+            player.maxRunSpeed += 0.30f;
+            player.meleeSpeed += 0.15f;
             player.moveSpeed += 0.15f;
+        }
+
+        public override void AddRecipes() {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.SetResult(this);
+            recipe.AddIngredient(mod.ItemType<Items.Accessory.RingCloranthy>());
+            recipe.AddIngredient(ItemID.SoulofSight);
+            recipe.AddIngredient(ItemID.SoulofMight);
+            recipe.AddIngredient(ItemID.SoulofFright);
+            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.AddRecipe();
         }
     }
 }
