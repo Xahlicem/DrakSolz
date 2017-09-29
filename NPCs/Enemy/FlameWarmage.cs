@@ -36,8 +36,8 @@ namespace DrakSolz.NPCs.Enemy {
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
-            if (NPC.downedPlantBoss){
-            return SpawnCondition.Cavern.Chance * 0.2f;}
+            if (NPC.downedPlantBoss)
+                return SpawnCondition.Cavern.Chance * 0.2f;
             else return 0f;
         }
 
@@ -108,11 +108,8 @@ namespace DrakSolz.NPCs.Enemy {
 
         const int Frame_Cast = 6;
         const int Frame_Spell = 5;
-        const int Frame_Dance_1 = 0;
-        const int Frame_Dance_2 = 1;
-        const int Frame_Dance_3 = 2;
-        const int Frame_Dance_4 = 3;
-        const int Frame_Dance_5 = 4;
+        const int Frame_Still = 0;
+        const int Frame_Dance_Offset = 0;
 
         public override void FindFrame(int frameHeight) {
             npc.spriteDirection = npc.direction;
@@ -130,22 +127,11 @@ namespace DrakSolz.NPCs.Enemy {
                     AI_SpellTime = 0;
                 }
             } else if (AI_State == State_Dance) {
-                npc.frameCounter++;
-                if (npc.frameCounter < 10) {
-                    npc.frame.Y = Frame_Dance_1 * frameHeight;
-                } else if (npc.frameCounter < 20) {
-                    npc.frame.Y = Frame_Dance_2 * frameHeight;
-                } else if (npc.frameCounter < 30) {
-                    npc.frame.Y = Frame_Dance_3 * frameHeight;
-                } else if (npc.frameCounter < 40) {
-                    npc.frame.Y = Frame_Dance_4 * frameHeight;
-                } else if (npc.frameCounter < 50) {
-                    npc.frame.Y = Frame_Dance_5 * frameHeight;
-                } else {
-                    npc.frameCounter = 0;
-                }
+                if (npc.frameCounter >= 49 - 1) npc.frameCounter = 0;
+                else npc.frameCounter++;
+                npc.frame.Y = ((int) npc.frameCounter / 10 + Frame_Dance_Offset) * frameHeight;
             } else if (AI_State == State_Still) {
-                npc.frame.Y = Frame_Dance_1 * frameHeight;
+                npc.frame.Y = Frame_Still * frameHeight;
 
             }
         }
