@@ -67,8 +67,8 @@ namespace DrakSolz.NPCs.Enemy {
         public override void NPCLoot() {
             Utils.PoofOfSmoke(npc.Center);
             if (Main.rand.Next(10) == 0)
-                Utils.SelectRandom(Main.rand, new int[] { ItemID.NinjaHood, ItemID.NinjaPants, ItemID.NinjaShirt });
-            Item.NewItem(npc.Center, new Vector2(npc.width, npc.height), ItemID.Shuriken, Main.rand.Next(4, 10));
+                Item.NewItem(npc.Center, npc.width, npc.height, Utils.SelectRandom(Main.rand, new int[] { ItemID.NinjaHood, ItemID.NinjaPants, ItemID.NinjaShirt }));
+            Item.NewItem(npc.Center, npc.width, npc.height, ItemID.Shuriken, Main.rand.Next(4, 10));
         }
 
         private Vector2 GetVelocity(Player player) {

@@ -206,9 +206,9 @@ namespace DrakSolz.NPCs.Enemy {
             Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/Channeler_Legs"));
 
             if (Main.hardMode && Main.rand.Next(4) == 0)
-                Utils.SelectRandom(Main.rand, new int[] {
+                Item.NewItem(npc.Center, npc.width, npc.height, Utils.SelectRandom(Main.rand, new int[] {
                     mod.ItemType<Items.Armor.Channeler.ChannelerHelmet>(), mod.ItemType<Items.Armor.Channeler.ChannelerRobe>(), mod.ItemType<Items.Armor.Channeler.ChannelerSkirt>()
-                });
+                }));
             if (Main.rand.Next(15) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Melee.ChannelT>());
         }
 
