@@ -14,7 +14,7 @@ namespace DrakSolz.Items.Accessory {
         public override void SetDefaults() {
             item.width = 22;
             item.height = 20;
-            item.defense = 5;
+            item.defense = 8;
             item.value = Item.buyPrice(0, 15, 0, 0);
             item.rare = 2;
             item.accessory = true;
