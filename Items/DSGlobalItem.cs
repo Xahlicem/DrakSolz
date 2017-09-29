@@ -137,7 +137,6 @@ namespace DrakSolz.Items {
         private void ReRoll(Item item) {
             if (item.prefix != PrefixID.Arcane) return;
             item.prefix = 0;
-            //item.Prefix(0);
             ArcaneMana = Main.rand.Next(4);
             ArcaneRolled = true;
         }

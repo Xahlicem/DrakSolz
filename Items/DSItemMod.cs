@@ -58,9 +58,61 @@ namespace DrakSolz.Items {
 
     public class SummonMod : GlobalItem {
         public override void SetDefaults(Item item) {
-            if (item.type == ItemID.SlimeStaff) {
-                item.mana *= 1;
+            if (item.summon != true) return;
+            switch (item.type) {
+                case ItemID.SlimeStaff:
+                    item.mana = 10;
+                    break;
+                case ItemID.HornetStaff:
+                    item.mana = 20;
+                    break;
+                case ItemID.ImpStaff:
+                    item.mana = 40;
+                    break;
 
+                case ItemID.SpiderStaff:
+                    item.mana = 60;
+                    break;
+                case ItemID.OpticStaff:
+                    item.mana = 80;
+                    break;
+                case ItemID.PirateStaff:
+                    item.mana = 80;
+                    break;
+                case ItemID.PygmyStaff:
+                    item.mana = 100;
+                    break;
+                case ItemID.XenoStaff:
+                    item.mana = 140;
+                    break;
+                case ItemID.RavenStaff:
+                    item.mana = 120;
+                    break;
+                case ItemID.TempestStaff:
+                    item.mana = 180;
+                    break;
+                case ItemID.DeadlySphereStaff:
+                    item.mana = 150;
+                    break;
+                case ItemID.StardustDragonStaff:
+                    item.mana = 200;
+                    break;
+                case ItemID.StardustCellStaff:
+                    item.mana = 200;
+                    break;
+
+                case ItemID.QueenSpiderStaff:
+                    item.mana = 100;
+                    break;
+                case ItemID.StaffoftheFrostHydra:
+                    item.mana = 150;
+                    break;
+                case ItemID.MoonlordTurretStaff:
+                    item.mana = 200;
+                    break;
+                case ItemID.RainbowCrystalStaff:
+                    item.mana = 200;
+                    break;
             }
         }
     }
