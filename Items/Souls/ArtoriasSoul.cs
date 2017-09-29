@@ -6,7 +6,7 @@ namespace DrakSolz.Items.Souls {
     public class ArtoriasSoul : BossSoul {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Dark Soul");
-            Tooltip.SetDefault("Soul of the Abysswalker");
+            Tooltip.SetDefault("Soul of the Abyss Stalker");
         }
 
         public ArtoriasSoul() : base(16, 130, "RingTinyBeing") { }

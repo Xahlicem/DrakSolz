@@ -147,7 +147,7 @@ namespace DrakSolz.Items.Souls {
                     break;
             }
 
-            if (npc.type == mod.NPCType<NPCs.Enemy.Abysswalker>()) {
+            if (npc.type == mod.NPCType<NPCs.Enemy.AbyssStalker>()) {
                 item.netDefaults(mod.ItemType<Items.Souls.ArtoriasSoul>());
             }
 

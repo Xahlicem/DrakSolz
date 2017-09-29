@@ -81,7 +81,7 @@ namespace DrakSolz.Items.Souls {
     public class SoulGlobalNPC : GlobalNPC {
         public override void NPCLoot(NPC npc) {
             if (npc.aiStyle == 9 || npc.aiStyle == 50) return;
-            if (DrakSolz.ListBossSoul.Contains(npc.type) || npc.type == mod.NPCType<NPCs.Enemy.Abysswalker>() || npc.type == mod.NPCType<NPCs.Enemy.TitaniteDemon>()) return;
+            if (DrakSolz.ListBossSoul.Contains(npc.type) || npc.type == mod.NPCType<NPCs.Enemy.AbyssStalker>() || npc.type == mod.NPCType<NPCs.Enemy.TitaniteDemon>()) return;
 
             double num = Math.Ceiling(Math.Pow(Math.Sqrt(npc.defDamage) + Math.Sqrt(npc.defDefense) + Math.Sqrt(npc.lifeMax) - 1, 4) / (Math.Sqrt(npc.lifeMax) * 200));
             List<int> players = new List<int>();
