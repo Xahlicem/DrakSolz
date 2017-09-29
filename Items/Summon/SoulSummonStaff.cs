@@ -16,9 +16,9 @@ namespace DrakSolz.Items.Summon {
             item.damage = 4;
             item.summon = true;
             item.mana = 5;
-            item.scale = 0.5f;
-            item.width = 25;
-            item.height = 25;
+            item.scale = 1f;
+            item.width = 28;
+            item.height = 28;
             item.useStyle = 5;
             item.noMelee = true;
             item.knockBack = 0;
@@ -28,11 +28,10 @@ namespace DrakSolz.Items.Summon {
             item.shoot = mod.ProjectileType<Projectiles.Minion.SoulSummonProj>();
             item.buffType = mod.BuffType<Buffs.SoulSummonBuff>();
             item.buffTime = 3600;
-            item.autoReuse = true;
         }
 
         public override Vector2? HoldoutOffset() {
-            return new Vector2(-5, 0);
+            return new Vector2(-4, 0);
         }
 
         public override bool AltFunctionUse(Player player) {
