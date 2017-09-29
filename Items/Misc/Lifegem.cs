@@ -29,7 +29,7 @@ namespace DrakSolz.Items.Misc {
             player.AddBuff(BuffID.Regeneration, 600);
 
             int index = player.FindBuffIndex(mod.BuffType<Buffs.Hollow>());
-            if (index != -1) player.buffTime[index] -= 30;
+            if (index != -1) player.buffTime[index] -= 3600;
             return true;
         }
 
@@ -51,7 +51,6 @@ namespace DrakSolz.Items.Misc {
                         npc.type == NPCID.TwiggyZombie || npc.type == NPCID.PincushionZombie ||
                         npc.type == NPCID.FemaleZombie || npc.type == NPCID.ArmedZombieCenx) {
                         Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Misc.Lifegem>(), 1);
-
                     }
                 }
             }

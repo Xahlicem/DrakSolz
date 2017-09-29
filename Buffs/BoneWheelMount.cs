@@ -17,7 +17,8 @@ namespace DrakSolz.Buffs {
             player.slippy = true;
 
             if (player.ownedProjectileCounts[mod.ProjectileType<Projectiles.BoneWheelProj>()] == 0) {
-                int pro = Projectile.NewProjectile(player.position, Vector2.Zero, mod.ProjectileType<Projectiles.BoneWheelProj>(), 10, 0f, player.whoAmI);
+                Projectile.NewProjectile(player.position, Vector2.Zero, mod.ProjectileType<Projectiles.BoneWheelProj>(), 10, 0.5f, player.whoAmI, 1);
+                Projectile.NewProjectile(player.position, Vector2.Zero, mod.ProjectileType<Projectiles.BoneWheelProj>(), 10, 0.5f, player.whoAmI, -1);
             }
         }
     }
