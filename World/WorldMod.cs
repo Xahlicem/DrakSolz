@@ -36,15 +36,20 @@ namespace DrakSolz.Items.World {
                     foreach (Chest chest in Main.chest) {
                         if (chest == null) continue;
                         Tile tile = Main.tile[chest.x, chest.y];
-                        if (tile.type == TileID.Containers && tile.frameX != CHEST_X_GOLD) continue;
-                        if (Main.rand.Next(20) == 0) {
+                        if (tile.type == TileID.Containers) continue;
+                        if (WorldGen.genRand.Next(20) == 0 && tile.frameX != CHEST_X_GOLD) {
                             chest.item[0].SetDefaults(mod.ItemType<Items.Accessory.RingCat>());
                             chest.item[0].Prefix(-1);
 
                         }
+                        if (tile.frameX == CHEST_X_SHADOW_LOCKED) {
+                            int[] shadow = { ItemID.DarkLance, ItemID.Flamelash, ItemID.FlowerofFire, ItemID.Sunfury, ItemID.HellwingBow, mod.ItemType<Items.Accessory.RingCloranthy>() };
+                            chest.item[0].SetDefaults(Utils.SelectRandom(WorldGen.genRand, shadow));
+                            chest.item[0].Prefix(-1);
+                        }
 
                         for (int i = 0; i < chest.item.Length; i++) {
-                            if (chest.item[i].type == ItemID.AquaScepter && Main.rand.Next(3) == 0) {
+                            if (chest.item[i].type == ItemID.AquaScepter && WorldGen.genRand.Next(3) == 0) {
                                 chest.item[i].SetDefaults(mod.ItemType<Items.Accessory.RingCat>());
                                 chest.item[i].Prefix(-1);
                             }
