@@ -1,4 +1,3 @@
-using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -12,7 +11,6 @@ namespace DrakSolz.Items.Melee {
             Tooltip.SetDefault("Greatsword used by Ravelord Nito.");
         }
         public override void SetDefaults() {
-            //item.CloneDefaults(ItemID.StardustDragonStaff);
             item.useStyle = 1;
             item.scale *= 1.2f;
             item.melee = true;
@@ -25,7 +23,7 @@ namespace DrakSolz.Items.Melee {
             item.autoReuse = true;
             item.shoot = mod.ProjectileType<Projectiles.GravelordProj>();
         }
-public override bool CanUseItem(Player player) {
+        public override bool CanUseItem(Player player) {
             if (item.mana == 0) item.mana = item.alpha;
             else item.alpha = item.mana;
             item.buffTime = item.mana;
@@ -37,9 +35,8 @@ public override bool CanUseItem(Player player) {
                 damage *= 2;
                 player.statMana -= (int)(item.buffTime * player.manaCost);
                 item.mana = item.buffTime;
-                int pro = Projectile.NewProjectile((player.Center.X + (100 *player.direction)), player.Center.Y, 1 * player.direction, 0, type, (int)(damage * 0.60f), 0, player.whoAmI, player.Center.Y);
-                //int proj = Projectile.NewProjectile((player.Center.X + (70 *player.direction)) + (50 *player.direction), 1 * player.direction, 40, type, (int)(damage * 0.65f), 0, player.whoAmI);
-                //int proje = Projectile.NewProjectile((player.Center.X + (70 *player.direction)) + (100 *player.direction), 1 * player.direction, 40, type, (int)(damage * 0.65f), 0, player.whoAmI);
+                float direction = Main.mouseX - Main.screenWidth / 2;
+                int pro = Projectile.NewProjectile((player.Center.X + (100 * (direction >= 0 ? 1 : -1))), player.Center.Y, 1 * (direction >= 0 ? 1 : -1), 0, type, (int)(damage * 0.60f), 0, player.whoAmI, player.Center.Y);
                 return false;
             }
             item.mana = item.buffTime;
