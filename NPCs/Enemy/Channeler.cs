@@ -204,20 +204,11 @@ namespace DrakSolz.NPCs.Enemy {
             Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/Channeler_Head"));
             Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/Channeler_Body"));
             Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/Channeler_Legs"));
-            
-            if (Main.hardMode && Main.rand.Next(4) == 0) {
-                switch (Main.rand.Next(2)) {
-                    case 0:
-                        Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Armor.Channeler.ChannelerHelmet>());
-                        break;
-                    case 1:
-                        Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Armor.Channeler.ChannelerRobe>());
-                        break;
-                    case 2:
-                        Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Armor.Channeler.ChannelerSkirt>());
-                        break;
-                }
-            }
+
+            if (Main.hardMode && Main.rand.Next(4) == 0)
+                Utils.SelectRandom(Main.rand, new int[] {
+                    mod.ItemType<Items.Armor.Channeler.ChannelerHelmet>(), mod.ItemType<Items.Armor.Channeler.ChannelerRobe>(), mod.ItemType<Items.Armor.Channeler.ChannelerSkirt>()
+                });
             if (Main.rand.Next(15) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Melee.ChannelT>());
         }
 

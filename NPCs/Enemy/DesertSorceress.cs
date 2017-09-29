@@ -36,19 +36,10 @@ namespace DrakSolz.NPCs.Enemy {
         }
 
         /*public override void NPCLoot() {
-            if (Main.hardMode && Main.rand.Next(10) == 0) {
-                switch (Main.rand.Next(2)) {
-                    case 0:
-                        Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Armor.DesertSorceress.SorceressHood>());
-                        break;
-                    case 1:
-                        Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Armor.DesertSorceress.SorceressSkirt>());
-                        break;
-                    case 2:
-                        Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Armor.DesertSorceress.SorceressTop>());
-                        break;
-                }
-            }
+            if (Main.hardMode && Main.rand.Next(10) == 0) 
+                Utils.SelectRandom(Main.rand, new int[] { 
+                    mod.ItemType<Items.Armor.DesertSorceress.SorceressHood>(), mod.ItemType<Items.Armor.DesertSorceress.SorceressSkirt>(), mod.ItemType<Items.Armor.DesertSorceress.SorceressTop>() 
+                });
         }*/
     }
 }
