@@ -20,26 +20,28 @@ namespace DrakSolz.NPCs.Enemy {
             animationType = NPCID.DiabolistWhite;
             npc.damage = 60;
             npc.defense = 25;
-            npc.lifeMax = 750;
+            npc.lifeMax = 1000;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
-            npc.value = 50000f;
+            npc.value = 10000f;
             npc.knockBackResist = 1f;
             npc.buffImmune[BuffID.Confused] = false;
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
-            return SpawnCondition.Mummy.Chance * 0.5f;
+            if (NPC.downedMechBossAny)
+                return SpawnCondition.DesertCave.Chance * 0.15f;
+            else return 0f;
         }
         public override void FindFrame(int frameHeight) {
             npc.spriteDirection = npc.direction;
         }
 
-        /*public override void NPCLoot() {
+        public override void NPCLoot() {
             if (Main.hardMode && Main.rand.Next(10) == 0) 
                 Item.NewItem(npc.Center, npc.width, npc.height, Utils.SelectRandom(Main.rand, new int[] { 
                     mod.ItemType<Items.Armor.DesertSorceress.SorceressHood>(), mod.ItemType<Items.Armor.DesertSorceress.SorceressSkirt>(), mod.ItemType<Items.Armor.DesertSorceress.SorceressTop>() 
                 }));
-        }*/
+        }
     }
 }

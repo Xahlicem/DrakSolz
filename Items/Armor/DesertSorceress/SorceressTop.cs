@@ -8,22 +8,22 @@ namespace DrakSolz.Items.Armor.DesertSorceress {
         public override void SetStaticDefaults() {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Desert Sorceress Top");
-            Tooltip.SetDefault("Armor forged with pure moonlight." +
-                "\n+20 Max Health" +
-                "\n+20 Max Mana");
+            Tooltip.SetDefault("Clothing worn by Desert Sorceresses. So fashionable." +
+                "\n+10% magic damage" +
+                "\n+ increases mana star grab range");
         }
 
         public override void SetDefaults() {
             item.width = 18;
             item.height = 18;
-            item.value = Item.buyPrice(1, 0, 0, 0);
-            item.rare = 9;
-            item.defense = 25;
+            item.value = Item.buyPrice(0, 10, 0, 0);
+            item.rare = 8;
+            item.defense = 7;
         }
 
         public override void UpdateEquip(Player player) {
-            player.statManaMax2 += 20;
-            player.statLifeMax2 += 20;
+            player.magicDamage *= 1.1f;
+            player.manaMagnet = true;
         }
     }
 }

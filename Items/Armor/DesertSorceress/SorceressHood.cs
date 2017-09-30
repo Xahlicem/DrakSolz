@@ -7,22 +7,23 @@ namespace DrakSolz.Items.Armor.DesertSorceress {
     public class SorceressHood : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Desert Sorceress Hood");
-            Tooltip.SetDefault("Armor forged with pure moonlight." +
-                "\n+NightVision");
+            Tooltip.SetDefault("Clothing worn by Desert Sorceresses. So fashionable." +
+                "\n+5% magic damage" +
+                "\n+10% magic crit");
         }
 
         public override void SetDefaults() {
             item.width = 18;
             item.height = 18;
-            item.value = Item.buyPrice(1, 0, 0, 0);
-            item.rare = 9;
-            item.defense = 15;
+            item.value = Item.buyPrice(0, 10, 0, 0);
+            item.rare = 8;
+            item.defense = 8;
         }
 
         public override void UpdateEquip(Player player) {
             //player.AddBuff(BuffID.NightOwl, 2);
             player.magicCrit += 10;
-            player.nightVision = true;
+            player.magicDamage *= 1.05f;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs) {
@@ -30,18 +31,19 @@ namespace DrakSolz.Items.Armor.DesertSorceress {
         }
 
         public override void UpdateArmorSet(Player player) {
-            player.setBonus = ("Moonlight Prayer" +
-                "\n+20% Magic Damage" +
-                "\n+100% Mana Cost" +
-                "\n+Instant Mana Regen" +
-                "\n+Immunity to Curse");
-            player.magicDamage *= 1.2f;
-            player.manaCost *= 2.0f;
-            player.manaRegen += 60;
-            player.manaRegenBuff = true;
-            //player.AddBuff(BuffID.ManaRegeneration, 2);
-            player.AddBuff(BuffID.Shine, 2);
-            player.buffImmune[BuffID.Cursed] = true;
+            player.setBonus = ("Desert's Kiss" +
+                "\n+10% magic damage" +
+                "\n+5% magic crit" +
+                "\n-20% mana cost" +
+                "\n+ uses mana potions when low" +
+                "\n+ 10 mana sickness cooldown" +
+                "\n+immunity to On Fire");
+            player.magicDamage *= 1.1f;
+            player.manaCost *= 0.8f;
+            player.magicCrit += 5;
+            player.buffImmune[BuffID.OnFire] = true;
+            player.manaFlower = true;
+            player.manaSickReduction = 10;
         }
     }
 }
