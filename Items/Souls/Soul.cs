@@ -16,8 +16,7 @@ namespace DrakSolz.Items.Souls {
             ItemID.Sets.AnimatesAsSoul[item.type] = true;
             ItemID.Sets.ItemNoGravity[item.type] = true;
         }
-
-        // TODO -- Velocity Y smaller, post NewItem?
+        
         public override void SetDefaults() {
             Item refItem = new Item();
             refItem.SetDefaults(ItemID.SoulofSight);
@@ -70,7 +69,6 @@ namespace DrakSolz.Items.Souls {
             item.velocity = movement;
             float magnitude = (float) Math.Sqrt(item.velocity.X * item.velocity.X + item.velocity.Y * item.velocity.Y);
             item.velocity *= 16f / magnitude;
-            //item.velocity = Collision.TileCollision(item.position, item.velocity, item.width, item.height);
             return true;
         }
 
