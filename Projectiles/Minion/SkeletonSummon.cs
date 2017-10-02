@@ -33,7 +33,7 @@ namespace DrakSolz.Projectiles.Minion {
         }
 
         public override bool OnTileCollide(Vector2 oldVelocity) {
-            if (Math.Abs(oldVelocity.X) == 0 || Math.Abs(projectile.velocity.Y) > 0.25f) return false;
+            if (Math.Abs(oldVelocity.X) == 0 || Math.Abs(projectile.velocity.Y) > 0f) return false;
             if (oldVelocity.X != projectile.velocity.X) {
                 if (CollisionAhead(oldVelocity)) ChangeState(State_Still);
                 else projectile.velocity = new Vector2(projectile.oldVelocity.X, -2.5f);
@@ -83,13 +83,17 @@ namespace DrakSolz.Projectiles.Minion {
                     if (!CollisionAhead(projectile.spriteDirection, 0)) ChangeState(State_Move);
                     projectile.velocity.X = 0f;
                     if (Ticks == 15)
-                        if (Main.rand.NextBool() && CanJump()) {
+                        if (CanJump()) {
                             ChangeState(State_Jump);
                         } else projectile.spriteDirection *= -1;
                     if (Ticks >= 30) ChangeState(State_Move);
                     break;
                 case State_Move:
-                    if ((CollisionAhead() || HoleAhead()) && CanJump())
+                    if (CollisionAhead()) {
+                        if (CanJump()) ChangeState(State_Jump);
+                        else ChangeState(State_Still);
+                    }
+                    if (HoleAhead() && CanJump())
                         ChangeState(State_Jump);
                     projectile.velocity.X = 2.5f * projectile.spriteDirection;
                     break;
@@ -144,18 +148,27 @@ namespace DrakSolz.Projectiles.Minion {
         }
 
         private bool CollisionAhead(float velX, float velY) {
-            int x = (int)(-1 + (velX < 0 ? projectile.Left.X : projectile.Right.X) + velX) / 16;
+            int x = (int)((velX < 0 ? projectile.Left.X + 6 : projectile.Right.X - 6) + velX) / 16;
             int y = (int)(projectile.Bottom.Y - 9 + velY) / 16;
             int blockFeet = Main.tile[x, y].collisionType;
             int blockBody = Main.tile[x, y - 1].collisionType;
             int blockHead = Main.tile[x, y - 2].collisionType;
+            int blockHead1 = Main.tile[x, y - 3].collisionType;
 
-            Main.NewText(blockFeet + " " + blockBody + " " + blockHead);
+            //Main.NewText(projectile.spriteDirection + " " + blockFeet + " " + blockBody + " " + blockHead + " " + blockHead1);
 
             if (blockHead > 0) return true;
-            if (blockFeet == 1 && (blockBody == 1 || blockBody == 2)) return true;
-            if (projectile.spriteDirection == -1 && blockBody == 4) return true;
-            if (projectile.spriteDirection == 1 && blockBody == 3) return true;
+            if (blockBody == 1 || blockBody == 2) return true;
+
+            if (projectile.spriteDirection == -1) {
+                if (blockBody == 4) return true;
+                if (blockFeet == 3 && blockHead1 > 0) return true;
+            }
+
+            if (projectile.spriteDirection == 1) {
+                if (blockBody == 3) return true;
+                if (blockFeet == 4 && blockHead1 > 0) return true;
+            }
 
             return false;
         }
@@ -170,13 +183,14 @@ namespace DrakSolz.Projectiles.Minion {
 
         private bool CanJump() {
             if (Math.Abs(projectile.velocity.Y) > 0.25f) return false;
-            int x = (int)((projectile.spriteDirection == 1 ? projectile.Right.X : projectile.Left.X)) / 16;
-            int y = (int)(projectile.Top.Y) / 16 - 1;
+            int x = (int)((projectile.spriteDirection == 1 ? projectile.Right.X - 6 : projectile.Left.X + 6)) / 16;
+            int y = (int)(projectile.Top.Y + 6) / 16 - 1;
             int blockTop = Main.tile[x, y].collisionType;
+            if (blockTop > 0) return false;
+
             x += projectile.spriteDirection;
             int blockAhead = Main.tile[x, y].collisionType;
-
-            if (blockTop > 0) return false;
+            if ((projectile.spriteDirection == 1 && blockAhead == 4) || (projectile.spriteDirection == -1 && blockAhead == 3)) return true;
             if (blockAhead > 0) return false;
 
             return true;

@@ -26,16 +26,6 @@ namespace DrakSolz.Projectiles.Minion {
             return true;
         }
 
-        /*public override bool OnTileCollide(Vector2 oldVelocity) {
-            if (projectile.velocity.Y == 0) {
-                if (Math.Abs(projectile.rotation) <= 0.15f) return true;
-                else projectile.rotation += (projectile.rotation / 3) * -1;
-                projectile.velocity.X += (projectile.velocity.X / 3) * -1;
-            }
-
-            return false;
-        }*/
-
         public override void AI() {
             if (Math.Abs(projectile.velocity.X) > 0f) projectile.spriteDirection = projectile.direction;
         }
