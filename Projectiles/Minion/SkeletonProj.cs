@@ -33,7 +33,6 @@ namespace DrakSolz.Projectiles.Minion {
         public override void Kill(int timeLeft) {
             int pro = Projectile.NewProjectile(new Vector2(projectile.Center.X, projectile.Center.Y - 15), new Vector2(projectile.direction * 0.01f, 0), mod.ProjectileType<Projectiles.Minion.SkeletonSummon>(), projectile.damage, projectile.knockBack, projectile.owner);
             Main.projectile[pro].spriteDirection = projectile.spriteDirection;
-
         }
     }
 }

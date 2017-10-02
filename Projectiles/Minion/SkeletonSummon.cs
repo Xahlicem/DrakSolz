@@ -11,6 +11,8 @@ namespace DrakSolz.Projectiles.Minion {
             DisplayName.SetDefault("Skeleton");
         }
 
+        public override bool? CanCutTiles() { return false; }
+
         public override void SetDefaults() {
             projectile.netImportant = true;
             projectile.aiStyle = 0;
@@ -42,8 +44,8 @@ namespace DrakSolz.Projectiles.Minion {
         }
 
         const int Tick_Slot = 0;
-
         const int State_Slot = 1;
+
         const int State_Summon = 0;
         const int State_Still = 1;
         const int State_Move = 2;
@@ -144,7 +146,8 @@ namespace DrakSolz.Projectiles.Minion {
         }
 
         public override void Kill(int timeLeft) {
-            Item.NewItem(projectile.Bottom, Vector2.Zero, mod.ItemType<Items.Summon.SkeletonSkull>());
+            int item = Item.NewItem((int) projectile.Bottom.X, (int) projectile.Center.Y + 8, 0, 0, mod.ItemType<Items.Summon.SkeletonSkull>());
+            Main.item[item].GetGlobalItem<Items.DSGlobalItem>().FromPlayer = projectile.owner;
         }
 
         private bool CollisionAhead(float velX, float velY) {
@@ -154,8 +157,6 @@ namespace DrakSolz.Projectiles.Minion {
             int blockBody = Main.tile[x, y - 1].collisionType;
             int blockHead = Main.tile[x, y - 2].collisionType;
             int blockHead1 = Main.tile[x, y - 3].collisionType;
-
-            //Main.NewText(projectile.spriteDirection + " " + blockFeet + " " + blockBody + " " + blockHead + " " + blockHead1);
 
             if (blockHead > 0) return true;
             if (blockBody == 1 || blockBody == 2) return true;

@@ -4,11 +4,13 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace DrakSolz.Items.Summon {
-    class SkeletonSkull : ModItem {
+    class SkeletonSkull : SoulItem {
+        public SkeletonSkull() : base(1000) { }
 
         public override void SetStaticDefaults() {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Skeleton Skull");
+            ItemID.Sets.ItemNoGravity[item.type] = true;
         }
 
         public override void SetDefaults() {
@@ -21,15 +23,30 @@ namespace DrakSolz.Items.Summon {
             item.UseSound = SoundID.Item1;
             item.useAnimation = 25;
             item.useTime = 26;
+            item.mana = 5;
             item.noUseGraphic = true;
             item.noMelee = true;
             item.summon = true;
             item.damage = 20;
             item.knockBack = 5f;
-            item.value = Item.buyPrice(0, 0, 0, 50);
+            item.value = Item.buyPrice(0, 0, 50, 0);
             item.rare = 1;
             item.shoot = mod.ProjectileType<Projectiles.Minion.SkeletonProj>();
             item.autoReuse = true;
+        }
+
+        public override bool CanPickup(Player player) {
+            int fromPlayer = item.GetGlobalItem<Items.DSGlobalItem>().FromPlayer;
+            return (fromPlayer == -1) ? true : (player.whoAmI == fromPlayer);
+        }
+
+        public override void Update(ref float gravity, ref float maxFallSpeed) {
+            int fromPlayer = item.GetGlobalItem<Items.DSGlobalItem>().FromPlayer;
+            if (fromPlayer == -1) return;
+            Player p = Main.player[fromPlayer];
+
+            if (Collision.CanHitLine(item.position, item.width, item.height, p.position, p.width, p.height))
+                item.velocity = (p.position - item.position) * 0.1f;
         }
 
         public override bool CanUseItem(Player player) {
@@ -46,6 +63,12 @@ namespace DrakSolz.Items.Summon {
                 speedX *= 0.001f;
             }
             return true;
+        }
+
+        public override void AddRecipes() {
+            SoulRecipe recipe = new SoulRecipe(mod, this);
+            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.AddIngredient(ItemID.Bone, 50);
         }
     }
 }
