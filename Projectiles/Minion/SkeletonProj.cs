@@ -16,25 +16,34 @@ namespace DrakSolz.Projectiles.Minion {
             projectile.height = 26;
             projectile.penetrate = -1;
             projectile.timeLeft = 600;
+            projectile.friendly = false;
+            projectile.hostile = false;
         }
 
         public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough) {
-            width = 19;
+            width = 20;
             height = 21;
             return true;
         }
 
-        public override bool OnTileCollide(Vector2 oldVelocity) {
+        /*public override bool OnTileCollide(Vector2 oldVelocity) {
             if (projectile.velocity.Y == 0) {
                 if (Math.Abs(projectile.rotation) <= 0.15f) return true;
                 else projectile.rotation += (projectile.rotation / 3) * -1;
+                projectile.velocity.X += (projectile.velocity.X / 3) * -1;
             }
 
             return false;
+        }*/
+
+        public override void AI() {
+            if (Math.Abs(projectile.velocity.X) > 0f) projectile.spriteDirection = projectile.direction;
         }
 
         public override void Kill(int timeLeft) {
-            Projectile.NewProjectile(new Vector2(projectile.Center.X, projectile.Center.Y - 15), Vector2.Zero, mod.ProjectileType<Projectiles.Minion.SkeletonSummon>(), projectile.damage, projectile.knockBack, projectile.owner);
+            int pro = Projectile.NewProjectile(new Vector2(projectile.Center.X, projectile.Center.Y - 15), new Vector2(projectile.direction * 0.01f, 0), mod.ProjectileType<Projectiles.Minion.SkeletonSummon>(), projectile.damage, projectile.knockBack, projectile.owner);
+            Main.projectile[pro].spriteDirection = projectile.spriteDirection;
+
         }
     }
 }
