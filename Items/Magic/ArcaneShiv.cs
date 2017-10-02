@@ -8,7 +8,7 @@ namespace DrakSolz.Items.Magic {
     public class ArcaneShiv : ModItem {
 
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault("Arcane Shiv");
+            DisplayName.SetDefault("Illusory Shiv");
             Tooltip.SetDefault("Leaves an illusory trail that damages foes.");
         }
         public override void SetDefaults() {
