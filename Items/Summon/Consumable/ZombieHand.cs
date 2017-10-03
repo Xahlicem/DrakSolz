@@ -10,7 +10,6 @@ namespace DrakSolz.Items.Summon.Consumable {
         public override void SetStaticDefaults() {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Zombie Hand");
-            ItemID.Sets.ItemNoGravity[item.type] = true;
         }
 
         public override void SetDefaults() {
@@ -24,11 +23,9 @@ namespace DrakSolz.Items.Summon.Consumable {
             item.useAnimation = 25;
             item.useTime = 26;
             item.mana = 5;
-            item.magic = true;
-            item.crit = 50;
             item.noUseGraphic = true;
             item.noMelee = true;
-            item.summon = false;
+            item.summon = true;
             item.damage = 10;
             item.knockBack = 5f;
             item.value = Item.buyPrice(0, 0, 5, 0);
@@ -42,13 +39,10 @@ namespace DrakSolz.Items.Summon.Consumable {
             return (fromPlayer == -1) ? true : (player.whoAmI == fromPlayer);
         }
 
-        public override void Update(ref float gravity, ref float maxFallSpeed) {
+        public override void GrabRange(Player player, ref int grabRange) {
             int fromPlayer = item.GetGlobalItem<Items.DSGlobalItem>().FromPlayer;
-            if (fromPlayer == -1) return;
-            Player p = Main.player[fromPlayer];
-            Vector2 vel = (p.position - item.position);
-            DrakSolz.AdjustMagnitude(ref vel, 10f);
-            item.velocity = vel;
+            if (fromPlayer != player.whoAmI) return;
+            grabRange = (int)player.Distance(item.Center);
         }
 
         public override bool CanUseItem(Player player) {

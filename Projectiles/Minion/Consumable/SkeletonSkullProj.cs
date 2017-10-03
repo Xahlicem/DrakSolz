@@ -11,13 +11,9 @@ namespace DrakSolz.Projectiles.Minion.Consumable {
         }
 
         public override void SetDefaults() {
-            projectile.aiStyle = 2;
+            projectile.CloneDefaults(mod.ProjectileType<Projectiles.Minion.Consumable.ZombieHandProj>());
             projectile.width = 24;
             projectile.height = 26;
-            projectile.penetrate = -1;
-            projectile.timeLeft = 600;
-            projectile.friendly = true;
-            projectile.hostile = false;
         }
 
         public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough) {

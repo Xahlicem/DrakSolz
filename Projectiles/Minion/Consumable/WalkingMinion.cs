@@ -15,6 +15,28 @@ namespace DrakSolz.Projectiles.Minion.Consumable {
             WalkFrameMod = walkFrames * WalkFrameLength;
         }
 
+        public override bool? CanCutTiles() { return false; }
+
+        public override void SetDefaults() {
+            projectile.netImportant = true;
+            projectile.aiStyle = 0;
+            projectile.width = 40;
+            projectile.height = 56;
+            projectile.friendly = true;
+            projectile.penetrate = -1;
+            projectile.timeLeft = 600;
+            projectile.ignoreWater = false;
+            projectile.tileCollide = true;
+            ChangeState(State_Summon);
+        }
+
+        public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough) {
+            width = 20;
+            height = 46;
+            fallThrough = false;
+            return true;
+        }
+
         public const int State_Summon = 0;
         public const int State_Still = 1;
         public const int State_Move = 2;

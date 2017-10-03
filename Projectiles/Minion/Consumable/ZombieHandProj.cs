@@ -18,6 +18,7 @@ namespace DrakSolz.Projectiles.Minion.Consumable {
             projectile.timeLeft = 600;
             projectile.friendly = true;
             projectile.hostile = false;
+            projectile.minion = true;
         }
 
         public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough) {

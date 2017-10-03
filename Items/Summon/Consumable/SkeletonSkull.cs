@@ -10,29 +10,17 @@ namespace DrakSolz.Items.Summon.Consumable {
         public override void SetStaticDefaults() {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Skeleton Skull");
-            ItemID.Sets.ItemNoGravity[item.type] = true;
         }
 
         public override void SetDefaults() {
-            item.useStyle = 1;
-            item.shootSpeed = 12f;
+            item.CloneDefaults(mod.ItemType<Items.Summon.Consumable.ZombieHand>());
             item.width = 24;
             item.height = 26;
-            item.maxStack = 5;
-            item.consumable = true;
-            item.UseSound = SoundID.Item1;
-            item.useAnimation = 25;
-            item.useTime = 26;
             item.mana = 10;
-            item.noUseGraphic = true;
-            item.noMelee = true;
-            item.summon = true;
             item.damage = 20;
-            item.knockBack = 5f;
             item.value = Item.buyPrice(0, 0, 50, 0);
             item.rare = 3;
             item.shoot = mod.ProjectileType<Projectiles.Minion.Consumable.SkeletonSkullProj>();
-            item.autoReuse = true;
         }
 
         public override bool CanPickup(Player player) {
@@ -40,13 +28,10 @@ namespace DrakSolz.Items.Summon.Consumable {
             return (fromPlayer == -1) ? true : (player.whoAmI == fromPlayer);
         }
 
-        public override void Update(ref float gravity, ref float maxFallSpeed) {
+        public override void GrabRange(Player player, ref int grabRange) {
             int fromPlayer = item.GetGlobalItem<Items.DSGlobalItem>().FromPlayer;
-            if (fromPlayer == -1) return;
-            Player p = Main.player[fromPlayer];
-            Vector2 vel = (p.position - item.position);
-            DrakSolz.AdjustMagnitude(ref vel, 10f);
-            item.velocity = vel;
+            if (fromPlayer != player.whoAmI) return;
+            grabRange = (int) player.Distance(item.Center);
         }
 
         public override bool CanUseItem(Player player) {
