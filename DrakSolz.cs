@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using DrakSolz.UI;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.DataStructures;
@@ -9,7 +10,6 @@ using Terraria.GameContent.UI;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.UI;
-
 
 namespace DrakSolz {
     public class DrakSolz : Mod {
@@ -27,6 +27,16 @@ namespace DrakSolz {
                 AutoloadGores = true,
                 AutoloadSounds = true
             };
+        }
+
+        public static void AdjustMagnitude(ref Vector2 vector, float min, float max) {
+            float magnitude = (float) Math.Sqrt(vector.X * vector.X + vector.Y * vector.Y);
+            if (magnitude > max) vector *= max / magnitude;
+            if (magnitude < min) vector *= min / magnitude;
+        }
+
+        public static void AdjustMagnitude(ref Vector2 vector, float speed) {
+            AdjustMagnitude(ref vector, speed, speed);
         }
 
         public override void Load() {

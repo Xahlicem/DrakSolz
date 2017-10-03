@@ -142,15 +142,11 @@ namespace DrakSolz.Items {
         }
     }
 
-    public class SoulItem : ModItem {
+    public abstract class SoulItem : ModItem {
         public int SoulValue { get; internal set; }
 
         public SoulItem(int value) {
             SoulValue = value;
-        }
-
-        public override bool Autoload(ref string name) {
-            return (GetType() == typeof (SoulItem)) ? false : base.Autoload(ref name);
         }
     }
 

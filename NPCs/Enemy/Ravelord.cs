@@ -63,11 +63,5 @@ namespace DrakSolz.NPCs.Enemy {
             }
             if (Main.rand.Next(20) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Melee.GravelordSword>());
         }
-
-        private void AdjustMagnitude(ref Vector2 vector) {
-            float magnitude = (float) Math.Sqrt(vector.X * vector.X + vector.Y * vector.Y);
-            vector *= 7.5f / magnitude;
-
-        }
     }
 }

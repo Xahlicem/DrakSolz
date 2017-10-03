@@ -139,18 +139,5 @@ namespace DrakSolz.NPCs.Enemy {
         public override void NPCLoot() {
             if (Main.rand.Next(15) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Magic.IT>());
         }
-
-        private void AdjustMagnitude(ref Vector2 vector) {
-            float magnitude = (float) Math.Sqrt(vector.X * vector.X + vector.Y * vector.Y);
-            vector *= 7.5f / magnitude;
-
-        }
-        private Vector2 GetVelocity(Player player) {
-            Vector2 vector = player.Center - npc.Center;
-            float magnitude = (float) Math.Sqrt(vector.X * vector.X + vector.Y * vector.Y);
-            vector *= 0.01f / magnitude;
-
-            return vector;
-        }
     }
 }

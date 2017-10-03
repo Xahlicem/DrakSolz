@@ -4,11 +4,21 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DrakSolz.Projectiles.Minion {
-    public class SkeletonSummon : ModProjectile {
-        public override void SetStaticDefaults() {
-            Main.projFrames[projectile.type] = 20;
-            DisplayName.SetDefault("Skeleton");
+namespace DrakSolz.Projectiles.Minion.Consumable {
+    public abstract class WalkingMinion : CMinion {
+        private int WalkFrameMod;
+        private int WalkFrameLength;
+        public float WalkSpeed { get; set; }
+        public WalkingMinion(string itemType, float walkSpeed, int walkFrameLength, int walkFrames) : base(itemType) {
+            WalkSpeed = walkSpeed;
+            WalkFrameLength = walkFrameLength;
+            WalkFrameMod = walkFrames * WalkFrameLength;
+        }
+
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) {
+            projectile.velocity.X *= 0.01f;
+            ChangeState(State_Still);
+            Ticks = -5;
         }
 
         public override bool? CanCutTiles() { return false; }
@@ -24,7 +34,6 @@ namespace DrakSolz.Projectiles.Minion {
             projectile.ignoreWater = false;
             projectile.tileCollide = true;
             ChangeState(State_Summon);
-            projectile.frame = 19;
         }
 
         public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough) {
@@ -34,39 +43,15 @@ namespace DrakSolz.Projectiles.Minion {
             return true;
         }
 
-        public override bool OnTileCollide(Vector2 oldVelocity) {
-            if (Math.Abs(oldVelocity.X) == 0 || Math.Abs(projectile.velocity.Y) > 0f) return false;
-            if (oldVelocity.X != projectile.velocity.X) {
-                if (CollisionAhead(oldVelocity)) ChangeState(State_Still);
-                else projectile.velocity = new Vector2(projectile.oldVelocity.X, -2.5f);
-            }
-            return false;
-        }
+        public const int State_Summon = 0;
+        public const int State_Still = 1;
+        public const int State_Move = 2;
+        public const int State_Jump = 3;
+        public const int State_Die = 4;
 
-        const int Tick_Slot = 0;
-        const int State_Slot = 1;
-
-        const int State_Summon = 0;
-        const int State_Still = 1;
-        const int State_Move = 2;
-        const int State_Jump = 3;
-        const int State_Die = 4;
-
-        float Ticks {
-            get { return projectile.ai[Tick_Slot]; }
-            set { projectile.ai[Tick_Slot] = value; }
-        }
-
-        int State {
-            get { return (int) projectile.ai[State_Slot]; }
-            set { projectile.ai[State_Slot] = value; }
-        }
-
-        void ChangeState(int state) {
+        public override void ChangeState(int state) {
             if (state == State_Jump) projectile.velocity.Y = -5;
-            State = state;
-            projectile.frameCounter = -1;
-            Ticks = 0;
+            base.ChangeState(state);
         }
 
         public override void AI() {
@@ -78,11 +63,11 @@ namespace DrakSolz.Projectiles.Minion {
                     projectile.friendly = false;
                     projectile.velocity.X = 0f;
                     if (Ticks % 12 == 2)
-                        for (int i = 0; i < 10; i++) Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 46), projectile.width, 10, DustID.Dirt, 2 * (Main.rand.NextFloat() - 0.5f), 1 * (Main.rand.NextFloat() - 1.5f));
+                        SummonDust();
                     if (Ticks >= 60) ChangeState(State_Move);
                     break;
                 case State_Still:
-                    if (!CollisionAhead(projectile.spriteDirection, 0)) ChangeState(State_Move);
+                    if (!CollisionAhead(projectile.spriteDirection, 0) && Ticks > 0) ChangeState(State_Move);
                     projectile.velocity.X = 0f;
                     if (Ticks == 15)
                         if (CanJump()) {
@@ -97,10 +82,10 @@ namespace DrakSolz.Projectiles.Minion {
                     }
                     if (HoleAhead() && CanJump())
                         ChangeState(State_Jump);
-                    projectile.velocity.X = 2.5f * projectile.spriteDirection;
+                    projectile.velocity.X = WalkSpeed * projectile.spriteDirection;
                     break;
                 case State_Jump:
-                    projectile.velocity.X = 2 * projectile.spriteDirection;
+                    projectile.velocity.X = WalkSpeed * projectile.spriteDirection;
                     if (projectile.velocity.Y != 0) Ticks = 0;
                     if (Ticks >= 5) ChangeState(State_Move);
                     break;
@@ -121,11 +106,13 @@ namespace DrakSolz.Projectiles.Minion {
             Ticks++;
         }
 
-        const int Frame_Jump = 0;
-        const int Frame_Summon_Offset = 1;
-        const int Frame_Walk_Offset = 6;
+        public abstract void SummonDust();
 
-        private int FindFrame() {
+        public const int Frame_Jump = 0;
+        public const int Frame_Summon_Offset = 1;
+        public const int Frame_Walk_Offset = 6;
+
+        public override int FindFrame() {
             projectile.frameCounter++;
 
             if (Math.Abs(projectile.velocity.Y) >= 4f) return Frame_Jump;
@@ -137,7 +124,7 @@ namespace DrakSolz.Projectiles.Minion {
                 case State_Die:
                     return Frame_Walk_Offset - 1 - (projectile.frameCounter / 10) + Frame_Summon_Offset;
                 case State_Move:
-                    return (projectile.frameCounter % 69) / 5 + Frame_Walk_Offset;
+                    return (projectile.frameCounter % WalkFrameMod) / WalkFrameLength + Frame_Walk_Offset;
                 case State_Jump:
                     return Frame_Jump;
                 default:
@@ -145,12 +132,15 @@ namespace DrakSolz.Projectiles.Minion {
             }
         }
 
-        public override void Kill(int timeLeft) {
-            int item = Item.NewItem((int) projectile.Bottom.X, (int) projectile.Center.Y + 8, 0, 0, mod.ItemType<Items.Summon.SkeletonSkull>());
-            Main.item[item].GetGlobalItem<Items.DSGlobalItem>().FromPlayer = projectile.owner;
+        public override bool OnTileCollide(Vector2 oldVelocity) {
+            if (Math.Abs(oldVelocity.X) == 0 || Math.Abs(projectile.velocity.Y) > 0f) return false;
+            if (oldVelocity.X != projectile.velocity.X) {
+                if (CollisionAhead(oldVelocity)) ChangeState(State_Still);
+                else projectile.velocity = new Vector2(projectile.oldVelocity.X, -2.5f);
+            }
+            return false;
         }
-
-        private bool CollisionAhead(float velX, float velY) {
+        public bool CollisionAhead(float velX, float velY) {
             int x = (int)((velX < 0 ? projectile.Left.X + 6 : projectile.Right.X - 6) + velX) / 16;
             int y = (int)(projectile.Bottom.Y - 9 + velY) / 16;
             int blockFeet = Main.tile[x, y].collisionType;
@@ -174,15 +164,15 @@ namespace DrakSolz.Projectiles.Minion {
             return false;
         }
 
-        private bool CollisionAhead(Vector2 vel) {
+        public bool CollisionAhead(Vector2 vel) {
             return CollisionAhead(vel.X, vel.Y);
         }
 
-        private bool CollisionAhead() {
+        public bool CollisionAhead() {
             return CollisionAhead(projectile.velocity);
         }
 
-        private bool CanJump() {
+        public bool CanJump() {
             if (Math.Abs(projectile.velocity.Y) > 0.25f) return false;
             int x = (int)((projectile.spriteDirection == 1 ? projectile.Right.X - 6 : projectile.Left.X + 6)) / 16;
             int y = (int)(projectile.Top.Y + 6) / 16 - 1;
@@ -197,7 +187,7 @@ namespace DrakSolz.Projectiles.Minion {
             return true;
         }
 
-        private bool HoleAhead() {
+        public bool HoleAhead() {
             int x = (int)((projectile.spriteDirection == 1 ? projectile.Right.X : projectile.Left.X)) / 16 + projectile.spriteDirection;
             int y = (int)(projectile.Bottom.Y) / 16;
             int blockAhead = Main.tile[x, y++].collisionType;
