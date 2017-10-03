@@ -20,6 +20,8 @@ namespace DrakSolz.Buffs {
 
             int index = player.FindBuffIndex(mod.BuffType<Buffs.Hollow>());
             if (index != -1) player.buffTime[index]--;
+            int x = player.FindBuffIndex(mod.BuffType<Buffs.ScrollMana>());
+            if (x!= -1) player.buffTime[x]= 0;
         }
     }
 }

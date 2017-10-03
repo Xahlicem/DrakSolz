@@ -14,7 +14,7 @@ namespace DrakSolz.Items.Misc {
         }
 
         public override void SetDefaults() {
-            item.CloneDefaults(ItemID.MagicMirror);
+            item.scale *= 0.8f;
             item.useStyle = 4;
             item.value = Item.buyPrice(0, 20, 0, 0);
             item.rare = 2;
@@ -25,6 +25,7 @@ namespace DrakSolz.Items.Misc {
         public override bool UseItem(Player player) {
             for (int i = 0; i < 60; i++);
             player.AddBuff(BuffID.RapidHealing, 2000);
+            player.AddBuff(mod.BuffType<Buffs.ScrollMana>(), + (360 * (int)(item.mana * player.manaCost)));
             return true;
         }
         public override void AddRecipes() {
