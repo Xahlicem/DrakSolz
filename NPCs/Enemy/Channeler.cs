@@ -106,7 +106,7 @@ namespace DrakSolz.NPCs.Enemy {
 
                     if (AI_Timer >= 60) {
                         Vector2 speed = Main.player[npc.target].Center - npc.Center;
-                        AdjustMagnitude(ref speed);
+                        DrakSolz.AdjustMagnitude(ref speed, 7.5f);
                         AI_Timer = 0;
                         if (Main.netMode != 1) {
                             Projectile.NewProjectile(npc.Center.X + 6, npc.Center.Y - 16, speed.X, speed.Y, mod.ProjectileType<Projectiles.Magic.SoulSpearProj>(), npc.damage, 0f);
@@ -210,12 +210,6 @@ namespace DrakSolz.NPCs.Enemy {
                     mod.ItemType<Items.Armor.Channeler.ChannelerHelmet>(), mod.ItemType<Items.Armor.Channeler.ChannelerRobe>(), mod.ItemType<Items.Armor.Channeler.ChannelerSkirt>()
                 }));
             if (Main.rand.Next(15) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Melee.ChannelT>());
-        }
-
-        private void AdjustMagnitude(ref Vector2 vector) {
-            float magnitude = (float) Math.Sqrt(vector.X * vector.X + vector.Y * vector.Y);
-            vector *= 7.5f / magnitude;
-
         }
     }
 }

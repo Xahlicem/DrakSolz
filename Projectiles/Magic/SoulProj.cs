@@ -28,7 +28,7 @@ namespace DrakSolz.Projectiles.Magic {
             if (projectile.ai[0] == 0) {
                 Vector2 mouse = new Vector2(Main.mouseX + Main.screenPosition.X, Main.mouseY + Main.screenPosition.Y);
                 mouse = mouse - projectile.Center;
-                AdjustMagnitude(ref mouse);
+                DrakSolz.AdjustMagnitude(ref mouse, 18f);
                 projectile.velocity = mouse;
 
             }
@@ -53,12 +53,5 @@ namespace DrakSolz.Projectiles.Magic {
                 Main.dust[dustIndex].scale *= 0.5f;
             }
         }
-
-        private void AdjustMagnitude(ref Vector2 vector) {
-            float magnitude = (float) Math.Sqrt(vector.X * vector.X + vector.Y * vector.Y); {
-                vector *= 18f / magnitude;
-            }
-        }
-
     }
 }

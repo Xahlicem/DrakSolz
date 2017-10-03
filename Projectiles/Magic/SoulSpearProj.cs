@@ -46,7 +46,7 @@ namespace DrakSolz.Projectiles.Magic {
             }
 
             if (projectile.localAI[0] <= 0f) {
-                AdjustMagnitude(ref projectile.velocity);
+                DrakSolz.AdjustMagnitude(ref projectile.velocity, 6f, 9f);
                 projectile.localAI[0] = 1.9f;
             }
 
@@ -85,9 +85,9 @@ namespace DrakSolz.Projectiles.Magic {
                 }
 
             if (target) {
-                AdjustMagnitude(ref move);
+                DrakSolz.AdjustMagnitude(ref move, 6f, 9f);
                 projectile.velocity = (25 * projectile.velocity + move) / 26f;
-                AdjustMagnitude(ref projectile.velocity);
+                DrakSolz.AdjustMagnitude(ref projectile.velocity, 6f, 9f);
             }
             int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, DustID.AncientLight);
             Main.dust[dust].velocity *= 1f + Main.rand.NextFloat();
@@ -103,13 +103,5 @@ namespace DrakSolz.Projectiles.Magic {
                 Main.dust[dust].noGravity = true;
             }
         }
-
-        private void AdjustMagnitude(ref Vector2 vector) {
-            float magnitude = (float) Math.Sqrt(vector.X * vector.X + vector.Y * vector.Y);
-            if (magnitude > 9f) {
-                vector *= 9f / magnitude;
-            }
-        }
-
     }
 }
