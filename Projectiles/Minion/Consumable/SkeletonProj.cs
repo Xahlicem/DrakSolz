@@ -4,10 +4,10 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DrakSolz.Projectiles.Minion {
+namespace DrakSolz.Projectiles.Minion.Consumable {
     public class SkeletonProj : ModProjectile {
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault("Skeleton's Bone");
+            DisplayName.SetDefault("Skeleton's Skull");
         }
 
         public override void SetDefaults() {
@@ -16,7 +16,7 @@ namespace DrakSolz.Projectiles.Minion {
             projectile.height = 26;
             projectile.penetrate = -1;
             projectile.timeLeft = 600;
-            projectile.friendly = false;
+            projectile.friendly = true;
             projectile.hostile = false;
         }
 
@@ -31,7 +31,7 @@ namespace DrakSolz.Projectiles.Minion {
         }
 
         public override void Kill(int timeLeft) {
-            int pro = Projectile.NewProjectile(new Vector2(projectile.Center.X, projectile.Center.Y - 15), new Vector2(projectile.direction * 0.01f, 0), mod.ProjectileType<Projectiles.Minion.SkeletonSummon>(), projectile.damage, projectile.knockBack, projectile.owner);
+            int pro = Projectile.NewProjectile(new Vector2(projectile.Center.X, projectile.Center.Y - 15), new Vector2(projectile.direction * 0.01f, 0), mod.ProjectileType<Projectiles.Minion.Consumable.Skeleton>(), projectile.damage, projectile.knockBack, projectile.owner);
             Main.projectile[pro].spriteDirection = projectile.spriteDirection;
         }
     }

@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DrakSolz.Items.Summon {
+namespace DrakSolz.Items.Summon.Consumable {
     class SkeletonSkull : SoulItem {
         public SkeletonSkull() : base(1000) { }
 
@@ -31,7 +31,7 @@ namespace DrakSolz.Items.Summon {
             item.knockBack = 5f;
             item.value = Item.buyPrice(0, 0, 50, 0);
             item.rare = 1;
-            item.shoot = mod.ProjectileType<Projectiles.Minion.SkeletonProj>();
+            item.shoot = mod.ProjectileType<Projectiles.Minion.Consumable.SkeletonProj>();
             item.autoReuse = true;
         }
 
@@ -50,7 +50,7 @@ namespace DrakSolz.Items.Summon {
         }
 
         public override bool CanUseItem(Player player) {
-            return player.ownedProjectileCounts[mod.ProjectileType<Projectiles.Minion.SkeletonSummon>()] + player.ownedProjectileCounts[item.shoot] < 5;
+            return player.ownedProjectileCounts[mod.ProjectileType<Projectiles.Minion.Consumable.Skeleton>()] + player.ownedProjectileCounts[item.shoot] < 5;
         }
 
         public override bool AltFunctionUse(Player player) {
