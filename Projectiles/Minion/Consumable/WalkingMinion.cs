@@ -15,6 +15,12 @@ namespace DrakSolz.Projectiles.Minion.Consumable {
             WalkFrameMod = walkFrames * WalkFrameLength;
         }
 
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) {
+            projectile.velocity.X *= 0.01f;
+            ChangeState(State_Still);
+            Ticks = -5;
+        }
+
         public override bool? CanCutTiles() { return false; }
 
         public override void SetDefaults() {
@@ -57,11 +63,11 @@ namespace DrakSolz.Projectiles.Minion.Consumable {
                     projectile.friendly = false;
                     projectile.velocity.X = 0f;
                     if (Ticks % 12 == 2)
-                        for (int i = 0; i < 10; i++) Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 46), projectile.width, 10, DustID.Dirt, 2 * (Main.rand.NextFloat() - 0.5f), 1 * (Main.rand.NextFloat() - 1.5f));
+                        SummonDust();
                     if (Ticks >= 60) ChangeState(State_Move);
                     break;
                 case State_Still:
-                    if (!CollisionAhead(projectile.spriteDirection, 0)) ChangeState(State_Move);
+                    if (!CollisionAhead(projectile.spriteDirection, 0) && Ticks > 0) ChangeState(State_Move);
                     projectile.velocity.X = 0f;
                     if (Ticks == 15)
                         if (CanJump()) {
@@ -99,6 +105,8 @@ namespace DrakSolz.Projectiles.Minion.Consumable {
             projectile.frame = FindFrame();
             Ticks++;
         }
+
+        public abstract void SummonDust();
 
         public const int Frame_Jump = 0;
         public const int Frame_Summon_Offset = 1;
