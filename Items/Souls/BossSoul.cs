@@ -4,7 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace DrakSolz.Items.Souls {
-    public class BossSoul : ModItem {
+    public abstract class BossSoul : ModItem {
         public int Place { get; internal set; }
         public string Ring { get; internal set; }
         public int Ticks { get; internal set; }
@@ -14,9 +14,6 @@ namespace DrakSolz.Items.Souls {
             Place = 1 << place;
             Ticks = ticks;
             Ring = ring;
-        }
-        public T CastExamp1<T>(object input) {
-            return (T) input;
         }
 
         public override void SetStaticDefaults() {
@@ -79,10 +76,6 @@ namespace DrakSolz.Items.Souls {
                 else ret += 1000;
             }
             return ret;
-        }
-
-        public override bool Autoload(ref string name) {
-            return (GetType() == typeof (BossSoul)) ? false : base.Autoload(ref name);
         }
     }
 
