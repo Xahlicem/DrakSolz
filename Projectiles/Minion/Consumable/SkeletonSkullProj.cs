@@ -1,17 +1,14 @@
-using System;
-using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace DrakSolz.Projectiles.Minion.Consumable {
-    public class SkeletonSkullProj : ModProjectile {
+    class SkeletonSkullProj : CMinionProj {
+        public SkeletonSkullProj() : base("Skeleton") { }
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Skeleton's Skull");
         }
 
         public override void SetDefaults() {
-            projectile.CloneDefaults(mod.ProjectileType<Projectiles.Minion.Consumable.ZombieHandProj>());
+            base.SetDefaults();
             projectile.width = 24;
             projectile.height = 26;
         }
@@ -20,15 +17,6 @@ namespace DrakSolz.Projectiles.Minion.Consumable {
             width = 20;
             height = 21;
             return true;
-        }
-
-        public override void AI() {
-            if (Math.Abs(projectile.velocity.X) > 0f) projectile.spriteDirection = projectile.direction;
-        }
-
-        public override void Kill(int timeLeft) {
-            int pro = Projectile.NewProjectile(new Vector2(projectile.Center.X, projectile.Center.Y - 15), new Vector2(projectile.direction * 0.01f, 0), mod.ProjectileType<Projectiles.Minion.Consumable.Skeleton>(), projectile.damage, projectile.knockBack, projectile.owner);
-            Main.projectile[pro].spriteDirection = projectile.spriteDirection;
         }
     }
 }
