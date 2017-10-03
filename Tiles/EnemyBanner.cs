@@ -45,6 +45,12 @@ namespace DrakSolz.Tiles {
                 case 5:
                     item = "RavelordBanner";
                     break;
+                case 6:
+                    item = "SpinwheelBanner";
+                    break;
+                case 7:
+                    item = "DesertSorceressBanner";
+                    break;
                 default:
                     return;
             }
@@ -74,6 +80,12 @@ namespace DrakSolz.Tiles {
                         break;
                     case 5:
                         type = "Ravelord";
+                        break;
+                    case 6:
+                        type = "Spinwheel";
+                        break;
+                    case 7:
+                        type = "DesertSorceress";
                         break;
                     default:
                         return;
