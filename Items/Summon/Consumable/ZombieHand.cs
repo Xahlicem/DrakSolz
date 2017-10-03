@@ -4,34 +4,36 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace DrakSolz.Items.Summon.Consumable {
-    class SkeletonSkull : SoulItem {
-        public SkeletonSkull() : base(1000) { }
+    class ZombieHand : SoulItem {
+        public ZombieHand() : base(100) { }
 
         public override void SetStaticDefaults() {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Skeleton Skull");
+            DisplayName.SetDefault("Zombie Hand");
             ItemID.Sets.ItemNoGravity[item.type] = true;
         }
 
         public override void SetDefaults() {
             item.useStyle = 1;
             item.shootSpeed = 12f;
-            item.width = 24;
-            item.height = 26;
+            item.width = 20;
+            item.height = 20;
             item.maxStack = 5;
             item.consumable = true;
             item.UseSound = SoundID.Item1;
             item.useAnimation = 25;
             item.useTime = 26;
-            item.mana = 10;
+            item.mana = 5;
+            item.magic = true;
+            item.crit = 50;
             item.noUseGraphic = true;
             item.noMelee = true;
-            item.summon = true;
-            item.damage = 20;
+            item.summon = false;
+            item.damage = 10;
             item.knockBack = 5f;
-            item.value = Item.buyPrice(0, 0, 50, 0);
-            item.rare = 3;
-            item.shoot = mod.ProjectileType<Projectiles.Minion.Consumable.SkeletonSkullProj>();
+            item.value = Item.buyPrice(0, 0, 5, 0);
+            item.rare = 1;
+            item.shoot = mod.ProjectileType<Projectiles.Minion.Consumable.ZombieHandProj>();
             item.autoReuse = true;
         }
 
@@ -50,7 +52,7 @@ namespace DrakSolz.Items.Summon.Consumable {
         }
 
         public override bool CanUseItem(Player player) {
-            return player.ownedProjectileCounts[mod.ProjectileType<Projectiles.Minion.Consumable.Skeleton>()] + player.ownedProjectileCounts[item.shoot] < 5;
+            return player.ownedProjectileCounts[mod.ProjectileType<Projectiles.Minion.Consumable.Zombie>()] + player.ownedProjectileCounts[item.shoot] < 5;
         }
 
         public override bool AltFunctionUse(Player player) {
@@ -68,7 +70,7 @@ namespace DrakSolz.Items.Summon.Consumable {
         public override void AddRecipes() {
             SoulRecipe recipe = new SoulRecipe(mod, this);
             recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
-            recipe.AddIngredient(ItemID.Bone, 50);
+            recipe.AddIngredient(ItemID.ZombieArm);
             recipe.AddRecipe();
         }
     }

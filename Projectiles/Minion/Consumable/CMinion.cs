@@ -1,6 +1,7 @@
+using System;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
-
 
 namespace DrakSolz.Projectiles.Minion.Consumable {
     public abstract class CMinion : ModProjectile {
@@ -22,7 +23,7 @@ namespace DrakSolz.Projectiles.Minion.Consumable {
             set { projectile.ai[State_Slot] = value; }
         }
 
-        public void ChangeState(int state) {
+        public virtual void ChangeState(int state) {
             State = state;
             projectile.frameCounter = -1;
             Ticks = 0;

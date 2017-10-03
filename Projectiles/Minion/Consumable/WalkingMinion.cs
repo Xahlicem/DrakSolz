@@ -6,9 +6,13 @@ using Terraria.ModLoader;
 
 namespace DrakSolz.Projectiles.Minion.Consumable {
     public abstract class WalkingMinion : CMinion {
+        private int WalkFrameMod;
+        private int WalkFrameLength;
         public float WalkSpeed { get; set; }
-        public WalkingMinion(string itemType, float walkSpeed) : base(itemType) {
+        public WalkingMinion(string itemType, float walkSpeed, int walkFrameLength, int walkFrames) : base(itemType) {
             WalkSpeed = walkSpeed;
+            WalkFrameLength = walkFrameLength;
+            WalkFrameMod = walkFrames * WalkFrameLength;
         }
 
         public const int State_Summon = 0;
@@ -16,6 +20,11 @@ namespace DrakSolz.Projectiles.Minion.Consumable {
         public const int State_Move = 2;
         public const int State_Jump = 3;
         public const int State_Die = 4;
+
+        public override void ChangeState(int state) {
+            if (state == State_Jump) projectile.velocity.Y = -5;
+            base.ChangeState(state);
+        }
 
         public override void AI() {
             projectile.friendly = true;
@@ -85,7 +94,7 @@ namespace DrakSolz.Projectiles.Minion.Consumable {
                 case State_Die:
                     return Frame_Walk_Offset - 1 - (projectile.frameCounter / 10) + Frame_Summon_Offset;
                 case State_Move:
-                    return (projectile.frameCounter % 69) / 5 + Frame_Walk_Offset;
+                    return (projectile.frameCounter % WalkFrameMod) / WalkFrameLength + Frame_Walk_Offset;
                 case State_Jump:
                     return Frame_Jump;
                 default:
