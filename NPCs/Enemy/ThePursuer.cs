@@ -20,11 +20,13 @@ namespace DrakSolz.NPCs.Enemy {
             animationType = NPCID.Wraith;
             npc.damage = 65;
             npc.defense = 32;
-            npc.lifeMax = 1000;
+            npc.lifeMax = 800;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 2500f;
             npc.knockBackResist = 0.05f;
+            banner = npc.type;
+            bannerItem = mod.ItemType<Items.Banners.PursuerBanner>();
             npc.buffImmune[BuffID.Confused] = false;
         }
 
