@@ -50,7 +50,7 @@ namespace DrakSolz.NPCs.Enemy {
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
             if (NPC.downedGolemBoss) {
-                return SpawnCondition.Cavern.Chance * 0.2f;
+                return SpawnCondition.Cavern.Chance * 0.15f;
             } else return 0f;
         }
         public override void FindFrame(int frameHeight) {

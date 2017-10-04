@@ -37,7 +37,7 @@ namespace DrakSolz.NPCs.Enemy {
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
             if (NPC.downedPlantBoss)
-                return SpawnCondition.Cavern.Chance * 0.2f;
+                return SpawnCondition.Cavern.Chance * 0.15f;
             else return 0f;
         }
 
@@ -137,7 +137,7 @@ namespace DrakSolz.NPCs.Enemy {
         }
 
         public override void NPCLoot() {
-            if (Main.rand.Next(15) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Magic.IT>());
+            if (Main.rand.Next(20) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Magic.IT>());
         }
     }
 }
