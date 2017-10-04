@@ -37,6 +37,7 @@ namespace DrakSolz {
         public int BossSouls { get; set; }
 
         public bool SoulSummon { get; set; }
+        public bool HumSummon { get; set; }
         public bool EvilEye { get; set; }
         public int Avarice { get; set; }
 
@@ -57,6 +58,7 @@ namespace DrakSolz {
             BossSouls = 0;
 
             SoulSummon = false;
+            HumSummon = false;
             EvilEye = false;
             Avarice = 0;
 
@@ -65,6 +67,7 @@ namespace DrakSolz {
 
         public override void ResetEffects() {
             SoulSummon = false;
+            HumSummon = false;
             EvilEye = false;
             Avarice = 0;
 
