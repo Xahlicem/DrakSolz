@@ -26,7 +26,7 @@ namespace DrakSolz {
         public int Int { get; set; }
         public float Magic { get { return 0.6f + Int * 0.02f; } }
         public int Fth { get; set; }
-        public float Summon { get { return 0.6f + Fth * 0.01f; } }
+        public float Summon { get { return 0.6f + Fth * 0.02f; } }
         public int Vit { get; set; }
         public int Health { get { return Vit * 10; } }
         public int Att { get; set; }
