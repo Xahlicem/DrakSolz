@@ -13,17 +13,17 @@ namespace DrakSolz.NPCs.Enemy {
 
         public override void SetDefaults() {
             npc.width = 44;
-            npc.scale *= 1.1f;
-            npc.height = 145;
+            npc.scale *= 0.85f;
+            npc.height = 105;
             npc.aiStyle = 3;
             aiType = NPCID.PossessedArmor;
             animationType = NPCID.Wraith;
-            npc.damage = 80;
-            npc.defense = 45;
-            npc.lifeMax = 3000;
+            npc.damage = 65;
+            npc.defense = 32;
+            npc.lifeMax = 1000;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
-            npc.value = 10000f;
+            npc.value = 2500f;
             npc.knockBackResist = 0.05f;
             npc.buffImmune[BuffID.Confused] = false;
         }

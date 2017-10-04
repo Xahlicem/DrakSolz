@@ -25,6 +25,8 @@ namespace DrakSolz.NPCs.Enemy {
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 10000f;
             npc.knockBackResist = 1f;
+            banner = npc.type;
+            bannerItem = mod.ItemType<Items.Banners.DesertSorceressBanner>();
             npc.buffImmune[BuffID.Confused] = false;
         }
 
