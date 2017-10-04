@@ -91,10 +91,6 @@ namespace DrakSolz.Items {
                 t.isModifier = true;
                 tooltips.Add(t);
             }
-            if (item.GetGlobalItem<DSGlobalItem>().Owned) return;
-            SoulItem i = item.modItem as SoulItem;
-            if (i == null) return;
-            tooltips[0].text += " (" + i.SoulValue + " Souls required)";
         }
 
         public override void NetSend(Item item, System.IO.BinaryWriter writer) {
@@ -112,7 +108,7 @@ namespace DrakSolz.Items {
         }
 
         public override bool NeedsSaving(Item item) {
-            if (item.type == 0 || item.consumable || item.ammo > 0 || item.type == ModLoader.GetMod("ModLoader").ItemType("MysteryItem")) {
+            if ((item.type == 0 || item.consumable || item.ammo > 0 || item.type == ModLoader.GetMod("ModLoader").ItemType("MysteryItem")) && !(item.modItem is SoulItem)) {
                 return false;
             }
             return true;
@@ -122,8 +118,7 @@ namespace DrakSolz.Items {
             if (item.type == 0 || item.type == ModLoader.GetMod("ModLoader").ItemType("MysteryItem")) {
                 return null;
             }
-            DSGlobalItem info = item.GetGlobalItem<DSGlobalItem>();
-            return new TagCompound { { "owned", info.Owned }, { "used", info.Used }, { "fromPlayer", fromPlayer }, { "ArcaneRolled", ArcaneRolled }, { "ArcaneMana", ArcaneMana } };
+            return new TagCompound { { "owned", Owned }, { "used", Used }, { "fromPlayer", fromPlayer }, { "ArcaneRolled", ArcaneRolled }, { "ArcaneMana", ArcaneMana } };
         }
 
         public override void Load(Item item, TagCompound tag) {
@@ -147,6 +142,11 @@ namespace DrakSolz.Items {
 
         public SoulItem(int value) {
             SoulValue = value;
+        }
+
+        public override void ModifyTooltips(List<TooltipLine> tooltips) {
+            if (item.GetGlobalItem<DSGlobalItem>().Owned) return;
+            tooltips[0].text += " (" + SoulValue + " Souls required)";
         }
     }
 
