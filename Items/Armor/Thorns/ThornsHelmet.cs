@@ -36,6 +36,7 @@ namespace DrakSolz.Items.Armor.Thorns {
                 "\n+50% thrown velocity");
             player.thrownCost50 = true;
             player.thrownCost33 = true;
+            player.thorns += 0.20f;
             player.AddBuff(BuffID.Thorns, 2);
             player.thrownVelocity *= 1.5f;
         }
