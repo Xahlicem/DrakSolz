@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace DrakSolz.Items.Summon.Consumable {
     abstract class CMinionItem : SoulItem {
-        private string MinionType { get; set; }
+        public string MinionType { get; internal set; }
         public CMinionItem(int souls, string minionType) : base(souls) {
             MinionType = minionType;
         }

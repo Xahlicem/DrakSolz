@@ -32,6 +32,10 @@ namespace DrakSolz.Items.Souls {
             item.useStyle = 4;
         }
 
+        public override bool ItemSpace(Player player) {
+            return true;
+        }
+
         public override bool CanUseItem(Player player) {
             return true;
         }
