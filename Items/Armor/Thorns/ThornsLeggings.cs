@@ -18,7 +18,7 @@ namespace DrakSolz.Items.Armor.Thorns {
             item.height = 18;
             item.value = Item.buyPrice(1, 0, 0, 0);
             item.rare = 7;
-            item.defense = 15;
+            item.defense = 17;
         }
 
         public override void UpdateEquip(Player player) {
@@ -29,7 +29,7 @@ namespace DrakSolz.Items.Armor.Thorns {
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.SpikyBall, 250);
-            recipe.AddIngredient(ItemID.ChlorophyteBar, 20);
+            recipe.AddIngredient(ItemID.ChlorophyteGreaves);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
