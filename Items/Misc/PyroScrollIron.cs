@@ -7,7 +7,7 @@ namespace DrakSolz.Items.Misc {
         public PyroScrollIron() : base(2000) { }
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Iron Flesh");
-            Tooltip.SetDefault("Increases defense at the cost of speed.");
+            Tooltip.SetDefault("Increases defense at the cost of mobility.");
         }
 
         public override void SetDefaults() {
@@ -21,10 +21,8 @@ namespace DrakSolz.Items.Misc {
         }
 
         public override bool UseItem(Player player) {
-            for (int i = 0; i < 1300; i++);
-            player.AddBuff(BuffID.Ironskin, 1300);
-            player.AddBuff(BuffID.ObsidianSkin, 1300);
-            player.AddBuff(BuffID.Slow, 1300);
+            for (int i = 0; i < 1800; i++);
+            player.AddBuff(mod.BuffType<Buffs.IronFleshBuff>(), 1800);
             player.AddBuff(mod.BuffType<Buffs.ScrollMana>(), + (360 * (int)(item.mana * player.manaCost)));
             return true;
         }
