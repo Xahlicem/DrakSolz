@@ -13,7 +13,7 @@ namespace DrakSolz {
         private long lastHurt = 0;
         public long LastHurt { get { return lastHurt; } set { lastHurt = value; } }
 
-        public int Level { get; set; }
+        public int Level { get { return Vit + Str + Dex + Att + Int + Fth; } }
         public int Souls { get; set; }
         public int SoulCost(int level) {
             return (int)(Math.Round((Math.Pow(0.02 * level, 3) + Math.Pow(3.06 * level, 2) + 105.6 * level) * 0.1, 0) * 10);
@@ -28,7 +28,7 @@ namespace DrakSolz {
         public int Fth { get; set; }
         public float Summon { get { return 0.6f + Fth * 0.02f; } }
         public int Vit { get; set; }
-        public int Health { get { return Vit * 10; } }
+        public int Health { get { return Level * 2 + Vit * 10 + Vit > 20 ? (Vit - 20) * 5 : 0; } }
         public int Att { get; set; }
         public int Mana { get { return Att * 5; } }
 
@@ -44,7 +44,6 @@ namespace DrakSolz {
         public float Rotation { get; set; }
 
         public override void Initialize() {
-            Level = 0;
             Souls = 0;
             Str = 0;
             Dex = 0;
@@ -193,7 +192,6 @@ namespace DrakSolz {
 
         public override TagCompound Save() {
             TagCompound save = new TagCompound();
-            save.Add("Level", Level);
             save.Add("Souls", Souls);
             save.Add("Str", Str);
             save.Add("Dex", Dex);
@@ -206,7 +204,6 @@ namespace DrakSolz {
         }
 
         public override void Load(TagCompound tag) {
-            Level = tag.GetInt("Level");
             Souls = tag.GetInt("Souls");
             Str = tag.GetInt("Str");
             Dex = tag.GetInt("Dex");

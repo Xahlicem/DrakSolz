@@ -122,7 +122,6 @@ namespace DrakSolz.UI {
             if (int.Parse(Cost.Text) > Player.Souls) return;
             visible = false;
             Player.Souls -= int.Parse(Cost.Text);
-            Player.Level = int.Parse(Level.Text);
             Player.Vit += Vit.StatAdd;
             Vit.Reset();
             Player.Str += Str.StatAdd;
