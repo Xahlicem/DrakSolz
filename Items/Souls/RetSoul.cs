@@ -9,6 +9,6 @@ namespace DrakSolz.Items.Souls {
             Tooltip.SetDefault("Soul of Retinazer");
         }
 
-        public RetSoul() : base(8, 85, "RingBlueTear") { }
+        public RetSoul() : base(8, 20000, "RingBlueTear") { }
     }
 }

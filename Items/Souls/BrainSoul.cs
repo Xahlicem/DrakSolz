@@ -9,6 +9,6 @@ namespace DrakSolz.Items.Souls {
             Tooltip.SetDefault("Soul of the Brain of Cthulhu");
         }
 
-        public BrainSoul() : base(3, 50, "RingClearBlue") { }
+        public BrainSoul() : base(3, 10000, "RingClearBlue") { }
     }
 }

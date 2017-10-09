@@ -9,6 +9,6 @@ namespace DrakSolz.Items.Souls {
             Tooltip.SetDefault("Soul of the Eater of Worlds");
         }
 
-        public EaterSoul() : base(2, 50, "RingSteelProt") { }
+        public EaterSoul() : base(2, 10000, "RingSteelProt") { }
     }
 }

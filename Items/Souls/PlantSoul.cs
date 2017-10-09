@@ -9,7 +9,7 @@ namespace DrakSolz.Items.Souls {
             Tooltip.SetDefault("Soul of Plantera");
         }
 
-        public PlantSoul() : base(11, 115, "") { }
+        public PlantSoul() : base(11, 80000, "") { }
 
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
