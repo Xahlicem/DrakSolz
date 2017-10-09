@@ -15,11 +15,13 @@ namespace DrakSolz.Buffs {
         }
 
         public override void Update(Player player, ref int buffIndex) {
-            if (player.GetModPlayer<DrakSolzPlayer>().LastHurt <= 600) player.buffTime[buffIndex]++;
-            else if (player.GetModPlayer<DrakSolzPlayer>().LastHurt >= 3600) player.buffTime[buffIndex]--;
+            DrakSolzPlayer p = player.GetModPlayer<DrakSolzPlayer>();
+            if (p.LastHurt <= 600) player.buffTime[buffIndex]++;
+            else if (p.LastHurt >= 3600) player.buffTime[buffIndex]--;
             int life = (int)((player.buffTime[buffIndex] + 1) / 300f);
             player.statLifeMax2 -= life;
-            if (player.statLifeMax2 < 20) player.statLifeMax2 = 20;
+            int min = 20 + (int)(p.Vit * 2.5f) + (p.Vit > 20 ? p.Vit - 20 : 0);
+            if (player.statLifeMax2 < min) player.statLifeMax2 = min;
             if (Main.netMode == NetmodeID.MultiplayerClient) GetPacket(MessageType.FromClieBuff, player, buffIndex);
         }
 
