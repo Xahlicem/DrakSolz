@@ -9,6 +9,6 @@ namespace DrakSolz.Items.Souls {
             Tooltip.SetDefault("Soul of the King Slime");
         }
 
-        public SlimeSoul() : base(0, 40, "RingTinyBeing") { }
+        public SlimeSoul() : base(0, 4000, "RingTinyBeing") { }
     }
 }

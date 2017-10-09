@@ -9,7 +9,7 @@ namespace DrakSolz.Items.Souls {
             Tooltip.SetDefault("Soul of the Twins");
         }
 
-        public TwinSoul() : base(30, 104, "RingAvarice") { }
+        public TwinSoul() : base(30, 50000, "RingAvarice") { }
 
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);

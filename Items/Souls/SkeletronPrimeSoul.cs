@@ -9,6 +9,6 @@ namespace DrakSolz.Items.Souls {
             Tooltip.SetDefault("Soul of Skeletron Prime");
         }
 
-        public SkeletronPrimeSoul() : base(10, 100, "RingLoyds") { }
+        public SkeletronPrimeSoul() : base(10, 40000, "RingLoyds") { }
     }
 }

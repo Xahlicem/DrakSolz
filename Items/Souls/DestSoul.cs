@@ -9,6 +9,6 @@ namespace DrakSolz.Items.Souls {
             Tooltip.SetDefault("Soul of the Destroyer");
         }
 
-        public DestSoul() : base(7, 100, "RingHavels") { }
+        public DestSoul() : base(7, 40000, "RingHavels") { }
     }
 }

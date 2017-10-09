@@ -9,6 +9,6 @@ namespace DrakSolz.Items.Souls {
             Tooltip.SetDefault("Soul of the Eye of Cthulhu");
         }
 
-        public EyeSoul() : base(1, 45, "RingEvilEye") { }
+        public EyeSoul() : base(1, 7000, "RingEvilEye") { }
     }
 }
