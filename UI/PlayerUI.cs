@@ -163,7 +163,9 @@ namespace DrakSolz.UI {
             if (!HasChild(tooltip)) Append(tooltip);
             if (Vit.icon.ContainsPoint(MousePosition)) {
                 tooltipTitle.SetText("Vitality");
-                s = ("+" + (Vit.Stat + Vit.StatAdd) * 10 + " Health");
+                int vit = Vit.Stat + Vit.StatAdd;
+                vit = int.Parse(Level.Text) * 2 + vit * 10 + vit > 20 ? (vit - 20) * 5 : 0;
+                s = ("+" + vit + " Health");
             } else if (Str.icon.ContainsPoint(MousePosition)) {
                 tooltipTitle.SetText("Strength");
                 s = ("+" + (Str.Stat + Str.StatAdd - 20) * 2 + "% Melee Damage");
