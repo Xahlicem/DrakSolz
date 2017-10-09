@@ -8,11 +8,11 @@ namespace DrakSolz.Items.Souls {
         public int Place { get; internal set; }
         public string Ring { get; internal set; }
         public int Ticks { get; internal set; }
-        public int Total { get { return TicksToInt(); } }
+        public int Total { get { return TicksToValue(); } }
 
-        public BossSoul(int place, int ticks, string ring) {
+        public BossSoul(int place, int value, string ring) {
             Place = 1 << place;
-            Ticks = ticks;
+            Ticks = ValueToTicks(value);
             Ring = ring;
         }
 
@@ -67,13 +67,25 @@ namespace DrakSolz.Items.Souls {
             recipe.AddRecipe();
         }
 
-        private int TicksToInt() {
+        private int TicksToValue() {
             int ret = 0;
             for (int i = Ticks; i > 0; i--) {
                 if (i <= 40) ret += 25;
                 else if (i <= 80) ret += 100;
                 else if (i <= 130) ret += 500;
                 else ret += 1000;
+            }
+            return ret;
+        }
+
+        private int ValueToTicks(int value) {
+            int ret = 0;
+            while (value > 0) {
+                ret++;
+                if (ret <= 40) value -= 25;
+                else if (ret <= 80) value -= 100;
+                else if (ret <= 130) value -= 500;
+                else value -= 1000;
             }
             return ret;
         }
