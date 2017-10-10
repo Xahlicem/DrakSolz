@@ -57,6 +57,9 @@ namespace DrakSolz.Tiles {
                 case 9:
                     item = "HumanityBanner";
                     break;
+                case 10:
+                    item = "GiantCrystalLizardBanner";
+                    break;
                 default:
                     return;
             }
@@ -98,6 +101,9 @@ namespace DrakSolz.Tiles {
                         break;
                     case 9:
                         type = "Humanity";
+                        break;
+                    case 10:
+                        type = "GiantCrystalLizard";
                         break;
                     default:
                         return;
