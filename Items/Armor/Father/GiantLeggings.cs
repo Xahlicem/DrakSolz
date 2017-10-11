@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DrakSolz.Items.Armor {
+namespace DrakSolz.Items.Armor.Father {
     [AutoloadEquip(EquipType.Legs)]
     public class GiantLeggings : ModItem {
         public override void SetStaticDefaults() {
