@@ -23,29 +23,32 @@ namespace DrakSolz.Items.Armor.Vanilla {
                     break;
                 case ItemID.AdamantiteHeadgear:
                     item.type = mod.ItemType<Items.Armor.Vanilla.AdamantiteHood>();
-                    item.headSlot = mod.GetItem<Items.Armor.Vanilla.AdamantiteHood>().item.headSlot;
                     break;
                 case ItemID.TitaniumHeadgear:
                     item.type = mod.ItemType<Items.Armor.Vanilla.TitaniumHood>();
-                    item.headSlot = mod.GetItem<Items.Armor.Vanilla.TitaniumHood>().item.headSlot;
                     break;
                 case ItemID.ChlorophyteHeadgear:
                     item.type = mod.ItemType<Items.Armor.Vanilla.ChlorophyteHat>();
-                    item.headSlot = mod.GetItem<Items.Armor.Vanilla.ChlorophyteHat>().item.headSlot;
                     break;
                 case ItemID.HallowedHeadgear:
                     item.type = mod.ItemType<Items.Armor.Vanilla.HallowedHood>();
-                    item.headSlot = mod.GetItem<Items.Armor.Vanilla.HallowedHood>().item.headSlot;
                     break;
                 case ItemID.OrichalcumHeadgear:
                     item.type = mod.ItemType<Items.Armor.Vanilla.OrichalcumHat>();
-                    item.headSlot = mod.GetItem<Items.Armor.Vanilla.OrichalcumHat>().item.headSlot;
                     break;
                 case ItemID.PalladiumHeadgear:
                     item.type = mod.ItemType<Items.Armor.Vanilla.PalladiumHat>();
-                    item.headSlot = mod.GetItem<Items.Armor.Vanilla.PalladiumHat>().item.headSlot;
                     break;
             }
+        }
+
+        public override void OnCraft(Item item, Recipe recipe) {
+            if (item.type == mod.ItemType<Items.Armor.Vanilla.AdamantiteHood>()) item.netDefaults(item.type);
+            if (item.type == mod.ItemType<Items.Armor.Vanilla.TitaniumHood>()) item.netDefaults(item.type);
+            if (item.type == mod.ItemType<Items.Armor.Vanilla.ChlorophyteHat>()) item.netDefaults(item.type);
+            if (item.type == mod.ItemType<Items.Armor.Vanilla.HallowedHood>()) item.netDefaults(item.type);
+            if (item.type == mod.ItemType<Items.Armor.Vanilla.OrichalcumHat>()) item.netDefaults(item.type);
+            if (item.type == mod.ItemType<Items.Armor.Vanilla.PalladiumHat>()) item.netDefaults(item.type);
         }
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips) {
