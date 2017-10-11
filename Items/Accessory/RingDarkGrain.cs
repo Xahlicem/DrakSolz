@@ -6,8 +6,7 @@ namespace DrakSolz.Items.Accessory {
     public class RingDarkGrain : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Darkwood Grain Ring");
-            Tooltip.SetDefault("This is a modded ring." +
-                "\n+Reflexes");
+            Tooltip.SetDefault("+Reflexes");
         }
 
         public override void SetDefaults() {
@@ -27,11 +26,9 @@ namespace DrakSolz.Items.Accessory {
             player.fallStart = 0;
             player.jumpSpeedBoost += 3;
             player.noFallDmg = true;
-            int i = player.FindBuffIndex(mod.BuffType<Buffs.BoneWheelMount>());
-            if (player.velocity.Y != 0 )
-            player.fullRotation += player.velocity.X * 0.025f;
-            else player.fullRotation = 0f;
 
+            if (player.velocity.Y != 0) player.GetModPlayer<DrakSolzPlayer>().Rotate = true;
+            player.GetModPlayer<DrakSolzPlayer>().Rotation += player.velocity.X * 0.025f;
         }
     }
 }

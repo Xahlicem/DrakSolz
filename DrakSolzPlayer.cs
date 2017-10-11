@@ -38,9 +38,11 @@ namespace DrakSolz {
 
         public bool SoulSummon { get; set; }
         public bool HumSummon { get; set; }
+
         public bool EvilEye { get; set; }
         public int Avarice { get; set; }
 
+        public bool Rotate { get; set; }
         public float Rotation { get; set; }
 
         public override void Initialize() {
@@ -69,6 +71,7 @@ namespace DrakSolz {
             HumSummon = false;
             EvilEye = false;
             Avarice = 0;
+            Rotate = false;
 
             player.fullRotationOrigin = player.Center - player.position;
             player.fullRotation = Rotation;
@@ -155,8 +158,7 @@ namespace DrakSolz {
             }
             if (player.Equals(Main.LocalPlayer))(mod as DrakSolz).ui.updateValue(Souls, Level);
 
-            int i = player.FindBuffIndex(mod.BuffType<Buffs.BoneWheelMount>());
-            if (i != -1) Rotation += player.velocity.X * 0.025f;
+            if (Rotate) Rotation += player.velocity.X * 0.025f;
             else Rotation = 0f;
         }
 
