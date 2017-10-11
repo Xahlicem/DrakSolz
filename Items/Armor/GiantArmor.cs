@@ -16,7 +16,7 @@ namespace DrakSolz.Items.Armor {
             item.height = 18;
             item.value = Item.buyPrice(0, 50, 0, 0);
             item.rare = 9;
-            item.defense = 35;
+            item.defense = 40;
         }
 
         public override void UpdateEquip(Player player) {
