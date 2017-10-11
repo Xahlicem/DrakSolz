@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DrakSolz.Items.Armor {
+namespace DrakSolz.Items.Armor.Vanilla {
     class VanillaArmorMod : GlobalItem {
         public override void SetDefaults(Item item) {
             switch (item.type) {
@@ -20,6 +20,30 @@ namespace DrakSolz.Items.Armor {
                     break;
                 case ItemID.GladiatorHelmet:
                     item.defense = 5;
+                    break;
+                case ItemID.AdamantiteHeadgear:
+                    item.type = mod.ItemType<Items.Armor.Vanilla.AdamantiteHood>();
+                    item.headSlot = mod.GetItem<Items.Armor.Vanilla.AdamantiteHood>().item.headSlot;
+                    break;
+                case ItemID.TitaniumHeadgear:
+                    item.type = mod.ItemType<Items.Armor.Vanilla.TitaniumHood>();
+                    item.headSlot = mod.GetItem<Items.Armor.Vanilla.TitaniumHood>().item.headSlot;
+                    break;
+                case ItemID.ChlorophyteHeadgear:
+                    item.type = mod.ItemType<Items.Armor.Vanilla.ChlorophyteHat>();
+                    item.headSlot = mod.GetItem<Items.Armor.Vanilla.ChlorophyteHat>().item.headSlot;
+                    break;
+                case ItemID.HallowedHeadgear:
+                    item.type = mod.ItemType<Items.Armor.Vanilla.HallowedHood>();
+                    item.headSlot = mod.GetItem<Items.Armor.Vanilla.HallowedHood>().item.headSlot;
+                    break;
+                case ItemID.OrichalcumHeadgear:
+                    item.type = mod.ItemType<Items.Armor.Vanilla.OrichalcumHat>();
+                    item.headSlot = mod.GetItem<Items.Armor.Vanilla.OrichalcumHat>().item.headSlot;
+                    break;
+                case ItemID.PalladiumHeadgear:
+                    item.type = mod.ItemType<Items.Armor.Vanilla.PalladiumHat>();
+                    item.headSlot = mod.GetItem<Items.Armor.Vanilla.PalladiumHat>().item.headSlot;
                     break;
             }
         }
@@ -58,7 +82,8 @@ namespace DrakSolz.Items.Armor {
                     break;
                 case ItemID.ObsidianPants:
                     player.fireWalk = true;
-                    goto case ItemID.ObsidianShirt;
+                    goto
+                case ItemID.ObsidianShirt;
                 case ItemID.ObsidianHelm:
                 case ItemID.ObsidianShirt:
                     player.rangedDamage *= 1.05f;
