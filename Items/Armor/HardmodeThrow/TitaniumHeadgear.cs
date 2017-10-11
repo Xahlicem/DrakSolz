@@ -4,39 +4,37 @@ using Terraria.ModLoader;
 
 namespace DrakSolz.Items.Armor.HardmodeThrow {
     [AutoloadEquip(EquipType.Head)]
-    public class CobaltThrow : ModItem {
+    public class TitaniumHeadgear : ModItem {
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault("Cobalt Head Piece");
-            Tooltip.SetDefault("+20% thrown damage" +
-                "\n+12% thrown crit");
+            DisplayName.SetDefault("Titanium Headgear");
+            Tooltip.SetDefault("+27% thrown damage" +
+                "\n+13% thrown crit");
         }
 
         public override void SetDefaults() {
             item.width = 18;
             item.height = 18;
-            item.value = Item.sellPrice(0, 0, 1, 50);
+            item.value = Item.sellPrice(0, 0, 3, 0);
             item.rare = 4;
-            item.defense = 6;
+            item.defense = 14;
         }
 
         public override void UpdateEquip(Player player) {
-            player.thrownDamage *= 1.2f;
-            player.thrownCrit += 12;
+            player.thrownDamage *= 1.27f;
+            player.thrownCrit += 13;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs) {
-            return body.type == ItemID.CobaltBreastplate && legs.type == ItemID.CobaltLeggings;
+            return body.type == ItemID.TitaniumBreastplate && legs.type == ItemID.TitaniumLeggings;
         }
 
         public override void UpdateArmorSet(Player player) {
-            player.setBonus = ("+50% chance to not consume thrown item" +
-                "\n+10% thrown velocity");
-            player.thrownCost50 = true;
-            player.thrownVelocity *=1.1f;
+            player.setBonus = ("Briefly become invulnerable after striking an enemy");
+            player.onHitDodge = true;
         }
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.CobaltBar, 10);
+            recipe.AddIngredient(ItemID.TitaniumBar, 13);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

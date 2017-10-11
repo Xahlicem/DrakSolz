@@ -4,9 +4,9 @@ using Terraria.ModLoader;
 
 namespace DrakSolz.Items.Armor.HardmodeThrow {
     [AutoloadEquip(EquipType.Head)]
-    public class PalladiumThrow : ModItem {
+    public class PalladiumHeadgear : ModItem {
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault("Palladium Head Piece");
+            DisplayName.SetDefault("Palladium Headgear");
             Tooltip.SetDefault("+22% thrown damage" +
                 "\n+12% thrown crit");
         }
