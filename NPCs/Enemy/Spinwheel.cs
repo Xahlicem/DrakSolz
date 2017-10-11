@@ -139,7 +139,7 @@ namespace DrakSolz.NPCs.Enemy {
         }
 */
         public override void NPCLoot() {
-            if (Main.rand.Next(15) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Armor.FatherMask>());
+            if (Main.rand.Next(15) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Armor.Father.FatherMask>());
         }
 
         private void AdjustMagnitude(ref Vector2 vector) {

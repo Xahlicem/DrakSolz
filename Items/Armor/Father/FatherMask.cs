@@ -35,7 +35,7 @@ namespace DrakSolz.Items.Armor.Father {
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs) {
-            return body.type == mod.ItemType<Items.Armor.GiantArmor>() && legs.type == mod.ItemType<Items.Armor.GiantLeggings>();
+            return body.type == mod.ItemType<Items.Armor.Father.GiantArmor>() && legs.type == mod.ItemType<Items.Armor.Father.GiantLeggings>();
         }
 
         public override void UpdateArmorSet(Player player) {
