@@ -8,9 +8,9 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace DrakSolz.Projectiles {
-    public class DragonSlayerSpearProj : ModProjectile {
+    public class TitanitePoleProj : ModProjectile {
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault("Dragon Slayer Spear");
+            DisplayName.SetDefault("Titanite Pole");
             Main.projFrames[projectile.type] = 1;
         }
 
@@ -21,12 +21,11 @@ namespace DrakSolz.Projectiles {
             projectile.friendly = true;
             projectile.penetrate = -1;
             projectile.tileCollide = false;
-            projectile.scale = 1.35f;
+            projectile.scale = 1.4f;
             projectile.hide = true;
             projectile.ownerHitCheck = true;
             projectile.melee = true;
             projectile.alpha = 0;
-            projectile.light = 1f;
         }
 
         // In here the AI uses this example, to make the code more organized and readible

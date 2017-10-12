@@ -1,3 +1,4 @@
+using System;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -7,8 +8,10 @@ namespace DrakSolz.Items.Armor {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Titanite Demon Head");
             Tooltip.SetDefault("Or lack thereof!" +
-                "\n+20% Magic Damage" +
-                "\n+20% Melee Damage");
+                "\n+50% increased melee Damage" +
+                "\n+25% increased melee Crit" +
+                "\n+ higher jumps" +
+                "\n+ faster falls");
         }
 
         public override void SetDefaults() {
@@ -20,10 +23,12 @@ namespace DrakSolz.Items.Armor {
         }
 
         public override void UpdateEquip(Player player) {
+            player.jumpSpeedBoost += 5;
+            player.maxFallSpeed *= 4;
             player.accDivingHelm = true;
             player.blind = true;
-            player.dangerSense = true;
             player.meleeDamage *= 1.5f;
+            player.meleeCrit += 25;
             player.headcovered = true;
         }
 

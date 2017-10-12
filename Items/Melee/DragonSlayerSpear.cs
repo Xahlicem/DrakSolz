@@ -9,20 +9,20 @@ namespace DrakSolz.Items.Melee {
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Dragonslayer Spear");
-            Tooltip.SetDefault("The spear of the knight known as the Dragonslayer was imbued the power, and shattered the stone scales of dragons.");
+            Tooltip.SetDefault("The spear of the knight known as the Dragonslayer was imbued with power, and shattered the stone scales of dragons.");
         }
 
         public override void SetDefaults() {
             item.damage = 60;
             item.useStyle = 5;
-            item.useAnimation = 22;
-            item.useTime = 27;
+            item.useAnimation = 26;
+            item.useTime = 30;
             item.shootSpeed = 4.4f;
             item.knockBack = 4.5f;
             item.width = 28;
             item.height = 28;
             item.scale = 1f;
-            item.rare = 6;
+            item.rare = 8;
             item.UseSound = SoundID.Item1;
             item.shoot = mod.ProjectileType<Projectiles.DragonSlayerSpearProj>();
             item.value = 300000;
