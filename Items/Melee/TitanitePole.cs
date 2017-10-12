@@ -18,7 +18,7 @@ namespace DrakSolz.Items.Melee {
             item.useAnimation = 34;
             item.useTime = 40;
             item.shootSpeed = 4.4f;
-            item.knockBack = 6.5f;
+            item.knockBack = 8.5f;
             item.width = 28;
             item.height = 28;
             item.scale = 1f;
@@ -39,7 +39,7 @@ namespace DrakSolz.Items.Melee {
             if (player.velocity.Y != 0 && player.altFunctionUse == 2) {
                 player.velocity.Y = ((int) 1 * player.maxFallSpeed);
             }
-            damage = (int)(damage + (2.5 * (player.velocity.Y) * (player.meleeDamage)));
+            damage = (int)(damage + (3 * (player.velocity.Y) * (player.meleeDamage)));
             //int pro = Projectile.NewProjectile(player.Center.X, player.Center.X, (int)speedX, (int)speedY, type, (int)(damage + (5 * (player.velocity.Y))), 6.5f, player.whoAmI);
             return true;
         }
