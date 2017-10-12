@@ -26,7 +26,6 @@ namespace DrakSolz.Projectiles {
             projectile.ownerHitCheck = true;
             projectile.melee = true;
             projectile.alpha = 0;
-            projectile.light = 1f;
         }
 
         // In here the AI uses this example, to make the code more organized and readible
