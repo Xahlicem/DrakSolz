@@ -21,7 +21,7 @@ namespace DrakSolz.Projectiles {
             projectile.friendly = true;
             projectile.penetrate = -1;
             projectile.tileCollide = false;
-            projectile.scale = 1.5f;
+            projectile.scale = 1.35f;
             projectile.hide = true;
             projectile.ownerHitCheck = true;
             projectile.melee = true;
