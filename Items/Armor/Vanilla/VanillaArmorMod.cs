@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DrakSolz.Items.Armor {
+namespace DrakSolz.Items.Armor.Vanilla {
     class VanillaArmorMod : GlobalItem {
         public override void SetDefaults(Item item) {
             switch (item.type) {
@@ -21,7 +21,34 @@ namespace DrakSolz.Items.Armor {
                 case ItemID.GladiatorHelmet:
                     item.defense = 5;
                     break;
+                case ItemID.AdamantiteHeadgear:
+                    item.type = mod.ItemType<Items.Armor.Vanilla.AdamantiteHood>();
+                    break;
+                case ItemID.TitaniumHeadgear:
+                    item.type = mod.ItemType<Items.Armor.Vanilla.TitaniumHood>();
+                    break;
+                case ItemID.ChlorophyteHeadgear:
+                    item.type = mod.ItemType<Items.Armor.Vanilla.ChlorophyteHat>();
+                    break;
+                case ItemID.HallowedHeadgear:
+                    item.type = mod.ItemType<Items.Armor.Vanilla.HallowedHood>();
+                    break;
+                case ItemID.OrichalcumHeadgear:
+                    item.type = mod.ItemType<Items.Armor.Vanilla.OrichalcumHat>();
+                    break;
+                case ItemID.PalladiumHeadgear:
+                    item.type = mod.ItemType<Items.Armor.Vanilla.PalladiumHat>();
+                    break;
             }
+        }
+
+        public override void OnCraft(Item item, Recipe recipe) {
+            if (item.type == mod.ItemType<Items.Armor.Vanilla.AdamantiteHood>()) item.netDefaults(item.type);
+            if (item.type == mod.ItemType<Items.Armor.Vanilla.TitaniumHood>()) item.netDefaults(item.type);
+            if (item.type == mod.ItemType<Items.Armor.Vanilla.ChlorophyteHat>()) item.netDefaults(item.type);
+            if (item.type == mod.ItemType<Items.Armor.Vanilla.HallowedHood>()) item.netDefaults(item.type);
+            if (item.type == mod.ItemType<Items.Armor.Vanilla.OrichalcumHat>()) item.netDefaults(item.type);
+            if (item.type == mod.ItemType<Items.Armor.Vanilla.PalladiumHat>()) item.netDefaults(item.type);
         }
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips) {
@@ -58,7 +85,8 @@ namespace DrakSolz.Items.Armor {
                     break;
                 case ItemID.ObsidianPants:
                     player.fireWalk = true;
-                    goto case ItemID.ObsidianShirt;
+                    goto
+                case ItemID.ObsidianShirt;
                 case ItemID.ObsidianHelm:
                 case ItemID.ObsidianShirt:
                     player.rangedDamage *= 1.05f;

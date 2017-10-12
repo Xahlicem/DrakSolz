@@ -46,7 +46,7 @@ namespace DrakSolz.Items.Armor.Thorns {
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.SpikyBall, 250);
-            recipe.AddIngredient(mod.ItemType<Items.Armor.HardmodeThrow.ChlorThrow>());
+            recipe.AddIngredient(mod.ItemType<Items.Armor.HardmodeThrow.ChlorophyteHeadgear>());
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

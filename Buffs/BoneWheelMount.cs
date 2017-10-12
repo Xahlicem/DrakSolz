@@ -12,6 +12,7 @@ namespace DrakSolz.Buffs {
         }
 
         public override void Update(Player player, ref int buffIndex) {
+            player.GetModPlayer<DrakSolzPlayer>().Rotate = true;
             player.mount.SetMount(mod.MountType<Mounts.BoneWheel>(), player);
             player.buffTime[buffIndex] = 10;
             player.slippy = true;
