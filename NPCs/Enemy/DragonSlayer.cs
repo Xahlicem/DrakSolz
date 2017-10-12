@@ -21,18 +21,18 @@ namespace DrakSolz.NPCs.Enemy {
             animationType = NPCID.SolarSpearman;
             npc.damage = 70;
             npc.defense = 30;
-            npc.lifeMax = 1500;
+            npc.lifeMax = 2500;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
-            npc.value = 5000f;
+            npc.value = 7500f;
             npc.knockBackResist = 0.01f;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.GiantCrystalLizardBanner>();
+            bannerItem = mod.ItemType<Items.Banners.DragonSlayerBanner>();
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
-            if (NPC.downedMechBossAny)
-                return SpawnCondition.OverworldHallow.Chance * 0.10f;
+            if (NPC.downedMechBossAny && Main.raining)
+                return SpawnCondition.OverworldHallow.Chance * 0.08f;
             else return 0f;
         }
         public override void NPCLoot() {
@@ -48,11 +48,11 @@ namespace DrakSolz.NPCs.Enemy {
             Main.gore[g].scale = npc.scale;
             g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/DragonSlayer_Gore_6"));
             Main.gore[g].scale = npc.scale;
-            if (Main.rand.Next(10) == 0)
+            if (Main.rand.Next(5) == 0)
                 Item.NewItem(npc.Center, npc.width, npc.height, Utils.SelectRandom(Main.rand, new int[] {
                     mod.ItemType<Items.Armor.DragonSlayer.DragonSlayerHelmet>(), mod.ItemType<Items.Armor.DragonSlayer.DragonSlayerChest>(), mod.ItemType<Items.Armor.DragonSlayer.DragonSlayerLeggings>()
                 }));
-            if (Main.rand.Next(30) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Melee.DragonSlayerSpear>());
+            if (Main.rand.Next(10) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Melee.DragonSlayerSpear>());
         }
     }
 }
