@@ -21,6 +21,7 @@ namespace DrakSolz.Items.Armor.Vanilla {
                 case ItemID.GladiatorHelmet:
                     item.defense = 5;
                     break;
+
                 case ItemID.AdamantiteHeadgear:
                     item.type = mod.ItemType<Items.Armor.Vanilla.AdamantiteHood>();
                     break;
@@ -69,6 +70,38 @@ namespace DrakSolz.Items.Armor.Vanilla {
                 case ItemID.GladiatorHelmet:
                     tooltips.Insert(3, new TooltipLine(mod, "Tooltip0", "5% increased melee damage"));
                     break;
+
+                case ItemID.NinjaHood:
+                    foreach (TooltipLine line in tooltips)
+                        if (line.Name.Equals("Tooltip0")) line.text = "5% increased throwing damage";
+                    tooltips.Add(new TooltipLine(mod, "Tooltip1", "5% increased throwing velocity"));
+                    break;
+                case ItemID.NinjaPants:
+                    foreach (TooltipLine line in tooltips)
+                        if (line.Name.Equals("Tooltip0")) line.text = "5% increased throwing damage";
+                    tooltips.Add(new TooltipLine(mod, "Tooltip1", "5% increased throwing velocity"));
+                    break;
+                case ItemID.NinjaShirt:
+                    foreach (TooltipLine line in tooltips)
+                        if (line.Name.Equals("Tooltip0")) line.text = "5% increased throwing damage";
+                    tooltips.Add(new TooltipLine(mod, "Tooltip1", "5% increased throwing velocity"));
+                    break;
+
+                case ItemID.FossilHelm:
+                    foreach (TooltipLine line in tooltips)
+                        if (line.Name.Equals("Tooltip0")) line.text = "8% increased throwing damage";
+                    tooltips.Add(new TooltipLine(mod, "Tooltip1", "6% increased throwing velocity"));
+                    break;
+                case ItemID.FossilPants:
+                    foreach (TooltipLine line in tooltips)
+                        if (line.Name.Equals("Tooltip0")) line.text = "6% increased throwing damage";
+                    tooltips.Add(new TooltipLine(mod, "Tooltip1", "6% increased throwing velocity"));
+                    break;
+                case ItemID.FossilShirt:
+                    foreach (TooltipLine line in tooltips)
+                        if (line.Name.Equals("Tooltip0")) line.text = "6% increased throwing damage";
+                    tooltips.Add(new TooltipLine(mod, "Tooltip1", "8% increased throwing velocity"));
+                    break;
             }
         }
 
@@ -95,6 +128,34 @@ namespace DrakSolz.Items.Armor.Vanilla {
                 case ItemID.GladiatorLeggings:
                 case ItemID.GladiatorHelmet:
                     player.meleeDamage *= 1.05f;
+                    break;
+
+                case ItemID.NinjaHood:
+                    player.thrownVelocity *= 0.913f;
+                    player.thrownDamage *= 1.05f;
+                    break;
+                case ItemID.NinjaPants:
+                    player.thrownVelocity *= 1.05f;
+                    player.thrownDamage *= 1.05f;
+                    player.thrownCrit -= 10;
+                    break;
+                case ItemID.NinjaShirt:
+                    player.thrownVelocity *= 1.05f;
+                    player.thrownDamage *= 0.913f;
+                    break;
+
+                case ItemID.FossilHelm:
+                    player.thrownVelocity *= 0.883f;
+                    player.thrownDamage *= 1.08f;
+                    break;
+                case ItemID.FossilPants:
+                    player.thrownVelocity *= 1.06f;
+                    player.thrownDamage *= 1.06f;
+                    player.thrownCrit -= 15;
+                    break;
+                case ItemID.FossilShirt:
+                    player.thrownVelocity *= 1.08f;
+                    player.thrownDamage *= 0.883f;
                     break;
             }
         }

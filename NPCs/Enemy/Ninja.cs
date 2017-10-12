@@ -35,6 +35,7 @@ namespace DrakSolz.NPCs.Enemy {
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
+            if (!NPC.downedSlimeKing) return 0f;
             return SpawnCondition.OverworldNightMonster.Chance * 0.2f;
         }
 
