@@ -16,7 +16,7 @@ namespace DrakSolz.Items.Armor.DragonSlayer {
             item.width = 18;
             item.height = 18;
             item.value = Item.buyPrice(1, 0, 0, 0);
-            item.rare = 0;
+            item.rare = 8;
             item.defense = 14;
         }
 
@@ -44,11 +44,11 @@ namespace DrakSolz.Items.Armor.DragonSlayer {
         public override bool DrawHead() {
             return false;
         }
-        public override void AddRecipes() {
+        /*public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.LunarBar, 20);
             recipe.SetResult(this);
             recipe.AddRecipe();
-        }
+        }*/
     }
 }
