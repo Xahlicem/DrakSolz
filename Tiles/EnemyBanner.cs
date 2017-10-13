@@ -66,6 +66,9 @@ namespace DrakSolz.Tiles {
                 case 12:
                     item = "ManEaterShellBanner";
                     break;
+                case 13:
+                    item = "LittleMushroomBanner";
+                    break;
                 default:
                     return;
             }
@@ -116,6 +119,9 @@ namespace DrakSolz.Tiles {
                         break;
                     case 12:
                         type = "ManEaterShell";
+                        break;
+                    case 13:
+                        type = "LittleMushroomBanner";
                         break;
                     default:
                         return;
