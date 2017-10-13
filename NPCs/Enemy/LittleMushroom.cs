@@ -20,8 +20,8 @@ namespace DrakSolz.NPCs.Enemy {
             aiType = NPCID.Mummy;
             animationType = NPCID.Zombie;
             npc.damage = 8;
-            npc.defense = 5;
-            npc.lifeMax = 35;
+            npc.defense = 4;
+            npc.lifeMax = 30;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 20f;
