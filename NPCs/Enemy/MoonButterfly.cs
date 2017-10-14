@@ -19,19 +19,21 @@ namespace DrakSolz.NPCs.Enemy {
             aiType = NPCID.Moth;
             animationType = NPCID.Moth;
             npc.height = 70;
-            npc.damage = 80;
+            npc.damage = 120;
             npc.defense = 40;
-            npc.lifeMax = 3500;
+            npc.lifeMax = 5000;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
-            npc.value = 8000f;
+            npc.value = 12500f;
             npc.knockBackResist = 0f;
             banner = npc.type;
             bannerItem = mod.ItemType<Items.Banners.MoonButterflyBanner>();
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
-                return SpawnCondition.OverworldDay.Chance * 0.2f;
+                if (NPC.downedPlantBoss && Main.moonPhase == 1)
+                return SpawnCondition.OverworldNight.Chance * 0.10f;
+            else return 0f;
         }
         public override void NPCLoot() {
             /*int g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/LittleMushroom_Gore_1"));
