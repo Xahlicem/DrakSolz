@@ -23,6 +23,7 @@ namespace DrakSolz.NPCs.Enemy {
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 100000f;
             npc.knockBackResist = 0.1f;
+            npc.rarity = 1;
             npc.buffImmune[BuffID.Confused] = true;
             banner = npc.type;
             bannerItem = mod.ItemType<Items.Banners.CrystalLizardBanner>();
@@ -113,6 +114,9 @@ namespace DrakSolz.NPCs.Enemy {
 
         public override void NPCLoot() {
             Item.NewItem(npc.Center, npc.width, npc.height, mod.ItemType<Items.Misc.Twink>());
+            if (NPC.downedAncientCultist) {
+                if (Main.rand.Next(2) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Misc.Titanite>());
+            }
         }
     }
 }

@@ -26,6 +26,7 @@ namespace DrakSolz.NPCs.Enemy {
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 250f;
             npc.knockBackResist = 0f;
+            npc.rarity = 1;
             banner = npc.type;
             bannerItem = mod.ItemType<Items.Banners.GiantCrystalLizardBanner>();
         }
@@ -51,6 +52,9 @@ namespace DrakSolz.NPCs.Enemy {
             g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/GiantCrystalLizard_Gore_5"));
             Main.gore[g].scale = npc.scale;
             Item.NewItem(npc.Center, npc.width, npc.height, mod.ItemType<Items.Misc.Twink>(), Main.rand.Next(2, 4));
+            if (NPC.downedAncientCultist) {
+                Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Misc.Titanite>(), Main.rand.Next(1, 3));
+            }
         }
     }
 }
