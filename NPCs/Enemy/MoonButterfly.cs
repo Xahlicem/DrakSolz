@@ -36,11 +36,19 @@ namespace DrakSolz.NPCs.Enemy {
             else return 0f;
         }
         public override void NPCLoot() {
-            /*int g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/LittleMushroom_Gore_1"));
+            int g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/MoonButterfly_Gore_6"));
             Main.gore[g].scale = npc.scale;
-            g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/LittleMushroom_Gore_2"));
+            g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/MoonButterfly_Gore_5"));
             Main.gore[g].scale = npc.scale;
-            Item.NewItem(npc.Center, npc.width, npc.height, ItemID.Mushroom, Main.rand.Next(1, 2));*/
+            g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/MoonButterfly_Gore_4"));
+            Main.gore[g].scale = npc.scale;
+            g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/MoonButterfly_Gore_3"));
+            Main.gore[g].scale = npc.scale;
+            g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/MoonButterfly_Gore_2"));
+            Main.gore[g].scale = npc.scale;
+            g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/MoonButterfly_Gore_1"));
+            Main.gore[g].scale = npc.scale;
+            //Item.NewItem(npc.Center, npc.width, npc.height, ItemID.Mushroom, Main.rand.Next(1, 2));
         }
     }
 }
