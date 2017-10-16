@@ -48,7 +48,7 @@ namespace DrakSolz.NPCs.Enemy {
             Main.gore[g].scale = npc.scale;
             g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/MoonButterfly_Gore_1"));
             Main.gore[g].scale = npc.scale;
-            //Item.NewItem(npc.Center, npc.width, npc.height, ItemID.Mushroom, Main.rand.Next(1, 2));
+            Item.NewItem(npc.Center, npc.width, npc.height, mod.ItemType<Items.Misc.Twink>());
         }
     }
 }
