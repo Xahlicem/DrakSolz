@@ -18,5 +18,13 @@ namespace DrakSolz.Items.Armor.Father {
             item.rare = 9;
             item.defense = 40;
         }
+        public override void AddRecipes() {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(mod.ItemType<Items.Misc.Titanite>(), 30);
+            recipe.AddIngredient(mod.ItemType<Items.Misc.Twink>(), 30);
+            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
     }
 }
