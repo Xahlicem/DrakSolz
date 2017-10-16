@@ -49,8 +49,8 @@ namespace DrakSolz.NPCs.Enemy {
             /*if (Main.rand.Next(4) == 0)
                 Item.NewItem(npc.Center, npc.width, npc.height, Utils.SelectRandom(Main.rand, new int[] {
                     mod.ItemType<Items.Armor.DragonSlayer.DragonSlayerHelmet>(), mod.ItemType<Items.Armor.DragonSlayer.DragonSlayerChest>(), mod.ItemType<Items.Armor.DragonSlayer.DragonSlayerLeggings>()
-                }));
-            if (Main.rand.Next(8) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Melee.DragonSlayerSpear>()); */
+                }));*/
+            if (Main.rand.Next(5) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Misc.Twink>());
         }
     }
 }
