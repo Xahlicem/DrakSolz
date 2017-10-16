@@ -19,19 +19,20 @@ namespace DrakSolz.NPCs.Enemy {
             aiType = NPCID.Moth;
             animationType = NPCID.Moth;
             npc.height = 70;
-            npc.damage = 120;
+            npc.damage = 130;
             npc.defense = 40;
-            npc.lifeMax = 5000;
+            npc.lifeMax = 8000;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
-            npc.value = 12500f;
+            npc.value = 22500f;
             npc.knockBackResist = 0f;
+            npc.rarity = 1;
             banner = npc.type;
             bannerItem = mod.ItemType<Items.Banners.MoonButterflyBanner>();
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
-            if (NPC.downedPlantBoss && Main.moonPhase == 0)
+            if (NPC.downedGolemBoss && Main.moonPhase == 0)
                 return SpawnCondition.OverworldNightMonster.Chance * 0.1f;
             else return 0f;
         }
@@ -62,6 +63,12 @@ namespace DrakSolz.NPCs.Enemy {
                 Main.projectile[proj].friendly = false;
                 Main.projectile[proj].hostile = true;
             }
+            else if (distance >= 800 && distance <= 802) {
+                int proj = Projectile.NewProjectile(npc.Center, (GetVelocity(Main.player[npc.target])* 3), mod.ProjectileType<Projectiles.Magic.MoonButterflyProj>(), (int)(npc.damage / 1.5f), 0f);
+                Main.projectile[proj].scale *= 0.75f;
+                Main.projectile[proj].friendly = false;
+                Main.projectile[proj].hostile = true;
+            }
         }
         public override void NPCLoot() {
             int g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/MoonButterfly_Gore_6"));
@@ -77,6 +84,7 @@ namespace DrakSolz.NPCs.Enemy {
             g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/MoonButterfly_Gore_1"));
             Main.gore[g].scale = npc.scale;
             Item.NewItem(npc.Center, npc.width, npc.height, mod.ItemType<Items.Misc.Twink>());
+            if (Main.rand.Next(5) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Misc.MoonButterflyHorn>());
         }
         private Vector2 GetVelocity(Player player) {
             Vector2 vector = player.Center - npc.Center;
