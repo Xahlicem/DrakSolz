@@ -54,6 +54,7 @@ namespace DrakSolz.NPCs.Enemy {
                         int proj = Projectile.NewProjectile(npc.Center, GetVelocity(Main.player[npc.target]), ProjectileID.Shuriken, npc.damage / 4, 0f);
                         Main.projectile[proj].friendly = false;
                         Main.projectile[proj].hostile = true;
+                        Main.projectile[proj].netUpdate = true;
                     }
                     npc.netUpdate = true;
                     npc.ai[2] = 0;
@@ -74,9 +75,7 @@ namespace DrakSolz.NPCs.Enemy {
 
         private Vector2 GetVelocity(Player player) {
             Vector2 vector = player.Center - npc.Center;
-            float magnitude = (float) Math.Sqrt(vector.X * vector.X + vector.Y * vector.Y);
-            vector *= 12.5f / magnitude;
-
+            DrakSolz.AdjustMagnitude(ref vector,12.5f);
             return vector;
         }
     }
