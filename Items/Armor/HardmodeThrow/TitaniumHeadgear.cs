@@ -7,8 +7,8 @@ namespace DrakSolz.Items.Armor.HardmodeThrow {
     public class TitaniumHeadgear : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Titanium Headgear");
-            Tooltip.SetDefault("+27% thrown damage" +
-                "\n+13% thrown crit");
+            Tooltip.SetDefault("16% increased ranged damage" +
+                "\n7% increased ranged critical strike chance");
         }
 
         public override void SetDefaults() {
@@ -20,8 +20,8 @@ namespace DrakSolz.Items.Armor.HardmodeThrow {
         }
 
         public override void UpdateEquip(Player player) {
-            player.thrownDamage *= 1.27f;
-            player.thrownCrit += 13;
+            player.thrownDamage *= 1.16f;
+            player.thrownCrit += 7;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs) {
@@ -29,7 +29,7 @@ namespace DrakSolz.Items.Armor.HardmodeThrow {
         }
 
         public override void UpdateArmorSet(Player player) {
-            player.setBonus = ("Briefly become invulnerable after striking an enemy");
+            player.setBonus = ("Become immune after striking an enemy");
             player.onHitDodge = true;
         }
         public override void AddRecipes() {

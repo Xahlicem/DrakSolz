@@ -7,8 +7,8 @@ namespace DrakSolz.Items.Armor.HardmodeThrow {
     public class ChlorophyteHeadgear : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Chlorophyte Headgear");
-            Tooltip.SetDefault("+30% thrown damage" +
-                "\n+15% thrown crit");
+            Tooltip.SetDefault("16% increased ranged damage" +
+                "\n6% increased ranged critical strike chance");
         }
 
         public override void SetDefaults() {
@@ -20,8 +20,8 @@ namespace DrakSolz.Items.Armor.HardmodeThrow {
         }
 
         public override void UpdateEquip(Player player) {
-            player.thrownDamage *= 1.3f;
-            player.thrownCrit += 15;
+            player.thrownDamage *= 1.16f;
+            player.thrownCrit += 6;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs) {
@@ -29,12 +29,14 @@ namespace DrakSolz.Items.Armor.HardmodeThrow {
         }
 
         public override void UpdateArmorSet(Player player) {
-            player.setBonus = ("+50% chance to not consume thrown item" +
-                "\n+50% thrown velocity");
-            player.thrownCost50 = true;
-            player.thrownVelocity *=1.5f;
-            player.AddBuff(BuffID.LeafCrystal, 2);
+            player.setBonus = ("Summons a powerful leaf crystal to shoot at nearby enemies");
+            player.AddBuff(BuffID.LeafCrystal, 5);
         }
+
+        public override void ArmorSetShadows(Player player) {
+            player.armorEffectDrawOutlines = true;
+        }
+        
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.ChlorophyteBar, 10);

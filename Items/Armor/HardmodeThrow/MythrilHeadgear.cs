@@ -7,8 +7,8 @@ namespace DrakSolz.Items.Armor.HardmodeThrow {
     public class MythrilHeadgear : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Mythril Headgear");
-            Tooltip.SetDefault("+20% thrown damage" +
-                "\n+12% thrown crit");
+            Tooltip.SetDefault("12% increased ranged damage" +
+                "\n7% increased ranged critical strike chance");
         }
 
         public override void SetDefaults() {
@@ -20,8 +20,8 @@ namespace DrakSolz.Items.Armor.HardmodeThrow {
         }
 
         public override void UpdateEquip(Player player) {
-            player.thrownDamage *= 1.2f;
-            player.thrownCrit += 12;
+            player.thrownDamage *= 1.12f;
+            player.thrownCrit += 7;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs) {
@@ -29,9 +29,9 @@ namespace DrakSolz.Items.Armor.HardmodeThrow {
         }
 
         public override void UpdateArmorSet(Player player) {
-            player.setBonus = ("+50% chance to not consume thrown item" +
-                "\n+20% thrown velocity");
-            player.thrownCost50 = true;
+            player.setBonus = ("33% chance to not consume thrown item" +
+                "\n20% increased throwing velocity");
+            player.thrownCost33 = true;
             player.thrownVelocity *=1.2f;
         }
         public override void AddRecipes() {

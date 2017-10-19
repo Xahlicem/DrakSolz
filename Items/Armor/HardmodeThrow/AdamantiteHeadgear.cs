@@ -7,8 +7,8 @@ namespace DrakSolz.Items.Armor.HardmodeThrow {
     public class AdamantiteHeadgear : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Adamantite Headgear");
-            Tooltip.SetDefault("+25% thrown damage" +
-                "\n+12% thrown crit");
+            Tooltip.SetDefault("14% increased ranged damage" +
+                "\n8% increased ranged critical strike chance");
         }
 
         public override void SetDefaults() {
@@ -20,8 +20,8 @@ namespace DrakSolz.Items.Armor.HardmodeThrow {
         }
 
         public override void UpdateEquip(Player player) {
-            player.thrownDamage *= 1.25f;
-            player.thrownCrit += 12;
+            player.thrownDamage *= 1.14f;
+            player.thrownCrit += 8;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs) {
@@ -29,11 +29,16 @@ namespace DrakSolz.Items.Armor.HardmodeThrow {
         }
 
         public override void UpdateArmorSet(Player player) {
-            player.setBonus = ("+50% chance to not consume thrown item" +
-                "\n+30% thrown velocity");
-            player.thrownCost50 = true;
-            player.thrownVelocity *=1.3f;
+            player.setBonus = ("33% chance to not consume thrown item" +
+                "\n20% increased throwing velocity");
+            player.thrownCost33 = true;
+            player.thrownVelocity *=1.2f;
         }
+
+        public override void ArmorSetShadows(Player player) {
+            player.armorEffectDrawOutlines = true;
+        }
+
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.AdamantiteBar, 12);
