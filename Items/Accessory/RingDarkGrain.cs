@@ -12,7 +12,7 @@ namespace DrakSolz.Items.Accessory {
         public override void SetDefaults() {
             item.width = 22;
             item.height = 20;
-            item.value = Item.buyPrice(0, 10, 0, 0);
+            item.value = Item.buyPrice(0, 50, 0, 0);
             item.rare = 2;
             item.accessory = true;
         }
@@ -29,6 +29,13 @@ namespace DrakSolz.Items.Accessory {
 
             if (player.velocity.Y != 0) player.GetModPlayer<DrakSolzPlayer>().Rotate = true;
             player.GetModPlayer<DrakSolzPlayer>().Rotation += player.velocity.X * 0.025f;
+        }
+        public override void AddRecipes() {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.SpookyWood, 50);
+            recipe.AddIngredient(mod.ItemType<Items.Accessory.RingCat>());
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
     }
 }

@@ -46,5 +46,13 @@ namespace DrakSolz.Items.Armor.Moonlight {
             player.AddBuff(BuffID.Shine, 2);
             player.buffImmune[BuffID.Cursed] = true;
         }
+        public override void AddRecipes() {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(mod.ItemType<Items.Misc.MoonButterflyHorn>(), 1);
+            recipe.AddIngredient(mod.ItemType<Items.Misc.Twink>(), 15);
+            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
     }
 }

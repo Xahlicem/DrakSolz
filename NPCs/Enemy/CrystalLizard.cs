@@ -23,6 +23,7 @@ namespace DrakSolz.NPCs.Enemy {
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 100000f;
             npc.knockBackResist = 0.1f;
+            npc.rarity = 1;
             npc.buffImmune[BuffID.Confused] = true;
             banner = npc.type;
             bannerItem = mod.ItemType<Items.Banners.CrystalLizardBanner>();
@@ -86,11 +87,11 @@ namespace DrakSolz.NPCs.Enemy {
 
         const int Frame_Walk_Time = 4;
         static readonly int[] Frame_Walk = { 1, 2, 3, 4, 5, 6, 7, 0 };
-		static readonly int Frame_Walk_Max = Frame_Walk_Time * Frame_Walk.Length;
+        static readonly int Frame_Walk_Max = Frame_Walk_Time * Frame_Walk.Length;
 
         const int Frame_Escape_Time = 6;
         static readonly int[] Frame_Escape = { 8, 9, 10, 9 };
-		static readonly int Frame_Escape_Max = Frame_Escape_Time * Frame_Escape.Length;
+        static readonly int Frame_Escape_Max = Frame_Escape_Time * Frame_Escape.Length;
 
         public override void FindFrame(int frameHeight) {
             npc.spriteDirection = npc.direction;
@@ -108,6 +109,13 @@ namespace DrakSolz.NPCs.Enemy {
                     npc.frameCounter = 0;
                 else npc.frameCounter++;
                 npc.frame.Y = Frame_Walk[(int) npc.frameCounter / Frame_Walk_Time] * frameHeight;
+            }
+        }
+
+        public override void NPCLoot() {
+            Item.NewItem(npc.Center, npc.width, npc.height, mod.ItemType<Items.Misc.Twink>());
+            if (NPC.downedAncientCultist) {
+                if (Main.rand.Next(2) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Misc.Titanite>());
             }
         }
     }

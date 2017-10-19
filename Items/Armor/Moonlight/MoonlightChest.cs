@@ -23,5 +23,13 @@ namespace DrakSolz.Items.Armor.Moonlight {
             player.magicCrit += 15;
             player.magicDamage *= 1.15f;
         }
+        public override void AddRecipes() {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(mod.ItemType<Items.Misc.MoonButterflyHorn>(), 1);
+            recipe.AddIngredient(mod.ItemType<Items.Misc.Twink>(), 25);
+            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
     }
 }

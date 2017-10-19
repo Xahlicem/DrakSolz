@@ -125,7 +125,6 @@ namespace DrakSolz.NPCs.Town {
             shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Misc.GreenBlossom>());
             shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Misc.PrismStone>());
             if (Main.hardMode) {
-                shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Accessory.RingDarkGrain>());
                 shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Throwing.FireBomb>());
             }
             if (NPC.downedPlantBoss) {

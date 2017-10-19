@@ -39,7 +39,8 @@ namespace DrakSolz.Items.Armor.HardmodeThrow {
         
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.CobaltBar, 10);
+            recipe.AddIngredient(ItemID.ChlorophyteBar, 10);
+            recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

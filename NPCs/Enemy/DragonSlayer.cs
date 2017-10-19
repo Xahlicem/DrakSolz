@@ -26,6 +26,7 @@ namespace DrakSolz.NPCs.Enemy {
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 7500f;
             npc.knockBackResist = 0.12f;
+            npc.rarity = 1;
             banner = npc.type;
             bannerItem = mod.ItemType<Items.Banners.DragonSlayerBanner>();
         }

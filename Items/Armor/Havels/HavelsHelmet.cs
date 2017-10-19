@@ -38,7 +38,8 @@ namespace DrakSolz.Items.Armor.Havels {
         }
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.LunarBar, 20);
+            recipe.AddIngredient(mod.ItemType<Items.Misc.Titanite>(), 25);
+            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

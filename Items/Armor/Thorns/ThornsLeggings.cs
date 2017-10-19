@@ -30,6 +30,7 @@ namespace DrakSolz.Items.Armor.Thorns {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.SpikyBall, 250);
             recipe.AddIngredient(ItemID.ChlorophyteGreaves);
+            recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
