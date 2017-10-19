@@ -7,8 +7,8 @@ namespace DrakSolz.Items.Armor.HardmodeThrow {
     public class HallowedHeadgear : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Hallowed Headgear");
-            Tooltip.SetDefault("+25% thrown damage" +
-                "\n+15% thrown crit");
+            Tooltip.SetDefault("15% increased ranged damage" +
+                "\n8% increased ranged critical strike chance");
         }
 
         public override void SetDefaults() {
@@ -20,8 +20,8 @@ namespace DrakSolz.Items.Armor.HardmodeThrow {
         }
 
         public override void UpdateEquip(Player player) {
-            player.thrownDamage *= 1.25f;
-            player.thrownCrit += 15;
+            player.thrownDamage *= 1.15f;
+            player.thrownCrit += 8;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs) {
@@ -29,11 +29,16 @@ namespace DrakSolz.Items.Armor.HardmodeThrow {
         }
 
         public override void UpdateArmorSet(Player player) {
-            player.setBonus = ("+50% chance to not consume thrown item" +
-                "\n+40% thrown velocity");
-            player.thrownCost50 = true;
-            player.thrownVelocity *=1.4f;
+            player.setBonus = ("33% chance to not consume thrown item" +
+                "\n20% increased throwing velocity");
+            player.thrownCost33 = true;
+            player.thrownVelocity *=1.2f;
         }
+
+        public override void ArmorSetShadows(Player player) {
+            player.armorEffectDrawOutlines = true;
+        }
+
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.HallowedBar, 12);

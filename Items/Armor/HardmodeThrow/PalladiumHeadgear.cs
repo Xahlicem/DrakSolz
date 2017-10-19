@@ -7,21 +7,23 @@ namespace DrakSolz.Items.Armor.HardmodeThrow {
     public class PalladiumHeadgear : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Palladium Headgear");
-            Tooltip.SetDefault("+22% thrown damage" +
-                "\n+12% thrown crit");
+            Tooltip.SetDefault("9% increased ranged damage" +
+                "\n9% increased ranged critical strike chance");
         }
 
         public override void SetDefaults() {
+            Item refItem = new Item();
+            refItem.CloneDefaults(ItemID.CobaltMask);
+            item.value = refItem.value;
+            item.rare = refItem.rare;
             item.width = 18;
             item.height = 18;
-            item.value = Item.sellPrice(0, 0, 1, 50);
-            item.rare = 4;
             item.defense = 8;
         }
 
         public override void UpdateEquip(Player player) {
-            player.thrownDamage *= 1.22f;
-            player.thrownCrit += 12;
+            player.thrownDamage *= 1.09f;
+            player.thrownCrit += 9;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs) {

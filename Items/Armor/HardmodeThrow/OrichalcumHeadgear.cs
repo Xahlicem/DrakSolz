@@ -7,8 +7,9 @@ namespace DrakSolz.Items.Armor.HardmodeThrow {
     public class OrichalcumHeadgear : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Orichalcum Headgear");
-            Tooltip.SetDefault("+23% thrown damage" +
-                "\n+12% thrown crit");
+            Tooltip.SetDefault("7% increased ranged damage" +
+                "\n7% increased ranged critical strike chance" +
+                "\n7% increased movement");
         }
 
         public override void SetDefaults() {
@@ -20,8 +21,9 @@ namespace DrakSolz.Items.Armor.HardmodeThrow {
         }
 
         public override void UpdateEquip(Player player) {
-            player.thrownDamage *= 1.23f;
-            player.thrownCrit += 12;
+            player.thrownDamage *= 1.07f;
+            player.thrownCrit += 7;
+            player.moveSpeed *= 1.07f;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs) {
@@ -29,9 +31,10 @@ namespace DrakSolz.Items.Armor.HardmodeThrow {
         }
 
         public override void UpdateArmorSet(Player player) {
-            player.setBonus = ("Flower petals will fall on your target for extra damage ");
+            player.setBonus = ("Flower petals will fall on your target for extra damage");
             player.onHitPetal = true;
         }
+        
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.OrichalcumBar, 12);
