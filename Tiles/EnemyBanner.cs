@@ -72,6 +72,12 @@ namespace DrakSolz.Tiles {
                 case 14:
                     item = "MoonButterflyBanner";
                     break;
+                case 15:
+                    item = "SilverKnightBanner";
+                    break;
+                case 16:
+                    item = "BlackKnightBanner";
+                    break;
                 default:
                     return;
             }
@@ -128,6 +134,12 @@ namespace DrakSolz.Tiles {
                         break;
                     case 14:
                         type = "MoonButterfly";
+                        break;
+                    case 15:
+                        type = "SilverKnight";
+                        break;
+                    case 16:
+                        type = "BlackKnight";
                         break;
                     default:
                         return;
