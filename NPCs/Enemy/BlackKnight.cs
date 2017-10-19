@@ -8,17 +8,17 @@ namespace DrakSolz.NPCs.Enemy {
     public class BlackKnight : ModNPC {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Black Knight");
-            Main.npcFrameCount[npc.type] = 14;
+            Main.npcFrameCount[npc.type] = 10;
         }
 
         public override void SetDefaults() {
-            npc.CloneDefaults(NPCID.DD2GoblinT3);
+            npc.CloneDefaults(NPCID.SolarSpearman);
             npc.scale = 1;
             npc.width = 40;
             npc.height = 38;
             //npc.aiStyle = 39;
-            aiType = NPCID.DD2GoblinT3;
-            animationType = NPCID.DD2GoblinT3;
+            aiType = NPCID.SolarSpearman;
+            animationType = NPCID.SolarSpearman;
             npc.damage = 140;
             npc.defense = 60;
             npc.lifeMax = 2500;
@@ -30,18 +30,18 @@ namespace DrakSolz.NPCs.Enemy {
             bannerItem = mod.ItemType<Items.Banners.BlackKnightBanner>();
         }
 
-        public override float SpawnChance(NPCSpawnInfo spawnInfo) {
+        /*public override float SpawnChance(NPCSpawnInfo spawnInfo) {
             if (NPC.downedMechBossAny && Main.raining)
                 return SpawnCondition.OverworldHallow.Chance * 0.08f;
             else return 0f;
-        }
-        public override void AI() {
+        }*/
+        /*public override void AI() {
             npc.TargetClosest(true);
             float distance = Main.player[npc.target].Distance(npc.Center);
             if (distance >= 25 && distance <= 300) {
                 npc.velocity = new Vector2(npc.direction * ((Math.Abs(distance) + 1) / 25), ((Math.Abs(distance) + 1) / 25));
             }
-        }
+        }*/
         public override void NPCLoot() {
             int g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/BlackKnight_Gore_1"));
             Main.gore[g].scale = npc.scale;
