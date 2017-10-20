@@ -31,6 +31,12 @@ namespace DrakSolz.Projectiles {
             projectile.scale *= 2;
             aiType = ProjectileID.BulletHighVelocity; //Act exactly like default Bullet
         }
+
+        public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough) {
+            width = 2;
+            height = 10;
+            return true;
+        }
         public override void AI() {
             projectile.rotation = (float) Math.Atan2((double) projectile.velocity.Y, (double) projectile.velocity.X) + MathHelper.ToRadians(90f);
             if (projectile.spriteDirection == -1) {
