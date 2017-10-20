@@ -75,8 +75,7 @@ namespace DrakSolz.NPCs.Enemy {
 
         private Vector2 GetVelocity(Player player) {
             Vector2 vector = player.Center - npc.Center;
-            DrakSolz.AdjustMagnitude(ref vector,12.5f);
-            return vector;
+            return DrakSolz.AdjustMagnitude(ref vector, 12.5f);
         }
     }
 }

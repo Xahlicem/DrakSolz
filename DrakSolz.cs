@@ -29,14 +29,20 @@ namespace DrakSolz {
             };
         }
 
-        public static void AdjustMagnitude(ref Vector2 vector, float min, float max) {
+        public static float RoundToClosest(float f, float closest) {
+            f = (float)Math.Round(f/closest)*closest;
+            return f;
+        }
+
+        public static Vector2 AdjustMagnitude(ref Vector2 vector, float min, float max) {
             float magnitude = (float) Math.Sqrt(vector.X * vector.X + vector.Y * vector.Y);
             if (magnitude > max) vector *= max / magnitude;
             if (magnitude < min) vector *= min / magnitude;
+            return vector;
         }
 
-        public static void AdjustMagnitude(ref Vector2 vector, float speed) {
-            AdjustMagnitude(ref vector, speed, speed);
+        public static Vector2 AdjustMagnitude(ref Vector2 vector, float speed) {
+            return AdjustMagnitude(ref vector, speed, speed);
         }
 
         public override void Load() {
