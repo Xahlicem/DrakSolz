@@ -21,12 +21,12 @@ namespace DrakSolz.NPCs.Enemy {
             animationType = NPCID.CultistArcherBlue;
             npc.damage = 120;
             npc.defense = 50;
-            npc.lifeMax = 2000;
+            npc.lifeMax = 1000;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
-            npc.value = 7500f;
-            npc.knockBackResist = 0.05f;
-            banner = npc.type;
+            npc.value = 6000f;
+            npc.knockBackResist = 0.07f;
+            banner = mod.NPCType<SilverKnight>();
             bannerItem = mod.ItemType<Items.Banners.SilverKnightBanner>();
             AI_Timer = 15;
         }
@@ -63,7 +63,7 @@ namespace DrakSolz.NPCs.Enemy {
                     Vector2 vector = target - npc.Center;
                     DrakSolz.AdjustMagnitude(ref vector, 12.5f);
                     if (Main.netMode != 1 && AI_Timer > 90) {
-                        int proj = Projectile.NewProjectile(npc.Center, vector, mod.ProjectileType<Projectiles.DragonslayerGreatarrowProj>(), npc.damage, 1);
+                        int proj = Projectile.NewProjectile(npc.Center, vector, mod.ProjectileType<Projectiles.DragonslayerGreatarrowProj>(), npc.damage, 20);
                         Main.projectile[proj].friendly = false;
                         Main.projectile[proj].hostile = true;
                         Main.projectile[proj].netUpdate = true;
@@ -106,11 +106,10 @@ namespace DrakSolz.NPCs.Enemy {
             }
         }
 
-        /* public override float SpawnChance(NPCSpawnInfo spawnInfo) {
-             if (NPC.downedMechBossAny && Main.raining)
-                 return SpawnCondition.OverworldHallow.Chance * 0.08f;
-             else return 0f;
-         }*/
+        public override float SpawnChance(NPCSpawnInfo spawnInfo) {
+            if (spawnInfo.player.GetModPlayer<DrakSolzPlayer>(mod).ZoneTowerWhitePillar) return 0.5f;
+            return 0f;
+        }
 
         public override void NPCLoot() {
             int g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SilverKnight_Gore_1"));
@@ -119,7 +118,7 @@ namespace DrakSolz.NPCs.Enemy {
             Main.gore[g].scale = npc.scale;
             g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SilverKnight_Gore_3"));
             Main.gore[g].scale = npc.scale;
-            if (Main.rand.Next(20) == 0)
+            if (Main.rand.Next(40) == 0)
                 Item.NewItem(npc.Center, npc.width, npc.height, Utils.SelectRandom(Main.rand, new int[] {
                     mod.ItemType<Items.Armor.SilverKnight.SilverKnightHelmet>(), mod.ItemType<Items.Armor.SilverKnight.SilverKnightArmor>(), mod.ItemType<Items.Armor.SilverKnight.SilverKnightLeggings>()
                 }));

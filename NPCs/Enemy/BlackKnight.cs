@@ -19,9 +19,9 @@ namespace DrakSolz.NPCs.Enemy {
             //npc.aiStyle = 39;
             aiType = NPCID.SolarSpearman;
             animationType = NPCID.SolarSpearman;
-            npc.damage = 140;
+            npc.damage = 120;
             npc.defense = 60;
-            npc.lifeMax = 2500;
+            npc.lifeMax = 1700;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 10000f;
@@ -30,11 +30,11 @@ namespace DrakSolz.NPCs.Enemy {
             bannerItem = mod.ItemType<Items.Banners.BlackKnightBanner>();
         }
 
-        /*public override float SpawnChance(NPCSpawnInfo spawnInfo) {
-            if (NPC.downedMechBossAny && Main.raining)
-                return SpawnCondition.OverworldHallow.Chance * 0.08f;
-            else return 0f;
-        }*/
+        public override float SpawnChance(NPCSpawnInfo spawnInfo) {
+            if (spawnInfo.player.GetModPlayer<DrakSolzPlayer>(mod).ZoneTowerWhitePillar) return 0.2f;
+            return 0f;
+        }
+
         /*public override void AI() {
             npc.TargetClosest(true);
             float distance = Main.player[npc.target].Distance(npc.Center);

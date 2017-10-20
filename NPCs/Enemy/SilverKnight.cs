@@ -19,22 +19,22 @@ namespace DrakSolz.NPCs.Enemy {
             //npc.aiStyle = 39;
             aiType = NPCID.SolarSpearman;
             animationType = NPCID.SolarSpearman;
-            npc.damage = 120;
+            npc.damage = 100;
             npc.defense = 50;
-            npc.lifeMax = 2000;
+            npc.lifeMax = 1200;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
-            npc.value = 7500f;
-            npc.knockBackResist = 0.05f;
+            npc.value = 7000f;
+            npc.knockBackResist = 0.06f;
             banner = npc.type;
             bannerItem = mod.ItemType<Items.Banners.SilverKnightBanner>();
         }
 
-       /* public override float SpawnChance(NPCSpawnInfo spawnInfo) {
-            if (NPC.downedMechBossAny && Main.raining)
-                return SpawnCondition.OverworldHallow.Chance * 0.08f;
-            else return 0f;
-        }*/
+        public override float SpawnChance(NPCSpawnInfo spawnInfo) {
+            if (spawnInfo.player.GetModPlayer<DrakSolzPlayer>(mod).ZoneTowerWhitePillar) return 1f;
+            return 0f;
+        }
+
         /*public override void AI() {
             npc.TargetClosest(true);
             float distance = Main.player[npc.target].Distance(npc.Center);
@@ -49,7 +49,7 @@ namespace DrakSolz.NPCs.Enemy {
             Main.gore[g].scale = npc.scale;
             g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SilverKnight_Gore_3"));
             Main.gore[g].scale = npc.scale;
-            if (Main.rand.Next(20) == 0)
+            if (Main.rand.Next(40) == 0)
                 Item.NewItem(npc.Center, npc.width, npc.height, Utils.SelectRandom(Main.rand, new int[] {
                     mod.ItemType<Items.Armor.SilverKnight.SilverKnightHelmet>(), mod.ItemType<Items.Armor.SilverKnight.SilverKnightArmor>(), mod.ItemType<Items.Armor.SilverKnight.SilverKnightLeggings>()
                 }));
