@@ -1,18 +1,24 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using DrakSolz.NPCs.Enemy.WhitePillar;
 using DrakSolz.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent.UI;
+using Terraria.Graphics.Effects;
+using Terraria.Graphics.Shaders;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.UI;
 
 namespace DrakSolz {
     public class DrakSolz : Mod {
+        internal static DrakSolz instance;
         public static List<int> ListBossSoul { get; set; }
 
         private UserInterface userInterface;
@@ -30,7 +36,7 @@ namespace DrakSolz {
         }
 
         public static float RoundToClosest(float f, float closest) {
-            f = (float)Math.Round(f/closest)*closest;
+            f = (float) Math.Round(f / closest) * closest;
             return f;
         }
 
@@ -46,6 +52,8 @@ namespace DrakSolz {
         }
 
         public override void Load() {
+            instance = this;
+
             ListBossSoul = new List<int>();
             ListBossSoul.AddRange(new int[] {
                 NPCID.KingSlime, NPCID.EyeofCthulhu, NPCID.EaterofWorldsHead, NPCID.EaterofWorldsBody, NPCID.EaterofWorldsTail, NPCID.BrainofCthulhu,
@@ -65,10 +73,18 @@ namespace DrakSolz {
             playerUI.Activate();
             userInterfacePlayer = new UserInterface();
             userInterfacePlayer.SetState(playerUI);
+
+            WhitePillarSky.PlanetTexture = GetTexture("NPCs/Enemy/WhitePillar/WhitePillarPlanet");
+            Filters.Scene["DrakSolz:WhitePillar"] = new Filter(new WhitePillarData("FilterMiniTower").UseColor(0.7f, 0.7f, 0.7f).UseOpacity(0.82f), EffectPriority.VeryHigh);
+            SkyManager.Instance["DrakSolz:WhitePillar"] = new WhitePillarSky();
         }
 
         public override void Unload() {
             ListBossSoul = null;
+            instance = null;
+            if (!Main.dedServ) {
+                //WhitePillarGlowMask.Unload();
+            }
         }
 
         public override void ModifyInterfaceLayers(System.Collections.Generic.List<GameInterfaceLayer> layers) {
@@ -94,6 +110,26 @@ namespace DrakSolz {
                         return true;
                     },
                     InterfaceScaleType.UI));
+            }
+        }
+        public override void PostSetupContent() {
+            Mod bossChecklist = ModLoader.GetMod("BossChecklist");
+            if (bossChecklist != null) {
+                //SlimeKing = 1f;
+                //EyeOfCthulhu = 2f;
+                //EaterOfWorlds = 3f;
+                //QueenBee = 4f;
+                //Skeletron = 5f;
+                //WallOfFlesh = 6f;
+                //TheTwins = 7f;
+                //TheDestroyer = 8f;
+                //SkeletronPrime = 9f;
+                //Plantera = 10f;
+                //Golem = 11f;
+                //DukeFishron = 12f;
+                //LunaticCultist = 13f;
+                //Moonlord = 14f;
+                bossChecklist.Call("AddBossWithInfo", "White Pillar", 13.5f, (Func<bool>)(() => DrakSolzWorld.Boss.WhitePillar.IsDowned()), "Kill the Lunatic Cultist outside the dungeon");
             }
         }
 

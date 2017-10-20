@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Collections.Generic;
 using DrakSolz.Items;
 using Terraria;
@@ -35,6 +36,8 @@ namespace DrakSolz {
         public float SoulTicks { get; set; }
         public int BossSoulTicks { get; set; }
         public int BossSouls { get; set; }
+
+        public bool ZoneTowerWhitePillar;
 
         public bool SoulSummon { get; set; }
         public bool HumSummon { get; set; }
@@ -98,6 +101,47 @@ namespace DrakSolz {
                 Main.dust[Dust.NewDust(player.position, player.width, player.height, DustID.AncientLight)].noGravity = true;
             }
         }
+        public override void UpdateBiomes() {
+            ZoneTowerWhitePillar = false;
+            if (!player.ZoneTowerSolar && !player.ZoneTowerVortex && !player.ZoneTowerNebula && !player.ZoneTowerStardust) {
+                for (int i = 0; i < Main.maxNPCs; i++) {
+                    var npc = Main.npc[i];
+                    if (npc != null && npc.active && npc.type == mod.NPCType<NPCs.Enemy.WhitePillar.WhitePillar>() && player.Distance(npc.Center) <= 4000f) {
+                        ZoneTowerWhitePillar = true;
+                    }
+                }
+            }
+        }
+
+        public override bool CustomBiomesMatch(Player other) {
+            var modOther = other.GetModPlayer<DrakSolzPlayer>(mod);
+            return ZoneTowerWhitePillar == modOther.ZoneTowerWhitePillar;
+        }
+
+        public override void CopyCustomBiomesTo(Player other) {
+            var modOther = other.GetModPlayer<DrakSolzPlayer>(mod);
+            modOther.ZoneTowerWhitePillar = ZoneTowerWhitePillar;
+        }
+
+        public override void SendCustomBiomes(BinaryWriter writer) {
+            byte flags = 0;
+            if (ZoneTowerWhitePillar) {
+                flags |= 1;
+            }
+            writer.Write(flags);
+        }
+
+        public override void ReceiveCustomBiomes(BinaryReader reader) {
+            byte flags = reader.ReadByte();
+            ZoneTowerWhitePillar = ((flags & 1) == 1);
+        }
+        
+        public override void UpdateBiomeVisuals()
+		{
+			DrakSolzPlayer modPlayer = Main.player[Main.myPlayer].GetModPlayer<DrakSolzPlayer>(mod);
+			bool useWhite = ZoneTowerWhitePillar;
+			player.ManageSpecialBiomeVisuals("DrakSolz:WhitePillar", useWhite);
+}
 
         public override void ProcessTriggers(TriggersSet triggersSet) { }
 
