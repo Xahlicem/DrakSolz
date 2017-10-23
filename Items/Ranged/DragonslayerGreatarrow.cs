@@ -8,7 +8,7 @@ namespace DrakSolz.Items.Ranged
 		public override void SetStaticDefaults()
 		{
             DisplayName.SetDefault("Dragonslayer Greatarrow");
-			Tooltip.SetDefault("This is a modded bullet ammo.");
+			Tooltip.SetDefault("Large metal arrows used to penetrate the flesh of dragons.");
 		}
 
 		public override void SetDefaults()

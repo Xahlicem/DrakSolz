@@ -10,7 +10,7 @@ namespace DrakSolz.Items.Ranged
 		public override void SetStaticDefaults()
 		{
             DisplayName.SetDefault("Dragonslayer Greatbow");
-			Tooltip.SetDefault("This is a modded gun.");
+			Tooltip.SetDefault("Greatbow used by Silver Knights to slay dragons with specially designed arrows.");
 		}
 
 		public override void SetDefaults()
