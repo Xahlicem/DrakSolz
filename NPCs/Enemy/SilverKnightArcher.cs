@@ -122,7 +122,7 @@ namespace DrakSolz.NPCs.Enemy {
                 Item.NewItem(npc.Center, npc.width, npc.height, Utils.SelectRandom(Main.rand, new int[] {
                     mod.ItemType<Items.Armor.SilverKnight.SilverKnightHelmet>(), mod.ItemType<Items.Armor.SilverKnight.SilverKnightArmor>(), mod.ItemType<Items.Armor.SilverKnight.SilverKnightLeggings>()
                 }));
-            //if (Main.rand.Next(8) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Melee.DragonSlayerSpear>());
+            if (Main.rand.Next(25) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Ranged.DragonslayerGreatbow>());
             Item.NewItem(npc.Center, npc.width, npc.height, mod.ItemType<Items.Ranged.DragonslayerGreatarrow>(), Main.rand.Next(1, 5));
         }
     }
