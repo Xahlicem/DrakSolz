@@ -19,9 +19,9 @@ namespace DrakSolz.NPCs.Enemy {
             aiType = NPCID.Moth;
             animationType = NPCID.Moth;
             npc.height = 70;
-            npc.damage = 130;
+            npc.damage = 100;
             npc.defense = 40;
-            npc.lifeMax = 8000;
+            npc.lifeMax = 6000;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 22500f;
@@ -32,42 +32,56 @@ namespace DrakSolz.NPCs.Enemy {
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
-            if (NPC.downedGolemBoss && Main.moonPhase == 0)
-                return SpawnCondition.OverworldNightMonster.Chance * 0.1f;
-            else return 0f;
+            if (spawnInfo.player.GetModPlayer<DrakSolzPlayer>(mod).ZoneTowerWhitePillar) return 0.05f;
+            return 0f;
         }
+        const int AI_Timer_Slot = 3;
+
+        public float AI_Timer {
+            get { return npc.ai[AI_Timer_Slot]; }
+            set { npc.ai[AI_Timer_Slot] = value; }
+        }
+
+        const int Angle_Slot = 2;
+
+        public float Angle {
+            get { return npc.localAI[Angle_Slot]; }
+            set { npc.localAI[Angle_Slot] = value; }
+        }
+
         public override void AI() {
-            npc.TargetClosest(true);
-            float distance = Main.player[npc.target].Distance(npc.Center);
-            if (distance >= 150 && distance <= 152) {
-                int proj = Projectile.NewProjectile(npc.Center, (GetVelocity(Main.player[npc.target])* 1.5f), mod.ProjectileType<Projectiles.Magic.MoonButterflyProj>(), (npc.damage / 5), 0f);
-                Main.projectile[proj].scale *= 0.3f;
-                Main.projectile[proj].friendly = false;
-                Main.projectile[proj].hostile = true;
-            }
-            else if (distance >= 300 && distance <= 302) {
-                int proj = Projectile.NewProjectile(npc.Center, (GetVelocity(Main.player[npc.target])* 2), mod.ProjectileType<Projectiles.Magic.MoonButterflyProj>(), (npc.damage / 4), 0f);
-                Main.projectile[proj].scale *= 0.4f;
-                Main.projectile[proj].friendly = false;
-                Main.projectile[proj].hostile = true;
-            }
-            else if (distance >= 450 && distance <= 452) {
-                int proj = Projectile.NewProjectile(npc.Center, (GetVelocity(Main.player[npc.target])* 2.5f), mod.ProjectileType<Projectiles.Magic.MoonButterflyProj>(), (npc.damage / 3), 0f);
-                Main.projectile[proj].scale *= 0.5f;
-                Main.projectile[proj].friendly = false;
-                Main.projectile[proj].hostile = true;
-            }
-            else if (distance >= 600 && distance <= 602) {
-                int proj = Projectile.NewProjectile(npc.Center, (GetVelocity(Main.player[npc.target])* 3), mod.ProjectileType<Projectiles.Magic.MoonButterflyProj>(), (npc.damage / 2), 0f);
-                Main.projectile[proj].scale *= 0.6f;
-                Main.projectile[proj].friendly = false;
-                Main.projectile[proj].hostile = true;
-            }
-            else if (distance >= 800 && distance <= 802) {
-                int proj = Projectile.NewProjectile(npc.Center, (GetVelocity(Main.player[npc.target])* 3), mod.ProjectileType<Projectiles.Magic.MoonButterflyProj>(), (int)(npc.damage / 1.5f), 0f);
-                Main.projectile[proj].scale *= 0.75f;
-                Main.projectile[proj].friendly = false;
-                Main.projectile[proj].hostile = true;
+            npc.TargetClosest();
+            if (npc.HasValidTarget) {
+                Vector2 target = Main.player[npc.target].Center;
+                target.Y -= 8;
+                float dist = npc.Distance(target);
+                if (dist < 1000)
+                    AI_Timer++;
+                npc.FaceTarget();
+
+                Angle = MathHelper.ToDegrees(npc.AngleTo(target));
+
+                Vector2 vector = target - npc.Center;
+                DrakSolz.AdjustMagnitude(ref vector, 12.5f);
+                if (Main.netMode != 1 && AI_Timer == 120 || Main.netMode != 1 && AI_Timer > 140) {
+                    float numberProjectiles = 3;
+                    float rotation = MathHelper.ToRadians(30);
+                    for (int i = 0; i < numberProjectiles; i++) {
+                        Vector2 perturbedSpeed = new Vector2(vector.X, vector.Y).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1))) * .2f; // Watch out for dividing by 0 if there is only 1 projectile.
+                        int proj = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, perturbedSpeed.X * 15, perturbedSpeed.Y * 15, mod.ProjectileType<Projectiles.Magic.MoonButterflyProj>(), npc.damage, 0);
+                        Main.projectile[proj].scale *= 0.4f;
+                        Main.projectile[proj].friendly = false;
+                        Main.projectile[proj].hostile = true;
+                    }
+                    /*int proj = Projectile.NewProjectile(npc.Center, vector, mod.ProjectileType<Projectiles.Magic.MoonButterflyProj>(), npc.damage, 0);
+                    Main.projectile[proj].friendly = false;
+                    Main.projectile[proj].hostile = true;
+                    Main.projectile[proj].netUpdate = true;*/
+                    if (Main.netMode != 1 && AI_Timer > 140) {
+                        AI_Timer = 0;
+                    }
+                }
+                npc.netUpdate = true;
             }
         }
         public override void NPCLoot() {
