@@ -35,5 +35,12 @@ namespace DrakSolz.Items.Armor {
         public override bool DrawHead() {
             return false;
         }
+        public override void AddRecipes() {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(mod.ItemType<Items.Misc.Titanite>(), 500);
+            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
     }
 }

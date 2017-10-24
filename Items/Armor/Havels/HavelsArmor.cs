@@ -23,7 +23,7 @@ namespace DrakSolz.Items.Armor.Havels {
         }
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType<Items.Misc.Titanite>(), 25);
+            recipe.AddIngredient(mod.ItemType<Items.Misc.Titanite>(), 50);
             recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
             recipe.SetResult(this);
             recipe.AddRecipe();

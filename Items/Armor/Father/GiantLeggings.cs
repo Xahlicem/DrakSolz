@@ -19,8 +19,8 @@ namespace DrakSolz.Items.Armor.Father {
         }
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType<Items.Misc.Titanite>(), 25);
-            recipe.AddIngredient(mod.ItemType<Items.Misc.Twink>(), 25);
+            recipe.AddIngredient(mod.ItemType<Items.Misc.Titanite>(), 35);
+            recipe.AddIngredient(mod.ItemType<Items.Misc.Twink>(), 35);
             recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
             recipe.SetResult(this);
             recipe.AddRecipe();
