@@ -37,11 +37,11 @@ namespace DrakSolz.NPCs.Enemy.WhitePillar {
         int Timer;
         public override void AI() {
             Timer++;
-            if (Timer % 60 == 0) {
+            if (Timer % 20 == 0) {
                 if (Main.player[npc.target].GetModPlayer<DrakSolzPlayer>(mod).ZoneTowerWhitePillar) {
                     var ShootPos = Main.player[npc.target].position + new Vector2(Main.rand.Next(-1000, 1000), -1000);
-                    var ShootVel = new Vector2(Main.rand.NextFloat(-3f, 3f), Main.rand.NextFloat(15f, 20f));
-                    int i = Projectile.NewProjectile(ShootPos, ShootVel, mod.ProjectileType("DragonslayerGreatarrowProj"), 34, 1f);
+                    var ShootVel = new Vector2(Main.rand.NextFloat(-3f, 3f), Main.rand.NextFloat(0.8f, 4f));
+                    int i = Projectile.NewProjectile(ShootPos, ShootVel, mod.ProjectileType("PillarProj"), 34, 1f);
                     Main.projectile[i].friendly = false;
                 }
             }
