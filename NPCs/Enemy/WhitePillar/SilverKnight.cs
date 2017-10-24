@@ -1,10 +1,11 @@
 using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DrakSolz.NPCs.Enemy {
+namespace DrakSolz.NPCs.Enemy.WhitePillar {
     public class SilverKnight : ModNPC {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Silver Knight");
@@ -42,6 +43,15 @@ namespace DrakSolz.NPCs.Enemy {
                 npc.velocity = new Vector2(npc.direction * ((Math.Abs(distance) + 1) / 25), ((Math.Abs(distance) + 1) / 25));
             }
         }*/
+        public override void HitEffect(int hitDirection, double damage) {
+            if (npc.life <= 0) {
+                if (WhitePillarHandler.ShieldStrength > 0) {
+                    NPC parent = Main.npc[NPC.FindFirstNPC(mod.NPCType("WhitePillar"))];
+                    Vector2 Velocity = Helper.VelocityToPoint(npc.Center, parent.Center, 20);
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, Velocity.X, Velocity.Y, mod.ProjectileType("PillarLaser"), 1, 1f);
+                }
+            }
+        }
         public override void NPCLoot() {
             int g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SilverKnight_Gore_1"));
             Main.gore[g].scale = npc.scale;
