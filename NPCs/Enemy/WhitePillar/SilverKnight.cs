@@ -31,18 +31,11 @@ namespace DrakSolz.NPCs.Enemy.WhitePillar {
             bannerItem = mod.ItemType<Items.Banners.SilverKnightBanner>();
         }
 
-        public override float SpawnChance(NPCSpawnInfo spawnInfo) {
-            if (spawnInfo.player.GetModPlayer<DrakSolzPlayer>(mod).ZoneTowerWhitePillar) return 1f;
-            return 0f;
+        public override void AI() {
+            npc.timeLeft = 60;
+            npc.TargetClosest();
         }
 
-        /*public override void AI() {
-            npc.TargetClosest(true);
-            float distance = Main.player[npc.target].Distance(npc.Center);
-            if (distance >= 25 && distance <= 180) {
-                npc.velocity = new Vector2(npc.direction * ((Math.Abs(distance) + 1) / 25), ((Math.Abs(distance) + 1) / 25));
-            }
-        }*/
         public override void HitEffect(int hitDirection, double damage) {
             if (npc.life <= 0) {
                 if (WhitePillarHandler.ShieldStrength > 0) {

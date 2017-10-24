@@ -30,11 +30,6 @@ namespace DrakSolz.NPCs.Enemy.WhitePillar {
             banner = npc.type;
             bannerItem = mod.ItemType<Items.Banners.MoonButterflyBanner>();
         }
-
-        public override float SpawnChance(NPCSpawnInfo spawnInfo) {
-            if (spawnInfo.player.GetModPlayer<DrakSolzPlayer>(mod).ZoneTowerWhitePillar) return 0.05f;
-            return 0f;
-        }
         const int AI_Timer_Slot = 3;
 
         public float AI_Timer {
@@ -50,6 +45,7 @@ namespace DrakSolz.NPCs.Enemy.WhitePillar {
         }
 
         public override void AI() {
+            npc.timeLeft = 60;
             npc.TargetClosest();
             if (npc.HasValidTarget) {
                 Vector2 target = Main.player[npc.target].Center;

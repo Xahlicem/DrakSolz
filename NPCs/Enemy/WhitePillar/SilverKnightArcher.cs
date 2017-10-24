@@ -46,6 +46,7 @@ namespace DrakSolz.NPCs.Enemy.WhitePillar {
         }
 
         public override void AI() {
+            npc.timeLeft = 60;
             npc.TargetClosest();
             if (npc.HasValidTarget) {
                 Vector2 target = Main.player[npc.target].Center;
@@ -113,11 +114,6 @@ namespace DrakSolz.NPCs.Enemy.WhitePillar {
                 npc.frame.Y = (GetFrame((int) DrakSolz.RoundToClosest(Angle, 45)) + 2) * frameHeight;
                 //Main.NewText(GetFrame((int) angle));
             }
-        }
-
-        public override float SpawnChance(NPCSpawnInfo spawnInfo) {
-            if (spawnInfo.player.GetModPlayer<DrakSolzPlayer>(mod).ZoneTowerWhitePillar) return 0.5f;
-            return 0f;
         }
 
         public override void NPCLoot() {
