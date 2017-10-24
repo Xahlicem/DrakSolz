@@ -19,9 +19,9 @@ namespace DrakSolz.NPCs.Enemy.WhitePillar {
             npc.aiStyle = 3;
             aiType = NPCID.Skeleton;
             animationType = NPCID.CultistArcherBlue;
-            npc.damage = 120;
+            npc.damage = 100;
             npc.defense = 50;
-            npc.lifeMax = 1000;
+            npc.lifeMax = 700;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 6000f;
@@ -64,7 +64,7 @@ namespace DrakSolz.NPCs.Enemy.WhitePillar {
                     Vector2 vector = target - npc.Center;
                     DrakSolz.AdjustMagnitude(ref vector, 12.5f);
                     if (Main.netMode != 1 && AI_Timer > 90) {
-                        int proj = Projectile.NewProjectile(npc.Center, vector, mod.ProjectileType<Projectiles.DragonslayerGreatarrowProj>(), npc.damage, 20);
+                        int proj = Projectile.NewProjectile(npc.Center, vector, mod.ProjectileType<Projectiles.DragonslayerGreatarrowProj>(), (int) (npc.damage *0.5), 20);
                         Main.projectile[proj].friendly = false;
                         Main.projectile[proj].hostile = true;
                         Main.projectile[proj].netUpdate = true;

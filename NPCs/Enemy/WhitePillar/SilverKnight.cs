@@ -20,9 +20,9 @@ namespace DrakSolz.NPCs.Enemy.WhitePillar {
             //npc.aiStyle = 39;
             aiType = NPCID.SolarSpearman;
             animationType = NPCID.SolarSpearman;
-            npc.damage = 100;
+            npc.damage = 80;
             npc.defense = 50;
-            npc.lifeMax = 1200;
+            npc.lifeMax = 800;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 7000f;
