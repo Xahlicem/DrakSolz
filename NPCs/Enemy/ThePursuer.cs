@@ -12,9 +12,9 @@ namespace DrakSolz.NPCs.Enemy {
         }
 
         public override void SetDefaults() {
-            npc.width = 44;
-            npc.scale *= 0.85f;
-            npc.height = 105;
+            npc.width = 40;
+            npc.scale *= 0.70f;
+            npc.height = 80;
             npc.aiStyle = 3;
             aiType = NPCID.PossessedArmor;
             animationType = NPCID.Wraith;
@@ -27,7 +27,6 @@ namespace DrakSolz.NPCs.Enemy {
             npc.knockBackResist = 0.05f;
             banner = npc.type;
             bannerItem = mod.ItemType<Items.Banners.PursuerBanner>();
-            npc.buffImmune[BuffID.Confused] = false;
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
