@@ -8,7 +8,8 @@ namespace DrakSolz.Items.Armor.BlackKnight {
         public override void SetStaticDefaults() {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Black Knight Armor");
-            Tooltip.SetDefault("Apparel.");
+            Tooltip.SetDefault("Apparel."+
+                "\n25% increased melee speed");
         }
 
         public override void SetDefaults() {
@@ -16,10 +17,11 @@ namespace DrakSolz.Items.Armor.BlackKnight {
             item.height = 18;
             item.value = Item.buyPrice(1, 0, 0, 0);
             item.rare = -1;
-            item.defense = 35;
+            item.defense = 32;
         }
 
         public override void UpdateEquip(Player player) {
+            player.meleeSpeed *= 1.25f;
         }
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
