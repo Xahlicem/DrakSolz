@@ -129,6 +129,9 @@ namespace DrakSolz.NPCs.Enemy.WhitePillar {
                 }));
             if (Main.rand.Next(25) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Ranged.DragonslayerGreatbow>());
             Item.NewItem(npc.Center, npc.width, npc.height, mod.ItemType<Items.Ranged.DragonslayerGreatarrow>(), Main.rand.Next(1, 5));
+            if (Main.rand.Next(8) == 0) {
+                Item.NewItem(npc.Center, npc.width, npc.height, mod.ItemType<Items.Misc.Titanite>());
+            }
         }
     }
 }

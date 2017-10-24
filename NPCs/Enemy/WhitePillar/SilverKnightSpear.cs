@@ -56,6 +56,9 @@ namespace DrakSolz.NPCs.Enemy.WhitePillar {
                     mod.ItemType<Items.Armor.SilverKnight.SilverKnightHelmet>(), mod.ItemType<Items.Armor.SilverKnight.SilverKnightArmor>(), mod.ItemType<Items.Armor.SilverKnight.SilverKnightLeggings>()
                 }));
             //if (Main.rand.Next(8) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Melee.DragonSlayerSpear>());
+            if (Main.rand.Next(8) == 0) {
+                Item.NewItem(npc.Center, npc.width, npc.height, mod.ItemType<Items.Misc.Titanite>());
+            }
         }
     }
 }
