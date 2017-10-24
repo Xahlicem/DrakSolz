@@ -1,6 +1,6 @@
 using System;
-using System.IO;
 using System.Collections.Generic;
+using System.IO;
 using DrakSolz.Items;
 using Terraria;
 using Terraria.GameInput;
@@ -101,6 +101,7 @@ namespace DrakSolz {
                 Main.dust[Dust.NewDust(player.position, player.width, player.height, DustID.AncientLight)].noGravity = true;
             }
         }
+
         public override void UpdateBiomes() {
             ZoneTowerWhitePillar = false;
             if (!player.ZoneTowerSolar && !player.ZoneTowerVortex && !player.ZoneTowerNebula && !player.ZoneTowerStardust) {
@@ -135,13 +136,12 @@ namespace DrakSolz {
             byte flags = reader.ReadByte();
             ZoneTowerWhitePillar = ((flags & 1) == 1);
         }
-        
-        public override void UpdateBiomeVisuals()
-		{
-			DrakSolzPlayer modPlayer = Main.player[Main.myPlayer].GetModPlayer<DrakSolzPlayer>(mod);
-			bool useWhite = ZoneTowerWhitePillar;
-			player.ManageSpecialBiomeVisuals("DrakSolz:WhitePillar", useWhite);
-}
+
+        public override void UpdateBiomeVisuals() {
+            DrakSolzPlayer modPlayer = Main.player[Main.myPlayer].GetModPlayer<DrakSolzPlayer>(mod);
+            bool useWhite = ZoneTowerWhitePillar;
+            player.ManageSpecialBiomeVisuals("DrakSolz:WhitePillar", useWhite);
+        }
 
         public override void ProcessTriggers(TriggersSet triggersSet) { }
 
