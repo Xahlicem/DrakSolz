@@ -17,7 +17,7 @@ namespace DrakSolz.NPCs.Enemy.WhitePillar
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Colorless Pillar");
+			DisplayName.SetDefault("Void Pillar");
 		}
 		public override void SetDefaults()
 		{
@@ -200,10 +200,10 @@ namespace DrakSolz.NPCs.Enemy.WhitePillar
 			{
 				stacks = (int)(stacks * 1.5f);
 			}
-			/*for (int i = 0; i < stacks; i++)
+			for (int i = 0; i < stacks; i++)
 			{
-				Item.NewItem((int)npc.position.X + Main.rand.Next(npc.width), (int)npc.position.Y + Main.rand.Next(npc.height), 2, 2, mod.ItemType("NovaFragment"), Main.rand.Next(1, 4));
-			}*/
+				Item.NewItem((int)npc.position.X + Main.rand.Next(npc.width), (int)npc.position.Y + Main.rand.Next(npc.height), 2, 2, mod.ItemType("VoidFragment"), Main.rand.Next(1, 4));
+			}
 
 			DrakSolzWorld.Boss.WhitePillar.Downed();
 			WhitePillarHandler.TowerX = -1;
