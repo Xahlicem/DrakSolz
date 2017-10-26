@@ -23,6 +23,7 @@ namespace DrakSolz.NPCs.Enemy.VoidPillar.NPCs {
             npc.defense = 25;
             npc.lifeMax = 500;
             npc.value = 10000f;
+            npc.knockBackResist = 0.15f;
             //banner = npc.type;
             //bannerItem = mod.ItemType<Items.Banners.BlackKnightBanner>();
         }
@@ -48,6 +49,11 @@ namespace DrakSolz.NPCs.Enemy.VoidPillar.NPCs {
                     Projectile.NewProjectile(npc.Center.X, npc.Center.Y, Velocity.X, Velocity.Y, mod.ProjectileType("PillarLaser"), 1, 1f);
                 }
             }
+        }
+
+        public override void OnHitPlayer(Player target, int damage, bool crit) {
+            target.AddBuff(BuffID.Slow, 120);
+            target.AddBuff(BuffID.Weak, 120);
         }
 
         public override void NPCLoot() {
