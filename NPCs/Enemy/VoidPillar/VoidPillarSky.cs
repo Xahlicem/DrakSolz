@@ -4,8 +4,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Graphics.Effects;
 
-namespace DrakSolz.NPCs.Enemy.WhitePillar {
-    public class WhitePillarSky : CustomSky {
+namespace DrakSolz.NPCs.Enemy.VoidPillar {
+    public class VoidPillarSky : CustomSky {
         private struct Star {
             public Vector2 Position;
             public float Depth;
@@ -32,7 +32,7 @@ namespace DrakSolz.NPCs.Enemy.WhitePillar {
         public override void OnLoad() {
             _starTextures = new Texture2D[3];
             for (int i = 0; i < _starTextures.Length; i++) {
-                _starTextures[i] = DrakSolz.instance.GetTexture("NPCs/Enemy/WhitePillar/WhiteSoul " + i);
+                _starTextures[i] = DrakSolz.instance.GetTexture("NPCs/Enemy/VoidPillar/VoidSoul " + i);
             }
         }
 

@@ -8,8 +8,8 @@ using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 using Terraria.UI.Chat;
 
-namespace DrakSolz.NPCs.Enemy.WhitePillar {
-    public class WhitePillarHandler : ModWorld {
+namespace DrakSolz.NPCs.Enemy.VoidPillar {
+    public class VoidPillarHandler : ModWorld {
         public static int TowerX = -1;
         public static int TowerY = -1;
         public static bool TowerActive;
@@ -25,25 +25,25 @@ namespace DrakSolz.NPCs.Enemy.WhitePillar {
         }
 
         public override void PreUpdate() {
-            TowerActive = NPC.AnyNPCs(mod.NPCType("WhitePillar"));
+            TowerActive = NPC.AnyNPCs(mod.NPCType("VoidPillar"));
         }
 
         public override TagCompound Save() {
-            var tag = new TagCompound { { "WhitePillarActive", TowerActive }
+            var tag = new TagCompound { { "VoidPillarActive", TowerActive }
             };
             if (TowerX != -1) {
-                tag.Add("WhitePillarX", TowerX);
-                tag.Add("WhitePillarY", TowerY);
+                tag.Add("VoidPillarX", TowerX);
+                tag.Add("VoidPillarY", TowerY);
             }
             return tag;
         }
 
         public override void Load(TagCompound tag) {
-            TowerActive = tag.GetBool("WhitePillarActive");
-            if (tag.ContainsKey("WhitePillarX")) {
-                TowerX = tag.GetInt("WhitePillarX");
-                TowerY = tag.GetInt("WhitePillarY");
-                NPC.NewNPC(TowerX, TowerY, mod.NPCType("WhitePillar"));
+            TowerActive = tag.GetBool("VoidPillarActive");
+            if (tag.ContainsKey("VoidPillarX")) {
+                TowerX = tag.GetInt("VoidPillarX");
+                TowerY = tag.GetInt("VoidPillarY");
+                NPC.NewNPC(TowerX, TowerY, mod.NPCType("VoidPillar"));
             }
         }
 
@@ -108,7 +108,7 @@ namespace DrakSolz.NPCs.Enemy.WhitePillar {
             }
 
             if (whoAmI == -1) {
-                whoAmI = NPC.NewNPC((int) spawnPos.X, (int) spawnPos.Y, mod.NPCType("WhitePillar"));
+                whoAmI = NPC.NewNPC((int) spawnPos.X, (int) spawnPos.Y, mod.NPCType("VoidPillar"));
                 TowerX = (int) spawnPos.X;
                 TowerY = (int) spawnPos.Y;
             } else {
@@ -121,7 +121,7 @@ namespace DrakSolz.NPCs.Enemy.WhitePillar {
             }
         }
 
-        static readonly string[] WhitePillarNPCs = {
+        static readonly string[] VoidPillarNPCs = {
             "SilverKnight",
             "SilverKnightSpear",
             "SilverKnightArcher",
@@ -131,20 +131,20 @@ namespace DrakSolz.NPCs.Enemy.WhitePillar {
 
         public class AuroraGlobalNPC : GlobalNPC {
             public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns) {
-                if (player.GetModPlayer<DrakSolzPlayer>(mod).ZoneTowerWhitePillar) {
+                if (player.GetModPlayer<DrakSolzPlayer>(mod).ZoneTowerVoidPillar) {
                     spawnRate = (int)(spawnRate * 0.14f);
                     maxSpawns = (int)(maxSpawns * 5f);
                 }
             }
 
             public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo) {
-                if (spawnInfo.player.GetModPlayer<DrakSolzPlayer>(mod).ZoneTowerWhitePillar) {
+                if (spawnInfo.player.GetModPlayer<DrakSolzPlayer>(mod).ZoneTowerVoidPillar) {
                     pool.Clear();
-                    pool.Add(mod.NPCType<NPCs.Enemy.WhitePillar.SilverKnight>(), 1f);
-                    pool.Add(mod.NPCType<NPCs.Enemy.WhitePillar.SilverKnightSpear>(), 1f);
-                    pool.Add(mod.NPCType<NPCs.Enemy.WhitePillar.SilverKnightArcher>(), 0.5f);
-                    pool.Add(mod.NPCType<NPCs.Enemy.WhitePillar.BlackKnight>(), 0.2f);
-                    pool.Add(mod.NPCType<NPCs.Enemy.WhitePillar.MoonButterfly>(), 0.05f);
+                    pool.Add(mod.NPCType<NPCs.SilverKnight>(), 1f);
+                    pool.Add(mod.NPCType<NPCs.SilverKnightSpear>(), 1f);
+                    pool.Add(mod.NPCType<NPCs.SilverKnightArcher>(), 0.5f);
+                    pool.Add(mod.NPCType<NPCs.BlackKnight>(), 0.2f);
+                    pool.Add(mod.NPCType<NPCs.MoonButterfly>(), 0.05f);
                 }
             }
         }
