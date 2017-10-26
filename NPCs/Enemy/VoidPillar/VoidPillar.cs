@@ -9,9 +9,9 @@ using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DrakSolz.NPCs.Enemy.WhitePillar {
+namespace DrakSolz.NPCs.Enemy.VoidPillar {
     [AutoloadBossHead]
-    public class WhitePillar : ModNPC {
+    public class VoidPillar : ModNPC {
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Void Pillar");
@@ -38,14 +38,14 @@ namespace DrakSolz.NPCs.Enemy.WhitePillar {
         public override void AI() {
             Timer++;
             if (Timer % 20 == 0) {
-                if (Main.player[npc.target].GetModPlayer<DrakSolzPlayer>(mod).ZoneTowerWhitePillar) {
+                if (Main.player[npc.target].GetModPlayer<DrakSolzPlayer>(mod).ZoneTowerVoidPillar) {
                     var ShootPos = Main.player[npc.target].position + new Vector2(Main.rand.Next(-1000, 1000), -1000);
                     var ShootVel = new Vector2(Main.rand.NextFloat(-3f, 3f), Main.rand.NextFloat(0.8f, 4f));
                     int i = Projectile.NewProjectile(ShootPos, ShootVel, mod.ProjectileType("PillarProj"), 34, 1f);
                     Main.projectile[i].friendly = false;
                 }
             }
-            if (WhitePillarHandler.ShieldStrength > 0) {
+            if (VoidPillarHandler.ShieldStrength > 0) {
                 npc.dontTakeDamage = true;
             } else if (npc.dontTakeDamage) {
                 npc.ai[3] = 30f;
@@ -169,9 +169,9 @@ namespace DrakSolz.NPCs.Enemy.WhitePillar {
                 Item.NewItem((int) npc.position.X + Main.rand.Next(npc.width), (int) npc.position.Y + Main.rand.Next(npc.height), 2, 2, mod.ItemType("VoidFragment"), Main.rand.Next(1, 4));
             }
 
-            DrakSolzWorld.Boss.WhitePillar.Downed();
-            WhitePillarHandler.TowerX = -1;
-            WhitePillarHandler.TowerY = -1;
+            DrakSolzWorld.Boss.VoidPillar.Downed();
+            VoidPillarHandler.TowerX = -1;
+            VoidPillarHandler.TowerY = -1;
             if (NPC.LunarApocalypseIsUp) {
                 Main.NewText("Silent echos dance across your gaze...", 100, 100, 100);
             } else {
@@ -187,9 +187,9 @@ namespace DrakSolz.NPCs.Enemy.WhitePillar {
         }
 
         public override void PostDraw(SpriteBatch spriteBatch, Color drawColor) {
-            DrakSolzUtils.DrawNPCGlowMask(spriteBatch, npc, mod.GetTexture("NPCs/Enemy/WhitePillar/WhitePillar_GlowMask"));
-            float num88 = WhitePillarHandler.ShieldStrength / (float) NPC.ShieldStrengthTowerMax;
-            if (WhitePillarHandler.ShieldStrength > 0) {
+            DrakSolzUtils.DrawNPCGlowMask(spriteBatch, npc, mod.GetTexture("NPCs/Enemy/VoidPillar/VoidPillar_GlowMask"));
+            float num88 = VoidPillarHandler.ShieldStrength / (float) NPC.ShieldStrengthTowerMax;
+            if (VoidPillarHandler.ShieldStrength > 0) {
                 Main.spriteBatch.End();
                 Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.Default, RasterizerState.CullNone);
 
@@ -198,7 +198,7 @@ namespace DrakSolz.NPCs.Enemy.WhitePillar {
                 if (npc.ai[3] > 0f && npc.ai[3] <= 30f) {
                     num89 = 1f - npc.ai[3] / 30f;
                 }
-                Filters.Scene["DrakSolz:WhitePillar"].GetShader().UseIntensity(1f + num89).UseProgress(0f);
+                Filters.Scene["DrakSolz:VoidPillar"].GetShader().UseIntensity(1f + num89).UseProgress(0f);
                 DrawData drawData = new DrawData(TextureManager.Load("Images/Misc/Perlin"), center - new Vector2(0, 10), new Rectangle(0, 0, 600, 600), Color.White * (num88 * 0.8f + 0.2f), npc.rotation, new Vector2(300f, 300f), npc.scale * (1f + num89 * 0.05f), SpriteEffects.None, 0);
                 GameShaders.Misc["ForceField"].UseColor(new Vector3(1f + num89 * 0.5f));
                 GameShaders.Misc["ForceField"].Apply(drawData);
@@ -213,7 +213,7 @@ namespace DrakSolz.NPCs.Enemy.WhitePillar {
                 var center = npc.Center - Main.screenPosition;
                 float num90 = npc.ai[3] / 120f;
                 float num91 = Math.Min(npc.ai[3] / 30f, 1f);
-                Filters.Scene["DrakSolz:WhitePillar"].GetShader().UseIntensity(Math.Min(5f, 15f * num90) + 1f).UseProgress(num90);
+                Filters.Scene["DrakSolz:VoidPillar"].GetShader().UseIntensity(Math.Min(5f, 15f * num90) + 1f).UseProgress(num90);
                 DrawData drawData = new DrawData(TextureManager.Load("Images/Misc/Perlin"), center - new Vector2(0, 10), new Rectangle(0, 0, 600, 600), new Color(new Vector4(1f - (float) Math.Sqrt(num91))), npc.rotation, new Vector2(300f, 300f), npc.scale * (1f + num91), SpriteEffects.None, 0);
                 GameShaders.Misc["ForceField"].UseColor(new Vector3(2f));
                 GameShaders.Misc["ForceField"].Apply(drawData);
@@ -222,7 +222,7 @@ namespace DrakSolz.NPCs.Enemy.WhitePillar {
                 Main.spriteBatch.Begin();
                 return;
             }
-            Filters.Scene["DrakSolz:WhitePillar"].GetShader().UseIntensity(0f).UseProgress(0f);
+            Filters.Scene["DrakSolz:VoidPillar"].GetShader().UseIntensity(0f).UseProgress(0f);
         }
     }
 }

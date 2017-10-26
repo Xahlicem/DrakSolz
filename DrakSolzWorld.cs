@@ -15,7 +15,7 @@ namespace DrakSolz {
         public enum Boss {
             //AbyssStalker,
             //TitaniteDemon,
-            WhitePillar
+            VoidPillar
         }
 
         private Boss FindBossMatch(string boss) =>(Boss) Enum.Parse(typeof(Boss), boss, true);
@@ -113,7 +113,7 @@ namespace DrakSolz {
         }
         public override void ResetNearbyTileEffects() {
             DrakSolzPlayer modPlayer = Main.player[Main.myPlayer].GetModPlayer<DrakSolzPlayer>(mod);
-            //modPlayer.WhitePillarMonolith = false;
+            //modPlayer.VoidPillarMonolith = false;
         }
     }
 

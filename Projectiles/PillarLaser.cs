@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
-using DrakSolz.NPCs.Enemy.WhitePillar;
+using DrakSolz.NPCs.Enemy.VoidPillar;
 
 namespace DrakSolz.Projectiles
 {
@@ -50,13 +50,13 @@ namespace DrakSolz.Projectiles
 			}
 			for (int k = 0; k < 200; k++)
 			{
-				if (WhitePillarHandler.ShieldStrength > 0)
+				if (VoidPillarHandler.ShieldStrength > 0)
 				{
 					if (Main.npc[k].Hitbox.Intersects(projectile.Hitbox))
 					{
-						if (Main.npc[k].type == mod.NPCType("WhitePillar"))
+						if (Main.npc[k].type == mod.NPCType("VoidPillar"))
 						{
-							WhitePillarHandler.ShieldStrength--;
+							VoidPillarHandler.ShieldStrength--;
 							projectile.Kill();
 						}
 					}

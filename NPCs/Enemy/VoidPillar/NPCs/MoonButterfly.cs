@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DrakSolz.NPCs.Enemy.WhitePillar {
+namespace DrakSolz.NPCs.Enemy.VoidPillar.NPCs {
     public class MoonButterfly : ModNPC {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Moonlight Butterfly");
@@ -82,8 +82,8 @@ namespace DrakSolz.NPCs.Enemy.WhitePillar {
         }
         public override void HitEffect(int hitDirection, double damage) {
             if (npc.life <= 0) {
-                if (WhitePillarHandler.ShieldStrength > 0) {
-                    NPC parent = Main.npc[NPC.FindFirstNPC(mod.NPCType("WhitePillar"))];
+                if (VoidPillarHandler.ShieldStrength > 0) {
+                    NPC parent = Main.npc[NPC.FindFirstNPC(mod.NPCType("VoidPillar"))];
                     Vector2 Velocity = Helper.VelocityToPoint(npc.Center, parent.Center, 20);
                     Projectile.NewProjectile(npc.Center.X, npc.Center.Y, Velocity.X, Velocity.Y, mod.ProjectileType("PillarLaser"), 1, 1f);
                 }

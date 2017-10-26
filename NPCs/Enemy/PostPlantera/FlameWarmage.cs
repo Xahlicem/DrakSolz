@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DrakSolz.NPCs.Enemy {
+namespace DrakSolz.NPCs.Enemy.PostPlantera {
     public class FlameWarmage : ModNPC {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Flame Warmage");

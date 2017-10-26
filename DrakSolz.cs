@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using DrakSolz.NPCs.Enemy.WhitePillar;
+using DrakSolz.NPCs.Enemy.VoidPillar;
 using DrakSolz.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -74,16 +74,16 @@ namespace DrakSolz {
             userInterfacePlayer = new UserInterface();
             userInterfacePlayer.SetState(playerUI);
 
-            WhitePillarSky.PlanetTexture = GetTexture("NPCs/Enemy/WhitePillar/WhitePillarPlanet");
-            Filters.Scene["DrakSolz:WhitePillar"] = new Filter(new WhitePillarData("FilterMiniTower").UseColor(0.7f, 0.7f, 0.7f).UseOpacity(0.82f), EffectPriority.VeryHigh);
-            SkyManager.Instance["DrakSolz:WhitePillar"] = new WhitePillarSky();
+            VoidPillarSky.PlanetTexture = GetTexture("NPCs/Enemy/VoidPillar/VoidPillarPlanet");
+            Filters.Scene["DrakSolz:VoidPillar"] = new Filter(new VoidPillarData("FilterMiniTower").UseColor(0.7f, 0.7f, 0.7f).UseOpacity(0.82f), EffectPriority.VeryHigh);
+            SkyManager.Instance["DrakSolz:VoidPillar"] = new VoidPillarSky();
         }
 
         public override void Unload() {
             ListBossSoul = null;
             instance = null;
             if (!Main.dedServ) {
-                //WhitePillarGlowMask.Unload();
+                //VoidPillarGlowMask.Unload();
             }
         }
 
@@ -129,7 +129,7 @@ namespace DrakSolz {
                 //DukeFishron = 12f;
                 //LunaticCultist = 13f;
                 //Moonlord = 14f;
-                bossChecklist.Call("AddBossWithInfo", "White Pillar", 13.5f, (Func<bool>)(() => DrakSolzWorld.Boss.WhitePillar.IsDowned()), "Kill the Lunatic Cultist outside the dungeon");
+                bossChecklist.Call("AddBossWithInfo", "White Pillar", 13.5f, (Func<bool>)(() => DrakSolzWorld.Boss.VoidPillar.IsDowned()), "Kill the Lunatic Cultist outside the dungeon");
             }
         }
 

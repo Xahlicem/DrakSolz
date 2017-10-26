@@ -37,7 +37,7 @@ namespace DrakSolz {
         public int BossSoulTicks { get; set; }
         public int BossSouls { get; set; }
 
-        public bool ZoneTowerWhitePillar;
+        public bool ZoneTowerVoidPillar;
 
         public bool SoulSummon { get; set; }
         public bool HumSummon { get; set; }
@@ -103,12 +103,12 @@ namespace DrakSolz {
         }
 
         public override void UpdateBiomes() {
-            ZoneTowerWhitePillar = false;
+            ZoneTowerVoidPillar = false;
             if (!player.ZoneTowerSolar && !player.ZoneTowerVortex && !player.ZoneTowerNebula && !player.ZoneTowerStardust) {
                 for (int i = 0; i < Main.maxNPCs; i++) {
                     var npc = Main.npc[i];
-                    if (npc != null && npc.active && npc.type == mod.NPCType<NPCs.Enemy.WhitePillar.WhitePillar>() && player.Distance(npc.Center) <= 4000f) {
-                        ZoneTowerWhitePillar = true;
+                    if (npc != null && npc.active && npc.type == mod.NPCType<NPCs.Enemy.VoidPillar.VoidPillar>() && player.Distance(npc.Center) <= 4000f) {
+                        ZoneTowerVoidPillar = true;
                     }
                 }
             }
@@ -116,17 +116,17 @@ namespace DrakSolz {
 
         public override bool CustomBiomesMatch(Player other) {
             var modOther = other.GetModPlayer<DrakSolzPlayer>(mod);
-            return ZoneTowerWhitePillar == modOther.ZoneTowerWhitePillar;
+            return ZoneTowerVoidPillar == modOther.ZoneTowerVoidPillar;
         }
 
         public override void CopyCustomBiomesTo(Player other) {
             var modOther = other.GetModPlayer<DrakSolzPlayer>(mod);
-            modOther.ZoneTowerWhitePillar = ZoneTowerWhitePillar;
+            modOther.ZoneTowerVoidPillar = ZoneTowerVoidPillar;
         }
 
         public override void SendCustomBiomes(BinaryWriter writer) {
             byte flags = 0;
-            if (ZoneTowerWhitePillar) {
+            if (ZoneTowerVoidPillar) {
                 flags |= 1;
             }
             writer.Write(flags);
@@ -134,13 +134,13 @@ namespace DrakSolz {
 
         public override void ReceiveCustomBiomes(BinaryReader reader) {
             byte flags = reader.ReadByte();
-            ZoneTowerWhitePillar = ((flags & 1) == 1);
+            ZoneTowerVoidPillar = ((flags & 1) == 1);
         }
 
         public override void UpdateBiomeVisuals() {
             DrakSolzPlayer modPlayer = Main.player[Main.myPlayer].GetModPlayer<DrakSolzPlayer>(mod);
-            bool useWhite = ZoneTowerWhitePillar;
-            player.ManageSpecialBiomeVisuals("DrakSolz:WhitePillar", useWhite);
+            bool useWhite = ZoneTowerVoidPillar;
+            player.ManageSpecialBiomeVisuals("DrakSolz:VoidPillar", useWhite);
         }
 
         public override void ProcessTriggers(TriggersSet triggersSet) { }

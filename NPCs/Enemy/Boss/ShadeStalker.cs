@@ -4,11 +4,12 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DrakSolz.NPCs.Enemy {
-    public class AbyssStalker : ModNPC {
+namespace DrakSolz.NPCs.Enemy.Boss {
+    // This ModNPC serves as an example of a complete AI example.
+    public class ShadeStalker : ModNPC {
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault("Abyss Stalker");
-            Main.npcFrameCount[npc.type] = 24;
+            DisplayName.SetDefault("Shade Stalker");
+            Main.npcFrameCount[npc.type] = 24; // make sure to set this for your modnpcs.
         }
 
         public override void SetDefaults() {
@@ -17,28 +18,42 @@ namespace DrakSolz.NPCs.Enemy {
             npc.height = 45;
             npc.aiStyle = -1; // This npc has a completely unique AI, so we set this to -1.
             npc.damage = 50;
-            npc.defense = 40;
-            npc.lifeMax = 20000;
+            npc.defense = 30;
+            npc.lifeMax = 10000;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
+            npc.alpha = 50;
+            //npc.color = new Color(0, 80, 255, 100);
             npc.value = 50000f;
-            npc.altTexture = 1;
             npc.knockBackResist = 0f;
-            npc.buffImmune[BuffID.Confused] = true;
+            npc.buffImmune[BuffID.Confused] = true; // npc default to being immune to the Confused debuff. Allowing confused could be a little more work depending on the AI. npc.confused is true while the npc is confused.
         }
-        
+
+        // These const ints are for the benefit of the programmer. Organization is key to making an AI that behaves properly without driving you crazy.
+        // Here I lay out what I will use each of the 4 npc.ai slots for.
         const int AI_State_Slot = 0;
         const int AI_Timer_Slot = 1;
         const int AI_Falling_Slot = 2;
         const int AI_Away_Slot = 3;
 
+        // npc.localAI will also have 4 float variables available to use. With ModNPC, using just a local class member variable would have the same effect.
+        const int Local_AI_Unused_Slot_0 = 0;
+        const int Local_AI_Unused_Slot_1 = 1;
+        const int Local_AI_Unused_Slot_2 = 2;
+        const int Local_AI_Unused_Slot_3 = 3;
+
+        // Here I define some values I will use with the State slot. Using an ai slot as a means to store "state" can simplify things greatly. Think flowchart.
         const int State_Still = 0;
         const int State_Walk = 1;
         const int State_Attack = 2;
         const int State_Jump = 3;
         const int State_Falling = 4;
         const int State_Fallen = 5;
-        
+
+        // This is a property (https://msdn.microsoft.com/en-us/library/x9fsa0sw.aspx), it is very useful and helps keep out AI code clear of clutter.
+        // Without it, every instance of "AI_State" in the AI code below would be "npc.ai[AI_State_Slot]". 
+        // Also note that without the "AI_State_Slot" defined above, this would be "npc.ai[0]".
+        // This is all to just make beautiful, manageable, and clean code.
         public float AI_State {
             get { return npc.ai[AI_State_Slot]; }
             set { npc.ai[AI_State_Slot] = value; }
@@ -70,7 +85,6 @@ namespace DrakSolz.NPCs.Enemy {
             } else AI_Falling_Timer = 0;
             // The npc starts in the asleep state, waiting for a player to enter range
             if (AI_State == State_Still) {
-
                 // TargetClosest sets npc.target to the player.whoAmI of the closest player. the faceTarget parameter means that npc.direction will automatically be 1 or -1 if the targetted player is to the right or left. This is also automatically flipped if npc.confused
                 npc.TargetClosest(true);
 
@@ -90,13 +104,13 @@ namespace DrakSolz.NPCs.Enemy {
                 AI_Away_Timer++;
                 npc.TargetClosest();
                 npc.velocity.X = npc.direction * (9 - ((npc.life + 1) / 5000));
-                if (npc.HasValidTarget && Main.player[npc.target].Distance(npc.Center) < 80f) {
+                if (npc.HasValidTarget && Main.player[npc.target].Distance(npc.Center) < 70f) {
                     npc.velocity.X = 0;
                     AI_Away_Timer = 0;
                     AI_State = State_Attack;
                     npc.frameCounter = 0;
                 }
-                if ((npc.HasValidTarget && Main.player[npc.target].Distance(npc.Center) > 500f) || AI_Away_Timer >= 80) {
+                if ((npc.HasValidTarget && Main.player[npc.target].Distance(npc.Center) > 500f) || AI_Away_Timer >= 70) {
                     AI_State = State_Jump;
                     AI_Away_Timer = 0;
                 }
@@ -176,10 +190,15 @@ namespace DrakSolz.NPCs.Enemy {
         const int Frame_Jump_4 = 22;
         const int Frame_Jump_5 = 23;
 
+        // Here in FindFrame, we want to set the animation frame our npc will use depending on what it is doing.
+        // We set npc.frame.Y to x * frameHeight where x is the xth frame in our spritesheet, counting from 0. For convinience, I have defined some consts above.
         public override void FindFrame(int frameHeight) {
+            // This makes the sprite flip horizontally in conjunction with the npc.direction.
             npc.spriteDirection = npc.direction;
 
+            // For the most part, our animation matches up with our states.
             if (AI_State == State_Still) {
+                // npc.frame.Y is the goto way of changing animation frames. npc.frame starts from the top left corner in pixel coordinates, so keep that in mind.
                 npc.frame.Y = Frame_Still * frameHeight;
                 npc.velocity = new Vector2(npc.direction * 0, 0);
             } else if (AI_State == State_Fallen) {
@@ -201,6 +220,7 @@ namespace DrakSolz.NPCs.Enemy {
                 npc.frame.Y = Frame_Jump_4 * frameHeight;
                 npc.frameCounter = 0;
             } else if (AI_State == State_Attack) {
+                // Going from Notice to Asleep makes our npc look like it's crouching to jump.
                 npc.frameCounter++;
                 if (npc.frameCounter < 5) {
                     npc.frame.Y = Frame_Attack_1 * frameHeight;
@@ -226,6 +246,7 @@ namespace DrakSolz.NPCs.Enemy {
                     npc.frameCounter = 0;
                 }
             } else if (AI_State == State_Jump) {
+                // Going from Notice to Asleep makes our npc look like it's crouching to jump.
                 npc.frameCounter++;
                 if (npc.frameCounter < 5) {
                     npc.frame.Y = Frame_Jump_1 * frameHeight;
@@ -237,6 +258,7 @@ namespace DrakSolz.NPCs.Enemy {
                     npc.frame.Y = Frame_Jump_4 * frameHeight;
                 }
             } else if (AI_State == State_Walk) {
+                // Here we have 3 frames that we want to cycle through.
                 npc.frameCounter++;
                 if (npc.frameCounter < 4) {
                     npc.frame.Y = Frame_Walk_1 * frameHeight;

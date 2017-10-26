@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DrakSolz.NPCs.Enemy {
+namespace DrakSolz.NPCs.Enemy.PreHardMode {
     public class Channeler : ModNPC {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Channeler");
@@ -16,8 +16,8 @@ namespace DrakSolz.NPCs.Enemy {
             npc.height = 56;
             npc.aiStyle = -1;
             npc.damage = 25;
-            npc.defense = 25;
-            npc.lifeMax = 250;
+            npc.defense = 15;
+            npc.lifeMax = 200;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 25f;
@@ -33,6 +33,20 @@ namespace DrakSolz.NPCs.Enemy {
             npc.ai[3] = -1f;
             banner = npc.type;
             bannerItem = mod.ItemType<Items.Banners.ChannelerBanner>();
+        }
+
+        public override int SpawnNPC(int tileX, int tileY) {
+            if (Main.hardMode) {
+                npc.lifeMax *= 5;
+                npc.defDamage *= 3;
+                npc.damage *= 3;
+            }
+            if (NPC.downedAncientCultist) {
+                npc.lifeMax *= 5;
+                npc.defDefense *= 3;
+                npc.defense *= 3;
+            }
+            return base.SpawnNPC(tileX, tileY);
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
@@ -109,7 +123,7 @@ namespace DrakSolz.NPCs.Enemy {
                         DrakSolz.AdjustMagnitude(ref speed, 7.5f);
                         AI_Timer = 0;
                         if (Main.netMode != 1) {
-                            Projectile.NewProjectile(npc.Center.X + 6, npc.Center.Y - 16, speed.X, speed.Y, mod.ProjectileType<Projectiles.Magic.SoulSpearProj>(), npc.damage, 0f);
+                            Projectile.NewProjectile(npc.Center.X + 6, npc.Center.Y - 16, speed.X, speed.Y, mod.ProjectileType<Projectiles.Magic.SoulSpearProj>(), npc.damage / 2, 0f);
                         }
                     }
                 }

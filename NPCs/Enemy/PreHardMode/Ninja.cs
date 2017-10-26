@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DrakSolz.NPCs.Enemy {
+namespace DrakSolz.NPCs.Enemy.PreHardMode {
 
     public class Ninja : ModNPC {
         public override void SetStaticDefaults() {
