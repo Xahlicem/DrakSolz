@@ -29,7 +29,7 @@ namespace DrakSolz.Items.Accessory {
             recipe.AddIngredient(ItemID.SoulofFright, 5);
             recipe.SetResult(ItemID.AvengerEmblem);
             recipe.AddRecipe();
-            recipe = new ModRecipe(mod);
+            /*recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.WarriorEmblem);
             recipe.SetResult(this);
             recipe.AddRecipe();
@@ -44,7 +44,7 @@ namespace DrakSolz.Items.Accessory {
             recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.SummonerEmblem);
             recipe.SetResult(this);
-            recipe.AddRecipe();
+            recipe.AddRecipe();*/
         }
     }
 
