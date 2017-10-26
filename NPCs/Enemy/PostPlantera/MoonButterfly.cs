@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DrakSolz.NPCs.Enemy.VoidPillar.NPCs {
+namespace DrakSolz.NPCs.Enemy.PostPlantera {
     public class MoonButterfly : ModNPC {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Moonlight Butterfly");
@@ -30,6 +30,13 @@ namespace DrakSolz.NPCs.Enemy.VoidPillar.NPCs {
             banner = npc.type;
             bannerItem = mod.ItemType<Items.Banners.MoonButterflyBanner>();
         }
+
+        public override float SpawnChance(NPCSpawnInfo spawnInfo) {
+            if (NPC.downedGolemBoss)
+                return SpawnCondition.OverworldNightMonster.Chance * 0.075f;
+            else return 0f;
+        }
+
         const int AI_Timer_Slot = 3;
 
         public float AI_Timer {
@@ -80,15 +87,7 @@ namespace DrakSolz.NPCs.Enemy.VoidPillar.NPCs {
                 npc.netUpdate = true;
             }
         }
-        public override void HitEffect(int hitDirection, double damage) {
-            if (npc.life <= 0) {
-                if (VoidPillarHandler.ShieldStrength > 0) {
-                    NPC parent = Main.npc[NPC.FindFirstNPC(mod.NPCType("VoidPillar"))];
-                    Vector2 Velocity = Helper.VelocityToPoint(npc.Center, parent.Center, 20);
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, Velocity.X, Velocity.Y, mod.ProjectileType("PillarLaser"), 1, 1f);
-                }
-            }
-        }
+
         public override void NPCLoot() {
             int g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/MoonButterfly_Gore_6"));
             Main.gore[g].scale = npc.scale;

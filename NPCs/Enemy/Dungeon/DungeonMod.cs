@@ -28,10 +28,10 @@ namespace DrakSolz.NPCs.Enemy.Dungeon {
                 pool.Add(mod.NPCType<Inhumanity>(), 6f);
                 //pool.Add(NPCID.CultistArcherBlue, 4f);
                 pool.Add(mod.NPCType<PreHardMode.Channeler>(), 1f);
-                pool.Add(mod.NPCType<VoidPillar.NPCs.BlackKnight>(), 1f);
-                pool.Add(mod.NPCType<VoidPillar.NPCs.SilverKnight>(), 4f);
-                pool.Add(mod.NPCType<VoidPillar.NPCs.SilverKnightArcher>(), 2f);
-                pool.Add(mod.NPCType<VoidPillar.NPCs.SilverKnightSpear>(), 4f);
+                pool.Add(mod.NPCType<BlackKnight>(), 1f);
+                pool.Add(mod.NPCType<SilverKnight>(), 4f);
+                pool.Add(mod.NPCType<SilverKnightArcher>(), 2f);
+                pool.Add(mod.NPCType<SilverKnightSpear>(), 4f);
             }
         }
     }

@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DrakSolz.NPCs.Enemy.VoidPillar.NPCs {
+namespace DrakSolz.NPCs.Enemy.Dungeon {
     public class SilverKnightArcher : ModNPC {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Silver Knight Archer");
@@ -46,7 +46,6 @@ namespace DrakSolz.NPCs.Enemy.VoidPillar.NPCs {
         }
 
         public override void AI() {
-            npc.timeLeft = 60;
             npc.TargetClosest();
             if (npc.HasValidTarget) {
                 Vector2 target = Main.player[npc.target].Center;
@@ -74,15 +73,6 @@ namespace DrakSolz.NPCs.Enemy.VoidPillar.NPCs {
                 } else AI_Timer = 15;
             } else AI_Timer = 15;
             AI_Timer++;
-        }
-        public override void HitEffect(int hitDirection, double damage) {
-            if (npc.life <= 0) {
-                if (VoidPillarHandler.ShieldStrength > 0) {
-                    NPC parent = Main.npc[NPC.FindFirstNPC(mod.NPCType("VoidPillar"))];
-                    Vector2 Velocity = Helper.VelocityToPoint(npc.Center, parent.Center, 20);
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, Velocity.X, Velocity.Y, mod.ProjectileType("PillarLaser"), 1, 1f);
-                }
-            }
         }
 
         public int GetFrame(int angle) {

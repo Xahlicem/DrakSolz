@@ -122,11 +122,8 @@ namespace DrakSolz.NPCs.Enemy.VoidPillar {
         }
 
         static readonly string[] VoidPillarNPCs = {
-            "SilverKnight",
-            "SilverKnightSpear",
-            "SilverKnightArcher",
-            "BlackKnight",
-            "MoonlightButterfly"
+            "Voidling",
+            ""
         };
 
         public class AuroraGlobalNPC : GlobalNPC {
@@ -140,11 +137,7 @@ namespace DrakSolz.NPCs.Enemy.VoidPillar {
             public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo) {
                 if (spawnInfo.player.GetModPlayer<DrakSolzPlayer>(mod).ZoneTowerVoidPillar) {
                     pool.Clear();
-                    pool.Add(mod.NPCType<NPCs.SilverKnight>(), 1f);
-                    pool.Add(mod.NPCType<NPCs.SilverKnightSpear>(), 1f);
-                    pool.Add(mod.NPCType<NPCs.SilverKnightArcher>(), 0.5f);
-                    pool.Add(mod.NPCType<NPCs.BlackKnight>(), 0.2f);
-                    pool.Add(mod.NPCType<NPCs.MoonButterfly>(), 0.05f);
+                    pool.Add(mod.NPCType<NPCs.Voidling>(), 10f);
                 }
             }
         }

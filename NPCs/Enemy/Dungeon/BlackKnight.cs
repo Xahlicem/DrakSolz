@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DrakSolz.NPCs.Enemy.VoidPillar.NPCs {
+namespace DrakSolz.NPCs.Enemy.Dungeon {
     public class BlackKnight : ModNPC {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Black Knight");
@@ -30,20 +30,6 @@ namespace DrakSolz.NPCs.Enemy.VoidPillar.NPCs {
             bannerItem = mod.ItemType<Items.Banners.BlackKnightBanner>();
         }
 
-        public override void AI() {
-            npc.timeLeft = 60;
-            npc.TargetClosest();
-        }
-        
-        public override void HitEffect(int hitDirection, double damage) {
-            if (npc.life <= 0) {
-                if (VoidPillarHandler.ShieldStrength > 0) {
-                    NPC parent = Main.npc[NPC.FindFirstNPC(mod.NPCType("VoidPillar"))];
-                    Vector2 Velocity = Helper.VelocityToPoint(npc.Center, parent.Center, 20);
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, Velocity.X, Velocity.Y, mod.ProjectileType("PillarLaser"), 1, 1f);
-                }
-            }
-        }
         public override void NPCLoot() {
             int g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/BlackKnight_Gore_1"));
             Main.gore[g].scale = npc.scale;
