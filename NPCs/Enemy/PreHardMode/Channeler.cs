@@ -35,20 +35,6 @@ namespace DrakSolz.NPCs.Enemy.PreHardMode {
             bannerItem = mod.ItemType<Items.Banners.ChannelerBanner>();
         }
 
-        public override int SpawnNPC(int tileX, int tileY) {
-            if (Main.hardMode) {
-                npc.lifeMax *= 5;
-                npc.defDamage *= 3;
-                npc.damage *= 3;
-            }
-            if (NPC.downedAncientCultist) {
-                npc.lifeMax *= 5;
-                npc.defDefense *= 3;
-                npc.defense *= 3;
-            }
-            return base.SpawnNPC(tileX, tileY);
-        }
-
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
             return SpawnCondition.Dungeon.Chance * 0.05f;
         }
