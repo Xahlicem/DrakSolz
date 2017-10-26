@@ -43,6 +43,14 @@ namespace DrakSolz.NPCs.Enemy.PreHardMode {
             npc.spriteDirection = npc.direction;
         }
 
+        public override bool PreAI() {
+            if (npc.ai[3] == -120) {
+                npc.ai[3] = 0;
+                Utils.PoofOfSmoke(npc.Center);
+            }
+            return true;
+        }
+
         public override void AI() {
             npc.TargetClosest(true);
             float distance = Main.player[npc.target].Distance(npc.Center);
