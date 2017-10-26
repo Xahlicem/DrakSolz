@@ -43,17 +43,19 @@ namespace DrakSolz.NPCs.Enemy.VoidPillar.NPCs {
         public override void HitEffect(int hitDirection, double damage) {
             if (npc.life <= 0) {
                 if (VoidPillarHandler.ShieldStrength > 0) {
-                    for (int i = 0; i < 20; i++) {
-                        int dust = Dust.NewDust(npc.position, npc.width, npc.height, DustID.Smoke, 0, 0, 0, Color.Black);
-                        Main.dust[dust].velocity *= 1f + Main.rand.NextFloat();
-                        Main.dust[dust].scale *= 0.5f + Main.rand.NextFloat();
-                        Main.dust[dust].noGravity = true;
-                    }
-
                     NPC parent = Main.npc[NPC.FindFirstNPC(mod.NPCType<VoidPillar>())];
                     Vector2 Velocity = Helper.VelocityToPoint(npc.Center, parent.Center, 20);
                     Projectile.NewProjectile(npc.Center.X, npc.Center.Y, Velocity.X, Velocity.Y, mod.ProjectileType("PillarLaser"), 1, 1f);
                 }
+            }
+        }
+
+        public override void NPCLoot() {
+            for (int i = 0; i < 20; i++) {
+                int dust = Dust.NewDust(npc.position, npc.width, npc.height, DustID.Smoke, 0, 0, 0, Color.Black);
+                Main.dust[dust].velocity *= 1f + Main.rand.NextFloat();
+                Main.dust[dust].scale *= 0.5f + Main.rand.NextFloat();
+                Main.dust[dust].noGravity = true;
             }
         }
 
