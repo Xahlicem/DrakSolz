@@ -20,6 +20,7 @@ namespace DrakSolz.Items.Accessory {
 
         public override void UpdateAccessory(Player player, bool hideVisual) {
             player.maxRunSpeed += 0.30f;
+            player.moveSpeed += 0.15f;
             player.meleeSpeed += 0.15f;
         }
     }
