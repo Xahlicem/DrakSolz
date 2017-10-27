@@ -48,6 +48,8 @@ namespace DrakSolz.NPCs.Enemy.VoidPillar.NPCs {
             npc.buffImmune[24] = true;
             npc.buffImmune[67] = true;
             npc.lavaImmune = true;
+            banner = npc.type;
+            bannerItem = mod.ItemType<Items.Banners.VoidEaterBanner>();
         }
 		public override void OnHitPlayer(Player player, int damage, bool crit) {
             player.AddBuff(BuffID.Darkness, 300);
