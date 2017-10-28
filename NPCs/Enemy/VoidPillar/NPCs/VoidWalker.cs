@@ -44,5 +44,9 @@ namespace DrakSolz.NPCs.Enemy.VoidPillar.NPCs {
                 }
             }
         }
+        
+        public override void PostDraw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Color drawColor) {
+            DrakSolzUtils.DrawNPCGlowMask(spriteBatch, npc, mod.GetTexture("NPCs/Enemy/VoidPillar/NPCs/VoidWalker_GlowMask"), -6f);
+        }
     }
 }
