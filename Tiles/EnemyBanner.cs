@@ -81,6 +81,18 @@ namespace DrakSolz.Tiles {
                 case 17:
                     item = "InhumanityBanner";
                     break;
+                case 18:
+                    item = "NightMareBanner";
+                    break;
+                case 19:
+                    item = "VoidEaterBanner";
+                    break;
+                case 20:
+                    item = "VoidWalkerBanner";
+                    break;
+                case 21:
+                    item = "VoidlingBanner";
+                    break;
                 default:
                     return;
             }
@@ -146,6 +158,18 @@ namespace DrakSolz.Tiles {
                         break;
                     case 17:
                         type = "Inhumanity";
+                        break;
+                    case 18:
+                        type = "NightMare";
+                        break;
+                    case 19:
+                        type = "VoidEater";
+                        break;
+                    case 20:
+                        type = "VoidWalker";
+                        break;
+                    case 21:
+                        type = "Voidling";
                         break;
                     default:
                         return;

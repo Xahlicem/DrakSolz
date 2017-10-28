@@ -24,8 +24,8 @@ namespace DrakSolz.NPCs.Enemy.VoidPillar.NPCs {
             npc.lifeMax = 500;
             npc.value = 10000f;
             npc.knockBackResist = 0.15f;
-            //banner = npc.type;
-            //bannerItem = mod.ItemType<Items.Banners.BlackKnightBanner>();
+            banner = npc.type;
+            bannerItem = mod.ItemType<Items.Banners.VoidlingBanner>();
         }
 
         public override bool PreAI() {

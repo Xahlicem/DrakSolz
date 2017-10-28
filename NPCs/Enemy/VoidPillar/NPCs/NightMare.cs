@@ -26,8 +26,8 @@ namespace DrakSolz.NPCs.Enemy.VoidPillar.NPCs {
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 10000f;
             npc.knockBackResist = 0.03f;
-            //banner = npc.type;
-            //bannerItem = mod.ItemType<Items.Banners.BlackKnightBanner>();
+            banner = npc.type;
+            bannerItem = mod.ItemType<Items.Banners.NightMareBanner>();
         }
 
         public override void AI() {
