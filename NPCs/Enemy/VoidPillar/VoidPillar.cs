@@ -62,7 +62,7 @@ namespace DrakSolz.NPCs.Enemy.VoidPillar {
             }
             for (int num1940 = 0; num1940 < 3; num1940++) {
                 if (Main.rand.Next(5) == 0) {
-                    Dust dust22 = Main.dust[Dust.NewDust(npc.Top + new Vector2(-(float) npc.width * (0.33f - 0.11f * num1940), -20f), (int)(npc.width * (0.66f - 0.22f * num1940)), 20, 135, 0f, 0f, 0, default(Color), 1f)];
+                    Dust dust22 = Main.dust[Dust.NewDust(npc.Top + new Vector2(-(float) npc.width * (0.33f - 0.11f * num1940), -20f), (int)(npc.width * (0.66f - 0.22f * num1940)), 20, 241, 0f, 0f, 0, default(Color), 1f)];
                     dust22.velocity.X = 0f;
                     dust22.velocity.Y = -Math.Abs(dust22.velocity.Y - num1940 + npc.velocity.Y - 4f) * 1f;
                     dust22.noGravity = true;
@@ -83,7 +83,7 @@ namespace DrakSolz.NPCs.Enemy.VoidPillar {
                 if (npc.ai[1] > 120f) {
                     npc.Opacity = 1f - (npc.ai[1] - 120f) / 60f;
                 }
-                int dustID = 59;
+                int dustID = DustID.Smoke;
                 if (Main.rand.Next(5) == 0 && npc.ai[1] < 120f) {
                     for (int i = 0; i < 3; i++) {
                         Dust dust4 = Main.dust[Dust.NewDust(npc.Left, npc.width, npc.height / 2, dustID)];
@@ -125,7 +125,7 @@ namespace DrakSolz.NPCs.Enemy.VoidPillar {
                     }
                 }
                 if (Main.rand.Next(3) != 0 && npc.ai[1] < 150f) {
-                    Dust dust7 = Main.dust[Dust.NewDust(npc.Left, npc.width, npc.height / 2, DustID.MarblePot)];
+                    Dust dust7 = Main.dust[Dust.NewDust(npc.Left, npc.width, npc.height / 2, DustID.Smoke)];
                     dust7.position = npc.Center + Vector2.UnitY.RotatedByRandom(4.1887903213500977) * new Vector2(npc.width / 2, npc.height / 2) * (0.8f + Main.rand.NextFloat() * 0.2f);
                     dust7.velocity.X = 0f;
                     dust7.velocity.Y = Math.Abs(dust7.velocity.Y) * 0.25f;

@@ -123,7 +123,10 @@ namespace DrakSolz.NPCs.Enemy.VoidPillar {
 
         static readonly string[] VoidPillarNPCs = {
             "Voidling",
-            ""
+            "Void Eater",
+            "Void Walker",
+            "Night Mare",
+            "Void Mimic"
         };
 
         public class AuroraGlobalNPC : GlobalNPC {
@@ -137,7 +140,11 @@ namespace DrakSolz.NPCs.Enemy.VoidPillar {
             public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo) {
                 if (spawnInfo.player.GetModPlayer<DrakSolzPlayer>(mod).ZoneTowerVoidPillar) {
                     pool.Clear();
-                    pool.Add(mod.NPCType<NPCs.Voidling>(), 10f);
+                    pool.Add(mod.NPCType<NPCs.Voidling>(), 35f);
+                    pool.Add(mod.NPCType<NPCs.VoidEaterHead>(), 10f);
+                    pool.Add(mod.NPCType<NPCs.VoidWalker>(), 25f);
+                    pool.Add(mod.NPCType<NPCs.NightMare>(), 20f);
+                    pool.Add(mod.NPCType<NPCs.VoidMimic>(), 10f);
                 }
             }
         }

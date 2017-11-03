@@ -28,7 +28,7 @@ namespace DrakSolz.NPCs.Enemy.VoidPillar.NPCs {
             npc.buffImmune[67] = true;
             npc.lavaImmune = true;
         }
-		public override void OnHitPlayer(Player player, int damage, bool crit) {
+        public override void OnHitPlayer(Player player, int damage, bool crit) {
             player.AddBuff(BuffID.Darkness, 300);
         }
 
@@ -41,26 +41,8 @@ namespace DrakSolz.NPCs.Enemy.VoidPillar.NPCs {
             }
         }
 
-        public override bool CheckActive() {
-            return false;
-        }
+        public override bool CheckActive() => false;
 
-        public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position) {
-            return false;
-        }
-
-        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor) {
-            Texture2D drawTexture = Main.npcTexture[npc.type];
-            Vector2 origin = new Vector2((drawTexture.Width / 2) * 0.5F, (drawTexture.Height / Main.npcFrameCount[npc.type]) * 0.5F);
-
-            Vector2 drawPos = new Vector2(
-                npc.position.X - Main.screenPosition.X + (npc.width / 2) - (Main.npcTexture[npc.type].Width / 2) * npc.scale / 2f + origin.X * npc.scale,
-                npc.position.Y - Main.screenPosition.Y + npc.height - Main.npcTexture[npc.type].Height * npc.scale / Main.npcFrameCount[npc.type] + 4f + origin.Y * npc.scale + npc.gfxOffY);
-
-            SpriteEffects effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-            spriteBatch.Draw(drawTexture, drawPos, npc.frame, Color.White, npc.rotation, origin, npc.scale, effects, 0);
-
-            return false;
-        }
+        public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position) => false;
     }
 }

@@ -34,18 +34,12 @@ namespace DrakSolz {
 
         public static bool IsDowned(this DrakSolzWorld.Boss boss) => DrakSolzWorld.downedBoss[boss];
 
-        /*public static void DrawNPCGlowMask(SpriteBatch spriteBatch, NPC npc, Texture2D texture)
-        {
-        	var effects = npc.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-        	spriteBatch.Draw(texture, npc.Center - Main.screenPosition + new Vector2(0, npc.gfxOffY), npc.frame,
-        					 Color.White, npc.rotation, npc.frame.Size() / 2, npc.scale, effects, 0);
-        }*/
         public static void RedundantFunc() {
             var something = System.Linq.Enumerable.Range(1, 10);
         }
-        public static void DrawNPCGlowMask(SpriteBatch spriteBatch, NPC npc, Texture2D texture) {
-            var effects = npc.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-            spriteBatch.Draw(texture, npc.Center - Main.screenPosition + new Vector2(0, npc.gfxOffY), npc.frame,
+        public static void DrawNPCGlowMask(SpriteBatch spriteBatch, NPC npc, Texture2D texture, float yOffset = 0f) {
+            var effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+            spriteBatch.Draw(texture, npc.Center - Main.screenPosition + new Vector2(0, npc.gfxOffY+ yOffset), npc.frame,
                 Color.White, npc.rotation, npc.frame.Size() / 2, npc.scale, effects, 0);
         }
     }
