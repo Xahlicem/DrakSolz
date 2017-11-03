@@ -29,6 +29,9 @@ namespace DrakSolz.NPCs.Enemy {
             banner = npc.type;
             bannerItem = mod.ItemType<Items.Banners.RingedKnightBanner>();
         }
+        public override void PostDraw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Color drawColor) {
+            DrakSolzUtils.DrawNPCGlowMask(spriteBatch, npc, mod.GetTexture("NPCs/Enemy/RingedKnight_GlowMask"), -4f);
+        }
 
         /*public override void NPCLoot() {
             int g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/BlackKnight_Gore_1"));
