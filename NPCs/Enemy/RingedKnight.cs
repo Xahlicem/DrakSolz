@@ -19,15 +19,20 @@ namespace DrakSolz.NPCs.Enemy {
             //npc.aiStyle = 39;
             aiType = NPCID.SolarSolenian;
             animationType = NPCID.SolarSolenian;
-            npc.damage = 95;
-            npc.defense = 55;
-            npc.lifeMax = 1400;
+            npc.damage = 110;
+            npc.defense = 60;
+            npc.lifeMax = 2000;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 10000f;
-            npc.knockBackResist = 0.03f;
+            npc.knockBackResist = 0.02f;
             banner = npc.type;
             bannerItem = mod.ItemType<Items.Banners.RingedKnightBanner>();
+        }
+        public override float SpawnChance(NPCSpawnInfo spawnInfo) {
+            if (NPC.downedAncientCultist) {
+                return SpawnCondition.Underworld.Chance * 0.15f;
+            } else return 0f;
         }
         public override void PostDraw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Color drawColor) {
             DrakSolzUtils.DrawNPCGlowMask(spriteBatch, npc, mod.GetTexture("NPCs/Enemy/RingedKnight_GlowMask"), -4f);
