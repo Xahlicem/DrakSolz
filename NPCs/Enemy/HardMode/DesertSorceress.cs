@@ -44,6 +44,7 @@ namespace DrakSolz.NPCs.Enemy.HardMode {
                 Item.NewItem(npc.Center, npc.width, npc.height, Utils.SelectRandom(Main.rand, new int[] { 
                     mod.ItemType<Items.Armor.DesertSorceress.SorceressHood>(), mod.ItemType<Items.Armor.DesertSorceress.SorceressSkirt>(), mod.ItemType<Items.Armor.DesertSorceress.SorceressTop>() 
                 }));
+            if (Main.rand.Next(50) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Magic.Pyro.FlameFan>());
         }
     }
 }
