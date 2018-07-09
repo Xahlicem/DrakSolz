@@ -25,12 +25,12 @@ namespace DrakSolz.Projectiles {
             projectile.magic = true; //Is the projectile shoot by a magic weapon?
             projectile.penetrate = 1; //How many monsters the projectile can penetrate. (OnTileCollide below also decrements penetrate for bounces as well)
             projectile.timeLeft = 120; //The live time for the projectile (60 = 1 second, so 600 is 10 seconds)
-            projectile.alpha = 0; //The transparency of the projectile, 255 for completely transparent. (aiStyle 1 quickly fades the projectile in)
+            projectile.alpha = 255; //The transparency of the projectile, 255 for completely transparent. (aiStyle 1 quickly fades the projectile in)
             //projectile.light = 1.0f;            //How much light emit around the projectile
             projectile.ignoreWater = true; //Does the projectile's speed be influenced by water?
             projectile.tileCollide = true; //Can the projectile collide with tiles?
             projectile.extraUpdates = 1; //Set to above 0 if you want the projectile to update multiple time in a frame
-            projectile.scale *= 1.0f;
+            projectile.scale *= 1.5f;
             aiType = ProjectileID.DiamondBolt; //Act exactly like default Bullet
         }
 
@@ -63,9 +63,9 @@ namespace DrakSolz.Projectiles {
 			return false;
 }
         public override void AI() {
-            projectile.rotation = (float) Math.Atan2((double) projectile.velocity.Y, (double) projectile.velocity.X) + MathHelper.ToRadians(90f);
+            projectile.rotation = (float) Math.Atan2((double) projectile.velocity.Y, (double) projectile.velocity.X) + MathHelper.ToRadians(270f);
             if (projectile.spriteDirection == -1) {
-                projectile.rotation -= MathHelper.ToRadians(270f);
+                projectile.rotation -= MathHelper.ToRadians(90f);
             }
 
             projectile.ai[0]++;

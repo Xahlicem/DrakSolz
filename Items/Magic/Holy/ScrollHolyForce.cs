@@ -23,7 +23,7 @@ namespace DrakSolz.Items.Magic.Holy {
             item.useAnimation = 40;
             item.mana = 5;
             item.knockBack = 12f;
-            item.shootSpeed = 2.5f;
+            item.shootSpeed = 3.0f;
             item.shoot = mod.ProjectileType<Projectiles.ForceProj>();
         }
 
