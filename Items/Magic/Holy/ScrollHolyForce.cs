@@ -11,7 +11,7 @@ namespace DrakSolz.Items.Magic.Holy {
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Force");
-            Tooltip.SetDefault("Pyromancy that projects a Fire Ball toward your target.");
+            Tooltip.SetDefault("Miracle that emits great force; pushing foes away.");
         }
 
         public override void SetDefaults() {
@@ -38,6 +38,22 @@ namespace DrakSolz.Items.Magic.Holy {
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack) {
             int pro = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, damage, knockBack, player.whoAmI);
             Main.projectile[pro].frame = 1;
+            if (player.statMana >= (((player.statManaMax2) * 0.5) - (item.mana * player.manaCost))) {
+                Main.projectile[pro].damage *= 1;
+                Main.projectile[pro].scale *= 1.4f;
+                Main.projectile[pro].penetrate = 1;
+                Main.projectile[pro].velocity *= 1.4f;
+                Main.projectile[pro].timeLeft = 120;
+                Main.projectile[pro].knockBack *= 1.25f;
+
+            } else {
+                Main.projectile[pro].damage -= 2;
+                Main.projectile[pro].scale *= 1.0f;
+                Main.projectile[pro].penetrate = 1;
+                Main.projectile[pro].velocity *= 1.0f;
+                Main.projectile[pro].timeLeft = 120;
+                Main.projectile[pro].knockBack *= 1.0f;
+            }
             return false;
         }
     }
