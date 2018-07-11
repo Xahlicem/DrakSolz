@@ -182,7 +182,7 @@ namespace DrakSolz.UI {
                 s = ("+" + (Int.Stat + Int.StatAdd - 20) * 2 + "% Magic Damage");
             } else if (Fth.icon.ContainsPoint(MousePosition)) {
                 tooltipTitle.SetText("Faith");
-                s = ("+" + (Fth.Stat + Fth.StatAdd - 20) * 2 + "% Summon Damage");
+                s = ("+" + (Fth.Stat + Fth.StatAdd - 20) * 2 + "% Miracle Damage");
             } else RemoveChild(tooltip);
             if (HasChild(tooltip)) {
                 tooltipText.SetText((s[1] == '-') ? s.Substring(1) : s);

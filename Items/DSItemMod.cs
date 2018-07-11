@@ -115,6 +115,16 @@ namespace DrakSolz.Items {
                     break;
             }
         }
+        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips) {
+            for (int i = 0; i < tooltips.Count; i++) {
+                if (tooltips[i].text.Contains("summon damage"))
+                    tooltips[i].text = tooltips[i].text.Replace("summon","miracle");
+                if (tooltips[i].text.Contains("minion damage"))
+                    tooltips[i].text = tooltips[i].text.Replace("minion","miracle");
+                if (tooltips[i].text.Contains("minions damage"))
+                    tooltips[i].text = tooltips[i].text.Replace("minions","miracle");
+            }
+        }
     }
 
     public class MeleeThrow : GlobalItem {
