@@ -25,6 +25,8 @@ namespace DrakSolz.Items.Magic.Holy {
             item.knockBack = 12f;
             item.shootSpeed = 3.0f;
             item.shoot = mod.ProjectileType<Projectiles.ForceProj>();
+            item.summon = true;
+            item.magic = false;
         }
 
 

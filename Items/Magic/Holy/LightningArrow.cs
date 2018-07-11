@@ -26,6 +26,7 @@ namespace DrakSolz.Items.Magic.Holy {
             item.shootSpeed = 20.0f;
             item.autoReuse = true;
             item.shoot = mod.ProjectileType<Projectiles.LightningArrowProj>();
+            item.summon = true;
         }
 
         public override Vector2? HoldoutOffset() {

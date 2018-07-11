@@ -19,7 +19,7 @@ namespace DrakSolz.Items.Magic.Holy {
         public override void SetDefaults() {
             item.CloneDefaults(ItemID.ShadowbeamStaff);
             item.useStyle = 1;
-            item.magic = true;
+            item.magic = false;
             item.damage = 25;
             item.noMelee = true;
             item.noUseGraphic = true;
@@ -30,6 +30,7 @@ namespace DrakSolz.Items.Magic.Holy {
             item.shootSpeed = 14.0f;
             item.autoReuse = false;
             item.shoot = mod.ProjectileType<Projectiles.LightningSpearProj>();
+            item.summon = true;
         }
 
         public override void AddRecipes() {
