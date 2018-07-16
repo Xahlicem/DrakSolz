@@ -22,7 +22,7 @@ namespace DrakSolz.Items.Armor.Ringed {
         }
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType<Items.Banners.RingedKnightBanner>(), 28);
+            recipe.AddIngredient(mod.ItemType<Items.Banners.RingedKnightBanner>(), 5);
             recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
             recipe.SetResult(this);
             recipe.AddRecipe();
