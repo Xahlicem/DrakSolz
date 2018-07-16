@@ -65,9 +65,11 @@ namespace DrakSolz.Items {
                     break;
                 case ItemID.HornetStaff:
                     item.mana = 20;
+                    item.damage = 20;
                     break;
                 case ItemID.ImpStaff:
                     item.mana = 40;
+                    item.damage = 40;
                     break;
 
                 case ItemID.SpiderStaff:
@@ -75,15 +77,18 @@ namespace DrakSolz.Items {
                     break;
                 case ItemID.OpticStaff:
                     item.mana = 80;
+                    item.damage = 50;
                     break;
                 case ItemID.PirateStaff:
                     item.mana = 80;
                     break;
                 case ItemID.PygmyStaff:
                     item.mana = 100;
+                    item.damage = 60;
                     break;
                 case ItemID.XenoStaff:
                     item.mana = 140;
+                    item.damage = 70;
                     break;
                 case ItemID.RavenStaff:
                     item.mana = 120;
@@ -96,6 +101,7 @@ namespace DrakSolz.Items {
                     break;
                 case ItemID.StardustDragonStaff:
                     item.mana = 200;
+                    item.damage = 35;
                     break;
                 case ItemID.StardustCellStaff:
                     item.mana = 200;
@@ -103,15 +109,19 @@ namespace DrakSolz.Items {
 
                 case ItemID.QueenSpiderStaff:
                     item.mana = 100;
+                    item.damage = 50;
                     break;
                 case ItemID.StaffoftheFrostHydra:
                     item.mana = 150;
+                    item.damage = 120;
                     break;
                 case ItemID.MoonlordTurretStaff:
                     item.mana = 200;
+                    item.damage = 90;
                     break;
                 case ItemID.RainbowCrystalStaff:
                     item.mana = 200;
+                    item.damage = 200;
                     break;
             }
         }
