@@ -18,7 +18,7 @@ namespace DrakSolz.Items.Magic.Holy {
             item.CloneDefaults(ItemID.ShadowbeamStaff);
             item.useStyle = 5;
             item.magic = false;
-            item.damage = 50;
+            item.damage = 1500;
             item.noMelee = true;
             item.noUseGraphic = true;
             item.useTime = 45;

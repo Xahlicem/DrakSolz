@@ -19,9 +19,9 @@ namespace DrakSolz.NPCs.Enemy {
             //npc.aiStyle = 39;
             aiType = NPCID.SolarSolenian;
             animationType = NPCID.SolarSolenian;
-            npc.damage = 110;
-            npc.defense = 60;
-            npc.lifeMax = 2000;
+            npc.damage = 150;
+            npc.defense = 400;
+            npc.lifeMax = 3000;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 10000f;

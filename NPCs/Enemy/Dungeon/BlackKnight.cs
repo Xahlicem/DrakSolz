@@ -20,8 +20,8 @@ namespace DrakSolz.NPCs.Enemy.Dungeon {
             aiType = NPCID.SolarSpearman;
             animationType = NPCID.SolarSpearman;
             npc.damage = 95;
-            npc.defense = 55;
-            npc.lifeMax = 1400;
+            npc.defense = 700;
+            npc.lifeMax = 10000;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 10000f;
@@ -37,7 +37,7 @@ namespace DrakSolz.NPCs.Enemy.Dungeon {
             Main.gore[g].scale = npc.scale;
             g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/BlackKnight_Gore_3"));
             Main.gore[g].scale = npc.scale;
-            if (Main.rand.Next(15) == 0)
+            if (Main.rand.Next(50) == 0)
                 Item.NewItem(npc.Center, npc.width, npc.height, Utils.SelectRandom(Main.rand, new int[] {
                     mod.ItemType<Items.Armor.BlackKnight.BlackKnightHelmet>(), mod.ItemType<Items.Armor.BlackKnight.BlackKnightArmor>(), mod.ItemType<Items.Armor.BlackKnight.BlackKnightLeggings>()
                 }));

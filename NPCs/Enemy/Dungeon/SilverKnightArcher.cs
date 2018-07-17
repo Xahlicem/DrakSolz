@@ -20,8 +20,8 @@ namespace DrakSolz.NPCs.Enemy.Dungeon {
             aiType = NPCID.Skeleton;
             animationType = NPCID.CultistArcherBlue;
             npc.damage = 100;
-            npc.defense = 50;
-            npc.lifeMax = 700;
+            npc.defense = 600;
+            npc.lifeMax = 5000;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 6000f;
@@ -113,7 +113,7 @@ namespace DrakSolz.NPCs.Enemy.Dungeon {
             Main.gore[g].scale = npc.scale;
             g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SilverKnight_Gore_3"));
             Main.gore[g].scale = npc.scale;
-            if (Main.rand.Next(40) == 0)
+            if (Main.rand.Next(75) == 0)
                 Item.NewItem(npc.Center, npc.width, npc.height, Utils.SelectRandom(Main.rand, new int[] {
                     mod.ItemType<Items.Armor.SilverKnight.SilverKnightHelmet>(), mod.ItemType<Items.Armor.SilverKnight.SilverKnightArmor>(), mod.ItemType<Items.Armor.SilverKnight.SilverKnightLeggings>()
                 }));

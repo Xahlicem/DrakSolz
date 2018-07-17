@@ -13,7 +13,7 @@ namespace DrakSolz.Items.Melee {
         }
 
         public override void SetDefaults() {
-            item.damage = 80;
+            item.damage = 1000;
             item.useStyle = 5;
             item.useAnimation = 34;
             item.useTime = 40;
@@ -35,11 +35,18 @@ namespace DrakSolz.Items.Melee {
         public override bool AltFunctionUse(Player player) {
             return true;
         }
+        public override void AddRecipes() {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(mod.ItemType<Items.Souls.TitaniteSoul>());
+            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack) {
             if (player.velocity.Y != 0 && player.altFunctionUse == 2) {
                 player.velocity.Y = ((int) 1 * player.maxFallSpeed);
             }
-            damage = (int)(damage + (3 * (player.velocity.Y) * (player.meleeDamage)));
+            damage = (int)(damage + (15 * (player.velocity.Y) * (player.meleeDamage)));
             //int pro = Projectile.NewProjectile(player.Center.X, player.Center.X, (int)speedX, (int)speedY, type, (int)(damage + (5 * (player.velocity.Y))), 6.5f, player.whoAmI);
             return true;
         }
@@ -47,4 +54,5 @@ namespace DrakSolz.Items.Melee {
             return player.ownedProjectileCounts[item.shoot] < 1;
         }
     }
+    
 }

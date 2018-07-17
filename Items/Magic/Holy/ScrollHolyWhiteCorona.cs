@@ -18,11 +18,11 @@ namespace DrakSolz.Items.Magic.Holy {
             item.CloneDefaults(ItemID.ShadowbeamStaff);
             item.useStyle = 5;
             item.magic = false;
-            item.damage = 50;
+            item.damage = 800;
             item.noMelee = true;
             item.noUseGraphic = true;
-            item.useTime = 45;
-            item.useAnimation = 45;
+            item.useTime = 35;
+            item.useAnimation = 35;
             item.mana = 15;
             item.knockBack = 1.0f;
             item.shootSpeed = 8.0f;
@@ -79,6 +79,13 @@ namespace DrakSolz.Items.Magic.Holy {
                 Main.projectile[pro].light = 0.5f;
             }
             return false;
+        }
+        public override void AddRecipes() {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(mod.ItemType<Items.Souls.TitaniteSoul>());
+            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
     }
 }

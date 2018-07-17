@@ -17,7 +17,7 @@ namespace DrakSolz.Items.Magic.Holy {
         public override void SetDefaults() {
             item.CloneDefaults(ItemID.ShadowbeamStaff);
             item.useStyle = 5;
-            item.damage = 60;
+            item.damage = 550;
             item.noMelee = true;
             item.useTime = 18;
             item.useAnimation = 18;
@@ -27,6 +27,7 @@ namespace DrakSolz.Items.Magic.Holy {
             item.autoReuse = true;
             item.shoot = mod.ProjectileType<Projectiles.LightningArrowProj>();
             item.summon = true;
+            item.magic = false;
         }
 
         public override Vector2? HoldoutOffset() {
@@ -76,6 +77,14 @@ public override void MeleeEffects(Player player, Rectangle hitbox)
                 Main.dust[dust].noGravity = true;
 			}
 		}
+        public override void AddRecipes() {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(mod.ItemType<Items.Magic.Holy.ScrollHolySunlightSpear>());
+            recipe.AddIngredient(mod.ItemType<Items.Ranged.DragonslayerGreatbow>());
+            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
         
     }
 }

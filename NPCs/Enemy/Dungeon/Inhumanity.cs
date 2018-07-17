@@ -20,9 +20,9 @@ namespace DrakSolz.NPCs.Enemy.Dungeon {
             aiType = NPCID.CursedSkull;
             animationType = NPCID.Wraith;
             npc.noTileCollide = true;
-            npc.damage = 80;
+            npc.damage = 110;
             npc.defense = 25;
-            npc.lifeMax = 500;
+            npc.lifeMax = 3000;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 250f;

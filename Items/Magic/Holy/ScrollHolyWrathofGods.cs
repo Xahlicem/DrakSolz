@@ -7,7 +7,7 @@ using Terraria.ModLoader.IO;
 
 namespace DrakSolz.Items.Magic.Holy {
     public class ScrollHolyWrathofGods : SoulItem {
-        public ScrollHolyWrathofGods() : base(120000) { }
+        public ScrollHolyWrathofGods() : base(250000) { }
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Wrath of the Gods");
@@ -18,7 +18,7 @@ namespace DrakSolz.Items.Magic.Holy {
             item.CloneDefaults(ItemID.Flamelash);
             item.useStyle = 4;
             item.noUseGraphic = true;
-            item.damage = 50;
+            item.damage = 150;
             item.useTime = 30;
             item.useAnimation = 30;
             item.mana = 25;
@@ -33,6 +33,7 @@ namespace DrakSolz.Items.Magic.Holy {
         public override void AddRecipes() {
             ModRecipe recipe = new SoulRecipe(mod, this);
             recipe.AddIngredient(mod.ItemType<Items.Magic.Holy.ScrollHolyForce>());
+            recipe.AddIngredient(mod.ItemType<Items.Banners.SilverKnightBanner>());
             recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
             recipe.AddRecipe();
         }

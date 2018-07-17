@@ -13,7 +13,7 @@ namespace DrakSolz.Items.Melee {
         }
 
         public override void SetDefaults() {
-            item.damage = 120;
+            item.damage = 1000;
             item.useStyle = 5;
             item.useAnimation = 26;
             item.useTime = 30;
@@ -22,7 +22,7 @@ namespace DrakSolz.Items.Melee {
             item.width = 28;
             item.height = 28;
             item.scale = 1f;
-            item.rare = 9;
+            item.rare = 1;
             item.UseSound = SoundID.Item1;
             item.shoot = mod.ProjectileType<Projectiles.BlackKnightHalberdProj>();
             item.value = 3000000;
@@ -35,6 +35,7 @@ namespace DrakSolz.Items.Melee {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.ItemType<Items.Banners.BlackKnightBanner>());
             recipe.AddIngredient(mod.ItemType<Items.Misc.Titanite>(), 50);
+            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
