@@ -17,9 +17,9 @@ namespace DrakSolz.NPCs.Enemy.Boss {
             npc.scale = 2;
             npc.height = 45;
             npc.aiStyle = -1; // This npc has a completely unique AI, so we set this to -1.
-            npc.damage = 50;
-            npc.defense = 30;
-            npc.lifeMax = 10000;
+            npc.damage = 200;
+            npc.defense = 1500;
+            npc.lifeMax = 25000;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.alpha = 50;
@@ -103,7 +103,7 @@ namespace DrakSolz.NPCs.Enemy.Boss {
             } else if (AI_State == State_Walk) {
                 AI_Away_Timer++;
                 npc.TargetClosest();
-                npc.velocity.X = npc.direction * (9 - ((npc.life + 1) / 5000));
+                npc.velocity.X = npc.direction * (9 - ((npc.life + 1) / 6250));
                 if (npc.HasValidTarget && Main.player[npc.target].Distance(npc.Center) < 70f) {
                     npc.velocity.X = 0;
                     AI_Away_Timer = 0;

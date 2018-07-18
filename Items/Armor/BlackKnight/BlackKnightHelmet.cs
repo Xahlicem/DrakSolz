@@ -22,7 +22,7 @@ namespace DrakSolz.Items.Armor.BlackKnight {
 
         public override void UpdateEquip(Player player) {
             player.manaCost *= 0.75f;
-            player.statManaMax2 += 50;
+            player.statManaMax2 += 60;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs) {
@@ -31,24 +31,26 @@ namespace DrakSolz.Items.Armor.BlackKnight {
 
         public override void UpdateArmorSet(Player player) {
             player.setBonus = ("Unwavered Valor" +
-                "\n25% increased damage" +
-                "\n15% increased critical chance");
-            player.magicCrit += 15;
-            player.rangedCrit += 15;
-            player.meleeCrit += 15;
-            player.thrownCrit += 15;
-            player.magicDamage *= 1.25f;
-            player.thrownDamage *= 1.25f;
-            player.minionDamage *= 1.25f;
-            player.meleeDamage *= 1.25f;
-            player.rangedDamage *= 1.25f;
+                "\n55% increased damage(75% miracle)" +
+                "\n20% increased critical chance(40% thrown)");
+            player.magicCrit += 20;
+            player.rangedCrit += 20;
+            player.meleeCrit += 20;
+            player.thrownCrit += 40;
+            player.magicDamage *= 1.55f;
+            player.thrownDamage *= 1.55f;
+            player.minionDamage *= 1.75f;
+            player.thrownVelocity *= 1.5f;
+            player.meleeDamage *= 1.55f;
+            player.rangedDamage *= 1.55f;
+            player.statManaMax2 += player.statManaMax;
         }
         public override bool DrawHead() {
             return false;
         }
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType<Items.Misc.Titanite>(), 25);
+            recipe.AddIngredient(mod.ItemType<Items.Misc.Titanite>(), 45);
             recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
             recipe.SetResult(this);
             recipe.AddRecipe();

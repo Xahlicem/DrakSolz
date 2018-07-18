@@ -16,9 +16,9 @@ namespace DrakSolz.NPCs.Enemy.Boss {
             npc.scale = 2;
             npc.height = 45;
             npc.aiStyle = -1; // This npc has a completely unique AI, so we set this to -1.
-            npc.damage = 50;
-            npc.defense = 40;
-            npc.lifeMax = 20000;
+            npc.damage = 350;
+            npc.defense = 1700;
+            npc.lifeMax = 750000;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 50000f;
@@ -26,7 +26,7 @@ namespace DrakSolz.NPCs.Enemy.Boss {
             npc.knockBackResist = 0f;
             npc.buffImmune[BuffID.Confused] = true;
         }
-        
+
         const int AI_State_Slot = 0;
         const int AI_Timer_Slot = 1;
         const int AI_Falling_Slot = 2;
@@ -38,7 +38,7 @@ namespace DrakSolz.NPCs.Enemy.Boss {
         const int State_Jump = 3;
         const int State_Falling = 4;
         const int State_Fallen = 5;
-        
+
         public float AI_State {
             get { return npc.ai[AI_State_Slot]; }
             set { npc.ai[AI_State_Slot] = value; }
@@ -88,15 +88,52 @@ namespace DrakSolz.NPCs.Enemy.Boss {
                 }
             } else if (AI_State == State_Walk) {
                 AI_Away_Timer++;
+                AI_Timer = 0;
                 npc.TargetClosest();
-                npc.velocity.X = npc.direction * (9 - ((npc.life + 1) / 5000));
+                npc.velocity.X = npc.direction * (9 - ((npc.life + 1) / 187500));
                 if (npc.HasValidTarget && Main.player[npc.target].Distance(npc.Center) < 80f) {
                     npc.velocity.X = 0;
                     AI_Away_Timer = 0;
+                    if (npc.life <= 600000 && npc.life > 300000) {
+                        if (Main.netMode != 1) {
+                            if (Main.rand.Next(5) == 0) Projectile.NewProjectile(npc.Center.X, npc.Center.Y - 16, 10 * (Main.rand.NextFloat() - 0.5f), -3 * (Main.rand.NextFloat() + 0.5f), mod.ProjectileType<Projectiles.StalkerProj>(), npc.damage / 10, 1f);
+                        }
+
+                    }
+                    if (npc.life <= 300000 && npc.life > 100000) {
+                        if (Main.netMode != 1) {
+                            if (Main.rand.Next(2) == 0) Projectile.NewProjectile(npc.Center.X, npc.Center.Y - 16, 10 * (Main.rand.NextFloat() - 0.5f), -3 * (Main.rand.NextFloat() + 0.5f), mod.ProjectileType<Projectiles.StalkerProj>(), npc.damage / 10, 1f);
+                        }
+
+                    }
+                    if (npc.life <= 100000) {
+                        if (Main.netMode != 1) {
+                            if (Main.rand.Next(1) == 0) Projectile.NewProjectile(npc.Center.X, npc.Center.Y - 16, 10 * (Main.rand.NextFloat() - 0.5f), -3 * (Main.rand.NextFloat() + 0.5f), mod.ProjectileType<Projectiles.StalkerProj>(), npc.damage / 10, 1f);
+                        }
+
+                    }
                     AI_State = State_Attack;
                     npc.frameCounter = 0;
                 }
                 if ((npc.HasValidTarget && Main.player[npc.target].Distance(npc.Center) > 500f) || AI_Away_Timer >= 80) {
+                    if (npc.life <= 600000 && npc.life > 300000) {
+                        if (Main.netMode != 1) {
+                            if (Main.rand.Next(5) == 0) Projectile.NewProjectile(npc.Center.X, npc.Center.Y - 16, 10 * (Main.rand.NextFloat() - 0.5f), -3 * (Main.rand.NextFloat() + 0.5f), mod.ProjectileType<Projectiles.StalkerProj>(), npc.damage / 10, 1f);
+                        }
+
+                    }
+                    if (npc.life <= 300000 && npc.life > 100000) {
+                        if (Main.netMode != 1) {
+                            if (Main.rand.Next(2) == 0) Projectile.NewProjectile(npc.Center.X, npc.Center.Y - 16, 10 * (Main.rand.NextFloat() - 0.5f), -3 * (Main.rand.NextFloat() + 0.5f), mod.ProjectileType<Projectiles.StalkerProj>(), npc.damage / 10, 1f);
+                        }
+
+                    }
+                    if (npc.life <= 100000) {
+                        if (Main.netMode != 1) {
+                            if (Main.rand.Next(1) == 0) Projectile.NewProjectile(npc.Center.X, npc.Center.Y - 16, 10 * (Main.rand.NextFloat() - 0.5f), -3 * (Main.rand.NextFloat() + 0.5f), mod.ProjectileType<Projectiles.StalkerProj>(), npc.damage / 10, 1f);
+                        }
+
+                    }
                     AI_State = State_Jump;
                     AI_Away_Timer = 0;
                 }

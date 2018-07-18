@@ -7,8 +7,8 @@ namespace DrakSolz.Items.Armor.SilverKnight {
     public class SilverKnightHelmet : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Silver Knight Helmet");
-            Tooltip.SetDefault("Apparel."+
-                "\n+40 mana"+
+            Tooltip.SetDefault("Apparel." +
+                "\n+40 mana" +
                 "\n20% reduced mana cost");
         }
 
@@ -23,7 +23,7 @@ namespace DrakSolz.Items.Armor.SilverKnight {
         public override void UpdateEquip(Player player) {
             player.manaCost *= 0.8f;
             player.statManaMax2 += 40;
-             }
+        }
 
         public override bool IsArmorSet(Item head, Item body, Item legs) {
             return body.type == mod.ItemType<Items.Armor.SilverKnight.SilverKnightArmor>() && legs.type == mod.ItemType<Items.Armor.SilverKnight.SilverKnightLeggings>();
@@ -31,18 +31,19 @@ namespace DrakSolz.Items.Armor.SilverKnight {
 
         public override void UpdateArmorSet(Player player) {
             player.setBonus = ("Knight's Valor" +
-                "\n20% increased damage" +
-                "\n10% increased critical chance");
-            player.magicCrit += 10;
-            player.rangedCrit += 10;
-            player.meleeCrit += 10;
-            player.thrownCrit += 10;
-            player.magicDamage *= 1.2f;
-            player.thrownDamage *= 1.2f;
-            player.minionDamage *= 1.2f;
+                "\n50% increased damage(70% Miracle)" +
+                "\n15% increased critical chance(35% thrown)");
+            player.magicCrit += 15;
+            player.rangedCrit += 15;
+            player.meleeCrit += 15;
+            player.thrownCrit += 35;
+            player.magicDamage *= 1.5f;
+            player.thrownDamage *= 1.5f;
+            player.minionDamage *= 1.7f;
             player.thrownVelocity *= 1.3f;
-            player.meleeDamage *= 1.2f;
-            player.rangedDamage *= 1.2f;
+            player.meleeDamage *= 1.5f;
+            player.rangedDamage *= 1.5f;
+            player.statManaMax2 += player.statManaMax;
         }
         public override bool DrawHead() {
             return false;
