@@ -9,6 +9,6 @@ namespace DrakSolz.Items.Souls {
             Tooltip.SetDefault("Soul of Spazmatism");
         }
 
-        public SpazSoul() : base(9, 20000, "RingRedTear") { }
+        public SpazSoul() : base(9, 40000, "RingRedTear") { }
     }
 }

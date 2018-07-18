@@ -9,6 +9,6 @@ namespace DrakSolz.Items.Souls {
             Tooltip.SetDefault("Soul of the Queen Bee");
         }
 
-        public BeeSoul() : base(4, 9000, "RingPoisBite") { }
+        public BeeSoul() : base(4, 20000, "RingPoisBite") { }
     }
 }

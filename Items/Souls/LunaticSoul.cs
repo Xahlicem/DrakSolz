@@ -9,6 +9,6 @@ namespace DrakSolz.Items.Souls {
             Tooltip.SetDefault("Soul of the Lunatic Cultist");
         }
 
-        public LunaticSoul() : base(13, 130000, "RingDuskCrown") { }
+        public LunaticSoul() : base(13, 400000, "RingDuskCrown") { }
     }
 }

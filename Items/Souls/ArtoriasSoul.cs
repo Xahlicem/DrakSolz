@@ -9,7 +9,7 @@ namespace DrakSolz.Items.Souls {
             Tooltip.SetDefault("Soul of the Abyss Stalker");
         }
 
-        public ArtoriasSoul() : base(16, 130, "RingTinyBeing") { }
+        public ArtoriasSoul() : base(16, 9999999, "RingTinyBeing") { }
 
         public override void AddRecipes() {
             new ArtoriasRecipe(mod, this).AddRecipe();

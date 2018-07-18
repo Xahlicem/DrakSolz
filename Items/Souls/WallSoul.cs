@@ -9,6 +9,6 @@ namespace DrakSolz.Items.Souls {
             Tooltip.SetDefault("Soul of the Wall of Flesh");
         }
 
-        public WallSoul() : base(6, 20000, "RingCharred") { }
+        public WallSoul() : base(6, 40000, "RingCharred") { }
     }
 }
