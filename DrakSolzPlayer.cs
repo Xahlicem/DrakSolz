@@ -17,7 +17,7 @@ namespace DrakSolz {
         public int Level { get { return Vit + Str + Dex + Att + Int + Fth; } }
         public int Souls { get; set; }
         public int SoulCost(int level) {
-            return (int)(Math.Round((Math.Pow(0.02 * level, 3) + Math.Pow(3.06 * level, 2) + 105.6 * level) * 0.1, 0) * 10);
+            return (int)(Math.Round((Math.Pow(0.02 * level, 3) + Math.Pow(4.06 * level, 2) + 105.6 * level) * 0.1, 0) * 10);
         }
         public int Str { get; set; }
         public float Melee { get { return 0.6f + Str * 0.02f; } }
