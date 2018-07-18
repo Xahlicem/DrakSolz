@@ -210,6 +210,7 @@ namespace DrakSolz.NPCs.Enemy.PreHardMode {
                     mod.ItemType<Items.Armor.Channeler.ChannelerHelmet>(), mod.ItemType<Items.Armor.Channeler.ChannelerRobe>(), mod.ItemType<Items.Armor.Channeler.ChannelerSkirt>()
                 }));
             if (Main.rand.Next(15) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Melee.ChannelT>());
+            if (NPC.downedMoonlord && Main.rand.Next(10) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Magic.ScrollSpear>());
         }
     }
 }
