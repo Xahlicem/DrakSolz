@@ -26,6 +26,7 @@ namespace DrakSolz.Items.Accessory {
             player.fallStart = 0;
             player.jumpSpeedBoost += 3;
             player.noFallDmg = true;
+            player.meleeSpeed += 0.20f;
 
             if (player.velocity.Y != 0) player.GetModPlayer<DrakSolzPlayer>().Rotate = true;
             player.GetModPlayer<DrakSolzPlayer>().Rotation += player.velocity.X * 0.025f;
