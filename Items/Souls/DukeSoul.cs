@@ -9,6 +9,6 @@ namespace DrakSolz.Items.Souls {
             Tooltip.SetDefault("Soul of Duke Fishron");
         }
 
-        public DukeSoul() : base(14, 165000, "RingCalamity") { }
+        public DukeSoul() : base(14, 250000, "RingCalamity") { }
     }
 }
