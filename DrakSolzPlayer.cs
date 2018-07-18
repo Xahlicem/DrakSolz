@@ -29,7 +29,7 @@ namespace DrakSolz {
         public int Fth { get; set; }
         public float Summon { get { return 0.6f + Fth * 0.02f; } }
         public int Vit { get; set; }
-        public int Health { get { return Level * 2 + Vit * 10 + (Vit > 20 ? (Vit - 20) * 5 : 0); } }
+        public int Health { get { return Level * 2 + (Level > 10 ? (Level - 10) : 0) + (Level > 20 ? (Level - 20) * 2 : 0) + Vit * 10 + (Vit > 20 ? (Vit - 20) * 10 : 0); } }
         public int Att { get; set; }
         public int Mana { get { return Att * 5; } }
 
