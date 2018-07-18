@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace DrakSolz.Items.Magic {
     public class ScrollSpearBarrage : SoulItem {
-        public ScrollSpearBarrage() : base(100000) { }
+        public ScrollSpearBarrage() : base(1500000) { }
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Soul Spear Barrage");
@@ -16,7 +16,7 @@ namespace DrakSolz.Items.Magic {
             item.CloneDefaults(ItemID.IceRod);
             item.useStyle = 5;
             item.noUseGraphic = true;
-            item.damage = 60;
+            item.damage = 900;
             item.useTime = 4;
             item.useAnimation = 16;
             item.mana = 15;
