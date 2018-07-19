@@ -13,7 +13,7 @@ namespace DrakSolz.Items.Accessory {
         public override void SetDefaults() {
             item.width = 22;
             item.height = 20;
-            item.value = Item.buyPrice(0, 5, 0, 0);
+            item.value = Item.buyPrice(0, 25, 0, 0);
             item.rare = 2;
             item.accessory = true;
         }
