@@ -96,6 +96,9 @@ namespace DrakSolz.Tiles {
                 case 22:
                     item = "RingedKnightBanner";
                     break;
+                case 23:
+                    item = "HollowDogBanner";
+                    break;
                 default:
                     return;
             }
@@ -176,6 +179,9 @@ namespace DrakSolz.Tiles {
                         break;
                     case 22:
                         type = "RingedKnight";
+                        break;
+                    case 23:
+                        type = "HollowDog";
                         break;
                     default:
                         return;
