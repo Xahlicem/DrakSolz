@@ -116,6 +116,8 @@ namespace DrakSolz.NPCs.Town {
         }
 
         public override void SetupShop(Chest shop, ref int nextSlot) {
+            shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Accessory.RingCat>());
+            shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Accessory.RingCloranthy>());
             shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Misc.ScrollHolyHomeward>());
             shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Misc.ScrollHoly>());
             shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Misc.PyroScroll>());
