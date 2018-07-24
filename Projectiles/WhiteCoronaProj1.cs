@@ -22,9 +22,9 @@ namespace DrakSolz.Projectiles {
             projectile.friendly = true; //Can the projectile deal damage to enemies?
             projectile.hostile = false; //Can the projectile deal damage to the player?
             projectile.magic = false;
-            projectile.minion = true; //Is the projectile shoot by a magic weapon?
-            projectile.penetrate = -1; //How many monsters the projectile can penetrate. (OnTileCollide below also decrements penetrate for bounces as well)
-            projectile.timeLeft = 60; //The live time for the projectile (60 = 1 second, so 600 is 10 seconds)
+            projectile.thrown = true; //Is the projectile shoot by a magic weapon?
+            projectile.penetrate = 8; //How many monsters the projectile can penetrate. (OnTileCollide below also decrements penetrate for bounces as well)
+            projectile.timeLeft = 100; //The live time for the projectile (60 = 1 second, so 600 is 10 seconds)
             projectile.alpha = 0; //The transparency of the projectile, 255 for completely transparent. (aiStyle 1 quickly fades the projectile in)
             projectile.light = 2.0f; //How much light emit around the projectile
             projectile.ignoreWater = true; //Does the projectile's speed be influenced by water?
@@ -74,7 +74,7 @@ namespace DrakSolz.Projectiles {
                 int proj = Projectile.NewProjectile(projectile.Center, new Vector2(0, 0f), mod.ProjectileType<WhiteCoronaProj2>(), projectile.damage, 0, projectile.owner);
                 Main.projectile[proj].rotation = projectile.rotation;
                 Main.projectile[proj].magic = false;
-                Main.projectile[proj].minion = true;
+                Main.projectile[proj].thrown = true;
                 Main.projectile[proj].timeLeft = 20;
                 Main.projectile[proj].scale = projectile.scale;
             }
@@ -83,11 +83,8 @@ namespace DrakSolz.Projectiles {
         public override void Kill(int timeLeft) {
 
             for (int i = 0; i < projectile.frame * 5 + 5; i++) {
-                int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 15, 0, 0, 0, Color.White, 8f);
+                int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 30, 0, 0, 0, Color.White, 8f);
                 Main.dust[dustIndex].noGravity = true;
-                Main.dust[dustIndex].scale *= 0.5f;
-                dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 15, 0f, 0f, 0, Color.White, 6f);
-                Main.dust[dustIndex].velocity *= 0.5f;
                 Main.dust[dustIndex].scale *= 0.5f;
             }
         }
