@@ -38,6 +38,7 @@ namespace DrakSolz {
         public int BossSouls { get; set; }
 
         public bool ZoneTowerVoidPillar;
+        public bool VoidMonolith = false;
 
         public bool SoulSummon { get; set; }
         public bool HumSummon { get; set; }
@@ -139,7 +140,7 @@ namespace DrakSolz {
 
         public override void UpdateBiomeVisuals() {
             DrakSolzPlayer modPlayer = Main.player[Main.myPlayer].GetModPlayer<DrakSolzPlayer>(mod);
-            bool useWhite = ZoneTowerVoidPillar;
+            bool useWhite = ZoneTowerVoidPillar || VoidMonolith;
             player.ManageSpecialBiomeVisuals("DrakSolz:VoidPillar", useWhite);
         }
 

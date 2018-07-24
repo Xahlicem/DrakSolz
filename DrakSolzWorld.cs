@@ -113,7 +113,7 @@ namespace DrakSolz {
         }
         public override void ResetNearbyTileEffects() {
             DrakSolzPlayer modPlayer = Main.player[Main.myPlayer].GetModPlayer<DrakSolzPlayer>(mod);
-            //modPlayer.VoidPillarMonolith = false;
+            modPlayer.VoidMonolith = false;
         }
     }
 
