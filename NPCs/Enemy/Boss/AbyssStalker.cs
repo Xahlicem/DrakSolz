@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 namespace DrakSolz.NPCs.Enemy.Boss {
     public class AbyssStalker : ModNPC {
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault("Abyss Stalker");
+            DisplayName.SetDefault("Abyss-Stalker Arter Rias");
             Main.npcFrameCount[npc.type] = 24;
         }
 
