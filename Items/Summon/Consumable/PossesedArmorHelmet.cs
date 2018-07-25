@@ -25,9 +25,19 @@ namespace DrakSolz.Items.Summon.Consumable {
 
         public override void AddRecipes() {
             SoulRecipe recipe = new SoulRecipe(mod, this);
+            recipe.AddIngredient(ItemID.PossessedArmorBanner, 1);
             recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
             //recipe.AddIngredient(ItemID.Bone, 50);
             //recipe.AddRecipe();
+        }
+        public class ScrollSwordGlobalNPC : GlobalNPC {
+            public override void NPCLoot(NPC npc) {
+                if (Main.rand.Next(20) == 0) {
+                    if (npc.type == NPCID.PossessedArmor) {
+                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Summon.Consumable.PossesedArmorHelmet>(), 1);
+                    }
+                }
+            }
         }
     }
 }
