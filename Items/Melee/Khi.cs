@@ -9,7 +9,7 @@ namespace DrakSolz.Items.Melee {
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Khi");
-            Tooltip.SetDefault("Sword.");
+            Tooltip.SetDefault("Edgy-ness over 9,000.");
         }
         public override void SetDefaults() {
             item.CloneDefaults(ItemID.Muramasa);

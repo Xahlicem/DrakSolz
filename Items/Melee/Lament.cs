@@ -9,7 +9,7 @@ namespace DrakSolz.Items.Melee {
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Lament");
-            Tooltip.SetDefault("Sword.");
+            Tooltip.SetDefault("Edgy Sword.");
         }
         public override void SetDefaults() {
             item.CloneDefaults(ItemID.Muramasa);
