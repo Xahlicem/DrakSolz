@@ -13,20 +13,20 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Secret {
         }
 
         public override void SetDefaults() {
-            npc.CloneDefaults(NPCID.BlueArmoredBones);
-            npc.width = 20;
+            npc.CloneDefaults(NPCID.Crab);
             npc.scale *= 1.6f;
-            npc.height = 40;
-            npc.aiStyle = 3;
-            aiType = NPCID.SolarSpearman;
-            animationType = NPCID.BlackRecluse;
+            npc.width = 20;
+            npc.height = 30;
+            //npc.aiStyle = 39;
+            aiType = NPCID.Crab;
+            animationType = NPCID.Crab;
             npc.damage = 200;
             npc.defense = 1500;
             npc.lifeMax = 50000;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 1000000;
-            npc.knockBackResist = 0.9f;
+            npc.knockBackResist = 0.1f;
             //banner = npc.type;
             //bannerItem = mod.ItemType<Items.Banners.HollowDogBanner>();
         }
