@@ -13,19 +13,19 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Secret {
         }
 
         public override void SetDefaults() {
-            npc.width = 20;
+            npc.width = 30;
             npc.scale *= 1.6f;
-            npc.height = 40;
+            npc.height = 30;
             npc.aiStyle = 44;
             aiType = NPCID.FlyingAntlion;
             animationType = NPCID.Crab;
-            npc.damage = 200;
-            npc.defense = 1500;
-            npc.lifeMax = 50000;
+            npc.damage = 300;
+            npc.defense = 3000;
+            npc.lifeMax = 200000;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 1000000;
-            npc.knockBackResist = 0.8f;
+            npc.knockBackResist = 0.04f;
             //banner = npc.type;
             //bannerItem = mod.ItemType<Items.Banners.HollowDogBanner>();
         }
