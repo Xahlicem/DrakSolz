@@ -44,7 +44,7 @@ namespace DrakSolz.Items.Melee {
             // 60 frames = 1 second
             target.AddBuff(BuffID.OnFire, 120);
         }
-        public class ScrollSwordGlobalNPC : GlobalNPC {
+        public class VindicatorBladeGlobalNPC : GlobalNPC {
             public override void NPCLoot(NPC npc) {
                 if (Main.rand.Next(15) == 0) {
                     if (npc.type == mod.NPCType<NPCs.Enemy.Endgame.Jungle.Vindicator>() ) {

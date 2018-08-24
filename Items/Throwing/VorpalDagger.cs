@@ -49,5 +49,14 @@ namespace DrakSolz.Items.Throwing
 			}
 			return false;
 		}
+        public class VorpalDaggerGlobalNPC : GlobalNPC {
+            public override void NPCLoot(NPC npc) {
+                if (Main.rand.Next(15) == 0) {
+                    if (npc.type == mod.NPCType<NPCs.Enemy.Endgame.Corrupt.VorpalReaver>() ) {
+                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Throwing.VorpalDagger>(), 1);
+                    }
+                }
+            }
+        }
     }
 }
