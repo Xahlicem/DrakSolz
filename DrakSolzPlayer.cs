@@ -42,6 +42,10 @@ namespace DrakSolz {
 
         public bool SoulSummon { get; set; }
         public bool HumSummon { get; set; }
+        public bool SunSummon { get; set; }
+        public bool IceSummon { get; set; }
+        public bool FireSummon { get; set; }
+        public bool DungeonSummon { get; set; }
 
         public bool EvilEye { get; set; }
         public int Avarice { get; set; }
@@ -64,6 +68,10 @@ namespace DrakSolz {
 
             SoulSummon = false;
             HumSummon = false;
+            SunSummon = false;
+            IceSummon = false;
+            FireSummon = false;
+            DungeonSummon = false;
             EvilEye = false;
             Avarice = 0;
 
@@ -73,6 +81,10 @@ namespace DrakSolz {
         public override void ResetEffects() {
             SoulSummon = false;
             HumSummon = false;
+            SunSummon = false;
+            IceSummon = false;
+            FireSummon = false;
+            DungeonSummon = false;
             EvilEye = false;
             Avarice = 0;
             Rotate = false;
