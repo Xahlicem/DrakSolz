@@ -34,4 +34,13 @@ namespace DrakSolz.Items.Throwing {
             item.shoot = mod.ProjectileType<Projectiles.ParadigmScytheProj>();
         }
     }
+        public class ParadigmScytheGlobalNPC : GlobalNPC {
+            public override void NPCLoot(NPC npc) {
+                if (Main.rand.Next(15) == 0) {
+                    if (npc.type == mod.NPCType<NPCs.Enemy.Endgame.Desert.Paradigm>() ) {
+                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Throwing.ParadigmScythe>(), 1);
+                    }
+                }
+            }
+        }
 }

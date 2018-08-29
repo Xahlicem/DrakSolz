@@ -3,6 +3,24 @@ using Terraria.ModLoader;
 
 namespace DrakSolz.NPCs {
     class DSGlobalNPC : GlobalNPC {
+
+        public override bool InstancePerEntity {
+            get {
+                return true;
+            }
+        }
+
+        public bool Healp = false;
+
+        public override void ResetEffects(NPC npc) {
+            Healp = false;
+        }
+
+        public override void UpdateLifeRegen(NPC npc, ref int damage) {
+            if (Healp) {
+                npc.lifeRegen += 10000;
+                }
+            }
         public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns) {
             float mul = 1f;
             if (NPC.downedSlimeKing) mul *= 1.1f;
