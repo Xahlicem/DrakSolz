@@ -38,5 +38,18 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Corrupt {
                 npc.velocity = new Vector2(npc.direction * 2.2f, y);
             }
         }
+        public override void NPCLoot() {
+                if (Main.netMode != 1) {
+                    float numberProjectiles = 10;
+                    float rotation = MathHelper.ToRadians(10);
+                    for (int i = 0; i < numberProjectiles; i++) {
+                        int proj = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 15 * (Main.rand.NextFloat() - 0.5f), -15 * (Main.rand.NextFloat() + 0.5f), mod.ProjectileType<Projectiles.VorpalDaggerProj>(), npc.damage / 2, 1f);
+                        Main.projectile[proj].scale *= 0.8f;
+                        Main.projectile[proj].friendly = false;
+                        Main.projectile[proj].hostile = true;
+                        Main.projectile[proj].velocity *= 0.35f;
+                    }
+            }
+        }
     }
 }

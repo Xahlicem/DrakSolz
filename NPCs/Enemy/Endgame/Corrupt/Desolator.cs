@@ -5,27 +5,27 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace DrakSolz.NPCs.Enemy.Endgame.Corrupt {
-    public class CarrionCollector : ModNPC {
+    public class Desolator : ModNPC {
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault("Carrion Collector");
-            Main.npcFrameCount[npc.type] = 9;
+            DisplayName.SetDefault("Desolator");
+            Main.npcFrameCount[npc.type] = 8;
         }
 
         public override void SetDefaults() {
-            npc.CloneDefaults(NPCID.Wolf);
+            npc.CloneDefaults(NPCID.Crab);
             npc.scale = 1;
             npc.width = 60;
             npc.height = 60;
             //npc.aiStyle = 39;
-            aiType = NPCID.Wolf;
-            animationType = NPCID.Wolf;
-            npc.damage = 160;
+            aiType = NPCID.Crab;
+            animationType = NPCID.Crab;
+            npc.damage = 145;
             npc.defense = 1300;
-            npc.lifeMax = 30000;
+            npc.lifeMax = 60000;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 20f;
-            npc.knockBackResist = 0.2f;
+            npc.knockBackResist = 0.15f;
             banner = npc.type;
             bannerItem = mod.ItemType<Items.Banners.LittleMushroomBanner>();
         }

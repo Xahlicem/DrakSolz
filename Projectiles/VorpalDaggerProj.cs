@@ -69,5 +69,17 @@ namespace DrakSolz.Projectiles {
             }
             projectile.ai[0]++;
         }
+        
+        public override void Kill(int timeLeft) {
+
+            for (int i = 0; i < projectile.frame * 5 + 5; i++) {
+                int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 54, 0, 0, 150, Color.Black, 3f);
+                Main.dust[dustIndex].noGravity = true;
+                Main.dust[dustIndex].scale *= 0.5f;
+                dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 54, 0f, 0f, 150, Color.Black, 2f);
+                Main.dust[dustIndex].velocity *= 0.25f;
+                Main.dust[dustIndex].scale *= 0.5f;
+            }
+        }
     }
 }

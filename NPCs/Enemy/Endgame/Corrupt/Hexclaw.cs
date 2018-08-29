@@ -5,20 +5,20 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace DrakSolz.NPCs.Enemy.Endgame.Corrupt {
-    public class CarrionCollector : ModNPC {
+    public class Hexclaw : ModNPC {
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault("Carrion Collector");
+            DisplayName.SetDefault("Hexclaw");
             Main.npcFrameCount[npc.type] = 9;
         }
 
         public override void SetDefaults() {
             npc.CloneDefaults(NPCID.Wolf);
             npc.scale = 1;
-            npc.width = 60;
-            npc.height = 60;
+            npc.width = 80;
+            npc.height = 50;
             //npc.aiStyle = 39;
             aiType = NPCID.Wolf;
-            animationType = NPCID.Wolf;
+            animationType = NPCID.FlyingAntlion;
             npc.damage = 160;
             npc.defense = 1300;
             npc.lifeMax = 30000;
@@ -35,7 +35,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Corrupt {
             enemy.Y = Main.player[npc.target].Center.Y;
             float y = npc.velocity.Y;
             if (npc.HasValidTarget && Main.player[npc.target].Distance(enemy) > 20f) {
-                npc.velocity = new Vector2(npc.direction * 2.6f, y);
+                npc.velocity = new Vector2(npc.direction * 2.8f, y);
             }
         }
     }
