@@ -19,8 +19,8 @@ namespace DrakSolz.Items.Throwing
 			item.thrown = true;
 			item.width = 40;
 			item.height = 20;
-			item.useTime = 20;
-			item.useAnimation = 20;
+			item.useTime = 30;
+			item.useAnimation = 30;
 			item.useStyle = 1;
 			item.noUseGraphic = true;
 			item.noMelee = true; //so the item's animation doesn't do damage
