@@ -21,7 +21,7 @@ namespace DrakSolz.Items.Throwing
 			item.height = 20;
 			item.useTime = 20;
 			item.useAnimation = 20;
-			item.useStyle = 5;
+			item.useStyle = 1;
 			item.noUseGraphic = true;
 			item.noMelee = true; //so the item's animation doesn't do damage
 			item.knockBack = 4;

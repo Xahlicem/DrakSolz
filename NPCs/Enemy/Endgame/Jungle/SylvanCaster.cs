@@ -15,7 +15,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Jungle {
             npc.scale = 1;
             npc.width = 48;
             npc.height = 60;
-            npc.damage = 120;
+            npc.damage = 90;
             npc.defense = 1700;
             npc.lifeMax = 45000;
             npc.HitSound = SoundID.NPCHit1;

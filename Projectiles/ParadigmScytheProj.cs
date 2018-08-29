@@ -11,7 +11,7 @@ namespace DrakSolz.Projectiles {
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Paradigm Scythe");
-            ProjectileID.Sets.YoyosLifeTimeMultiplier[projectile.type] = 7f;
+            ProjectileID.Sets.YoyosLifeTimeMultiplier[projectile.type] = 4.5f;
 			ProjectileID.Sets.YoyosMaximumRange[projectile.type] = 350f;
 			ProjectileID.Sets.YoyosTopSpeed[projectile.type] = 18f;
 		}
@@ -19,13 +19,14 @@ namespace DrakSolz.Projectiles {
 		public override void SetDefaults()
 		{
 			projectile.extraUpdates = 0;
-			projectile.width = 80;
-			projectile.height = 80;
+			projectile.width = 100;
+			projectile.height = 100;
 			projectile.aiStyle = 99;
 			projectile.friendly = true;
 			projectile.penetrate = -1;
 			projectile.thrown = true;
-			projectile.scale = 1f;
+			projectile.scale *= 0.8f;
+			projectile.tileCollide = false;
 		}
 
 		public override void PostAI()
