@@ -7,11 +7,12 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Dungeon {
 
     public class DungeonMod2 : GlobalNPC {
 
-        /*public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo) {
-            if (spawnInfo.player.ZoneJungle && NPC.downedMoonlord) {
+        public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo) {
+            if (spawnInfo.player.ZoneDungeon && NPC.downedMoonlord) {
                 pool.Clear();
+                pool.Add(mod.NPCType<SwordofAkrane>(), 35f);
                 pool.Add(mod.NPCType<NPCs.Enemy.Endgame.Secret.VigilantSister>(), 1f);
             }
-        }*/
+        }
     }
 }
