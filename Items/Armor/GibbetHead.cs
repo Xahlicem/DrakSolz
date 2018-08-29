@@ -33,7 +33,7 @@ namespace DrakSolz.Items.Armor {
 
         public override void UpdateArmorSet(Player player) {
             player.setBonus = ("I am become Gibbet" +
-                "\nDestroyer of All");
+                "\nDestroyer of Terraria");
             player.magicCrit += 10;
             player.rangedCrit += 10;
             player.meleeCrit += 10;
@@ -59,12 +59,14 @@ namespace DrakSolz.Items.Armor {
             player.AddBuff(BuffID.Dangersense, 1);
             player.AddBuff(BuffID.Hunter, 1);
         }
-        /*public override void AddRecipes() {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType<Items.Misc.Titanite>(), 500);
-            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-        }*/
+        public class GibbetHeadGlobalNPC : GlobalNPC {
+            public override void NPCLoot(NPC npc) {
+                if (Main.rand.Next(15) == 0) {
+                    if (npc.type == mod.NPCType<NPCs.Enemy.Endgame.Corrupt.Gibbet>() ) {
+                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Armor.GibbetHead>(), 1);
+                    }
+                }
+            }
+        }
     }
 }
