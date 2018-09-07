@@ -13,7 +13,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Corrupt {
 
         public override void SetDefaults() {
             npc.CloneDefaults(NPCID.Wolf);
-            npc.scale = 1;
+            npc.scale = 0.8f;
             npc.width = 80;
             npc.height = 50;
             //npc.aiStyle = 39;

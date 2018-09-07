@@ -28,8 +28,8 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Secret {
             npc.value = 1000000;
             npc.knockBackResist = 0.9f;
             npc.lavaImmune = true;
-            //banner = npc.type;
-            //bannerItem = mod.ItemType<Items.Banners.HollowDogBanner>();
+            banner = npc.type;
+            bannerItem = mod.ItemType<Items.Banners.InfernalBanner>();
         }
 
         public override void FindFrame(int frameHeight) {

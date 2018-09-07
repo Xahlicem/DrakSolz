@@ -13,7 +13,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Dungeon {
 
         public override void SetDefaults() {
             npc.CloneDefaults(NPCID.Zombie);
-            npc.scale = 1;
+            npc.scale = 0.8f;
             npc.width = 60;
             npc.height = 60;
             //npc.aiStyle = 39;
@@ -27,7 +27,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Dungeon {
             npc.value = 20f;
             npc.knockBackResist = 0.2f;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.LittleMushroomBanner>();
+            bannerItem = mod.ItemType<Items.Banners.ShinkageBanner>();
         }
         public override void AI() {
             npc.TargetClosest(true);

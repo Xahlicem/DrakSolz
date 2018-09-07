@@ -13,40 +13,26 @@ namespace DrakSolz.Items.Magic {
         }
         public override void SetDefaults() {
             //item.CloneDefaults(ItemID.StardustDragonStaff);
-            item.useStyle = 1;
+            item.useStyle = 5;
             item.scale *= 1;
             item.magic = true;
             item.noMelee = true;
-            item.damage = 800;
-            item.useTime = 60;
-            item.useAnimation = 60;
+            item.damage = 1300;
+            item.useTime = 30;
+            item.useAnimation = 30;
             item.rare = 4;
-            item.mana = 40;
+            item.mana = 50;
             item.knockBack = 8f;
             item.shootSpeed = 0f;
             item.autoReuse = false;
             item.shoot = mod.ProjectileType<Projectiles.HereticProj>();
         }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack) {
-            if (player.statMana >= item.buffTime * player.manaCost) {
-                damage *= 2;
-                player.statMana -= (int)(item.buffTime * player.manaCost);
-                item.mana = item.buffTime;
-                int pro = Projectile.NewProjectile(Main.mouseX + Main.screenPosition.X, Main.mouseY + Main.screenPosition.Y, 0, 0, type, damage, knockBack, player.whoAmI);
-                Main.projectile[pro].timeLeft = 120;
-                return false;
-            }
-            item.mana = item.buffTime;
+            int pro = Projectile.NewProjectile(Main.mouseX + Main.screenPosition.X, Main.mouseY + Main.screenPosition.Y, 0, 0, type, damage, knockBack, player.whoAmI);
+            Main.projectile[pro].hostile = false;
+            Main.projectile[pro].friendly = false;
+            Main.projectile[pro].ai[1] = 1;
             return false;
-        }
-        public class MechanystStaffGlobalNPC : GlobalNPC {
-            public override void NPCLoot(NPC npc) {
-                if (Main.rand.Next(15) == 0) {
-                    if (npc.type == mod.NPCType<NPCs.Enemy.Endgame.Desert.Starless>() ) {
-                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Magic.MechanystStaff>(), 1);
-                    }
-                }
-            }
         }
     }
 }

@@ -19,7 +19,7 @@ namespace DrakSolz.Items.Magic {
             item.damage = 900;
             item.useTime = 4;
             item.useAnimation = 16;
-            item.mana = 15;
+            item.mana = 20;
             item.knockBack = 2f;
             item.shootSpeed = 30.0f;
             item.rare = 9;

@@ -13,7 +13,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Underworld {
 
         public override void SetDefaults() {
             npc.CloneDefaults(NPCID.Hellbat);
-            npc.scale = 1;
+            npc.scale = 0.6f;
             npc.width = 60;
             npc.height = 60;
             //npc.aiStyle = 39;
@@ -35,7 +35,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Underworld {
             enemy.Y = Main.player[npc.target].Center.Y;
             float y = npc.velocity.Y;
             if (npc.HasValidTarget && Main.player[npc.target].Distance(enemy) > 20f) {
-                npc.velocity = new Vector2(npc.direction * 2.0f, y);
+                npc.velocity = new Vector2(npc.direction * 3.0f, y);
             }
         }
     }

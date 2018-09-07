@@ -14,7 +14,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Jungle {
 
         public override void SetDefaults() {
             npc.CloneDefaults(NPCID.Crab);
-            npc.scale = 1;
+            npc.scale = 0.8f;
             npc.width = 40;
             npc.height = 70;
             //npc.aiStyle = 39;

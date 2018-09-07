@@ -12,10 +12,10 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Underworld {
         }
 
         public override void SetDefaults() {
-            npc.scale = 1;
+            npc.scale = 0.8f;
             npc.width = 48;
             npc.height = 60;
-            npc.damage = 60;
+            npc.damage = 70;
             npc.defense = 1700;
             npc.lifeMax = 45000;
             npc.HitSound = SoundID.NPCHit1;
@@ -58,7 +58,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Underworld {
                 npc.TargetClosest(true);
                 Vector2 speed = Main.player[npc.target].Center - npc.Center;
                 DrakSolz.AdjustMagnitude(ref speed, 7.5f);
-                int pro = Projectile.NewProjectile(npc.Center.X + (40 * npc.direction), npc.Center.Y - 25, speed.X * 1.4f, speed.Y * 1.4f, ProjectileID.Fireball, npc.damage, 3f);
+                int pro = Projectile.NewProjectile(npc.Center.X + (30 * npc.direction), npc.Center.Y - 25, speed.X * 1.4f, speed.Y * 1.4f, ProjectileID.Fireball, npc.damage, 3f);
                 Main.projectile[pro].friendly = false;
                 Main.projectile[pro].hostile = true;
                 Main.projectile[pro].tileCollide = false;

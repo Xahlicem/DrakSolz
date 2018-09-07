@@ -27,8 +27,8 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Secret {
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 1000000;
             npc.knockBackResist = 0.1f;
-            //banner = npc.type;
-            //bannerItem = mod.ItemType<Items.Banners.HollowDogBanner>();
+            banner = npc.type;
+            bannerItem = mod.ItemType<Items.Banners.AridBanner>();
         }
 
         public override void FindFrame(int frameHeight) {

@@ -21,28 +21,21 @@ namespace DrakSolz.Items.Magic {
             item.useTime = 55;
             item.useAnimation = 55;
             item.rare = 4;
-            item.mana = 40;
+            item.mana = 90;
             item.knockBack = 8f;
             item.shootSpeed = 0f;
             item.autoReuse = false;
             item.shoot = ProjectileID.SandnadoFriendly;
         }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack) {
-            if (player.statMana >= item.buffTime * player.manaCost) {
-                damage *= 2;
-                player.statMana -= (int)(item.buffTime * player.manaCost);
-                item.mana = item.buffTime;
-                int pro = Projectile.NewProjectile(Main.mouseX + Main.screenPosition.X, Main.mouseY + Main.screenPosition.Y, 0, 0, type, damage, knockBack, player.whoAmI);
-                Main.projectile[pro].timeLeft = 120;
-                return false;
-            }
-            item.mana = item.buffTime;
+            int pro = Projectile.NewProjectile(Main.mouseX + Main.screenPosition.X, Main.mouseY + Main.screenPosition.Y, 0, 0, type, damage, knockBack, player.whoAmI);
+            Main.projectile[pro].timeLeft = 120;
             return false;
         }
         public class MechanystStaffGlobalNPC : GlobalNPC {
             public override void NPCLoot(NPC npc) {
                 if (Main.rand.Next(15) == 0) {
-                    if (npc.type == mod.NPCType<NPCs.Enemy.Endgame.Desert.Starless>() ) {
+                    if (npc.type == mod.NPCType<NPCs.Enemy.Endgame.Desert.Starless>()) {
                         Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Magic.MechanystStaff>(), 1);
                     }
                 }

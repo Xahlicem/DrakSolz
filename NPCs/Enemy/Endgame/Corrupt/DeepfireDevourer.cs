@@ -12,7 +12,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Corrupt {
         }
         public override void SetDefaults() {
             npc.CloneDefaults(NPCID.Moth);
-            npc.scale = 1.0f;
+            npc.scale = 0.8f;
             npc.width = 40;
             //npc.aiStyle = 39;
             aiType = NPCID.Moth;

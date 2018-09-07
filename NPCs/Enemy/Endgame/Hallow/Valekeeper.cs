@@ -13,7 +13,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Hallow {
 
         public override void SetDefaults() {
             npc.CloneDefaults(NPCID.Unicorn);
-            npc.scale = 1;
+            npc.scale = 0.8f;
             npc.width = 60;
             npc.height = 60;
             //npc.aiStyle = 39;

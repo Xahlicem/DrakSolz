@@ -20,7 +20,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Corrupt {
             //npc.aiStyle = 3;
             aiType = NPCID.Crawdad;
             animationType = NPCID.Crawdad;
-            npc.damage = 200;
+            npc.damage = 250;
             npc.defense = 1000;
             npc.lifeMax = 40000;
             npc.HitSound = SoundID.NPCHit1;

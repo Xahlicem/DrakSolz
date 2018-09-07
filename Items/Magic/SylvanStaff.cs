@@ -17,11 +17,11 @@ namespace DrakSolz.Items.Magic {
             item.useStyle = 5;
             item.magic = true;
             item.noMelee = true;
-            item.damage = 700;
+            item.damage = 900;
             item.useTime = 20;
             item.useAnimation = 20;
             item.rare = 4;
-            item.mana = 10;
+            item.mana = 18;
             item.knockBack = 8f;
             item.autoReuse = true;
             item.shoot = ProjectileID.CrystalLeafShot;

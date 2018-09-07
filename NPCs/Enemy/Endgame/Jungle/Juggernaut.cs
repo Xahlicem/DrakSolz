@@ -13,7 +13,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Jungle {
 
         public override void SetDefaults() {
             npc.CloneDefaults(NPCID.Hellhound);
-            npc.scale = 1;
+            npc.scale = 0.8f;
             npc.width = 62;
             npc.height = 70;
             //npc.aiStyle = 39;
