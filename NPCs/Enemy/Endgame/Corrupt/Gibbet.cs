@@ -28,7 +28,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Corrupt {
             npc.value = 20f;
             npc.knockBackResist = 0.35f;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.LittleMushroomBanner>();
+            bannerItem = mod.ItemType<Items.Banners.CorruptBanners.GibbetBanner>();
         }
 
         public override void AI() {

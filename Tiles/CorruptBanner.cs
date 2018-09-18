@@ -23,54 +23,33 @@ namespace DrakSolz.Tiles {
             AddMapEntry(new Color(13, 88, 130), name);
         }
 
-        /*public override void KillMultiTile(int i, int j, int frameX, int frameY) {
+        public override void KillMultiTile(int i, int j, int frameX, int frameY) {
             int style = frameX / 18;
             string item;
             switch (style) {
                 case 0:
-                    item = "NinjaBanner";
+                    item = "DeepfireDevourerBanner";
                     break;
                 case 1:
-                    item = "WheelSkeletonBanner";
+                    item = "CarrionCollectorBanner";
                     break;
                 case 2:
-                    item = "ChannelerBanner";
+                    item = "HexclawBanner";
                     break;
                 case 3:
-                    item = "CrystalLizardBanner";
+                    item = "DesolatorBanner";
                     break;
                 case 4:
-                    item = "FlameWarmageBanner";
+                    item = "SoulWraithBanner";
                     break;
                 case 5:
-                    item = "RavelordBanner";
+                    item = "VorpalReaverBanner";
                     break;
                 case 6:
-                    item = "SpinwheelBanner";
+                    item = "BlackSolusBanner";
                     break;
                 case 7:
-                    item = "DesertSorceressBanner";
-                    break;
-                case 8:
-                    item = "PursuerBanner";
-                    break;
-                case 9:
-                    item = "HumanityBanner";
-                    break;
-                case 10:
-                    item = "GiantCrystalLizardBanner";
-                    break;
-                case 11:
-                    item = "DragonSlayerBanner";
-                    break;
-                case 12:
-                    item = "ManEaterShellBanner";
-                    break;
-                case 13:
-                    item = "LittleMushroomBanner";
-                    break;
-                case 14:
-                    item = "MoonButterflyBanner";
+                    item = "GibbetBanner";
                     break;
                 default:
                     return;
@@ -85,50 +64,29 @@ namespace DrakSolz.Tiles {
                 string type;
                 switch (style) {
                     case 0:
-                        type = "Ninja";
-                        break;
-                    case 1:
-                        type = "WheelSkeleton";
-                        break;
-                    case 2:
-                        type = "Channeler";
-                        break;
-                    case 3:
-                        type = "CrystalLizard";
-                        break;
-                    case 4:
-                        type = "FlameWarmage";
-                        break;
-                    case 5:
-                        type = "Ravelord";
-                        break;
-                    case 6:
-                        type = "Spinwheel";
-                        break;
-                    case 7:
-                        type = "DesertSorceress";
-                        break;
-                    case 8:
-                        type = "ThePursuer";
-                        break;
-                    case 9:
-                        type = "Humanity";
-                        break;
-                    case 10:
-                        type = "GiantCrystalLizard";
-                        break;
-                    case 11:
-                        type = "DragonSlayer";
-                        break;
-                    case 12:
-                        type = "ManEaterShell";
-                        break;
-                    case 13:
-                        type = "LittleMushroom";
-                        break;
-                    case 14:
-                        type = "MoonButterfly";
-                        break;
+                    type = "DeepfireDevourer";
+                    break;
+                case 1:
+                    type = "CarrionCollector";
+                    break;
+                case 2:
+                    type = "Hexclaw";
+                    break;
+                case 3:
+                    type = "Desolator";
+                    break;
+                case 4:
+                    type = "SoulWraith";
+                    break;
+                case 5:
+                    type = "VorpalReaver";
+                    break;
+                case 6:
+                    type = "BlackSolus";
+                    break;
+                case 7:
+                    type = "Gibbet";
+                    break;
                     default:
                         return;
                 }
@@ -141,6 +99,6 @@ namespace DrakSolz.Tiles {
             if (i % 2 == 1) {
                 spriteEffects = SpriteEffects.FlipHorizontally;
             }
-        }*/
+        }
     }
 }

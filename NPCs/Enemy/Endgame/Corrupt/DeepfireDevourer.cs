@@ -27,7 +27,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Corrupt {
             npc.knockBackResist = 0.25f;
             npc.rarity = 0;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.MoonButterflyBanner>();
+            bannerItem = mod.ItemType<Items.Banners.CorruptBanners.DeepfireDevourerBanner>();
         }
 
         const int AI_Timer_Slot = 3;

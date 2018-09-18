@@ -27,7 +27,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Corrupt {
             npc.value = 20f;
             npc.knockBackResist = 0.1f;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.LittleMushroomBanner>();
+            bannerItem = mod.ItemType<Items.Banners.CorruptBanners.VorpalReaverBanner>();
         }
         public override void AI() {
             npc.TargetClosest(true);

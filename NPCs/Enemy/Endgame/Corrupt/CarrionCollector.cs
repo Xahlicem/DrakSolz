@@ -27,7 +27,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Corrupt {
             npc.value = 20f;
             npc.knockBackResist = 0.2f;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.LittleMushroomBanner>();
+            bannerItem = mod.ItemType<Items.Banners.CorruptBanners.CarrionCollectorBanner>();
         }
         public override void AI() {
             npc.TargetClosest(true);

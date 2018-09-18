@@ -26,6 +26,8 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Hallow {
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 6000f;
             npc.knockBackResist = 0.07f;
+            banner = npc.type;
+            bannerItem = mod.ItemType<Items.Banners.HolyBanners.SolpiercerBanner>();
             AI_Timer = 15;
         }
 

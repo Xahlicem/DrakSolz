@@ -27,7 +27,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Hallow {
             npc.value = 20f;
             npc.knockBackResist = 0.1f;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.LittleMushroomBanner>();
+            bannerItem = mod.ItemType<Items.Banners.HolyBanners.ValekeeperBanner>();
         }
     }
 }
