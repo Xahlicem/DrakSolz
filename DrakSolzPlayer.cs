@@ -280,6 +280,11 @@ namespace DrakSolz {
             item.GetGlobalItem<DSGlobalItem>().Owned = true;
             item.GetGlobalItem<DSGlobalItem>().FromPlayer = player.whoAmI;
             items.Add(item);
+            Item item2 = new Item();
+            item2.netDefaults(mod.ItemType<Items.Misc.InfoBook>());
+            item2.GetGlobalItem<DSGlobalItem>().Owned = true;
+            item2.GetGlobalItem<DSGlobalItem>().FromPlayer = player.whoAmI;
+            items.Add(item2);
         }
 
         public override void clientClone(ModPlayer clone) {
