@@ -28,7 +28,7 @@ namespace DrakSolz.NPCs {
             if (NPC.downedBoss1) mul *= 1.1f;
             if (NPC.downedBoss2) mul *= 1.1f;
             if (NPC.downedBoss3) mul *= 1.1f;
-            if (Main.hardMode) mul *= 1.1f;
+            if (Main.hardMode) mul *= 0.75f;
             if (NPC.downedMechBoss1) mul *= 1.1f;
             if (NPC.downedMechBoss2) mul *= 1.1f;
             if (NPC.downedMechBoss3) mul *= 1.1f;

@@ -18,7 +18,7 @@ namespace DrakSolz.Items.Magic.Holy {
             item.CloneDefaults(ItemID.Flamelash);
             item.useStyle = 5;
             item.noUseGraphic = true;
-            item.damage = 6;
+            item.damage = 10;
             item.useTime = 40;
             item.useAnimation = 40;
             item.mana = 5;
