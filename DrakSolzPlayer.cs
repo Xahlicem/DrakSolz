@@ -273,7 +273,7 @@ namespace DrakSolz {
             BossSouls = tag.GetInt("BossSouls");
         }
 
-        public override void SetupStartInventory(IList<Item> items) {
+        public override void SetupStartInventory(IList<Item> items, bool mediumcoreDeath) {
             items.Clear();
             Item item = new Item();
             item.netDefaults(mod.ItemType<Items.Melee.Sword>());
