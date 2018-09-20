@@ -20,5 +20,14 @@ namespace DrakSolz.Items.Misc {
                 player.AddBuff(item.buffType, 3600, true);
             }
         }
+        public class CrystalPetNPC : GlobalNPC {
+            public override void NPCLoot(NPC npc) {
+                if (Main.rand.Next(20) == 0) {
+                    if (npc.type == mod.NPCType<NPCs.Enemy.PreHardMode.CrystalLizard>() ) {
+                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Misc.CrystalPet>(), 1);
+                    }
+                }
+            }
+        }
     }
 }

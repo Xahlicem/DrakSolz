@@ -30,7 +30,8 @@ namespace DrakSolz.NPCs.Enemy.PreHardMode {
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
-            return SpawnCondition.Cavern.Chance * 0.01f;
+            return 0.005f;
+            //return SpawnCondition.Cavern.Chance * 0.01f;
         }
 
         const int AI_State_Slot = 0;

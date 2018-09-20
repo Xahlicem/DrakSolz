@@ -13,11 +13,12 @@ namespace DrakSolz.Projectiles.Pets {
         public override void SetDefaults() {
             projectile.CloneDefaults(ProjectileID.PetLizard);
             aiType = ProjectileID.PetLizard;
+            projectile.light = 1f;
         }
 
         public override bool PreAI() {
             Player player = Main.player[projectile.owner];
-            player.zephyrfish = false; // Relic from aiType
+            player.lizard = false; // Relic from aiType
             return true;
         }
 
