@@ -21,7 +21,6 @@ namespace DrakSolz.Items.Armor.Tattered {
 
         public override void UpdateEquip(Player player) {
             player.statManaMax2 += 20;
-            player.maxMinions += 1;
         }
 
         public override void DrawHair(ref bool drawHair, ref bool drawAltHair) {
@@ -34,7 +33,7 @@ namespace DrakSolz.Items.Armor.Tattered {
         }
 
         public override void UpdateArmorSet(Player player) {
-            player.setBonus = ("10% increased minion damage" +
+            player.setBonus = ("10% increased miracle damage" +
                 "\nReduces mana usage by 10%");
             player.minionDamage *= 1.10f;
             player.manaCost *= 0.9f;

@@ -30,7 +30,7 @@ namespace DrakSolz.Items.Summon.Consumable {
             //recipe.AddIngredient(ItemID.Bone, 50);
             //recipe.AddRecipe();
         }
-        public class ScrollSwordGlobalNPC : GlobalNPC {
+        /*public class ScrollSwordGlobalNPC : GlobalNPC {
             public override void NPCLoot(NPC npc) {
                 if (Main.rand.Next(20) == 0) {
                     if (npc.type == NPCID.PossessedArmor) {
@@ -38,6 +38,6 @@ namespace DrakSolz.Items.Summon.Consumable {
                     }
                 }
             }
-        }
+        }*/
     }
 }

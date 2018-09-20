@@ -55,7 +55,17 @@ namespace DrakSolz.Items {
             return base.UseItem(item, player);
         }
     }
-
+        public class GoblinStandardMod : GlobalItem {
+            public override bool UseItem(Item item, Player player) {
+                if (item.type != ItemID.GoblinBattleStandard) return base.UseItem(item, player);
+                //int i = player.statLifeMax;
+                player.statLifeMax += 200;
+                bool ret = base.UseItem(item, player);
+                //player.statLifeMax = i;
+                return ret;
+            }
+        }
+                
     public class SummonMod : GlobalItem {
         public override void SetDefaults(Item item) {
             if (item.summon != true) return;
@@ -125,14 +135,15 @@ namespace DrakSolz.Items {
                     break;
             }
         }
+
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips) {
             for (int i = 0; i < tooltips.Count; i++) {
                 if (tooltips[i].text.Contains("summon damage"))
-                    tooltips[i].text = tooltips[i].text.Replace("summon","miracle");
+                    tooltips[i].text = tooltips[i].text.Replace("summon", "miracle");
                 if (tooltips[i].text.Contains("minion damage"))
-                    tooltips[i].text = tooltips[i].text.Replace("minion","miracle");
+                    tooltips[i].text = tooltips[i].text.Replace("minion", "miracle");
                 if (tooltips[i].text.Contains("minions damage"))
-                    tooltips[i].text = tooltips[i].text.Replace("minions","miracle");
+                    tooltips[i].text = tooltips[i].text.Replace("minions", "miracle");
             }
         }
     }

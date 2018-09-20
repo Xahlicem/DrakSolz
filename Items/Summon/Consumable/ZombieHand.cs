@@ -28,5 +28,14 @@ namespace DrakSolz.Items.Summon.Consumable {
             recipe.AddIngredient(ItemID.ZombieArm);
             recipe.AddRecipe();
         }
+        public class ZombieHandDrop : GlobalNPC {
+            public override void NPCLoot(NPC npc) {
+                if (Main.rand.Next(16) == 0) {
+                    if (npc.type == NPCID.Zombie|| npc.type == NPCID.ZombieRaincoat || npc.type == NPCID.ZombieEskimo) {
+                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ItemID.ZombieArm, 1);
+                    }
+                }
+            }
+        }
     }
 }
