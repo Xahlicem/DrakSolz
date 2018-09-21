@@ -13,18 +13,16 @@ namespace DrakSolz.Buffs {
 		public override void Update(Player player, ref int buffIndex)
 		{
             DrakSolzPlayer modPlayer = player.GetModPlayer<DrakSolzPlayer>();
-            player.magicCrit += (1 * modPlayer.Level);
-            player.thrownCrit += (1 * modPlayer.Level);
-            player.meleeCrit += (1 * modPlayer.Level);
-            player.rangedCrit += (1 * modPlayer.Level);
-            player.minionDamage *= (1 + (0.01f * modPlayer.Level));
-            player.thrownDamage *= (1 + (0.01f * modPlayer.Level));
-            player.meleeDamage *= (1 + (0.01f * modPlayer.Level));
-            player.magicDamage *= (1 + (0.01f * modPlayer.Level));
-            player.rangedDamage *= (1 + (0.01f * modPlayer.Level));
-            player.manaCost *= (0.99f - ((( modPlayer.Level + 1) / 100) -1));
-            player.wingTime += 60;
-            player.wingTimeMax += 60;
+            player.magicCrit += (1 * modPlayer.Level / 10);
+            player.thrownCrit += (1 * modPlayer.Level / 10);
+            player.meleeCrit += (1 * modPlayer.Level / 10);
+            player.rangedCrit += (1 * modPlayer.Level / 10);
+            player.minionDamage *= (1 + (0.005f * modPlayer.Level));
+            player.thrownDamage *= (1 + (0.005f * modPlayer.Level));
+            player.meleeDamage *= (1 + (0.005f * modPlayer.Level));
+            player.magicDamage *= (1 + (0.005f * modPlayer.Level));
+            player.rangedDamage *= (1 + (0.005f * modPlayer.Level));
+            player.manaCost *= ((( modPlayer.Level * 0.0025f) * -1) + 1.00f);
 			player.buffTime[buffIndex] = 18000;
             player.GetModPlayer<DrakSolzPlayer>().CrystalPet = true;
 			bool petProjectileNotSpawned = player.ownedProjectileCounts[mod.ProjectileType("CrystalLizardPet")] <= 0;
