@@ -46,6 +46,7 @@ namespace DrakSolz {
         public bool IceSummon { get; set; }
         public bool FireSummon { get; set; }
         public bool DungeonSummon { get; set; }
+        public bool SoulMassSum { get; set; }
 
         public bool CrystalPet { get; set; }
 
@@ -74,6 +75,7 @@ namespace DrakSolz {
             IceSummon = false;
             FireSummon = false;
             DungeonSummon = false;
+            SoulMassSum = false;
             CrystalPet = false;
             EvilEye = false;
             Avarice = 0;
@@ -88,6 +90,7 @@ namespace DrakSolz {
             IceSummon = false;
             FireSummon = false;
             DungeonSummon = false;
+            SoulMassSum = false;
             EvilEye = false;
             Avarice = 0;
             Rotate = false;
