@@ -112,7 +112,9 @@ namespace DrakSolz.NPCs.Enemy.PreHardMode {
                 npc.frame.Y = Frame_Walk[(int) npc.frameCounter / Frame_Walk_Time] * frameHeight;
             }
         }
-
+        public override void OnHitPlayer(Player player, int damage, bool crit) {
+            player.AddBuff(mod.BuffType<Buffs.SlipperyBuff>(), 3600, true);
+        }
         public override void NPCLoot() {
             Item.NewItem(npc.Center, npc.width, npc.height, mod.ItemType<Items.Misc.Twink>());
             if (NPC.downedAncientCultist) {

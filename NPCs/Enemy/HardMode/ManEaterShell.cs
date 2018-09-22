@@ -35,6 +35,9 @@ namespace DrakSolz.NPCs.Enemy.HardMode {
                 return SpawnCondition.Ocean.Chance * 0.15f;
             else return 0f;
         }
+        public override void OnHitPlayer(Player player, int damage, bool crit) {
+            player.AddBuff(mod.BuffType<Buffs.SlipperyBuff>(), 600, true);
+        }
         public override void NPCLoot() {
             int g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ManEaterShell_Gore_1"));
             Main.gore[g].scale = npc.scale;
