@@ -4,7 +4,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace DrakSolz.Items.Magic {
-    public class ScrollHomingSoulMass : ModItem {
+    public class ScrollHomingSoulMass : SoulItem {
+        public ScrollHomingSoulMass() : base(10000) { }
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Homing Soul Mass");
@@ -54,6 +55,13 @@ namespace DrakSolz.Items.Magic {
 
         public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> tooltips) {
             tooltips.RemoveAt(tooltips.Count - 1);
+        }
+
+        public override void AddRecipes() {
+            ModRecipe recipe = new SoulRecipe(mod, this);
+            recipe.AddIngredient(mod.ItemType<Items.Misc.Scroll>());
+            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.AddRecipe();
         }
         /*public class SunWispStaffGlobalNPC : GlobalNPC {
             public override void NPCLoot(NPC npc) {

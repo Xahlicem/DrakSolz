@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace DrakSolz.Items.Magic.SoulBlades {
     public class ScrollSoulBlades1 : SoulItem {
-        public ScrollSoulBlades1() : base(10000) { }
+        public ScrollSoulBlades1() : base(15000) { }
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Soul Blades");
