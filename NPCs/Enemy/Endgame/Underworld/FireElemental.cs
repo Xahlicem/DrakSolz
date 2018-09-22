@@ -29,6 +29,9 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Underworld {
             banner = npc.type;
             bannerItem = mod.ItemType<Items.Banners.LittleMushroomBanner>();
         }
+        public override void OnHitPlayer(Player player, int damage, bool crit) {
+            player.AddBuff(BuffID.OnFire, 900, true);
+        }
         public override void AI() {
             npc.TargetClosest(true);
             Vector2 enemy = npc.Center;

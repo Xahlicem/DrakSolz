@@ -30,6 +30,9 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Jungle {
             banner = npc.type;
             bannerItem = mod.ItemType<Items.Banners.LittleMushroomBanner>();
         }
+        public override void OnHitPlayer(Player player, int damage, bool crit) {
+            player.AddBuff(BuffID.OnFire, 300, true);
+        }
         public override void AI() {
             npc.TargetClosest(true);
             Vector2 enemy = npc.Center;

@@ -38,6 +38,9 @@ namespace DrakSolz.NPCs.Enemy.HardMode {
         public override void FindFrame(int frameHeight) {
             npc.spriteDirection = npc.direction;
         }
+        public override void OnHitPlayer(Player player, int damage, bool crit) {
+            player.AddBuff(BuffID.Lovestruck, 300, true);
+        }
 
         public override void NPCLoot() {
             if (Main.hardMode && Main.rand.Next(10) == 0) 
