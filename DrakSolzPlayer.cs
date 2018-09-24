@@ -30,6 +30,7 @@ namespace DrakSolz {
         public float Summon { get { return 0.6f + Fth * 0.02f; } }
         public int Vit { get; set; }
         public int Health { get { return Level * 2 + (Level > 10 ? (Level - 10) : 0) + (Level > 20 ? (Level - 20) * 2 : 0) + Vit * 10 + (Vit > 20 ? (Vit - 20) * 10 : 0); } }
+        public float Defense { get { return Vit * 0.25f; } }
         public int Att { get; set; }
         public int Mana { get { return Att * 5; } }
 
@@ -253,6 +254,7 @@ namespace DrakSolz {
             player.minionDamage *= Summon;
             player.statLifeMax = 100 + Health;
             player.statManaMax = Mana;
+            player.statDefense += (int) Math.Floor(Defense);
         }
 
         public override TagCompound Save() {

@@ -160,12 +160,14 @@ namespace DrakSolz.UI {
             tooltip.Left.Set(MousePosition.X + 15, 0f);
             string s = "";
             bool throwing = false;
+            bool defense = false;
             if (!HasChild(tooltip)) Append(tooltip);
             if (Vit.icon.ContainsPoint(MousePosition)) {
                 tooltipTitle.SetText("Vitality");
                 int vit = Vit.Stat + Vit.StatAdd;
                 vit = int.Parse(Level.Text) * 2 + (int.Parse(Level.Text) > 10 ? (int.Parse(Level.Text) - 10) : 0) + (int.Parse(Level.Text) > 20 ? (int.Parse(Level.Text) - 20) * 2 : 0) + vit * 10 + (vit > 20 ? (vit - 20) * 10 : 0);
                 s = ("+" + vit + " Health");
+                defense = true;
             } else if (Str.icon.ContainsPoint(MousePosition)) {
                 tooltipTitle.SetText("Strength");
                 s = ("+" + (Str.Stat + Str.StatAdd - 20) * 2 + "% Melee Damage");
@@ -188,6 +190,11 @@ namespace DrakSolz.UI {
                 tooltipText.SetText((s[1] == '-') ? s.Substring(1) : s);
                 if (throwing) {
                     string t = ("+" + ((Dex.Stat + Dex.StatAdd < Str.Stat + Str.StatAdd) ? (Dex.Stat + Dex.StatAdd - 10) : (Str.Stat + Str.StatAdd - 10)) * 4 + "% Thrown Damage");
+                    tooltipText1.SetText((t[1] == '-') ? t.Substring(1) : t);
+                    tooltip.Height.Set(85, 0f);
+                }
+                else if (defense) {
+                    string t = ("+" + (int) Math.Floor(((Vit.Stat + Vit.StatAdd) * 0.25)) + " Defense");
                     tooltipText1.SetText((t[1] == '-') ? t.Substring(1) : t);
                     tooltip.Height.Set(85, 0f);
                 } else {
