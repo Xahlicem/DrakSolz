@@ -17,11 +17,11 @@ namespace DrakSolz.Buffs {
             player.thrownCrit += (1 * modPlayer.Level / 10);
             player.meleeCrit += (1 * modPlayer.Level / 10);
             player.rangedCrit += (1 * modPlayer.Level / 10);
-            player.minionDamage *= (1 + (0.005f * modPlayer.Level));
-            player.thrownDamage *= (1 + (0.005f * modPlayer.Level));
-            player.meleeDamage *= (1 + (0.005f * modPlayer.Level));
-            player.magicDamage *= (1 + (0.005f * modPlayer.Level));
-            player.rangedDamage *= (1 + (0.005f * modPlayer.Level));
+            player.minionDamage *= (1 + (0.0025f * modPlayer.Level));
+            player.thrownDamage *= (1 + (0.0025f * modPlayer.Level));
+            player.meleeDamage *= (1 + (0.0025f * modPlayer.Level));
+            player.magicDamage *= (1 + (0.0025f * modPlayer.Level));
+            player.rangedDamage *= (1 + (0.0025f * modPlayer.Level));
             player.manaCost *= ((( modPlayer.Level * 0.0025f) * -1) + 1.00f);
 			player.buffTime[buffIndex] = 18000;
             player.GetModPlayer<DrakSolzPlayer>().CrystalPet = true;
