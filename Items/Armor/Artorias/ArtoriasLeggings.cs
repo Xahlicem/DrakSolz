@@ -15,7 +15,7 @@ namespace DrakSolz.Items.Armor.Artorias {
             item.height = 18;
             item.value = Item.buyPrice(99, 0, 0, 0);
             item.rare = 10;
-            item.defense = 50;
+            item.defense = 40;
         }
 
         public override void UpdateEquip(Player player) {
