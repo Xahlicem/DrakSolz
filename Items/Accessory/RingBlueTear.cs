@@ -25,7 +25,7 @@ namespace DrakSolz.Items.Accessory {
             else life = (int)(player.statLifeMax2 * 0.2f);
 
             if (player.statLife <= life) {
-                player.statDefense *= 2;
+                player.statDefense += 20;
             }
         }
     }
