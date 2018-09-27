@@ -47,6 +47,17 @@ namespace DrakSolz {
             return vector;
         }
 
+        public static int CreateGore(Mod mod, NPC npc, string gore) {
+            int g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot(gore));
+            Main.gore[g].scale = npc.scale;
+            return g;
+        }
+
+        public static int DropItem(NPC npc, float chance, params int[] types) {
+            if (Main.rand.NextFloat(100f) > chance) return 0;
+            return Item.NewItem(npc.Center, npc.width, npc.height, Utils.SelectRandom(Main.rand, types));
+        }
+
         public static Vector2 AdjustMagnitude(ref Vector2 vector, float speed) {
             return AdjustMagnitude(ref vector, speed, speed);
         }
