@@ -5,7 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace DrakSolz.NPCs.Enemy.Dungeon {
-    public class SilverKnightArcher : ModNPC {
+    public class SilverKnightArcher : SilverKnight {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Silver Knight Archer");
             Main.npcFrameCount[npc.type] = 12;
@@ -107,21 +107,9 @@ namespace DrakSolz.NPCs.Enemy.Dungeon {
         }
 
         public override void NPCLoot() {
-            int g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SilverKnight_Gore_1"));
-            Main.gore[g].scale = npc.scale;
-            g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SilverKnight_Gore_2"));
-            Main.gore[g].scale = npc.scale;
-            g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/SilverKnight_Gore_3"));
-            Main.gore[g].scale = npc.scale;
-            if (Main.rand.Next(75) == 0)
-                Item.NewItem(npc.Center, npc.width, npc.height, Utils.SelectRandom(Main.rand, new int[] {
-                    mod.ItemType<Items.Armor.SilverKnight.SilverKnightHelmet>(), mod.ItemType<Items.Armor.SilverKnight.SilverKnightArmor>(), mod.ItemType<Items.Armor.SilverKnight.SilverKnightLeggings>()
-                }));
-            if (Main.rand.Next(25) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Ranged.DragonslayerGreatbow>());
-            Item.NewItem(npc.Center, npc.width, npc.height, mod.ItemType<Items.Ranged.DragonslayerGreatarrow>(), Main.rand.Next(1, 5));
-            if (Main.rand.Next(8) == 0) {
-                Item.NewItem(npc.Center, npc.width, npc.height, mod.ItemType<Items.Misc.Titanite>());
-            }
+            base.NPCLoot();
+            DrakSolz.DropItem(npc, 4f, mod.ItemType<Items.Ranged.DragonslayerGreatbow>());
+            DrakSolz.DropItem(npc, 100f, mod.ItemType<Items.Ranged.DragonslayerGreatbow>(), Main.rand.Next(1, 5));
         }
     }
 }
