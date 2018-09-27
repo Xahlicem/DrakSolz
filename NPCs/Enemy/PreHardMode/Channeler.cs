@@ -201,16 +201,15 @@ namespace DrakSolz.NPCs.Enemy.PreHardMode {
         }
 
         public override void NPCLoot() {
-            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/Channeler_Head"));
-            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/Channeler_Body"));
-            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/Channeler_Legs"));
+            DrakSolz.CreateGore(mod, npc, "Gores/Channeler/Head");
+            DrakSolz.CreateGore(mod, npc, "Gores/Channeler/Body");
+            DrakSolz.CreateGore(mod, npc, "Gores/Channeler/Legs");
 
-            if (Main.hardMode && Main.rand.Next(4) == 0)
-                Item.NewItem(npc.Center, npc.width, npc.height, Utils.SelectRandom(Main.rand, new int[] {
-                    mod.ItemType<Items.Armor.Channeler.ChannelerHelmet>(), mod.ItemType<Items.Armor.Channeler.ChannelerRobe>(), mod.ItemType<Items.Armor.Channeler.ChannelerSkirt>()
-                }));
-            if (Main.rand.Next(15) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Melee.ChannelT>());
-            if (NPC.downedMoonlord && Main.rand.Next(10) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Magic.ScrollSpear>());
+            DrakSolz.DropItem(npc, 6.666f, mod.ItemType<Items.Melee.ChannelT>());
+            if (Main.hardMode)
+                DrakSolz.DropItem(npc, 25f, mod.ItemType<Items.Armor.Channeler.ChannelerHelmet>(), mod.ItemType<Items.Armor.Channeler.ChannelerRobe>(), mod.ItemType<Items.Armor.Channeler.ChannelerSkirt>());
+            if (NPC.downedMoonlord)
+                DrakSolz.DropItem(npc, 10f, mod.ItemType<Items.Magic.ScrollSpear>());
         }
     }
 }

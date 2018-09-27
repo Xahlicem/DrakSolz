@@ -89,20 +89,11 @@ namespace DrakSolz.NPCs.Enemy.PostPlantera {
         }
 
         public override void NPCLoot() {
-            int g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/MoonButterfly_Gore_6"));
-            Main.gore[g].scale = npc.scale;
-            g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/MoonButterfly_Gore_5"));
-            Main.gore[g].scale = npc.scale;
-            g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/MoonButterfly_Gore_4"));
-            Main.gore[g].scale = npc.scale;
-            g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/MoonButterfly_Gore_3"));
-            Main.gore[g].scale = npc.scale;
-            g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/MoonButterfly_Gore_2"));
-            Main.gore[g].scale = npc.scale;
-            g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/MoonButterfly_Gore_1"));
-            Main.gore[g].scale = npc.scale;
-            Item.NewItem(npc.Center, npc.width, npc.height, mod.ItemType<Items.Misc.Twink>());
-            if (Main.rand.Next(5) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Misc.MoonButterflyHorn>());
+            for (int i = 0; i < 6; i++)
+                DrakSolz.CreateGore(mod, npc, "Gores/MoonButterfly/Gore_" + i);
+
+            DrakSolz.DropItem(npc, 100f, mod.ItemType<Items.Misc.Twink>());
+            DrakSolz.DropItem(npc, 20f, mod.ItemType<Items.Misc.MoonButterflyHorn>());
         }
         private Vector2 GetVelocity(Player player) {
             Vector2 vector = player.Center - npc.Center;

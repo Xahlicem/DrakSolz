@@ -37,24 +37,15 @@ namespace DrakSolz.NPCs.Enemy.PostPlantera {
             else return 0f;
         }
         public override void NPCLoot() {
-            int g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/GiantCrystalLizard_Gore_1"));
-            Main.gore[g].scale = npc.scale;
-            g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/GiantCrystalLizard_Gore_2"));
-            Main.gore[g].scale = npc.scale;
-            g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/GiantCrystalLizard_Gore_3"));
-            Main.gore[g].scale = npc.scale;
-            g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/GiantCrystalLizard_Gore_4"));
-            Main.gore[g].scale = npc.scale;
-            g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/GiantCrystalLizard_Gore_4"));
-            Main.gore[g].scale = npc.scale;
-            g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/GiantCrystalLizard_Gore_4"));
-            Main.gore[g].scale = npc.scale;
-            g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/GiantCrystalLizard_Gore_5"));
-            Main.gore[g].scale = npc.scale;
-            Item.NewItem(npc.Center, npc.width, npc.height, mod.ItemType<Items.Misc.Twink>(), Main.rand.Next(2, 4));
-            if (NPC.downedAncientCultist) {
-                Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Misc.Titanite>(), Main.rand.Next(1, 3));
+            for (int i = 0; i < 5; i++) {
+                DrakSolz.CreateGore(mod, npc, "Gores/GiantCrystalLizard/GiantCrystalLizard_Gore_" + i);
+                if (i == 4)
+                    DrakSolz.CreateGore(mod, npc, "Gores/GiantCrystalLizard/GiantCrystalLizard_Gore_4");
             }
+
+            DrakSolz.DropItem(npc, 100f, mod.ItemType<Items.Misc.Twink>(), Main.rand.Next(2, 4));
+            if (NPC.downedAncientCultist)
+                DrakSolz.DropItem(npc, 100f, mod.ItemType<Items.Misc.Titanite>(), Main.rand.Next(1, 3));
         }
     }
 }

@@ -31,18 +31,11 @@ namespace DrakSolz.NPCs.Enemy.Dungeon {
         }
 
         public override void NPCLoot() {
-            int g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/BlackKnight_Gore_1"));
-            Main.gore[g].scale = npc.scale;
-            g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/BlackKnight_Gore_2"));
-            Main.gore[g].scale = npc.scale;
-            g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/BlackKnight_Gore_3"));
-            Main.gore[g].scale = npc.scale;
-            if (Main.rand.Next(50) == 0)
-                Item.NewItem(npc.Center, npc.width, npc.height, Utils.SelectRandom(Main.rand, new int[] {
-                    mod.ItemType<Items.Armor.BlackKnight.BlackKnightHelmet>(), mod.ItemType<Items.Armor.BlackKnight.BlackKnightArmor>(), mod.ItemType<Items.Armor.BlackKnight.BlackKnightLeggings>()
-                }));
-            //if (Main.rand.Next(8) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Melee.DragonSlayerSpear>());
-            Item.NewItem(npc.Center, npc.width, npc.height, mod.ItemType<Items.Misc.Titanite>(), Main.rand.Next(1, 2));
+            DrakSolz.CreateGore(mod, npc, "Gores/BlackKnight/Head");
+            DrakSolz.CreateGore(mod, npc, "Gores/BlackKnight/Body");
+            DrakSolz.CreateGore(mod, npc, "Gores/BlackKnight/Legs");
+            DrakSolz.DropItem(npc, 12.5f, mod.ItemType<Items.Armor.BlackKnight.BlackKnightHelmet>(), mod.ItemType<Items.Armor.BlackKnight.BlackKnightArmor>(), mod.ItemType<Items.Armor.BlackKnight.BlackKnightLeggings>());
+            DrakSolz.DropItem(npc, 100f, mod.ItemType<Items.Misc.Titanite>(), Main.rand.Next(1, 2));
         }
     }
 }

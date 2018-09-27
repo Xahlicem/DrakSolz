@@ -31,14 +31,12 @@ namespace DrakSolz.NPCs.Enemy.PreHardMode {
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
-                return SpawnCondition.OverworldDay.Chance * 0.2f;
+            return SpawnCondition.OverworldDay.Chance * 0.2f;
         }
         public override void NPCLoot() {
-            int g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/LittleMushroom_Gore_1"));
-            Main.gore[g].scale = npc.scale;
-            g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/LittleMushroom_Gore_2"));
-            Main.gore[g].scale = npc.scale;
-            Item.NewItem(npc.Center, npc.width, npc.height, ItemID.Mushroom, Main.rand.Next(1, 2));
+            DrakSolz.CreateGore(mod, npc, "Gores/LittleMushroom/Gore_0");
+            DrakSolz.CreateGore(mod, npc, "Gores/LittleMushroom/Gore_1");
+            DrakSolz.DropItem(npc, 100f, ItemID.Mushroom, Main.rand.Next(1, 2));
         }
     }
 }

@@ -37,23 +37,11 @@ namespace DrakSolz.NPCs.Enemy.HardMode {
             else return 0f;
         }
         public override void NPCLoot() {
-            int g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/DragonSlayer_Gore_1"));
-            Main.gore[g].scale = npc.scale;
-            g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/DragonSlayer_Gore_2"));
-            Main.gore[g].scale = npc.scale;
-            g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/DragonSlayer_Gore_3"));
-            Main.gore[g].scale = npc.scale;
-            g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/DragonSlayer_Gore_4"));
-            Main.gore[g].scale = npc.scale;
-            g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/DragonSlayer_Gore_5"));
-            Main.gore[g].scale = npc.scale;
-            g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/DragonSlayer_Gore_6"));
-            Main.gore[g].scale = npc.scale;
-            if (Main.rand.Next(4) == 0)
-                Item.NewItem(npc.Center, npc.width, npc.height, Utils.SelectRandom(Main.rand, new int[] {
-                    mod.ItemType<Items.Armor.DragonSlayer.DragonSlayerHelmet>(), mod.ItemType<Items.Armor.DragonSlayer.DragonSlayerChest>(), mod.ItemType<Items.Armor.DragonSlayer.DragonSlayerLeggings>()
-                }));
-            if (Main.rand.Next(8) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Melee.DragonSlayerSpear>());
+            for (int i = 0; i < 6; i++)
+                DrakSolz.CreateGore(mod, npc, "Gores/DragonSlayer/Gore_" + i);
+
+            DrakSolz.DropItem(npc, 25f, mod.ItemType<Items.Armor.DragonSlayer.DragonSlayerHelmet>(), mod.ItemType<Items.Armor.DragonSlayer.DragonSlayerChest>(), mod.ItemType<Items.Armor.DragonSlayer.DragonSlayerLeggings>());
+            DrakSolz.DropItem(npc, 12.5f, mod.ItemType<Items.Melee.DragonSlayerSpear>());
         }
     }
 }

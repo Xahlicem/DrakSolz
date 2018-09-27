@@ -31,10 +31,10 @@ namespace DrakSolz.Items.Melee {
                         i.GetGlobalItem<DSGlobalItem>().Owned = true;
                         i.rare = -1;
                     }
-                Gore.NewGore(player.Center, Vector2.Zero, mod.GetGoreSlot("Gores/Hilt"), 1f);
-                Gore.NewGore(player.Center, Vector2.Zero, mod.GetGoreSlot("Gores/Blade0"), 1f);
-                Gore.NewGore(player.Center, Vector2.Zero, mod.GetGoreSlot("Gores/Blade1"), 1f);
-                Gore.NewGore(player.Center, Vector2.Zero, mod.GetGoreSlot("Gores/Blade2"), 1f);
+                Gore.NewGore(player.Center, Vector2.Zero, mod.GetGoreSlot("Gores/Sword/Hilt"), 1f);
+                Gore.NewGore(player.Center, Vector2.Zero, mod.GetGoreSlot("Gores/Sword/Blade0"), 1f);
+                Gore.NewGore(player.Center, Vector2.Zero, mod.GetGoreSlot("Gores/Sword/Blade1"), 1f);
+                Gore.NewGore(player.Center, Vector2.Zero, mod.GetGoreSlot("Gores/Sword/Blade2"), 1f);
                 Main.PlaySound(SoundID.Shatter, player.Center);
             } else Main.PlaySound(SoundID.Item, player.Center, 37);
             return true;
