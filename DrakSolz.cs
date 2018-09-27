@@ -58,6 +58,11 @@ namespace DrakSolz {
             return Item.NewItem(npc.Center, npc.width, npc.height, Utils.SelectRandom(Main.rand, types));
         }
 
+        public static int DropItem(NPC npc, float chance, int type, int qty = 1) {
+            if (Main.rand.NextFloat(100f) > chance) return 0;
+            return Item.NewItem(npc.Center, npc.width, npc.height, type, qty);
+        }
+
         public static Vector2 AdjustMagnitude(ref Vector2 vector, float speed) {
             return AdjustMagnitude(ref vector, speed, speed);
         }
