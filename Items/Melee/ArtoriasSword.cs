@@ -14,7 +14,7 @@ namespace DrakSolz.Items.Melee {
         public override void SetDefaults() {
             item.CloneDefaults(ItemID.Muramasa);
             item.useStyle = 1;
-            item.damage = 2000;
+            item.damage = 3000;
             item.knockBack = 8f;
             item.useTime = 30;
             item.useAnimation = 30;
@@ -45,7 +45,7 @@ namespace DrakSolz.Items.Melee {
             foreach (Item i in player.inventory)
                 if (i == item) {
                     i.netDefaults(mod.ItemType<Items.Melee.AbyssSword>());
-                    i.damage = idamage + 500;
+                    i.damage = idamage + 1000;
                     i.useAnimation = iuse;
                     i.useTime = iani;
                     i.crit = icrit;
@@ -61,6 +61,7 @@ namespace DrakSolz.Items.Melee {
         }
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(mod.ItemType<Items.Melee.Sword>());
             recipe.AddIngredient(mod.ItemType<Items.Souls.ArtoriasSoul>());
             recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
             recipe.SetResult(this);
