@@ -17,26 +17,30 @@ namespace DrakSolz.UI {
         public UIText num, numLevel;
         public static bool visible = true;
         private Item item;
+        private int height;
 
         public SoulUI(ModItem modItem) {
             item = modItem.item;
         }
 
         public override void OnInitialize() {
+            height = 25;
+            if (ModLoader.GetMod("Tervania") != null) height = 62;
+
             panel = new UIPanel();
             panel.SetPadding(0);
-            panel.Left.Set(500, 0f);
-            panel.Top.Set(25, 0f);
+            panel.Left.Set(496, 0f);
+            panel.Top.Set(height, 0f);
             panel.Width.Set(135f, 0f);
-            panel.Height.Set(35f, 0f);
+            panel.Height.Set(25f, 0f);
             panel.BackgroundColor = new Color(73, 94, 171);
             panel.OnClick += Click;
             panel.OnRightMouseDown += RightDown;
             panel.OnRightMouseUp += RightUp;
 
             numLevel = new UIText("0");
-            numLevel.Left.Set(10, 0f);
-            numLevel.Top.Set(10, 0f);
+            numLevel.Left.Set(5, 0f);
+            numLevel.Top.Set(4, 0f);
             numLevel.Width.Set(25, 0f);
             numLevel.Height.Set(25, 0f);
             numLevel.HAlign = UIAlign.Left;
@@ -44,15 +48,15 @@ namespace DrakSolz.UI {
 
             Texture2D soulTex = ModLoader.GetTexture("DrakSolz/UI/Soul");
             UIImage soul = new UIImage(soulTex);
-            soul.Left.Set(45, 0f);
-            soul.Top.Set(10, 0f);
+            soul.Left.Set(40, 0f);
+            soul.Top.Set(2, 0f);
             soul.Width.Set(25, 0f);
             soul.Height.Set(25, 0f);
             panel.Append(soul);
 
             num = new UIText("0");
-            num.Left.Set(60, 0f);
-            num.Top.Set(10, 0f);
+            num.Left.Set(55, 0f);
+            num.Top.Set(4, 0f);
             num.Width.Set(65, 0f);
             num.Height.Set(25, 0f);
             num.HAlign = UIAlign.Left;
@@ -123,8 +127,11 @@ namespace DrakSolz.UI {
             if (panel.ContainsPoint(MousePosition)) {
                 Main.LocalPlayer.mouseInterface = true;
             }
-            panel.Left.Set(500, 0f);
-            panel.Top.Set(25, 0f);
+            if (numLevel.ContainsPoint(MousePosition)) Main.hoverItemName = "Soul Level";
+            if (num.ContainsPoint(MousePosition)) Main.hoverItemName = "Available Souls";
+            panel.Left.Set(496, 0f);
+
+            panel.Top.Set(height, 0f);
             Recalculate();
         }
 
