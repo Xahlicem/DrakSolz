@@ -152,6 +152,7 @@ namespace DrakSolz.Items {
 
         public override void SetDefaults(Item item) {
             if (item == null) return;
+            if (item.modItem != null) return;
             Projectile p = new Projectile();
             if (item.shoot != 0 || item.shoot != -1) p.CloneDefaults(item.shoot);
             if (ItemID.Sets.Yoyo[item.type] || p.aiStyle == 99 || p.aiStyle == 3 ||
