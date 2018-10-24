@@ -24,7 +24,7 @@ namespace DrakSolz.Items.Armor.DesertSorceress {
         public override void UpdateEquip(Player player) {
             player.moveSpeed += 0.15f;
             player.magicDamage *= 1.05f;
-            player.manaRegenDelay -= 1;
+            player.manaRegenDelay -= 5;
         }
     }
 }
