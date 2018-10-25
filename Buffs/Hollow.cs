@@ -11,7 +11,7 @@ namespace DrakSolz.Buffs {
             Main.buffNoSave[Type] = false;
             Main.buffNoTimeDisplay[Type] = false;
             Main.persistentBuff[Type] = true;
-            canBeCleared = true;
+            canBeCleared = false;
         }
 
         public override void Update(Player player, ref int buffIndex) {
