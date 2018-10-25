@@ -161,11 +161,12 @@ namespace DrakSolz.UI {
             string s = "";
             bool throwing = false;
             bool defense = false;
+            bool MCost = false;
             if (!HasChild(tooltip)) Append(tooltip);
             if (Vit.icon.ContainsPoint(MousePosition)) {
                 tooltipTitle.SetText("Vitality");
                 int vit = Vit.Stat + Vit.StatAdd;
-                vit = int.Parse(Level.Text) * 2 + (int.Parse(Level.Text) > 10 ? (int.Parse(Level.Text) - 10) : 0) + (int.Parse(Level.Text) > 20 ? (int.Parse(Level.Text) - 20) * 2 : 0) + vit * 10 + (vit > 20 ? (vit - 20) * 10 : 0);
+                vit = int.Parse(Level.Text) * 2 + (int.Parse(Level.Text) > 5 ? (int.Parse(Level.Text) - 5) : 0) + (int.Parse(Level.Text) > 10 ? (int.Parse(Level.Text) - 10) * 2 : 0) + (int.Parse(Level.Text) > 20 ? (int.Parse(Level.Text) - 20) * 2 : 0) + vit * 12 + (vit > 20 ? (vit - 20) * 11 : 0);
                 s = ("+" + vit + " Health");
                 defense = true;
             } else if (Str.icon.ContainsPoint(MousePosition)) {
@@ -179,6 +180,7 @@ namespace DrakSolz.UI {
             } else if (Att.icon.ContainsPoint(MousePosition)) {
                 tooltipTitle.SetText("Attunement");
                 s = ("+" + (Att.Stat + Att.StatAdd) * 5 + " Mana");
+                MCost = true;
             } else if (Int.icon.ContainsPoint(MousePosition)) {
                 tooltipTitle.SetText("Intelligence");
                 s = ("+" + (Int.Stat + Int.StatAdd - 20) * 2 + "% Magic Damage");
@@ -196,6 +198,11 @@ namespace DrakSolz.UI {
                 else if (defense) {
                     string t = ("+" + (int) Math.Floor(((Vit.Stat + Vit.StatAdd) * 0.25)) + " Defense");
                     tooltipText1.SetText((t[1] == '-') ? t.Substring(1) : t);
+                    tooltip.Height.Set(85, 0f);
+                }
+                else if (MCost) {
+                    string t = ("-" + (int) Math.Floor(((Att.Stat + Att.StatAdd) * 0.5)) + "% Mana Cost");
+                    tooltipText1.SetText((t[1] == '+') ? t.Substring(1) : t);
                     tooltip.Height.Set(85, 0f);
                 } else {
                     tooltipText1.SetText(string.Empty);

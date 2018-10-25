@@ -15,7 +15,7 @@ namespace DrakSolz.Items.Summon {
             item.CloneDefaults(ItemID.RavenStaff);
             item.damage = 700;
             item.summon = true;
-            item.mana = 70;
+            item.mana = 250;
             item.scale = 1f;
             item.width = 28;
             item.height = 28;
