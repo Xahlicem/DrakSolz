@@ -29,7 +29,12 @@ namespace DrakSolz.Items.World {
             var LastIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Final Cleanup"));
             if (LastIndex != -1) {
                 tasks.Insert(LastIndex, new PassLegacy("Drakening the World!", delegate(GenerationProgress progress) {
-                    NPC.NewNPC((int) Main.npc[0].position.X, (int) Main.npc[0].position.Y, mod.NPCType<NPCs.Town.Pilgrim>());
+
+                    int num = NPC.NewNPC((Main.spawnTileX + 5) * 16, Main.spawnTileY * 16, mod.NPCType<NPCs.Town.Pilgrim>(), 0, 0f, 0f, 0f, 0f, 255);
+                    Main.npc[num].homeTileX = Main.spawnTileX + 5;
+                    Main.npc[num].homeTileY = Main.spawnTileY;
+                    Main.npc[num].direction = 1;
+                    Main.npc[num].homeless = true;
                     progress.Message = "Adding shinies";
                     progress.CurrentPassWeight = Main.chest.Length;
 
@@ -69,7 +74,7 @@ namespace DrakSolz.Items.World {
 
         private void MakeRoom(GenerationProgress progress) {
             float widthScale = (Main.maxTilesX / 2100f);
-            int numberToGenerate = WorldGen.genRand.Next(1, (int)(2f * widthScale));
+            int numberToGenerate = WorldGen.genRand.Next(1, (int) (2f * widthScale));
             progress.CurrentPassWeight = numberToGenerate;
             for (int k = 0; k < numberToGenerate; k++) {
                 bool success = false;
