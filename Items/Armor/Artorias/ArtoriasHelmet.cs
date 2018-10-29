@@ -24,7 +24,7 @@ namespace DrakSolz.Items.Armor.Artorias {
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs) {
-            return body.type == mod.ItemType<Items.Armor.Ringed.RingedArmor>() && legs.type == mod.ItemType<Items.Armor.Ringed.RingedLeggings>();
+            return body.type == mod.ItemType<Items.Armor.Artorias.ArtoriasArmor>() && legs.type == mod.ItemType<Items.Armor.Artorias.ArtoriasLeggings>();
         }
 
         public override void UpdateArmorSet(Player player) {

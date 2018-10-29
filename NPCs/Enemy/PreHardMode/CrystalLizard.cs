@@ -17,8 +17,8 @@ namespace DrakSolz.NPCs.Enemy.PreHardMode {
             npc.height = 20;
             npc.aiStyle = -1;
             npc.damage = 20;
-            npc.defense = 15;
-            npc.lifeMax = 200;
+            npc.defense = 10;
+            npc.lifeMax = 150;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 100000f;

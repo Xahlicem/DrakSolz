@@ -253,7 +253,8 @@ namespace DrakSolz {
             player.magicDamage *= Magic;
             player.minionDamage *= Summon;
             player.statLifeMax = 100 + Health;
-            player.statManaMax = Mana;
+            player.statManaMax = 0;
+            player.statManaMax2 += Mana;
             player.manaCost *= 1 - (Att * 0.005f);
             player.statDefense += (int) Math.Floor(Defense);
         }
