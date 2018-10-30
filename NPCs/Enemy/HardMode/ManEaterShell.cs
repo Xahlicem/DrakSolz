@@ -32,7 +32,7 @@ namespace DrakSolz.NPCs.Enemy.HardMode {
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
             if (NPC.downedMechBossAny)
-                return SpawnCondition.Ocean.Chance * 0.15f;
+                return SpawnCondition.Ocean.Chance * 0.35f;
             else return 0f;
         }
         public override void OnHitPlayer(Player player, int damage, bool crit) {
