@@ -22,7 +22,9 @@ namespace DrakSolz.Items.Armor.Xanthous {
         }
 
         public override void UpdateEquip(Player player) {
+            if(player.maxMinions >= 1){
             player.maxMinions -= 1;
+            }
             player.minionDamage *= 1.1f;
             player.moveSpeed *= 1.20f;
         }

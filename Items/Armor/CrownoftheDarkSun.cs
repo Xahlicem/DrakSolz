@@ -21,7 +21,9 @@ namespace DrakSolz.Items.Armor {
         }
 
         public override void UpdateEquip(Player player) {
+            if(player.maxMinions >= 1){
             player.maxMinions -= 1;
+            }
             player.statManaMax2 += 20;
         }
 
