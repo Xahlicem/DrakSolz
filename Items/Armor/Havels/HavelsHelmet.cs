@@ -32,6 +32,7 @@ namespace DrakSolz.Items.Armor.Havels {
             player.buffImmune[BuffID.Slow] = true;
             player.buffImmune[BuffID.BrokenArmor] = true;
             player.buffImmune[BuffID.WaterWalking] = true;
+            player.buffImmune[BuffID.Featherfall] = true;
         }
         public override bool DrawHead() {
             return false;

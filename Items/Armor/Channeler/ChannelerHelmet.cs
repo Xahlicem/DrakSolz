@@ -8,8 +8,7 @@ namespace DrakSolz.Items.Armor.Channeler {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Channeler's Helmet");
             Tooltip.SetDefault("Description!" +
-                "\n+20% Magic Damage" +
-                "\n+20% Melee Damage");
+                "\n+20% Damage");
         }
 
         public override void SetDefaults() {
@@ -23,6 +22,9 @@ namespace DrakSolz.Items.Armor.Channeler {
         public override void UpdateEquip(Player player) {
             player.magicDamage *= 1.2f;
             player.meleeDamage *= 1.2f;
+            player.rangedDamage *= 1.2f;
+            player.minionDamage *= 1.2f;
+            player.thrownDamage *= 1.2f;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs) {
