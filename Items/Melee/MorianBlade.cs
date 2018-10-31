@@ -17,6 +17,7 @@ namespace DrakSolz.Items.Melee {
             item.knockBack = 6f;
             item.useTime = 2;
             item.useAnimation = 25;
+            item.value = Item.buyPrice(0, 15, 0, 0);
         }
         public override Vector2? HoldoutOffset() {
             return new Vector2(0, 0);

@@ -21,9 +21,10 @@ namespace DrakSolz.Items.Magic.Holy {
             item.damage = 13;
             item.useTime = 35;
             item.useAnimation = 35;
-            item.mana = 10;
+            item.mana = 14;
             item.knockBack = 2.5f;
             item.shootSpeed = 8.0f;
+            item.value = Item.buyPrice(0, 4, 0, 0);
             item.shoot = mod.ProjectileType<Projectiles.HolySpearProj>();
             item.summon = true;
             item.magic = false;
@@ -46,7 +47,7 @@ namespace DrakSolz.Items.Magic.Holy {
                 Main.projectile[pro].knockBack *= 2;
             } else {
                 Main.projectile[pro].damage *= 1;
-                Main.projectile[pro].ai[1] += 1;
+                Main.projectile[pro].ai[1] += 3;
             }
             return false;
         }

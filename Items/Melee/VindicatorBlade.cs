@@ -18,6 +18,7 @@ namespace DrakSolz.Items.Melee {
             item.useTime = 25;
             item.useAnimation = 25;
             item.autoReuse = true;
+            item.value = Item.buyPrice(1, 0, 0, 0);
             item.shoot = mod.ProjectileType<Projectiles.VindicatorProj>();
             item.shootSpeed = 20f;
         }

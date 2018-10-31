@@ -24,6 +24,7 @@ namespace DrakSolz.Items.Magic.Holy {
             item.mana = 10;
             item.knockBack = 3.0f;
             item.shootSpeed = 20.0f;
+            item.value = Item.buyPrice(1, 50, 0, 0);
             item.autoReuse = true;
             item.shoot = mod.ProjectileType<Projectiles.LightningArrowProj>();
             item.summon = true;

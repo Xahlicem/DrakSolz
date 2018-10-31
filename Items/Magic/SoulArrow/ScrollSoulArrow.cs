@@ -24,6 +24,7 @@ namespace DrakSolz.Items.Magic.SoulArrow {
             item.mana = 5;
             item.knockBack = 2f;
             item.shootSpeed = 20.0f;
+            item.value = Item.buyPrice(0, 0, 10, 0);
             item.shoot = mod.ProjectileType<Projectiles.Magic.SoulProj>();
         }
 

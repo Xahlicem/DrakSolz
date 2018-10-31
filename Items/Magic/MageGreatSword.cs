@@ -16,6 +16,7 @@ namespace DrakSolz.Items.Magic {
             item.useAnimation = 35;
             item.useTime = 35;
             item.knockBack = 8f;
+            item.value = Item.buyPrice(0, 8, 0, 0);
             item.melee = false;
             item.magic = true;
             item.scale *= 2;

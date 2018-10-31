@@ -34,11 +34,10 @@ namespace DrakSolz.Projectiles {
             }
             if (projectile.timeLeft <= 25) {
                 //projectile.velocity.X *= 70f;
-                projectile.rotation = 100f *(projectile.spriteDirection);
+                projectile.rotation = 100f * (projectile.spriteDirection);
                 projectile.friendly = true;
                 projectile.velocity.Y += -3;
                 projectile.minion = true;
-                projectile.alpha -= 15;
                 projectile.scale = 1f;
                 projectile.knockBack = 8;
                 //projectile.damage = 80;
@@ -47,11 +46,17 @@ namespace DrakSolz.Projectiles {
                 Main.dust[dust].scale *= 1 + Main.rand.NextFloat();
                 Main.dust[dust].noGravity = true;
             }
-            if (projectile.timeLeft <= 10) {
-                projectile.velocity.Y += 2;
-                projectile.alpha += 30;
+            if (projectile.timeLeft >= 11 && projectile.alpha >= 55) {
+                projectile.alpha -= 20;
             }
-            if (projectile.timeLeft == 20 && projectile.ai[1] < 3) Projectile.NewProjectile((projectile.Center.X + (60 * projectile.direction)), projectile.ai[0] + 20, 1 * projectile.direction, 0, projectile.type, projectile.damage, projectile.knockBack, projectile.owner, projectile.ai[0], projectile.ai[1] + 1);
+            if (projectile.timeLeft <= 10) {
+                projectile.velocity.Y += 2.5f;
+                projectile.alpha += 18;
+            }
+            if (projectile.timeLeft <= 5) {
+                projectile.velocity.Y += 0.5f;
+            }
+            if (projectile.timeLeft == 20 && projectile.ai[1] < 5) Projectile.NewProjectile((projectile.Center.X + (35 * projectile.direction)), projectile.ai[0] + 20, 1 * projectile.direction, 0, projectile.type, projectile.damage, projectile.knockBack, projectile.owner, projectile.ai[0], projectile.ai[1] + 1);
         }
     }
 }

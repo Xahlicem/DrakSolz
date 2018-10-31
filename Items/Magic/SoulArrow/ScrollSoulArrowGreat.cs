@@ -17,6 +17,7 @@ namespace DrakSolz.Items.Magic.SoulArrow {
             item.noUseGraphic = true;
             item.damage = 30;
             item.mana = 7;
+            item.value = Item.buyPrice(0, 0, 50, 0);
             item.knockBack = 2.5f;
         }
 

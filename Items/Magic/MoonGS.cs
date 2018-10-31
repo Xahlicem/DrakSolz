@@ -19,6 +19,7 @@ namespace DrakSolz.Items.Magic {
             item.width = 90;
             item.height = 90;
             item.useTime = 25;
+            item.value = Item.buyPrice(0, 60, 0, 0);
             item.useAnimation = 25;
             item.useStyle = 1;
             item.knockBack = 0;

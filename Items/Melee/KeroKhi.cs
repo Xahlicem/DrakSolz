@@ -17,6 +17,7 @@ namespace DrakSolz.Items.Melee {
             item.knockBack = 10f;
             item.useTime = 25;
             item.useAnimation = 25;
+            item.value = Item.buyPrice(1, 50, 0, 0);
             item.scale *= 1.3f;
         }
                 public override void MeleeEffects(Player player, Rectangle hitbox)

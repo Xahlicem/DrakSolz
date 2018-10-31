@@ -24,6 +24,7 @@ namespace DrakSolz.Items.Magic {
             item.mana = 90;
             item.knockBack = 8f;
             item.shootSpeed = 0f;
+            item.value = Item.buyPrice(1, 0, 0, 0);
             item.autoReuse = false;
             item.shoot = ProjectileID.SandnadoFriendly;
         }

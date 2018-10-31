@@ -16,6 +16,7 @@ namespace DrakSolz.Items.Melee {
             item.damage = 1750;
             item.knockBack = 8f;
             item.useTime = 25;
+            item.value = Item.buyPrice(1, 0, 0, 0);
             item.useAnimation = 25;
             item.scale *= 1.3f;
         }

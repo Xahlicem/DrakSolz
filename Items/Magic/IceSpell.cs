@@ -24,6 +24,7 @@ namespace DrakSolz.Items.Magic {
             item.mana = 35;
             item.knockBack = 3f;
             item.shootSpeed = 8f;
+            item.value = Item.buyPrice(1, 0, 0, 0);
             item.autoReuse = true;
             item.shoot = mod.ProjectileType<Projectiles.IceSpellProj>();
         }

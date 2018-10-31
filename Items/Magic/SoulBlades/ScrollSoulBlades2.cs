@@ -18,6 +18,7 @@ namespace DrakSolz.Items.Magic.SoulBlades {
             item.damage = 90;
             item.useTime = 10;
             item.useAnimation = 10;
+            item.value = Item.buyPrice(0, 16, 0, 0);
             item.mana += 2;
         }
 

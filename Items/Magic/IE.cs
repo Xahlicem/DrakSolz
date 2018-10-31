@@ -22,6 +22,7 @@ namespace DrakSolz.Items.Magic {
             item.mana = 20;
             item.knockBack = 12.5f;
             item.shootSpeed = 0f;
+            item.value = Item.buyPrice(0, 70, 0, 0);
             item.autoReuse = true;
             item.shoot = mod.ProjectileType<Projectiles.Magic.FlameMageProj2>();
         }

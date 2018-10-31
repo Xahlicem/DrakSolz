@@ -20,7 +20,7 @@ namespace DrakSolz.Items.Ranged
 			item.maxStack = 999;
 			item.consumable = true;             //You need to set the item consumable so that the ammo would automatically consumed
 			item.knockBack = 8f;
-			item.value = 100;
+			item.value = 200;
 			item.rare = 2;
 			item.shoot = mod.ProjectileType("DragonslayerGreatarrowProj");   //The projectile shoot when your weapon using this ammo
 			item.shootSpeed = 12f;                  //The speed of the projectile

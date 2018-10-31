@@ -17,6 +17,7 @@ namespace DrakSolz.Items.Magic {
             item.useStyle = 5;
             item.noUseGraphic = true;
             item.damage = 900;
+            item.value = Item.buyPrice(1, 20, 0, 0);
             item.useTime = 4;
             item.useAnimation = 16;
             item.mana = 20;

@@ -24,6 +24,7 @@ namespace DrakSolz.Items.Magic.Holy {
             item.mana = 5;
             item.knockBack = 12f;
             item.shootSpeed = 3.0f;
+            item.value = Item.buyPrice(0, 0, 20, 0);
             item.shoot = mod.ProjectileType<Projectiles.ForceProj>();
             item.summon = true;
             item.magic = false;

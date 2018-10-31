@@ -25,6 +25,7 @@ namespace DrakSolz.Items.Magic.Pyro {
             item.knockBack = 4f;
             item.shootSpeed = 5.0f;
             item.shoot = 376;
+            item.value = Item.buyPrice(0, 3, 0, 0);
             item.autoReuse = true;
         }
 

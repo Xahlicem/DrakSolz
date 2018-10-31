@@ -23,6 +23,7 @@ namespace DrakSolz.Items.Magic {
             item.rare = 4;
             item.mana = 50;
             item.knockBack = 8f;
+            item.value = Item.buyPrice(1, 0, 0, 0);
             item.shootSpeed = 0f;
             item.autoReuse = false;
             item.shoot = mod.ProjectileType<Projectiles.HereticProj>();

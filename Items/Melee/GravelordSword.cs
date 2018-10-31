@@ -20,6 +20,7 @@ namespace DrakSolz.Items.Melee {
             item.rare = 8;
             item.knockBack = 9f;
             item.shootSpeed = 0.01f;
+            item.value = Item.buyPrice(0, 30, 0, 0);
             item.autoReuse = true;
             item.shoot = mod.ProjectileType<Projectiles.GravelordProj>();
         }

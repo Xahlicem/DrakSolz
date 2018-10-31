@@ -18,7 +18,7 @@ namespace DrakSolz.Projectiles {
             projectile.magic = true;
             projectile.width = 40;
             projectile.height = 50;
-            projectile.timeLeft = 30;
+            projectile.timeLeft = 26;
             projectile.penetrate = -1;
             projectile.alpha = 255;
         }
@@ -32,13 +32,12 @@ namespace DrakSolz.Projectiles {
                 projectile.velocity.X = -0.01f;
                 projectile.spriteDirection = -1;
             }
-            if (projectile.timeLeft <= 29) {
+            if (projectile.timeLeft <= 25) {
                 //projectile.velocity.X *= 70f;
                 projectile.rotation = 100f *(projectile.spriteDirection);
                 projectile.friendly = true;
                 projectile.velocity.Y += -4;
                 projectile.minion = true;
-                projectile.alpha -= 15;
                 projectile.scale = 1f;
                 projectile.knockBack = 8;
                 //projectile.damage = 80;
@@ -47,11 +46,17 @@ namespace DrakSolz.Projectiles {
                 Main.dust[dust].scale *= 1.5f + Main.rand.NextFloat();
                 Main.dust[dust].noGravity = true;
             }
-            if (projectile.timeLeft <= 10) {
-                projectile.velocity.Y += 3;
-                projectile.alpha += 30;
+            if (projectile.timeLeft >= 11 && projectile.alpha >= 55) {
+                projectile.alpha -= 20;
             }
-            if (projectile.timeLeft == 20 && projectile.ai[1] < 4) Projectile.NewProjectile((projectile.Center.X + (60 * projectile.direction)), projectile.ai[0] + 40, 1 * projectile.direction, 0, projectile.type, projectile.damage, projectile.knockBack, projectile.owner, projectile.ai[0], projectile.ai[1] + 1);
+            if (projectile.timeLeft <= 10) {
+                projectile.velocity.Y += 1;
+                projectile.alpha += 18;
+            }
+            if (projectile.timeLeft <= 5) {
+                projectile.velocity.Y += 2;
+            }
+            if (projectile.timeLeft == 21 && projectile.ai[1] < 7) Projectile.NewProjectile((projectile.Center.X + (40 * projectile.direction)), projectile.ai[0] + 40, 1 * projectile.direction, 0, projectile.type, projectile.damage, projectile.knockBack, projectile.owner, projectile.ai[0], projectile.ai[1] + 1);
         }
     }
 }
