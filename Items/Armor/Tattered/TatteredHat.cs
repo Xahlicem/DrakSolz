@@ -7,8 +7,7 @@ namespace DrakSolz.Items.Armor.Tattered {
     public class TatteredHat : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Tattered Hat");
-            Tooltip.SetDefault("Increases maximum mana by 20" +
-                "\nIncreases your max number of minions");
+            Tooltip.SetDefault("Increases maximum mana by 20");
         }
 
         public override void SetDefaults() {
