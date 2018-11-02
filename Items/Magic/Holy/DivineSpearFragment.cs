@@ -7,7 +7,7 @@ using Terraria.ModLoader.IO;
 
 namespace DrakSolz.Items.Magic.Holy {
     public class DivineSpearFragment : SoulItem {
-        public DivineSpearFragment() : base(40000) { }
+        public DivineSpearFragment() : base(50000) { }
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Divine Spear Fragment");
@@ -18,7 +18,22 @@ namespace DrakSolz.Items.Magic.Holy {
             item.CloneDefaults(ItemID.Flamelash);
             item.useStyle = 4;
             item.noUseGraphic = true;
+            item.damage = 25;
+            if (NPC.downedMechBoss2 || NPC.downedMechBoss3){
+            item.damage = 29;
+            }
+            if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3){
             item.damage = 32;
+            }
+            if (NPC.downedPlantBoss){
+            item.damage = 37;
+            }
+            if (NPC.downedGolemBoss){
+            item.damage = 40;
+            }
+            if (NPC.downedAncientCultist){
+            item.damage = 45;
+            }
             item.useTime = 30;
             item.useAnimation = 30;
             item.mana = 25;
@@ -36,6 +51,7 @@ namespace DrakSolz.Items.Magic.Holy {
             ModRecipe recipe = new SoulRecipe(mod, this);
             recipe.AddIngredient(mod.ItemType<Items.Magic.Holy.RitualSpearFragment>());
             recipe.AddIngredient(ItemID.SoulofLight, 10);
+            recipe.AddIngredient(ItemID.SoulofMight, 10);
             recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
             recipe.AddRecipe();
         }
