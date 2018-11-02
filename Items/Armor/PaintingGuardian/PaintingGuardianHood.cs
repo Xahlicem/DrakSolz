@@ -16,7 +16,7 @@ namespace DrakSolz.Items.Armor.PaintingGuardian {
             item.height = 28;
             item.value = Item.sellPrice(0, 0, 20, 0);
             item.rare = 3;
-            item.defense = 3;
+            item.defense = 2;
         }
 
         public override void UpdateEquip(Player player) {
@@ -28,7 +28,7 @@ namespace DrakSolz.Items.Armor.PaintingGuardian {
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs) {
-            return body.type == mod.ItemType<Items.Armor.Tattered.TatteredTunic>() && legs.type == mod.ItemType<Items.Armor.Tattered.TatteredBoots>();
+            return body.type == mod.ItemType<Items.Armor.PaintingGuardian.PaintingGuardianRobe>() && legs.type == mod.ItemType<Items.Armor.PaintingGuardian.PaintingGuardianLeggings>();
         }
 
         public override void UpdateArmorSet(Player player) {

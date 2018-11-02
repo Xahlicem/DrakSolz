@@ -8,7 +8,7 @@ namespace DrakSolz.Items.Armor.PaintingGuardian {
         public override void SetStaticDefaults() {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Painting Guardian Robe");
-            Tooltip.SetDefault("Increases minion damage by 5%");
+            Tooltip.SetDefault("Increases movement speed by 5%");
         }
 
         public override void SetDefaults() {
@@ -20,7 +20,7 @@ namespace DrakSolz.Items.Armor.PaintingGuardian {
         }
 
         public override void UpdateEquip(Player player) {
-            player.minionDamage *= 1.05f;
+            player.moveSpeed *= 1.05f;
         }
 
         public override void AddRecipes() {
