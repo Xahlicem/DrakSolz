@@ -14,7 +14,7 @@ namespace DrakSolz {
     public class DrakSolzWorld : ModWorld {
         public enum Boss {
             //AbyssStalker,
-            //TitaniteDemon,
+            TitaniteDemon,
             VoidPillar
         }
 

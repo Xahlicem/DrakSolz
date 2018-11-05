@@ -30,6 +30,10 @@ namespace DrakSolz.NPCs.Enemy.Boss {
             npc.buffImmune[BuffID.Confused] = true; // npc default to being immune to the Confused debuff. Allowing confused could be a little more work depending on the AI. npc.confused is true while the npc is confused.
         }
 
+        public override void NPCLoot() {
+            DrakSolzWorld.downedBoss[DrakSolzWorld.Boss.TitaniteDemon] = true;
+        }
+
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
             // we would like this npc to spawn in the overworld.
             return SpawnCondition.DungeonGuardian.Chance * 0.8f;

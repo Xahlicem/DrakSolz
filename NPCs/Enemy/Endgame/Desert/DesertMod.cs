@@ -8,7 +8,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Desert {
     public class DesertMod : GlobalNPC {
 
         public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo) {
-            if (spawnInfo.player.ZoneDesert && NPC.downedMoonlord) {
+            if (spawnInfo.player.ZoneDesert && DrakSolzWorld.downedBoss[DrakSolzWorld.Boss.TitaniteDemon]) {
                 pool.Clear();
                 pool.Add(mod.NPCType<Scarabyte>(), 40f);
                 pool.Add(mod.NPCType<MirageMonster>(), 30f);
@@ -20,7 +20,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Desert {
                 pool.Add(mod.NPCType<WindShrike>(), 5f);
                 pool.Add(mod.NPCType<NPCs.Enemy.Endgame.Secret.AridSister>(), 1f);
             }
-            if (spawnInfo.player.ZoneUndergroundDesert && NPC.downedMoonlord) {
+            if (spawnInfo.player.ZoneUndergroundDesert && DrakSolzWorld.downedBoss[DrakSolzWorld.Boss.TitaniteDemon]) {
                 pool.Clear();
                 pool.Add(mod.NPCType<Scarabyte>(), 30f);
                 pool.Add(mod.NPCType<WindShrike>(), 30f);
