@@ -16,7 +16,7 @@ namespace DrakSolz.Items.Magic.Pyro {
         public override void SetDefaults() {
             item.CloneDefaults(ItemID.Flamelash);
             item.useStyle = 1;
-            item.damage = 70;
+            item.damage = 72;
             item.useTime = 25;
             item.useAnimation = 25;
             item.mana = 15;

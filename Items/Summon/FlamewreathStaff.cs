@@ -13,7 +13,7 @@ namespace DrakSolz.Items.Summon {
 
         public override void SetDefaults() {
             item.CloneDefaults(ItemID.RavenStaff);
-            item.damage = 800;
+            item.damage = 1200;
             item.summon = true;
             item.mana = 225;
             item.scale = 1f;

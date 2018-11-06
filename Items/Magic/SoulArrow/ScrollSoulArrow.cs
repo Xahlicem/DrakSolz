@@ -18,7 +18,7 @@ namespace DrakSolz.Items.Magic.SoulArrow {
             item.CloneDefaults(ItemID.IceRod);
             item.useStyle = 5;
             item.noUseGraphic = true;
-            item.damage = 16;
+            item.damage = 20;
             item.useTime = 30;
             item.useAnimation = 30;
             item.mana = 5;

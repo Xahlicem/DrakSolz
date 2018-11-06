@@ -22,6 +22,7 @@ namespace DrakSolz.Projectiles.Minion {
             projectile.minion = true;
             projectile.minionSlots = 1f;
             projectile.penetrate = -1;
+            projectile.knockBack = 0;
             projectile.timeLeft = projectile.timeLeft * 5;
             projectile.ignoreWater = true;
             projectile.tileCollide = false;
@@ -35,7 +36,11 @@ namespace DrakSolz.Projectiles.Minion {
         public override void AI() {
             Player player = Main.player[projectile.owner];
             DrakSolzPlayer modPlayer = (DrakSolzPlayer) player.GetModPlayer<DrakSolzPlayer>(mod);
-
+            projectile.friendly = false;
+            projectile.hostile = false;
+            if (Main.time % 12 == 0) {
+                projectile.friendly = true;
+            }
             if (player.dead) {
                 modPlayer.HumSummon = false;
             }
