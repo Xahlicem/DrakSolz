@@ -34,9 +34,6 @@ namespace DrakSolz.UI {
             panel.Width.Set(135f, 0f);
             panel.Height.Set(25f, 0f);
             panel.BackgroundColor = new Color(73, 94, 171);
-            panel.OnClick += Click;
-            panel.OnRightMouseDown += RightDown;
-            panel.OnRightMouseUp += RightUp;
 
             numLevel = new UIText("0");
             numLevel.Left.Set(5, 0f);
@@ -63,63 +60,6 @@ namespace DrakSolz.UI {
             panel.Append(num);
 
             base.Append(panel);
-        }
-
-        private void RightDown(UIMouseEvent evt, UIElement listeningElement) {
-            RightClicking = true;
-        }
-
-        private void RightUp(UIMouseEvent evt, UIElement listeningElement) {
-            RightClicking = false;
-        }
-
-        private void Click(UIMouseEvent evt, UIElement listeningElement) {
-            DrakSolzPlayer player = Main.LocalPlayer.GetModPlayer<DrakSolzPlayer>();
-            if (!Main.playerInventory) return;
-            if (Main.mouseItem.type == item.type) {
-                player.Souls += Main.mouseItem.stack;
-                Main.mouseItem.stack = 0;
-            } else if (Main.mouseItem.type == 0) {
-                Main.mouseItem.netDefaults(item.type);
-                Main.mouseItem.stack = player.Souls;
-                player.Souls = 0;
-            }
-            Recipe.FindRecipes();
-        }
-
-        public override void Update(GameTime gameTime) {
-            if (!RightClicking || !Main.playerInventory) {
-                if (Main.mouseItem.type == 0 || Main.mouseItem.stack == 0) Main.mouseItem = new Item();
-                RightClicking = false;
-                return;
-            }
-            if (RightClicking) {
-                DrakSolzPlayer player = Main.LocalPlayer.GetModPlayer<DrakSolzPlayer>();
-                Main.playerInventory = true;
-                if (Main.stackSplit <= 1 && item.type > 0 && (Main.mouseItem.type == item.type || Main.mouseItem.type == 0)) {
-                    int num2 = Main.superFastStack + 1;
-                    for (int j = 0; j < num2; j++) {
-                        if ((Main.mouseItem.stack < 9999 || Main.mouseItem.type == 0) && player.Souls > 0) {
-                            if (j == 0) {
-                                Main.PlaySound(18, -1, -1, 1);
-                            }
-                            if (Main.mouseItem.type == 0) {
-                                Main.mouseItem.netDefaults(item.type);
-                                Main.mouseItem.type = item.type;
-                                Main.mouseItem.stack = 0;
-                            }
-                            Main.mouseItem.stack++;
-                            player.Souls--;
-                            if (Main.stackSplit == 0) {
-                                Main.stackSplit = 15;
-                            } else {
-                                Main.stackSplit = Main.stackDelay;
-                            }
-                        }
-                    }
-                }
-            }
-
         }
 
         protected override void DrawSelf(SpriteBatch spriteBatch) {

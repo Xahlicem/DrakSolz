@@ -174,7 +174,7 @@ namespace DrakSolz.Items.Souls {
                     if ((Main.player[players[i]].GetModPlayer<DrakSolzPlayer>().BossSouls & soul.Place) > 0) continue;
                     int index = Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, item.type);
                     Main.item[index].GetGlobalItem<Items.DSGlobalItem>().FromPlayer = players[i];
-                    Main.player[players[i]].GetModPlayer<DrakSolzPlayer>().BossSouls |= soul.Place;
+                    Main.player[players[i]].GetModPlayer<DrakSolzPlayer>().SetBossSouls(soul.Place);
                 }
         }
     }

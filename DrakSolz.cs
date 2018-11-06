@@ -145,48 +145,33 @@ namespace DrakSolz {
                 //DukeFishron = 12f;
                 //LunaticCultist = 13f;
                 //Moonlord = 14f;
-                bossChecklist.Call("AddBossWithInfo", "White Pillar", 13.5f, (Func<bool>)(() => DrakSolzWorld.Boss.VoidPillar.IsDowned()), "Kill the Lunatic Cultist outside the dungeon");
+                bossChecklist.Call("AddBossWithInfo", "White Pillar", 13.5f, (Func<bool>) (() => DrakSolzWorld.Boss.VoidPillar.IsDowned()), "Kill the Lunatic Cultist outside the dungeon");
             }
         }
 
         public override void HandlePacket(System.IO.BinaryReader reader, int whoAmI) {
             MessageType msgType = (MessageType) reader.ReadByte();
-            Player player = Main.player[reader.ReadInt32()];
-            DrakSolzPlayer modPlayer = player.GetModPlayer<DrakSolzPlayer>();
+            DrakSolzPlayer p = Main.player[reader.ReadByte()].GetModPlayer<DrakSolzPlayer>();
+            //if (p.player.Equals(Main.LocalPlayer) || Main.netMode != NetmodeID.Server) return;
 
             switch (msgType) {
-                case MessageType.FromClient:
-                    if (Main.netMode == NetmodeID.Server) {
-                        modPlayer.Souls = reader.ReadInt32();
-                        modPlayer.LastHurt = reader.ReadInt64();
-
-                        modPlayer.GetPacket((byte) MessageType.FromServer).Send();
-                        //NetMessage.BroadcastChatMessage(Terraria.Localization.NetworkText.FromLiteral(player.name + " " + race.ToString()), Microsoft.Xna.Framework.Color.White);
-                    }
+                case MessageType.Stats:
+                    p.Str = reader.ReadInt32();
+                    p.Dex = reader.ReadInt32();
+                    p.Int = reader.ReadInt32();
+                    p.Fth = reader.ReadInt32();
+                    p.Vit = reader.ReadInt32();
+                    p.Att = reader.ReadInt32();
                     break;
-
-                case MessageType.FromClieBuff:
-                    if (Main.netMode == NetmodeID.Server) {
-                        int index = reader.ReadInt32();
-                        if (index != -1) player.AddBuff(BuffType<Buffs.Hollow>(), reader.ReadInt32());
-
-                        GetBuff<Buffs.Hollow>().GetPacket(MessageType.FromServBuff, player, index).Send();
-                        //NetMessage.BroadcastChatMessage(Terraria.Localization.NetworkText.FromLiteral(player.name + " " + race.ToString()), Microsoft.Xna.Framework.Color.White);
-                    }
+                case MessageType.Hurt:
+                    p.HurtWait = reader.ReadInt32();
+                    p.Hollow = reader.ReadInt32();
                     break;
-
-                case MessageType.FromServer:
-                    if (!player.Equals(Main.LocalPlayer)) {
-                        modPlayer.Souls = reader.ReadInt32();
-                        modPlayer.LastHurt = reader.ReadInt64();
-                    }
+                case MessageType.Souls:
+                    p.Souls = reader.ReadInt32();
                     break;
-
-                case MessageType.FromServBuff:
-                    if (!player.Equals(Main.LocalPlayer)) {
-                        int index = reader.ReadInt32();
-                        if (index != -1) player.AddBuff(BuffType<Buffs.Hollow>(), reader.ReadInt32());
-                    }
+                case MessageType.Boss:
+                    p.BossSouls = reader.ReadInt32();
                     break;
 
                 default:
@@ -197,9 +182,9 @@ namespace DrakSolz {
     }
 
     public enum MessageType : byte {
-        FromServer,
-        FromClient,
-        FromServBuff,
-        FromClieBuff
+        Stats,
+        Hurt,
+        Souls,
+        Boss
     }
 }

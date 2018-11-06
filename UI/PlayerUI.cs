@@ -121,18 +121,15 @@ namespace DrakSolz.UI {
         private void Apply(UIMouseEvent evt, UIElement listeningElement) {
             if (int.Parse(Cost.Text) > Player.Souls) return;
             visible = false;
-            Player.Souls -= int.Parse(Cost.Text);
-            Player.Vit += Vit.StatAdd;
+            Player.UpdateSouls(-int.Parse(Cost.Text));
+
+            Player.LevelUp(Str.StatAdd, Dex.StatAdd, Int.StatAdd, Fth.StatAdd, Vit.StatAdd, Att.StatAdd);
+
             Vit.Reset();
-            Player.Str += Str.StatAdd;
             Str.Reset();
-            Player.Dex += Dex.StatAdd;
             Dex.Reset();
-            Player.Att += Att.StatAdd;
             Att.Reset();
-            Player.Int += Int.StatAdd;
             Int.Reset();
-            Player.Fth += Fth.StatAdd;
             Fth.Reset();
         }
 
@@ -194,13 +191,11 @@ namespace DrakSolz.UI {
                     string t = ("+" + ((Dex.Stat + Dex.StatAdd < Str.Stat + Str.StatAdd) ? (Dex.Stat + Dex.StatAdd - 10) : (Str.Stat + Str.StatAdd - 10)) * 4 + "% Thrown Damage");
                     tooltipText1.SetText((t[1] == '-') ? t.Substring(1) : t);
                     tooltip.Height.Set(85, 0f);
-                }
-                else if (defense) {
+                } else if (defense) {
                     string t = ("+" + (int) Math.Floor(((Vit.Stat + Vit.StatAdd) * 0.25)) + " Defense");
                     tooltipText1.SetText((t[1] == '-') ? t.Substring(1) : t);
                     tooltip.Height.Set(85, 0f);
-                }
-                else if (MCost) {
+                } else if (MCost) {
                     string t = ("-" + (int) Math.Floor(((Att.Stat + Att.StatAdd) * 0.5)) + "% Mana Cost");
                     tooltipText1.SetText((t[1] == '+') ? t.Substring(1) : t);
                     tooltip.Height.Set(85, 0f);
