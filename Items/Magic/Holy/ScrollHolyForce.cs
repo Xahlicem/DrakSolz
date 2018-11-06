@@ -18,11 +18,11 @@ namespace DrakSolz.Items.Magic.Holy {
             item.CloneDefaults(ItemID.Flamelash);
             item.useStyle = 5;
             item.noUseGraphic = true;
-            item.damage = 10;
+            item.damage = 13;
             item.useTime = 40;
             item.useAnimation = 40;
             item.mana = 4;
-            item.knockBack = 15f;
+            item.knockBack = 16f;
             item.shootSpeed = 3.0f;
             item.value = Item.buyPrice(0, 0, 20, 0);
             item.shoot = mod.ProjectileType<Projectiles.ForceProj>();
@@ -47,7 +47,7 @@ namespace DrakSolz.Items.Magic.Holy {
                 Main.projectile[pro].penetrate = 1;
                 Main.projectile[pro].velocity *= 1.4f;
                 Main.projectile[pro].timeLeft = 120;
-                Main.projectile[pro].knockBack *= 1.25f;
+                Main.projectile[pro].knockBack *= 1.4f;
 
             } else {
                 Main.projectile[pro].damage -= 2;

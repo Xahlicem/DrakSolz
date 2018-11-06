@@ -8,7 +8,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Corrupt {
     public class CorruptMod : GlobalNPC {
 
         public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo) {
-            if (spawnInfo.player.ZoneCorrupt && spawnInfo.player.ZoneOverworldHeight && NPC.downedMoonlord) {
+            if (spawnInfo.player.ZoneCorrupt && spawnInfo.player.ZoneOverworldHeight && DrakSolzWorld.downedBoss[DrakSolzWorld.Boss.TitaniteDemon]) {
                 pool.Clear();
                 pool.Add(mod.NPCType<DeepfireDevourer>(), 50f);
                 pool.Add(mod.NPCType<CarrionCollector>(), 40f);
@@ -17,7 +17,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Corrupt {
                 pool.Add(mod.NPCType<Gibbet>(), 5f);
                 pool.Add(mod.NPCType<NPCs.Enemy.Endgame.Secret.DemonicSister>(), 1f);
             }
-            if (spawnInfo.player.ZoneCorrupt && spawnInfo.player.ZoneDirtLayerHeight && NPC.downedMoonlord) {
+            if (spawnInfo.player.ZoneCorrupt && spawnInfo.player.ZoneDirtLayerHeight && DrakSolzWorld.downedBoss[DrakSolzWorld.Boss.TitaniteDemon]) {
                 pool.Clear();
                 pool.Add(mod.NPCType<DeepfireDevourer>(), 40f);
                 pool.Add(mod.NPCType<Hexclaw>(), 40f);
@@ -26,7 +26,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Corrupt {
                 pool.Add(mod.NPCType<Gibbet>(), 5f);
                 pool.Add(mod.NPCType<NPCs.Enemy.Endgame.Secret.DemonicSister>(), 1f);
             }
-            if (spawnInfo.player.ZoneCorrupt && spawnInfo.player.ZoneRockLayerHeight && NPC.downedMoonlord) {
+            if (spawnInfo.player.ZoneCorrupt && spawnInfo.player.ZoneRockLayerHeight && DrakSolzWorld.downedBoss[DrakSolzWorld.Boss.TitaniteDemon]) {
                 pool.Clear();
                 pool.Add(mod.NPCType<Desolator>(), 50f);
                 pool.Add(mod.NPCType<VorpalReaver>(), 45f);
@@ -35,7 +35,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Corrupt {
                 pool.Add(mod.NPCType<Gibbet>(), 5f);
                 pool.Add(mod.NPCType<NPCs.Enemy.Endgame.Secret.DemonicSister>(), 1f);
             }
-            if (spawnInfo.player.ZoneCrimson && spawnInfo.player.ZoneOverworldHeight && NPC.downedMoonlord) {
+            if (spawnInfo.player.ZoneCrimson && spawnInfo.player.ZoneOverworldHeight && DrakSolzWorld.downedBoss[DrakSolzWorld.Boss.TitaniteDemon]) {
                 pool.Clear();
                 pool.Add(mod.NPCType<DeepfireDevourer>(), 50f);
                 pool.Add(mod.NPCType<CarrionCollector>(), 40f);
@@ -44,7 +44,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Corrupt {
                 pool.Add(mod.NPCType<Gibbet>(), 5f);
                 pool.Add(mod.NPCType<NPCs.Enemy.Endgame.Secret.DemonicSister>(), 1f);
             }
-            if (spawnInfo.player.ZoneCrimson && spawnInfo.player.ZoneDirtLayerHeight && NPC.downedMoonlord) {
+            if (spawnInfo.player.ZoneCrimson && spawnInfo.player.ZoneDirtLayerHeight && DrakSolzWorld.downedBoss[DrakSolzWorld.Boss.TitaniteDemon]) {
                 pool.Clear();
                 pool.Add(mod.NPCType<DeepfireDevourer>(), 40f);
                 pool.Add(mod.NPCType<Hexclaw>(), 40f);
@@ -53,7 +53,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Corrupt {
                 pool.Add(mod.NPCType<Gibbet>(), 5f);
                 pool.Add(mod.NPCType<NPCs.Enemy.Endgame.Secret.DemonicSister>(), 1f);
             }
-            if (spawnInfo.player.ZoneCrimson && spawnInfo.player.ZoneRockLayerHeight && NPC.downedMoonlord) {
+            if (spawnInfo.player.ZoneCrimson && spawnInfo.player.ZoneRockLayerHeight && DrakSolzWorld.downedBoss[DrakSolzWorld.Boss.TitaniteDemon]) {
                 pool.Clear();
                 pool.Add(mod.NPCType<Desolator>(), 50f);
                 pool.Add(mod.NPCType<VorpalReaver>(), 45f);

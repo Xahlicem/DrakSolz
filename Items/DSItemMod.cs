@@ -63,6 +63,7 @@ namespace DrakSolz.Items {
             switch (item.type) {
                 case ItemID.SlimeStaff:
                     item.mana = 10;
+                    item.damage = 11;
                     break;
                 case ItemID.HornetStaff:
                     item.mana = 20;

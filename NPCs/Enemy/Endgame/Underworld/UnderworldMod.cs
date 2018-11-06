@@ -8,7 +8,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Underworld {
     public class UnderworldMod : GlobalNPC {
 
         public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo) {
-            if (spawnInfo.player.ZoneUnderworldHeight && NPC.downedMoonlord) {
+            if (spawnInfo.player.ZoneUnderworldHeight && DrakSolzWorld.downedBoss[DrakSolzWorld.Boss.TitaniteDemon]) {
                 pool.Clear();
                 pool.Add(mod.NPCType<Flamewreath>(), 40f);
                 pool.Add(mod.NPCType<InfernalLocust>(), 35f);

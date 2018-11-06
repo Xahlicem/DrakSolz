@@ -8,7 +8,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Ice {
     public class IceMod : GlobalNPC {
 
         public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo) {
-             if (spawnInfo.player.ZoneSnow && spawnInfo.player.ZoneOverworldHeight && NPC.downedMoonlord) {
+             if (spawnInfo.player.ZoneSnow && spawnInfo.player.ZoneOverworldHeight && DrakSolzWorld.downedBoss[DrakSolzWorld.Boss.TitaniteDemon]) {
                 pool.Clear();
                 pool.Add(mod.NPCType<Shivers>(), 40f);
                 pool.Add(mod.NPCType<DiscipleYggdra>(), 30f);
@@ -16,7 +16,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Ice {
                 pool.Add(mod.NPCType<AncientGrove>(), 20f);
                 pool.Add(mod.NPCType<NPCs.Enemy.Endgame.Secret.FrigidSister>(), 1f);
             }
-            if (spawnInfo.player.ZoneSnow && spawnInfo.player.ZoneDirtLayerHeight && NPC.downedMoonlord) {
+            if (spawnInfo.player.ZoneSnow && spawnInfo.player.ZoneDirtLayerHeight && DrakSolzWorld.downedBoss[DrakSolzWorld.Boss.TitaniteDemon]) {
                 pool.Clear();
                 pool.Add(mod.NPCType<CrystalWisp>(), 40f);
                 pool.Add(mod.NPCType<Cryoblade>(), 20f);
@@ -26,7 +26,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Ice {
                 pool.Add(mod.NPCType<Protosensor>(), 20f);
                 pool.Add(mod.NPCType<NPCs.Enemy.Endgame.Secret.FrigidSister>(), 1f);
             }
-            if (spawnInfo.player.ZoneSnow && spawnInfo.player.ZoneRockLayerHeight && NPC.downedMoonlord) {
+            if (spawnInfo.player.ZoneSnow && spawnInfo.player.ZoneRockLayerHeight && DrakSolzWorld.downedBoss[DrakSolzWorld.Boss.TitaniteDemon]) {
                 pool.Clear();
                 pool.Add(mod.NPCType<CrystalWisp>(), 40f);
                 pool.Add(mod.NPCType<Nemeton>(), 30f);

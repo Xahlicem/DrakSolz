@@ -18,7 +18,7 @@ namespace DrakSolz.Items.Magic.Pyro {
             item.CloneDefaults(ItemID.Flamelash);
             item.useStyle = 5;
             item.noUseGraphic = true;
-            item.damage = 8;
+            item.damage = 12;
             item.useTime = 30;
             item.useAnimation = 30;
             item.mana = 4;

@@ -15,7 +15,7 @@ namespace DrakSolz.Items.Magic.SoulArrow {
         public override void SetDefaults() {
             item.CloneDefaults(mod.ItemType<Items.Magic.SoulArrow.ScrollSoulArrow>());
             item.noUseGraphic = true;
-            item.damage = 30;
+            item.damage = 36;
             item.mana = 7;
             item.value = Item.buyPrice(0, 0, 50, 0);
             item.knockBack = 2.5f;

@@ -16,10 +16,10 @@ namespace DrakSolz.Items.Magic.SoulArrow {
             item.CloneDefaults(ItemID.IceRod);
             item.useStyle = 5;
             item.noUseGraphic = true;
-            item.damage = 8;
+            item.damage = 11;
             item.useTime = 20;
             item.useAnimation = 20;
-            item.mana = 2;
+            item.mana = 3;
             item.knockBack = 1f;
             item.value = Item.buyPrice(0, 0, 5, 0);
             item.shootSpeed = 25.0f;
