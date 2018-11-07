@@ -6,7 +6,7 @@ namespace DrakSolz.Items.Accessory {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Tiny Being's Ring");
             Tooltip.SetDefault("This is a modded ring." +
-                "\n+20 Max Life");
+                "\n+50 Max Life");
         }
 
         public override void SetDefaults() {

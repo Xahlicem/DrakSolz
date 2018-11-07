@@ -38,7 +38,7 @@ namespace DrakSolz.Projectiles.Minion {
             DrakSolzPlayer modPlayer = (DrakSolzPlayer) player.GetModPlayer<DrakSolzPlayer>(mod);
             projectile.friendly = false;
             projectile.hostile = false;
-            if (Main.time % 12 == 0) {
+            if (Main.time % 20 == 0) {
                 projectile.friendly = true;
             }
             if (player.dead) {

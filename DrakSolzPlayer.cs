@@ -199,7 +199,7 @@ namespace DrakSolz {
             for (int n = 3; n < 8 + player.extraAccessorySlots; n++) {
                 Item item = player.armor[n];
                 if (item.type == mod.ItemType<Items.Accessory.RingTinyBeing>()) {
-                    player.statLifeMax2 += 20;
+                    player.statLifeMax2 += 50;
                 }
             }
         }
