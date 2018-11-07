@@ -29,43 +29,34 @@ namespace DrakSolz.Items {
             if (item.type == ItemID.LifeCrystal || item.type == ItemID.LifeFruit) {
                 player.AddBuff(BuffID.Regeneration, 60 * 60 * ((item.type == ItemID.LifeCrystal) ? 5 : 1));
 
-                int index = player.FindBuffIndex(mod.BuffType<Buffs.Hollow>());
-                if (index != -1) player.buffTime[index] = 0;
+                player.GetModPlayer<DrakSolzPlayer>().DecreaseHurtWait(3600);
+                player.GetModPlayer<DrakSolzPlayer>().DecreaseHollow(60 * 60 * ((item.type == ItemID.LifeCrystal) ? 30 : 5));
+                return true;
             }
             if (item.type == ItemID.ManaCrystal) {
                 player.AddBuff(BuffID.ManaRegeneration, 60 * 60 * 1);
                 player.AddBuff(BuffID.MagicPower, 60 * 60 * 1);
+                return true;
             }
             return base.ConsumeItem(item, player);
         }
 
         public override bool UseItem(Item item, Player player) {
-            if (item.type == ItemID.LifeCrystal || item.type == ItemID.LifeFruit) {
-                player.AddBuff(BuffID.Regeneration, 60 * 60 * ((item.type == ItemID.LifeCrystal) ? 5 : 1));
-
-                int index = player.FindBuffIndex(mod.BuffType<Buffs.Hollow>());
-                if (index != -1) player.buffTime[index] = 0;
-                return true;
-            }
-            if (item.type == ItemID.ManaCrystal) {
-                player.AddBuff(BuffID.ManaRegeneration, 60 * 60 * 1);
-                player.AddBuff(BuffID.MagicPower, 60 * 60 * 1);
-                return true;
-            }
-            return base.UseItem(item, player);
+            if (item.type == ItemID.LifeCrystal || item.type == ItemID.LifeFruit || item.type == ItemID.ManaCrystal) return true;
+            else return base.ConsumeItem(item, player);
         }
     }
-        public class GoblinStandardMod : GlobalItem {
-            public override bool UseItem(Item item, Player player) {
-                if (item.type != ItemID.GoblinBattleStandard) return base.UseItem(item, player);
-                //int i = player.statLifeMax;
-                player.statLifeMax += 200;
-                bool ret = base.UseItem(item, player);
-                //player.statLifeMax = i;
-                return ret;
-            }
+    public class GoblinStandardMod : GlobalItem {
+        public override bool UseItem(Item item, Player player) {
+            if (item.type != ItemID.GoblinBattleStandard) return base.UseItem(item, player);
+            //int i = player.statLifeMax;
+            player.statLifeMax += 200;
+            bool ret = base.UseItem(item, player);
+            //player.statLifeMax = i;
+            return ret;
         }
-                
+    }
+
     public class SummonMod : GlobalItem {
         public override void SetDefaults(Item item) {
             if (item.summon != true) return;

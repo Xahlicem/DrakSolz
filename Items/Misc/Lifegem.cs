@@ -29,7 +29,7 @@ namespace DrakSolz.Items.Misc {
             player.AddBuff(BuffID.Regeneration, 600);
 
             int index = player.FindBuffIndex(mod.BuffType<Buffs.Hollow>());
-            if (index != -1) player.buffTime[index] -= 3600;
+            player.GetModPlayer<DrakSolzPlayer>().DecreaseHollow(3600);
             return true;
         }
 

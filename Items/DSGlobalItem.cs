@@ -125,6 +125,7 @@ namespace DrakSolz.Items {
             Owned = tag.GetBool("owned");
             Used = tag.GetBool("used");
             fromPlayer = tag.GetInt("fromPlayer");
+            if (fromPlayer == 0) fromPlayer = Main.LocalPlayer.whoAmI;
             ArcaneRolled = tag.GetBool("ArcaneRolled");
             ArcaneMana = tag.GetInt("ArcaneMana");
         }
@@ -162,7 +163,7 @@ namespace DrakSolz.Items {
         }
 
         public override void OnCraft(Item item) {
-            Main.LocalPlayer.GetModPlayer<DrakSolzPlayer>().Souls -= requiredSouls;
+            Main.LocalPlayer.GetModPlayer<DrakSolzPlayer>().UpdateSouls(-requiredSouls);
         }
     }
 }
