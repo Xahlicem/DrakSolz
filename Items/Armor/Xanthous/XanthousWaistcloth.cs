@@ -22,21 +22,20 @@ namespace DrakSolz.Items.Armor.Xanthous {
         }
 
         public override void UpdateEquip(Player player) {
-            if(player.maxMinions >= 1){
-            player.maxMinions -= 1;
+            if (player.maxMinions >= 1) {
+                player.maxMinions -= 1;
             }
             player.minionDamage *= 1.1f;
             player.moveSpeed *= 1.20f;
         }
         public override void AddRecipes() {
-            if (NPC.downedPlantBoss == true) {
-                ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.LivingFireBlock, 25);
-                recipe.AddIngredient(mod.ItemType<Items.Armor.Tattered.TatteredBoots>());
-                recipe.AddTile(TileID.MythrilAnvil);
-                recipe.SetResult(this);
-                recipe.AddRecipe();
-            }
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.LihzahrdPowerCell, 1);
+            recipe.AddIngredient(ItemID.LivingFireBlock, 25);
+            recipe.AddIngredient(mod.ItemType<Items.Armor.Tattered.TatteredBoots>());
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
     }
 }

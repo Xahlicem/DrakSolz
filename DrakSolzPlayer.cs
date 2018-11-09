@@ -20,7 +20,7 @@ namespace DrakSolz {
         public int Level { get { return Vit + Str + Dex + Att + Int + Fth; } }
         public int Souls { get; set; }
         public int SoulCost(int level) {
-            return (int) (Math.Round((Math.Pow(0.02 * level, 3) + Math.Pow(4.06 * level, 2) + 105.6 * level) * 0.1, 0) * 10);
+            return (int)(Math.Round((Math.Pow(0.02 * level, 3) + Math.Pow(4.06 * level, 2) + 105.6 * level) * 0.1, 0) * 10);
         }
         public int Str { get; set; }
         public int Dex { get; set; }
@@ -48,6 +48,13 @@ namespace DrakSolz {
 
         public bool EvilEye { get; set; }
         public int Avarice { get; set; }
+        public int MiscHP { get; set; }
+        public int MiscHP0 { get; set; }
+        public int MiscHP1 { get; set; }
+        public int MiscHP2 { get; set; }
+        public int MiscHP3 { get; set; }
+        public int MiscHP4 { get; set; }
+        public int TotalHP { get { return MiscHP + MiscHP0 + MiscHP1 + MiscHP2 + MiscHP3 + MiscHP4; } }
 
         public bool Rotate { get; set; }
         public float Rotation { get; set; }
@@ -205,11 +212,52 @@ namespace DrakSolz {
                 player.armor[1].type == mod.ItemType<Items.Armor.Channeler.ChannelerRobe>() &&
                 player.armor[2].type == mod.ItemType<Items.Armor.Channeler.ChannelerSkirt>())
                 player.extraAccessorySlots += 1;
+            if (player.armor[1].type == mod.ItemType<Items.Armor.Channeler.ChannelerRobe>())
 
+                MiscHP = 40;
+
+            else {
+                MiscHP = 0;
+            }
+            if (player.armor[0].type == mod.ItemType<Items.Armor.Xanthous.XanthousCrown>()&&
+                player.armor[1].type == mod.ItemType<Items.Armor.Xanthous.XanthousOvercoat>() &&
+                player.armor[2].type == mod.ItemType<Items.Armor.Xanthous.XanthousWaistcloth>())
+
+                MiscHP2 = 40;
+
+            else {
+                MiscHP2 = 0;
+            }
+            if (player.armor[0].type == mod.ItemType<Items.Armor.Artorias.ArtoriasHelmet>() &&
+                player.armor[1].type == mod.ItemType<Items.Armor.Artorias.ArtoriasArmor>() &&
+                player.armor[2].type == mod.ItemType<Items.Armor.Artorias.ArtoriasLeggings>())
+                MiscHP3 = 500;
+
+            else {
+                MiscHP3 = 0;
+            }
+            if (player.armor[0].type == mod.ItemType<Items.Armor.Father.FatherMask>() &&
+                player.armor[1].type == mod.ItemType<Items.Armor.Father.GiantArmor>() &&
+                player.armor[2].type == mod.ItemType<Items.Armor.Father.GiantLeggings>())
+                MiscHP4 = 100;
+
+            else {
+                MiscHP4 = 0;
+            }
             for (int n = 3; n < 8 + player.extraAccessorySlots; n++) {
                 Item item = player.armor[n];
                 if (item.type == mod.ItemType<Items.Accessory.RingTinyBeing>()) {
-                    player.statLifeMax2 += 50;
+                    MiscHP0 = 50;
+                } else {
+                    MiscHP0 = 0;
+                }
+            }
+            for (int nn = 3; nn < 8 + player.extraAccessorySlots; nn++) {
+                Item item1 = player.armor[nn];
+                if (item1.type == mod.ItemType<Items.Accessory.RingFavor>()) {
+                    MiscHP1 = 50;
+                } else {
+                    MiscHP1 = 0;
                 }
             }
         }
@@ -219,7 +267,7 @@ namespace DrakSolz {
         }
 
         public override void PostUpdate() {
-            if (player.Equals(Main.LocalPlayer)) (mod as DrakSolz).ui.updateValue(Souls, Level);
+            if (player.Equals(Main.LocalPlayer))(mod as DrakSolz).ui.updateValue(Souls, Level);
 
             if (Rotate) Rotation += player.velocity.X * 0.025f;
             else Rotation = 0f;
@@ -227,7 +275,7 @@ namespace DrakSolz {
 
         public override void Hurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit) {
             HurtWait = HurtWaitMax;
-            Hollow += (int) (damage * 120.0);
+            Hollow += (int)(damage * 120.0);
 
             if (Main.netMode != NetmodeID.SinglePlayer)
                 SendPacket(MessageType.Hurt);
@@ -243,7 +291,7 @@ namespace DrakSolz {
                 int i = Item.NewItem((int) player.position.X, (int) player.position.Y, player.width, player.height, mod.ItemType<Items.Souls.Soul>(), Souls);
                 Main.item[i].GetGlobalItem<Items.DSGlobalItem>().FromPlayer = player.whoAmI;
                 SetSouls(0);
-                if (player.Equals(Main.LocalPlayer)) (mod as DrakSolz).ui.updateValue(Souls, Level);
+                if (player.Equals(Main.LocalPlayer))(mod as DrakSolz).ui.updateValue(Souls, Level);
                 SendPacket(MessageType.Souls);
             }
         }
@@ -265,7 +313,7 @@ namespace DrakSolz {
             player.thrownDamage *= 0.6f + ((Str < Dex) ? Str : Dex) * 0.04f;;
             player.magicDamage *= 0.6f + Int * 0.02f;;
             player.minionDamage *= 0.6f + Fth * 0.02f;;
-            player.statLifeMax = Level * 4 + 100;
+            player.statLifeMax = Level * 4 + 100 + TotalHP;
             player.statLifeMax2 = player.statLifeMax + Vit * 11;
             player.statManaMax = 0;
             player.statManaMax2 += Att * 5;
@@ -295,7 +343,7 @@ namespace DrakSolz {
             if (HurtWait == 0 && Hollow > 0) DecreaseHollow(HollowDec);
 
             if (Hollow > 0) player.AddBuff(mod.BuffType<Buffs.Hollow>(), (Hollow / HollowDec) + (HurtWait / HurtWaitDec));
-            int life = (int) ((Hollow + 1) / 300f);
+            int life = (int)((Hollow + 1) / 300f);
             player.statLifeMax2 -= life;
             int min = 20 + Vit * 5;
             if (player.statLifeMax2 < min) player.statLifeMax2 = min;

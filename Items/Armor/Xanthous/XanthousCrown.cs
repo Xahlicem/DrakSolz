@@ -46,14 +46,14 @@ namespace DrakSolz.Items.Armor.Xanthous {
             return false;
         }
         public override void AddRecipes() {
-            if (NPC.downedPlantBoss == true) {
                 ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(ItemID.LihzahrdPowerCell, 1);
                 recipe.AddIngredient(ItemID.LivingFireBlock, 25);
                 recipe.AddIngredient(mod.ItemType<Items.Armor.Tattered.TatteredHat>());
                 recipe.AddTile(TileID.MythrilAnvil);
                 recipe.SetResult(this);
                 recipe.AddRecipe();
-            }
+
         }
     }
 }
