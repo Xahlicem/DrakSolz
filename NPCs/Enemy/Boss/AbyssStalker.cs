@@ -18,7 +18,7 @@ namespace DrakSolz.NPCs.Enemy.Boss {
             npc.aiStyle = -1; // This npc has a completely unique AI, so we set this to -1.
             npc.damage = 350;
             npc.defense = 1700;
-            npc.lifeMax = 1000000;
+            npc.lifeMax = 5000000;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 50000f;
@@ -94,19 +94,19 @@ namespace DrakSolz.NPCs.Enemy.Boss {
                 if (npc.HasValidTarget && Main.player[npc.target].Distance(npc.Center) < 80f) {
                     npc.velocity.X = 0;
                     AI_Away_Timer = 0;
-                    if (npc.life <= 600000 && npc.life > 300000) {
+                    if (npc.life <= 3500000 && npc.life > 2250000) {
                         if (Main.netMode != 1) {
                             if (Main.rand.Next(5) == 0) Projectile.NewProjectile(npc.Center.X, npc.Center.Y - 16, 10 * (Main.rand.NextFloat() - 0.5f), -3 * (Main.rand.NextFloat() + 0.5f), mod.ProjectileType<Projectiles.StalkerProj>(), npc.damage / 10, 1f);
                         }
 
                     }
-                    if (npc.life <= 300000 && npc.life > 100000) {
+                    if (npc.life <= 2250000 && npc.life > 1000000) {
                         if (Main.netMode != 1) {
                             if (Main.rand.Next(2) == 0) Projectile.NewProjectile(npc.Center.X, npc.Center.Y - 16, 10 * (Main.rand.NextFloat() - 0.5f), -3 * (Main.rand.NextFloat() + 0.5f), mod.ProjectileType<Projectiles.StalkerProj>(), npc.damage / 10, 1f);
                         }
 
                     }
-                    if (npc.life <= 100000) {
+                    if (npc.life <= 1000000) {
                         if (Main.netMode != 1) {
                             if (Main.rand.Next(1) == 0) Projectile.NewProjectile(npc.Center.X, npc.Center.Y - 16, 10 * (Main.rand.NextFloat() - 0.5f), -3 * (Main.rand.NextFloat() + 0.5f), mod.ProjectileType<Projectiles.StalkerProj>(), npc.damage / 10, 1f);
                         }
@@ -116,19 +116,19 @@ namespace DrakSolz.NPCs.Enemy.Boss {
                     npc.frameCounter = 0;
                 }
                 if ((npc.HasValidTarget && Main.player[npc.target].Distance(npc.Center) > 500f) || AI_Away_Timer >= 80) {
-                    if (npc.life <= 600000 && npc.life > 300000) {
+                    if (npc.life <= 3500000 && npc.life > 2250000) {
                         if (Main.netMode != 1) {
                             if (Main.rand.Next(5) == 0) Projectile.NewProjectile(npc.Center.X, npc.Center.Y - 16, 10 * (Main.rand.NextFloat() - 0.5f), -3 * (Main.rand.NextFloat() + 0.5f), mod.ProjectileType<Projectiles.StalkerProj>(), npc.damage / 10, 1f);
                         }
 
                     }
-                    if (npc.life <= 300000 && npc.life > 100000) {
+                    if (npc.life <= 2250000 && npc.life > 1000000) {
                         if (Main.netMode != 1) {
                             if (Main.rand.Next(2) == 0) Projectile.NewProjectile(npc.Center.X, npc.Center.Y - 16, 10 * (Main.rand.NextFloat() - 0.5f), -3 * (Main.rand.NextFloat() + 0.5f), mod.ProjectileType<Projectiles.StalkerProj>(), npc.damage / 10, 1f);
                         }
 
                     }
-                    if (npc.life <= 100000) {
+                    if (npc.life <= 1000000) {
                         if (Main.netMode != 1) {
                             if (Main.rand.Next(1) == 0) Projectile.NewProjectile(npc.Center.X, npc.Center.Y - 16, 10 * (Main.rand.NextFloat() - 0.5f), -3 * (Main.rand.NextFloat() + 0.5f), mod.ProjectileType<Projectiles.StalkerProj>(), npc.damage / 10, 1f);
                         }

@@ -109,7 +109,7 @@ namespace DrakSolz.NPCs.Enemy.Dungeon {
         public override void NPCLoot() {
             base.NPCLoot();
             DrakSolz.DropItem(npc, 4f, mod.ItemType<Items.Ranged.DragonslayerGreatbow>());
-            DrakSolz.DropItem(npc, 100f, mod.ItemType<Items.Ranged.DragonslayerGreatarrow>(), Main.rand.Next(1, 5));
+            DrakSolz.DropItem(npc, 100f, mod.ItemType<Items.Ranged.DragonslayerGreatarrow>(), Main.rand.Next(1, 10));
         }
     }
 }

@@ -16,7 +16,7 @@ namespace DrakSolz.Items.Souls {
             ItemID.Sets.AnimatesAsSoul[item.type] = true;
             ItemID.Sets.ItemNoGravity[item.type] = true;
         }
-        
+
         public override void SetDefaults() {
             Item refItem = new Item();
             refItem.SetDefaults(ItemID.SoulofSight);
@@ -86,6 +86,9 @@ namespace DrakSolz.Items.Souls {
             if (DrakSolz.ListBossSoul.Contains(npc.type) || npc.type == mod.NPCType<NPCs.Enemy.Boss.AbyssStalker>() || npc.type == mod.NPCType<NPCs.Enemy.Boss.TitaniteDemon>()) return;
 
             double num = Math.Ceiling(Math.Pow(Math.Sqrt(npc.defDamage) + Math.Sqrt(npc.defDefense) + Math.Sqrt(npc.lifeMax) - 1, 4) / (Math.Sqrt(npc.lifeMax) * 200));
+            if (npc.TypeName == "Crawltipede") {
+                num *= 0.05f;
+            }
             List<int> players = new List<int>();
             for (int i = 0; i < Main.player.Length; i++)
                 if (Main.player[i] != null)

@@ -19,7 +19,7 @@ namespace DrakSolz.NPCs.Enemy.Boss {
             npc.aiStyle = -1; // This npc has a completely unique AI, so we set this to -1.
             npc.damage = 300;
             npc.defense = 1750;
-            npc.lifeMax = 250000;
+            npc.lifeMax = 300000;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             //npc.alpha = 175;

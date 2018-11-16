@@ -17,7 +17,7 @@ namespace DrakSolz.Items.Ranged
 
 		public override void SetDefaults()
 		{
-			item.damage = 2000;
+			item.damage = 1500;
 			item.ranged = true;
 			item.width = 40;
 			item.height = 20;

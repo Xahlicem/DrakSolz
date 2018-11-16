@@ -15,7 +15,7 @@ namespace DrakSolz.Items.Throwing
 
 		public override void SetDefaults()
 		{
-			item.damage = 2000;
+			item.damage = 1800;
 			item.thrown = true;
 			item.width = 40;
 			item.height = 20;
