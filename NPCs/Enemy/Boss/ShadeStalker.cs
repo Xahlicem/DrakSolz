@@ -103,7 +103,7 @@ namespace DrakSolz.NPCs.Enemy.Boss {
             } else if (AI_State == State_Walk) {
                 AI_Away_Timer++;
                 npc.TargetClosest();
-                npc.velocity.X = npc.direction * (9 - ((npc.life + 1) / 6250));
+                npc.velocity.X = npc.direction * (9 - ((npc.life + 1) / 41250));
                 if (npc.HasValidTarget && Main.player[npc.target].Distance(npc.Center) < 70f) {
                     npc.velocity.X = 0;
                     AI_Away_Timer = 0;

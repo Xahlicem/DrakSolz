@@ -90,7 +90,7 @@ namespace DrakSolz.NPCs.Enemy.Boss {
                 AI_Away_Timer++;
                 AI_Timer = 0;
                 npc.TargetClosest();
-                npc.velocity.X = npc.direction * (9 - ((npc.life + 1) / 187500));
+                npc.velocity.X = npc.direction * (9 - ((npc.life + 1) / 937500));
                 if (npc.HasValidTarget && Main.player[npc.target].Distance(npc.Center) < 80f) {
                     npc.velocity.X = 0;
                     AI_Away_Timer = 0;
