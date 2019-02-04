@@ -15,7 +15,7 @@ namespace DrakSolz.Items.Ranged
 
 		public override void SetDefaults()
 		{
-			item.damage = 20;
+			item.damage = 15;
 			item.ranged = true;
 			item.width = 20;
 			item.height = 20;
@@ -29,7 +29,7 @@ namespace DrakSolz.Items.Ranged
 			item.UseSound = SoundID.Item11;
 			item.autoReuse = true;
 			item.shoot = 10; //idk why but all the guns in the vanilla source have this
-			item.shootSpeed = 1.0f;
+			item.shootSpeed = 6.0f;
 			item.useAmmo = (mod.ItemType<Items.Ranged.SlingshotStones>());
 		}
 
@@ -55,6 +55,9 @@ namespace DrakSolz.Items.Ranged
 			if (type == mod.ProjectileType("SlingshotStonesProj")) // or ProjectileID.WoodenArrowFriendly
 			{
 				type = ProjectileID.ImpFireball; // or ProjectileID.FireArrow;
+			}
+			if (type == ProjectileID.SpikyBall) {
+				type = mod.ProjectileType("SlingshotMoltenSpikyProj");
 			}
 			return true; // return true to allow tmodloader to call Projectile.NewProjectile as normal
 		}

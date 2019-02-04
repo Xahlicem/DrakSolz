@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace DrakSolz.Projectiles {
     public class SlingshotStonesProj : ModProjectile {
-        public override string Texture { get { return "Terraria/Projectile_99"; } }
+        public override string Texture { get { return "Terraria/Projectile_" + ProjectileID.Boulder; } }
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Slingshot");
@@ -32,6 +32,36 @@ namespace DrakSolz.Projectiles {
                 Main.dust[dust].scale *= 0.4f + Main.rand.NextFloat();
                 Main.dust[dust].noGravity = true;
             }
+        }
+    }
+    public class SlingshotMoltenSpikyProj : ModProjectile {
+        public override string Texture { get { return "Terraria/Projectile_" + ProjectileID.SpikyBall; } }
+
+        public override void SetStaticDefaults() {
+            DisplayName.SetDefault("Slingshot");
+        }
+
+        public override void SetDefaults() {
+            projectile.CloneDefaults(ProjectileID.SpikyBall);
+        }
+
+        public override void AI() {
+            int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, DustID.Fire);
+            Main.dust[dust].velocity *= 1f + Main.rand.NextFloat();
+            Main.dust[dust].scale *= 0.5f + Main.rand.NextFloat();
+            Main.dust[dust].noGravity = true;
+        }
+
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) {
+            target.AddBuff(BuffID.OnFire, 150);
+        }
+
+        public override void OnHitPlayer(Player target, int damage, bool crit) {
+            target.AddBuff(BuffID.OnFire, 150);
+        }
+
+        public override void OnHitPvp(Player target, int damage, bool crit) {
+            target.AddBuff(BuffID.OnFire, 150);
         }
     }
 }

@@ -1,3 +1,4 @@
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -9,7 +10,7 @@ namespace DrakSolz.Items.Ranged {
         }
 
         public override void SetDefaults() {
-            item.damage = 2;
+            item.damage = 6;
             item.ranged = true;
             item.width = 8;
             item.height = 8;
@@ -28,6 +29,12 @@ namespace DrakSolz.Items.Ranged {
             recipe.AddIngredient(ItemID.StoneBlock, 1);
             recipe.SetResult(this, 5);
             recipe.AddRecipe();
+        }
+    }
+
+    public class SlingshotMod : GlobalItem {
+        public override void SetDefaults(Item item) {
+            if (item.type == ItemID.SpikyBall) item.ammo = mod.ItemType<Items.Ranged.SlingshotStones>();
         }
     }
 }
