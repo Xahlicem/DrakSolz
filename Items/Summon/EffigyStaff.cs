@@ -49,9 +49,5 @@ namespace DrakSolz.Items.Summon {
             }
             return base.UseItem(player);
         }
-
-        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> tooltips) {
-            tooltips.RemoveAt(tooltips.Count - 1);
-        }
     }
 }

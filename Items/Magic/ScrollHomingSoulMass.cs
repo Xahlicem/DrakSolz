@@ -53,10 +53,6 @@ namespace DrakSolz.Items.Magic {
             return base.UseItem(player);
         }
 
-        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> tooltips) {
-            tooltips.RemoveAt(tooltips.Count - 1);
-        }
-
         public override void AddRecipes() {
             ModRecipe recipe = new SoulRecipe(mod, this);
             recipe.AddIngredient(mod.ItemType<Items.Misc.Scroll>());

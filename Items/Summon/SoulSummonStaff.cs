@@ -50,10 +50,6 @@ namespace DrakSolz.Items.Summon {
             return base.UseItem(player);
         }
 
-        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> tooltips) {
-            tooltips.RemoveAt(tooltips.Count - 1);
-        }
-
         public override void AddRecipes() {
             ModRecipe recipe = new SoulRecipe(mod, this);
             recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
