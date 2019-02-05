@@ -25,14 +25,17 @@ namespace DrakSolz.Projectiles {
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) {
             target.AddBuff(BuffID.Ichor, 600);
+            target.AddBuff(BuffID.Oiled, 600);
         }
 
         public override void OnHitPlayer(Player target, int damage, bool crit) {
             target.AddBuff(BuffID.Ichor, 600);
+            target.AddBuff(BuffID.Oiled, 600);
         }
 
         public override void OnHitPvp(Player target, int damage, bool crit) {
             target.AddBuff(BuffID.Ichor, 600);
+            target.AddBuff(BuffID.Oiled, 600);
         }
         public override void AI() {
 
