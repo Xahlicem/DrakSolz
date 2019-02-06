@@ -16,7 +16,7 @@ namespace DrakSolz.Items.Magic.MagnetSphere {
         public override void SetDefaults() {
             item.CloneDefaults(ItemID.MagnetSphere);
             item.useStyle = 5;
-            item.damage = 20;
+            item.damage = 15;
             item.useTime = 60;
             item.useAnimation = 60;
             item.mana = 10;
