@@ -7,7 +7,7 @@ using Terraria.ModLoader.IO;
 
 namespace DrakSolz.Items.Magic.Pyro {
     public class PyroScrollPoison : SoulItem {
-        public PyroScrollPoison() : base(1000) { }
+        public PyroScrollPoison() : base(3000) { }
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Poison Mist");

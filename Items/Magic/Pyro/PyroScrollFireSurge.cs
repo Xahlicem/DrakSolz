@@ -11,7 +11,7 @@ namespace DrakSolz.Items.Magic.Pyro {
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Fire Surge");
-            Tooltip.SetDefault("Pyromancy that conjures a Constant bursting flame from your hand.");
+            Tooltip.SetDefault("Pyromancy that conjures a constant bursting flame from your hand.");
         }
 
         public override void SetDefaults() {
@@ -24,8 +24,8 @@ namespace DrakSolz.Items.Magic.Pyro {
             item.mana = 5;
             item.knockBack = 2.5f;
             item.shootSpeed = 2.5f;
-            item.value = Item.buyPrice(0, 0, 80, 0);
-            item.shoot = 85;
+            item.value = Item.buyPrice(0, 2, 0, 0);
+            item.shoot = mod.ProjectileType<Projectiles.FireProj2>();
             item.autoReuse = true;
         }
 
