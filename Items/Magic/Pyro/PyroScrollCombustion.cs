@@ -32,7 +32,7 @@ namespace DrakSolz.Items.Magic.Pyro {
         public override void AddRecipes() {
             ModRecipe recipe = new SoulRecipe(mod, this);
             recipe.AddIngredient(mod.ItemType<Items.Misc.PyroScroll>());
-            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.AddTile(TileID.WorkBenches);
             recipe.AddRecipe();
         }
 

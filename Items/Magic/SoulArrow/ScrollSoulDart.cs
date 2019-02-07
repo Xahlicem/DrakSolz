@@ -29,7 +29,7 @@ namespace DrakSolz.Items.Magic.SoulArrow {
         public override void AddRecipes() {
             ModRecipe recipe = new SoulRecipe(mod, this);
             recipe.AddIngredient(mod.ItemType<Items.Misc.Scroll>());
-            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.AddTile(TileID.WorkBenches);
             recipe.AddRecipe();
         }
 

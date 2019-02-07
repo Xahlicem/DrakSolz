@@ -34,7 +34,7 @@ namespace DrakSolz.Items.Magic.Holy {
         public override void AddRecipes() {
             ModRecipe recipe = new SoulRecipe(mod, this);
             recipe.AddIngredient(mod.ItemType<Items.Misc.ScrollHoly>());
-            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.AddTile(TileID.WorkBenches);
             recipe.AddRecipe();
         }
 
