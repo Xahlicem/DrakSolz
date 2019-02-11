@@ -6,25 +6,26 @@ using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
 namespace DrakSolz.Items.Misc {
-    public class ScrollHolyRegen : SoulItem {
-        public ScrollHolyRegen() : base(25000) { }
+    public class ScrollHolyMinorHeal : SoulItem {
+        public ScrollHolyMinorHeal() : base(1500) { }
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault("Regeneration");
-            Tooltip.SetDefault("Restores health over a large period of time.");
+            DisplayName.SetDefault("Minor Heal");
+            Tooltip.SetDefault("Restores a small amount of health.");
         }
 
         public override void SetDefaults() {
             item.scale *= 0.8f;
             item.useStyle = 4;
-            item.value = Item.buyPrice(0, 20, 0, 0);
+            item.value = Item.buyPrice(0, 1, 0, 0);
             item.rare = 2;
             item.consumable = false;
-            item.mana = 40;
+            item.mana = 15;
         }
 
         public override bool UseItem(Player player) {
-            for (int i = 0; i < 60; i++);
-            player.AddBuff(BuffID.RapidHealing, 2000);
+            for (int i = 0; i < 2; i++);
+            player.statLife += 30;
+            player.HealEffect(30);
             player.AddBuff(mod.BuffType<Buffs.ScrollMana>(), + (360 * (int)(item.mana * player.manaCost)));
             return true;
         }

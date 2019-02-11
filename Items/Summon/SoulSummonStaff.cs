@@ -52,7 +52,7 @@ namespace DrakSolz.Items.Summon {
 
         public override void AddRecipes() {
             ModRecipe recipe = new SoulRecipe(mod, this);
-            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.AddTile(TileID.WorkBenches);
             recipe.AddRecipeGroup("IronBar", 2);
             recipe.AddRecipeGroup("Wood", 5);
             recipe.AddRecipe();
