@@ -324,11 +324,17 @@ namespace DrakSolz {
         }
 
         public void DecreaseHollow(int amount) {
+            if(player.HasBuff(mod.BuffType<Buffs.WarmthBuff>()) || player.HasBuff(mod.BuffType<Buffs.Firelink>())){
+                amount *= 3;
+            }
             Hollow -= amount;
             if (Hollow < 0) Hollow = 0;
         }
 
         public void DecreaseHurtWait(int amount) {
+            if(player.HasBuff(mod.BuffType<Buffs.WarmthBuff>()) || player.HasBuff(mod.BuffType<Buffs.Firelink>())){
+                amount *= 20;
+            }
             HurtWait -= amount;
             if (HurtWait < 0) HurtWait = 0;
         }
