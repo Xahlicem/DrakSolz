@@ -7,7 +7,7 @@ using Terraria.ModLoader.IO;
 
 namespace DrakSolz.Items.Magic.SoulArrow {
     public class ScrollSoulArrow : SoulItem {
-        public ScrollSoulArrow() : base(500) { }
+        public ScrollSoulArrow() : base(1000) { }
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Soul Arrow");
