@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace DrakSolz.Items.Magic {
     public class  ScrollHail : SoulItem {
-        public  ScrollHail() : base(18000) { }
+        public  ScrollHail() : base(25000) { }
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Crystal Hail");
             Tooltip.SetDefault("Book of frozen magic.");

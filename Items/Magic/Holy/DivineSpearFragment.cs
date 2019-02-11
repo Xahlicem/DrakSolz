@@ -7,7 +7,7 @@ using Terraria.ModLoader.IO;
 
 namespace DrakSolz.Items.Magic.Holy {
     public class DivineSpearFragment : SoulItem {
-        public DivineSpearFragment() : base(50000) { }
+        public DivineSpearFragment() : base(40000) { }
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Divine Spear Fragment");
