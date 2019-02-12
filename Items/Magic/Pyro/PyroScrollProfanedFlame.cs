@@ -7,7 +7,7 @@ using Terraria.ModLoader.IO;
 
 namespace DrakSolz.Items.Magic.Pyro {
     public class PyroScrollProfanedFlame : SoulItem {
-        public PyroScrollProfanedFlame() : base(35000) { }
+        public PyroScrollProfanedFlame() : base(25000) { }
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Profaned Flame");
             Tooltip.SetDefault("Conjures a flame which explodes after a small delay.");

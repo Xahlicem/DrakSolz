@@ -3,10 +3,13 @@ Drak Solz is a mod that changes a lot of in-game mechanics. Or how you usually p
 Main adjustments:
 Early-Game is MUCH harder, but only if you manage to die. As long as you play carefully then you won't notice too much of a difference, outside of your huge damage reduction that you start with.
 Scaling stats allow you to grow and become stronger for late-game enemies, as well as choose a specific build for your character.
-Hollow buff is gaind from taking damage and upon death, to really set home your punishment for failing, but can be removed through varius ways.
-Souls allow you to level up stats or craft exclusive powerful items, and are gained by killing enemies, but will always drop upon your death.
+Hollow buff is gained from taking damage and upon death, to really set home your punishment for failing, but can be removed in varius ways.
+Souls allow you to level up stats or craft exclusive powerful items, and are gained by killing enemies, but will always drop upon your death to be recollected or lost forever.
 Minion/Summon is changed into Miracle Damage, with special miracle spells.
-Throwing is now a class, with a unique celestial pillar to supply end-game throwing armor.
+Summon damage is adjusted to be more balanced, especially sentry summons.
+Throwing is now a class, with a unique celestial pillar to supply end-game throwing armor/weapon.
+Life Crystals and Mana Crystals function entirely differently than before, and will NOT increase the respective stat.
+Spawn rate is adjusted in reference to how many bosses have been defeated. Increasing for each boss and then lowering back down after defeating WoF and Cultist to stop it from getting too crazy.
 
 Additions:
 +26 Accessories
@@ -31,7 +34,9 @@ Additions:
 +27 NPC's
 +1 Celestial Tower
 +94 Post-End-Game NPC's
++1 Micro-Biome
 
-Changes:
-Summon damage is adjusted to be more balanced, especially sentry summons.
-Some other base-game items have been adjusted for balance.
+Future changes:
+Boss Rework. The bosses do need to actually function like bosses, but for now we're not focusing on that.
+Potentially adding in some exclusive "Pyromancy" and "Sorcery" armors/accessories, to add diversity in magic itself.
+Potentially splitting Pyromancy and Sorcery into 2 different damage types. New Armor Sets is the main problem here... Damage types require at least 6-8 armors.
