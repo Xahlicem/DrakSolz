@@ -40,3 +40,6 @@ Future changes:
 Boss Rework. The bosses do need to actually function like bosses, but for now we're not focusing on that.
 Potentially adding in some exclusive "Pyromancy" and "Sorcery" armors/accessories, to add diversity in magic itself.
 Potentially splitting Pyromancy and Sorcery into 2 different damage types. New Armor Sets is the main problem here... Damage types require at least 6-8 armors.
+
+Bugs/Issues:
+Currently magic helmets on Hard-Mode ore armors (Cobalt, Mythril, Adamantite, etc.) have 2 versions, and only the DrakSolz version grants the proper bonuses. So WMITF is preferred to avoid confusion.

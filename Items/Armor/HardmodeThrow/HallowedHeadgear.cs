@@ -7,8 +7,8 @@ namespace DrakSolz.Items.Armor.HardmodeThrow {
     public class HallowedHeadgear : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Hallowed Headgear");
-            Tooltip.SetDefault("15% increased ranged damage" +
-                "\n8% increased ranged critical strike chance");
+            Tooltip.SetDefault("15% increased throwing damage" +
+                "\n8% increased throwing critical strike chance");
         }
 
         public override void SetDefaults() {

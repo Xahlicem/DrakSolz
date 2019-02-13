@@ -7,8 +7,8 @@ namespace DrakSolz.Items.Armor.HardmodeThrow {
     public class CobaltHeadgear : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Cobalt Headgear");
-            Tooltip.SetDefault("10% increased ranged damage" +
-                "\n6% increased ranged critical strike chance");
+            Tooltip.SetDefault("10% increased throwing damage" +
+                "\n6% increased throwing critical strike chance");
         }
 
         public override void SetDefaults() {

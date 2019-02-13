@@ -7,8 +7,8 @@ namespace DrakSolz.Items.Armor.HardmodeThrow {
     public class TitaniumHeadgear : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Titanium Headgear");
-            Tooltip.SetDefault("16% increased ranged damage" +
-                "\n7% increased ranged critical strike chance");
+            Tooltip.SetDefault("13% increased throwing damage" +
+                "\n9% increased throwing critical strike chance");
         }
 
         public override void SetDefaults() {
@@ -20,8 +20,8 @@ namespace DrakSolz.Items.Armor.HardmodeThrow {
         }
 
         public override void UpdateEquip(Player player) {
-            player.thrownDamage *= 1.16f;
-            player.thrownCrit += 7;
+            player.thrownDamage *= 1.13f;
+            player.thrownCrit += 9;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs) {

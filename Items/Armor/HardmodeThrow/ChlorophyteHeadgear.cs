@@ -7,8 +7,8 @@ namespace DrakSolz.Items.Armor.HardmodeThrow {
     public class ChlorophyteHeadgear : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Chlorophyte Headgear");
-            Tooltip.SetDefault("16% increased ranged damage" +
-                "\n6% increased ranged critical strike chance");
+            Tooltip.SetDefault("16% increased throwing damage" +
+                "\n6% increased throwing critical strike chance");
         }
 
         public override void SetDefaults() {

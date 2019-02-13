@@ -7,8 +7,8 @@ namespace DrakSolz.Items.Armor.HardmodeThrow {
     public class AdamantiteHeadgear : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Adamantite Headgear");
-            Tooltip.SetDefault("14% increased ranged damage" +
-                "\n8% increased ranged critical strike chance");
+            Tooltip.SetDefault("14% increased throwing damage" +
+                "\n8% increased throwing critical strike chance");
         }
 
         public override void SetDefaults() {

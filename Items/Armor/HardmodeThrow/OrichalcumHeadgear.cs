@@ -7,9 +7,8 @@ namespace DrakSolz.Items.Armor.HardmodeThrow {
     public class OrichalcumHeadgear : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Orichalcum Headgear");
-            Tooltip.SetDefault("7% increased ranged damage" +
-                "\n7% increased ranged critical strike chance" +
-                "\n7% increased movement");
+            Tooltip.SetDefault("11% increased throwing damage" +
+                "\n8% increased throwing critical strike chance");
         }
 
         public override void SetDefaults() {
@@ -21,9 +20,8 @@ namespace DrakSolz.Items.Armor.HardmodeThrow {
         }
 
         public override void UpdateEquip(Player player) {
-            player.thrownDamage *= 1.07f;
-            player.thrownCrit += 7;
-            player.moveSpeed *= 1.07f;
+            player.thrownDamage *= 1.11f;
+            player.thrownCrit += 8;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs) {

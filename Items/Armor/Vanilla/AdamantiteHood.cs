@@ -7,7 +7,7 @@ namespace DrakSolz.Items.Armor.Vanilla {
     public class AdamantiteHood : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Adamantite Hood");
-            Tooltip.SetDefault("Increases maximum mana by 80" +
+            Tooltip.SetDefault("Increases maximum mana by 800" +
                 "\n11% increased magic damage and critical strike chance");
         }
 

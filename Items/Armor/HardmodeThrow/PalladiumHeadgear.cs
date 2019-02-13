@@ -7,8 +7,8 @@ namespace DrakSolz.Items.Armor.HardmodeThrow {
     public class PalladiumHeadgear : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Palladium Headgear");
-            Tooltip.SetDefault("9% increased ranged damage" +
-                "\n9% increased ranged critical strike chance");
+            Tooltip.SetDefault("9% increased throwing damage" +
+                "\n7% increased throwing critical strike chance");
         }
 
         public override void SetDefaults() {
@@ -23,7 +23,7 @@ namespace DrakSolz.Items.Armor.HardmodeThrow {
 
         public override void UpdateEquip(Player player) {
             player.thrownDamage *= 1.09f;
-            player.thrownCrit += 9;
+            player.thrownCrit += 7;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs) {

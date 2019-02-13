@@ -7,8 +7,8 @@ namespace DrakSolz.Items.Armor.HardmodeThrow {
     public class MythrilHeadgear : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Mythril Headgear");
-            Tooltip.SetDefault("12% increased ranged damage" +
-                "\n7% increased ranged critical strike chance");
+            Tooltip.SetDefault("12% increased throwing damage" +
+                "\n7% increased throwing critical strike chance");
         }
 
         public override void SetDefaults() {
