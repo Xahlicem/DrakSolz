@@ -36,9 +36,16 @@ namespace DrakSolz.Items.Magic.Pyro {
         //}
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack) {
-            int pro = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, damage, knockBack, player.whoAmI);
-            Main.projectile[pro].frame = 1;
-            return false;
+			float numberProjectiles = 3;
+			float rotation = MathHelper.ToRadians(30);
+			position += Vector2.Normalize(new Vector2(speedX, speedY)) * 15f;
+			for (int i = 0; i < numberProjectiles; i++)
+			{
+				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1))) * 0.8f; // Watch out for dividing by 0 if there is only 1 projectile.
+				int pro = Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+                Main.projectile[pro].tileCollide = false;
+			}
+			return false;
         }
 public override void MeleeEffects(Player player, Rectangle hitbox)
 		{

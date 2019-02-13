@@ -31,5 +31,12 @@ namespace DrakSolz.Items.Misc {
             Main.projectile[pro].scale *= 1.5f;
             return false;
         }
+        public override void AddRecipes() {
+            ModRecipe recipe = new SoulRecipe(mod, this);
+            recipe.AddIngredient(mod.ItemType<Items.Misc.PyroScroll>());
+            recipe.AddIngredient(mod.ItemType<Tiles.FirelinkShrine>());
+            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.AddRecipe();
+        }
     }
 }
