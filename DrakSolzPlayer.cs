@@ -20,7 +20,17 @@ namespace DrakSolz {
         public int Level { get { return Vit + Str + Dex + Att + Int + Fth; } }
         public int Souls { get; set; }
         public int SoulCost(int level) {
-            return (int)(Math.Round((Math.Pow(0.02 * level, 3) + Math.Pow(4.06 * level, 2) + 105.6 * level) * 0.1, 0) * 10);
+            if (level < 20) {
+                return (int)(Math.Round((Math.Pow(0.02 * level, 3) + Math.Pow(4.06 * level, 2) + 105.6 * level) * 0.1, 0) * 10);
+            } else if (level < 40) {
+                return (int)(Math.Round((Math.Pow(0.02 * level, 3) + Math.Pow(4.06 * level, 2) + 105.6 * level) * 0.1, 0) * 15);
+            } else if (level < 60) {
+                return (int)(Math.Round((Math.Pow(0.02 * level, 3) + Math.Pow(4.06 * level, 2) + 105.6 * level) * 0.1, 0) * 20);
+            } else if (level < 80) {
+                return (int)(Math.Round((Math.Pow(0.02 * level, 3) + Math.Pow(4.06 * level, 2) + 105.6 * level) * 0.1, 0) * 25);
+            } else {
+                return (int)(Math.Round((Math.Pow(0.02 * level, 3) + Math.Pow(4.06 * level, 2) + 105.6 * level) * 0.1, 0) * 30);
+            }
         }
         public int Str { get; set; }
         public int Dex { get; set; }
@@ -219,7 +229,7 @@ namespace DrakSolz {
             else {
                 MiscHP = 0;
             }
-            if (player.armor[0].type == mod.ItemType<Items.Armor.Xanthous.XanthousCrown>()&&
+            if (player.armor[0].type == mod.ItemType<Items.Armor.Xanthous.XanthousCrown>() &&
                 player.armor[1].type == mod.ItemType<Items.Armor.Xanthous.XanthousOvercoat>() &&
                 player.armor[2].type == mod.ItemType<Items.Armor.Xanthous.XanthousWaistcloth>())
 
@@ -324,7 +334,7 @@ namespace DrakSolz {
         }
 
         public void DecreaseHollow(int amount) {
-            if(player.HasBuff(mod.BuffType<Buffs.WarmthBuff>()) || player.HasBuff(mod.BuffType<Buffs.Firelink>())){
+            if (player.HasBuff(mod.BuffType<Buffs.WarmthBuff>()) || player.HasBuff(mod.BuffType<Buffs.Firelink>())) {
                 amount *= 3;
             }
             Hollow -= amount;
@@ -332,7 +342,7 @@ namespace DrakSolz {
         }
 
         public void DecreaseHurtWait(int amount) {
-            if(player.HasBuff(mod.BuffType<Buffs.WarmthBuff>()) || player.HasBuff(mod.BuffType<Buffs.Firelink>())){
+            if (player.HasBuff(mod.BuffType<Buffs.WarmthBuff>()) || player.HasBuff(mod.BuffType<Buffs.Firelink>())) {
                 amount *= 20;
             }
             HurtWait -= amount;
