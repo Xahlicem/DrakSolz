@@ -39,7 +39,9 @@ namespace DrakSolz.NPCs.Enemy.HardMode {
             player.AddBuff(mod.BuffType<Buffs.SlipperyBuff>(), 600, true);
         }
         public override void NPCLoot() {
-            int g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ManEaterShell_Gore_1"));
+            int g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ManEaterShell_Gore_0"));
+            Main.gore[g].scale = npc.scale;
+            g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ManEaterShell_Gore_1"));
             Main.gore[g].scale = npc.scale;
             g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ManEaterShell_Gore_2"));
             Main.gore[g].scale = npc.scale;

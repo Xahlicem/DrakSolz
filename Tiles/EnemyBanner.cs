@@ -99,6 +99,12 @@ namespace DrakSolz.Tiles {
                 case 23:
                     item = "HollowDogBanner";
                     break;
+                case 24:
+                    item = "ChickenBanner";
+                    break;
+                case 25:
+                    item = "HollowBanner";
+                    break;
                 default:
                     return;
             }
@@ -182,6 +188,12 @@ namespace DrakSolz.Tiles {
                         break;
                     case 23:
                         type = "HollowDog";
+                        break;
+                    case 24:
+                        type = "Chicken";
+                        break;
+                    case 25:
+                        type = "Hollow";
                         break;
                     default:
                         return;
