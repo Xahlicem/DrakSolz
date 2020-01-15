@@ -105,6 +105,9 @@ namespace DrakSolz.Tiles {
                 case 25:
                     item = "HollowBanner";
                     break;
+                case 26:
+                    item = "CthulhunBanner";
+                    break;
                 default:
                     return;
             }
@@ -194,6 +197,9 @@ namespace DrakSolz.Tiles {
                         break;
                     case 25:
                         type = "Hollow";
+                        break;
+                    case 26:
+                        type = "Cthulhun";
                         break;
                     default:
                         return;
