@@ -21,11 +21,11 @@ namespace DrakSolz {
         public int Souls { get; set; }
         public int SoulCost(int level) {
             if (level < 20) {
-                return (int)(Math.Round((Math.Pow(0.02 * level, 3) + Math.Pow(4.06 * level, 2) + 105.6 * level) * 0.1, 0) * 10);
+                return (int)(Math.Round((Math.Pow(0.02 * level, 3) + Math.Pow(4.06 * level, 2) + 105.6 * level) * 0.1, 0) * 4);
             } else if (level < 40) {
-                return (int)(Math.Round((Math.Pow(0.02 * level, 3) + Math.Pow(4.06 * level, 2) + 105.6 * level) * 0.1, 0) * 15);
+                return (int)(Math.Round((Math.Pow(0.02 * level, 3) + Math.Pow(4.06 * level, 2) + 105.6 * level) * 0.1, 0) * 10);
             } else if (level < 60) {
-                return (int)(Math.Round((Math.Pow(0.02 * level, 3) + Math.Pow(4.06 * level, 2) + 105.6 * level) * 0.1, 0) * 20);
+                return (int)(Math.Round((Math.Pow(0.02 * level, 3) + Math.Pow(4.06 * level, 2) + 105.6 * level) * 0.1, 0) * 17);
             } else if (level < 80) {
                 return (int)(Math.Round((Math.Pow(0.02 * level, 3) + Math.Pow(4.06 * level, 2) + 105.6 * level) * 0.1, 0) * 25);
             } else {
@@ -58,6 +58,17 @@ namespace DrakSolz {
 
         public bool EvilEye { get; set; }
         public int Avarice { get; set; }
+
+        public bool ClassAdept { get; set; }
+        public bool ClassBulwark { get; set; }
+        public bool ClassCleric { get; set; }
+        public bool ClassFighter { get; set; }
+        public bool ClassRogue { get; set; }
+        public bool ClassSorcerer { get; set; }
+        public bool ClassSummoner { get; set; }
+        public bool ClassWarrior { get; set; }
+        public bool ClassWizard { get; set; }
+        public bool ClassNone { get; set; }
         public int MiscHP { get; set; }
         public int MiscHP0 { get; set; }
         public int MiscHP1 { get; set; }
@@ -97,6 +108,16 @@ namespace DrakSolz {
             CrystalPet = false;
             EvilEye = false;
             Avarice = 0;
+            ClassAdept = false;
+            ClassBulwark = false;
+            ClassCleric = false;
+            ClassFighter = false;
+            ClassRogue = false;
+            ClassSorcerer = false;
+            ClassSummoner = false;
+            ClassWarrior = false;
+            ClassWizard = false;
+            ClassNone = false;
 
             Rotation = 0f;
         }
@@ -274,6 +295,96 @@ namespace DrakSolz {
 
         public override void PostUpdateEquips() {
             UpdateStats();
+            if (ClassAdept == true){
+            Vit = 1;
+            Str = 2;
+            Dex = 2;
+            Att = 1;
+            Int = 2;
+            Fth = 2;
+            ClassAdept = false;
+            }
+            if (ClassBulwark == true){
+            Vit = 10;
+            Str = 0;
+            Dex = 0;
+            Att = 0;
+            Int = 0;
+            Fth = 0;
+            ClassBulwark = false;
+            }
+            if (ClassCleric == true){
+            Vit = 2;
+            Str = 0;
+            Dex = 0;
+            Att = 4;
+            Int = 0;
+            Fth = 4;
+            ClassCleric = false;
+            }
+            if (ClassFighter == true){
+            Vit = 0;
+            Str = 5;
+            Dex = 5;
+            Att = 0;
+            Int = 0;
+            Fth = 0;
+            ClassFighter = false;
+            }
+            if (ClassRogue == true){
+            Vit = 0;
+            Str = 0;
+            Dex = 10;
+            Att = 0;
+            Int = 0;
+            Fth = 0;
+            ClassRogue = false;
+            }
+            if (ClassSorcerer == true){
+            Vit = 0;
+            Str = 0;
+            Dex = 0;
+            Att = 2;
+            Int = 8;
+            Fth = 0;
+            ClassSorcerer = false;
+            }
+            if (ClassSummoner == true){
+            Vit = 0;
+            Str = 0;
+            Dex = 0;
+            Att = 2;
+            Int = 0;
+            Fth = 8;
+            ClassSummoner = false;
+            }
+            if (ClassWarrior == true){
+            Vit = 2;
+            Str = 8;
+            Dex = 0;
+            Att = 0;
+            Int = 0;
+            Fth = 0;
+            ClassWarrior = false;
+            }
+            if (ClassWizard == true){
+            Vit = 2;
+            Str = 0;
+            Dex = 0;
+            Att = 6;
+            Int = 2;
+            Fth = 0;
+            ClassWizard = false;
+            }
+            if (ClassNone == true){
+            Vit = 0;
+            Str = 0;
+            Dex = 0;
+            Att = 0;
+            Int = 0;
+            Fth = 0;
+            ClassNone = false;
+            }
         }
 
         public override void PostUpdate() {
@@ -316,7 +427,6 @@ namespace DrakSolz {
 
             SendPacket(MessageType.Stats);
         }
-
         private void UpdateStats() {
             player.meleeDamage *= 0.6f + Str * 0.02f;;
             player.rangedDamage *= 0.6f + Dex * 0.02f;;

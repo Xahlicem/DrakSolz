@@ -26,6 +26,8 @@ namespace DrakSolz.Items.Misc.Classes {
         }
         public override bool UseItem(Player player) {
             Main.NewText("A Forsaken has been chosen!", 10, 10, 10);
+            DrakSolzPlayer modPlayer = (DrakSolzPlayer) player.GetModPlayer<DrakSolzPlayer>(mod);
+            modPlayer.ClassNone = true;
             return true;
         }
         public override void AddRecipes() {

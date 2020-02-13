@@ -1,3 +1,4 @@
+
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -25,7 +26,9 @@ namespace DrakSolz.Items.Misc.Classes {
             item.consumable = true;
         }
         public override bool UseItem(Player player) {
-            Main.NewText("An Adept has been chosen!", 10, 10, 10);
+            Main.NewText("An Adept has been chosen!", 255, 255, 255);
+            DrakSolzPlayer modPlayer = (DrakSolzPlayer) player.GetModPlayer<DrakSolzPlayer>(mod);
+            modPlayer.ClassAdept = true;
             return true;
         }
         public override void AddRecipes() {

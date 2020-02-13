@@ -25,7 +25,9 @@ namespace DrakSolz.Items.Misc.Classes {
             item.consumable = true;
         }
         public override bool UseItem(Player player) {
-            Main.NewText("A Sorcerer has been chosen!", 10, 10, 10);
+            Main.NewText("A Sorcerer has been chosen!", 0, 255, 255);
+            DrakSolzPlayer modPlayer = (DrakSolzPlayer) player.GetModPlayer<DrakSolzPlayer>(mod);
+            modPlayer.ClassSorcerer = true;
             return true;
         }
         public override void AddRecipes() {

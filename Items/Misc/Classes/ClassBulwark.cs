@@ -25,7 +25,9 @@ namespace DrakSolz.Items.Misc.Classes {
             item.consumable = true;
         }
         public override bool UseItem(Player player) {
-            Main.NewText("A Bulwark has been chosen!", 10, 10, 10);
+            Main.NewText("A Bulwark has been chosen!", 255, 150, 0);
+            DrakSolzPlayer modPlayer = (DrakSolzPlayer) player.GetModPlayer<DrakSolzPlayer>(mod);
+            modPlayer.ClassBulwark = true;
             return true;
         }
         public override void AddRecipes() {
