@@ -26,8 +26,8 @@ namespace DrakSolz.NPCs.Enemy.Dungeon {
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 6000f;
             npc.knockBackResist = 0.07f;
-            banner = mod.NPCType<SilverKnight>();
-            bannerItem = mod.ItemType<Items.Banners.SilverKnightBanner>();
+            banner = ModContent.NPCType<SilverKnight>();
+            bannerItem = ModContent.ItemType<Items.Banners.SilverKnightBanner>();
             AI_Timer = 15;
         }
 
@@ -63,7 +63,7 @@ namespace DrakSolz.NPCs.Enemy.Dungeon {
                     Vector2 vector = target - npc.Center;
                     DrakSolz.AdjustMagnitude(ref vector, 12.5f);
                     if (Main.netMode != 1 && AI_Timer > 90) {
-                        int proj = Projectile.NewProjectile(npc.Center, vector, mod.ProjectileType<Projectiles.DragonslayerGreatarrowProj>(), (int) (npc.damage *0.5), 20);
+                        int proj = Projectile.NewProjectile(npc.Center, vector, ModContent.ProjectileType<Projectiles.DragonslayerGreatarrowProj>(), (int) (npc.damage *0.5), 20);
                         Main.projectile[proj].friendly = false;
                         Main.projectile[proj].hostile = true;
                         Main.projectile[proj].netUpdate = true;
@@ -108,8 +108,8 @@ namespace DrakSolz.NPCs.Enemy.Dungeon {
 
         public override void NPCLoot() {
             base.NPCLoot();
-            DrakSolz.DropItem(npc, 4f, mod.ItemType<Items.Ranged.DragonslayerGreatbow>());
-            DrakSolz.DropItem(npc, 100f, mod.ItemType<Items.Ranged.DragonslayerGreatarrow>(), Main.rand.Next(1, 10));
+            DrakSolz.DropItem(npc, 4f, ModContent.ItemType<Items.Ranged.DragonslayerGreatbow>());
+            DrakSolz.DropItem(npc, 100f, ModContent.ItemType<Items.Ranged.DragonslayerGreatarrow>(), Main.rand.Next(1, 10));
         }
     }
 }

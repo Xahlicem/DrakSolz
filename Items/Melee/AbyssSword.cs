@@ -36,7 +36,7 @@ namespace DrakSolz.Items.Melee {
                 item.useStyle = 2;
                 item.alpha = 0;
             }
-            int mbuff = player.FindBuffIndex(mod.BuffType<Buffs.AbyssSwordBuff>());
+            int mbuff = player.FindBuffIndex(ModContent.BuffType<Buffs.AbyssSwordBuff>());
             int idamage = item.damage;
             int iuse = item.useAnimation + 2;
             int iani = item.useTime + 2;
@@ -47,7 +47,7 @@ namespace DrakSolz.Items.Melee {
             if (mbuff < 0) {
                 foreach (Item i in player.inventory)
                     if (i == item) {
-                        i.netDefaults(mod.ItemType<Items.Melee.ArtoriasSword>());
+                        i.netDefaults(ModContent.ItemType<Items.Melee.ArtoriasSword>());
                         i.damage = idamage - 1000;
                         i.useAnimation = iuse;
                         i.useTime = iani;

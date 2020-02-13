@@ -28,7 +28,7 @@ namespace DrakSolz.NPCs.Enemy.HardMode {
             npc.knockBackResist = 0.12f;
             npc.rarity = 1;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.DragonSlayerBanner>();
+            bannerItem = ModContent.ItemType<Items.Banners.DragonSlayerBanner>();
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
@@ -40,8 +40,8 @@ namespace DrakSolz.NPCs.Enemy.HardMode {
             for (int i = 0; i < 6; i++)
                 DrakSolz.CreateGore(mod, npc, "Gores/DragonSlayer/Gore_" + i);
 
-            DrakSolz.DropItem(npc, 25f, mod.ItemType<Items.Armor.DragonSlayer.DragonSlayerHelmet>(), mod.ItemType<Items.Armor.DragonSlayer.DragonSlayerChest>(), mod.ItemType<Items.Armor.DragonSlayer.DragonSlayerLeggings>());
-            DrakSolz.DropItem(npc, 12.5f, mod.ItemType<Items.Melee.DragonSlayerSpear>());
+            DrakSolz.DropItem(npc, 25f, ModContent.ItemType<Items.Armor.DragonSlayer.DragonSlayerHelmet>(), ModContent.ItemType<Items.Armor.DragonSlayer.DragonSlayerChest>(), ModContent.ItemType<Items.Armor.DragonSlayer.DragonSlayerLeggings>());
+            DrakSolz.DropItem(npc, 12.5f, ModContent.ItemType<Items.Melee.DragonSlayerSpear>());
         }
     }
 }

@@ -27,13 +27,13 @@ namespace DrakSolz.Items.Misc {
         public override bool UseItem(Player player) {
             player.AddBuff(BuffID.Panic, 3600);
             Main.NewText("A wandering demon has arrived!", 50, 50, 50);
-            NPC.NewNPC((int) player.Center.X, (int) player.Center.Y - 180, mod.NPCType<NPCs.Enemy.Boss.TitaniteDemon>());
+            NPC.NewNPC((int) player.Center.X, (int) player.Center.Y - 180, ModContent.NPCType<NPCs.Enemy.Boss.TitaniteDemon>());
             return true;
         }
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType<Items.Misc.Titanite>(), 20);
-            recipe.AddIngredient(mod.ItemType<Items.Banners.InhumanityBanner>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Misc.Titanite>(), 20);
+            recipe.AddIngredient(ModContent.ItemType<Items.Banners.InhumanityBanner>());
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

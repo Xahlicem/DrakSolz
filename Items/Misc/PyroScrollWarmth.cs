@@ -20,12 +20,12 @@ namespace DrakSolz.Items.Misc {
             item.mana = 40;
             item.knockBack = 7f;
             item.shootSpeed = 0;
-            item.shoot = mod.ProjectileType<Projectiles.WarmthProj>();
+            item.shoot = ModContent.ProjectileType<Projectiles.WarmthProj>();
             item.value = Item.buyPrice(0, 40, 0, 0);
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack) {
-            player.AddBuff(mod.BuffType<Buffs.ScrollMana>(), 14400);
+            player.AddBuff(ModContent.BuffType<Buffs.ScrollMana>(), 14400);
             int pro = Projectile.NewProjectile(Main.mouseX + Main.screenPosition.X, Main.mouseY + Main.screenPosition.Y, speedX, speedY, type, 0, knockBack, player.whoAmI);
             Main.projectile[pro].frame = 1;
             Main.projectile[pro].scale *= 1.5f;
@@ -33,9 +33,9 @@ namespace DrakSolz.Items.Misc {
         }
         public override void AddRecipes() {
             ModRecipe recipe = new SoulRecipe(mod, this);
-            recipe.AddIngredient(mod.ItemType<Items.Misc.PyroScroll>());
-            recipe.AddIngredient(mod.ItemType<Tiles.FirelinkShrine>());
-            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Misc.PyroScroll>());
+            recipe.AddIngredient(ModContent.ItemType<Tiles.FirelinkShrine>());
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
             recipe.AddRecipe();
         }
     }

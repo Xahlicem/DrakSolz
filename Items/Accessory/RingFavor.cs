@@ -33,11 +33,11 @@ namespace DrakSolz.Items.Accessory {
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.SetResult(this);
-            recipe.AddIngredient(mod.ItemType<Items.Accessory.RingCloranthy>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Accessory.RingCloranthy>());
             recipe.AddIngredient(ItemID.SoulofSight);
             recipe.AddIngredient(ItemID.SoulofMight);
             recipe.AddIngredient(ItemID.SoulofFright);
-            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
             recipe.AddRecipe();
         }
     }

@@ -18,7 +18,7 @@ namespace DrakSolz.Buffs {
             player.maxRunSpeed *= 1.20f;
             player.jumpSpeedBoost *= 1.10f;
             player.buffImmune[BuffID.Slow] = true;
-            //int index = player.FindBuffIndex(mod.BuffType<Buffs.ChannelBuff>());
+            //int index = player.FindBuffIndex(ModContent.BuffType<Buffs.ChannelBuff>());
             //if (index != -1) player.buffTime[index] = 0;
         }
     }

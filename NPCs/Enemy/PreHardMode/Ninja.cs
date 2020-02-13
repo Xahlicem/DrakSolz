@@ -31,7 +31,7 @@ namespace DrakSolz.NPCs.Enemy.PreHardMode {
             npc.lifeMax = 60;
             npc.value = 100f;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.NinjaBanner>();
+            bannerItem = ModContent.ItemType<Items.Banners.NinjaBanner>();
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {

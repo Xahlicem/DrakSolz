@@ -36,7 +36,7 @@ namespace DrakSolz.Projectiles.Magic {
 
         public override void AI() {
             Player player = Main.player[projectile.owner];
-            DrakSolzPlayer modPlayer = (DrakSolzPlayer) player.GetModPlayer<DrakSolzPlayer>(mod);
+            DrakSolzPlayer modPlayer = (DrakSolzPlayer) player.GetModPlayer<DrakSolzPlayer>();
 
             if (player.dead) {
                 modPlayer.SoulMassSum = false;

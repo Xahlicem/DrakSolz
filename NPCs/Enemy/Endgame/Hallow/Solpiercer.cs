@@ -27,7 +27,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Hallow {
             npc.value = 6000f;
             npc.knockBackResist = 0.07f;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.HolyBanners.SolpiercerBanner>();
+            bannerItem = ModContent.ItemType<Items.Banners.HolyBanners.SolpiercerBanner>();
             AI_Timer = 15;
         }
 
@@ -60,7 +60,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Hallow {
                     Vector2 vector = target - npc.Center;
                     DrakSolz.AdjustMagnitude(ref vector, 12.5f);
                     if (Main.netMode != 1 && AI_Timer > 90) {
-                        int proj = Projectile.NewProjectile(npc.Center, vector, mod.ProjectileType<Projectiles.LightningArrowProj>(), (int) (npc.damage *0.5), 20);
+                        int proj = Projectile.NewProjectile(npc.Center, vector, ModContent.ProjectileType<Projectiles.LightningArrowProj>(), (int) (npc.damage *0.5), 20);
                         Main.projectile[proj].friendly = false;
                         Main.projectile[proj].hostile = true;
                         Main.projectile[proj].timeLeft = 120;

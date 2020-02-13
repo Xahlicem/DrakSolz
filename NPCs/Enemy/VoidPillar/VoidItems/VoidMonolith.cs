@@ -19,7 +19,7 @@ namespace DrakSolz.NPCs.Enemy.VoidPillar.VoidItems
 			item.consumable = true;
 			item.rare = 10;
 			item.value = Item.buyPrice(0, 10, 0, 0);
-			item.createTile = mod.TileType<VoidMonolithTile>();
+			item.createTile = ModContent.TileType<VoidMonolithTile>();
 		}
 
 		public override void SetStaticDefaults()

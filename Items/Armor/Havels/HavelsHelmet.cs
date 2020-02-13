@@ -22,7 +22,7 @@ namespace DrakSolz.Items.Armor.Havels {
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs) {
-            return body.type == mod.ItemType<Items.Armor.Havels.HavelsArmor>() && legs.type == mod.ItemType<Items.Armor.Havels.HavelsLeggings>();
+            return body.type == ModContent.ItemType<Items.Armor.Havels.HavelsArmor>() && legs.type == ModContent.ItemType<Items.Armor.Havels.HavelsLeggings>();
         }
 
         public override void UpdateArmorSet(Player player) {
@@ -39,8 +39,8 @@ namespace DrakSolz.Items.Armor.Havels {
         }
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType<Items.Misc.Titanite>(), 50);
-            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Misc.Titanite>(), 50);
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

@@ -26,7 +26,7 @@ namespace DrakSolz.NPCs.Enemy.PreHardMode {
             npc.rarity = 1;
             npc.buffImmune[BuffID.Confused] = true;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.CrystalLizardBanner>();
+            bannerItem = ModContent.ItemType<Items.Banners.CrystalLizardBanner>();
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
@@ -113,12 +113,12 @@ namespace DrakSolz.NPCs.Enemy.PreHardMode {
             }
         }
         public override void OnHitPlayer(Player player, int damage, bool crit) {
-            player.AddBuff(mod.BuffType<Buffs.SlipperyBuff>(), 3600, true);
+            player.AddBuff(ModContent.BuffType<Buffs.SlipperyBuff>(), 3600, true);
         }
         public override void NPCLoot() {
-            Item.NewItem(npc.Center, npc.width, npc.height, mod.ItemType<Items.Misc.Twink>());
+            Item.NewItem(npc.Center, npc.width, npc.height, ModContent.ItemType<Items.Misc.Twink>());
             if (NPC.downedAncientCultist) {
-                if (Main.rand.Next(2) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Misc.Titanite>());
+                if (Main.rand.Next(2) == 0) Item.NewItem(npc.position, npc.width, npc.height, ModContent.ItemType<Items.Misc.Titanite>());
             }
         }
     }

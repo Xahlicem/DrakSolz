@@ -13,7 +13,7 @@ namespace DrakSolz.Items.Magic.SoulArrow {
             Tooltip.SetDefault("Sorcery that projects a soul arrow toward your target.");
         }
         public override void SetDefaults() {
-            item.CloneDefaults(mod.ItemType<Items.Magic.SoulArrow.ScrollSoulArrow>());
+            item.CloneDefaults(ModContent.ItemType<Items.Magic.SoulArrow.ScrollSoulArrow>());
             item.noUseGraphic = true;
             item.damage = 36;
             item.mana = 7;
@@ -23,8 +23,8 @@ namespace DrakSolz.Items.Magic.SoulArrow {
 
         public override void AddRecipes() {
             ModRecipe recipe = new SoulRecipe(mod, this);
-            recipe.AddIngredient(mod.ItemType<Items.Magic.SoulArrow.ScrollSoulArrow>());
-            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Magic.SoulArrow.ScrollSoulArrow>());
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
             recipe.AddRecipe();
         }
 

@@ -38,10 +38,10 @@ namespace DrakSolz.NPCs.Enemy.VoidPillar {
         public override void AI() {
             Timer++;
             if (Timer % 20 == 0) {
-                if (Main.player[npc.target].GetModPlayer<DrakSolzPlayer>(mod).ZoneTowerVoidPillar) {
+                if (Main.player[npc.target].GetModPlayer<DrakSolzPlayer>().ZoneTowerVoidPillar) {
                     var ShootPos = Main.player[npc.target].position + new Vector2(Main.rand.Next(-1000, 1000), -1000);
                     var ShootVel = new Vector2(Main.rand.NextFloat(-3f, 3f), Main.rand.NextFloat(0.8f, 4f));
-                    int i = Projectile.NewProjectile(ShootPos, ShootVel, mod.ProjectileType("PillarProj"), 34, 1f);
+                    int i = Projectile.NewProjectile(ShootPos, ShootVel, ModContent.ProjectileType<Projectiles.PillarProj>(), 34, 1f);
                     Main.projectile[i].friendly = false;
                 }
             }
@@ -62,7 +62,7 @@ namespace DrakSolz.NPCs.Enemy.VoidPillar {
             }
             for (int num1940 = 0; num1940 < 3; num1940++) {
                 if (Main.rand.Next(5) == 0) {
-                    Dust dust22 = Main.dust[Dust.NewDust(npc.Top + new Vector2(-(float) npc.width * (0.33f - 0.11f * num1940), -20f), (int)(npc.width * (0.66f - 0.22f * num1940)), 20, 241, 0f, 0f, 0, default(Color), 1f)];
+                    Dust dust22 = Main.dust[Dust.NewDust(npc.Top + new Vector2(-(float) npc.width * (0.33f - 0.11f * num1940), -20f), (int) (npc.width * (0.66f - 0.22f * num1940)), 20, 241, 0f, 0f, 0, default(Color), 1f)];
                     dust22.velocity.X = 0f;
                     dust22.velocity.Y = -Math.Abs(dust22.velocity.Y - num1940 + npc.velocity.Y - 4f) * 1f;
                     dust22.noGravity = true;
@@ -98,7 +98,7 @@ namespace DrakSolz.NPCs.Enemy.VoidPillar {
                 if (npc.ai[1] < 150f) {
                     for (int num1362 = 0; num1362 < 3; num1362++) {
                         if (Main.rand.Next(4) == 0) {
-                            Dust dust5 = Main.dust[Dust.NewDust(npc.Top + new Vector2(-(float) npc.width * (0.33f - 0.11f * num1362), -20f), (int)(npc.width * (0.66f - 0.22f * num1362)), 20, dustID)];
+                            Dust dust5 = Main.dust[Dust.NewDust(npc.Top + new Vector2(-(float) npc.width * (0.33f - 0.11f * num1362), -20f), (int) (npc.width * (0.66f - 0.22f * num1362)), 20, dustID)];
                             dust5.velocity.X = 0f;
                             dust5.velocity.Y = -Math.Abs(dust5.velocity.Y - num1362 + npc.velocity.Y - 4f) * (1f + npc.ai[1] / 180f * 0.5f);
                             dust5.noGravity = true;
@@ -163,10 +163,10 @@ namespace DrakSolz.NPCs.Enemy.VoidPillar {
         public override void NPCLoot() {
             int stacks = Main.rand.Next(25, 41) / 2;
             if (Main.expertMode) {
-                stacks = (int)(stacks * 1.5f);
+                stacks = (int) (stacks * 1.5f);
             }
             for (int i = 0; i < stacks; i++) {
-                Item.NewItem((int) npc.position.X + Main.rand.Next(npc.width), (int) npc.position.Y + Main.rand.Next(npc.height), 2, 2, mod.ItemType("VoidFragment"), Main.rand.Next(1, 4));
+                Item.NewItem((int) npc.position.X + Main.rand.Next(npc.width), (int) npc.position.Y + Main.rand.Next(npc.height), 2, 2, ModContent.ItemType<Items.Misc.VoidFragment>(), Main.rand.Next(1, 4));
             }
 
             DrakSolzWorld.Boss.VoidPillar.Downed();

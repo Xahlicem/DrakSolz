@@ -22,14 +22,14 @@ namespace DrakSolz.Items.Misc {
 
         public override bool UseItem(Player player) {
             for (int i = 0; i < 3600; i++);
-            player.AddBuff(mod.BuffType<Buffs.PowerBuff>(), 3600);
+            player.AddBuff(ModContent.BuffType<Buffs.PowerBuff>(), 3600);
             player.AddBuff(BuffID.Warmth, 3600);
             return true;
         }
         public override void AddRecipes() {
             ModRecipe recipe = new SoulRecipe(mod, this);
-            recipe.AddIngredient(mod.ItemType<Items.Misc.PyroScroll>());
-            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Misc.PyroScroll>());
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
             recipe.AddRecipe();
         }
     }

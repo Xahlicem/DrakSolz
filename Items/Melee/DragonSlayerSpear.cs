@@ -24,7 +24,7 @@ namespace DrakSolz.Items.Melee {
             item.scale = 1f;
             item.rare = 8;
             item.UseSound = SoundID.Item1;
-            item.shoot = mod.ProjectileType<Projectiles.DragonSlayerSpearProj>();
+            item.shoot = ModContent.ProjectileType<Projectiles.DragonSlayerSpearProj>();
             item.value = 300000;
             item.noMelee = true;
             item.noUseGraphic = true;

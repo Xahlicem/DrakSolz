@@ -27,7 +27,7 @@ namespace DrakSolz.NPCs.Enemy.HardMode {
             npc.value = 1000f;
             npc.knockBackResist = 0.08f;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.ManEaterShellBanner>();
+            bannerItem = ModContent.ItemType<Items.Banners.ManEaterShellBanner>();
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
@@ -36,7 +36,7 @@ namespace DrakSolz.NPCs.Enemy.HardMode {
             else return 0f;
         }
         public override void OnHitPlayer(Player player, int damage, bool crit) {
-            player.AddBuff(mod.BuffType<Buffs.SlipperyBuff>(), 600, true);
+            player.AddBuff(ModContent.BuffType<Buffs.SlipperyBuff>(), 600, true);
         }
         public override void NPCLoot() {
             int g = Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ManEaterShell_Gore_0"));
@@ -53,9 +53,9 @@ namespace DrakSolz.NPCs.Enemy.HardMode {
             Main.gore[g].scale = npc.scale;
             /*if (Main.rand.Next(4) == 0)
                 Item.NewItem(npc.Center, npc.width, npc.height, Utils.SelectRandom(Main.rand, new int[] {
-                    mod.ItemType<Items.Armor.DragonSlayer.DragonSlayerHelmet>(), mod.ItemType<Items.Armor.DragonSlayer.DragonSlayerChest>(), mod.ItemType<Items.Armor.DragonSlayer.DragonSlayerLeggings>()
+                    ModContent.ItemType<Items.Armor.DragonSlayer.DragonSlayerHelmet>(), ModContent.ItemType<Items.Armor.DragonSlayer.DragonSlayerChest>(), ModContent.ItemType<Items.Armor.DragonSlayer.DragonSlayerLeggings>()
                 }));*/
-            if (Main.rand.Next(5) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Misc.Twink>());
+            if (Main.rand.Next(5) == 0) Item.NewItem(npc.position, npc.width, npc.height, ModContent.ItemType<Items.Misc.Twink>());
         }
     }
 }

@@ -28,7 +28,7 @@ namespace DrakSolz.Items.Armor.PaintingGuardian {
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs) {
-            return body.type == mod.ItemType<Items.Armor.PaintingGuardian.PaintingGuardianRobe>() && legs.type == mod.ItemType<Items.Armor.PaintingGuardian.PaintingGuardianLeggings>();
+            return body.type == ModContent.ItemType<Items.Armor.PaintingGuardian.PaintingGuardianRobe>() && legs.type == ModContent.ItemType<Items.Armor.PaintingGuardian.PaintingGuardianLeggings>();
         }
 
         public override void UpdateArmorSet(Player player) {

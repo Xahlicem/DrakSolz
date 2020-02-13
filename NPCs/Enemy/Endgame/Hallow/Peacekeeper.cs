@@ -27,7 +27,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Hallow {
             npc.value = 20f;
             npc.knockBackResist = 0.2f;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.HolyBanners.PeacekeeperBanner>();
+            bannerItem = ModContent.ItemType<Items.Banners.HolyBanners.PeacekeeperBanner>();
         }
         public override void AI() {
             npc.TargetClosest(true);

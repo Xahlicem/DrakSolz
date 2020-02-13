@@ -27,7 +27,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Dungeon {
             npc.value = 20f;
             npc.knockBackResist = 0.2f;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.SwordofAkraneBanner>();
+            bannerItem = ModContent.ItemType<Items.Banners.SwordofAkraneBanner>();
         }
     }
 }

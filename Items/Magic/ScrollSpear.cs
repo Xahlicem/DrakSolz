@@ -23,7 +23,7 @@ namespace DrakSolz.Items.Magic {
             item.value = Item.buyPrice(0, 80, 0, 0);
             item.rare = 9;
             item.autoReuse = true;
-            item.shoot = mod.ProjectileType<Projectiles.Magic.SoulSpearProj1>();
+            item.shoot = ModContent.ProjectileType<Projectiles.Magic.SoulSpearProj1>();
         }
     }
 }

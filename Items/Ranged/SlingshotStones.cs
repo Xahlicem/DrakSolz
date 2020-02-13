@@ -19,9 +19,9 @@ namespace DrakSolz.Items.Ranged {
             item.knockBack = 2f;
             item.value = 0;
             item.rare = 0;
-            item.shoot = mod.ProjectileType("SlingshotStonesProj"); //The projectile shoot when your weapon using this ammo
+            item.shoot = ModContent.ProjectileType<Projectiles.SlingshotStonesProj>(); //The projectile shoot when your weapon using this ammo
             item.shootSpeed = 8f; //The speed of the projectile
-            item.ammo = (mod.ItemType<Items.Ranged.SlingshotStones>()); //The ammo class this ammo belongs to.
+            item.ammo = (ModContent.ItemType<Items.Ranged.SlingshotStones>()); //The ammo class this ammo belongs to.
         }
 
         public override void AddRecipes() {
@@ -34,7 +34,7 @@ namespace DrakSolz.Items.Ranged {
 
     public class SlingshotMod : GlobalItem {
         public override void SetDefaults(Item item) {
-            if (item.type == ItemID.SpikyBall) item.ammo = mod.ItemType<Items.Ranged.SlingshotStones>();
+            if (item.type == ItemID.SpikyBall) item.ammo = ModContent.ItemType<Items.Ranged.SlingshotStones>();
         }
     }
 }

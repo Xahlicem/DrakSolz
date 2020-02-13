@@ -28,7 +28,7 @@ namespace DrakSolz.Items.Armor.Tattered {
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs) {
-            return body.type == mod.ItemType<Items.Armor.Tattered.TatteredTunic>() && legs.type == mod.ItemType<Items.Armor.Tattered.TatteredBoots>();
+            return body.type == ModContent.ItemType<Items.Armor.Tattered.TatteredTunic>() && legs.type == ModContent.ItemType<Items.Armor.Tattered.TatteredBoots>();
         }
 
         public override void UpdateArmorSet(Player player) {

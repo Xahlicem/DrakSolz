@@ -42,7 +42,7 @@ namespace DrakSolz.Projectiles {
                 p = Main.player[k];
                 if (p.active) {
                     if (projectile.WithinRange(p.Center, distance)) {
-                        p.AddBuff(mod.BuffType<Buffs.WarmthBuff>(), 30);
+                        p.AddBuff(ModContent.BuffType<Buffs.WarmthBuff>(), 30);
                         p.AddBuff(BuffID.Warmth, 30);
                     }
                 }

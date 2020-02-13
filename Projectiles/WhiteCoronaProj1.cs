@@ -71,7 +71,7 @@ namespace DrakSolz.Projectiles {
                 projectile.alpha -= 10;
             }
             if (projectile.timeLeft % 3 == 0) {
-                int proj = Projectile.NewProjectile(projectile.Center, new Vector2(0, 0f), mod.ProjectileType<WhiteCoronaProj2>(), projectile.damage, 0, projectile.owner);
+                int proj = Projectile.NewProjectile(projectile.Center, new Vector2(0, 0f), ModContent.ProjectileType<WhiteCoronaProj2>(), projectile.damage, 0, projectile.owner);
                 Main.projectile[proj].rotation = projectile.rotation;
                 Main.projectile[proj].magic = false;
                 Main.projectile[proj].thrown = true;

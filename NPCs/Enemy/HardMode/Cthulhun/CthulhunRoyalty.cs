@@ -31,14 +31,14 @@ namespace DrakSolz.NPCs.Enemy.HardMode.Cthulhun {
             npc.lifeMax = 400;
             npc.value = 500f;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.CthulhunBanner>();
+            bannerItem = ModContent.ItemType<Items.Banners.CthulhunBanner>();
         }
 
         public override void FindFrame(int frameHeight) {
             npc.spriteDirection = npc.direction;
         }
         public override void OnHitPlayer(Player player, int damage, bool crit) {
-            player.AddBuff(mod.BuffType<Buffs.SlipperyBuff>(), 240, true);
+            player.AddBuff(ModContent.BuffType<Buffs.SlipperyBuff>(), 240, true);
         }
 
         public override void NPCLoot() {
@@ -47,8 +47,8 @@ namespace DrakSolz.NPCs.Enemy.HardMode.Cthulhun {
             DrakSolz.CreateGore(mod, npc, "Gores/Cthulhun/Gore_5");
             DrakSolz.CreateGore(mod, npc, "Gores/Cthulhun/Gore_5");
             DrakSolz.CreateGore(mod, npc, "Gores/Cthulhun/Gore_6");
-            if (Main.rand.Next(2) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Misc.CthulhunTentacle>(), Main.rand.Next(3, 7));
-            if (Main.rand.Next(5) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Misc.Twink>());
+            if (Main.rand.Next(2) == 0) Item.NewItem(npc.position, npc.width, npc.height, ModContent.ItemType<Items.Misc.CthulhunTentacle>(), Main.rand.Next(3, 7));
+            if (Main.rand.Next(5) == 0) Item.NewItem(npc.position, npc.width, npc.height, ModContent.ItemType<Items.Misc.Twink>());
             if (Main.rand.Next(15) == 0) Item.NewItem(npc.position, npc.width, npc.height, ItemID.Trident);
         }
     }

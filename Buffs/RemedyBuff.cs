@@ -17,7 +17,7 @@ namespace DrakSolz.Buffs {
             player.buffImmune[BuffID.Poisoned] = true;
             player.buffImmune[BuffID.Venom] = true;
             player.buffImmune[BuffID.Bleeding] = true;
-            //int index = player.FindBuffIndex(mod.BuffType<Buffs.ChannelBuff>());
+            //int index = player.FindBuffIndex(ModContent.BuffType<Buffs.ChannelBuff>());
             //if (index != -1) player.buffTime[index] = 0;
         }
     }

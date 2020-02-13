@@ -43,7 +43,7 @@ namespace DrakSolz.Items.Summon.Consumable {
             item.summon = true;
             item.consumable = true;
             item.damage = 1200;
-            item.shoot = mod.ProjectileType<Projectiles.Minion.Consumable.XahlicemEyeProj>();
+            item.shoot = ModContent.ProjectileType<Projectiles.Minion.Consumable.XahlicemEyeProj>();
             return true;
         }
 

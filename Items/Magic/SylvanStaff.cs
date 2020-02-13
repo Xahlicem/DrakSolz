@@ -42,8 +42,8 @@ namespace DrakSolz.Items.Magic {
         public class SylvanStaffGlobalNPC : GlobalNPC {
             public override void NPCLoot(NPC npc) {
                 if (Main.rand.Next(15) == 0) {
-                    if (npc.type == mod.NPCType<NPCs.Enemy.Endgame.Jungle.SylvanCaster>() ) {
-                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Magic.SylvanStaff>(), 1);
+                    if (npc.type == ModContent.NPCType<NPCs.Enemy.Endgame.Jungle.SylvanCaster>() ) {
+                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ModContent.ItemType<Items.Magic.SylvanStaff>(), 1);
                     }
                 }
             }

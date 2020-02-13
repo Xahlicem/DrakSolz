@@ -179,7 +179,7 @@ namespace DrakSolz {
             if (!player.ZoneTowerSolar && !player.ZoneTowerVortex && !player.ZoneTowerNebula && !player.ZoneTowerStardust) {
                 for (int i = 0; i < Main.maxNPCs; i++) {
                     var npc = Main.npc[i];
-                    if (npc != null && npc.active && npc.type == mod.NPCType<NPCs.Enemy.VoidPillar.VoidPillar>() && player.Distance(npc.Center) <= 4000f) {
+                    if (npc != null && npc.active && npc.type == ModContent.NPCType<NPCs.Enemy.VoidPillar.VoidPillar>() && player.Distance(npc.Center) <= 4000f) {
                         ZoneTowerVoidPillar = true;
                     }
                 }
@@ -187,12 +187,12 @@ namespace DrakSolz {
         }
 
         public override bool CustomBiomesMatch(Player other) {
-            var modOther = other.GetModPlayer<DrakSolzPlayer>(mod);
+            var modOther = other.GetModPlayer<DrakSolzPlayer>();
             return ZoneTowerVoidPillar == modOther.ZoneTowerVoidPillar;
         }
 
         public override void CopyCustomBiomesTo(Player other) {
-            var modOther = other.GetModPlayer<DrakSolzPlayer>(mod);
+            var modOther = other.GetModPlayer<DrakSolzPlayer>();
             modOther.ZoneTowerVoidPillar = ZoneTowerVoidPillar;
         }
 
@@ -210,7 +210,7 @@ namespace DrakSolz {
         }
 
         public override void UpdateBiomeVisuals() {
-            DrakSolzPlayer modPlayer = Main.player[Main.myPlayer].GetModPlayer<DrakSolzPlayer>(mod);
+            DrakSolzPlayer modPlayer = Main.player[Main.myPlayer].GetModPlayer<DrakSolzPlayer>();
             bool useWhite = ZoneTowerVoidPillar || VoidMonolith;
             player.ManageSpecialBiomeVisuals("DrakSolz:VoidPillar", useWhite);
         }
@@ -239,37 +239,37 @@ namespace DrakSolz {
         }
 
         public override void PostUpdateBuffs() {
-            if (player.armor[0].type == mod.ItemType<Items.Armor.Channeler.ChannelerHelmet>() &&
-                player.armor[1].type == mod.ItemType<Items.Armor.Channeler.ChannelerRobe>() &&
-                player.armor[2].type == mod.ItemType<Items.Armor.Channeler.ChannelerSkirt>())
+            if (player.armor[0].type == ModContent.ItemType<Items.Armor.Channeler.ChannelerHelmet>() &&
+                player.armor[1].type == ModContent.ItemType<Items.Armor.Channeler.ChannelerRobe>() &&
+                player.armor[2].type == ModContent.ItemType<Items.Armor.Channeler.ChannelerSkirt>())
                 player.extraAccessorySlots += 1;
-            if (player.armor[1].type == mod.ItemType<Items.Armor.Channeler.ChannelerRobe>())
+            if (player.armor[1].type == ModContent.ItemType<Items.Armor.Channeler.ChannelerRobe>())
 
                 MiscHP = 40;
 
             else {
                 MiscHP = 0;
             }
-            if (player.armor[0].type == mod.ItemType<Items.Armor.Xanthous.XanthousCrown>() &&
-                player.armor[1].type == mod.ItemType<Items.Armor.Xanthous.XanthousOvercoat>() &&
-                player.armor[2].type == mod.ItemType<Items.Armor.Xanthous.XanthousWaistcloth>())
+            if (player.armor[0].type == ModContent.ItemType<Items.Armor.Xanthous.XanthousCrown>() &&
+                player.armor[1].type == ModContent.ItemType<Items.Armor.Xanthous.XanthousOvercoat>() &&
+                player.armor[2].type == ModContent.ItemType<Items.Armor.Xanthous.XanthousWaistcloth>())
 
                 MiscHP2 = 40;
 
             else {
                 MiscHP2 = 0;
             }
-            if (player.armor[0].type == mod.ItemType<Items.Armor.Artorias.ArtoriasHelmet>() &&
-                player.armor[1].type == mod.ItemType<Items.Armor.Artorias.ArtoriasArmor>() &&
-                player.armor[2].type == mod.ItemType<Items.Armor.Artorias.ArtoriasLeggings>())
+            if (player.armor[0].type == ModContent.ItemType<Items.Armor.Artorias.ArtoriasHelmet>() &&
+                player.armor[1].type == ModContent.ItemType<Items.Armor.Artorias.ArtoriasArmor>() &&
+                player.armor[2].type == ModContent.ItemType<Items.Armor.Artorias.ArtoriasLeggings>())
                 MiscHP3 = 500;
 
             else {
                 MiscHP3 = 0;
             }
-            if (player.armor[0].type == mod.ItemType<Items.Armor.Father.FatherMask>() &&
-                player.armor[1].type == mod.ItemType<Items.Armor.Father.GiantArmor>() &&
-                player.armor[2].type == mod.ItemType<Items.Armor.Father.GiantLeggings>())
+            if (player.armor[0].type == ModContent.ItemType<Items.Armor.Father.FatherMask>() &&
+                player.armor[1].type == ModContent.ItemType<Items.Armor.Father.GiantArmor>() &&
+                player.armor[2].type == ModContent.ItemType<Items.Armor.Father.GiantLeggings>())
                 MiscHP4 = 100;
 
             else {
@@ -277,7 +277,7 @@ namespace DrakSolz {
             }
             for (int n = 3; n < 8 + player.extraAccessorySlots; n++) {
                 Item item = player.armor[n];
-                if (item.type == mod.ItemType<Items.Accessory.RingTinyBeing>()) {
+                if (item.type == ModContent.ItemType<Items.Accessory.RingTinyBeing>()) {
                     MiscHP0 = 50;
                 } else {
                     MiscHP0 = 0;
@@ -285,7 +285,7 @@ namespace DrakSolz {
             }
             for (int nn = 3; nn < 8 + player.extraAccessorySlots; nn++) {
                 Item item1 = player.armor[nn];
-                if (item1.type == mod.ItemType<Items.Accessory.RingFavor>()) {
+                if (item1.type == ModContent.ItemType<Items.Accessory.RingFavor>()) {
                     MiscHP1 = 50;
                 } else {
                     MiscHP1 = 0;
@@ -409,7 +409,7 @@ namespace DrakSolz {
             SendPacket(MessageType.Hurt);
 
             if (Souls != 0) {
-                int i = Item.NewItem((int) player.position.X, (int) player.position.Y, player.width, player.height, mod.ItemType<Items.Souls.Soul>(), Souls);
+                int i = Item.NewItem((int) player.position.X, (int) player.position.Y, player.width, player.height, ModContent.ItemType<Items.Souls.Soul>(), Souls);
                 Main.item[i].GetGlobalItem<Items.DSGlobalItem>().FromPlayer = player.whoAmI;
                 SetSouls(0);
                 if (player.Equals(Main.LocalPlayer))(mod as DrakSolz).ui.updateValue(Souls, Level);
@@ -444,7 +444,7 @@ namespace DrakSolz {
         }
 
         public void DecreaseHollow(int amount) {
-            if (player.HasBuff(mod.BuffType<Buffs.WarmthBuff>()) || player.HasBuff(mod.BuffType<Buffs.Firelink>())) {
+            if (player.HasBuff(ModContent.BuffType<Buffs.WarmthBuff>()) || player.HasBuff(ModContent.BuffType<Buffs.Firelink>())) {
                 amount *= 3;
             }
             Hollow -= amount;
@@ -452,7 +452,7 @@ namespace DrakSolz {
         }
 
         public void DecreaseHurtWait(int amount) {
-            if (player.HasBuff(mod.BuffType<Buffs.WarmthBuff>()) || player.HasBuff(mod.BuffType<Buffs.Firelink>())) {
+            if (player.HasBuff(ModContent.BuffType<Buffs.WarmthBuff>()) || player.HasBuff(ModContent.BuffType<Buffs.Firelink>())) {
                 amount *= 20;
             }
             HurtWait -= amount;
@@ -468,13 +468,13 @@ namespace DrakSolz {
             if (player.FindBuffIndex(BuffID.Regeneration) != -1) HollowDec++;
             if (HurtWait == 0 && Hollow > 0) DecreaseHollow(HollowDec);
 
-            if (Hollow > 0) player.AddBuff(mod.BuffType<Buffs.Hollow>(), (Hollow / HollowDec) + (HurtWait / HurtWaitDec));
+            if (Hollow > 0) player.AddBuff(ModContent.BuffType<Buffs.Hollow>(), (Hollow / HollowDec) + (HurtWait / HurtWaitDec));
             int life = (int)((Hollow + 1) / 300f);
             player.statLifeMax2 -= life;
             int min = 20 + Vit * 5;
             if (player.statLifeMax2 < min) player.statLifeMax2 = min;
 
-            if (Hollow == 0 && player.FindBuffIndex(mod.BuffType<Buffs.Hollow>()) != -1) player.ClearBuff(mod.BuffType<Buffs.Hollow>());
+            if (Hollow == 0 && player.FindBuffIndex(ModContent.BuffType<Buffs.Hollow>()) != -1) player.ClearBuff(ModContent.BuffType<Buffs.Hollow>());
         }
 
         public override TagCompound Save() {
@@ -508,12 +508,12 @@ namespace DrakSolz {
         public override void SetupStartInventory(IList<Item> items, bool mediumcoreDeath) {
             items.Clear();
             Item item = new Item();
-            item.netDefaults(mod.ItemType<Items.Melee.Sword>());
+            item.netDefaults(ModContent.ItemType<Items.Melee.Sword>());
             item.GetGlobalItem<DSGlobalItem>().Owned = true;
             item.GetGlobalItem<DSGlobalItem>().FromPlayer = player.whoAmI;
             items.Add(item);
             Item item2 = new Item();
-            item2.netDefaults(mod.ItemType<Items.Misc.Classes.ClassEmpty>());
+            item2.netDefaults(ModContent.ItemType<Items.Misc.Classes.ClassEmpty>());
             item2.GetGlobalItem<DSGlobalItem>().Owned = true;
             item2.GetGlobalItem<DSGlobalItem>().FromPlayer = player.whoAmI;
             items.Add(item2);

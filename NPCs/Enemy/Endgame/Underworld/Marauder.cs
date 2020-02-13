@@ -27,7 +27,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Underworld {
             npc.value = 20f;
             npc.knockBackResist = 0.2f;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.LittleMushroomBanner>();
+            bannerItem = ModContent.ItemType<Items.Banners.LittleMushroomBanner>();
         }
         public override void OnHitPlayer(Player player, int damage, bool crit) {
             player.AddBuff(BuffID.OnFire, 300, true);

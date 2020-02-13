@@ -28,7 +28,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Hallow {
             npc.value = 20f;
             npc.knockBackResist = 0.05f;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.HolyBanners.SunWispBanner>();
+            bannerItem = ModContent.ItemType<Items.Banners.HolyBanners.SunWispBanner>();
         }
         public override void AI() {
             npc.TargetClosest(true);
@@ -45,7 +45,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Hallow {
                 float rotation = MathHelper.ToRadians(135);
                 for (int i = 0; i < numberProjectiles; i++) {
                     Vector2 perturbedSpeed = new Vector2(-15, -15).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1))) * .2f;
-                    int pro = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType<Projectiles.SunWispProj>(), 0, 0);
+                    int pro = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, ModContent.ProjectileType<Projectiles.SunWispProj>(), 0, 0);
                     Main.projectile[pro].scale *= 1.0f;
                     Main.projectile[pro].friendly = false;
                     Main.projectile[pro].hostile = true;

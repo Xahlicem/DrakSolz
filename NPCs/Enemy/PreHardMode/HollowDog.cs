@@ -27,7 +27,7 @@ namespace DrakSolz.NPCs.Enemy.PreHardMode {
             npc.value = 100;
             npc.knockBackResist = 0.8f;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.HollowDogBanner>();
+            bannerItem = ModContent.ItemType<Items.Banners.HollowDogBanner>();
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
@@ -39,8 +39,8 @@ namespace DrakSolz.NPCs.Enemy.PreHardMode {
             npc.spriteDirection = npc.direction;
         }
         public override void NPCLoot() {
-            if (Main.rand.Next(5) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Misc.Lifegem>());
-            if (Main.rand.Next(20) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Misc.HomewardBone>());
+            if (Main.rand.Next(5) == 0) Item.NewItem(npc.position, npc.width, npc.height, ModContent.ItemType<Items.Misc.Lifegem>());
+            if (Main.rand.Next(20) == 0) Item.NewItem(npc.position, npc.width, npc.height, ModContent.ItemType<Items.Misc.HomewardBone>());
         }
 
     }

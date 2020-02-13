@@ -27,7 +27,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.OverWorld {
             npc.value = 20f;
             npc.knockBackResist = 0.2f;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.OverworldBanners.SilhouetteBanner>();
+            bannerItem = ModContent.ItemType<Items.Banners.OverworldBanners.SilhouetteBanner>();
         }
         public override void AI() {
             npc.TargetClosest(true);

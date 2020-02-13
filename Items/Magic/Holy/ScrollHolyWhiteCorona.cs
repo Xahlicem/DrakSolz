@@ -28,14 +28,14 @@ namespace DrakSolz.Items.Magic.Holy {
             item.shootSpeed = 8.0f;
             item.value = Item.buyPrice(1, 0, 0, 0);
             item.autoReuse = true;
-            item.shoot = mod.ProjectileType<Projectiles.WhiteCoronaProj>();
+            item.shoot = ModContent.ProjectileType<Projectiles.WhiteCoronaProj>();
             item.summon = true;
         }
 
         //public override void AddRecipes() {
         //ModRecipe recipe = new SoulRecipe(mod, this);
-        //recipe.AddIngredient(mod.ItemType<Items.Misc.PyroScroll>());
-        //recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+        //recipe.AddIngredient(ModContent.ItemType<Items.Misc.PyroScroll>());
+        //recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
         //recipe.AddRecipe();
         //}
 
@@ -83,8 +83,8 @@ namespace DrakSolz.Items.Magic.Holy {
         }
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType<Items.Souls.TitaniteSoul>());
-            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Souls.TitaniteSoul>());
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

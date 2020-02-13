@@ -26,7 +26,7 @@ namespace DrakSolz.Items.Armor.DragonSlayer {
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs) {
-            return body.type == mod.ItemType<Items.Armor.DragonSlayer.DragonSlayerChest>() && legs.type == mod.ItemType<Items.Armor.DragonSlayer.DragonSlayerLeggings>();
+            return body.type == ModContent.ItemType<Items.Armor.DragonSlayer.DragonSlayerChest>() && legs.type == ModContent.ItemType<Items.Armor.DragonSlayer.DragonSlayerLeggings>();
         }
 
         public override void UpdateArmorSet(Player player) {

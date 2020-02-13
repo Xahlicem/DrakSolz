@@ -25,7 +25,7 @@ namespace DrakSolz.Items.Magic {
             item.shootSpeed = 0f;
             item.value = Item.buyPrice(0, 25, 0, 0);
             item.autoReuse = false;
-            item.shoot = mod.ProjectileType<Projectiles.Magic.FlameMageProj1>();
+            item.shoot = ModContent.ProjectileType<Projectiles.Magic.FlameMageProj1>();
         }
 
         public override bool CanUseItem(Player player) {

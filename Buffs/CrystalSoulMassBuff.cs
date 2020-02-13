@@ -11,8 +11,8 @@ namespace DrakSolz.Buffs {
         }
 
         public override void Update(Player player, ref int buffIndex) {
-            DrakSolzPlayer modPlayer = (DrakSolzPlayer) player.GetModPlayer<DrakSolzPlayer>(mod);
-            if (player.ownedProjectileCounts[mod.ProjectileType<Projectiles.Magic.CrystalSoulMassProj>()] > 0) {
+            DrakSolzPlayer modPlayer = (DrakSolzPlayer) player.GetModPlayer<DrakSolzPlayer>();
+            if (player.ownedProjectileCounts[ModContent.ProjectileType<Projectiles.Magic.CrystalSoulMassProj>()] > 0) {
                 modPlayer.SoulMassSum = true;
             }
             if (!modPlayer.SoulMassSum) {

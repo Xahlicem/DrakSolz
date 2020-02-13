@@ -36,8 +36,8 @@ namespace DrakSolz.Items.Melee {
         public class SoulShatterGlobalNPC : GlobalNPC {
             public override void NPCLoot(NPC npc) {
                 if (Main.rand.Next(15) == 0) {
-                    if (npc.type == mod.NPCType<NPCs.Enemy.Endgame.Corrupt.SoulWraith>() ) {
-                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Melee.SoulShatter>(), 1);
+                    if (npc.type == ModContent.NPCType<NPCs.Enemy.Endgame.Corrupt.SoulWraith>() ) {
+                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ModContent.ItemType<Items.Melee.SoulShatter>(), 1);
                     }
                 }
             }

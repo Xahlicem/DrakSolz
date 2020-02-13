@@ -113,8 +113,8 @@ namespace DrakSolz.Items.Ranged
 		}*/
 		        public class AridCannonGlobalNPC : GlobalNPC {
             public override void NPCLoot(NPC npc) {
-                if (npc.type == mod.NPCType<NPCs.Enemy.Endgame.Secret.DivineSister>()) {
-                    Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Ranged.DivineCannon>(), 1);
+                if (npc.type == ModContent.NPCType<NPCs.Enemy.Endgame.Secret.DivineSister>()) {
+                    Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ModContent.ItemType<Items.Ranged.DivineCannon>(), 1);
                 }
             }
         }

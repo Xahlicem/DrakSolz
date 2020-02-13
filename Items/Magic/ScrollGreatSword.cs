@@ -27,7 +27,7 @@ namespace DrakSolz.Items.Magic {
         }
 
         public override bool CanUseItem(Player player) {
-            int mbuff = player.FindBuffIndex(mod.BuffType<Buffs.MageGreatSwordBuff>());
+            int mbuff = player.FindBuffIndex(ModContent.BuffType<Buffs.MageGreatSwordBuff>());
             if (mbuff < 0) {
 
                 return true;
@@ -37,7 +37,7 @@ namespace DrakSolz.Items.Magic {
         }
 
         public override bool UseItem(Player player) {
-            player.AddBuff(mod.BuffType<Buffs.MageGreatSwordBuff>(), 600);
+            player.AddBuff(ModContent.BuffType<Buffs.MageGreatSwordBuff>(), 600);
             int idamage = item.damage;
             int iuse = item.useAnimation;
             int iani = item.useTime;
@@ -47,7 +47,7 @@ namespace DrakSolz.Items.Magic {
             byte ipref = item.prefix;
             foreach (Item i in player.inventory)
                 if (i == item) {
-                    i.netDefaults(mod.ItemType<Items.Magic.MageGreatSword>());
+                    i.netDefaults(ModContent.ItemType<Items.Magic.MageGreatSword>());
                     i.damage = idamage;
                     i.useAnimation = iuse;
                     i.useTime = iani;
@@ -64,8 +64,8 @@ namespace DrakSolz.Items.Magic {
 
         public override void AddRecipes() {
             ModRecipe recipe = new SoulRecipe(mod, this);
-            recipe.AddIngredient(mod.ItemType<Items.Magic.ScrollSword>());
-            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Magic.ScrollSword>());
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
             recipe.AddRecipe();
         }
     }

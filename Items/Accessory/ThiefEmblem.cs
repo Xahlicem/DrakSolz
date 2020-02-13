@@ -23,7 +23,7 @@ namespace DrakSolz.Items.Accessory {
         }
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType<Items.Accessory.ThiefEmblem>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Accessory.ThiefEmblem>());
             recipe.AddIngredient(ItemID.SoulofSight, 5);
             recipe.AddIngredient(ItemID.SoulofMight, 5);
             recipe.AddIngredient(ItemID.SoulofFright, 5);
@@ -52,7 +52,7 @@ namespace DrakSolz.Items.Accessory {
         public override bool PreNPCLoot(NPC npc) {
             if (npc.type == NPCID.WallofFlesh) {
                 int[] weapons = { ItemID.BreakerBlade, ItemID.ClockworkAssaultRifle, ItemID.LaserRifle };
-                int[] emblems = { ItemID.WarriorEmblem, ItemID.SorcererEmblem, ItemID.RangerEmblem, ItemID.SummonerEmblem, mod.ItemType<Items.Accessory.ThiefEmblem>() };
+                int[] emblems = { ItemID.WarriorEmblem, ItemID.SorcererEmblem, ItemID.RangerEmblem, ItemID.SummonerEmblem, ModContent.ItemType<Items.Accessory.ThiefEmblem>() };
                 if (Main.rand.NextBool())
                     Item.NewItem(npc.position, npc.width, npc.height, Utils.SelectRandom(Main.rand, weapons));
                 else
@@ -68,7 +68,7 @@ namespace DrakSolz.Items.Accessory {
         public override bool PreOpenVanillaBag(string context, Player player, int arg) {
             if (context == "bossBag" && arg == ItemID.WallOfFleshBossBag) {
                 int[] weapons = { ItemID.BreakerBlade, ItemID.ClockworkAssaultRifle, ItemID.LaserRifle };
-                int[] emblems = { ItemID.WarriorEmblem, ItemID.SorcererEmblem, ItemID.RangerEmblem, ItemID.SummonerEmblem, mod.ItemType<Items.Accessory.ThiefEmblem>() };
+                int[] emblems = { ItemID.WarriorEmblem, ItemID.SorcererEmblem, ItemID.RangerEmblem, ItemID.SummonerEmblem, ModContent.ItemType<Items.Accessory.ThiefEmblem>() };
 
                 if (!player.extraAccessory) player.QuickSpawnItem(ItemID.DemonHeart);
                 if (Main.rand.Next(7) == 0) player.QuickSpawnItem(ItemID.FleshMask);

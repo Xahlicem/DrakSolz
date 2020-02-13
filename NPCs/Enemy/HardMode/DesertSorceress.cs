@@ -26,7 +26,7 @@ namespace DrakSolz.NPCs.Enemy.HardMode {
             npc.value = 10000f;
             npc.knockBackResist = 1f;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.DesertSorceressBanner>();
+            bannerItem = ModContent.ItemType<Items.Banners.DesertSorceressBanner>();
             npc.buffImmune[BuffID.Confused] = false;
         }
 
@@ -45,9 +45,9 @@ namespace DrakSolz.NPCs.Enemy.HardMode {
         public override void NPCLoot() {
             if (Main.hardMode && Main.rand.Next(10) == 0) 
                 Item.NewItem(npc.Center, npc.width, npc.height, Utils.SelectRandom(Main.rand, new int[] { 
-                    mod.ItemType<Items.Armor.DesertSorceress.SorceressHood>(), mod.ItemType<Items.Armor.DesertSorceress.SorceressSkirt>(), mod.ItemType<Items.Armor.DesertSorceress.SorceressTop>() 
+                    ModContent.ItemType<Items.Armor.DesertSorceress.SorceressHood>(), ModContent.ItemType<Items.Armor.DesertSorceress.SorceressSkirt>(), ModContent.ItemType<Items.Armor.DesertSorceress.SorceressTop>() 
                 }));
-            if (Main.rand.Next(50) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Magic.Pyro.FlameFan>());
+            if (Main.rand.Next(50) == 0) Item.NewItem(npc.position, npc.width, npc.height, ModContent.ItemType<Items.Magic.Pyro.FlameFan>());
         }
     }
 }

@@ -30,7 +30,7 @@ namespace DrakSolz.Items.World {
             if (LastIndex != -1) {
                 tasks.Insert(LastIndex, new PassLegacy("Drakening the World!", delegate(GenerationProgress progress) {
 
-                    int num = NPC.NewNPC((Main.spawnTileX + 5) * 16, Main.spawnTileY * 16, mod.NPCType<NPCs.Town.Pilgrim>(), 0, 0f, 0f, 0f, 0f, 255);
+                    int num = NPC.NewNPC((Main.spawnTileX + 5) * 16, Main.spawnTileY * 16, ModContent.NPCType<NPCs.Town.Pilgrim>(), 0, 0f, 0f, 0f, 0f, 255);
                     Main.npc[num].homeTileX = Main.spawnTileX + 5;
                     Main.npc[num].homeTileY = Main.spawnTileY;
                     Main.npc[num].direction = 1;
@@ -43,19 +43,19 @@ namespace DrakSolz.Items.World {
                         Tile tile = Main.tile[chest.x, chest.y];
                         if (tile.type == TileID.Containers) continue;
                         if (WorldGen.genRand.Next(20) == 0 && tile.frameX != CHEST_X_GOLD) {
-                            chest.item[0].SetDefaults(mod.ItemType<Items.Accessory.RingCat>());
+                            chest.item[0].SetDefaults(ModContent.ItemType<Items.Accessory.RingCat>());
                             chest.item[0].Prefix(-1);
 
                         }
                         if (tile.frameX == CHEST_X_SHADOW_LOCKED) {
-                            int[] shadow = { ItemID.DarkLance, ItemID.Flamelash, ItemID.FlowerofFire, ItemID.Sunfury, ItemID.HellwingBow, mod.ItemType<Items.Accessory.RingCloranthy>() };
+                            int[] shadow = { ItemID.DarkLance, ItemID.Flamelash, ItemID.FlowerofFire, ItemID.Sunfury, ItemID.HellwingBow, ModContent.ItemType<Items.Accessory.RingCloranthy>() };
                             chest.item[0].SetDefaults(Utils.SelectRandom(WorldGen.genRand, shadow));
                             chest.item[0].Prefix(-1);
                         }
 
                         for (int i = 0; i < chest.item.Length; i++) {
                             if (chest.item[i].type == ItemID.AquaScepter && WorldGen.genRand.Next(3) == 0) {
-                                chest.item[i].SetDefaults(mod.ItemType<Items.Accessory.RingCat>());
+                                chest.item[i].SetDefaults(ModContent.ItemType<Items.Accessory.RingCat>());
                                 chest.item[i].Prefix(-1);
                             }
                         }
@@ -166,7 +166,7 @@ namespace DrakSolz.Items.World {
 
             bool placeSuccessful = false;
             Tile t;
-            int tileToPlace = mod.TileType<Tiles.FirelinkShrineTile>();
+            int tileToPlace = ModContent.TileType<Tiles.FirelinkShrineTile>();
             while (!placeSuccessful) {
                 int x2 = WorldGen.genRand.Next(-width + 1, width - 1) + x;
                 int y2 = WorldGen.genRand.Next(1, height) + y;

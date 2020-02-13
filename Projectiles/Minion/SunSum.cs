@@ -34,7 +34,7 @@ namespace DrakSolz.Projectiles.Minion {
 
         public override void AI() {
             Player player = Main.player[projectile.owner];
-            DrakSolzPlayer modPlayer = (DrakSolzPlayer) player.GetModPlayer<DrakSolzPlayer>(mod);
+            DrakSolzPlayer modPlayer = (DrakSolzPlayer) player.GetModPlayer<DrakSolzPlayer>();
             projectile.friendly = false;
             projectile.hostile = false;
             if (Main.time % 12 == 0) {

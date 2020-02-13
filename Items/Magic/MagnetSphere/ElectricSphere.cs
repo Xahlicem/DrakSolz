@@ -35,7 +35,7 @@ namespace DrakSolz.Items.Magic.MagnetSphere {
             public override void NPCLoot(NPC npc) {
                 if (Main.rand.Next(30) == 0) {
                     if (npc.type == NPCID.GoblinSorcerer) {
-                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Magic.MagnetSphere.ElectricSphere>(), 1);
+                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ModContent.ItemType<Items.Magic.MagnetSphere.ElectricSphere>(), 1);
                     }
                 }
             }

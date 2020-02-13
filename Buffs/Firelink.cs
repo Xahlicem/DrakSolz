@@ -18,9 +18,9 @@ namespace DrakSolz.Buffs {
                 player.HealEffect((int)(player.statLifeMax2 * 0.01));
             }
 
-            int index = player.FindBuffIndex(mod.BuffType<Buffs.Hollow>());
+            int index = player.FindBuffIndex(ModContent.BuffType<Buffs.Hollow>());
             if (index != -1) player.buffTime[index]--;
-            int x = player.FindBuffIndex(mod.BuffType<Buffs.ScrollMana>());
+            int x = player.FindBuffIndex(ModContent.BuffType<Buffs.ScrollMana>());
             if (x!= -1) player.buffTime[x]= 0;
         }
     }

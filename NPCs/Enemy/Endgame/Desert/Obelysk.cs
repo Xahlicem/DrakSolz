@@ -58,7 +58,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Desert {
                 npc.TargetClosest(true);
                 Vector2 speed = Main.player[npc.target].Center - npc.Center;
                 DrakSolz.AdjustMagnitude(ref speed, 7.5f);
-                int pro = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, speed.X * 1.4f, speed.Y * 1.4f, mod.ProjectileType<Projectiles.DervishWind>(), npc.damage, 3f);
+                int pro = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, speed.X * 1.4f, speed.Y * 1.4f, ModContent.ProjectileType<Projectiles.DervishWind>(), npc.damage, 3f);
                 Main.projectile[pro].friendly = false;
                 Main.projectile[pro].hostile = true;
                 Main.projectile[pro].tileCollide = false;

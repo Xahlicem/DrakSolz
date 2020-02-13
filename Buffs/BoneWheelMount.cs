@@ -13,13 +13,13 @@ namespace DrakSolz.Buffs {
 
         public override void Update(Player player, ref int buffIndex) {
             player.GetModPlayer<DrakSolzPlayer>().Rotate = true;
-            player.mount.SetMount(mod.MountType<Mounts.BoneWheel>(), player);
+            player.mount.SetMount(ModContent.MountType<Mounts.BoneWheel>(), player);
             player.buffTime[buffIndex] = 10;
             player.slippy = true;
 
-            if (player.ownedProjectileCounts[mod.ProjectileType<Projectiles.BoneWheelProj>()] == 0) {
-                Projectile.NewProjectile(player.position, Vector2.Zero, mod.ProjectileType<Projectiles.BoneWheelProj>(), 10, 0.5f, player.whoAmI, 1);
-                Projectile.NewProjectile(player.position, Vector2.Zero, mod.ProjectileType<Projectiles.BoneWheelProj>(), 10, 0.5f, player.whoAmI, -1);
+            if (player.ownedProjectileCounts[ModContent.ProjectileType<Projectiles.BoneWheelProj>()] == 0) {
+                Projectile.NewProjectile(player.position, Vector2.Zero, ModContent.ProjectileType<Projectiles.BoneWheelProj>(), 10, 0.5f, player.whoAmI, 1);
+                Projectile.NewProjectile(player.position, Vector2.Zero, ModContent.ProjectileType<Projectiles.BoneWheelProj>(), 10, 0.5f, player.whoAmI, -1);
             }
         }
     }

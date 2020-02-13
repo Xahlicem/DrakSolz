@@ -29,7 +29,7 @@ namespace DrakSolz.Items.Throwing
 			item.rare = 5;
 			item.UseSound = SoundID.Item11;
 			item.autoReuse = true;
-            item.shoot = mod.ProjectileType<Projectiles.HighTemplarHammerproj>();
+            item.shoot = ModContent.ProjectileType<Projectiles.HighTemplarHammerproj>();
 			item.shootSpeed = 20f;
 		}
 
@@ -37,8 +37,8 @@ namespace DrakSolz.Items.Throwing
         public class HighTemplarHammerGlobalNPC : GlobalNPC {
             public override void NPCLoot(NPC npc) {
                 if (Main.rand.Next(15) == 0) {
-                    if (npc.type == mod.NPCType<NPCs.Enemy.Endgame.Dungeon.HighTemplar>() ) {
-                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Throwing.HighTemplarHammer>(), 1);
+                    if (npc.type == ModContent.NPCType<NPCs.Enemy.Endgame.Dungeon.HighTemplar>() ) {
+                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ModContent.ItemType<Items.Throwing.HighTemplarHammer>(), 1);
                     }
                 }
             }

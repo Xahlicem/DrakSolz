@@ -27,7 +27,7 @@ namespace DrakSolz.Projectiles {
 
         public override void Kill(int timeLeft) {
             Utils.PoofOfSmoke(projectile.Center);
-            NPC.NewNPC((int) projectile.Center.X, (int) projectile.Center.Y, mod.NPCType<NPCs.Enemy.PreHardMode.EvilChicken>());
+            NPC.NewNPC((int) projectile.Center.X, (int) projectile.Center.Y, ModContent.NPCType<NPCs.Enemy.PreHardMode.EvilChicken>());
         }
     }
 }

@@ -18,16 +18,16 @@ namespace DrakSolz.Items.Souls {
 
     public class ArtoriasRecipe : ModRecipe {
         public ArtoriasRecipe(Mod mod, BossSoul soul) : base(mod) {
-            SetResult(mod.ItemType<Items.Melee.MorianBlade>());
+            SetResult(ModContent.ItemType<Items.Melee.MorianBlade>());
             AddIngredient(soul);
-            AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
-            AddIngredient(mod.ItemType<Items.Melee.Sword>());
+            AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
+            AddIngredient(ModContent.ItemType<Items.Melee.Sword>());
         }
 
         public override bool RecipeAvailable() {
             if (Main.LocalPlayer == null) return false;
             foreach (Item i in Main.LocalPlayer.inventory) {
-                if (i.type != mod.ItemType<Items.Melee.Sword>()) continue;
+                if (i.type != ModContent.ItemType<Items.Melee.Sword>()) continue;
                 return i.prefix == PrefixID.Legendary;
             }
             return false;

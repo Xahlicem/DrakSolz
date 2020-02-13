@@ -24,12 +24,12 @@ namespace DrakSolz.Items.Magic {
             item.value = Item.buyPrice(0, 40, 0, 0);
             item.shootSpeed = 5f;
             item.autoReuse = true;
-            item.shoot = mod.ProjectileType<Projectiles.Magic.ArcaneShivProj>();
+            item.shoot = ModContent.ProjectileType<Projectiles.Magic.ArcaneShivProj>();
         }
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.MagicDagger);
-            recipe.AddIngredient(mod.ItemType<Items.Souls.LunaticSoul>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Souls.LunaticSoul>());
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

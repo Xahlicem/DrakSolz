@@ -26,7 +26,7 @@ namespace DrakSolz.Items.Armor.Thorns {
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs) {
-            return body.type == mod.ItemType<Items.Armor.Thorns.ThornsArmor>() && legs.type == mod.ItemType<Items.Armor.Thorns.ThornsLeggings>();
+            return body.type == ModContent.ItemType<Items.Armor.Thorns.ThornsArmor>() && legs.type == ModContent.ItemType<Items.Armor.Thorns.ThornsLeggings>();
         }
 
         public override void UpdateArmorSet(Player player) {
@@ -46,7 +46,7 @@ namespace DrakSolz.Items.Armor.Thorns {
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.SpikyBall, 250);
-            recipe.AddIngredient(mod.ItemType<Items.Armor.HardmodeThrow.ChlorophyteHeadgear>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Armor.HardmodeThrow.ChlorophyteHeadgear>());
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();

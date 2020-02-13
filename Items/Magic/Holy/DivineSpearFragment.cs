@@ -42,17 +42,17 @@ namespace DrakSolz.Items.Magic.Holy {
             item.crit = 8;
             item.value = Item.buyPrice(0, 18, 0, 0);
             item.autoReuse = true;
-            item.shoot = mod.ProjectileType<Projectiles.HolySpearProj2>();
+            item.shoot = ModContent.ProjectileType<Projectiles.HolySpearProj2>();
             item.summon = true;
             item.magic = false;
         }
 
         public override void AddRecipes() {
             ModRecipe recipe = new SoulRecipe(mod, this);
-            recipe.AddIngredient(mod.ItemType<Items.Magic.Holy.RitualSpearFragment>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Magic.Holy.RitualSpearFragment>());
             recipe.AddIngredient(ItemID.SoulofLight, 10);
             recipe.AddIngredient(ItemID.SoulofMight, 10);
-            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
             recipe.AddRecipe();
         }
 

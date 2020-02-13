@@ -27,7 +27,7 @@ namespace DrakSolz.Items.Armor.DesertSorceress {
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs) {
-            return body.type == mod.ItemType<Items.Armor.DesertSorceress.SorceressTop>() && legs.type == mod.ItemType<Items.Armor.DesertSorceress.SorceressSkirt>();
+            return body.type == ModContent.ItemType<Items.Armor.DesertSorceress.SorceressTop>() && legs.type == ModContent.ItemType<Items.Armor.DesertSorceress.SorceressSkirt>();
         }
 
         public override void UpdateArmorSet(Player player) {

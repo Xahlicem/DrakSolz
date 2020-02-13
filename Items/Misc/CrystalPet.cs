@@ -11,8 +11,8 @@ namespace DrakSolz.Items.Misc {
 
         public override void SetDefaults() {
             item.CloneDefaults(ItemID.ZephyrFish);
-            item.shoot = mod.ProjectileType("CrystalLizardPet");
-            item.buffType = mod.BuffType("CrystalLizardBuff");
+            item.shoot = ModContent.ProjectileType<Projectiles.Pets.CrystalLizardPet>();
+            item.buffType = ModContent.BuffType<Buffs.CrystalLizardBuff>();
         }
 
         public override void UseStyle(Player player) {
@@ -23,8 +23,8 @@ namespace DrakSolz.Items.Misc {
         public class CrystalPetNPC : GlobalNPC {
             public override void NPCLoot(NPC npc) {
                 if (Main.rand.Next(20) == 0) {
-                    if (npc.type == mod.NPCType<NPCs.Enemy.PreHardMode.CrystalLizard>() ) {
-                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Misc.CrystalPet>(), 1);
+                    if (npc.type == ModContent.NPCType<NPCs.Enemy.PreHardMode.CrystalLizard>() ) {
+                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ModContent.ItemType<Items.Misc.CrystalPet>(), 1);
                     }
                 }
             }

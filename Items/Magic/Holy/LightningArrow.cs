@@ -26,7 +26,7 @@ namespace DrakSolz.Items.Magic.Holy {
             item.shootSpeed = 20.0f;
             item.value = Item.buyPrice(1, 50, 0, 0);
             item.autoReuse = true;
-            item.shoot = mod.ProjectileType<Projectiles.LightningArrowProj>();
+            item.shoot = ModContent.ProjectileType<Projectiles.LightningArrowProj>();
             item.summon = true;
             item.magic = false;
         }
@@ -37,8 +37,8 @@ namespace DrakSolz.Items.Magic.Holy {
 
         //public override void AddRecipes() {
             //ModRecipe recipe = new SoulRecipe(mod, this);
-            //recipe.AddIngredient(mod.ItemType<Items.Misc.PyroScroll>());
-            //recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            //recipe.AddIngredient(ModContent.ItemType<Items.Misc.PyroScroll>());
+            //recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
             //recipe.AddRecipe();
         //}
 
@@ -80,9 +80,9 @@ public override void MeleeEffects(Player player, Rectangle hitbox)
 		}
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType<Items.Magic.Holy.ScrollHolySunlightSpear>());
-            recipe.AddIngredient(mod.ItemType<Items.Ranged.DragonslayerGreatbow>());
-            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Magic.Holy.ScrollHolySunlightSpear>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Ranged.DragonslayerGreatbow>());
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

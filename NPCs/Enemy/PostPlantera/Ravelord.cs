@@ -26,7 +26,7 @@ namespace DrakSolz.NPCs.Enemy.PostPlantera {
             npc.value = 50000f;
             npc.knockBackResist = 0.1f;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.RavelordBanner>();
+            bannerItem = ModContent.ItemType<Items.Banners.RavelordBanner>();
             npc.buffImmune[BuffID.Confused] = false;
         }
         const int AI_Timer_Slot = 0;
@@ -42,7 +42,7 @@ namespace DrakSolz.NPCs.Enemy.PostPlantera {
             if (AI_Timer >= 300) {
                 npc.TargetClosest();
                 if (Main.netMode != 1) {
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y - 16, 10 * (Main.rand.NextFloat() - 0.5f), -3 * (Main.rand.NextFloat() + 0.5f), mod.ProjectileType<Projectiles.SkeletonBone>(), npc.damage / 10, 1f);
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y - 16, 10 * (Main.rand.NextFloat() - 0.5f), -3 * (Main.rand.NextFloat() + 0.5f), ModContent.ProjectileType<Projectiles.SkeletonBone>(), npc.damage / 10, 1f);
                 }
                 AI_Timer = 0;
             }
@@ -59,9 +59,9 @@ namespace DrakSolz.NPCs.Enemy.PostPlantera {
         public override void NPCLoot() {
             if (Main.netMode != 1) {
                 for (int i = 0; i < 10; i++)
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 10 * (Main.rand.NextFloat() - 0.5f), -3 * (Main.rand.NextFloat() + 0.5f), mod.ProjectileType<Projectiles.SkeletonBone>(), npc.damage / 10, 1f);
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 10 * (Main.rand.NextFloat() - 0.5f), -3 * (Main.rand.NextFloat() + 0.5f), ModContent.ProjectileType<Projectiles.SkeletonBone>(), npc.damage / 10, 1f);
             }
-            if (Main.rand.Next(20) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Melee.GravelordSword>());
+            if (Main.rand.Next(20) == 0) Item.NewItem(npc.position, npc.width, npc.height, ModContent.ItemType<Items.Melee.GravelordSword>());
         }
     }
 }

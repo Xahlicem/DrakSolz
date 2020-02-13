@@ -28,7 +28,7 @@ namespace DrakSolz.Items.Throwing {
             item.knockBack = 2.0f;
             item.shootSpeed = 12.0f;
             item.autoReuse = true;
-            item.shoot = mod.ProjectileType<Projectiles.WhiteCoronaProj1>();
+            item.shoot = ModContent.ProjectileType<Projectiles.WhiteCoronaProj1>();
             item.thrown = true;
         }
         
@@ -43,8 +43,8 @@ namespace DrakSolz.Items.Throwing {
 
         //public override void AddRecipes() {
         //ModRecipe recipe = new SoulRecipe(mod, this);
-        //recipe.AddIngredient(mod.ItemType<Items.Misc.PyroScroll>());
-        //recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+        //recipe.AddIngredient(ModContent.ItemType<Items.Misc.PyroScroll>());
+        //recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
         //recipe.AddRecipe();
         //}
 

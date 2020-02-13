@@ -24,7 +24,7 @@ namespace DrakSolz.Items.Armor.Artorias {
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs) {
-            return body.type == mod.ItemType<Items.Armor.Artorias.ArtoriasArmor>() && legs.type == mod.ItemType<Items.Armor.Artorias.ArtoriasLeggings>();
+            return body.type == ModContent.ItemType<Items.Armor.Artorias.ArtoriasArmor>() && legs.type == ModContent.ItemType<Items.Armor.Artorias.ArtoriasLeggings>();
         }
 
         public override void UpdateArmorSet(Player player) {
@@ -76,8 +76,8 @@ namespace DrakSolz.Items.Armor.Artorias {
         }
         public class ArtoriasHelmetGlobalNPC : GlobalNPC {
             public override void NPCLoot(NPC npc) {
-                if (npc.type == mod.NPCType<NPCs.Enemy.Boss.AbyssStalker>()) {
-                    Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Armor.Artorias.ArtoriasHelmet>(), 1);
+                if (npc.type == ModContent.NPCType<NPCs.Enemy.Boss.AbyssStalker>()) {
+                    Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ModContent.ItemType<Items.Armor.Artorias.ArtoriasHelmet>(), 1);
                 }
             }
         }

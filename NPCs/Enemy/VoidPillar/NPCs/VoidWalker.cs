@@ -27,7 +27,7 @@ namespace DrakSolz.NPCs.Enemy.VoidPillar.NPCs {
             npc.value = 10000f;
             npc.knockBackResist = 0.03f;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.VoidWalkerBanner>();
+            bannerItem = ModContent.ItemType<Items.Banners.VoidWalkerBanner>();
         }
 
         public override void AI() {
@@ -38,13 +38,13 @@ namespace DrakSolz.NPCs.Enemy.VoidPillar.NPCs {
         public override void HitEffect(int hitDirection, double damage) {
             if (npc.life <= 0) {
                 if (VoidPillarHandler.ShieldStrength > 0) {
-                    NPC parent = Main.npc[NPC.FindFirstNPC(mod.NPCType("VoidPillar"))];
+                    NPC parent = Main.npc[NPC.FindFirstNPC(ModContent.NPCType<Enemy.VoidPillar.VoidPillar>())];
                     Vector2 Velocity = Helper.VelocityToPoint(npc.Center, parent.Center, 20);
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, Velocity.X, Velocity.Y, mod.ProjectileType("PillarLaser"), 1, 1f);
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, Velocity.X, Velocity.Y, ModContent.ProjectileType<Projectiles.PillarLaser>(), 1, 1f);
                 }
             }
         }
-        
+
         public override void PostDraw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Color drawColor) {
             DrakSolzUtils.DrawNPCGlowMask(spriteBatch, npc, mod.GetTexture("NPCs/Enemy/VoidPillar/NPCs/VoidWalker_GlowMask"), -6f);
         }

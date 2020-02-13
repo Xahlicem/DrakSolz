@@ -25,8 +25,8 @@ namespace DrakSolz.Items.Summon {
             item.value = Item.buyPrice(1, 0, 0, 0);
             item.rare = 8;
             item.UseSound = SoundID.Item44;
-            item.shoot = mod.ProjectileType<Projectiles.Minion.SunSumProj>();
-            item.buffType = mod.BuffType<Buffs.SunWispBuff>();
+            item.shoot = ModContent.ProjectileType<Projectiles.Minion.SunSumProj>();
+            item.buffType = ModContent.BuffType<Buffs.SunWispBuff>();
             item.buffTime = 3600;
         }
 
@@ -55,8 +55,8 @@ namespace DrakSolz.Items.Summon {
         public class SunWispStaffGlobalNPC : GlobalNPC {
             public override void NPCLoot(NPC npc) {
                 if (Main.rand.Next(80) == 0) {
-                    if (npc.type == mod.NPCType<NPCs.Enemy.Endgame.Hallow.SunWisp>() ) {
-                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Summon.SunWispStaff>(), 1);
+                    if (npc.type == ModContent.NPCType<NPCs.Enemy.Endgame.Hallow.SunWisp>() ) {
+                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ModContent.ItemType<Items.Summon.SunWispStaff>(), 1);
                     }
                 }
             }

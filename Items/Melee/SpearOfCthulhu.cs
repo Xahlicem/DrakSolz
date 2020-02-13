@@ -24,7 +24,7 @@ namespace DrakSolz.Items.Melee {
             item.scale = 1f;
             item.rare = 7;
             item.UseSound = SoundID.Item1;
-            item.shoot = mod.ProjectileType<Projectiles.SpearOfCthulhuProj>();
+            item.shoot = ModContent.ProjectileType<Projectiles.SpearOfCthulhuProj>();
             item.value = 300000;
             item.noMelee = true;
             item.noUseGraphic = true;
@@ -37,7 +37,7 @@ namespace DrakSolz.Items.Melee {
         }
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType<Items.Misc.CthulhunEmbryo>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Misc.CthulhunEmbryo>());
             recipe.AddIngredient(ItemID.Trident);
             recipe.SetResult(this);
             recipe.AddRecipe();

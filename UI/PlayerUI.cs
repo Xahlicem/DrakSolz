@@ -78,7 +78,7 @@ namespace DrakSolz.UI {
             Cost.Height.Set(25, 0f);
             p.Append(Cost);
 
-            Texture2D texture = ModLoader.GetTexture("DrakSolz/UI/AttributeGUI");
+            Texture2D texture = ModContent.GetTexture("DrakSolz/UI/AttributeGUI");
             Exit = new UIToggleImage(texture, 20, 20, new Point(43, 1), new Point(43, 1));
             Exit.Left.Set(130, 0f);
             Exit.Top.Set(10, 0f);

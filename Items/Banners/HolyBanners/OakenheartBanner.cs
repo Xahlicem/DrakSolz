@@ -15,7 +15,7 @@ namespace DrakSolz.Items.Banners.HolyBanners {
             item.consumable = true;
             item.rare = 1;
             item.value = Item.buyPrice(0, 0, 10, 0);
-            item.createTile = mod.TileType<Tiles.HolyBanner>();
+            item.createTile = ModContent.TileType<Tiles.HolyBanner>();
             item.placeStyle = 4; //Place style means which frame(Horizontally, starting from 0) of the tile should be placed
         }
     }

@@ -10,28 +10,28 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Desert {
         public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo) {
             if (spawnInfo.player.ZoneDesert && DrakSolzWorld.downedBoss[DrakSolzWorld.Boss.TitaniteDemon]) {
                 pool.Clear();
-                pool.Add(mod.NPCType<Scarabyte>(), 40f);
-                pool.Add(mod.NPCType<MirageMonster>(), 30f);
-                pool.Add(mod.NPCType<OrbWeaver>(), 30f);
-                pool.Add(mod.NPCType<AridMechanyst>(), 25f);
-                pool.Add(mod.NPCType<Orbrider>(), 20f);
-                pool.Add(mod.NPCType<AymaraHealer>(), 10f);
-                pool.Add(mod.NPCType<Obelysk>(), 10f);
-                pool.Add(mod.NPCType<WindShrike>(), 5f);
-                pool.Add(mod.NPCType<NPCs.Enemy.Endgame.Secret.AridSister>(), 1f);
+                pool.Add(ModContent.NPCType<Scarabyte>(), 40f);
+                pool.Add(ModContent.NPCType<MirageMonster>(), 30f);
+                pool.Add(ModContent.NPCType<OrbWeaver>(), 30f);
+                pool.Add(ModContent.NPCType<AridMechanyst>(), 25f);
+                pool.Add(ModContent.NPCType<Orbrider>(), 20f);
+                pool.Add(ModContent.NPCType<AymaraHealer>(), 10f);
+                pool.Add(ModContent.NPCType<Obelysk>(), 10f);
+                pool.Add(ModContent.NPCType<WindShrike>(), 5f);
+                pool.Add(ModContent.NPCType<NPCs.Enemy.Endgame.Secret.AridSister>(), 1f);
             }
             if (spawnInfo.player.ZoneUndergroundDesert && DrakSolzWorld.downedBoss[DrakSolzWorld.Boss.TitaniteDemon]) {
                 pool.Clear();
-                pool.Add(mod.NPCType<Scarabyte>(), 30f);
-                pool.Add(mod.NPCType<WindShrike>(), 30f);
-                pool.Add(mod.NPCType<SandHowler>(), 30f);
-                pool.Add(mod.NPCType<AridBlade>(), 20f);
-                pool.Add(mod.NPCType<Obelysk>(), 20f);
-                pool.Add(mod.NPCType<AymaraHealer>(), 10f);
-                pool.Add(mod.NPCType<AridCaster>(), 10f);
-                pool.Add(mod.NPCType<Starless>(), 10f);
-                pool.Add(mod.NPCType<Paradigm>(), 10f);
-                pool.Add(mod.NPCType<NPCs.Enemy.Endgame.Secret.AridSister>(), 1f);
+                pool.Add(ModContent.NPCType<Scarabyte>(), 30f);
+                pool.Add(ModContent.NPCType<WindShrike>(), 30f);
+                pool.Add(ModContent.NPCType<SandHowler>(), 30f);
+                pool.Add(ModContent.NPCType<AridBlade>(), 20f);
+                pool.Add(ModContent.NPCType<Obelysk>(), 20f);
+                pool.Add(ModContent.NPCType<AymaraHealer>(), 10f);
+                pool.Add(ModContent.NPCType<AridCaster>(), 10f);
+                pool.Add(ModContent.NPCType<Starless>(), 10f);
+                pool.Add(ModContent.NPCType<Paradigm>(), 10f);
+                pool.Add(ModContent.NPCType<NPCs.Enemy.Endgame.Secret.AridSister>(), 1f);
             }
         }
     }

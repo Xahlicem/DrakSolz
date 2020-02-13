@@ -25,13 +25,13 @@ namespace DrakSolz.Items.Magic.SoulArrow {
             item.knockBack = 2f;
             item.shootSpeed = 20.0f;
             item.value = Item.buyPrice(0, 0, 10, 0);
-            item.shoot = mod.ProjectileType<Projectiles.Magic.SoulProj>();
+            item.shoot = ModContent.ProjectileType<Projectiles.Magic.SoulProj>();
         }
 
         public override void AddRecipes() {
             ModRecipe recipe = new SoulRecipe(mod, this);
-            recipe.AddIngredient(mod.ItemType<Items.Misc.Scroll>());
-            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Misc.Scroll>());
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
             recipe.AddRecipe();
         }
 

@@ -27,7 +27,7 @@ namespace DrakSolz.Items.Magic {
             item.shootSpeed = 8f;
             item.value = Item.buyPrice(0, 15, 0, 0);
             item.autoReuse = false;
-            item.shoot = mod.ProjectileType<Projectiles.HailProj>();
+            item.shoot = ModContent.ProjectileType<Projectiles.HailProj>();
         }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack) {
             int pro = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, damage, knockBack, player.whoAmI);
@@ -39,9 +39,9 @@ namespace DrakSolz.Items.Magic {
         }
         public override void AddRecipes() {
             ModRecipe recipe = new SoulRecipe(mod, this);
-            recipe.AddIngredient(mod.ItemType<Items.Misc.Twink>());
-            recipe.AddIngredient(mod.ItemType<Items.Misc.Scroll>());
-            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Misc.Twink>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Misc.Scroll>());
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
             recipe.AddRecipe();
         }
     }

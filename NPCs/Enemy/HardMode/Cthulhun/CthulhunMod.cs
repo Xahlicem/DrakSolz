@@ -9,14 +9,14 @@ namespace DrakSolz.NPCs.Enemy.HardMode.Cthulhun {
 
         public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo) {
             if (spawnInfo.player.ZoneBeach && spawnInfo.player.ZoneOverworldHeight && NPC.downedMechBossAny) {
-                pool.Add(mod.NPCType<Cthulhun>(), 0.65f);
-                pool.Add(mod.NPCType<CthulhunRoyalty>(), 0.3f);
-                pool.Add(mod.NPCType<CthulhunKing>(), 0.1f);
+                pool.Add(ModContent.NPCType<Cthulhun>(), 0.65f);
+                pool.Add(ModContent.NPCType<CthulhunRoyalty>(), 0.3f);
+                pool.Add(ModContent.NPCType<CthulhunKing>(), 0.1f);
 
             }
             else if (spawnInfo.player.ZoneBeach && spawnInfo.player.ZoneOverworldHeight && Main.hardMode) {
-                pool.Add(mod.NPCType<Cthulhun>(), 0.3f);
-                pool.Add(mod.NPCType<CthulhunRoyalty>(), 0.1f);
+                pool.Add(ModContent.NPCType<Cthulhun>(), 0.3f);
+                pool.Add(ModContent.NPCType<CthulhunRoyalty>(), 0.1f);
 
             }
         }

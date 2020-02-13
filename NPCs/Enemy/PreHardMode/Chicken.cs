@@ -27,7 +27,7 @@ namespace DrakSolz.NPCs.Enemy.PreHardMode {
             npc.value = 20f;
             npc.knockBackResist = 0.5f;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.ChickenBanner>();
+            bannerItem = ModContent.ItemType<Items.Banners.ChickenBanner>();
         }
 
         const int AI_Timer_Slot = 0;
@@ -43,7 +43,7 @@ namespace DrakSolz.NPCs.Enemy.PreHardMode {
                 if (npc.life <= 15) {
                     npc.TargetClosest();
                     if (Main.netMode != 1) {
-                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y - 16, 10 * (Main.rand.NextFloat() - 0.5f), -3 * (Main.rand.NextFloat() + 0.5f), mod.ProjectileType<Projectiles.ChickenEgg>(), 10, 1f);
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y - 16, 10 * (Main.rand.NextFloat() - 0.5f), -3 * (Main.rand.NextFloat() + 0.5f), ModContent.ProjectileType<Projectiles.ChickenEgg>(), 10, 1f);
                    Main.NewText("BAWK!", 255, 0, 0);
                     }
                 }

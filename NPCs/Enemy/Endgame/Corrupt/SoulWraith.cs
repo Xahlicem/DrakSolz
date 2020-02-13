@@ -27,7 +27,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Corrupt {
             npc.value = 20f;
             npc.knockBackResist = 0.05f;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.CorruptBanners.SoulWraithBanner>();
+            bannerItem = ModContent.ItemType<Items.Banners.CorruptBanners.SoulWraithBanner>();
         }
         public override void AI() {
             npc.TargetClosest(true);

@@ -29,8 +29,8 @@ namespace DrakSolz.Items.Magic {
             item.value = Item.buyPrice(0, 20, 0, 0);
             item.rare = 8;
             item.UseSound = SoundID.Item44;
-            item.shoot = mod.ProjectileType<Projectiles.Magic.SoulMassProj>();
-            item.buffType = mod.BuffType<Buffs.SoulMassBuff>();
+            item.shoot = ModContent.ProjectileType<Projectiles.Magic.SoulMassProj>();
+            item.buffType = ModContent.BuffType<Buffs.SoulMassBuff>();
             item.buffTime = 3600;
         }
 
@@ -55,15 +55,15 @@ namespace DrakSolz.Items.Magic {
 
         public override void AddRecipes() {
             ModRecipe recipe = new SoulRecipe(mod, this);
-            recipe.AddIngredient(mod.ItemType<Items.Misc.Scroll>());
-            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Misc.Scroll>());
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
             recipe.AddRecipe();
         }
         /*public class SunWispStaffGlobalNPC : GlobalNPC {
             public override void NPCLoot(NPC npc) {
                 if (Main.rand.Next(80) == 0) {
-                    if (npc.type == mod.NPCType<NPCs.Enemy.Endgame.Ice.CrystalWisp>() ) {
-                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Summon.CrystalStaff>(), 1);
+                    if (npc.type == ModContent.NPCType<NPCs.Enemy.Endgame.Ice.CrystalWisp>() ) {
+                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ModContent.ItemType<Items.Summon.CrystalStaff>(), 1);
                     }
                 }
             }

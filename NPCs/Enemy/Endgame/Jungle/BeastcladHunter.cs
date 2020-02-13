@@ -28,7 +28,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Jungle {
             npc.value = 20f;
             npc.knockBackResist = 0.25f;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.LittleMushroomBanner>();
+            bannerItem = ModContent.ItemType<Items.Banners.LittleMushroomBanner>();
         }
         public override void AI() {
             npc.TargetClosest(true);

@@ -27,7 +27,7 @@ namespace DrakSolz.NPCs.Enemy.PreHardMode {
             npc.value = 10000;
             npc.knockBackResist = 0.95f;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.ChickenBanner>();
+            bannerItem = ModContent.ItemType<Items.Banners.ChickenBanner>();
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {

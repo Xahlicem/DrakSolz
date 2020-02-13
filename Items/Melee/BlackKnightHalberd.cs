@@ -24,7 +24,7 @@ namespace DrakSolz.Items.Melee {
             item.scale = 1f;
             item.rare = 1;
             item.UseSound = SoundID.Item1;
-            item.shoot = mod.ProjectileType<Projectiles.BlackKnightHalberdProj>();
+            item.shoot = ModContent.ProjectileType<Projectiles.BlackKnightHalberdProj>();
             item.value = 3000000;
             item.noMelee = true;
             item.noUseGraphic = true;
@@ -33,9 +33,9 @@ namespace DrakSolz.Items.Melee {
         }
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType<Items.Banners.BlackKnightBanner>());
-            recipe.AddIngredient(mod.ItemType<Items.Misc.Titanite>(), 50);
-            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Banners.BlackKnightBanner>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Misc.Titanite>(), 50);
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

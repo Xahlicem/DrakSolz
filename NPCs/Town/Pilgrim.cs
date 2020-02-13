@@ -87,8 +87,8 @@ namespace DrakSolz.NPCs.Town {
             WeightedRandom<string> chat = new WeightedRandom<string>();
 
             foreach (Item i in Main.LocalPlayer.inventory) {
-                if (i.type == mod.ItemType<Items.Melee.Sword>()) chat.Add("That sword seems to have potential.");
-                if (i.type == mod.ItemType<Items.Melee.SwordHilt>()) chat.Add("That sword hilt had so much potential.");
+                if (i.type == ModContent.ItemType<Items.Melee.Sword>()) chat.Add("That sword seems to have potential.");
+                if (i.type == ModContent.ItemType<Items.Melee.SwordHilt>()) chat.Add("That sword hilt had so much potential.");
             }
             int partyGirl = NPC.FindFirstNPC(NPCID.PartyGirl);
             if (partyGirl >= 0 && Main.rand.Next(4) == 0) {
@@ -116,22 +116,22 @@ namespace DrakSolz.NPCs.Town {
         }
 
         public override void SetupShop(Chest shop, ref int nextSlot) {
-            shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Accessory.RingCat>());
-            shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Accessory.RingCloranthy>());
-            shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Misc.ScrollHolyHomeward>());
-            shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Misc.ScrollHoly>());
-            shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Misc.PyroScroll>());
-            shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Misc.Scroll>());
-            shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Misc.HomewardBone>());
-            shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Misc.Lifegem>());
-            shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Misc.GreenBlossom>());
-            shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Misc.PrismStone>());
+            shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Accessory.RingCat>());
+            shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Accessory.RingCloranthy>());
+            shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Misc.ScrollHolyHomeward>());
+            shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Misc.ScrollHoly>());
+            shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Misc.PyroScroll>());
+            shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Misc.Scroll>());
+            shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Misc.HomewardBone>());
+            shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Misc.Lifegem>());
+            shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Misc.GreenBlossom>());
+            shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Misc.PrismStone>());
             if (Main.hardMode) {
-                shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Melee.MorianBlade>());
-                shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Throwing.FireBomb>());
+                shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Melee.MorianBlade>());
+                shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Throwing.FireBomb>());
             }
             if (NPC.downedPlantBoss) {
-                shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Throwing.BlackFireBomb>());
+                shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Throwing.BlackFireBomb>());
             }
         }
 

@@ -25,9 +25,9 @@ namespace DrakSolz.Items.Armor.Moonlight {
         }
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType<Items.Misc.MoonButterflyHorn>(), 1);
-            recipe.AddIngredient(mod.ItemType<Items.Misc.Twink>(), 25);
-            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Misc.MoonButterflyHorn>(), 1);
+            recipe.AddIngredient(ModContent.ItemType<Items.Misc.Twink>(), 25);
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

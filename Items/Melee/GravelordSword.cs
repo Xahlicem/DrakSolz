@@ -22,7 +22,7 @@ namespace DrakSolz.Items.Melee {
             item.shootSpeed = 0.01f;
             item.value = Item.buyPrice(0, 30, 0, 0);
             item.autoReuse = true;
-            item.shoot = mod.ProjectileType<Projectiles.GravelordProj>();
+            item.shoot = ModContent.ProjectileType<Projectiles.GravelordProj>();
         }
         public override bool CanUseItem(Player player) {
             if (item.mana == 0) item.mana = item.alpha;
