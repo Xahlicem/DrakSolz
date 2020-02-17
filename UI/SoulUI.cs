@@ -10,9 +10,6 @@ using Terraria.UI;
 
 namespace DrakSolz.UI {
     class SoulUI : UIState {
-        private bool RightClicking = false;
-        private int RightTime = 0;
-        private int Time = 0;
         public UIPanel panel;
         public UIText num, numLevel;
         public static bool visible = true;

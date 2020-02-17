@@ -109,8 +109,6 @@ namespace DrakSolz.Projectiles {
 
         }
 
-        bool hit = false;
-
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) {
             if (Main.rand.Next(2) == 0) {
                 //Main.player[projectile.owner].AddBuff(ModContent.BuffType<Buffs.ChannelBuff>("ChannelBuff"), 40);
