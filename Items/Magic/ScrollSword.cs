@@ -26,7 +26,7 @@ namespace DrakSolz.Items.Magic {
         }
 
         public override bool CanUseItem(Player player) {
-            int mbuff = player.FindBuffIndex(mod.BuffType<Buffs.MageSwordBuff>());
+            int mbuff = player.FindBuffIndex(ModContent.BuffType<Buffs.MageSwordBuff>());
             if (mbuff < 0) {
 
                 return true;
@@ -36,7 +36,7 @@ namespace DrakSolz.Items.Magic {
         }
 
         public override bool UseItem(Player player) {
-            player.AddBuff(mod.BuffType<Buffs.MageSwordBuff>(), 300);
+            player.AddBuff(ModContent.BuffType<Buffs.MageSwordBuff>(), 300);
             int idamage = item.damage;
             int iuse = item.useAnimation;
             int iani = item.useTime;
@@ -46,7 +46,7 @@ namespace DrakSolz.Items.Magic {
             int ialpha = item.mana;
             foreach (Item i in player.inventory)
                 if (i == item) {
-                    i.netDefaults(mod.ItemType<Items.Magic.MageSword>());
+                    i.netDefaults(ModContent.ItemType<Items.Magic.MageSword>());
                     i.damage = idamage;
                     i.useAnimation = iuse;
                     i.useTime = iani;
@@ -63,8 +63,8 @@ namespace DrakSolz.Items.Magic {
         public class ScrollSwordGlobalNPC : GlobalNPC {
             public override void NPCLoot(NPC npc) {
                 if (Main.rand.Next(15) == 0) {
-                    if (npc.type == NPCID.DarkCaster || npc.type == mod.NPCType<NPCs.Enemy.PreHardMode.Spinwheel>() ) {
-                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Magic.ScrollSword>(), 1);
+                    if (npc.type == NPCID.DarkCaster || npc.type == ModContent.NPCType<NPCs.Enemy.PreHardMode.Spinwheel>() ) {
+                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ModContent.ItemType<Items.Magic.ScrollSword>(), 1);
                     }
                 }
             }

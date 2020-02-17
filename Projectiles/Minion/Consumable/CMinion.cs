@@ -32,7 +32,7 @@ namespace DrakSolz.Projectiles.Minion.Consumable {
         public abstract int FindFrame();
 
         public override void Kill(int timeLeft) {
-            int item = Item.NewItem((int) projectile.Bottom.X, (int) projectile.Center.Y + 8, 0, 0, mod.ItemType(ItemType));
+            int item = Item.NewItem((int) projectile.Bottom.X, (int) projectile.Center.Y + 8, 0, 0, DrakSolz.instance.ItemType(ItemType));
             Main.item[item].GetGlobalItem<Items.DSGlobalItem>().FromPlayer = projectile.owner;
         }
     }

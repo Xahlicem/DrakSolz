@@ -27,14 +27,14 @@ namespace DrakSolz.Items.Magic.Holy {
             item.knockBack = 6.0f;
             item.shootSpeed = 20.0f;
             item.autoReuse = true;
-            item.shoot = mod.ProjectileType<Projectiles.SunlightSpearProj>();
+            item.shoot = ModContent.ProjectileType<Projectiles.SunlightSpearProj>();
             item.summon = true;
         }
 
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType<Items.Magic.Holy.ScrollHolyGreatLightningSpear>());
-            recipe.AddIngredient(mod.ItemType<Items.Souls.GolemSoul>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Magic.Holy.ScrollHolyGreatLightningSpear>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Souls.GolemSoul>());
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

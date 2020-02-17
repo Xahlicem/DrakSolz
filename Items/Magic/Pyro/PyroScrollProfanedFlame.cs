@@ -22,7 +22,7 @@ namespace DrakSolz.Items.Magic.Pyro {
             item.knockBack = 9f;
             item.shootSpeed = 0.01f;
             item.value = Item.buyPrice(0, 30, 0, 0);
-            item.shoot = mod.ProjectileType<Projectiles.ProfanedProj>();
+            item.shoot = ModContent.ProjectileType<Projectiles.ProfanedProj>();
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack) {
@@ -35,9 +35,9 @@ namespace DrakSolz.Items.Magic.Pyro {
         }
         public override void AddRecipes() {
             ModRecipe recipe = new SoulRecipe(mod, this);
-            recipe.AddIngredient(mod.ItemType<Items.Misc.Twink>());
-            recipe.AddIngredient(mod.ItemType<Items.Misc.PyroScroll>());
-            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Misc.Twink>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Misc.PyroScroll>());
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
             recipe.AddRecipe();
         }
     }

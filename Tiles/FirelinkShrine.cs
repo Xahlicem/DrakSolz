@@ -31,13 +31,13 @@ namespace DrakSolz.Tiles {
             item.useStyle = 1;
             item.consumable = true;
             item.value = Item.buyPrice(0, 0, 0, 1);
-            item.createTile = mod.TileType<Tiles.FirelinkShrineTile>();
+            item.createTile = ModContent.TileType<Tiles.FirelinkShrineTile>();
         }
 
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType<Items.Melee.SwordHilt>());
-            recipe.AddIngredient(mod.ItemType<Items.Misc.HomewardBone>(), 5);
+            recipe.AddIngredient(ModContent.ItemType<Items.Melee.SwordHilt>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Misc.HomewardBone>(), 5);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
@@ -91,7 +91,7 @@ namespace DrakSolz.Tiles {
         }
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY) {
-            Item.NewItem(i * 16, j * 16, 32, 16, mod.ItemType<Tiles.FirelinkShrine>());
+            Item.NewItem(i * 16, j * 16, 32, 16, ModContent.ItemType<Tiles.FirelinkShrine>());
         }
 
         public override bool PreDraw(int i, int j, SpriteBatch spriteBatch) {
@@ -117,11 +117,11 @@ namespace DrakSolz.Tiles {
         public override void NearbyEffects(int i, int j, bool closer) {
             Player player = Main.LocalPlayer;
             if (closer && player.Distance(new Vector2(i << 4, j << 4)) < 50) {
-                player.AddBuff(mod.BuffType<Buffs.Firelink>(), 30);
+                player.AddBuff(ModContent.BuffType<Buffs.Firelink>(), 30);
             }
         }
 
-        public override void RightClick(int i, int j) {
+        public override bool NewRightClick(int i, int j) {
             HitWire(i, j);
             Player player = Main.LocalPlayer;
             Tile tile = Main.tile[i, j];
@@ -136,13 +136,14 @@ namespace DrakSolz.Tiles {
                 player.ChangeSpawn(spawnX, spawnY);
                 Main.NewText((Player.CheckSpawn(spawnX, spawnY) ? "Permanent " : "Temporary ") + "spawn point set!", 255, 240, 20, false);
             }
+            return true;
         }
 
         public override void MouseOver(int i, int j) {
             Player player = Main.LocalPlayer;
             player.noThrow = 2;
             player.showItemIcon = true;
-            player.showItemIcon2 = mod.ItemType<Tiles.FirelinkShrine>();
+            player.showItemIcon2 = ModContent.ItemType<Tiles.FirelinkShrine>();
         }
 
         public override void HitWire(int i, int j) {

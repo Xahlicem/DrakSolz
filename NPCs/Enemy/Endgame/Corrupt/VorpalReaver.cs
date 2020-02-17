@@ -27,7 +27,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Corrupt {
             npc.value = 20f;
             npc.knockBackResist = 0.1f;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.CorruptBanners.VorpalReaverBanner>();
+            bannerItem = ModContent.ItemType<Items.Banners.CorruptBanners.VorpalReaverBanner>();
         }
         public override void AI() {
             npc.TargetClosest(true);
@@ -43,7 +43,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Corrupt {
                     float numberProjectiles = 10;
                     float rotation = MathHelper.ToRadians(10);
                     for (int i = 0; i < numberProjectiles; i++) {
-                        int proj = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 15 * (Main.rand.NextFloat() - 0.5f), -15 * (Main.rand.NextFloat() + 0.5f), mod.ProjectileType<Projectiles.VorpalDaggerProj>(), npc.damage / 2, 1f);
+                        int proj = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 15 * (Main.rand.NextFloat() - 0.5f), -15 * (Main.rand.NextFloat() + 0.5f), ModContent.ProjectileType<Projectiles.VorpalDaggerProj>(), npc.damage / 2, 1f);
                         Main.projectile[proj].scale *= 0.8f;
                         Main.projectile[proj].friendly = false;
                         Main.projectile[proj].hostile = true;

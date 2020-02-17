@@ -14,7 +14,7 @@ namespace DrakSolz.Items.Magic.SoulBlades {
         }
 
         public override void SetDefaults() {
-            item.CloneDefaults(mod.ItemType<Items.Magic.SoulBlades.ScrollSoulBlades>());
+            item.CloneDefaults(ModContent.ItemType<Items.Magic.SoulBlades.ScrollSoulBlades>());
             item.damage = 55;
             item.useTime = 16;
             item.useAnimation = 16;
@@ -24,8 +24,8 @@ namespace DrakSolz.Items.Magic.SoulBlades {
 
         public override void AddRecipes() {
             ModRecipe recipe = new SoulRecipe(mod, this);
-            recipe.AddIngredient(mod.ItemType<Items.Magic.SoulBlades.ScrollSoulBlades>());
-            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Magic.SoulBlades.ScrollSoulBlades>());
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
             recipe.AddRecipe();
         }
 

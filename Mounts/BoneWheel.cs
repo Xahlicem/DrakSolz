@@ -7,7 +7,7 @@ namespace DrakSolz.Mounts {
     public class BoneWheel : ModMountData {
 
         public override void SetDefaults() {
-            mountData.buff = mod.BuffType<Buffs.BoneWheelMount>();
+            mountData.buff = ModContent.BuffType<Buffs.BoneWheelMount>();
             mountData.heightBoost = 0;
             mountData.fallDamage = 0.5f;
             mountData.runSpeed = 11f;

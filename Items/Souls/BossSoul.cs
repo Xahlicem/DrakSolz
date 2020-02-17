@@ -62,8 +62,8 @@ namespace DrakSolz.Items.Souls {
             if (Ring == string.Empty) return;
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(this);
-            recipe.SetResult(mod.ItemType(Ring));
-            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.SetResult(DrakSolz.instance.ItemType(Ring));
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
             recipe.AddRecipe();
         }
 
@@ -96,68 +96,68 @@ namespace DrakSolz.Items.Souls {
             Item item = new Item();
             switch (npc.type) {
                 case NPCID.KingSlime:
-                    item.netDefaults(mod.ItemType<SlimeSoul>());
+                    item.netDefaults(ModContent.ItemType<SlimeSoul>());
                     break;
                 case NPCID.EyeofCthulhu:
-                    item.netDefaults(mod.ItemType<EyeSoul>());
+                    item.netDefaults(ModContent.ItemType<EyeSoul>());
                     break;
                 case NPCID.EaterofWorldsHead:
                 case NPCID.EaterofWorldsBody:
                 case NPCID.EaterofWorldsTail:
                     if (!npc.boss) return;
-                    item.netDefaults(mod.ItemType<EaterSoul>());
+                    item.netDefaults(ModContent.ItemType<EaterSoul>());
                     break;
                 case NPCID.BrainofCthulhu:
-                    item.netDefaults(mod.ItemType<BrainSoul>());
+                    item.netDefaults(ModContent.ItemType<BrainSoul>());
                     break;
                 case NPCID.QueenBee:
-                    item.netDefaults(mod.ItemType<BeeSoul>());
+                    item.netDefaults(ModContent.ItemType<BeeSoul>());
                     break;
                 case NPCID.SkeletronHead:
-                    item.netDefaults(mod.ItemType<SkeletronSoul>());
+                    item.netDefaults(ModContent.ItemType<SkeletronSoul>());
                     break;
                 case NPCID.WallofFlesh:
-                    item.netDefaults(mod.ItemType<WallSoul>());
+                    item.netDefaults(ModContent.ItemType<WallSoul>());
                     break;
                 case NPCID.TheDestroyer:
-                    item.netDefaults(mod.ItemType<DestSoul>());
+                    item.netDefaults(ModContent.ItemType<DestSoul>());
                     break;
                 case NPCID.Retinazer:
-                    item.netDefaults(mod.ItemType<RetSoul>());
+                    item.netDefaults(ModContent.ItemType<RetSoul>());
                     break;
                 case NPCID.Spazmatism:
-                    item.netDefaults(mod.ItemType<SpazSoul>());
+                    item.netDefaults(ModContent.ItemType<SpazSoul>());
                     break;
                 case NPCID.SkeletronPrime:
-                    item.netDefaults(mod.ItemType<SkeletronPrimeSoul>());
+                    item.netDefaults(ModContent.ItemType<SkeletronPrimeSoul>());
                     break;
                 case NPCID.Plantera:
-                    item.netDefaults(mod.ItemType<PlantSoul>());
+                    item.netDefaults(ModContent.ItemType<PlantSoul>());
                     break;
                 case NPCID.Golem:
-                    item.netDefaults(mod.ItemType<GolemSoul>());
+                    item.netDefaults(ModContent.ItemType<GolemSoul>());
                     break;
                 case NPCID.CultistBoss:
-                    item.netDefaults(mod.ItemType<LunaticSoul>());
+                    item.netDefaults(ModContent.ItemType<LunaticSoul>());
                     break;
                 case NPCID.DukeFishron:
-                    item.netDefaults(mod.ItemType<DukeSoul>());
+                    item.netDefaults(ModContent.ItemType<DukeSoul>());
                     break;
                 case NPCID.MoonLordHand:
                 case NPCID.MoonLordCore:
                 case NPCID.MoonLordFreeEye:
                 case NPCID.MoonLordHead:
                     if (!npc.boss) return;
-                    item.netDefaults(mod.ItemType<MoonSoul>());
+                    item.netDefaults(ModContent.ItemType<MoonSoul>());
                     break;
             }
 
-            if (npc.type == mod.NPCType<NPCs.Enemy.Boss.AbyssStalker>()) {
-                item.netDefaults(mod.ItemType<ArtoriasSoul>());
+            if (npc.type == ModContent.NPCType<NPCs.Enemy.Boss.AbyssStalker>()) {
+                item.netDefaults(ModContent.ItemType<ArtoriasSoul>());
             }
 
-            if (npc.type == mod.NPCType<NPCs.Enemy.Boss.TitaniteDemon>()) {
-                item.netDefaults(mod.ItemType<Items.Souls.TitaniteSoul>());
+            if (npc.type == ModContent.NPCType<NPCs.Enemy.Boss.TitaniteDemon>()) {
+                item.netDefaults(ModContent.ItemType<Items.Souls.TitaniteSoul>());
             }
 
             BossSoul soul = item.modItem as BossSoul;

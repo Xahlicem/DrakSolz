@@ -22,7 +22,7 @@ namespace DrakSolz.Buffs {
         }
 
         public ModPacket GetPacket(MessageType packetType, Player player, int buffIndex) {
-            int index = player.FindBuffIndex(mod.BuffType<Buffs.Hollow>());
+            int index = player.FindBuffIndex(ModContent.BuffType<Buffs.Hollow>());
             ModPacket packet = this.mod.GetPacket();
 
             packet.Write((byte) packetType);

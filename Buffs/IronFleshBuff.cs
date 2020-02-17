@@ -22,7 +22,7 @@ namespace DrakSolz.Buffs {
             player.noKnockback = true;
             player.buffImmune[BuffID.Stoned] = true;
             player.buffImmune[BuffID.WaterWalking] = true;
-            //int index = player.FindBuffIndex(mod.BuffType<Buffs.ChannelBuff>());
+            //int index = player.FindBuffIndex(ModContent.BuffType<Buffs.ChannelBuff>());
             //if (index != -1) player.buffTime[index] = 0;
         }
     }

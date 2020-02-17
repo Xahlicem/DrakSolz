@@ -34,7 +34,7 @@ namespace DrakSolz.Items.Accessory {
         public override void AddRecipes() {
             ModRecipe recipe = new SoulRecipe(mod, this);
             recipe.AddIngredient(ItemID.Torch, 10);
-            recipe.AddIngredient(mod.ItemType<Items.Misc.HomewardBone>(), 2);
+            recipe.AddIngredient(ModContent.ItemType<Items.Misc.HomewardBone>(), 2);
             recipe.AddRecipe();
         }
 

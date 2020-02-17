@@ -32,7 +32,7 @@ namespace DrakSolz.NPCs.Enemy.PreHardMode {
             npc.localAI[3] = 0f;
             npc.ai[3] = -1f;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.ChannelerBanner>();
+            bannerItem = ModContent.ItemType<Items.Banners.ChannelerBanner>();
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
@@ -109,7 +109,7 @@ namespace DrakSolz.NPCs.Enemy.PreHardMode {
                         DrakSolz.AdjustMagnitude(ref speed, 7.5f);
                         AI_Timer = 0;
                         if (Main.netMode != 1) {
-                            Projectile.NewProjectile(npc.Center.X + 6, npc.Center.Y - 16, speed.X, speed.Y, mod.ProjectileType<Projectiles.Magic.SoulSpearProj>(), npc.damage / 2, 0f);
+                            Projectile.NewProjectile(npc.Center.X + 6, npc.Center.Y - 16, speed.X, speed.Y, ModContent.ProjectileType<Projectiles.Magic.SoulSpearProj>(), npc.damage / 2, 0f);
                         }
                     }
                 }
@@ -205,11 +205,11 @@ namespace DrakSolz.NPCs.Enemy.PreHardMode {
             DrakSolz.CreateGore(mod, npc, "Gores/Channeler/Body");
             DrakSolz.CreateGore(mod, npc, "Gores/Channeler/Legs");
 
-            DrakSolz.DropItem(npc, 6.666f, mod.ItemType<Items.Melee.ChannelT>());
+            DrakSolz.DropItem(npc, 6.666f, ModContent.ItemType<Items.Melee.ChannelT>());
             if (Main.hardMode)
-                DrakSolz.DropItem(npc, 25f, mod.ItemType<Items.Armor.Channeler.ChannelerHelmet>(), mod.ItemType<Items.Armor.Channeler.ChannelerRobe>(), mod.ItemType<Items.Armor.Channeler.ChannelerSkirt>());
+                DrakSolz.DropItem(npc, 25f, ModContent.ItemType<Items.Armor.Channeler.ChannelerHelmet>(), ModContent.ItemType<Items.Armor.Channeler.ChannelerRobe>(), ModContent.ItemType<Items.Armor.Channeler.ChannelerSkirt>());
             if (NPC.downedMoonlord)
-                DrakSolz.DropItem(npc, 10f, mod.ItemType<Items.Magic.ScrollSpear>());
+                DrakSolz.DropItem(npc, 10f, ModContent.ItemType<Items.Magic.ScrollSpear>());
         }
     }
 }

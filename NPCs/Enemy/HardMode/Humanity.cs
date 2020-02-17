@@ -29,7 +29,7 @@ namespace DrakSolz.NPCs.Enemy.HardMode {
             npc.knockBackResist = 0f;
             npc.alpha = 50;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.HumanityBanner>();
+            bannerItem = ModContent.ItemType<Items.Banners.HumanityBanner>();
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
@@ -38,7 +38,7 @@ namespace DrakSolz.NPCs.Enemy.HardMode {
             else return 0f;
         }
         public override void NPCLoot() {
-            if (Main.rand.Next(150) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Summon.EffigyStaff>());
+            if (Main.rand.Next(150) == 0) Item.NewItem(npc.position, npc.width, npc.height, ModContent.ItemType<Items.Summon.EffigyStaff>());
         }
     }
 }

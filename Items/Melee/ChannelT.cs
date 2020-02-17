@@ -24,7 +24,7 @@ namespace DrakSolz.Items.Melee {
             item.scale = 1f;
             item.rare = 7;
             item.UseSound = SoundID.Item1;
-            item.shoot = mod.ProjectileType<Projectiles.ChannelTProj>();
+            item.shoot = ModContent.ProjectileType<Projectiles.ChannelTProj>();
             item.value = 1000;
             item.noMelee = true;
             item.noUseGraphic = true;

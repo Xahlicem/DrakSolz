@@ -26,13 +26,13 @@ namespace DrakSolz.Items.Misc.Classes {
         }
         public override bool UseItem(Player player) {
             Main.NewText("A Rogue has been chosen!", 0, 255, 0);
-            DrakSolzPlayer modPlayer = (DrakSolzPlayer) player.GetModPlayer<DrakSolzPlayer>(mod);
+            DrakSolzPlayer modPlayer = (DrakSolzPlayer) player.GetModPlayer<DrakSolzPlayer>();
             modPlayer.ClassRogue = true;
             return true;
         }
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType<Items.Misc.Classes.ClassEmpty>(), 1);
+            recipe.AddIngredient(ModContent.ItemType<Items.Misc.Classes.ClassEmpty>(), 1);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

@@ -27,15 +27,15 @@ namespace DrakSolz.NPCs.Enemy.Dungeon {
             npc.value = 10000f;
             npc.knockBackResist = 0.03f;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.BlackKnightBanner>();
+            bannerItem = ModContent.ItemType<Items.Banners.BlackKnightBanner>();
         }
 
         public override void NPCLoot() {
             DrakSolz.CreateGore(mod, npc, "Gores/BlackKnight/Head");
             DrakSolz.CreateGore(mod, npc, "Gores/BlackKnight/Body");
             DrakSolz.CreateGore(mod, npc, "Gores/BlackKnight/Legs");
-            DrakSolz.DropItem(npc, 12.5f, mod.ItemType<Items.Armor.BlackKnight.BlackKnightHelmet>(), mod.ItemType<Items.Armor.BlackKnight.BlackKnightArmor>(), mod.ItemType<Items.Armor.BlackKnight.BlackKnightLeggings>());
-            DrakSolz.DropItem(npc, 100f, mod.ItemType<Items.Misc.Titanite>(), Main.rand.Next(1, 2));
+            DrakSolz.DropItem(npc, 12.5f, ModContent.ItemType<Items.Armor.BlackKnight.BlackKnightHelmet>(), ModContent.ItemType<Items.Armor.BlackKnight.BlackKnightArmor>(), ModContent.ItemType<Items.Armor.BlackKnight.BlackKnightLeggings>());
+            DrakSolz.DropItem(npc, 100f, ModContent.ItemType<Items.Misc.Titanite>(), Main.rand.Next(1, 2));
         }
     }
 }

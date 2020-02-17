@@ -28,7 +28,7 @@ namespace DrakSolz.NPCs.Enemy.PostPlantera {
             npc.knockBackResist = 0f;
             npc.rarity = 1;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.GiantCrystalLizardBanner>();
+            bannerItem = ModContent.ItemType<Items.Banners.GiantCrystalLizardBanner>();
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
@@ -43,9 +43,9 @@ namespace DrakSolz.NPCs.Enemy.PostPlantera {
                     DrakSolz.CreateGore(mod, npc, "Gores/GiantCrystalLizard/GiantCrystalLizard_Gore_4");
             }
 
-            DrakSolz.DropItem(npc, 100f, mod.ItemType<Items.Misc.Twink>(), Main.rand.Next(2, 4));
+            DrakSolz.DropItem(npc, 100f, ModContent.ItemType<Items.Misc.Twink>(), Main.rand.Next(2, 4));
             if (NPC.downedAncientCultist)
-                DrakSolz.DropItem(npc, 100f, mod.ItemType<Items.Misc.Titanite>(), Main.rand.Next(1, 3));
+                DrakSolz.DropItem(npc, 100f, ModContent.ItemType<Items.Misc.Titanite>(), Main.rand.Next(1, 3));
         }
     }
 }

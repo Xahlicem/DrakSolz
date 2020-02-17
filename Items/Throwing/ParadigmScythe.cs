@@ -32,14 +32,14 @@ namespace DrakSolz.Items.Throwing {
             item.noUseGraphic = true;
             item.UseSound = SoundID.Item1;
             item.thrown = true;
-            item.shoot = mod.ProjectileType<Projectiles.ParadigmScytheProj>();
+            item.shoot = ModContent.ProjectileType<Projectiles.ParadigmScytheProj>();
         }
     }
         public class ParadigmScytheGlobalNPC : GlobalNPC {
             public override void NPCLoot(NPC npc) {
                 if (Main.rand.Next(15) == 0) {
-                    if (npc.type == mod.NPCType<NPCs.Enemy.Endgame.Desert.Paradigm>() ) {
-                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Throwing.ParadigmScythe>(), 1);
+                    if (npc.type == ModContent.NPCType<NPCs.Enemy.Endgame.Desert.Paradigm>() ) {
+                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ModContent.ItemType<Items.Throwing.ParadigmScythe>(), 1);
                     }
                 }
             }

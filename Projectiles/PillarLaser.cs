@@ -1,16 +1,13 @@
+using DrakSolz.NPCs.Enemy.VoidPillar;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
-using DrakSolz.NPCs.Enemy.VoidPillar;
 
-namespace DrakSolz.Projectiles
-{
-	public class PillarLaser : ModProjectile
-	{
+namespace DrakSolz.Projectiles {
+	public class PillarLaser : ModProjectile {
 		private const float length = 2400f;
 
-		public override void SetDefaults()
-		{
+		public override void SetDefaults() {
 
 			projectile.width = 48;
 			projectile.height = 48;
@@ -22,19 +19,15 @@ namespace DrakSolz.Projectiles
 			cooldownSlot = 1;
 		}
 
-		public override void SetStaticDefaults()
-		{
+		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Pillar Laser");
 
 		}
 
-		public override void AI()
-		{
+		public override void AI() {
 			projectile.localAI[0] += 1f;
-			if (projectile.localAI[0] > 3f)
-			{
-				for (int num449 = 0; num449 < 4; num449++)
-				{
+			if (projectile.localAI[0] > 3f) {
+				for (int num449 = 0; num449 < 4; num449++) {
 					Vector2 vector34 = projectile.position;
 					vector34 -= projectile.velocity * (num449 * 0.25f);
 					projectile.alpha = 255;
@@ -48,14 +41,10 @@ namespace DrakSolz.Projectiles
 					Main.dust[num450].velocity *= 0.2f;
 				}
 			}
-			for (int k = 0; k < 200; k++)
-			{
-				if (VoidPillarHandler.ShieldStrength > 0)
-				{
-					if (Main.npc[k].Hitbox.Intersects(projectile.Hitbox))
-					{
-						if (Main.npc[k].type == mod.NPCType("VoidPillar"))
-						{
+			for (int k = 0; k < 200; k++) {
+				if (VoidPillarHandler.ShieldStrength > 0) {
+					if (Main.npc[k].Hitbox.Intersects(projectile.Hitbox)) {
+						if (Main.npc[k].type == ModContent.NPCType<VoidPillar>()) {
 							VoidPillarHandler.ShieldStrength--;
 							projectile.Kill();
 						}
@@ -63,7 +52,7 @@ namespace DrakSolz.Projectiles
 				}
 				/*if (Main.npc[k].Hitbox.Intersects(projectile.Hitbox))
 				{
-					if (Main.npc[k].type == mod.NPCType("CogLord"))
+					if (Main.npc[k].type == ModContent.NPCType("CogLord"))
 					{
 						projectile.Kill();
 					}

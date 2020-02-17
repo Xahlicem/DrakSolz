@@ -22,7 +22,7 @@ namespace DrakSolz.Projectiles {
             projectile.velocity.X = projectile.ai[0]*15;
             projectile.direction = (int) projectile.ai[0];
 
-            int i = player.FindBuffIndex(mod.BuffType<Buffs.BoneWheelMount>());
+            int i = player.FindBuffIndex(ModContent.BuffType<Buffs.BoneWheelMount>());
             if (i != -1) {
                 projectile.timeLeft = 5;
             }

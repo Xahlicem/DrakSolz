@@ -30,7 +30,7 @@ namespace DrakSolz.Items.Ranged
 			item.autoReuse = false;
 			item.shoot = 10; //idk why but all the guns in the vanilla source have this
 			item.shootSpeed = 2.5f;
-			item.useAmmo = (mod.ItemType<Items.Ranged.SlingshotStones>());
+			item.useAmmo = (ModContent.ItemType<Items.Ranged.SlingshotStones>());
 		}
 
 		/*public override void AddRecipes()

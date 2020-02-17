@@ -68,7 +68,7 @@ namespace DrakSolz.NPCs.Town {
 
         public override bool CheckConditions(int left, int right, int top, int bottom) {
             foreach (Item i in Main.LocalPlayer.inventory) {
-                if (i.type == mod.ItemType<Items.Armor.GibbetHead>())
+                if (i.type == ModContent.ItemType<Items.Armor.GibbetHead>())
                 return true;
             }
             return false;
@@ -91,11 +91,11 @@ namespace DrakSolz.NPCs.Town {
             WeightedRandom<string> chat = new WeightedRandom<string>();
 
             foreach (Item i in Main.LocalPlayer.inventory) {
-                if (i.type == mod.ItemType<Items.Armor.GibbetHead>()) chat.Add("How disturbingly evil!");
-                if (i.type == mod.ItemType<Items.Armor.GibbetHead>()) chat.Add("You... look familiar. Quite evil indeed.");
-                if (i.type == mod.ItemType<Items.Armor.GibbetHead>()) chat.Add("Gerald? No... you're not gerald. Much more evil than he ever was.");
-                if (i.type == mod.ItemType<Items.Armor.GibbetHead>()) chat.Add("Ohhh I love it!");
-                if (i.type == mod.ItemType<Items.Armor.GibbetHead>()) chat.Add("Everyone wants to be me, sorry love it's not possible.");
+                if (i.type == ModContent.ItemType<Items.Armor.GibbetHead>()) chat.Add("How disturbingly evil!");
+                if (i.type == ModContent.ItemType<Items.Armor.GibbetHead>()) chat.Add("You... look familiar. Quite evil indeed.");
+                if (i.type == ModContent.ItemType<Items.Armor.GibbetHead>()) chat.Add("Gerald? No... you're not gerald. Much more evil than he ever was.");
+                if (i.type == ModContent.ItemType<Items.Armor.GibbetHead>()) chat.Add("Ohhh I love it!");
+                if (i.type == ModContent.ItemType<Items.Armor.GibbetHead>()) chat.Add("Everyone wants to be me, sorry love it's not possible.");
             }
             chat.Add("Ahhh, ready to do some evil?");
             chat.Add("I just want to murder everyone here, isn't it lovely?");
@@ -116,8 +116,8 @@ namespace DrakSolz.NPCs.Town {
         }
 
         public override void SetupShop(Chest shop, ref int nextSlot) {
-            shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Armor.GibbetBody>());
-            shop.item[nextSlot++].SetDefaults(mod.ItemType<Items.Armor.GibbetLegs>());
+            shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Armor.GibbetBody>());
+            shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Armor.GibbetLegs>());
 
         }
 

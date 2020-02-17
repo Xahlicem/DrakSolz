@@ -19,12 +19,12 @@ namespace DrakSolz.Items.Summon.Consumable {
             item.damage = 20;
             item.value = Item.buyPrice(0, 0, 50, 0);
             item.rare = 3;
-            item.shoot = mod.ProjectileType<Projectiles.Minion.Consumable.SkeletonSkullProj>();
+            item.shoot = ModContent.ProjectileType<Projectiles.Minion.Consumable.SkeletonSkullProj>();
         }
 
         public override void AddRecipes() {
             SoulRecipe recipe = new SoulRecipe(mod, this);
-            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
             recipe.AddIngredient(ItemID.Bone, 50);
             recipe.AddRecipe();
         }

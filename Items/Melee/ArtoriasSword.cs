@@ -24,7 +24,7 @@ namespace DrakSolz.Items.Melee {
             item.melee = true;
         }
         public override bool CanUseItem(Player player) {
-            int mbuff = player.FindBuffIndex(mod.BuffType<Buffs.AbyssSwordBuff>());
+            int mbuff = player.FindBuffIndex(ModContent.BuffType<Buffs.AbyssSwordBuff>());
             if (mbuff < 0) {
 
                 return true;
@@ -35,7 +35,7 @@ namespace DrakSolz.Items.Melee {
 
         public override bool UseItem(Player player) {
             if (Main.rand.Next(15) == 0) {
-            player.AddBuff(mod.BuffType<Buffs.AbyssSwordBuff>(), 180);
+            player.AddBuff(ModContent.BuffType<Buffs.AbyssSwordBuff>(), 180);
             int idamage = item.damage;
             int iuse = item.useAnimation - 2;
             int iani = item.useTime - 2;
@@ -45,7 +45,7 @@ namespace DrakSolz.Items.Melee {
             byte ipref = item.prefix;
             foreach (Item i in player.inventory)
                 if (i == item) {
-                    i.netDefaults(mod.ItemType<Items.Melee.AbyssSword>());
+                    i.netDefaults(ModContent.ItemType<Items.Melee.AbyssSword>());
                     i.damage = idamage + 1000;
                     i.useAnimation = iuse;
                     i.useTime = iani;
@@ -62,9 +62,9 @@ namespace DrakSolz.Items.Melee {
         }
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType<Items.Melee.Sword>());
-            recipe.AddIngredient(mod.ItemType<Items.Souls.ArtoriasSoul>());
-            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Melee.Sword>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Souls.ArtoriasSoul>());
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

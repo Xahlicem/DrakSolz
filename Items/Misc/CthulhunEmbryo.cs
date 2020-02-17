@@ -21,8 +21,8 @@ namespace DrakSolz.Items.Misc {
         }
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType<Items.Misc.CthulhunTentacle>(), 25);
-            recipe.AddIngredient(mod.ItemType<Items.Misc.Twink>(), 10);
+            recipe.AddIngredient(ModContent.ItemType<Items.Misc.CthulhunTentacle>(), 25);
+            recipe.AddIngredient(ModContent.ItemType<Items.Misc.Twink>(), 10);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

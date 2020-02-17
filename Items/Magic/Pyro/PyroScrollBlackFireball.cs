@@ -25,13 +25,13 @@ namespace DrakSolz.Items.Magic.Pyro {
             item.knockBack = 7f;
             item.shootSpeed = 10.0f;
             item.value = Item.buyPrice(0, 30, 0, 0);
-            item.shoot = mod.ProjectileType<Projectiles.BlackFireballProj>();
+            item.shoot = ModContent.ProjectileType<Projectiles.BlackFireballProj>();
         }
 
         public override void AddRecipes() {
             ModRecipe recipe = new SoulRecipe(mod, this);
-            recipe.AddIngredient(mod.ItemType<Items.Magic.Pyro.PyroScrollFireBall>());
-            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Magic.Pyro.PyroScrollFireBall>());
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
             recipe.AddRecipe();
         }
 

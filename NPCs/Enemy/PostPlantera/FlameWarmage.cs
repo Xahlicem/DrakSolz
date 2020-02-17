@@ -32,7 +32,7 @@ namespace DrakSolz.NPCs.Enemy.PostPlantera {
             npc.localAI[3] = 0f;
             npc.ai[3] = -1f;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.FlameWarmageBanner>();
+            bannerItem = ModContent.ItemType<Items.Banners.FlameWarmageBanner>();
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
@@ -90,7 +90,7 @@ namespace DrakSolz.NPCs.Enemy.PostPlantera {
                 if (AI_Timer == 10 && Main.netMode != 1) {
                     Vector2 playerpos = Main.player[npc.target].Center;
                     playerpos.Y -= 5;
-                    int proj = Projectile.NewProjectile(playerpos, Vector2.Zero, mod.ProjectileType<Projectiles.Magic.FlameMageProj>(), npc.damage, 0f);
+                    int proj = Projectile.NewProjectile(playerpos, Vector2.Zero, ModContent.ProjectileType<Projectiles.Magic.FlameMageProj>(), npc.damage, 0f);
                 }
 
                 if (AI_Timer >= 120) {
@@ -137,7 +137,7 @@ namespace DrakSolz.NPCs.Enemy.PostPlantera {
         }
 
         public override void NPCLoot() {
-            if (Main.rand.Next(20) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Magic.IT>());
+            if (Main.rand.Next(20) == 0) Item.NewItem(npc.position, npc.width, npc.height, ModContent.ItemType<Items.Magic.IT>());
         }
     }
 }

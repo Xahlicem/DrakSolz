@@ -57,7 +57,7 @@ namespace DrakSolz.Tiles {
                 default:
                     return;
             }
-            Item.NewItem(i * 16, j * 16, 16, 48, mod.ItemType(item));
+            Item.NewItem(i * 16, j * 16, 16, 48, DrakSolz.instance.ItemType(item));
         }
 
         public override void NearbyEffects(int i, int j, bool closer) {
@@ -67,36 +67,36 @@ namespace DrakSolz.Tiles {
                 string type;
                 switch (style) {
                     case 0:
-                    type = "MiniSun";
-                    break;
-                case 1:
-                    type = "SunWisp";
-                    break;
-                case 2:
-                    type = "SettingSun";
-                    break;
-                case 3:
-                    type = "DecoratedEnlistee";
-                    break;
-                case 4:
-                    type = "Oakenheart";
-                    break;
-                case 5:
-                    type = "Peacekeeper";
-                    break;
-                case 6:
-                    type = "Solarius";
-                    break;
-                case 7:
-                    type = "Valekeeper";
-                    break;
-                case 8:
-                    type = "Solpiercer";
-                    break;
+                        type = "MiniSun";
+                        break;
+                    case 1:
+                        type = "SunWisp";
+                        break;
+                    case 2:
+                        type = "SettingSun";
+                        break;
+                    case 3:
+                        type = "DecoratedEnlistee";
+                        break;
+                    case 4:
+                        type = "Oakenheart";
+                        break;
+                    case 5:
+                        type = "Peacekeeper";
+                        break;
+                    case 6:
+                        type = "Solarius";
+                        break;
+                    case 7:
+                        type = "Valekeeper";
+                        break;
+                    case 8:
+                        type = "Solpiercer";
+                        break;
                     default:
                         return;
                 }
-                player.NPCBannerBuff[mod.NPCType(type)] = true;
+                player.NPCBannerBuff[DrakSolz.instance.NPCType(type)] = true;
                 player.hasBanner = true;
             }
         }

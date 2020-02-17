@@ -25,7 +25,7 @@ namespace DrakSolz.Items.Melee {
             if (item.GetGlobalItem<DSGlobalItem>().Used) {
                 foreach (Item i in player.inventory)
                     if (i == item) {
-                        i.netDefaults(mod.ItemType<Items.Melee.SwordHilt>());
+                        i.netDefaults(ModContent.ItemType<Items.Melee.SwordHilt>());
                         i.Prefix(PrefixID.Broken);
                         i.GetGlobalItem<DSGlobalItem>().FromPlayer = player.whoAmI;
                         i.GetGlobalItem<DSGlobalItem>().Owned = true;

@@ -27,7 +27,7 @@ namespace DrakSolz.NPCs.Enemy.PreHardMode {
             npc.value = 100;
             npc.knockBackResist = 1f;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.WheelSkeletonBanner>();
+            bannerItem = ModContent.ItemType<Items.Banners.WheelSkeletonBanner>();
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
@@ -39,7 +39,7 @@ namespace DrakSolz.NPCs.Enemy.PreHardMode {
             npc.spriteDirection = npc.direction;
         }
         public override void NPCLoot() {
-            if (Main.rand.Next(15) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.BoneWheel>());
+            if (Main.rand.Next(15) == 0) Item.NewItem(npc.position, npc.width, npc.height, ModContent.ItemType<Items.BoneWheel>());
         }
 
     }

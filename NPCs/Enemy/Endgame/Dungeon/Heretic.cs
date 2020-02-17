@@ -23,7 +23,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Dungeon {
             npc.value = 20f;
             npc.knockBackResist = 0;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.HereticBanner>();
+            bannerItem = ModContent.ItemType<Items.Banners.HereticBanner>();
             npc.aiStyle = -1;
             npc.localAI[0] = 0f;
             npc.localAI[1] = 0f;
@@ -60,7 +60,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Dungeon {
                 npc.TargetClosest(true);
                 Vector2 speed = Main.player[npc.target].Center - npc.Center;
                 DrakSolz.AdjustMagnitude(ref speed, 7.5f);
-                int pro = Projectile.NewProjectile(npc.Center.X + (25 * npc.direction), npc.Center.Y - 30, speed.X * 1.4f, speed.Y * 1.4f, mod.ProjectileType<Projectiles.EnemyHereticProj>(), npc.damage, 3f);
+                int pro = Projectile.NewProjectile(npc.Center.X + (25 * npc.direction), npc.Center.Y - 30, speed.X * 1.4f, speed.Y * 1.4f, ModContent.ProjectileType<Projectiles.EnemyHereticProj>(), npc.damage, 3f);
                 Main.projectile[pro].friendly = false;
                 Main.projectile[pro].hostile = true;
                 Main.projectile[pro].tileCollide = false;

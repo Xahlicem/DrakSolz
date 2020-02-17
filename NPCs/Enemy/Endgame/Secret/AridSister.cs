@@ -28,7 +28,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Secret {
             npc.value = 1000000;
             npc.knockBackResist = 0.1f;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.AridBanner>();
+            bannerItem = ModContent.ItemType<Items.Banners.AridBanner>();
         }
 
         public override void FindFrame(int frameHeight) {
@@ -44,8 +44,8 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Secret {
             }
         }
         public override void NPCLoot() {
-            if (Main.rand.Next(5) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Misc.Lifegem>());
-            if (Main.rand.Next(20) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Misc.HomewardBone>());
+            if (Main.rand.Next(5) == 0) Item.NewItem(npc.position, npc.width, npc.height, ModContent.ItemType<Items.Misc.Lifegem>());
+            if (Main.rand.Next(20) == 0) Item.NewItem(npc.position, npc.width, npc.height, ModContent.ItemType<Items.Misc.HomewardBone>());
         }
 
     }

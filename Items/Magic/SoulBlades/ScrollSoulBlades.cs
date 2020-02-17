@@ -24,13 +24,13 @@ namespace DrakSolz.Items.Magic.SoulBlades {
             item.knockBack = 3f;
             item.shootSpeed = 25.0f;
             item.value = Item.buyPrice(0, 0, 90, 0);
-            item.shoot = mod.ProjectileType<Projectiles.Magic.SorcSwordProj>();
+            item.shoot = ModContent.ProjectileType<Projectiles.Magic.SorcSwordProj>();
         }
 
         public override void AddRecipes() {
             ModRecipe recipe = new SoulRecipe(mod, this);
-            recipe.AddIngredient(mod.ItemType<Items.Misc.Scroll>());
-            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Misc.Scroll>());
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
             recipe.AddRecipe();
         }
 

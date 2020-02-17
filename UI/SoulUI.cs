@@ -10,9 +10,6 @@ using Terraria.UI;
 
 namespace DrakSolz.UI {
     class SoulUI : UIState {
-        private bool RightClicking = false;
-        private int RightTime = 0;
-        private int Time = 0;
         public UIPanel panel;
         public UIText num, numLevel;
         public static bool visible = true;
@@ -43,7 +40,7 @@ namespace DrakSolz.UI {
             numLevel.HAlign = UIAlign.Left;
             panel.Append(numLevel);
 
-            Texture2D soulTex = ModLoader.GetTexture("DrakSolz/UI/Soul");
+            Texture2D soulTex = ModContent.GetTexture("DrakSolz/UI/Soul");
             UIImage soul = new UIImage(soulTex);
             soul.Left.Set(40, 0f);
             soul.Top.Set(2, 0f);

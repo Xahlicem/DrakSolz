@@ -24,7 +24,7 @@ namespace DrakSolz.Items.Misc {
             item.noMelee = true;
             item.value = Item.buyPrice(0, 0, 0, 50);
             item.rare = 1;
-            item.shoot = mod.ProjectileType<Projectiles.PrismStoneProj>();
+            item.shoot = ModContent.ProjectileType<Projectiles.PrismStoneProj>();
         }
     }
 }

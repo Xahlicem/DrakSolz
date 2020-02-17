@@ -34,7 +34,7 @@ namespace DrakSolz.Items.Accessory {
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.SpookyWood, 50);
-            recipe.AddIngredient(mod.ItemType<Items.Accessory.RingCat>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Accessory.RingCat>());
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

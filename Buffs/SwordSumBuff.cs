@@ -11,8 +11,8 @@ namespace DrakSolz.Buffs {
         }
 
         public override void Update(Player player, ref int buffIndex) {
-            DrakSolzPlayer modPlayer = (DrakSolzPlayer) player.GetModPlayer<DrakSolzPlayer>(mod);
-            if (player.ownedProjectileCounts[mod.ProjectileType<Projectiles.Minion.SwordSumProj>()] > 0) {
+            DrakSolzPlayer modPlayer = (DrakSolzPlayer) player.GetModPlayer<DrakSolzPlayer>();
+            if (player.ownedProjectileCounts[ModContent.ProjectileType<Projectiles.Minion.SwordSumProj>()] > 0) {
                 modPlayer.DungeonSummon = true;
             }
             if (!modPlayer.DungeonSummon) {

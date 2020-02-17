@@ -26,13 +26,13 @@ namespace DrakSolz.NPCs.Enemy.Dungeon {
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 7500f;
             npc.knockBackResist = 0.05f;
-            banner = mod.NPCType<SilverKnight>();
-            bannerItem = mod.ItemType<Items.Banners.SilverKnightBanner>();
+            banner = ModContent.NPCType<SilverKnight>();
+            bannerItem = ModContent.ItemType<Items.Banners.SilverKnightBanner>();
         }
 
         public override void NPCLoot() {
             base.NPCLoot();
-            //DrakSolz.DropItem(npc, 12.5f, mod.ItemType<Items.Ranged.DragonslayerGreatbow>());
+            //DrakSolz.DropItem(npc, 12.5f, ModContent.ItemType<Items.Ranged.DragonslayerGreatbow>());
         }
     }
 }

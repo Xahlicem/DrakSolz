@@ -29,7 +29,7 @@ namespace DrakSolz.NPCs.Enemy.Dungeon {
             npc.knockBackResist = 0.25f;
             npc.alpha = 50;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.InhumanityBanner>();
+            bannerItem = ModContent.ItemType<Items.Banners.InhumanityBanner>();
         }
 
         public override int SpawnNPC(int tileX, int tileY) {
@@ -38,7 +38,7 @@ namespace DrakSolz.NPCs.Enemy.Dungeon {
         }
 
         public override void NPCLoot() {
-            //if (Main.rand.Next(150) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Summon.EffigyStaff>());
+            //if (Main.rand.Next(150) == 0) Item.NewItem(npc.position, npc.width, npc.height, ModContent.ItemType<Items.Summon.EffigyStaff>());
         }
     }
 }

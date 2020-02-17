@@ -63,7 +63,7 @@ namespace DrakSolz.Tiles {
                 default:
                     return;
             }
-            Item.NewItem(i * 16, j * 16, 16, 48, mod.ItemType(item));
+            Item.NewItem(i * 16, j * 16, 16, 48, DrakSolz.instance.ItemType(item));
         }
 
         public override void NearbyEffects(int i, int j, bool closer) {
@@ -73,42 +73,42 @@ namespace DrakSolz.Tiles {
                 string type;
                 switch (style) {
                     case 0:
-                    type = "Dragonlark";
-                    break;
-                case 1:
-                    type = "DustWailer";
-                    break;
-                case 2:
-                    type = "Shadowdancer";
-                    break;
-                case 3:
-                    type = "Nightsorrow";
-                    break;
-                case 4:
-                    type = "VoidTalon";
-                    break;
-                case 5:
-                    type = "NightmareOperant";
-                    break;
-                case 6:
-                    type = "Ghoulie";
-                    break;
-                case 7:
-                    type = "Silhouette";
-                    break;
-                case 8:
-                    type = "NightWatcher";
-                    break;
-                case 9:
-                    type = "ReaperNineMoons";
-                    break;
-                case 10:
-                    type = "BloodmoonAssassin";
-                    break;
+                        type = "Dragonlark";
+                        break;
+                    case 1:
+                        type = "DustWailer";
+                        break;
+                    case 2:
+                        type = "Shadowdancer";
+                        break;
+                    case 3:
+                        type = "Nightsorrow";
+                        break;
+                    case 4:
+                        type = "VoidTalon";
+                        break;
+                    case 5:
+                        type = "NightmareOperant";
+                        break;
+                    case 6:
+                        type = "Ghoulie";
+                        break;
+                    case 7:
+                        type = "Silhouette";
+                        break;
+                    case 8:
+                        type = "NightWatcher";
+                        break;
+                    case 9:
+                        type = "ReaperNineMoons";
+                        break;
+                    case 10:
+                        type = "BloodmoonAssassin";
+                        break;
                     default:
                         return;
                 }
-                player.NPCBannerBuff[mod.NPCType(type)] = true;
+                player.NPCBannerBuff[DrakSolz.instance.NPCType(type)] = true;
                 player.hasBanner = true;
             }
         }

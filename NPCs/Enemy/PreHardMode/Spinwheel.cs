@@ -29,7 +29,7 @@ namespace DrakSolz.NPCs.Enemy.PreHardMode {
             npc.teleportTime = 2f;
             npc.buffImmune[BuffID.Confused] = true;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.SpinwheelBanner>();
+            bannerItem = ModContent.ItemType<Items.Banners.SpinwheelBanner>();
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
@@ -39,7 +39,7 @@ namespace DrakSolz.NPCs.Enemy.PreHardMode {
         }
 
         public override void NPCLoot() {
-            if (Main.rand.Next(15) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Armor.Father.FatherMask>());
+            if (Main.rand.Next(15) == 0) Item.NewItem(npc.position, npc.width, npc.height, ModContent.ItemType<Items.Armor.Father.FatherMask>());
         }
 
         private void AdjustMagnitude(ref Vector2 vector) {

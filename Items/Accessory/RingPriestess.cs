@@ -21,7 +21,7 @@ namespace DrakSolz.Items.Accessory {
         public override void UpdateAccessory(Player player, bool hideVisual) {
             player.lifeRegen += 2;
 
-            int index = player.FindBuffIndex(mod.BuffType<Buffs.Hollow>());
+            int index = player.FindBuffIndex(ModContent.BuffType<Buffs.Hollow>());
             if (index != -1) player.buffTime[index]--;
         }
     }
@@ -29,7 +29,7 @@ namespace DrakSolz.Items.Accessory {
     public class RingPriestessDrop : GlobalNPC {
         public override void NPCLoot(NPC npc) {
             if (npc.type == NPCID.Paladin && Main.rand.Next(10) == 0)
-                Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Accessory.RingPriestess>());
+                Item.NewItem(npc.position, npc.width, npc.height, ModContent.ItemType<Items.Accessory.RingPriestess>());
         }
     }
 }

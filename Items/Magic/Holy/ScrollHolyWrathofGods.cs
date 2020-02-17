@@ -26,16 +26,16 @@ namespace DrakSolz.Items.Magic.Holy {
             item.shootSpeed = 20.0f;
             item.value = Item.buyPrice(1, 0, 0, 0);
             item.autoReuse = true;
-            item.shoot = mod.ProjectileType<Projectiles.ForceProj>();
+            item.shoot = ModContent.ProjectileType<Projectiles.ForceProj>();
             item.summon = true;
             item.magic = false;
         }
 
         public override void AddRecipes() {
             ModRecipe recipe = new SoulRecipe(mod, this);
-            recipe.AddIngredient(mod.ItemType<Items.Magic.Holy.ScrollHolyForce>());
-            recipe.AddIngredient(mod.ItemType<Items.Banners.SilverKnightBanner>());
-            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Magic.Holy.ScrollHolyForce>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Banners.SilverKnightBanner>());
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
             recipe.AddRecipe();
         }
 

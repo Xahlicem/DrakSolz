@@ -33,7 +33,7 @@ namespace DrakSolz.Items.Magic.MagnetSphere {
             public override void NPCLoot(NPC npc) {
                 if (Main.rand.Next(5) == 0 && NPC.downedAncientCultist) {
                     if (npc.type == NPCID.Eyezor) {
-                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Magic.MagnetSphere.FulminatingSphere>(), 1);
+                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ModContent.ItemType<Items.Magic.MagnetSphere.FulminatingSphere>(), 1);
                     }
                 }
             }

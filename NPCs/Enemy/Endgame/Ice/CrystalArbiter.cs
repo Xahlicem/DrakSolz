@@ -28,7 +28,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Ice {
             npc.value = 20f;
             npc.knockBackResist = 0.05f;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.LittleMushroomBanner>();
+            bannerItem = ModContent.ItemType<Items.Banners.LittleMushroomBanner>();
         }
         public override void AI() {
             npc.TargetClosest(true);

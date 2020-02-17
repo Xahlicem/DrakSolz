@@ -25,16 +25,16 @@ namespace DrakSolz.Items.Magic.Holy {
             item.knockBack = 2.5f;
             item.shootSpeed = 8.0f;
             item.value = Item.buyPrice(0, 4, 0, 0);
-            item.shoot = mod.ProjectileType<Projectiles.HolySpearProj>();
+            item.shoot = ModContent.ProjectileType<Projectiles.HolySpearProj>();
             item.summon = true;
             item.magic = false;
         }
 
         public override void AddRecipes() {
             ModRecipe recipe = new SoulRecipe(mod, this);
-            recipe.AddIngredient(mod.ItemType<Items.Misc.ScrollHoly>());
-            recipe.AddIngredient(mod.ItemType<Items.Misc.Twink>());
-            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Misc.ScrollHoly>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Misc.Twink>());
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
             recipe.AddRecipe();
         }
 

@@ -25,7 +25,7 @@ namespace DrakSolz.Items.Throwing {
             item.rare = 5;
             item.UseSound = SoundID.Item11;
             item.autoReuse = true;
-            item.shoot = mod.ProjectileType<Projectiles.VorpalDaggerProj>();
+            item.shoot = ModContent.ProjectileType<Projectiles.VorpalDaggerProj>();
             item.shootSpeed = 8f;
         }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack) {
@@ -45,8 +45,8 @@ namespace DrakSolz.Items.Throwing {
         public class VorpalDaggerGlobalNPC : GlobalNPC {
             public override void NPCLoot(NPC npc) {
                 if (Main.rand.Next(15) == 0) {
-                    if (npc.type == mod.NPCType<NPCs.Enemy.Endgame.Corrupt.VorpalReaver>()) {
-                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Throwing.VorpalDagger>(), 1);
+                    if (npc.type == ModContent.NPCType<NPCs.Enemy.Endgame.Corrupt.VorpalReaver>()) {
+                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ModContent.ItemType<Items.Throwing.VorpalDagger>(), 1);
                     }
                 }
             }

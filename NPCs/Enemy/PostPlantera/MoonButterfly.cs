@@ -28,7 +28,7 @@ namespace DrakSolz.NPCs.Enemy.PostPlantera {
             npc.knockBackResist = 0f;
             npc.rarity = 1;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.MoonButterflyBanner>();
+            bannerItem = ModContent.ItemType<Items.Banners.MoonButterflyBanner>();
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
@@ -71,12 +71,12 @@ namespace DrakSolz.NPCs.Enemy.PostPlantera {
                     float rotation = MathHelper.ToRadians(30);
                     for (int i = 0; i < numberProjectiles; i++) {
                         Vector2 perturbedSpeed = new Vector2(vector.X, vector.Y).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1))) * .2f; // Watch out for dividing by 0 if there is only 1 projectile.
-                        int proj = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, perturbedSpeed.X * 15, perturbedSpeed.Y * 15, mod.ProjectileType<Projectiles.Magic.MoonButterflyProj>(), npc.damage, 0);
+                        int proj = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, perturbedSpeed.X * 15, perturbedSpeed.Y * 15, ModContent.ProjectileType<Projectiles.Magic.MoonButterflyProj>(), npc.damage, 0);
                         Main.projectile[proj].scale *= 0.4f;
                         Main.projectile[proj].friendly = false;
                         Main.projectile[proj].hostile = true;
                     }
-                    /*int proj = Projectile.NewProjectile(npc.Center, vector, mod.ProjectileType<Projectiles.Magic.MoonButterflyProj>(), npc.damage, 0);
+                    /*int proj = Projectile.NewProjectile(npc.Center, vector, ModContent.ProjectileType<Projectiles.Magic.MoonButterflyProj>(), npc.damage, 0);
                     Main.projectile[proj].friendly = false;
                     Main.projectile[proj].hostile = true;
                     Main.projectile[proj].netUpdate = true;*/
@@ -92,8 +92,8 @@ namespace DrakSolz.NPCs.Enemy.PostPlantera {
             for (int i = 0; i < 6; i++)
                 DrakSolz.CreateGore(mod, npc, "Gores/MoonButterfly/Gore_" + i);
 
-            DrakSolz.DropItem(npc, 100f, mod.ItemType<Items.Misc.Twink>());
-            DrakSolz.DropItem(npc, 20f, mod.ItemType<Items.Misc.MoonButterflyHorn>());
+            DrakSolz.DropItem(npc, 100f, ModContent.ItemType<Items.Misc.Twink>());
+            DrakSolz.DropItem(npc, 20f, ModContent.ItemType<Items.Misc.MoonButterflyHorn>());
         }
         private Vector2 GetVelocity(Player player) {
             Vector2 vector = player.Center - npc.Center;

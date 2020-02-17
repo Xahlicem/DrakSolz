@@ -24,7 +24,7 @@ namespace DrakSolz.Items.Magic {
         }
 
         public override bool CanUseItem(Player player) {
-            int mbuff = player.FindBuffIndex(mod.BuffType<Buffs.MageSwordBuff>());
+            int mbuff = player.FindBuffIndex(ModContent.BuffType<Buffs.MageSwordBuff>());
             int idamage = item.damage;
             int iuse = item.useAnimation;
             int iani = item.useTime;
@@ -35,7 +35,7 @@ namespace DrakSolz.Items.Magic {
             if (mbuff < 0) {
                 foreach (Item i in player.inventory)
                     if (i == item) {
-                        i.netDefaults(mod.ItemType<Items.Magic.ScrollSword>());
+                        i.netDefaults(ModContent.ItemType<Items.Magic.ScrollSword>());
                         i.damage = idamage;
                         i.useAnimation = iuse;
                         i.useTime = iani;

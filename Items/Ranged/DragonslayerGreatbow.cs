@@ -30,7 +30,7 @@ namespace DrakSolz.Items.Ranged
 			item.autoReuse = true;
 			item.shoot = 10; //idk why but all the guns in the vanilla source have this
 			item.shootSpeed = 16f;
-			item.useAmmo = (mod.ItemType<Items.Ranged.DragonslayerGreatarrow>());
+			item.useAmmo = (ModContent.ItemType<Items.Ranged.DragonslayerGreatarrow>());
 		}
 
 		/*public override void AddRecipes()

@@ -27,7 +27,7 @@ namespace DrakSolz.Items.Armor.Void {
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.LunarBar, 12);
-            recipe.AddIngredient(mod.ItemType<Items.Misc.VoidFragment>(), 15);
+            recipe.AddIngredient(ModContent.ItemType<Items.Misc.VoidFragment>(), 15);
             recipe.AddTile(TileID.LunarCraftingStation);
             recipe.SetResult(this);
             recipe.AddRecipe();

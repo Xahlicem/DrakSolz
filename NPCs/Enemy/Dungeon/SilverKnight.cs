@@ -28,7 +28,7 @@ namespace DrakSolz.NPCs.Enemy.Dungeon {
             npc.value = 7000f;
             npc.knockBackResist = 0.06f;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.SilverKnightBanner>();
+            bannerItem = ModContent.ItemType<Items.Banners.SilverKnightBanner>();
         }
         
         public override void NPCLoot() {
@@ -36,8 +36,8 @@ namespace DrakSolz.NPCs.Enemy.Dungeon {
             DrakSolz.CreateGore(mod, npc, "Gores/SilverKnight/Body");
             DrakSolz.CreateGore(mod, npc, "Gores/SilverKnight/Head");
 
-            DrakSolz.DropItem(npc, 1.35f, mod.ItemType<Items.Armor.SilverKnight.SilverKnightHelmet>(), mod.ItemType<Items.Armor.SilverKnight.SilverKnightArmor>(), mod.ItemType<Items.Armor.SilverKnight.SilverKnightLeggings>());
-            DrakSolz.DropItem(npc, 12.5f, mod.ItemType<Items.Misc.Titanite>());
+            DrakSolz.DropItem(npc, 1.35f, ModContent.ItemType<Items.Armor.SilverKnight.SilverKnightHelmet>(), ModContent.ItemType<Items.Armor.SilverKnight.SilverKnightArmor>(), ModContent.ItemType<Items.Armor.SilverKnight.SilverKnightLeggings>());
+            DrakSolz.DropItem(npc, 12.5f, ModContent.ItemType<Items.Misc.Titanite>());
         }
     }
 

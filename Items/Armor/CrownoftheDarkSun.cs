@@ -46,10 +46,10 @@ namespace DrakSolz.Items.Armor {
         }
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType<Items.Misc.Twink>(), 1);
+            recipe.AddIngredient(ModContent.ItemType<Items.Misc.Twink>(), 1);
             recipe.AddIngredient(ItemID.UnicornHorn, 8);
             recipe.AddIngredient(ItemID.GoldBar, 10);
-            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

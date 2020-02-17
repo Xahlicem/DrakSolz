@@ -24,7 +24,7 @@ namespace DrakSolz.Items.Magic {
             item.shootSpeed = 0f;
             item.value = Item.buyPrice(0, 70, 0, 0);
             item.autoReuse = true;
-            item.shoot = mod.ProjectileType<Projectiles.Magic.FlameMageProj2>();
+            item.shoot = ModContent.ProjectileType<Projectiles.Magic.FlameMageProj2>();
         }
 
         public override bool CanUseItem(Player player) {
@@ -65,8 +65,8 @@ namespace DrakSolz.Items.Magic {
         }
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType<Items.Magic.IT>());
-            recipe.AddIngredient(mod.ItemType<Items.Souls.GolemSoul>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Magic.IT>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Souls.GolemSoul>());
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

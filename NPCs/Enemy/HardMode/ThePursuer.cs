@@ -26,7 +26,7 @@ namespace DrakSolz.NPCs.Enemy.HardMode {
             npc.value = 2500f;
             npc.knockBackResist = 0.05f;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.PursuerBanner>();
+            bannerItem = ModContent.ItemType<Items.Banners.PursuerBanner>();
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {

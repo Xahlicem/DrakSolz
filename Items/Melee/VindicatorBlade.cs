@@ -19,7 +19,7 @@ namespace DrakSolz.Items.Melee {
             item.useAnimation = 25;
             item.autoReuse = true;
             item.value = Item.buyPrice(1, 0, 0, 0);
-            item.shoot = mod.ProjectileType<Projectiles.VindicatorProj>();
+            item.shoot = ModContent.ProjectileType<Projectiles.VindicatorProj>();
             item.shootSpeed = 20f;
         }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack) {
@@ -48,8 +48,8 @@ namespace DrakSolz.Items.Melee {
         public class VindicatorBladeGlobalNPC : GlobalNPC {
             public override void NPCLoot(NPC npc) {
                 if (Main.rand.Next(15) == 0) {
-                    if (npc.type == mod.NPCType<NPCs.Enemy.Endgame.Jungle.Vindicator>() ) {
-                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Melee.VindicatorBlade>(), 1);
+                    if (npc.type == ModContent.NPCType<NPCs.Enemy.Endgame.Jungle.Vindicator>() ) {
+                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ModContent.ItemType<Items.Melee.VindicatorBlade>(), 1);
                     }
                 }
             }

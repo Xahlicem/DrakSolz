@@ -28,7 +28,7 @@ namespace DrakSolz.Items.Armor {
             return false;
         }
         public override bool IsArmorSet(Item head, Item body, Item legs) {
-            return body.type == mod.ItemType<Items.Armor.GibbetBody>() && legs.type == mod.ItemType<Items.Armor.GibbetLegs>();
+            return body.type == ModContent.ItemType<Items.Armor.GibbetBody>() && legs.type == ModContent.ItemType<Items.Armor.GibbetLegs>();
         }
 
         public override void UpdateArmorSet(Player player) {
@@ -62,8 +62,8 @@ namespace DrakSolz.Items.Armor {
         public class GibbetHeadGlobalNPC : GlobalNPC {
             public override void NPCLoot(NPC npc) {
                 if (Main.rand.Next(15) == 0) {
-                    if (npc.type == mod.NPCType<NPCs.Enemy.Endgame.Corrupt.Gibbet>() ) {
-                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Armor.GibbetHead>(), 1);
+                    if (npc.type == ModContent.NPCType<NPCs.Enemy.Endgame.Corrupt.Gibbet>() ) {
+                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ModContent.ItemType<Items.Armor.GibbetHead>(), 1);
                     }
                 }
             }

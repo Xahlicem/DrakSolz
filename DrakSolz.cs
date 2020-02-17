@@ -81,7 +81,7 @@ namespace DrakSolz {
             });
 
             if (Main.dedServ) return;
-            ui = new SoulUI(GetItem<Items.Souls.Soul>());
+            ui = new SoulUI(ModContent.GetInstance<Items.Souls.Soul>());
             ui.Activate();
             userInterface = new UserInterface();
             userInterface.SetState(ui);
@@ -175,7 +175,7 @@ namespace DrakSolz {
                     break;
 
                 default:
-                    ErrorLogger.Log("Drak Solz: Unknown Message type: " + msgType);
+                    Logger.Error("Drak Solz: Unknown Message type: " + msgType);
                     break;
             }
         }

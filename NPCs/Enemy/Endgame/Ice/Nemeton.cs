@@ -28,7 +28,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Ice {
             npc.value = 20f;
             npc.knockBackResist = 0.05f;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.LittleMushroomBanner>();
+            bannerItem = ModContent.ItemType<Items.Banners.LittleMushroomBanner>();
         }
 
         const int AI_Timer_Slot = 3;
@@ -71,7 +71,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Ice {
                         Main.projectile[proj].hostile = true;
                         Main.projectile[proj].velocity *= 0.07f;
                     }
-                    /*int proj = Projectile.NewProjectile(npc.Center, vector, mod.ProjectileType<Projectiles.Magic.MoonButterflyProj>(), npc.damage, 0);
+                    /*int proj = Projectile.NewProjectile(npc.Center, vector, ModContent.ProjectileType<Projectiles.Magic.MoonButterflyProj>(), npc.damage, 0);
                     Main.projectile[proj].friendly = false;
                     Main.projectile[proj].hostile = true;
                     Main.projectile[proj].netUpdate = true;*/

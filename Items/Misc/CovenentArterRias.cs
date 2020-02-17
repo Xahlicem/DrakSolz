@@ -27,13 +27,13 @@ namespace DrakSolz.Items.Misc {
         public override bool UseItem(Player player) {
             player.AddBuff(BuffID.Panic, 3600);
             Main.NewText("The legendary Arter Rias has arisen!", 25, 25, 75);
-            NPC.NewNPC((int) player.Center.X, (int) player.Center.Y - 180, mod.NPCType<NPCs.Enemy.Boss.AbyssStalker>());
+            NPC.NewNPC((int) player.Center.X, (int) player.Center.Y - 180, ModContent.NPCType<NPCs.Enemy.Boss.AbyssStalker>());
             return true;
         }
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType<Items.Misc.DemonTitanite>(), 1);
-            recipe.AddIngredient(mod.ItemType<Items.Banners.RingedKnightBanner>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Misc.DemonTitanite>(), 1);
+            recipe.AddIngredient(ModContent.ItemType<Items.Banners.RingedKnightBanner>());
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

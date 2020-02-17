@@ -83,7 +83,7 @@ namespace DrakSolz.Items.Souls {
     public class SoulGlobalNPC : GlobalNPC {
         public override void NPCLoot(NPC npc) {
             if (npc.aiStyle == 9 || npc.aiStyle == 50) return;
-            if (DrakSolz.ListBossSoul.Contains(npc.type) || npc.type == mod.NPCType<NPCs.Enemy.Boss.AbyssStalker>() || npc.type == mod.NPCType<NPCs.Enemy.Boss.TitaniteDemon>()) return;
+            if (DrakSolz.ListBossSoul.Contains(npc.type) || npc.type == ModContent.NPCType<NPCs.Enemy.Boss.AbyssStalker>() || npc.type == ModContent.NPCType<NPCs.Enemy.Boss.TitaniteDemon>()) return;
 
             double num = Math.Ceiling(Math.Pow(Math.Sqrt(npc.defDamage) + Math.Sqrt(npc.defDefense) + Math.Sqrt(npc.lifeMax) - 1, 4) / (Math.Sqrt(npc.lifeMax) * 200));
             if (npc.TypeName == "Crawltipede") {
@@ -96,11 +96,11 @@ namespace DrakSolz.Items.Souls {
                         players.Add(Main.player[i].whoAmI);
             num = Math.Ceiling(num / ((players.Count == 0) ? 1d : (double) players.Count));
             if (players.Count == 0) {
-                int item = Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Souls.Soul>(), (int) num);
+                int item = Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ModContent.ItemType<Items.Souls.Soul>(), (int) num);
                 Main.item[item].GetGlobalItem<Items.DSGlobalItem>().FromPlayer = -1;
             } else
                 for (int i = 0; i < players.Count; i++) {
-                    int item = Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Souls.Soul>(), (int) num);
+                    int item = Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ModContent.ItemType<Items.Souls.Soul>(), (int) num);
                     Main.item[item].GetGlobalItem<Items.DSGlobalItem>().FromPlayer = players[i];
                 }
         }

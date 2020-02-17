@@ -26,7 +26,7 @@ namespace DrakSolz.Items.Magic {
             item.value = Item.buyPrice(1, 0, 0, 0);
             item.shootSpeed = 0f;
             item.autoReuse = false;
-            item.shoot = mod.ProjectileType<Projectiles.HereticProj>();
+            item.shoot = ModContent.ProjectileType<Projectiles.HereticProj>();
         }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack) {
             int pro = Projectile.NewProjectile(Main.mouseX + Main.screenPosition.X, Main.mouseY + Main.screenPosition.Y, 0, 0, type, damage, knockBack, player.whoAmI);

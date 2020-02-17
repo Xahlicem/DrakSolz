@@ -28,7 +28,7 @@ namespace DrakSolz.Items.Magic {
             item.UseSound = SoundID.Item20;
             item.autoReuse = true;
             item.shootSpeed = 18f;
-            item.shoot = mod.ProjectileType<Projectiles.MGSProj>();
+            item.shoot = ModContent.ProjectileType<Projectiles.MGSProj>();
         }
 
         public override bool CanUseItem(Player player) {

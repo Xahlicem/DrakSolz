@@ -24,7 +24,7 @@ namespace DrakSolz.Items.Armor.Ringed {
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs) {
-            return body.type == mod.ItemType<Items.Armor.Ringed.RingedArmor>() && legs.type == mod.ItemType<Items.Armor.Ringed.RingedLeggings>();
+            return body.type == ModContent.ItemType<Items.Armor.Ringed.RingedArmor>() && legs.type == ModContent.ItemType<Items.Armor.Ringed.RingedLeggings>();
         }
 
         public override void UpdateArmorSet(Player player) {
@@ -78,8 +78,8 @@ namespace DrakSolz.Items.Armor.Ringed {
         }
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType<Items.Banners.RingedKnightBanner>(), 5);
-            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Banners.RingedKnightBanner>(), 5);
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

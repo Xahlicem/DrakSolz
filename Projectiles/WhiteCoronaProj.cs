@@ -77,7 +77,7 @@ namespace DrakSolz.Projectiles {
                 projectile.frameCounter = 0;
                 if (++projectile.frame >= 4) {
                     /*if (projectile.timeLeft >= 10) {
-                        int proj = Projectile.NewProjectile(new Vector2(projectile.Center.X, projectile.Center.Y), new Vector2(0, 0), mod.ProjectileType<Projectiles.WhiteCoronaProj>(), projectile.damage * 0, 0, projectile.owner);
+                        int proj = Projectile.NewProjectile(new Vector2(projectile.Center.X, projectile.Center.Y), new Vector2(0, 0), ModContent.ProjectileType<Projectiles.WhiteCoronaProj>(), projectile.damage * 0, 0, projectile.owner);
                         Main.projectile[proj].alpha = 100;
                         Main.projectile[proj].timeLeft = 9;
                         Main.projectile[proj].velocity *= 0.1f;

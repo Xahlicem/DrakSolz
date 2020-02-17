@@ -37,7 +37,7 @@ namespace DrakSolz.Items.Summon.Consumable {
         }
 
         public override bool CanUseItem(Player player) {
-            return player.ownedProjectileCounts[mod.ProjectileType(MinionType)] + player.ownedProjectileCounts[item.shoot] < 5;
+            return player.ownedProjectileCounts[DrakSolz.instance.ProjectileType(MinionType)] + player.ownedProjectileCounts[item.shoot] < 5;
         }
 
         public override bool AltFunctionUse(Player player) {

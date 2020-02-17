@@ -25,13 +25,13 @@ namespace DrakSolz.Items.Magic {
             item.shootSpeed = 30.0f;
             item.rare = 9;
             item.autoReuse = true;
-            item.shoot = mod.ProjectileType<Projectiles.Magic.SoulSpearBarrageProj>();
+            item.shoot = ModContent.ProjectileType<Projectiles.Magic.SoulSpearBarrageProj>();
         }
 
         public override void AddRecipes() {
             ModRecipe recipe = new SoulRecipe(mod, this);
-            recipe.AddIngredient(mod.ItemType<Items.Magic.ScrollSpear>());
-            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Magic.ScrollSpear>());
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
             recipe.AddRecipe();
         }
 

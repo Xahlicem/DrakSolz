@@ -13,16 +13,16 @@ namespace DrakSolz.Items.Souls {
 
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType<Items.Souls.RetSoul>());
-            recipe.AddIngredient(mod.ItemType<Items.Souls.SpazSoul>());
-            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Souls.RetSoul>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Souls.SpazSoul>());
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
             recipe.SetResult(this);
             recipe.AddRecipe();
 
             recipe = new ModRecipe(mod);
             recipe.AddIngredient(this);
-            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
-            recipe.SetResult(mod.ItemType<Items.Accessory.RingAvarice>());
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
+            recipe.SetResult(ModContent.ItemType<Items.Accessory.RingAvarice>());
             recipe.AddRecipe();
         }
     }

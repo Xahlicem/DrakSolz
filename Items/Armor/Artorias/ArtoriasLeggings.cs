@@ -25,8 +25,8 @@ namespace DrakSolz.Items.Armor.Artorias {
         }
         public class ArtoriasLeggingsGlobalNPC : GlobalNPC {
             public override void NPCLoot(NPC npc) {
-                if (npc.type == mod.NPCType<NPCs.Enemy.Boss.AbyssStalker>()) {
-                    Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Armor.Artorias.ArtoriasLeggings>(), 1);
+                if (npc.type == ModContent.NPCType<NPCs.Enemy.Boss.AbyssStalker>()) {
+                    Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ModContent.ItemType<Items.Armor.Artorias.ArtoriasLeggings>(), 1);
                 }
             }
         }

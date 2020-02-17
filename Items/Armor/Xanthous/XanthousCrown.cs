@@ -30,7 +30,7 @@ namespace DrakSolz.Items.Armor.Xanthous {
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs) {
-            return body.type == mod.ItemType<Items.Armor.Xanthous.XanthousOvercoat>() && legs.type == mod.ItemType<Items.Armor.Xanthous.XanthousWaistcloth>();
+            return body.type == ModContent.ItemType<Items.Armor.Xanthous.XanthousOvercoat>() && legs.type == ModContent.ItemType<Items.Armor.Xanthous.XanthousWaistcloth>();
         }
 
         public override void UpdateArmorSet(Player player) {
@@ -49,7 +49,7 @@ namespace DrakSolz.Items.Armor.Xanthous {
                 ModRecipe recipe = new ModRecipe(mod);
                 recipe.AddIngredient(ItemID.LihzahrdPowerCell, 1);
                 recipe.AddIngredient(ItemID.LivingFireBlock, 25);
-                recipe.AddIngredient(mod.ItemType<Items.Armor.Tattered.TatteredHat>());
+                recipe.AddIngredient(ModContent.ItemType<Items.Armor.Tattered.TatteredHat>());
                 recipe.AddTile(TileID.MythrilAnvil);
                 recipe.SetResult(this);
                 recipe.AddRecipe();

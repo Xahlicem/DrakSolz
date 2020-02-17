@@ -27,7 +27,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Corrupt {
             npc.knockBackResist = 0.25f;
             npc.rarity = 0;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.CorruptBanners.DeepfireDevourerBanner>();
+            bannerItem = ModContent.ItemType<Items.Banners.CorruptBanners.DeepfireDevourerBanner>();
         }
 
         const int AI_Timer_Slot = 3;
@@ -70,7 +70,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Corrupt {
                         Main.projectile[proj].hostile = true;
                         Main.projectile[proj].velocity *= 0.35f;
                     }
-                    /*int proj = Projectile.NewProjectile(npc.Center, vector, mod.ProjectileType<Projectiles.Magic.MoonButterflyProj>(), npc.damage, 0);
+                    /*int proj = Projectile.NewProjectile(npc.Center, vector, ModContent.ProjectileType<Projectiles.Magic.MoonButterflyProj>(), npc.damage, 0);
                     Main.projectile[proj].friendly = false;
                     Main.projectile[proj].hostile = true;
                     Main.projectile[proj].netUpdate = true;*/

@@ -29,15 +29,15 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Secret {
             npc.knockBackResist = 0.9f;
             npc.lavaImmune = true;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.InfernalBanner>();
+            bannerItem = ModContent.ItemType<Items.Banners.InfernalBanner>();
         }
 
         public override void FindFrame(int frameHeight) {
             npc.spriteDirection = npc.direction * -1;
         }
         public override void NPCLoot() {
-            if (Main.rand.Next(5) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Misc.Lifegem>());
-            if (Main.rand.Next(20) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Misc.HomewardBone>());
+            if (Main.rand.Next(5) == 0) Item.NewItem(npc.position, npc.width, npc.height, ModContent.ItemType<Items.Misc.Lifegem>());
+            if (Main.rand.Next(20) == 0) Item.NewItem(npc.position, npc.width, npc.height, ModContent.ItemType<Items.Misc.HomewardBone>());
         }
 
     }

@@ -27,7 +27,7 @@ namespace DrakSolz.NPCs.Enemy {
             npc.value = 10000f;
             npc.knockBackResist = 0.02f;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.RingedKnightBanner>();
+            bannerItem = ModContent.ItemType<Items.Banners.RingedKnightBanner>();
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
             if (NPC.downedAncientCultist) {
@@ -47,10 +47,10 @@ namespace DrakSolz.NPCs.Enemy {
             Main.gore[g].scale = npc.scale;
             if (Main.rand.Next(15) == 0)
                 Item.NewItem(npc.Center, npc.width, npc.height, Utils.SelectRandom(Main.rand, new int[] {
-                    mod.ItemType<Items.Armor.BlackKnight.BlackKnightHelmet>(), mod.ItemType<Items.Armor.BlackKnight.BlackKnightArmor>(), mod.ItemType<Items.Armor.BlackKnight.BlackKnightLeggings>()
+                    ModContent.ItemType<Items.Armor.BlackKnight.BlackKnightHelmet>(), ModContent.ItemType<Items.Armor.BlackKnight.BlackKnightArmor>(), ModContent.ItemType<Items.Armor.BlackKnight.BlackKnightLeggings>()
                 }));
-            //if (Main.rand.Next(8) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Melee.DragonSlayerSpear>());
-            Item.NewItem(npc.Center, npc.width, npc.height, mod.ItemType<Items.Misc.Titanite>(), Main.rand.Next(1, 2));
+            //if (Main.rand.Next(8) == 0) Item.NewItem(npc.position, npc.width, npc.height, ModContent.ItemType<Items.Melee.DragonSlayerSpear>());
+            Item.NewItem(npc.Center, npc.width, npc.height, ModContent.ItemType<Items.Misc.Titanite>(), Main.rand.Next(1, 2));
         }*/
     }
 }

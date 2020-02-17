@@ -14,32 +14,32 @@ namespace DrakSolz.Items.Souls {
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(this);
-            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
-            recipe.SetResult(mod.ItemType<Items.Accessory.RingMeleePower>());
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
+            recipe.SetResult(ModContent.ItemType<Items.Accessory.RingMeleePower>());
             recipe.AddRecipe();
 
             recipe = new ModRecipe(mod);
             recipe.AddIngredient(this);
-            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
-            recipe.SetResult(mod.ItemType<Items.Accessory.RingMagicPower>());
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
+            recipe.SetResult(ModContent.ItemType<Items.Accessory.RingMagicPower>());
             recipe.AddRecipe();
 
             recipe = new ModRecipe(mod);
             recipe.AddIngredient(this);
-            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
-            recipe.SetResult(mod.ItemType<Items.Accessory.RingRangePower>());
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
+            recipe.SetResult(ModContent.ItemType<Items.Accessory.RingRangePower>());
             recipe.AddRecipe();
 
             recipe = new ModRecipe(mod);
             recipe.AddIngredient(this);
-            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
-            recipe.SetResult(mod.ItemType<Items.Accessory.RingSummonPower>());
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
+            recipe.SetResult(ModContent.ItemType<Items.Accessory.RingSummonPower>());
             recipe.AddRecipe();
 
             recipe = new ModRecipe(mod);
             recipe.AddIngredient(this);
-            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
-            recipe.SetResult(mod.ItemType<Items.Accessory.RingThrowingPower>());
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
+            recipe.SetResult(ModContent.ItemType<Items.Accessory.RingThrowingPower>());
             recipe.AddRecipe();
         }
     }

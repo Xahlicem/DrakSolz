@@ -23,7 +23,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Hallow {
             npc.value = 20f;
             npc.knockBackResist = 0;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.HolyBanners.SolariusBanner>();
+            bannerItem = ModContent.ItemType<Items.Banners.HolyBanners.SolariusBanner>();
             npc.aiStyle = -1;
             npc.localAI[0] = 0f;
             npc.localAI[1] = 0f;

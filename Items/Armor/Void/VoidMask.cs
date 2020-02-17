@@ -28,7 +28,7 @@ namespace DrakSolz.Items.Armor.Void {
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs) {
-            return body.type == mod.ItemType<Items.Armor.Void.VoidChest>() && legs.type == mod.ItemType<Items.Armor.Void.VoidLeggings>();
+            return body.type == ModContent.ItemType<Items.Armor.Void.VoidChest>() && legs.type == ModContent.ItemType<Items.Armor.Void.VoidLeggings>();
         }
 
         public override void UpdateArmorSet(Player player) {
@@ -68,7 +68,7 @@ namespace DrakSolz.Items.Armor.Void {
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.LunarBar, 8);
-            recipe.AddIngredient(mod.ItemType<Items.Misc.VoidFragment>(), 10);
+            recipe.AddIngredient(ModContent.ItemType<Items.Misc.VoidFragment>(), 10);
             recipe.AddTile(TileID.LunarCraftingStation);
             recipe.SetResult(this);
             recipe.AddRecipe();

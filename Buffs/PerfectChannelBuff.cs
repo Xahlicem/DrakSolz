@@ -25,7 +25,7 @@ namespace DrakSolz.Buffs {
             player.minionDamage *= increase;
             player.meleeDamage *= increase;
 
-            int index = player.FindBuffIndex(mod.BuffType<Buffs.ChannelBuff>());
+            int index = player.FindBuffIndex(ModContent.BuffType<Buffs.ChannelBuff>());
             if (index != -1) player.buffTime[index] = 0;
         }
     }

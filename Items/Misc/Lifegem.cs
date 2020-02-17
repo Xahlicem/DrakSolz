@@ -28,7 +28,7 @@ namespace DrakSolz.Items.Misc {
         public override bool UseItem(Player player) {
             player.AddBuff(BuffID.Regeneration, 600);
 
-            int index = player.FindBuffIndex(mod.BuffType<Buffs.Hollow>());
+            int index = player.FindBuffIndex(ModContent.BuffType<Buffs.Hollow>());
             player.GetModPlayer<DrakSolzPlayer>().DecreaseHollow(3600);
             return true;
         }
@@ -50,7 +50,7 @@ namespace DrakSolz.Items.Misc {
                         npc.type == NPCID.SmallTwiggyZombie || npc.type == NPCID.SwampZombie ||
                         npc.type == NPCID.TwiggyZombie || npc.type == NPCID.PincushionZombie ||
                         npc.type == NPCID.FemaleZombie || npc.type == NPCID.ArmedZombieCenx) {
-                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Misc.Lifegem>(), 1);
+                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ModContent.ItemType<Items.Misc.Lifegem>(), 1);
                     }
                 }
             }

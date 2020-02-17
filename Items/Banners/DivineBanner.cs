@@ -15,7 +15,7 @@ namespace DrakSolz.Items.Banners {
             item.consumable = true;
             item.rare = 1;
             item.value = Item.buyPrice(0, 0, 10, 0);
-            item.createTile = mod.TileType<Tiles.DungeonBanner>();
+            item.createTile = ModContent.TileType<Tiles.DungeonBanner>();
             item.placeStyle = 11; //Place style means which frame(Horizontally, starting from 0) of the tile should be placed
         }
     }

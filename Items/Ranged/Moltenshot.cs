@@ -3,18 +3,14 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace DrakSolz.Items.Ranged
-{
-	public class Moltenshot : ModItem
-	{
-		public override void SetStaticDefaults()
-		{
-            DisplayName.SetDefault("Moltenshot");
+namespace DrakSolz.Items.Ranged {
+	public class Moltenshot : ModItem {
+		public override void SetStaticDefaults() {
+			DisplayName.SetDefault("Moltenshot");
 			Tooltip.SetDefault("Slingshot imbued with fire. Shoot flaming balls at your enemies!");
 		}
 
-		public override void SetDefaults()
-		{
+		public override void SetDefaults() {
 			item.damage = 15;
 			item.ranged = true;
 			item.width = 20;
@@ -30,7 +26,7 @@ namespace DrakSolz.Items.Ranged
 			item.autoReuse = true;
 			item.shoot = 10; //idk why but all the guns in the vanilla source have this
 			item.shootSpeed = 6.0f;
-			item.useAmmo = (mod.ItemType<Items.Ranged.SlingshotStones>());
+			item.useAmmo = (ModContent.ItemType<Items.Ranged.SlingshotStones>());
 		}
 
 		/*public override void AddRecipes()
@@ -50,14 +46,13 @@ namespace DrakSolz.Items.Ranged
 
 		// What if I wanted it to work like Uzi, replacing regular bullets with High Velocity Bullets?
 		// Uzi/Molten Fury style: Replace normal Bullets with Highvelocity
-		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
-		{
-			if (type == mod.ProjectileType("SlingshotStonesProj")) // or ProjectileID.WoodenArrowFriendly
+		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack) {
+			if (type == ModContent.ProjectileType<Projectiles.SlingshotStonesProj>()) // or ProjectileID.WoodenArrowFriendly
 			{
 				type = ProjectileID.ImpFireball; // or ProjectileID.FireArrow;
 			}
 			if (type == ProjectileID.SpikyBall) {
-				type = mod.ProjectileType("SlingshotMoltenSpikyProj");
+				type = ModContent.ProjectileType<Projectiles.SlingshotMoltenSpikyProj>();
 			}
 			return true; // return true to allow tmodloader to call Projectile.NewProjectile as normal
 		}
@@ -104,8 +99,7 @@ namespace DrakSolz.Items.Ranged
 		}*/
 
 		// Help, my gun isn't being held at the handle! Adjust these 2 numbers until it looks right.
-		public override Vector2? HoldoutOffset()
-		{
+		public override Vector2? HoldoutOffset() {
 			return new Vector2(-2, 0);
 		}
 
@@ -121,12 +115,12 @@ namespace DrakSolz.Items.Ranged
 			return true;
 		}*/
 		public override void AddRecipes() {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.SetResult(this);
-            recipe.AddIngredient(mod.ItemType<Items.Ranged.GoldenSlingshot>(), 1);
-            recipe.AddIngredient(ItemID.HellstoneBar, 10);
-            recipe.AddTile(TileID.Anvils);
-            recipe.AddRecipe();
-        }
-    }
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.SetResult(this);
+			recipe.AddIngredient(ModContent.ItemType<Items.Ranged.GoldenSlingshot>(), 1);
+			recipe.AddIngredient(ItemID.HellstoneBar, 10);
+			recipe.AddTile(TileID.Anvils);
+			recipe.AddRecipe();
+		}
+	}
 }

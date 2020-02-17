@@ -26,7 +26,7 @@ namespace DrakSolz.Items.Armor.SilverKnight {
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs) {
-            return body.type == mod.ItemType<Items.Armor.SilverKnight.SilverKnightArmor>() && legs.type == mod.ItemType<Items.Armor.SilverKnight.SilverKnightLeggings>();
+            return body.type == ModContent.ItemType<Items.Armor.SilverKnight.SilverKnightArmor>() && legs.type == ModContent.ItemType<Items.Armor.SilverKnight.SilverKnightLeggings>();
         }
 
         public override void UpdateArmorSet(Player player) {
@@ -50,8 +50,8 @@ namespace DrakSolz.Items.Armor.SilverKnight {
         }
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType<Items.Misc.Titanite>(), 20);
-            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Misc.Titanite>(), 20);
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

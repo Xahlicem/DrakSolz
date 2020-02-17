@@ -32,9 +32,9 @@ namespace DrakSolz.Items.Melee {
 		}
                 public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType<Items.Melee.Lament>());
-            recipe.AddIngredient(mod.ItemType<Items.Souls.TitaniteSoul>());
-            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Melee.Lament>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Souls.TitaniteSoul>());
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

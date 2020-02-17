@@ -31,7 +31,7 @@ namespace DrakSolz.NPCs.Enemy.PreHardMode.Hollow {
             npc.lifeMax = 70;
             npc.value = 100f;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.HollowBanner>();
+            bannerItem = ModContent.ItemType<Items.Banners.HollowBanner>();
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
@@ -47,8 +47,8 @@ namespace DrakSolz.NPCs.Enemy.PreHardMode.Hollow {
             DrakSolz.CreateGore(mod, npc, "Gores/Hollow/Gore_1");
             DrakSolz.CreateGore(mod, npc, "Gores/Hollow/Gore_2");
             DrakSolz.CreateGore(mod, npc, "Gores/Hollow/Gore_3");
-            if (Main.rand.Next(7) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Misc.Lifegem>());
-            if (Main.rand.Next(20) == 0) Item.NewItem(npc.position, npc.width, npc.height, mod.ItemType<Items.Misc.HomewardBone>());
+            if (Main.rand.Next(7) == 0) Item.NewItem(npc.position, npc.width, npc.height, ModContent.ItemType<Items.Misc.Lifegem>());
+            if (Main.rand.Next(20) == 0) Item.NewItem(npc.position, npc.width, npc.height, ModContent.ItemType<Items.Misc.HomewardBone>());
             if (Main.rand.Next(20) == 0) Item.NewItem(npc.position, npc.width, npc.height, ItemID.TungstenBroadsword, 1, false, 40);
         }
     }

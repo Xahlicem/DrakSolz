@@ -36,8 +36,8 @@ namespace DrakSolz.Items.Magic {
         public class MechanystStaffGlobalNPC : GlobalNPC {
             public override void NPCLoot(NPC npc) {
                 if (Main.rand.Next(15) == 0) {
-                    if (npc.type == mod.NPCType<NPCs.Enemy.Endgame.Desert.Starless>()) {
-                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Magic.MechanystStaff>(), 1);
+                    if (npc.type == ModContent.NPCType<NPCs.Enemy.Endgame.Desert.Starless>()) {
+                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ModContent.ItemType<Items.Magic.MechanystStaff>(), 1);
                     }
                 }
             }

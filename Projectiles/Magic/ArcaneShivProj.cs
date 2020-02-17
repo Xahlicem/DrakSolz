@@ -27,7 +27,7 @@ namespace DrakSolz.Projectiles.Magic {
             projectile.rotation += 0.05f * projectile.direction;
             projectile.alpha = 0;
             if (projectile.timeLeft % 3 == 0) {
-                int proj = Projectile.NewProjectile(projectile.Center, new Vector2(0, 0f), mod.ProjectileType<Magic.ArcaneShivProj1>(), projectile.damage, 0, projectile.owner);
+                int proj = Projectile.NewProjectile(projectile.Center, new Vector2(0, 0f), ModContent.ProjectileType<Magic.ArcaneShivProj1>(), projectile.damage, 0, projectile.owner);
                 Main.projectile[proj].rotation = projectile.rotation;
                 Main.projectile[proj].magic = true;
                 Main.projectile[proj].timeLeft = 20;

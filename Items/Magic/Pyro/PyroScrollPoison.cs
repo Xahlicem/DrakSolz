@@ -25,14 +25,14 @@ namespace DrakSolz.Items.Magic.Pyro {
             item.knockBack = 0f;
             item.shootSpeed = 2.0f;
             item.value = Item.buyPrice(0, 0, 15, 0);
-            item.shoot = mod.ProjectileType<Projectiles.PoisonBreath>();
+            item.shoot = ModContent.ProjectileType<Projectiles.PoisonBreath>();
         }
 
 
         public override void AddRecipes() {
             ModRecipe recipe = new SoulRecipe(mod, this);
-            recipe.AddIngredient(mod.ItemType<Items.Misc.PyroScroll>());
-            recipe.AddTile(mod.TileType<Tiles.FirelinkShrineTile>());
+            recipe.AddIngredient(ModContent.ItemType<Items.Misc.PyroScroll>());
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
             recipe.AddRecipe();
         }
 

@@ -25,7 +25,7 @@ namespace DrakSolz.NPCs.Enemy.VoidPillar {
         }
 
         public override void PreUpdate() {
-            TowerActive = NPC.AnyNPCs(mod.NPCType("VoidPillar"));
+            TowerActive = NPC.AnyNPCs(ModContent.NPCType<Enemy.VoidPillar.VoidPillar>());
         }
 
         public override TagCompound Save() {
@@ -43,7 +43,7 @@ namespace DrakSolz.NPCs.Enemy.VoidPillar {
             if (tag.ContainsKey("VoidPillarX")) {
                 TowerX = tag.GetInt("VoidPillarX");
                 TowerY = tag.GetInt("VoidPillarY");
-                NPC.NewNPC(TowerX, TowerY, mod.NPCType("VoidPillar"));
+                NPC.NewNPC(TowerX, TowerY, ModContent.NPCType<Enemy.VoidPillar.VoidPillar>());
             }
         }
 
@@ -68,8 +68,8 @@ namespace DrakSolz.NPCs.Enemy.VoidPillar {
             } else if (!NPC.LunarApocalypseIsUp && LunarApocalypseLastTick && TowerActive) {
                 for (int i = Main.chatLine.Length - 1; i >= 0; i--) {
                     if (Main.chatLine[i].text.StartsWith("Impending doom")) {
-                    Main.chatLine[i].parsedText = new [] {
-                    new TextSnippet("Silent Echos dance before your gaze...", new Color(175, 75, 255))
+                        Main.chatLine[i].parsedText = new [] {
+                            new TextSnippet("Silent Echos dance before your gaze...", new Color(175, 75, 255))
                         };
                         break;
                     }
@@ -90,7 +90,7 @@ namespace DrakSolz.NPCs.Enemy.VoidPillar {
             // }
 
             int x = Main.maxTilesX / 6 * (1 + position);
-            var spawnPos = new Vector2(x * 16, (float)(Main.worldSurface - 40) * 16);
+            var spawnPos = new Vector2(x * 16, (float) (Main.worldSurface - 40) * 16);
 
             bool success = false;
             for (int attempts = 0; attempts < 30; attempts++) {
@@ -108,7 +108,7 @@ namespace DrakSolz.NPCs.Enemy.VoidPillar {
             }
 
             if (whoAmI == -1) {
-                whoAmI = NPC.NewNPC((int) spawnPos.X, (int) spawnPos.Y, mod.NPCType("VoidPillar"));
+                whoAmI = NPC.NewNPC((int) spawnPos.X, (int) spawnPos.Y, ModContent.NPCType<Enemy.VoidPillar.VoidPillar>());
                 TowerX = (int) spawnPos.X;
                 TowerY = (int) spawnPos.Y;
             } else {
@@ -131,20 +131,20 @@ namespace DrakSolz.NPCs.Enemy.VoidPillar {
 
         public class AuroraGlobalNPC : GlobalNPC {
             public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns) {
-                if (player.GetModPlayer<DrakSolzPlayer>(mod).ZoneTowerVoidPillar) {
-                    spawnRate = (int)(spawnRate * 0.14f);
-                    maxSpawns = (int)(maxSpawns * 5f);
+                if (player.GetModPlayer<DrakSolzPlayer>().ZoneTowerVoidPillar) {
+                    spawnRate = (int) (spawnRate * 0.14f);
+                    maxSpawns = (int) (maxSpawns * 5f);
                 }
             }
 
             public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo) {
-                if (spawnInfo.player.GetModPlayer<DrakSolzPlayer>(mod).ZoneTowerVoidPillar) {
+                if (spawnInfo.player.GetModPlayer<DrakSolzPlayer>().ZoneTowerVoidPillar) {
                     pool.Clear();
-                    pool.Add(mod.NPCType<NPCs.Voidling>(), 35f);
-                    pool.Add(mod.NPCType<NPCs.VoidEaterHead>(), 10f);
-                    pool.Add(mod.NPCType<NPCs.VoidWalker>(), 25f);
-                    pool.Add(mod.NPCType<NPCs.NightMare>(), 20f);
-                    pool.Add(mod.NPCType<NPCs.VoidMimic>(), 10f);
+                    pool.Add(ModContent.NPCType<NPCs.Voidling>(), 35f);
+                    pool.Add(ModContent.NPCType<NPCs.VoidEaterHead>(), 10f);
+                    pool.Add(ModContent.NPCType<NPCs.VoidWalker>(), 25f);
+                    pool.Add(ModContent.NPCType<NPCs.NightMare>(), 20f);
+                    pool.Add(ModContent.NPCType<NPCs.VoidMimic>(), 10f);
                 }
             }
         }

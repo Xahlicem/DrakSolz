@@ -43,13 +43,13 @@ namespace DrakSolz.Projectiles {
             // Since we access the owner player instance so much, it's useful to create a helper local variable for this
             // Sadly, Projectile/ModProjectile does not have its own
             Player projOwner = Main.player[projectile.owner];
-            //projOwner.AddBuff(mod.BuffType<Buffs.ChannelBuff>(), 40);
+            //projOwner.AddBuff(ModContent.BuffType<Buffs.ChannelBuff>(), 40);
             float distance = 50f;
 
             for (int k = 0; k < 200; k++) {
                 if (Main.player[k].active && Main.player[k].team == projOwner.team) {
                     if (projOwner.WithinRange(Main.player[k].Center, distance)) {
-                        Main.player[k].AddBuff(mod.BuffType<Buffs.SlipperyBuff>(), 35);
+                        Main.player[k].AddBuff(ModContent.BuffType<Buffs.SlipperyBuff>(), 35);
                     }
                 }
             }
@@ -109,11 +109,9 @@ namespace DrakSolz.Projectiles {
 
         }
 
-        bool hit = false;
-
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) {
             if (Main.rand.Next(2) == 0) {
-                //Main.player[projectile.owner].AddBuff(mod.BuffType<Buffs.ChannelBuff>("ChannelBuff"), 40);
+                //Main.player[projectile.owner].AddBuff(ModContent.BuffType<Buffs.ChannelBuff>("ChannelBuff"), 40);
             }
         }
     }

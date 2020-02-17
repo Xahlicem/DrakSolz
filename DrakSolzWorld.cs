@@ -2,13 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.GameContent.Generation;
-using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
-using Terraria.World.Generation;
 
 namespace DrakSolz {
     public class DrakSolzWorld : ModWorld {
@@ -68,7 +64,7 @@ namespace DrakSolz {
                     downedBoss[boss] = flags[(int) boss];
                 }
             } else {
-                ErrorLogger.Log("DrakSolz: Unknown loadVersion: " + loadVersion);
+                DrakSolz.instance.Logger.Error("DrakSolz: Unknown loadVersion: " + loadVersion);
             }
         }
 
@@ -112,7 +108,7 @@ namespace DrakSolz {
             }
         }
         public override void ResetNearbyTileEffects() {
-            DrakSolzPlayer modPlayer = Main.player[Main.myPlayer].GetModPlayer<DrakSolzPlayer>(mod);
+            DrakSolzPlayer modPlayer = Main.player[Main.myPlayer].GetModPlayer<DrakSolzPlayer>();
             modPlayer.VoidMonolith = false;
         }
     }

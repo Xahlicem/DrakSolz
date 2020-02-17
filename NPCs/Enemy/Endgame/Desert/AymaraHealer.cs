@@ -59,7 +59,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Desert {
                     float rotation = MathHelper.ToRadians(10);
                     int playerm = npc.target;
                     for (int i = 0; i < numberProjectiles; i++) {
-                        int pro = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 15 * (Main.rand.NextFloat() - 0.5f), -15 * (Main.rand.NextFloat() + 0.5f), mod.ProjectileType<Projectiles.HealProj>(), 10, 1f, playerm);
+                        int pro = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 15 * (Main.rand.NextFloat() - 0.5f), -15 * (Main.rand.NextFloat() + 0.5f), ModContent.ProjectileType<Projectiles.HealProj>(), 10, 1f, playerm);
                         Main.projectile[pro].tileCollide = false;
                         Main.projectile[pro].velocity *= 2;
 

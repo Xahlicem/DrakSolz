@@ -26,8 +26,8 @@ namespace DrakSolz.Items.Summon {
             item.value = Item.buyPrice(0, 0, 5, 0);
             item.rare = 2;
             item.UseSound = SoundID.Item44;
-            item.shoot = mod.ProjectileType<Projectiles.Minion.SoulSummonProj>();
-            item.buffType = mod.BuffType<Buffs.SoulSummonBuff>();
+            item.shoot = ModContent.ProjectileType<Projectiles.Minion.SoulSummonProj>();
+            item.buffType = ModContent.BuffType<Buffs.SoulSummonBuff>();
             item.buffTime = 3600;
         }
 

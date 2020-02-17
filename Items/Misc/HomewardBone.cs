@@ -23,10 +23,10 @@ namespace DrakSolz.Items.Misc {
         public override bool UseItem(Player player) {
             player.FindSpawn();
             if (player.SpawnX == -1) return false;
-            if (Main.tile[player.SpawnX, player.SpawnY].type != mod.TileType<Tiles.FirelinkShrineTile>()) {
+            if (Main.tile[player.SpawnX, player.SpawnY].type != ModContent.TileType<Tiles.FirelinkShrineTile>()) {
                 return false;
             }
-            player.AddBuff(mod.BuffType<Buffs.Homeward>(), 100);
+            player.AddBuff(ModContent.BuffType<Buffs.Homeward>(), 100);
             return true;
         }
 
@@ -48,7 +48,7 @@ namespace DrakSolz.Items.Misc {
                         npc.type == NPCID.TwiggyZombie || npc.type == NPCID.PincushionZombie ||
                         npc.type == NPCID.FemaleZombie || npc.type == NPCID.ArmedZombieCenx)
 
-                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Misc.HomewardBone>(), 1);
+                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ModContent.ItemType<Items.Misc.HomewardBone>(), 1);
 
                 }
             }

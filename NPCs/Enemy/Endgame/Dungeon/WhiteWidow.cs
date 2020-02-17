@@ -27,7 +27,7 @@ namespace DrakSolz.NPCs.Enemy.Endgame.Dungeon {
             npc.value = 20f;
             npc.knockBackResist = 0.2f;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.WhiteWidowBanner>();
+            bannerItem = ModContent.ItemType<Items.Banners.WhiteWidowBanner>();
         }
         public override void AI() {
             npc.TargetClosest(true);

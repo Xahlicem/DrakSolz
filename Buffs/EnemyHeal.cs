@@ -15,7 +15,7 @@ namespace DrakSolz.Buffs {
 		}
 		public override void Update(NPC npc, ref int buffIndex)
 		{
-			npc.GetGlobalNPC<DSGlobalNPC>(mod).Healp = true;
+			npc.GetGlobalNPC<DSGlobalNPC>().Healp = true;
 		}
 	}
 }

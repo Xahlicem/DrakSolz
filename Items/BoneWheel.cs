@@ -24,7 +24,7 @@ namespace DrakSolz.Items {
 			item.noMelee = true;
             item.rare = 7;
             item.UseSound = SoundID.Item1;
-            item.mountType = mod.MountType<Mounts.BoneWheel>();
+            item.mountType = ModContent.MountType<Mounts.BoneWheel>();
         }
     }
 }

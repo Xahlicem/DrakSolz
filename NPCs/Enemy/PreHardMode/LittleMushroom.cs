@@ -27,7 +27,7 @@ namespace DrakSolz.NPCs.Enemy.PreHardMode {
             npc.value = 20f;
             npc.knockBackResist = 0.8f;
             banner = npc.type;
-            bannerItem = mod.ItemType<Items.Banners.LittleMushroomBanner>();
+            bannerItem = ModContent.ItemType<Items.Banners.LittleMushroomBanner>();
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
