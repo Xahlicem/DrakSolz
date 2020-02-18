@@ -18,7 +18,7 @@ namespace DrakSolz.Items.Magic {
             item.useAnimation = 30;
             item.useTime = 30;
             item.knockBack = 4f;
-            item.value = Item.buyPrice(0, 1, 50, 0);
+            item.value = Item.sellPrice(0, 0, 75, 0);
             item.mana = 15;
             item.autoReuse = false;
             item.melee = false;
@@ -63,7 +63,7 @@ namespace DrakSolz.Items.Magic {
         public class ScrollSwordGlobalNPC : GlobalNPC {
             public override void NPCLoot(NPC npc) {
                 if (Main.rand.Next(15) == 0) {
-                    if (npc.type == NPCID.DarkCaster || npc.type == ModContent.NPCType<NPCs.Enemy.PreHardMode.Spinwheel>() ) {
+                    if (npc.type == NPCID.DarkCaster || npc.type == ModContent.NPCType<NPCs.Enemy.PreHardMode.Spinwheel>()) {
                         Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ModContent.ItemType<Items.Magic.ScrollSword>(), 1);
                     }
                 }

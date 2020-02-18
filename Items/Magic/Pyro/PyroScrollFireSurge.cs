@@ -24,11 +24,10 @@ namespace DrakSolz.Items.Magic.Pyro {
             item.mana = 5;
             item.knockBack = 2.5f;
             item.shootSpeed = 2.5f;
-            item.value = Item.buyPrice(0, 2, 0, 0);
+            item.value = Item.sellPrice(0, 1, 0, 0);
             item.shoot = ModContent.ProjectileType<Projectiles.FireProj2>();
             item.autoReuse = true;
         }
-
 
         public override void AddRecipes() {
             ModRecipe recipe = new SoulRecipe(mod, this);

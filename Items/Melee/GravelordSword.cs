@@ -17,10 +17,10 @@ namespace DrakSolz.Items.Melee {
             item.damage = 105;
             item.useTime = 30;
             item.useAnimation = 30;
-            item.rare = 8;
+            item.rare = ItemRarityID.Yellow;
             item.knockBack = 9f;
             item.shootSpeed = 0.01f;
-            item.value = Item.buyPrice(0, 30, 0, 0);
+            item.value = Item.sellPrice(0, 15, 0, 0);
             item.autoReuse = true;
             item.shoot = ModContent.ProjectileType<Projectiles.GravelordProj>();
         }

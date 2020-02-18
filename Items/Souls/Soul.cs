@@ -23,8 +23,8 @@ namespace DrakSolz.Items.Souls {
             item.width = refItem.width;
             item.height = refItem.height;
             item.maxStack = 1;
-            item.value = Item.buyPrice(0, 0, 0, 1);
-            item.rare = 0;
+            item.value = 0;
+            item.rare = ItemRarityID.White;
             item.alpha = 64;
             item.ammo = 1;
             item.useAnimation = 20;

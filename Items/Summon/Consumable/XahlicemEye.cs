@@ -20,9 +20,9 @@ namespace DrakSolz.Items.Summon.Consumable {
             item.damage = 1800;
             item.useAnimation = 19;
             item.useTime = 19;
-            item.value = Item.buyPrice(0, 50, 0, 0);
+            item.value = Item.sellPrice(0, 25, 0, 0);
             item.knockBack = 8f;
-            item.rare = 10;
+            item.rare = ItemRarityID.Red;
         }
         public override Vector2? HoldoutOffset() {
             return new Vector2(12, 0);

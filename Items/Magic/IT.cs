@@ -19,11 +19,11 @@ namespace DrakSolz.Items.Magic {
             item.damage = 70;
             item.useTime = 55;
             item.useAnimation = 55;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             item.mana = 20;
             item.knockBack = 10f;
             item.shootSpeed = 0f;
-            item.value = Item.buyPrice(0, 25, 0, 0);
+            item.value = Item.sellPrice(0, 12, 50, 0);
             item.autoReuse = false;
             item.shoot = ModContent.ProjectileType<Projectiles.Magic.FlameMageProj1>();
         }

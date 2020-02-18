@@ -13,7 +13,7 @@ namespace DrakSolz.Items.Misc {
             item.CloneDefaults(ItemID.MagicMirror);
             item.useStyle = 4;
             item.value = Item.buyPrice(0, 10, 0, 0);
-            item.rare = 2;
+            item.rare = ItemRarityID.Green;
             item.consumable = false;
         }
 

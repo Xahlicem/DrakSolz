@@ -25,10 +25,9 @@ namespace DrakSolz.Items.Magic.Pyro {
             item.knockBack = 4f;
             item.shootSpeed = 5.0f;
             item.shoot = 376;
-            item.value = Item.buyPrice(0, 3, 0, 0);
+            item.value = Item.sellPrice(0, 1, 50, 0);
             item.autoReuse = true;
         }
-
 
         public override void AddRecipes() {
             ModRecipe recipe = new SoulRecipe(mod, this);
@@ -37,18 +36,16 @@ namespace DrakSolz.Items.Magic.Pyro {
             recipe.AddRecipe();
         }
 
-        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
-		{
-			int numberProjectiles = 4 + Main.rand.Next(2); // 4 or 5 shots
-			for (int i = 0; i < numberProjectiles; i++)
-			{
-				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(30)); // 30 degree spread.
-				// If you want to randomize the speed to stagger the projectiles
-				// float scale = 1f - (Main.rand.NextFloat() * .3f);
-				// perturbedSpeed = perturbedSpeed * scale; 
-				Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
-			}
-			return false; // return false because we don't want tmodloader to shoot projectile
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack) {
+            int numberProjectiles = 4 + Main.rand.Next(2); // 4 or 5 shots
+            for (int i = 0; i < numberProjectiles; i++) {
+                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(30)); // 30 degree spread.
+                // If you want to randomize the speed to stagger the projectiles
+                // float scale = 1f - (Main.rand.NextFloat() * .3f);
+                // perturbedSpeed = perturbedSpeed * scale; 
+                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+            }
+            return false; // return false because we don't want tmodloader to shoot projectile
         }
     }
 }

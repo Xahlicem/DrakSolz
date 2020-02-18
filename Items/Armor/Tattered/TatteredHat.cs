@@ -14,7 +14,7 @@ namespace DrakSolz.Items.Armor.Tattered {
             item.width = 40;
             item.height = 28;
             item.value = Item.sellPrice(0, 1, 0, 0);
-            item.rare = 4;
+            item.rare = ItemRarityID.LightRed;
             item.defense = 5;
         }
 

@@ -6,15 +6,14 @@ namespace DrakSolz.Items.Accessory {
     public class RingPriestess : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Priestess Ring");
-            Tooltip.SetDefault("This is a modded ring." +
-                "\n+Life Regen");
+            Tooltip.SetDefault("Increased life regeneration");
         }
 
         public override void SetDefaults() {
             item.width = 22;
             item.height = 20;
-            item.value = Item.buyPrice(0, 40, 0, 0);
-            item.rare = 2;
+            item.value = Item.sellPrice(0, 20, 0, 0);
+            item.rare = ItemRarityID.Green;
             item.accessory = true;
         }
 

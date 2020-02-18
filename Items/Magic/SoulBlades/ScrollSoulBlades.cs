@@ -23,7 +23,7 @@ namespace DrakSolz.Items.Magic.SoulBlades {
             item.mana = 5;
             item.knockBack = 3f;
             item.shootSpeed = 25.0f;
-            item.value = Item.buyPrice(0, 0, 90, 0);
+            item.value = Item.sellPrice(0, 0, 45, 0);
             item.shoot = ModContent.ProjectileType<Projectiles.Magic.SorcSwordProj>();
         }
 

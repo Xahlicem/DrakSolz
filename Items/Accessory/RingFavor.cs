@@ -6,19 +6,18 @@ namespace DrakSolz.Items.Accessory {
     public class RingFavor : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Ring of Favor and Protection");
-            Tooltip.SetDefault("This is a modded ring." +
-                "\n+50 Max Life" +
-                "\n+50 Max Mana" +
-                "\n+30% Max Move Speed" +
-                "\n+15% Melee Speed");
+            Tooltip.SetDefault("Increases maximum life by 50" +
+                "\nIncreases maximum mana by 50" +
+                "\n30% increased maximum movement speed" +
+                "\n+15% increased melee speed");
         }
 
         public override void SetDefaults() {
             item.width = 22;
             item.height = 20;
             item.defense = 1;
-            item.value = Item.buyPrice(0, 15, 0, 0);
-            item.rare = 2;
+            item.value = Item.sellPrice(0, 7, 50, 0);
+            item.rare = ItemRarityID.Green;
             item.accessory = true;
         }
 

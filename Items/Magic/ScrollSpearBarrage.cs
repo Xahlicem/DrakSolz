@@ -17,13 +17,13 @@ namespace DrakSolz.Items.Magic {
             item.useStyle = 5;
             item.noUseGraphic = true;
             item.damage = 900;
-            item.value = Item.buyPrice(1, 20, 0, 0);
+            item.value = Item.sellPrice(0, 60, 0, 0);
             item.useTime = 4;
             item.useAnimation = 16;
             item.mana = 20;
             item.knockBack = 2f;
             item.shootSpeed = 30.0f;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             item.autoReuse = true;
             item.shoot = ModContent.ProjectileType<Projectiles.Magic.SoulSpearBarrageProj>();
         }

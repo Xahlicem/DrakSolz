@@ -24,7 +24,7 @@ namespace DrakSolz.Items.Magic.Pyro {
             item.mana = 4;
             item.knockBack = 2.5f;
             item.shootSpeed = 1.0f;
-            item.value = Item.buyPrice(0, 0, 15, 0);
+            item.value = Item.sellPrice(0, 0, 7, 50);
             item.shoot = ModContent.ProjectileType<Projectiles.FireProj>();
         }
 

@@ -1,5 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -13,8 +12,8 @@ namespace DrakSolz.Items.Accessory {
         public override void SetDefaults() {
             item.width = 20;
             item.height = 20;
-            item.value = Item.buyPrice(0, 10, 0, 0);
-            item.rare = 4;
+            item.value = Item.sellPrice(0, 5, 0, 0);
+            item.rare = ItemRarityID.LightRed;
             item.accessory = true;
         }
 

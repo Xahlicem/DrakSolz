@@ -21,11 +21,11 @@ namespace DrakSolz.Items.Magic {
             item.useTime = 30;
             item.useAnimation = 30;
             item.noUseGraphic = true;
-            item.rare = 4;
+            item.rare = ItemRarityID.LightRed;
             item.mana = 14;
             item.knockBack = 3f;
             item.shootSpeed = 8f;
-            item.value = Item.buyPrice(0, 15, 0, 0);
+            item.value = Item.sellPrice(0, 7, 50, 0);
             item.autoReuse = false;
             item.shoot = ModContent.ProjectileType<Projectiles.HailProj>();
         }

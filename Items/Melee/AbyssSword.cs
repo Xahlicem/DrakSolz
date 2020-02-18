@@ -18,7 +18,7 @@ namespace DrakSolz.Items.Melee {
             item.knockBack = 8f;
             item.useTime = 30;
             item.useAnimation = 30;
-            item.value = Item.buyPrice(2, 0, 0, 0);
+            item.value = Item.sellPrice(1, 0, 0, 0);
             item.scale *= 1.5f;
             item.autoReuse = true;
             item.melee = true;

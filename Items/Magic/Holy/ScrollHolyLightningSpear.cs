@@ -9,7 +9,6 @@ namespace DrakSolz.Items.Magic.Holy {
     public class ScrollHolyLightningSpear : SoulItem {
         public ScrollHolyLightningSpear() : base(1500) { }
 
-
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Lightning Spear");
             Tooltip.SetDefault("Miracle that sends a spear of lightning piercing through the air." +
@@ -28,17 +27,17 @@ namespace DrakSolz.Items.Magic.Holy {
             item.mana = 8;
             item.knockBack = 4.0f;
             item.shootSpeed = 14.0f;
-            item.value = Item.buyPrice(0, 1, 80, 0);
+            item.value = Item.sellPrice(0, 0, 90, 0);
             item.autoReuse = false;
             item.shoot = ModContent.ProjectileType<Projectiles.LightningSpearProj>();
             item.summon = true;
         }
 
         public override void AddRecipes() {
-        ModRecipe recipe = new SoulRecipe(mod, this);
-        recipe.AddIngredient(ModContent.ItemType<Items.Misc.ScrollHoly>());
-        recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
-        recipe.AddRecipe();
+            ModRecipe recipe = new SoulRecipe(mod, this);
+            recipe.AddIngredient(ModContent.ItemType<Items.Misc.ScrollHoly>());
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
+            recipe.AddRecipe();
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack) {

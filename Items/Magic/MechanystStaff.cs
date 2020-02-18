@@ -20,11 +20,11 @@ namespace DrakSolz.Items.Magic {
             item.damage = 800;
             item.useTime = 55;
             item.useAnimation = 55;
-            item.rare = 4;
+            item.rare = ItemRarityID.LightRed;
             item.mana = 90;
             item.knockBack = 8f;
             item.shootSpeed = 0f;
-            item.value = Item.buyPrice(1, 0, 0, 0);
+            item.value = Item.sellPrice(0, 50, 0, 0);
             item.autoReuse = false;
             item.shoot = ProjectileID.SandnadoFriendly;
         }

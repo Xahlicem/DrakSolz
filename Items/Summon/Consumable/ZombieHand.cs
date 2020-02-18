@@ -17,8 +17,8 @@ namespace DrakSolz.Items.Summon.Consumable {
             item.height = 20;
             item.mana = 5;
             item.damage = 10;
-            item.value = Item.buyPrice(0, 0, 5, 0);
-            item.rare = 1;
+            item.value = Item.sellPrice(0, 0, 2, 50);
+            item.rare = ItemRarityID.Blue;
             item.shoot = ModContent.ProjectileType<Projectiles.Minion.Consumable.ZombieHandProj>();
         }
 
