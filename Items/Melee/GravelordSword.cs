@@ -24,24 +24,12 @@ namespace DrakSolz.Items.Melee {
             item.autoReuse = true;
             item.shoot = ModContent.ProjectileType<Projectiles.GravelordProj>();
         }
-        public override bool CanUseItem(Player player) {
-            if (item.mana == 0) item.mana = item.alpha;
-            else item.alpha = item.mana;
-            item.buffTime = item.mana;
-            item.mana = 0;
-            return base.CanUseItem(player);
-        }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack) {
-            if (player.statMana >= item.buffTime * player.manaCost && player.ownedProjectileCounts[type] == 0) {
-                damage *= 2;
-                player.statMana -= (int)(item.buffTime * player.manaCost);
-                item.mana = item.buffTime;
-                float direction = Main.mouseX - Main.screenWidth / 2;
-                int pro = Projectile.NewProjectile((player.Center.X + (100 * (direction >= 0 ? 1 : -1))), player.Center.Y, 1 * (direction >= 0 ? 1 : -1), 0, type, (int)(damage * 0.60f), 0, player.whoAmI, player.Center.Y);
-                return false;
-            }
-            item.mana = item.buffTime;
+            damage *= 2;
+            float direction = Main.mouseX - Main.screenWidth / 2;
+            int pro = Projectile.NewProjectile((player.Center.X + (100 * (direction >= 0 ? 1 : -1))), player.Center.Y, 1 * (direction >= 0 ? 1 : -1), 0, type, (int)(damage * 0.60f), 0, player.whoAmI, player.Center.Y);
             return false;
+
         }
     }
 }

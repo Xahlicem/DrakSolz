@@ -5,7 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace DrakSolz.Items.Magic {
-    public class MoonGS : ModItem {
+    public class MoonGS : MagicWeapon {
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Moonlight Greatsword");
@@ -31,23 +31,9 @@ namespace DrakSolz.Items.Magic {
             item.shoot = ModContent.ProjectileType<Projectiles.MGSProj>();
         }
 
-        public override bool CanUseItem(Player player) {
-            if (item.mana == 0) item.mana = item.alpha;
-            else item.alpha = item.mana;
-            item.buffTime = item.mana;
-            item.mana = 0;
-            return base.CanUseItem(player);
-        }
-
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack) {
-            if (player.statMana >= item.buffTime * player.manaCost) {
-                damage *= 2;
-                player.statMana -= (int)(item.buffTime * player.manaCost);
-                item.mana = item.buffTime;
-                return true;
-            }
-            item.mana = item.buffTime;
-            return false;
+            damage *= 2;
+            return base.Shoot(player, ref position, ref speedX, ref speedY, ref type, ref damage, ref knockBack);
         }
     }
 }

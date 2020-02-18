@@ -33,6 +33,13 @@ namespace DrakSolz.Items.Summon {
         public override Vector2? HoldoutOffset() {
             return new Vector2(-4, 0);
         }
+        
+        public override bool CanUseItem(Player player) {
+            float MSpeed = player.meleeSpeed * 10;
+            item.useTime = (22 * ((int)MSpeed)) / 10;
+            item.useAnimation = (22 * ((int)MSpeed)) / 10;
+            return base.CanUseItem(player);
+        }
 
         public override bool AltFunctionUse(Player player) {
             return true;

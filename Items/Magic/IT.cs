@@ -5,7 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace DrakSolz.Items.Magic {
-    public class IT : ModItem {
+    public class IT : MagicWeapon {
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Immolation Tinder");
@@ -20,7 +20,7 @@ namespace DrakSolz.Items.Magic {
             item.useTime = 55;
             item.useAnimation = 55;
             item.rare = 9;
-            item.mana = 20;
+            item.mana = 25;
             item.knockBack = 10f;
             item.shootSpeed = 0f;
             item.value = Item.buyPrice(0, 25, 0, 0);
@@ -28,41 +28,27 @@ namespace DrakSolz.Items.Magic {
             item.shoot = ModContent.ProjectileType<Projectiles.Magic.FlameMageProj1>();
         }
 
-        public override bool CanUseItem(Player player) {
-            if (item.mana == 0) item.mana = item.alpha;
-            else item.alpha = item.mana;
-            item.buffTime = item.mana;
-            item.mana = 0;
-            return base.CanUseItem(player);
-        }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack) {
-            if (player.statMana >= item.buffTime * player.manaCost) {
-                damage *= 2;
-                player.statMana -= (int)(item.buffTime * player.manaCost);
-                item.mana = item.buffTime;
-                int pro = Projectile.NewProjectile(Main.mouseX + Main.screenPosition.X, Main.mouseY + Main.screenPosition.Y, 0, 40, type, (int)(damage * 0.6f), 0, player.whoAmI);
-                return false;
-            }
-            item.mana = item.buffTime;
-            return false;
+            position = new Vector2(Main.mouseX + Main.screenPosition.X, Main.mouseY + Main.screenPosition.Y);
+            speedY = 40;
+            damage = (int)(damage * 0.6f);
+            knockBack = 0f;
+            return base.Shoot(player, ref position, ref speedX, ref speedY, ref type, ref damage, ref knockBack);
         }
 
-        public override void MeleeEffects(Player player, Rectangle hitbox)
-		{
-			if (Main.rand.Next(1) == 0)
-			{
-				//Emit dusts when swing the sword
-				int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.Fire);
+        public override void MeleeEffects(Player player, Rectangle hitbox) {
+            if (Main.rand.Next(1) == 0) {
+                //Emit dusts when swing the sword
+                int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.Fire);
                 Main.dust[dust].scale *= 1.5f + Main.rand.NextFloat();
                 Main.dust[dust].noGravity = true;
-			}
-		}
+            }
+        }
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
-		{
-			// Add Onfire buff to the NPC for 1 second
-			// 60 frames = 1 second
-			target.AddBuff(BuffID.OnFire, 120);		
-}
+        public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit) {
+            // Add Onfire buff to the NPC for 1 second
+            // 60 frames = 1 second
+            target.AddBuff(BuffID.OnFire, 120);
+        }
     }
 }

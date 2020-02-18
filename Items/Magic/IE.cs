@@ -5,7 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace DrakSolz.Items.Magic {
-    public class IE : ModItem {
+    public class IE : IT {
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Immolation Ember");
@@ -19,31 +19,12 @@ namespace DrakSolz.Items.Magic {
             item.useTime = 40;
             item.useAnimation = 40;
             item.rare = 10;
-            item.mana = 20;
+            item.mana = 30;
             item.knockBack = 12.5f;
             item.shootSpeed = 0f;
             item.value = Item.buyPrice(0, 70, 0, 0);
             item.autoReuse = true;
             item.shoot = ModContent.ProjectileType<Projectiles.Magic.FlameMageProj2>();
-        }
-
-        public override bool CanUseItem(Player player) {
-            if (item.mana == 0) item.mana = item.alpha;
-            else item.alpha = item.mana;
-            item.buffTime = item.mana;
-            item.mana = 0;
-            return base.CanUseItem(player);
-        }
-        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack) {
-            if (player.statMana >= item.buffTime * player.manaCost) {
-                damage *= 2;
-                player.statMana -= (int)(item.buffTime * player.manaCost);
-                item.mana = item.buffTime;
-                int pro = Projectile.NewProjectile(Main.mouseX + Main.screenPosition.X, Main.mouseY + Main.screenPosition.Y, 0, 40, type, (int)(damage * 0.65f), 0, player.whoAmI);
-                return false;
-            }
-            item.mana = item.buffTime;
-            return false;
         }
 
         public override void MeleeEffects(Player player, Rectangle hitbox)
@@ -67,6 +48,7 @@ namespace DrakSolz.Items.Magic {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ModContent.ItemType<Items.Magic.IT>());
             recipe.AddIngredient(ModContent.ItemType<Items.Souls.GolemSoul>());
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

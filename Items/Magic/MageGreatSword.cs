@@ -24,6 +24,9 @@ namespace DrakSolz.Items.Magic {
         }
 
         public override bool CanUseItem(Player player) {
+            float MSpeed = player.meleeSpeed * 10;
+            item.useTime = (35 * ((int)MSpeed)) / 10;
+            item.useAnimation = (35 * ((int)MSpeed)) / 10;
             int mbuff = player.FindBuffIndex(ModContent.BuffType<Buffs.MageGreatSwordBuff>());
             int idamage = item.damage;
             int iuse = item.useAnimation;
