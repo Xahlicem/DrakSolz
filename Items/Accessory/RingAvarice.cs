@@ -1,12 +1,12 @@
 ﻿using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace DrakSolz.Items.Accessory {
     public class RingAvarice : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Ring of Avarice");
-            Tooltip.SetDefault("This is a modded ring." +
-                "\n+Souls");
+            Tooltip.SetDefault("increased souls from enemies");
         }
 
         public override string Texture { get { return "DrakSolz/Items/Accessory/RingBlades"; } }
@@ -14,8 +14,8 @@ namespace DrakSolz.Items.Accessory {
         public override void SetDefaults() {
             item.width = 22;
             item.height = 20;
-            item.value = Item.buyPrice(0, 15, 0, 0);
-            item.rare = 2;
+            item.value = Item.sellPrice(0, 7, 50, 0);
+            item.rare = ItemRarityID.Green;
             item.accessory = true;
         }
 

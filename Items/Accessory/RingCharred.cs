@@ -6,16 +6,15 @@ namespace DrakSolz.Items.Accessory {
     public class RingCharred : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Orange Charred Ring");
-            Tooltip.SetDefault("This is a modded ring." +
-                "\n+Immunity to Fire" +
-                "\n+Inflict Fire on hit");
+            Tooltip.SetDefault("Inflicts fire damage on attack" +
+                "\nImmunity to Fire");
         }
 
         public override void SetDefaults() {
             item.width = 22;
             item.height = 20;
-            item.value = Item.buyPrice(0, 25, 0, 0);
-            item.rare = 2;
+            item.value = Item.sellPrice(0, 12, 50, 0);
+            item.rare = ItemRarityID.Green;
             item.accessory = true;
         }
 

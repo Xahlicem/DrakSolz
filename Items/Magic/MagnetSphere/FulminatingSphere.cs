@@ -20,7 +20,7 @@ namespace DrakSolz.Items.Magic.MagnetSphere {
             item.mana = 20;
             item.knockBack = 7f;
             item.shootSpeed = 0.2f;
-            item.value = Item.buyPrice(0, 80, 0, 0);
+            item.value = Item.sellPrice(0, 40, 0, 0);
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack) {

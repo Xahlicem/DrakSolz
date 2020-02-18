@@ -13,8 +13,8 @@ namespace DrakSolz.Items.Armor {
         public override void SetDefaults() {
             item.width = 18;
             item.height = 18;
-            item.value = Item.buyPrice(50, 0, 0, 0);
-            item.rare = 2;
+            item.value = Item.sellPrice(25, 0, 0, 0);
+            item.rare = ItemRarityID.Green;
             item.defense = 35;
         }
         public override void UpdateEquip(Player player) { }

@@ -15,8 +15,8 @@ namespace DrakSolz.Items.Armor.Thorns {
         public override void SetDefaults() {
             item.width = 18;
             item.height = 18;
-            item.value = Item.buyPrice(1, 0, 0, 0);
-            item.rare = 7;
+            item.value = Item.sellPrice(0, 50, 0, 0);
+            item.rare = ItemRarityID.Lime;
             item.defense = 15;
         }
 

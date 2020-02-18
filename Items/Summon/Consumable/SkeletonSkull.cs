@@ -17,8 +17,8 @@ namespace DrakSolz.Items.Summon.Consumable {
             item.height = 26;
             item.mana = 10;
             item.damage = 20;
-            item.value = Item.buyPrice(0, 0, 50, 0);
-            item.rare = 3;
+            item.value = Item.sellPrice(0, 0, 25, 0);
+            item.rare = ItemRarityID.Orange;
             item.shoot = ModContent.ProjectileType<Projectiles.Minion.Consumable.SkeletonSkullProj>();
         }
 

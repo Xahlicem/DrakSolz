@@ -23,8 +23,8 @@ namespace DrakSolz.Items.Summon {
             item.useStyle = 1;
             item.noMelee = true;
             item.knockBack = 0;
-            item.value = Item.buyPrice(0, 20, 0, 0);
-            item.rare = 8;
+            item.value = Item.sellPrice(0, 10, 0, 0);
+            item.rare = ItemRarityID.Yellow;
             item.UseSound = SoundID.Item44;
             item.shoot = ModContent.ProjectileType<Projectiles.Minion.HumSumProj>();
             item.buffType = ModContent.BuffType<Buffs.HumSumBuff>();

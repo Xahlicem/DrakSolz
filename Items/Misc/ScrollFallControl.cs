@@ -13,8 +13,8 @@ namespace DrakSolz.Items.Misc {
         public override void SetDefaults() {
             item.scale *= 0.8f;
             item.useStyle = 1;
-            item.value = Item.buyPrice(0, 2, 0, 0);
-            item.rare = 2;
+            item.value = Item.sellPrice(0, 1, 0, 0);
+            item.rare = ItemRarityID.Green;
             item.consumable = false;
             item.noUseGraphic = true;
             item.mana = 10;
@@ -23,7 +23,7 @@ namespace DrakSolz.Items.Misc {
         public override bool UseItem(Player player) {
             for (int i = 0; i < 600; i++);
             player.AddBuff(BuffID.Featherfall, 600);
-            player.AddBuff(ModContent.BuffType<Buffs.ScrollMana>(), + (360 * (int)(item.mana * player.manaCost)));
+            player.AddBuff(ModContent.BuffType<Buffs.ScrollMana>(), +(360 * (int) (item.mana * player.manaCost)));
             return true;
         }
         public override void AddRecipes() {

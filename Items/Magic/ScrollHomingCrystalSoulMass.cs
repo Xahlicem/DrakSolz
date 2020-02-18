@@ -27,8 +27,8 @@ namespace DrakSolz.Items.Magic {
             item.useTime = 7;
             item.useAnimation = 35;
             item.knockBack = 0;
-            item.value = Item.buyPrice(0, 60, 0, 0);
-            item.rare = 9;
+            item.value = Item.sellPrice(0, 30, 0, 0);
+            item.rare = ItemRarityID.Cyan;
             item.UseSound = SoundID.Item44;
             item.shoot = ModContent.ProjectileType<Projectiles.Magic.CrystalSoulMassProj>();
             item.buffType = ModContent.BuffType<Buffs.CrystalSoulMassBuff>();

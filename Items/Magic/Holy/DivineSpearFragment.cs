@@ -40,7 +40,7 @@ namespace DrakSolz.Items.Magic.Holy {
             item.knockBack = 3.5f;
             item.shootSpeed = 8.0f;
             item.crit = 8;
-            item.value = Item.buyPrice(0, 18, 0, 0);
+            item.value = Item.sellPrice(0, 9, 0, 0);
             item.autoReuse = true;
             item.shoot = ModContent.ProjectileType<Projectiles.HolySpearProj2>();
             item.summon = true;

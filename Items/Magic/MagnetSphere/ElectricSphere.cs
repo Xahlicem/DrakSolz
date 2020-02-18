@@ -22,7 +22,7 @@ namespace DrakSolz.Items.Magic.MagnetSphere {
             item.mana = 10;
             item.knockBack = 4f;
             item.shootSpeed = 10.0f;
-            item.value = Item.buyPrice(0, 2, 0, 0);
+            item.value = Item.sellPrice(0, 1, 0, 0);
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack) {
@@ -31,7 +31,7 @@ namespace DrakSolz.Items.Magic.MagnetSphere {
             Main.projectile[pro].scale *= 0.5f;
             return false;
         }
-                public class ElectricSphereGlobalNPC : GlobalNPC {
+        public class ElectricSphereGlobalNPC : GlobalNPC {
             public override void NPCLoot(NPC npc) {
                 if (Main.rand.Next(30) == 0) {
                     if (npc.type == NPCID.GoblinSorcerer) {

@@ -18,7 +18,7 @@ namespace DrakSolz.Items.Melee {
             item.useTime = 25;
             item.useAnimation = 25;
             item.scale *= 1.3f;
-            item.value = Item.buyPrice(0, 70, 0, 0);
+            item.value = Item.sellPrice(0, 35, 0, 0);
         }
         
                 public override void AddRecipes() {

@@ -18,7 +18,7 @@ namespace DrakSolz.Items.Melee {
             item.knockBack = 8f;
             item.useTime = 30;
             item.useAnimation = 30;
-            item.value = Item.buyPrice(2, 0, 0, 0);
+            item.value = Item.sellPrice(1, 0, 0, 0);
             item.autoReuse = true;
             item.scale *= 1.5f;
             item.melee = true;
@@ -35,27 +35,27 @@ namespace DrakSolz.Items.Melee {
 
         public override bool UseItem(Player player) {
             if (Main.rand.Next(15) == 0) {
-            player.AddBuff(ModContent.BuffType<Buffs.AbyssSwordBuff>(), 180);
-            int idamage = item.damage;
-            int iuse = item.useAnimation - 2;
-            int iani = item.useTime - 2;
-            int icrit = item.crit;
-            float iknock = item.knockBack;
-            float isize = item.scale;
-            byte ipref = item.prefix;
-            foreach (Item i in player.inventory)
-                if (i == item) {
-                    i.netDefaults(ModContent.ItemType<Items.Melee.AbyssSword>());
-                    i.damage = idamage + 1000;
-                    i.useAnimation = iuse;
-                    i.useTime = iani;
-                    i.crit = icrit;
-                    i.knockBack = iknock;
-                    i.scale = isize;
-                    i.prefix = ipref;
-                    i.GetGlobalItem<DSGlobalItem>().FromPlayer = player.whoAmI;
-                    i.GetGlobalItem<DSGlobalItem>().Owned = true;
-                };
+                player.AddBuff(ModContent.BuffType<Buffs.AbyssSwordBuff>(), 180);
+                int idamage = item.damage;
+                int iuse = item.useAnimation - 2;
+                int iani = item.useTime - 2;
+                int icrit = item.crit;
+                float iknock = item.knockBack;
+                float isize = item.scale;
+                byte ipref = item.prefix;
+                foreach (Item i in player.inventory)
+                    if (i == item) {
+                        i.netDefaults(ModContent.ItemType<Items.Melee.AbyssSword>());
+                        i.damage = idamage + 1000;
+                        i.useAnimation = iuse;
+                        i.useTime = iani;
+                        i.crit = icrit;
+                        i.knockBack = iknock;
+                        i.scale = isize;
+                        i.prefix = ipref;
+                        i.GetGlobalItem<DSGlobalItem>().FromPlayer = player.whoAmI;
+                        i.GetGlobalItem<DSGlobalItem>().Owned = true;
+                    };
             }
 
             return true;

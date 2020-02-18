@@ -25,8 +25,8 @@ namespace DrakSolz.Items.Throwing
 			item.noUseGraphic = true;
 			item.noMelee = true; //so the item's animation doesn't do damage
 			item.knockBack = 9;
-            item.value = Item.buyPrice(1, 0, 0, 0);
-			item.rare = 5;
+            item.value = Item.sellPrice(0, 50, 0, 0);
+			item.rare = ItemRarityID.Pink;
 			item.UseSound = SoundID.Item11;
 			item.autoReuse = true;
             item.shoot = ModContent.ProjectileType<Projectiles.HighTemplarHammerproj>();

@@ -18,11 +18,11 @@ namespace DrakSolz.Items {
 			item.useTime = 20;
 			item.useAnimation = 20;
 			item.useStyle = 1;
-			item.value = 30000;
-			item.rare = 3;
+			item.value = Item.sellPrice(0, 1, 50, 0);
+			item.rare = ItemRarityID.Orange;
 			item.UseSound = SoundID.Item79;
 			item.noMelee = true;
-            item.rare = 7;
+            item.rare = ItemRarityID.Lime;
             item.UseSound = SoundID.Item1;
             item.mountType = ModContent.MountType<Mounts.BoneWheel>();
         }

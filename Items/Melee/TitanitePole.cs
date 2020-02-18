@@ -22,10 +22,10 @@ namespace DrakSolz.Items.Melee {
             item.width = 28;
             item.height = 28;
             item.scale = 1f;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             item.UseSound = SoundID.Item1;
             item.shoot = ModContent.ProjectileType<Projectiles.TitanitePoleProj>();
-            item.value = 1000000;
+            item.value = Item.sellPrice(0, 50, 0, 0);
             item.noMelee = true;
             item.noUseGraphic = true;
             item.melee = true;
@@ -46,7 +46,7 @@ namespace DrakSolz.Items.Melee {
             if (player.velocity.Y != 0 && player.altFunctionUse == 2) {
                 player.velocity.Y = ((int) 1 * player.maxFallSpeed);
             }
-            damage = (int)(damage + (15 * (player.velocity.Y) * (player.meleeDamage)));
+            damage = (int) (damage + (15 * (player.velocity.Y) * (player.meleeDamage)));
             //int pro = Projectile.NewProjectile(player.Center.X, player.Center.X, (int)speedX, (int)speedY, type, (int)(damage + (5 * (player.velocity.Y))), 6.5f, player.whoAmI);
             return true;
         }
@@ -54,5 +54,5 @@ namespace DrakSolz.Items.Melee {
             return player.ownedProjectileCounts[item.shoot] < 1;
         }
     }
-    
+
 }

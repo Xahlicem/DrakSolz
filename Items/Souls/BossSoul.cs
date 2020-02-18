@@ -31,8 +31,8 @@ namespace DrakSolz.Items.Souls {
             item.useAnimation = 160;
             item.useTime = 160;
             item.maxStack = 1;
-            item.value = Item.buyPrice(0, 0, 0, 0);
-            item.rare = 4;
+            item.value = 0;
+            item.rare = ItemRarityID.LightRed;
             item.consumable = true;
         }
 

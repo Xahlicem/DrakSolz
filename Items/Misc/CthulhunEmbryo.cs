@@ -17,7 +17,7 @@ namespace DrakSolz.Items.Misc {
             item.height = refItem.height;
             item.maxStack = 99;
             item.value = Item.sellPrice(0, 5, 0, 0);
-            item.rare = 6;
+            item.rare = ItemRarityID.LightPurple;
         }
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);

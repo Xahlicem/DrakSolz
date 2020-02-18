@@ -26,7 +26,7 @@ namespace DrakSolz.Items.Throwing {
             item.noMelee = true;
             item.autoReuse = true;
             item.value = Item.buyPrice(0, 0, 10, 0);
-            item.rare = 5;
+            item.rare = ItemRarityID.Pink;
             item.shoot = ModContent.ProjectileType<Projectiles.FireBombProj>();
         }
     }

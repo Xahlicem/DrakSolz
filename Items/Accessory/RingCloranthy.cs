@@ -1,20 +1,20 @@
 ﻿using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace DrakSolz.Items.Accessory {
     public class RingCloranthy : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Ring of Cloranthy");
-            Tooltip.SetDefault("This is a modded ring." +
-                "\n+30% Max Move Speed" +
-                "\n+15% Melee Speed");
+            Tooltip.SetDefault("30% increased maximum movement speed" +
+                "\n15% increased melee speed");
         }
 
         public override void SetDefaults() {
             item.width = 22;
             item.height = 20;
             item.value = Item.buyPrice(0, 25, 0, 0);
-            item.rare = 2;
+            item.rare = ItemRarityID.Green;
             item.accessory = true;
         }
 

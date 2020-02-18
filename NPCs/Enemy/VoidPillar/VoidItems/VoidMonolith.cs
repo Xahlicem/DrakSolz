@@ -1,13 +1,11 @@
-using Terraria;
-using Terraria.ModLoader;
 using DrakSolz.NPCs.Enemy.VoidPillar.Tiles;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
-namespace DrakSolz.NPCs.Enemy.VoidPillar.VoidItems
-{
-	public class VoidMonolith : ModItem
-	{
-		public override void SetDefaults()
-		{
+namespace DrakSolz.NPCs.Enemy.VoidPillar.VoidItems {
+	public class VoidMonolith : ModItem {
+		public override void SetDefaults() {
 			item.width = 22;
 			item.height = 32;
 			item.maxStack = 999;
@@ -17,18 +15,16 @@ namespace DrakSolz.NPCs.Enemy.VoidPillar.VoidItems
 			item.useTime = 10;
 			item.useStyle = 1;
 			item.consumable = true;
-			item.rare = 10;
-			item.value = Item.buyPrice(0, 10, 0, 0);
+			item.rare = ItemRarityID.Red;
+			item.value = Item.sellPrice(0, 5, 0, 0);
 			item.createTile = ModContent.TileType<VoidMonolithTile>();
 		}
 
-		public override void SetStaticDefaults()
-		{
+		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Void Monolith");
 		}
 
-		public override void AddRecipes()
-		{
+		public override void AddRecipes() {
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(null, "VoidFragment", 15);
 			recipe.SetResult(this);

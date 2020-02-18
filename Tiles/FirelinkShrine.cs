@@ -30,7 +30,6 @@ namespace DrakSolz.Tiles {
             item.useTime = 10;
             item.useStyle = 1;
             item.consumable = true;
-            item.value = Item.buyPrice(0, 0, 0, 1);
             item.createTile = ModContent.TileType<Tiles.FirelinkShrineTile>();
         }
 

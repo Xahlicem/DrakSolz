@@ -25,8 +25,8 @@ namespace DrakSolz.Items.Throwing {
             item.shootSpeed = 16f;
             item.knockBack = 5.5f;
             item.damage = 1000;
-            item.value = Item.buyPrice(1, 0, 0, 0);
-            item.rare = 0;
+            item.value = Item.sellPrice(0, 50, 0, 0);
+            item.rare = ItemRarityID.White;
             item.channel = true;
             item.noMelee = true;
             item.noUseGraphic = true;

@@ -17,8 +17,7 @@ namespace DrakSolz.Items.Ranged {
             item.maxStack = 999;
             item.consumable = true; //You need to set the item consumable so that the ammo would automatically consumed
             item.knockBack = 2f;
-            item.value = 0;
-            item.rare = 0;
+            item.rare = ItemRarityID.White;
             item.shoot = ModContent.ProjectileType<Projectiles.SlingshotStonesProj>(); //The projectile shoot when your weapon using this ammo
             item.shootSpeed = 8f; //The speed of the projectile
             item.ammo = (ModContent.ItemType<Items.Ranged.SlingshotStones>()); //The ammo class this ammo belongs to.

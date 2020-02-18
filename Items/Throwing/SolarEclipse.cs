@@ -23,7 +23,7 @@ namespace DrakSolz.Items.Throwing {
             item.noUseGraphic = true;
             item.useTime = 30;
             item.useAnimation = 30;
-            item.rare = 10;
+            item.rare = ItemRarityID.Red;
             item.mana = 0;
             item.knockBack = 2.0f;
             item.shootSpeed = 12.0f;

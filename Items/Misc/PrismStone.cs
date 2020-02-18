@@ -23,7 +23,7 @@ namespace DrakSolz.Items.Misc {
             item.noUseGraphic = true;
             item.noMelee = true;
             item.value = Item.buyPrice(0, 0, 0, 50);
-            item.rare = 1;
+            item.rare = ItemRarityID.Blue;
             item.shoot = ModContent.ProjectileType<Projectiles.PrismStoneProj>();
         }
     }
