@@ -59,12 +59,6 @@ namespace DrakSolz {
         public bool EvilEye { get; set; }
         public int Avarice { get; set; }
         public int MiscHP { get; set; }
-        public int MiscHP0 { get; set; }
-        public int MiscHP1 { get; set; }
-        public int MiscHP2 { get; set; }
-        public int MiscHP3 { get; set; }
-        public int MiscHP4 { get; set; }
-        public int TotalHP { get { return MiscHP + MiscHP0 + MiscHP1 + MiscHP2 + MiscHP3 + MiscHP4; } }
 
         public bool Rotate { get; set; }
         public float Rotation { get; set; }
@@ -102,6 +96,7 @@ namespace DrakSolz {
         }
 
         public override void ResetEffects() {
+            MiscHP = 0;
             SoulSummon = false;
             HumSummon = false;
             SunSummon = false;
@@ -222,54 +217,6 @@ namespace DrakSolz {
                 player.armor[1].type == ModContent.ItemType<Items.Armor.Channeler.ChannelerRobe>() &&
                 player.armor[2].type == ModContent.ItemType<Items.Armor.Channeler.ChannelerSkirt>())
                 player.extraAccessorySlots += 1;
-            if (player.armor[1].type == ModContent.ItemType<Items.Armor.Channeler.ChannelerRobe>())
-
-                MiscHP = 40;
-
-            else {
-                MiscHP = 0;
-            }
-            if (player.armor[0].type == ModContent.ItemType<Items.Armor.Xanthous.XanthousCrown>() &&
-                player.armor[1].type == ModContent.ItemType<Items.Armor.Xanthous.XanthousOvercoat>() &&
-                player.armor[2].type == ModContent.ItemType<Items.Armor.Xanthous.XanthousWaistcloth>())
-
-                MiscHP2 = 40;
-
-            else {
-                MiscHP2 = 0;
-            }
-            if (player.armor[0].type == ModContent.ItemType<Items.Armor.Artorias.ArtoriasHelmet>() &&
-                player.armor[1].type == ModContent.ItemType<Items.Armor.Artorias.ArtoriasArmor>() &&
-                player.armor[2].type == ModContent.ItemType<Items.Armor.Artorias.ArtoriasLeggings>())
-                MiscHP3 = 500;
-
-            else {
-                MiscHP3 = 0;
-            }
-            if (player.armor[0].type == ModContent.ItemType<Items.Armor.Father.FatherMask>() &&
-                player.armor[1].type == ModContent.ItemType<Items.Armor.Father.GiantArmor>() &&
-                player.armor[2].type == ModContent.ItemType<Items.Armor.Father.GiantLeggings>())
-                MiscHP4 = 100;
-
-            else {
-                MiscHP4 = 0;
-            }
-            for (int n = 3; n < 8 + player.extraAccessorySlots; n++) {
-                Item item = player.armor[n];
-                if (item.type == ModContent.ItemType<Items.Accessory.RingTinyBeing>()) {
-                    MiscHP0 = 50;
-                } else {
-                    MiscHP0 = 0;
-                }
-            }
-            for (int nn = 3; nn < 8 + player.extraAccessorySlots; nn++) {
-                Item item1 = player.armor[nn];
-                if (item1.type == ModContent.ItemType<Items.Accessory.RingFavor>()) {
-                    MiscHP1 = 50;
-                } else {
-                    MiscHP1 = 0;
-                }
-            }
         }
 
         public override void PostUpdateEquips() {
@@ -322,7 +269,7 @@ namespace DrakSolz {
             player.thrownDamage *= 0.6f + ((Str < Dex) ? Str : Dex) * 0.04f;;
             player.magicDamage *= 0.6f + Int * 0.02f;;
             player.minionDamage *= 0.6f + Fth * 0.02f;;
-            player.statLifeMax = Level * 4 + 100 + TotalHP;
+            player.statLifeMax = Level * 4 + 100 + MiscHP;
             player.statLifeMax2 = player.statLifeMax + Vit * 11;
             player.statManaMax = 0;
             player.statManaMax2 += Att * 5;

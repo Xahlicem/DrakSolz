@@ -22,8 +22,8 @@ namespace DrakSolz.Items.Armor.Channeler {
         }
 
         public override void UpdateEquip(Player player) {
+            player.GetModPlayer<DrakSolzPlayer>().MiscHP += 40;
             player.statManaMax2 += 40;
-            player.statLifeMax2 += 40;
         }
     }
 }

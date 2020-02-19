@@ -53,7 +53,7 @@ namespace DrakSolz.Items.Armor.Father {
             player.rangedDamage *= 1.20f;
             player.manaCost *= 0.80f;
             player.meleeSpeed *= 1.20f;
-            player.statLifeMax2 += 100;
+            player.GetModPlayer<DrakSolzPlayer>().MiscHP += 100;
             player.statManaMax2 += 40;
             player.endurance += 5;
             player.accRunSpeed += 5;

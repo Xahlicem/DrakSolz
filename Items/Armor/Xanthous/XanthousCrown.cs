@@ -22,8 +22,8 @@ namespace DrakSolz.Items.Armor.Xanthous {
         }
 
         public override void UpdateEquip(Player player) {
-            if(player.maxMinions >= 1){
-            player.maxMinions -= 1;
+            if (player.maxMinions >= 1) {
+                player.maxMinions -= 1;
             }
             player.minionDamage *= 1.1f;
             player.statManaMax2 += 60;
@@ -38,7 +38,7 @@ namespace DrakSolz.Items.Armor.Xanthous {
                 "\n+20% miracle damage" +
                 "\n30% reduced mana cost" +
                 "\n+40 life");
-            player.statLifeMax2 += 40;
+            player.GetModPlayer<DrakSolzPlayer>().MiscHP += 40;
             player.minionDamage *= 1.2f;
             player.manaCost *= 0.7f;
         }
@@ -46,13 +46,13 @@ namespace DrakSolz.Items.Armor.Xanthous {
             return false;
         }
         public override void AddRecipes() {
-                ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.LihzahrdPowerCell, 1);
-                recipe.AddIngredient(ItemID.LivingFireBlock, 25);
-                recipe.AddIngredient(ModContent.ItemType<Items.Armor.Tattered.TatteredHat>());
-                recipe.AddTile(TileID.MythrilAnvil);
-                recipe.SetResult(this);
-                recipe.AddRecipe();
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.LihzahrdPowerCell, 1);
+            recipe.AddIngredient(ItemID.LivingFireBlock, 25);
+            recipe.AddIngredient(ModContent.ItemType<Items.Armor.Tattered.TatteredHat>());
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
 
         }
     }

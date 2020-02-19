@@ -16,5 +16,9 @@ namespace DrakSolz.Items.Accessory {
             item.rare = ItemRarityID.Green;
             item.accessory = true;
         }
+
+        public override void UpdateAccessory(Player player, bool hideVisual) {
+            player.GetModPlayer<DrakSolzPlayer>().MiscHP += 50;
+        }
     }
 }

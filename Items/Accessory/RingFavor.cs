@@ -23,7 +23,7 @@ namespace DrakSolz.Items.Accessory {
 
         public override void UpdateAccessory(Player player, bool hideVisual) {
             player.statManaMax2 += 50;
-            player.statLifeMax2 += 50;
+            player.GetModPlayer<DrakSolzPlayer>().MiscHP += 50;
             player.maxRunSpeed += 0.30f;
             player.meleeSpeed += 0.15f;
             player.moveSpeed += 0.15f;

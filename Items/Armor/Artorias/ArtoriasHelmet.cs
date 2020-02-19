@@ -20,8 +20,7 @@ namespace DrakSolz.Items.Armor.Artorias {
             item.defense = 40;
         }
 
-        public override void UpdateEquip(Player player) {
-        }
+        public override void UpdateEquip(Player player) { }
 
         public override bool IsArmorSet(Item head, Item body, Item legs) {
             return body.type == ModContent.ItemType<Items.Armor.Artorias.ArtoriasArmor>() && legs.type == ModContent.ItemType<Items.Armor.Artorias.ArtoriasLeggings>();
@@ -43,7 +42,7 @@ namespace DrakSolz.Items.Armor.Artorias {
             player.minionDamage *= 2f;
             player.manaCost *= 0.01f;
             player.statManaMax2 += 250;
-            player.statLifeMax2 += 500;
+            player.GetModPlayer<DrakSolzPlayer>().MiscHP += 500;
             player.meleeSpeed *= 1.5f;
             player.endurance += 5;
             player.accRunSpeed += 5;
