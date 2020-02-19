@@ -163,7 +163,7 @@ namespace DrakSolz.UI {
             if (Vit.icon.ContainsPoint(MousePosition)) {
                 tooltipTitle.SetText("Vitality");
                 int vit = Vit.Stat + Vit.StatAdd;
-                vit = int.Parse(Level.Text) * 2 + (int.Parse(Level.Text) > 5 ? (int.Parse(Level.Text) - 5) : 0) + (int.Parse(Level.Text) > 10 ? (int.Parse(Level.Text) - 10) * 2 : 0) + (int.Parse(Level.Text) > 20 ? (int.Parse(Level.Text) - 20) * 2 : 0) + vit * 12 + (vit > 20 ? (vit - 20) * 11 : 0);
+                vit = int.Parse(Level.Text) * 4 + vit * 11;
                 s = ("+" + vit + " Health");
                 defense = true;
             } else if (Str.icon.ContainsPoint(MousePosition)) {
