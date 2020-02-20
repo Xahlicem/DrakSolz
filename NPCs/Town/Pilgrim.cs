@@ -95,7 +95,18 @@ namespace DrakSolz.NPCs.Town {
             if (partyGirl >= 0 && Main.rand.Next(4) == 0) {
                 chat.Add("Can you please tell " + Main.npc[partyGirl].GivenName + " to stop decorating my house with colors?");
             }
+
+            int Smithy = NPC.FindFirstNPC(ModContent.NPCType<NPCs.Town.Blacksmith>());
+            if (Smithy <= -1 && Main.rand.Next(4) == 0) {
+                chat.Add("Rumor has it there is a blacksmith around these parts. He tends to journey towards adventurers holding tools for him to use. I wonder what would entice him...");
+            }
+            if (Smithy >= 0 && Main.rand.Next(4) == 0) {
+                chat.Add("Did you know that "  + Main.npc[Smithy].GivenName +  " was once friends with a giant blacksmith?");
+            }
             chat.Add("Oh, sweet champion, you've returned.");
+            chat.Add("Gathering Estus Shards will allow you to fortify your Flask.");
+            chat.Add("Resting at a Firelink Shrine restores all Estus Flasks, lost mana, and increases hollow recovery speed.");
+            chat.Add("Some items require special powers to forge, a Firelink Shrine has unique properties attuned to these items, but often times a price must be made in exchange");
             chat.Add("May the dark sigil guide your way.");
             chat.Add("Stay safe champion.");
 
