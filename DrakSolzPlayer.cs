@@ -335,6 +335,11 @@ namespace DrakSolz {
             save.Add("Vit", Vit);
             save.Add("Att", Att);
             save.Add("BossSouls", BossSouls);
+            save.Add("CoalRed", CoalRed);
+            save.Add("CoalWhite", CoalWhite);
+            save.Add("CoalYellow", CoalYellow);
+            save.Add("CoalBlue", CoalBlue);
+            save.Add("CoalLord", CoalLord);
             return save;
         }
 
@@ -349,6 +354,12 @@ namespace DrakSolz {
             Vit = tag.GetInt("Vit");
             Att = tag.GetInt("Att");
             BossSouls = tag.GetInt("BossSouls");
+            CoalRed = tag.GetBool("CoalRed");
+            CoalWhite = tag.GetBool("CoalWhite");
+            CoalYellow = tag.GetBool("CoalYellow");
+            CoalBlue = tag.GetBool("CoalBlue");
+            CoalLord = tag.GetBool("CoalLord");
+
         }
 
         public override void SetupStartInventory(IList<Item> items, bool mediumcoreDeath) {
