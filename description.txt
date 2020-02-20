@@ -13,28 +13,24 @@ Spawn rate is adjusted in reference to how many bosses have been defeated. Incre
 
 Additions:
 +26 Accessories
-+58 Armor Pieces
-+14 Melee Weapons
-+12 Ranged Weapons | +2 Ammo
++58 Armor Pieces(+16 full sets)
++37 Magic Weapons
++21 Summon Weapons
++17 Melee Weapons
++13 Ranged Weapons
 +7 Throwing Weapons
-+6 Summon Weapons | +4 Consumable Summons
-+9 Miracle Weapons
-+12 Pyromancy Weapons (Magic)
-+26 Magic Weapons
-+13 Non-Weapon Spells
-+7 Crafting Materials
-+4 Consumables
-+1 Pet
++2 Ammo
 +1 Mount
-+1 Bed / Spawnpoint
-+25 Buffs / Debuffs
-+2 Bosses / Summon Items
-+20 Boss Souls
-+2 Town NPC's
-+27 NPC's
-+1 Celestial Tower
-+94 Post-End-Game NPC's
-+1 Micro-Biome
++1 Pet
++39 Misc Items
++26 Buffs
++1 Micro Biome
++1 Tile
++3 TownNPCs
++2 Bosses
++1 Celestial Pillar
++30 NPCs
++94 Post-End Game NPCs
 
 Future changes:
 Boss Rework. The bosses do need to actually function like bosses, but for now we're not focusing on that.
