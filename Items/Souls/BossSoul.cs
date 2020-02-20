@@ -94,9 +94,12 @@ namespace DrakSolz.Items.Souls {
     class BossSoulMod : GlobalNPC {
         public override void NPCLoot(NPC npc) {
             Item item = new Item();
+            Item item2 = new Item();
+            item2.netDefaults(ItemID.HealingPotion);
             switch (npc.type) {
                 case NPCID.KingSlime:
                     item.netDefaults(ModContent.ItemType<SlimeSoul>());
+                    item2.netDefaults(ModContent.ItemType<Misc.EstusShard>());
                     break;
                 case NPCID.EyeofCthulhu:
                     item.netDefaults(ModContent.ItemType<EyeSoul>());
@@ -112,12 +115,14 @@ namespace DrakSolz.Items.Souls {
                     break;
                 case NPCID.QueenBee:
                     item.netDefaults(ModContent.ItemType<BeeSoul>());
+                    item2.netDefaults(ModContent.ItemType<Misc.EstusShard>());
                     break;
                 case NPCID.SkeletronHead:
                     item.netDefaults(ModContent.ItemType<SkeletronSoul>());
                     break;
                 case NPCID.WallofFlesh:
                     item.netDefaults(ModContent.ItemType<WallSoul>());
+                    item2.netDefaults(ModContent.ItemType<Misc.EstusShard>());
                     break;
                 case NPCID.TheDestroyer:
                     item.netDefaults(ModContent.ItemType<DestSoul>());
@@ -130,18 +135,22 @@ namespace DrakSolz.Items.Souls {
                     break;
                 case NPCID.SkeletronPrime:
                     item.netDefaults(ModContent.ItemType<SkeletronPrimeSoul>());
+                    item2.netDefaults(ModContent.ItemType<Misc.EstusShard>());
                     break;
                 case NPCID.Plantera:
                     item.netDefaults(ModContent.ItemType<PlantSoul>());
+                    item2.netDefaults(ModContent.ItemType<Misc.EstusShard>());
                     break;
                 case NPCID.Golem:
                     item.netDefaults(ModContent.ItemType<GolemSoul>());
                     break;
                 case NPCID.CultistBoss:
                     item.netDefaults(ModContent.ItemType<LunaticSoul>());
+                    item2.netDefaults(ModContent.ItemType<Misc.EstusShard>());
                     break;
                 case NPCID.DukeFishron:
                     item.netDefaults(ModContent.ItemType<DukeSoul>());
+                    item2.netDefaults(ModContent.ItemType<Misc.EstusShard>());
                     break;
                 case NPCID.MoonLordHand:
                 case NPCID.MoonLordCore:
@@ -149,11 +158,13 @@ namespace DrakSolz.Items.Souls {
                 case NPCID.MoonLordHead:
                     if (!npc.boss) return;
                     item.netDefaults(ModContent.ItemType<MoonSoul>());
+                    item2.netDefaults(ModContent.ItemType<Misc.EstusShard>());
                     break;
             }
 
             if (npc.type == ModContent.NPCType<NPCs.Enemy.Boss.AbyssStalker>()) {
                 item.netDefaults(ModContent.ItemType<ArtoriasSoul>());
+                item2.netDefaults(ModContent.ItemType<Misc.EstusShard>());
             }
 
             if (npc.type == ModContent.NPCType<NPCs.Enemy.Boss.TitaniteDemon>()) {
@@ -173,6 +184,7 @@ namespace DrakSolz.Items.Souls {
                 for (int i = 0; i < players.Count; i++) {
                     if ((Main.player[players[i]].GetModPlayer<DrakSolzPlayer>().BossSouls & soul.Place) > 0) continue;
                     int index = Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, item.type);
+                    int index2 = Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, item2.type);
                     Main.item[index].GetGlobalItem<Items.DSGlobalItem>().FromPlayer = players[i];
                     Main.player[players[i]].GetModPlayer<DrakSolzPlayer>().SetBossSouls(soul.Place);
                 }

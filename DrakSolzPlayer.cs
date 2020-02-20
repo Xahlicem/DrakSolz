@@ -64,7 +64,7 @@ namespace DrakSolz {
         public bool CoalYellow { get; set; }
         public bool CoalBlue { get; set; }
         public bool CoalLord { get; set; }
-
+        public int Estus { get; set; }
         public bool Rotate { get; set; }
         public float Rotation { get; set; }
 
@@ -101,6 +101,7 @@ namespace DrakSolz {
             CoalYellow = false;
             CoalBlue = false;
             CoalLord = false;
+            Estus = 0;
 
             Rotation = 0f;
         }
@@ -340,6 +341,7 @@ namespace DrakSolz {
             save.Add("CoalYellow", CoalYellow);
             save.Add("CoalBlue", CoalBlue);
             save.Add("CoalLord", CoalLord);
+            save.Add("Estus", Estus);
             return save;
         }
 
@@ -359,6 +361,7 @@ namespace DrakSolz {
             CoalYellow = tag.GetBool("CoalYellow");
             CoalBlue = tag.GetBool("CoalBlue");
             CoalLord = tag.GetBool("CoalLord");
+            Estus = tag.GetInt("Estus");
 
         }
 
@@ -370,10 +373,15 @@ namespace DrakSolz {
             item.GetGlobalItem<DSGlobalItem>().FromPlayer = player.whoAmI;
             items.Add(item);
             Item item2 = new Item();
-            item2.netDefaults(ModContent.ItemType<Items.Misc.Classes.ClassEmpty>());
+            item2.netDefaults(ModContent.ItemType<Items.Misc.EstusFlask>());
             item2.GetGlobalItem<DSGlobalItem>().Owned = true;
             item2.GetGlobalItem<DSGlobalItem>().FromPlayer = player.whoAmI;
             items.Add(item2);
+            Item item3 = new Item();
+            item3.netDefaults(ModContent.ItemType<Items.Misc.Classes.ClassEmpty>());
+            item3.GetGlobalItem<DSGlobalItem>().Owned = true;
+            item3.GetGlobalItem<DSGlobalItem>().FromPlayer = player.whoAmI;
+            items.Add(item3);
         }
 
         public override void SyncPlayer(int toWho, int fromWho, bool newPlayer) {
