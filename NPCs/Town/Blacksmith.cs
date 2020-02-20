@@ -167,72 +167,82 @@ namespace DrakSolz.NPCs.Town {
 
         public override void SetupShop(Chest shop, ref int nextSlot) {
             DrakSolzPlayer modPlayer = (DrakSolzPlayer) Main.LocalPlayer.GetModPlayer<DrakSolzPlayer>();
-            shop.item[nextSlot++].SetDefaults(ItemID.CopperBar);
-            if (NPC.downedBoss1) shop.item[nextSlot++].SetDefaults(ItemID.IronBar);
-            if (NPC.downedBoss2) shop.item[nextSlot++].SetDefaults(ItemID.SilverBar);
-            if (NPC.downedBoss3) shop.item[nextSlot++].SetDefaults(ItemID.GoldBar);
-            shop.item[nextSlot++].SetDefaults(ItemID.WoodenArrow);
-            shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Ranged.SlingshotStones>());
+            shop.item[0].SetDefaults(ItemID.CopperBar);
+            if (NPC.downedBoss1) shop.item[10].SetDefaults(ItemID.IronBar);
+            if (NPC.downedBoss2) shop.item[20].SetDefaults(ItemID.SilverBar);
+            if (NPC.downedBoss3) shop.item[30].SetDefaults(ItemID.GoldBar);
+            shop.item[1].SetDefaults(ItemID.WoodenArrow);
+            shop.item[13].SetDefaults(ModContent.ItemType<Items.Ranged.SlingshotStones>());
             if (Main.hardMode == false) {
-                shop.item[nextSlot++].SetDefaults(ItemID.IronBroadsword);
-                shop.item[nextSlot++].SetDefaults(ItemID.IronShortsword);
-                shop.item[nextSlot++].SetDefaults(ItemID.Shuriken);
-                shop.item[nextSlot++].SetDefaults(ItemID.IronBow);
-                shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Ranged.ReinforcedSlingshot>());
-            } else {
-                shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Melee.MorianBlade>());
-                shop.item[nextSlot++].SetDefaults(ItemID.BookStaff);
-                shop.item[nextSlot++].SetDefaults(ItemID.BoneGlove);
-                shop.item[nextSlot++].SetDefaults(ItemID.CobaltShield);
-                shop.item[nextSlot++].SetDefaults(ItemID.HellfireArrow);
+                shop.item[8].SetDefaults(ItemID.IronBroadsword);
+                shop.item[9].SetDefaults(ItemID.IronShortsword);
+                shop.item[5].SetDefaults(ItemID.Shuriken);
+                shop.item[2].SetDefaults(ItemID.IronBow);
+                shop.item[3].SetDefaults(ModContent.ItemType<Items.Ranged.ReinforcedSlingshot>());
             }
             if (NPC.downedSlimeKing) {
-                shop.item[nextSlot++].SetDefaults(ItemID.SlimeStaff);
-                shop.item[nextSlot++].SetDefaults(ItemID.AmethystStaff);
-                shop.item[nextSlot++].SetDefaults(ItemID.BladedGlove);
+                shop.item[23].SetDefaults(ItemID.SlimeStaff);
+                shop.item[6].SetDefaults(ItemID.AmethystStaff);
+                shop.item[7].SetDefaults(ItemID.BladedGlove);
             }
             if (NPC.downedBoss1) {
-                shop.item[nextSlot++].SetDefaults(ItemID.ThrowingKnife);
-                shop.item[nextSlot++].SetDefaults(ItemID.TaxCollectorsStickOfDoom);
+                shop.item[4].SetDefaults(ItemID.ThrowingKnife);
+                shop.item[18].SetDefaults(ItemID.TaxCollectorsStickOfDoom);
+                shop.item[6].SetDefaults(ItemID.SapphireStaff);
 
             }
             if (NPC.downedBoss2) {
-                shop.item[nextSlot++].SetDefaults(ItemID.PoisonedKnife);
-                shop.item[nextSlot++].SetDefaults(ItemID.BoneArrow);
-                shop.item[nextSlot++].SetDefaults(ItemID.DyeTradersScimitar);
+                shop.item[14].SetDefaults(ItemID.PoisonedKnife);
+                shop.item[11].SetDefaults(ItemID.BoneArrow);
+                shop.item[18].SetDefaults(ItemID.DyeTradersScimitar);
+                shop.item[6].SetDefaults(ItemID.AmberStaff);
             }
             if (NPC.downedBoss3) {
-                shop.item[nextSlot++].SetDefaults(ItemID.BoneDagger);
-                shop.item[nextSlot++].SetDefaults(ItemID.Javelin);
-                shop.item[nextSlot++].SetDefaults(ItemID.UnholyArrow);
-                shop.item[nextSlot++].SetDefaults(ItemID.FalconBlade);
+                shop.item[24].SetDefaults(ItemID.BoneDagger);
+                shop.item[15].SetDefaults(ItemID.Javelin);
+                shop.item[12].SetDefaults(ItemID.UnholyArrow);
+                shop.item[18].SetDefaults(ItemID.FalconBlade);
+                shop.item[6].SetDefaults(ItemID.DiamondStaff);
             }
             if (modPlayer.CoalRed == true) {
-                shop.item[nextSlot++].SetDefaults(ItemID.EnchantedSword);
-                shop.item[nextSlot++].SetDefaults(ItemID.FlamingArrow);
-                shop.item[nextSlot++].SetDefaults(ItemID.StarAnise);
+                shop.item[19].SetDefaults(ItemID.ChainKnife);
+                shop.item[17].SetDefaults(ItemID.EnchantedSword);
+                shop.item[21].SetDefaults(ItemID.FlamingArrow);
+                shop.item[5].SetDefaults(ItemID.StarAnise);
             }
             if (modPlayer.CoalWhite == true) {
-                shop.item[nextSlot++].SetDefaults(ItemID.Arkhalis);
-                shop.item[nextSlot++].SetDefaults(ItemID.JestersArrow);
-                shop.item[nextSlot++].SetDefaults(ItemID.BoneJavelin);
+                shop.item[33].SetDefaults(ItemID.DD2LightningAuraT1Popper);
+                shop.item[17].SetDefaults(ItemID.Arkhalis);
+                shop.item[35].SetDefaults(ItemID.BoneGlove);
+                shop.item[31].SetDefaults(ItemID.JestersArrow);
+                shop.item[25].SetDefaults(ItemID.BoneJavelin);
+            }
+            if (Main.hardMode) {
+                shop.item[35].SetDefaults(ItemID.AleThrowingGlove);
+                shop.item[5].SetDefaults(ItemID.Ale);
+                shop.item[8].SetDefaults(ModContent.ItemType<Items.Melee.MorianBlade>());
+                shop.item[16].SetDefaults(ItemID.BookStaff);
+                shop.item[9].SetDefaults(ItemID.CobaltShield);
+                shop.item[2].SetDefaults(ItemID.HellfireArrow);
             }
             if (modPlayer.CoalYellow == true) {
-                shop.item[nextSlot++].SetDefaults(ItemID.MagicalHarp);
-                shop.item[nextSlot++].SetDefaults(ItemID.ChainGuillotines);
-                shop.item[nextSlot++].SetDefaults(ItemID.VampireKnives);
-                shop.item[nextSlot++].SetDefaults(ItemID.DD2LightningAuraT2Popper);
-                shop.item[nextSlot++].SetDefaults(ItemID.IchorArrow);
+                shop.item[26].SetDefaults(ItemID.MagicalHarp);
+                shop.item[19].SetDefaults(ItemID.ChainGuillotines);
+                shop.item[34].SetDefaults(ItemID.VampireKnives);
+                shop.item[33].SetDefaults(ItemID.DD2LightningAuraT2Popper);
+                shop.item[22].SetDefaults(ItemID.IchorArrow);
+                shop.item[36].SetDefaults(ModContent.ItemType<Items.Magic.ADagger>());
             }
             if (modPlayer.CoalBlue == true) {
-                shop.item[nextSlot++].SetDefaults(ItemID.MoonlordArrow);
-                shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Magic.MoonGS>());
-                shop.item[nextSlot++].SetDefaults(ItemID.TerraBlade);
-                shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Misc.Twink>());
+                shop.item[33].SetDefaults(ItemID.DD2LightningAuraT3Popper);
+                shop.item[32].SetDefaults(ItemID.MoonlordArrow);
+                shop.item[36].SetDefaults(ModContent.ItemType<Items.Magic.MoonGS>());
+                shop.item[37].SetDefaults(ItemID.TerraBlade);
+                shop.item[29].SetDefaults(ModContent.ItemType<Items.Misc.Twink>());
             }
             if (modPlayer.CoalLord == true) {
-                shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Misc.Titanite>());
-                shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Ranged.DragonslayerGreatarrow>());
+                shop.item[39].SetDefaults(ModContent.ItemType<Items.Misc.Titanite>());
+                shop.item[3].SetDefaults(ModContent.ItemType<Items.Ranged.DragonslayerGreatarrow>());
             }
         }
 
