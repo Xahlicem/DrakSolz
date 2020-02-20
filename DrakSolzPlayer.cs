@@ -59,6 +59,11 @@ namespace DrakSolz {
         public bool EvilEye { get; set; }
         public int Avarice { get; set; }
         public int MiscHP { get; set; }
+        public bool CoalRed { get; set; }
+        public bool CoalWhite { get; set; }
+        public bool CoalYellow { get; set; }
+        public bool CoalBlue { get; set; }
+        public bool CoalLord { get; set; }
 
         public bool Rotate { get; set; }
         public float Rotation { get; set; }
@@ -91,6 +96,11 @@ namespace DrakSolz {
             CrystalPet = false;
             EvilEye = false;
             Avarice = 0;
+            CoalRed = false;
+            CoalWhite = false;
+            CoalYellow = false;
+            CoalBlue = false;
+            CoalLord = false;
 
             Rotation = 0f;
         }

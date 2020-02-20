@@ -90,6 +90,7 @@ namespace DrakSolz.NPCs.Town {
                 if (i.type == ModContent.ItemType<Items.Melee.Sword>()) chat.Add("That sword seems to have potential.");
                 if (i.type == ModContent.ItemType<Items.Melee.SwordHilt>()) chat.Add("That sword hilt had so much potential.");
             }
+
             int partyGirl = NPC.FindFirstNPC(NPCID.PartyGirl);
             if (partyGirl >= 0 && Main.rand.Next(4) == 0) {
                 chat.Add("Can you please tell " + Main.npc[partyGirl].GivenName + " to stop decorating my house with colors?");
@@ -127,7 +128,6 @@ namespace DrakSolz.NPCs.Town {
             shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Misc.GreenBlossom>());
             shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Misc.PrismStone>());
             if (Main.hardMode) {
-                shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Melee.MorianBlade>());
                 shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Throwing.FireBomb>());
             }
             if (NPC.downedPlantBoss) {
