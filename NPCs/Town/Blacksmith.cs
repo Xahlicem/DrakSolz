@@ -1,30 +1,13 @@
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.Utilities;
+using DrakSolz.Items.Misc;
 
 namespace DrakSolz.NPCs.Town {
     [AutoloadHead]
     public class Blacksmith : ModNPC {
-        /*public override string Texture
-        {
-            get
-            {
-                return "DrakSolz/NPCs/Pilgrim";
-            }
-        }
-
-        public override string[] AltTextures
-        {
-            get
-            {
-                return new string[] { "DrakSolz/NPCs/Pilgrim_Alt_1" };
-            }
-        }*/
-
         public override bool Autoload(ref string name) {
             name = "Blacksmith";
             return mod.Properties.Autoload;
@@ -96,9 +79,7 @@ namespace DrakSolz.NPCs.Town {
             foreach (Item i in Main.LocalPlayer.inventory) {
                 if (i.type == ModContent.ItemType<Items.Melee.Sword>()) chat.Add("That sword seems to have potential.");
                 if (i.type == ModContent.ItemType<Items.Melee.SwordHilt>()) chat.Add("That sword hilt had so much potential.");
-                if (i.type == ModContent.ItemType<Items.Misc.CoalRed>() || i.type == ModContent.ItemType<Items.Misc.CoalWhite>() ||
-                    i.type == ModContent.ItemType<Items.Misc.CoalYellow>() || i.type == ModContent.ItemType<Items.Misc.CoalBlue>() ||
-                    i.type == ModContent.ItemType<Items.Misc.CoalLord>()) {
+                if (i.modItem is Items.Misc.CoalItem) {
                     return "How's about... you leave that coal with me? I'd give my left arm for a gem like that. .";
                 }
             }
@@ -123,41 +104,37 @@ namespace DrakSolz.NPCs.Town {
         public override void SetChatButtons(ref string button, ref string button2) {
             button = Language.GetText("Shop").Value;
             DrakSolzPlayer player = Main.LocalPlayer.GetModPlayer<DrakSolzPlayer>();
-            button2 = "Give Coal";
+            foreach (Item i in Main.LocalPlayer.inventory) if (i.modItem is Items.Misc.CoalItem) button2 = "Give Coal";
         }
 
         public override void OnChatButtonClicked(bool firstButton, ref bool shop) {
             if (firstButton) {
                 shop = true;
             } else {
+                DrakSolzPlayer modPlayer = (DrakSolzPlayer) Main.LocalPlayer.GetModPlayer<DrakSolzPlayer>();
                 foreach (Item i in Main.LocalPlayer.inventory) {
                     if (i.type == ModContent.ItemType<Items.Misc.CoalRed>()) {
-                        DrakSolzPlayer modPlayer = (DrakSolzPlayer) Main.LocalPlayer.GetModPlayer<DrakSolzPlayer>();
-                        modPlayer.CoalRed = true;
+                        modPlayer.Coals |= CoalItem.COAL_RED;
                         Main.npcChatText = "Oh, my, what a brilliant coal!";
                         i.TurnToAir();
                     }
                     if (i.type == ModContent.ItemType<Items.Misc.CoalWhite>()) {
-                        DrakSolzPlayer modPlayer = (DrakSolzPlayer) Main.LocalPlayer.GetModPlayer<DrakSolzPlayer>();
-                        modPlayer.CoalWhite = true;
+                        modPlayer.Coals |= CoalItem.COAL_WHITE;
                         Main.npcChatText = "This coal burns like a soul. Certainly lifts my spirits!";
                         i.TurnToAir();
                     }
                     if (i.type == ModContent.ItemType<Items.Misc.CoalYellow>()) {
-                        DrakSolzPlayer modPlayer = (DrakSolzPlayer) Main.LocalPlayer.GetModPlayer<DrakSolzPlayer>();
-                        modPlayer.CoalYellow = true;
+                        modPlayer.Coals |= CoalItem.COAL_YELLOW;
                         Main.npcChatText = "My, my. the coal of that peaceful giant... I miss the old bugger, I do. I'll be sure this coal is put to good use.";
                         i.TurnToAir();
                     }
                     if (i.type == ModContent.ItemType<Items.Misc.CoalBlue>()) {
-                        DrakSolzPlayer modPlayer = (DrakSolzPlayer) Main.LocalPlayer.GetModPlayer<DrakSolzPlayer>();
-                        modPlayer.CoalBlue = true;
+                        modPlayer.Coals |= CoalItem.COAL_BLUE;
                         Main.npcChatText = "Well, I've never heard of a blue coal. I find it strangely fascinating.";
                         i.TurnToAir();
                     }
                     if (i.type == ModContent.ItemType<Items.Misc.CoalLord>()) {
-                        DrakSolzPlayer modPlayer = (DrakSolzPlayer) Main.LocalPlayer.GetModPlayer<DrakSolzPlayer>();
-                        modPlayer.CoalLord = true;
+                        modPlayer.Coals |= CoalItem.COAL_LORD;
                         Main.npcChatText = "This contains the power of the sun itself... Astounding! This is my life's work come to an end, no greater wares could be forged.";
                         i.TurnToAir();
                     }
@@ -204,13 +181,13 @@ namespace DrakSolz.NPCs.Town {
                 shop.item[18].SetDefaults(ItemID.FalconBlade);
                 shop.item[6].SetDefaults(ItemID.DiamondStaff);
             }
-            if (modPlayer.CoalRed == true) {
+            if ((modPlayer.Coals & CoalItem.COAL_RED) != 0) {
                 shop.item[19].SetDefaults(ItemID.ChainKnife);
                 shop.item[17].SetDefaults(ItemID.EnchantedSword);
                 shop.item[21].SetDefaults(ItemID.FlamingArrow);
                 shop.item[5].SetDefaults(ItemID.StarAnise);
             }
-            if (modPlayer.CoalWhite == true) {
+            if ((modPlayer.Coals & CoalItem.COAL_WHITE) != 0) {
                 shop.item[33].SetDefaults(ItemID.DD2LightningAuraT1Popper);
                 shop.item[17].SetDefaults(ItemID.Arkhalis);
                 shop.item[35].SetDefaults(ItemID.BoneGlove);
@@ -225,7 +202,7 @@ namespace DrakSolz.NPCs.Town {
                 shop.item[9].SetDefaults(ItemID.CobaltShield);
                 shop.item[2].SetDefaults(ItemID.HellfireArrow);
             }
-            if (modPlayer.CoalYellow == true) {
+            if ((modPlayer.Coals & CoalItem.COAL_YELLOW) != 0) {
                 shop.item[26].SetDefaults(ItemID.MagicalHarp);
                 shop.item[19].SetDefaults(ItemID.ChainGuillotines);
                 shop.item[34].SetDefaults(ItemID.VampireKnives);
@@ -233,14 +210,14 @@ namespace DrakSolz.NPCs.Town {
                 shop.item[22].SetDefaults(ItemID.IchorArrow);
                 shop.item[36].SetDefaults(ModContent.ItemType<Items.Magic.ADagger>());
             }
-            if (modPlayer.CoalBlue == true) {
+            if ((modPlayer.Coals & CoalItem.COAL_BLUE) != 0) {
                 shop.item[33].SetDefaults(ItemID.DD2LightningAuraT3Popper);
                 shop.item[32].SetDefaults(ItemID.MoonlordArrow);
                 shop.item[36].SetDefaults(ModContent.ItemType<Items.Magic.MoonGS>());
                 shop.item[37].SetDefaults(ItemID.TerraBlade);
                 shop.item[29].SetDefaults(ModContent.ItemType<Items.Misc.Twink>());
             }
-            if (modPlayer.CoalLord == true) {
+            if ((modPlayer.Coals & CoalItem.COAL_LORD) != 0) {
                 shop.item[39].SetDefaults(ModContent.ItemType<Items.Misc.Titanite>());
                 shop.item[3].SetDefaults(ModContent.ItemType<Items.Ranged.DragonslayerGreatarrow>());
             }

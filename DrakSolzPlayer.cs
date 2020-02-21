@@ -42,6 +42,7 @@ namespace DrakSolz {
         public float SoulTicks { get; set; }
         public int BossSoulTicks { get; set; }
         public int BossSouls { get; set; }
+        public int Coals { get; set; }
 
         public bool ZoneTowerVoidPillar;
         public bool VoidMonolith = false;
@@ -59,11 +60,6 @@ namespace DrakSolz {
         public bool EvilEye { get; set; }
         public int Avarice { get; set; }
         public int MiscHP { get; set; }
-        public bool CoalRed { get; set; }
-        public bool CoalWhite { get; set; }
-        public bool CoalYellow { get; set; }
-        public bool CoalBlue { get; set; }
-        public bool CoalLord { get; set; }
         public int Estus { get; set; }
         public bool Rotate { get; set; }
         public float Rotation { get; set; }
@@ -85,6 +81,7 @@ namespace DrakSolz {
             SoulTicks = 0;
             BossSoulTicks = 0;
             BossSouls = 0;
+            Coals = 0;
 
             SoulSummon = false;
             HumSummon = false;
@@ -96,11 +93,6 @@ namespace DrakSolz {
             CrystalPet = false;
             EvilEye = false;
             Avarice = 0;
-            CoalRed = false;
-            CoalWhite = false;
-            CoalYellow = false;
-            CoalBlue = false;
-            CoalLord = false;
             Estus = 0;
 
             Rotation = 0f;
@@ -336,11 +328,7 @@ namespace DrakSolz {
             save.Add("Vit", Vit);
             save.Add("Att", Att);
             save.Add("BossSouls", BossSouls);
-            save.Add("CoalRed", CoalRed);
-            save.Add("CoalWhite", CoalWhite);
-            save.Add("CoalYellow", CoalYellow);
-            save.Add("CoalBlue", CoalBlue);
-            save.Add("CoalLord", CoalLord);
+            save.Add("Coals", Coals);
             save.Add("Estus", Estus);
             return save;
         }
@@ -356,11 +344,7 @@ namespace DrakSolz {
             Vit = tag.GetInt("Vit");
             Att = tag.GetInt("Att");
             BossSouls = tag.GetInt("BossSouls");
-            CoalRed = tag.GetBool("CoalRed");
-            CoalWhite = tag.GetBool("CoalWhite");
-            CoalYellow = tag.GetBool("CoalYellow");
-            CoalBlue = tag.GetBool("CoalBlue");
-            CoalLord = tag.GetBool("CoalLord");
+            Coals = tag.GetInt("Coals");
             Estus = tag.GetInt("Estus");
 
         }
