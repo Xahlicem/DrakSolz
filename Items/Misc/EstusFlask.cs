@@ -35,52 +35,12 @@ namespace DrakSolz.Items.Misc {
             }
         }
         public override bool UseItem(Player player) {
-            player.AddBuff(BuffID.PotionSickness, 300);
+            player.AddBuff(BuffID.PotionSickness, 154);
             player.AddBuff(ModContent.BuffType<Buffs.EstusHeal>(), 155);
-
-            int index = player.FindBuffIndex(ModContent.BuffType<Buffs.Hollow>());
-            player.GetModPlayer<DrakSolzPlayer>().DecreaseHollow(1800);
-            if (NPC.downedSlimeKing) {
-                player.GetModPlayer<DrakSolzPlayer>().DecreaseHollow(900);
-            }
-            if (NPC.downedBoss1) {
-                player.GetModPlayer<DrakSolzPlayer>().DecreaseHollow(900);
-            }
-            if (NPC.downedBoss2) {
-                player.GetModPlayer<DrakSolzPlayer>().DecreaseHollow(900);
-            }
-            if (NPC.downedBoss3) {
-                player.GetModPlayer<DrakSolzPlayer>().DecreaseHollow(900);
-            }
-            if (Main.hardMode) {
-                player.GetModPlayer<DrakSolzPlayer>().DecreaseHollow(900);
-            }
-            if (NPC.downedMechBossAny) {
-                player.GetModPlayer<DrakSolzPlayer>().DecreaseHollow(900);
-            }
-            if (NPC.downedPlantBoss) {
-                player.GetModPlayer<DrakSolzPlayer>().DecreaseHollow(900);
-            }
-            if (NPC.downedGolemBoss) {
-                player.GetModPlayer<DrakSolzPlayer>().DecreaseHollow(900);
-            }
-            if (NPC.downedAncientCultist) {
-                player.GetModPlayer<DrakSolzPlayer>().DecreaseHollow(900);
-            }
-            if (NPC.downedMoonlord) {
-                player.GetModPlayer<DrakSolzPlayer>().DecreaseHollow(900);
-            }
-            DrakSolzPlayer modPlayer = (DrakSolzPlayer) Main.LocalPlayer.GetModPlayer<DrakSolzPlayer>();
-            modPlayer.Estus += 1;
-            if (item.stack < 2) {
-                item.stack = 2;
-                foreach (Item i in player.inventory) {
-                    if (i == item) {
-                        i.netDefaults(ModContent.ItemType<Items.Misc.EmptyFlask>());
-                    }
-                }
-            }
             return true;
+        }
+        public override bool ConsumeItem(Player player){
+            return false;
         }
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);

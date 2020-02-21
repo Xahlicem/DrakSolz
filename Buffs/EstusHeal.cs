@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace DrakSolz.Buffs {
@@ -13,59 +15,60 @@ namespace DrakSolz.Buffs {
         }
 
         public override void Update(Player player, ref int buffIndex) {
+            DrakSolzPlayer modPlayer = (DrakSolzPlayer) player.GetModPlayer<DrakSolzPlayer>();
             player.accRunSpeed = 0;
             player.moveSpeed = 0;
             player.jump = 0;
+            int i2 = 0;
+            if (NPC.downedMoonlord) {
+                i2 += 1;
+            }
+            if (NPC.downedAncientCultist) {
+                i2 += 1;
+            }
+            if (NPC.downedGolemBoss) {
+                i2 += 1;
+            }
+            if (NPC.downedPlantBoss) {
+                i2 += 1;
+            }
+            if (NPC.downedMechBossAny) {
+                i2 += 1;
+            }
+            if (Main.hardMode) {
+                i2 += 1;
+            }
+            if (NPC.downedBoss3) {
+                i2 += 1;
+            }
+            if (NPC.downedBoss2) {
+                i2 += 1;
+            }
+            if (NPC.downedBoss1) {
+                i2 += 1;
+            }
+            if (Main.time % 10 == 1) {
+                player.GetModPlayer<DrakSolzPlayer>().DecreaseHollow(240 + (i2 * 80));
+            }
             if (Main.time % 10 == 5) {
-                if (NPC.downedMoonlord) {
-
-                    player.statLife += 10;
-                    player.HealEffect(10);
-
-                } else if (NPC.downedAncientCultist) {
-
-                    player.statLife += 9;
-                    player.HealEffect(9);
-
-                } else if (NPC.downedGolemBoss) {
-
-                    player.statLife += 8;
-                    player.HealEffect(8);
-
-                } else if (NPC.downedPlantBoss) {
-
-                    player.statLife += 7;
-                    player.HealEffect(7);
-
-                } else if (NPC.downedMechBossAny) {
-
-                    player.statLife += 6;
-                    player.HealEffect(6);
-
-                } else if (Main.hardMode) {
-
-                    player.statLife += 5;
-                    player.HealEffect(5);
-
-                } else if (NPC.downedBoss3) {
-
-                    player.statLife += 4;
-                    player.HealEffect(4);
-
-                } else if (NPC.downedBoss2) {
-
-                    player.statLife += 3;
-                    player.HealEffect(3);
-
-                } else if (NPC.downedBoss1) {
-
-                    player.statLife += 2;
-                    player.HealEffect(2);
-
-                } else {
-
-                    player.statLife += 1;
-                    player.HealEffect(1);
+                player.statLife += (1 + i2);
+                player.HealEffect(1 + i2);
+            }
+            if (player.buffTime[buffIndex] == 1) {
+                if (!player.HasBuff(BuffID.PotionSickness)) {
+                    foreach (Item i in player.inventory) {
+                        if (i.type == ModContent.ItemType<Items.Misc.EstusFlask>()) {
+                            if (i.stack > 1) {
+                                i.stack -= 1;
+                                modPlayer.Estus += 1;
+                                return;
+                            } else {
+                                i.netDefaults(ModContent.ItemType<Items.Misc.EmptyFlask>());
+                                modPlayer.Estus += 1;
+                                return;
+                            }
+                        }
+                    }
                 }
             }
         }

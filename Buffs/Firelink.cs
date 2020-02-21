@@ -33,13 +33,10 @@ namespace DrakSolz.Buffs {
 
                     }
 
-                    if (i.type == ModContent.ItemType<Items.Misc.EstusFlask>()) {
-
-                        if (Main.time % 10 == 5) {
-                            i.stack += 1;
-                            modPlayer.Estus -= 1;
-                            return;
-                        }
+                     if (i.type == ModContent.ItemType<Items.Misc.EstusFlask>()) {
+                        i.stack += 1;
+                        modPlayer.Estus -= 1;
+                        return;
                     }
                 }
 
