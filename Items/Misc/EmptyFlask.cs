@@ -4,10 +4,10 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace DrakSolz.Items.Misc {
-    public class EstusShard : ModItem {
+    public class EmptyFlask : ModItem {
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault("Estus Shard");
-            Tooltip.SetDefault("Used to reinforce Estus Flask, increasing uses.");
+            DisplayName.SetDefault("Empty Estus Flask");
+            Tooltip.SetDefault("Refill at Firelink Shrines.");
         }
 
         public override void SetDefaults() {
@@ -15,8 +15,8 @@ namespace DrakSolz.Items.Misc {
             refItem.SetDefaults(ItemID.Book);
             item.width = refItem.width;
             item.height = refItem.height;
-            item.maxStack = 99;
-            item.value = Item.sellPrice(0, 5, 0, 0);
+            item.maxStack = 1;
+            item.value = Item.sellPrice(0, 0, 0, 0);
             item.rare = ItemRarityID.Yellow;
         }
     }

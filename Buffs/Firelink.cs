@@ -25,16 +25,24 @@ namespace DrakSolz.Buffs {
             if (x != -1) player.buffTime[x] = 0;
             DrakSolzPlayer modPlayer = (DrakSolzPlayer) Main.LocalPlayer.GetModPlayer<DrakSolzPlayer>();
             if (modPlayer.Estus >= 1) {
+                foreach (Item i in player.inventory) {
+                    if (i.type == ModContent.ItemType<Items.Misc.EmptyFlask>()) {
+                        i.netDefaults(ModContent.ItemType<Items.Misc.EstusFlask>());
+                        modPlayer.Estus -= 1;
+                        return;
 
-                foreach (Item i in Main.LocalPlayer.inventory) {
-                    if (i.type == ItemID.None) {
+                    }
+
+                    if (i.type == ModContent.ItemType<Items.Misc.EstusFlask>()) {
 
                         if (Main.time % 10 == 5) {
-                            Item.NewItem(player.position, player.width, player.height, ModContent.ItemType<Items.Misc.EstusFlask>(), modPlayer.Estus, false, 0, true);
-                            modPlayer.Estus = 0;
+                            i.stack += 1;
+                            modPlayer.Estus -= 1;
+                            return;
                         }
                     }
                 }
+
             }
         }
     }
