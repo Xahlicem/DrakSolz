@@ -10,7 +10,7 @@ namespace DrakSolz.Items.Misc.Classes {
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Cleric Rune");
-            Tooltip.SetDefault("Consume to focus on wisdom and faith.");
+            Tooltip.SetDefault("Consume to focus on attunement and faith.");
         }
     }
 }

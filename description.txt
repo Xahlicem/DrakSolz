@@ -1,15 +1,16 @@
-Drak Solz is a mod that changes a lot of in-game mechanics. Or how you usually play the game anyway. Dying? Yeah, that'll happen a lot... But beware, if you die you will definitely pay the price!
+Drak Solz is a mod inspired by Dark Souls, this mod changes a lot of in-game mechanics; or how you usually play the game anyway. Dying? Yeah, that'll happen a lot... But beware, if you die you will definitely pay the price.
 
 Main adjustments:
-Early-Game is MUCH harder, but only if you manage to die. As long as you play carefully then you won't notice too much of a difference, outside of your huge damage reduction that you start with.
-Scaling stats allow you to grow and become stronger for late-game enemies, as well as choose a specific build for your character.
+Early-Game is much harder, especially if you manage to die. As long as you play carefully then you won't notice too much of a difference outside of dealing less damage.
+Scaling stats allow you to grow and become stronger for late-game enemies, as well as choose a specific build for your character(you'll start with an item to help choose your class).
 Hollow buff is gained from taking damage and upon death, to really set home your punishment for failing, but can be removed in varius ways.
 Souls allow you to level up stats or craft exclusive powerful items, and are gained by killing enemies, but will always drop upon your death to be recollected or lost forever.
+Currently souls last until you leave the world, so don't worry too much(unless a mod auto-clears items on the ground).
 Minion/Summon is changed into Miracle Damage, with special miracle spells.
-Summon damage is adjusted to be more balanced, especially sentry summons.
-Throwing is now a class, with a unique celestial pillar to supply end-game throwing armor/weapon.
+Summon/Miracle damage is adjusted to be more balanced, especially sentry summons(nice damage buff here).
+Throwing is now a class, with a unique celestial pillar to supply end-game throwing gear.
 Life Crystals and Mana Crystals function entirely differently than before, and will NOT increase the respective stat.
-Spawn rate is adjusted in reference to how many bosses have been defeated. Increasing for each boss and then lowering back down after defeating WoF and Cultist to stop it from getting too crazy.
+Spawn rate is adjusted in reference to how many bosses have been defeated. Increasing for each boss and then dialing back a bit after defeating WoF and Cultist to stop it from getting too crazy.
 
 Additions:
 +26 Accessories

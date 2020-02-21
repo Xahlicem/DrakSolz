@@ -10,7 +10,7 @@ namespace DrakSolz.Items.Misc.Classes {
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Wizard Rune");
-            Tooltip.SetDefault("Consume to focus on wisdom, balancing faith and intelligence.");
+            Tooltip.SetDefault("Consume to focus on attunement, slightly gaining intelligence.");
         }
     }
 }
