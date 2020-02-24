@@ -51,7 +51,7 @@ namespace DrakSolz.Items.Accessory {
         public override bool PreNPCLoot(NPC npc) {
             if (npc.type == NPCID.WallofFlesh) {
                 int[] weapons = { ItemID.BreakerBlade, ItemID.ClockworkAssaultRifle, ItemID.LaserRifle };
-                int[] emblems = { ItemID.WarriorEmblem, ItemID.SorcererEmblem, ItemID.RangerEmblem, ItemID.SummonerEmblem, ModContent.ItemType<Items.Accessory.ThiefEmblem>() };
+                int[] emblems = { ItemID.WarriorEmblem, ItemID.SorcererEmblem, ItemID.RangerEmblem, ItemID.SummonerEmblem, ModContent.ItemType<Items.Accessory.ThiefEmblem>(), ModContent.ItemType<Items.Accessory.PyromancerEmblem>() };
                 if (Main.rand.NextBool())
                     Item.NewItem(npc.position, npc.width, npc.height, Utils.SelectRandom(Main.rand, weapons));
                 else
@@ -67,7 +67,7 @@ namespace DrakSolz.Items.Accessory {
         public override bool PreOpenVanillaBag(string context, Player player, int arg) {
             if (context == "bossBag" && arg == ItemID.WallOfFleshBossBag) {
                 int[] weapons = { ItemID.BreakerBlade, ItemID.ClockworkAssaultRifle, ItemID.LaserRifle };
-                int[] emblems = { ItemID.WarriorEmblem, ItemID.SorcererEmblem, ItemID.RangerEmblem, ItemID.SummonerEmblem, ModContent.ItemType<Items.Accessory.ThiefEmblem>() };
+                int[] emblems = { ItemID.WarriorEmblem, ItemID.SorcererEmblem, ItemID.RangerEmblem, ItemID.SummonerEmblem, ModContent.ItemType<Items.Accessory.ThiefEmblem>(), ModContent.ItemType<Items.Accessory.PyromancerEmblem>() };
 
                 if (!player.extraAccessory) player.QuickSpawnItem(ItemID.DemonHeart);
                 if (Main.rand.Next(7) == 0) player.QuickSpawnItem(ItemID.FleshMask);
