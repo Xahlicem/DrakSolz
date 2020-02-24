@@ -143,6 +143,13 @@ namespace DrakSolz.Items {
     public class MeleeThrow : GlobalItem {
 
         public override void SetDefaults(Item item) {
+            
+            if (item.type == ItemID.AleThrowingGlove) {
+                item.useAnimation = 24;
+                item.useTime = 24;
+                item.damage = 37;
+                item.damage = 37;
+            }
             if (item == null) return;
             if (item.modItem != null) return;
             Projectile p = new Projectile();
@@ -152,7 +159,7 @@ namespace DrakSolz.Items {
                 item.type == ItemID.FlyingKnife || item.type == ItemID.DayBreak) {
                 item.melee = false;
                 item.thrown = true;
-            }
+                }
         }
     }
 }

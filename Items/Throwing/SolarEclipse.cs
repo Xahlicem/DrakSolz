@@ -21,8 +21,8 @@ namespace DrakSolz.Items.Throwing {
             item.damage = 130;
             item.noMelee = true;
             item.noUseGraphic = true;
-            item.useTime = 30;
-            item.useAnimation = 30;
+            item.useTime = 20;
+            item.useAnimation = 20;
             item.rare = ItemRarityID.Red;
             item.mana = 0;
             item.knockBack = 2.0f;

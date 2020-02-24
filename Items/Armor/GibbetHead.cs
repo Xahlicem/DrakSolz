@@ -34,18 +34,14 @@ namespace DrakSolz.Items.Armor {
         public override void UpdateArmorSet(Player player) {
             player.setBonus = ("I am become Gibbet" +
                 "\nDestroyer of Terraria");
-            player.magicCrit += 10;
-            player.rangedCrit += 10;
-            player.meleeCrit += 10;
-            player.thrownCrit += 10;
-            player.magicDamage *= 1.20f;
-            player.minionDamage *= 1.20f;
-            player.thrownDamage *= 1.20f;
+            player.magicCrit += 25;
+            player.rangedCrit += 25;
+            player.meleeCrit += 25;
+            player.thrownCrit += 25;
+            player.allDamage *= 1.50f;
             player.thrownVelocity *= 1.3f;
-            player.meleeDamage *= 1.20f;
-            player.rangedDamage *= 1.20f;
             player.manaCost *= 0.80f;
-            player.meleeSpeed *= 1.20f;
+            player.meleeSpeed *= 1.40f;
             player.statLifeMax2 += 100;
             player.statManaMax2 += 40;
             player.endurance += 5;
