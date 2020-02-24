@@ -8,6 +8,21 @@ using DrakSolz.Items.Misc;
 namespace DrakSolz.NPCs.Town {
     [AutoloadHead]
     public class Blacksmith : ModNPC {
+        public override string Texture
+        {
+            get
+            {
+                return "DrakSolz/NPCs/Town/Blacksmith";
+            }
+        }
+
+        public override string[] AltTextures
+        {
+            get
+            {
+                return new string[] { "DrakSolz/NPCs/Town/Blacksmith_Alt_1" };
+            }
+        }
         public override bool Autoload(ref string name) {
             name = "Blacksmith";
             return mod.Properties.Autoload;
