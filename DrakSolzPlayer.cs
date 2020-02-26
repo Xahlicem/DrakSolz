@@ -270,6 +270,7 @@ namespace DrakSolz {
             player.meleeDamage *= 0.6f + Str * 0.02f;;
             player.rangedDamage *= 0.6f + Dex * 0.02f;;
             player.thrownDamage *= 0.6f + ((Str < Dex) ? Str : Dex) * 0.04f;;
+            player.GetModPlayer<MPlayer>().pyromancyDamage  *= 0.6f + ((Int < Fth) ? Int : Fth) * 0.04f;;
             player.magicDamage *= 0.6f + Int * 0.02f;;
             player.minionDamage *= 0.6f + Fth * 0.02f;;
             player.statLifeMax = Level * 4 + 100 + MiscHP;

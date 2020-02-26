@@ -9,7 +9,7 @@ namespace DrakSolz.Items.Armor.DesertSorceress {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Desert Sorceress Top");
             Tooltip.SetDefault("Clothing worn by Desert Sorceresses. So fashionable." +
-                "\n+10% magic damage" +
+                "\n+10% fire damage" +
                 "\n+ increases mana star grab range");
         }
 
@@ -22,7 +22,7 @@ namespace DrakSolz.Items.Armor.DesertSorceress {
         }
 
         public override void UpdateEquip(Player player) {
-            player.magicDamage *= 1.1f;
+			player.GetModPlayer<MPlayer>().pyromancyDamage += 0.10f;
             player.manaMagnet = true;
         }
     }

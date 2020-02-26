@@ -157,6 +157,7 @@ namespace DrakSolz.UI {
             tooltip.Left.Set(MousePosition.X + 15, 0f);
             string s = "";
             bool throwing = false;
+            bool pyro = false;
             bool defense = false;
             bool MCost = false;
             if (!HasChild(tooltip)) Append(tooltip);
@@ -181,9 +182,11 @@ namespace DrakSolz.UI {
             } else if (Int.icon.ContainsPoint(MousePosition)) {
                 tooltipTitle.SetText("Intelligence");
                 s = ("+" + (Int.Stat + Int.StatAdd - 20) * 2 + "% Magic Damage");
+                pyro = true;
             } else if (Fth.icon.ContainsPoint(MousePosition)) {
                 tooltipTitle.SetText("Faith");
                 s = ("+" + (Fth.Stat + Fth.StatAdd - 20) * 2 + "% Miracle Damage");
+                pyro = true;
             } else RemoveChild(tooltip);
             if (HasChild(tooltip)) {
                 tooltipText.SetText((s[1] == '-') ? s.Substring(1) : s);
@@ -198,6 +201,10 @@ namespace DrakSolz.UI {
                 } else if (MCost) {
                     string t = ("-" + (int) Math.Floor(((Att.Stat + Att.StatAdd) * 0.5)) + "% Mana Cost");
                     tooltipText1.SetText((t[1] == '+') ? t.Substring(1) : t);
+                    tooltip.Height.Set(85, 0f);
+                } else if (pyro) {
+                    string t = ("+" + ((Fth.Stat + Fth.StatAdd < Int.Stat + Int.StatAdd) ? (Fth.Stat + Fth.StatAdd - 10) : (Int.Stat + Int.StatAdd - 10)) * 4 + "% Fire Damage");
+                    tooltipText1.SetText((t[1] == '-') ? t.Substring(1) : t);
                     tooltip.Height.Set(85, 0f);
                 } else {
                     tooltipText1.SetText(string.Empty);

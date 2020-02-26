@@ -7,9 +7,8 @@ namespace DrakSolz.Items.Armor.Xanthous {
     public class XanthousCrown : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Xanthous Crown");
-            Tooltip.SetDefault("Atire donned by Xanthous, the old monk." +
-                "\n+10% miracle damage" +
-                "\n-1 max minions" +
+            Tooltip.SetDefault("Attire donned by Xanthous, the old monk." +
+                "\n+10% fire damage" +
                 "\n+60 mana");
         }
 
@@ -18,14 +17,11 @@ namespace DrakSolz.Items.Armor.Xanthous {
             item.height = 18;
             item.value = Item.sellPrice(0, 50, 0, 0);
             item.rare = ItemRarityID.Lime;
-            item.defense = 16;
+            item.defense = 12;
         }
 
         public override void UpdateEquip(Player player) {
-            if (player.maxMinions >= 1) {
-                player.maxMinions -= 1;
-            }
-            player.minionDamage *= 1.1f;
+			player.GetModPlayer<MPlayer>().pyromancyDamage += 0.10f;
             player.statManaMax2 += 60;
         }
 
@@ -35,11 +31,11 @@ namespace DrakSolz.Items.Armor.Xanthous {
 
         public override void UpdateArmorSet(Player player) {
             player.setBonus = ("Yellow Madness" +
-                "\n+20% miracle damage" +
+                "\n+20% fire damage" +
                 "\n30% reduced mana cost" +
-                "\n+40 life");
-            player.GetModPlayer<DrakSolzPlayer>().MiscHP += 40;
-            player.minionDamage *= 1.2f;
+                "\n+40 mana");
+            player.statManaMax2 += 40;
+			player.GetModPlayer<MPlayer>().pyromancyDamage += 0.20f;
             player.manaCost *= 0.7f;
         }
         public override bool DrawHead() {
@@ -49,7 +45,6 @@ namespace DrakSolz.Items.Armor.Xanthous {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.LihzahrdPowerCell, 1);
             recipe.AddIngredient(ItemID.LivingFireBlock, 25);
-            recipe.AddIngredient(ModContent.ItemType<Items.Armor.Tattered.TatteredHat>());
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();

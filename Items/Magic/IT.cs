@@ -5,7 +5,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace DrakSolz.Items.Magic {
-    public class IT : MagicWeapon {
+    public class IT : PyromancyItem {
+        public IT() : base(0) { }
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Immolation Tinder");
@@ -15,13 +16,14 @@ namespace DrakSolz.Items.Magic {
             //item.CloneDefaults(ItemID.StardustDragonStaff);
             item.useStyle = 1;
             item.scale *= 0.85f;
-            item.magic = true;
+            item.magic = false;
             item.damage = 70;
             item.useTime = 55;
             item.useAnimation = 55;
             item.rare = ItemRarityID.Cyan;
             item.mana = 25;
             item.knockBack = 10f;
+			item.crit = 4;
             item.shootSpeed = 0f;
             item.value = Item.sellPrice(0, 12, 50, 0);
             item.autoReuse = false;

@@ -5,7 +5,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace DrakSolz.Items.Magic {
-    public class IE : IT {
+    public class IE : PyromancyItem {
+        public IE() : base(0) { }
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Immolation Ember");
@@ -14,13 +15,14 @@ namespace DrakSolz.Items.Magic {
         public override void SetDefaults() {
             //item.CloneDefaults(ItemID.StardustDragonStaff);
             item.useStyle = 1;
-            item.magic = true;
+            item.magic = false;
             item.damage = 100;
             item.useTime = 40;
             item.useAnimation = 40;
             item.rare = ItemRarityID.Red;
             item.mana = 30;
             item.knockBack = 12.5f;
+			item.crit = 4;
             item.shootSpeed = 0f;
             item.value = Item.sellPrice(0, 35, 0, 0);
             item.autoReuse = true;

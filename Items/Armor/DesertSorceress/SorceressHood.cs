@@ -8,8 +8,8 @@ namespace DrakSolz.Items.Armor.DesertSorceress {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Desert Sorceress Hood");
             Tooltip.SetDefault("Clothing worn by Desert Sorceresses. So fashionable." +
-                "\n+5% magic damage" +
-                "\n+10% magic crit");
+                "\n+5% fire damage" +
+                "\n+10% fire crit");
         }
 
         public override void SetDefaults() {
@@ -22,8 +22,8 @@ namespace DrakSolz.Items.Armor.DesertSorceress {
 
         public override void UpdateEquip(Player player) {
             //player.AddBuff(BuffID.NightOwl, 2);
-            player.magicCrit += 10;
-            player.magicDamage *= 1.05f;
+			player.GetModPlayer<MPlayer>().pyromancyDamage += 0.05f;
+			player.GetModPlayer<MPlayer>().pyromancyCrit += 10;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs) {
@@ -32,15 +32,15 @@ namespace DrakSolz.Items.Armor.DesertSorceress {
 
         public override void UpdateArmorSet(Player player) {
             player.setBonus = ("Desert's Kiss" +
-                "\n+10% magic damage" +
-                "\n+5% magic crit" +
+                "\n+10% fire damage" +
+                "\n+5% fire crit" +
                 "\n-20% mana cost" +
                 "\n+ uses mana potions when low" +
                 "\n+ 10 mana sickness cooldown" +
                 "\n+immunity to On Fire");
-            player.magicDamage *= 1.1f;
+			player.GetModPlayer<MPlayer>().pyromancyDamage += 0.10f;
+			player.GetModPlayer<MPlayer>().pyromancyCrit += 5;
             player.manaCost *= 0.8f;
-            player.magicCrit += 5;
             player.buffImmune[BuffID.OnFire] = true;
             player.manaFlower = true;
             player.manaSickReduction = 10;

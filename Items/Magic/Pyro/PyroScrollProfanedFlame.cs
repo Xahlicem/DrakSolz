@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
 namespace DrakSolz.Items.Magic.Pyro {
-    public class PyroScrollProfanedFlame : SoulItem {
+    public class PyroScrollProfanedFlame : PyromancyItem {
         public PyroScrollProfanedFlame() : base(25000) { }
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Profaned Flame");
@@ -15,11 +15,13 @@ namespace DrakSolz.Items.Magic.Pyro {
 
         public override void SetDefaults() {
             item.CloneDefaults(ItemID.Flamelash);
+            item.magic = false;
             item.useStyle = 5;
             item.noUseGraphic = true;
             item.damage = 45;
             item.mana = 20;
             item.knockBack = 9f;
+			item.crit = 4;
             item.shootSpeed = 0.01f;
             item.value = Item.sellPrice(0, 15, 0, 0);
             item.shoot = ModContent.ProjectileType<Projectiles.ProfanedProj>();
@@ -34,7 +36,7 @@ namespace DrakSolz.Items.Magic.Pyro {
             return false;
         }
         public override void AddRecipes() {
-            ModRecipe recipe = new SoulRecipe(mod, this);
+            ModRecipe recipe = new PyromancyRecipe(mod, this);
             recipe.AddIngredient(ModContent.ItemType<Items.Misc.Twink>());
             recipe.AddIngredient(ModContent.ItemType<Items.Misc.PyroScroll>());
             recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());

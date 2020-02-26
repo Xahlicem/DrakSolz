@@ -1,9 +1,11 @@
 ﻿using Terraria;
 using Terraria.ID;
+using Terraria.DataStructures;
 using Terraria.ModLoader;
 
 namespace DrakSolz.Items.Accessory {
-    public class PyromancerEmblem : ModItem {
+    public class PyromancerEmblem : PyromancyItem {
+        public PyromancerEmblem() : base(0) { }
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Pyromancer Emblem");
             Tooltip.SetDefault("15% increased fire damage");
@@ -18,7 +20,7 @@ namespace DrakSolz.Items.Accessory {
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual) {
-            player.allDamage += 0.15f;
+			player.GetModPlayer<MPlayer>().pyromancyDamage += 0.15f;
         }
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);

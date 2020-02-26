@@ -7,9 +7,8 @@ namespace DrakSolz.Items.Armor.Xanthous {
     public class XanthousWaistcloth : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Xanthous Waistcloth");
-            Tooltip.SetDefault("Atire donned by Xanthous, the old monk." +
-                "\n+10% miracle damage" +
-                "\n-1 max minions" +
+            Tooltip.SetDefault("Attire donned by Xanthous, the old monk." +
+                "\n+5% fire damage" +
                 "\n+20% movespeed");
         }
 
@@ -22,17 +21,13 @@ namespace DrakSolz.Items.Armor.Xanthous {
         }
 
         public override void UpdateEquip(Player player) {
-            if (player.maxMinions >= 1) {
-                player.maxMinions -= 1;
-            }
-            player.minionDamage *= 1.1f;
+			player.GetModPlayer<MPlayer>().pyromancyDamage += 0.05f;
             player.moveSpeed *= 1.20f;
         }
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.LihzahrdPowerCell, 1);
             recipe.AddIngredient(ItemID.LivingFireBlock, 25);
-            recipe.AddIngredient(ModContent.ItemType<Items.Armor.Tattered.TatteredBoots>());
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();

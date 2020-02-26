@@ -6,7 +6,8 @@ using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
 namespace DrakSolz.Items.Magic.Pyro {
-    public class FlameFan : MagicWeapon {
+    public class FlameFan : PyromancyItem {
+        public FlameFan() : base(0) { }
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Flame Fan");
@@ -15,11 +16,13 @@ namespace DrakSolz.Items.Magic.Pyro {
 
         public override void SetDefaults() {
             item.CloneDefaults(ItemID.Flamelash);
+            item.magic = false;
             item.useStyle = 1;
             item.damage = 72;
             item.useTime = 25;
             item.useAnimation = 25;
             item.mana = 15;
+			item.crit = 4;
             item.knockBack = 2.5f;
             item.shootSpeed = 2.0f;
             item.value = Item.sellPrice(0, 4, 0, 0);

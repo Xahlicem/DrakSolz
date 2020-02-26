@@ -8,10 +8,10 @@ namespace DrakSolz.Items.Armor.Xanthous {
         public override void SetStaticDefaults() {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Xanthous Overcoat");
-            Tooltip.SetDefault("Atire donned by Xanthous, the old monk." +
-                "\n+10% miracle damage" +
-                "\n-1 max minions" +
-                "\n+40 mana");
+            Tooltip.SetDefault("Attire donned by Xanthous, the old monk." +
+                "\n+5% fire damage" +
+                "\n+5% fire critical chance" +
+                "\n+40 life");
         }
 
         public override void SetDefaults() {
@@ -23,17 +23,14 @@ namespace DrakSolz.Items.Armor.Xanthous {
         }
 
         public override void UpdateEquip(Player player) {
-            if(player.maxMinions >= 1){
-            player.maxMinions -= 1;
-            }
-            player.minionDamage *= 1.1f;
-            player.statManaMax2 += 40;
+			player.GetModPlayer<MPlayer>().pyromancyDamage += 0.05f;
+			player.GetModPlayer<MPlayer>().pyromancyCrit += 5;
+            player.GetModPlayer<DrakSolzPlayer>().MiscHP += 40;
         }
         public override void AddRecipes() {
                 ModRecipe recipe = new ModRecipe(mod);
                 recipe.AddIngredient(ItemID.LihzahrdPowerCell, 1);
                 recipe.AddIngredient(ItemID.LivingFireBlock, 25);
-                recipe.AddIngredient(ModContent.ItemType<Items.Armor.Tattered.TatteredTunic>());
                 recipe.AddTile(TileID.MythrilAnvil);
                 recipe.SetResult(this);
                 recipe.AddRecipe();

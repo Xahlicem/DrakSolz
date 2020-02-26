@@ -41,6 +41,12 @@ namespace DrakSolz.Items.Souls {
             recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
             recipe.SetResult(ModContent.ItemType<Items.Accessory.RingThrowingPower>());
             recipe.AddRecipe();
+
+            recipe = new ModRecipe(mod);
+            recipe.AddIngredient(this);
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
+            recipe.SetResult(ModContent.ItemType<Items.Accessory.RingPyromancyPower>());
+            recipe.AddRecipe();
         }
     }
 }
