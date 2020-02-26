@@ -24,6 +24,10 @@ namespace DrakSolz.Items.Armor.Hollow {
         public override bool DrawHead() {
             return true;
         }
+        public override void DrawHair(ref bool drawHair, ref bool drawAltHair)
+        {
+            drawHair = true;
+        }
 
         public override bool IsArmorSet(Item head, Item body, Item legs) {
             return body.type == ModContent.ItemType<Items.Armor.Hollow.HollowShirt>() && legs.type == ModContent.ItemType<Items.Armor.Hollow.HollowLoin>();
