@@ -70,6 +70,13 @@ namespace DrakSolz.Items.Armor.Vanilla {
                 case ItemID.GladiatorHelmet:
                     tooltips.Insert(3, new TooltipLine(mod, "Tooltip0", "5% increased melee damage"));
                     break;
+                case ItemID.MeteorHelmet:
+                case ItemID.MeteorSuit:
+                case ItemID.MeteorLeggings:
+                    foreach (TooltipLine line in tooltips)
+                        if (line.Name.Equals("Tooltip0")) line.text = "4% increased fire damage";
+                    tooltips.Add(new TooltipLine(mod, "Tooltip1", "2% increased fire critical chance"));
+                    break;
 
                 case ItemID.NinjaHood:
                     foreach (TooltipLine line in tooltips)
@@ -111,10 +118,7 @@ namespace DrakSolz.Items.Armor.Vanilla {
                 case ItemID.ShadowScalemail:
                 case ItemID.ShadowGreaves:
                     player.meleeSpeed *= 0.93f;
-                    player.meleeDamage *= 1.03f;
-                    player.rangedDamage *= 1.03f;
-                    player.magicDamage *= 1.03f;
-                    player.minionDamage *= 1.03f;
+                    player.allDamage += 0.03f;
                     break;
                 case ItemID.ObsidianPants:
                     player.fireWalk = true;
@@ -122,40 +126,79 @@ namespace DrakSolz.Items.Armor.Vanilla {
                 case ItemID.ObsidianShirt;
                 case ItemID.ObsidianHelm:
                 case ItemID.ObsidianShirt:
-                    player.rangedDamage *= 1.05f;
+                    player.rangedDamage += 0.05f;
                     break;
                 case ItemID.GladiatorBreastplate:
                 case ItemID.GladiatorLeggings:
                 case ItemID.GladiatorHelmet:
-                    player.meleeDamage *= 1.05f;
+                    player.meleeDamage += 0.05f;
+                    break;
+                case ItemID.MeteorHelmet:
+                case ItemID.MeteorSuit:
+                case ItemID.MeteorLeggings:
+                    player.GetModPlayer<MPlayer>().pyromancyDamage += 0.04f;
+                    player.GetModPlayer<MPlayer>().pyromancyCrit += 2;
                     break;
 
                 case ItemID.NinjaHood:
                     player.thrownVelocity *= 0.913f;
-                    player.thrownDamage *= 1.05f;
+                    player.thrownDamage += 1.05f;
                     break;
                 case ItemID.NinjaPants:
                     player.thrownVelocity *= 1.05f;
-                    player.thrownDamage *= 1.05f;
-                    player.thrownCrit -= 10;
+                    player.thrownDamage += 1.05f;
+                    player.thrownCrit += 10;
                     break;
                 case ItemID.NinjaShirt:
                     player.thrownVelocity *= 1.05f;
-                    player.thrownDamage *= 0.913f;
+                    player.thrownDamage += 0.05f;
                     break;
 
                 case ItemID.FossilHelm:
                     player.thrownVelocity *= 0.883f;
-                    player.thrownDamage *= 1.08f;
+                    player.thrownDamage += 0.08f;
                     break;
                 case ItemID.FossilPants:
                     player.thrownVelocity *= 1.06f;
-                    player.thrownDamage *= 1.06f;
-                    player.thrownCrit -= 15;
+                    player.thrownDamage += 0.06f;
+                    player.thrownCrit += 15;
                     break;
                 case ItemID.FossilShirt:
                     player.thrownVelocity *= 1.08f;
-                    player.thrownDamage *= 0.883f;
+                    player.thrownDamage += 0.06f;
+                    break;
+                case ItemID.PalladiumLeggings:
+                    player.GetModPlayer<MPlayer>().pyromancyCrit += 1;
+                    break;
+                case ItemID.PalladiumBreastplate:
+                    player.GetModPlayer<MPlayer>().pyromancyCrit += 2;
+                    break;
+                case ItemID.CobaltBreastplate:
+                    player.GetModPlayer<MPlayer>().pyromancyCrit += 3;
+                    break;
+                case ItemID.OrichalcumBreastplate:
+                    player.GetModPlayer<MPlayer>().pyromancyCrit += 6;
+                    break;
+                case ItemID.MythrilGreaves:
+                    player.GetModPlayer<MPlayer>().pyromancyCrit += 3;
+                    break;
+                case ItemID.TitaniumLeggings:
+                    player.GetModPlayer<MPlayer>().pyromancyCrit += 3;
+                    break;
+                case ItemID.TitaniumBreastplate:
+                    player.GetModPlayer<MPlayer>().pyromancyCrit += 3;
+                    break;
+                case ItemID.AdamantiteLeggings:
+                    player.GetModPlayer<MPlayer>().pyromancyCrit += 4;
+                    break;
+                case ItemID.HallowedPlateMail:
+                    player.GetModPlayer<MPlayer>().pyromancyCrit += 7;
+                    break;
+                case ItemID.ChlorophyteGreaves:
+                    player.GetModPlayer<MPlayer>().pyromancyCrit += 8;
+                    break;
+                case ItemID.ChlorophytePlateMail:
+                    player.GetModPlayer<MPlayer>().pyromancyCrit += 7;
                     break;
             }
         }
@@ -176,6 +219,8 @@ namespace DrakSolz.Items.Armor.Vanilla {
                 player.meleeCrit += 6;
                 player.rangedCrit += 6;
                 player.magicCrit += 6;
+                player.thrownCrit += 6;
+                player.GetModPlayer<MPlayer>().pyromancyCrit += 6;
                 player.ammoCost80 = true;
             }
         }

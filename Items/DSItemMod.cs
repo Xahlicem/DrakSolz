@@ -24,13 +24,6 @@ namespace DrakSolz.Items {
                     if (item.type == ItemID.ManaCrystal)
                         tooltips[i].text = "Increases mana regeneration and magic damage for 1 minute";
                 }
-            var tt = tooltips.FirstOrDefault(x => x.Name == "Damage" && x.mod == "Terraria");
-            if (tt != null) {
-                // take reverse for 'damage',  grab translation
-                string[] split = tt.text.Split(' ');
-                // todo: translation alchemical
-                tt.text = split.First() + " fire " + split.Last();
-            }
         }
 
         public override bool ConsumeItem(Item item, Player player) {
@@ -154,7 +147,7 @@ namespace DrakSolz.Items {
             if (item.type == ItemID.WandofSparking || item.type == ItemID.Flamelash || item.type == ItemID.FlowerofFire ||
                 item.type == ItemID.SpaceGun || item.type == ItemID.ClingerStaff || item.type == ItemID.MeteorStaff ||
                 item.type == ItemID.InfernoFork || item.type == ItemID.HeatRay || item.type == ItemID.CursedFlames ||
-                item.type == ItemID.StaffofEarth || item.type == ItemID.SpiritFlame || item.type == ItemID.ShadowFlameHexDoll) {
+                item.type == ItemID.StaffofEarth || item.type == ItemID.SpiritFlame || item.type == ItemID.ShadowFlameHexDoll ) {
                 item.magic = false;
                 item.crit = 4;
             }
@@ -171,9 +164,6 @@ namespace DrakSolz.Items {
             }
             if (item.AffixName().Contains("Precise")) {
                 player.GetModPlayer<MPlayer>().pyromancyCrit += 2;
-            }
-            if (item.type == ModContent.ItemType<Items.Accessory.RingBlades>()) {
-                player.GetModPlayer<MPlayer>().pyromancyCrit += 5;
             }
             if (item.type == ItemID.EyeoftheGolem) {
                 player.GetModPlayer<MPlayer>().pyromancyCrit += 10;

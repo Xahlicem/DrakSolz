@@ -7,8 +7,9 @@ namespace DrakSolz.Items.Armor.HardmodeFire {
     public class TitaniumCrown : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Titanium Crown");
-            Tooltip.SetDefault("13% increased throwing damage" +
-                "\n9% increased throwing critical strike chance");
+            Tooltip.SetDefault("0% increased fire damage" +
+                "\n5% increased fire critical strike chance" +
+                "\nincreases maximum mana by 60");
         }
 
         public override void SetDefaults() {
@@ -16,12 +17,13 @@ namespace DrakSolz.Items.Armor.HardmodeFire {
             item.height = 18;
             item.value = Item.sellPrice(0, 0, 3, 0);
             item.rare = ItemRarityID.LightRed;
-            item.defense = 12;
+            item.defense = 6;
         }
 
         public override void UpdateEquip(Player player) {
-            player.thrownDamage *= 1.13f;
-            player.thrownCrit += 9;
+            player.statManaMax2 += 60;
+			player.GetModPlayer<MPlayer>().pyromancyDamage += 0.09f;
+			player.GetModPlayer<MPlayer>().pyromancyCrit += 5;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs) {

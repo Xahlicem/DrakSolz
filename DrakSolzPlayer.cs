@@ -292,7 +292,7 @@ namespace DrakSolz {
         }
 
         public void DecreaseHurtWait(int amount) {
-            if (player.HasBuff(ModContent.BuffType<Buffs.WarmthBuff>()) || player.HasBuff(ModContent.BuffType<Buffs.Firelink>())) {
+            if (player.HasBuff(ModContent.BuffType<Buffs.WarmthBuff>()) || player.HasBuff(ModContent.BuffType<Buffs.Firelink>()) || player.HasBuff(ModContent.BuffType<Buffs.FirelinkKeep>())) {
                 amount *= 20;
             }
             HurtWait -= amount;

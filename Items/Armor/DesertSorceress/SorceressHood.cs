@@ -8,7 +8,6 @@ namespace DrakSolz.Items.Armor.DesertSorceress {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Desert Sorceress Hood");
             Tooltip.SetDefault("Clothing worn by Desert Sorceresses. So fashionable." +
-                "\n+5% fire damage" +
                 "\n+10% fire crit");
         }
 
@@ -17,12 +16,11 @@ namespace DrakSolz.Items.Armor.DesertSorceress {
             item.height = 18;
             item.value = Item.sellPrice(0, 5, 0, 0);
             item.rare = ItemRarityID.Yellow;
-            item.defense = 8;
+            item.defense = 9;
         }
 
         public override void UpdateEquip(Player player) {
             //player.AddBuff(BuffID.NightOwl, 2);
-			player.GetModPlayer<MPlayer>().pyromancyDamage += 0.05f;
 			player.GetModPlayer<MPlayer>().pyromancyCrit += 10;
         }
 
@@ -41,6 +39,7 @@ namespace DrakSolz.Items.Armor.DesertSorceress {
 			player.GetModPlayer<MPlayer>().pyromancyDamage += 0.10f;
 			player.GetModPlayer<MPlayer>().pyromancyCrit += 5;
             player.manaCost *= 0.8f;
+            player.fireWalk = true;
             player.buffImmune[BuffID.OnFire] = true;
             player.manaFlower = true;
             player.manaSickReduction = 10;

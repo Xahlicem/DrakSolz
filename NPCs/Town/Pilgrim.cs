@@ -75,9 +75,9 @@ namespace DrakSolz.NPCs.Town {
                 case 0:
                     return "Yoel";
                 case 1:
-                    return "Anri";
+                    return "Manus";
                 case 2:
-                    return "Artorias";
+                    return "Pigmy";
                 default:
                     return "Gael";
             }

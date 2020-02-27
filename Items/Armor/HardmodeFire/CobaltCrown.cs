@@ -7,8 +7,9 @@ namespace DrakSolz.Items.Armor.HardmodeFire {
     public class CobaltCrown : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Cobalt Crown");
-            Tooltip.SetDefault("10% increased throwing damage" +
-                "\n6% increased throwing critical strike chance");
+            Tooltip.SetDefault("10% increased fire damage" +
+                "\n6% increased fire critical strike chance" +
+                "\nincreases maximum mana by 30");
         }
 
         public override void SetDefaults() {
@@ -18,12 +19,13 @@ namespace DrakSolz.Items.Armor.HardmodeFire {
             item.rare = refItem.rare;
             item.width = 18;
             item.height = 18;
-            item.defense = 5;
+            item.defense = 3;
         }
 
         public override void UpdateEquip(Player player) {
-            player.thrownDamage *= 1.1f;
-            player.thrownCrit += 6;
+            player.statManaMax2 += 30;
+			player.GetModPlayer<MPlayer>().pyromancyDamage += 0.10f;
+			player.GetModPlayer<MPlayer>().pyromancyCrit += 6;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs) {
@@ -31,10 +33,10 @@ namespace DrakSolz.Items.Armor.HardmodeFire {
         }
 
         public override void UpdateArmorSet(Player player) {
-            player.setBonus = ("33% chance to not consume thrown item" +
-                "\n20% increased throwing velocity");
-            player.thrownCost33 = true;
-            player.thrownVelocity *=1.2f;
+            player.setBonus = ("-10% mana cost" +
+                "\n5% increased fire damage");
+			player.manaCost *= 0.90f;
+			player.GetModPlayer<MPlayer>().pyromancyDamage += 0.05f;
         }
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);

@@ -4,7 +4,7 @@ using Terraria.DataStructures;
 using Terraria.ModLoader;
 
 namespace DrakSolz.Items.Accessory {
-    public class PyromancerEmblem : PyromancyItem {
+    public class PyromancerEmblem : SoulItem {
         public PyromancerEmblem() : base(0) { }
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Pyromancer Emblem");

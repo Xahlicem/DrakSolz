@@ -8,7 +8,7 @@ namespace DrakSolz.Items.Armor.Xanthous {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Xanthous Waistcloth");
             Tooltip.SetDefault("Attire donned by Xanthous, the old monk." +
-                "\n+5% fire damage" +
+                "\n+6% fire damage" +
                 "\n+20% movespeed");
         }
 
@@ -17,20 +17,21 @@ namespace DrakSolz.Items.Armor.Xanthous {
             item.height = 18;
             item.value = Item.sellPrice(0, 50, 0, 0);
             item.rare = ItemRarityID.Lime;
-            item.defense = 10;
+            item.defense = 12;
         }
 
         public override void UpdateEquip(Player player) {
-			player.GetModPlayer<MPlayer>().pyromancyDamage += 0.05f;
+            player.GetModPlayer<MPlayer>().pyromancyDamage += 0.06f;
             player.moveSpeed *= 1.20f;
         }
         public override void AddRecipes() {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.LihzahrdPowerCell, 1);
-            recipe.AddIngredient(ItemID.LivingFireBlock, 25);
-            recipe.AddTile(TileID.MythrilAnvil);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            if (NPC.downedPlantBoss) {
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(ModContent.ItemType<Items.Misc.InfernoBar>(), 16);
+                recipe.AddTile(TileID.MythrilAnvil);
+                recipe.SetResult(this);
+                recipe.AddRecipe();
+            }
         }
     }
 }

@@ -5,8 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace DrakSolz.Items.Magic {
-    public class IE : PyromancyItem {
-        public IE() : base(0) { }
+    public class IE : MagicWeapon {
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Immolation Ember");

@@ -1,3 +1,5 @@
+using Terraria.ModLoader;
+
 namespace DrakSolz.Items.Misc.Classes {
     public class ClassEmpty : ClassItem {
         protected override string TEXT { get { return "A Forsaken"; } }
@@ -11,6 +13,14 @@ namespace DrakSolz.Items.Misc.Classes {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Mysterious Rune");
             Tooltip.SetDefault("Forge into your desired class, or consume to forsake your fate.");
+        }
+
+        public override bool ConsumeItem(Terraria.Player player) {
+            //player.QuickSpawnItem()
+            player.PutItemInInventory(ModContent.ItemType<Items.Armor.Hollow.HollowMask>());
+            player.PutItemInInventory(ModContent.ItemType<Items.Armor.Hollow.HollowLoin>());
+            player.PutItemInInventory(ModContent.ItemType<Items.Armor.Hollow.HollowShirt>());
+            return true;
         }
     }
 }

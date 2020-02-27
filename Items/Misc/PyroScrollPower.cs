@@ -23,7 +23,8 @@ namespace DrakSolz.Items.Misc {
         public override bool UseItem(Player player) {
             for (int i = 0; i < 3600; i++);
             player.AddBuff(ModContent.BuffType<Buffs.PowerBuff>(), 3600);
-            player.AddBuff(BuffID.Warmth, 3600);
+            player.AddBuff(BuffID.OnFire, 3600);
+            player.AddBuff(ModContent.BuffType<Buffs.ScrollMana>(), + (360 * (int)(item.mana * player.manaCost)));
             return true;
         }
         public override void AddRecipes() {

@@ -6,8 +6,7 @@ using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
 namespace DrakSolz.Items.Magic.Pyro {
-    public class FlameFan : PyromancyItem {
-        public FlameFan() : base(0) { }
+    public class FlameFan : ModItem {
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Flame Fan");

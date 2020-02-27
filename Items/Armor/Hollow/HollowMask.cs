@@ -7,7 +7,8 @@ namespace DrakSolz.Items.Armor.Hollow {
     public class HollowMask : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Hollow Mask");
-            Tooltip.SetDefault("Increases movement speed by 5%");
+            Tooltip.SetDefault("Increases movement speed by 5%" +
+            "\ndecreases max life by 5");
         }
 
         public override void SetDefaults() {
@@ -20,6 +21,8 @@ namespace DrakSolz.Items.Armor.Hollow {
 
         public override void UpdateEquip(Player player) {
             player.moveSpeed *= 1.05f;
+            player.maxRunSpeed *= 1.05f;
+            player.GetModPlayer<DrakSolzPlayer>().MiscHP -= 5;
         }
         public override bool DrawHead() {
             return true;
@@ -35,9 +38,13 @@ namespace DrakSolz.Items.Armor.Hollow {
 
         public override void UpdateArmorSet(Player player) {
             player.setBonus = ("Fleeting Humanity" +
-                "\nIncreases movement speed by 10%");
-            player.moveSpeed *= 1.10f;
-            player.maxRunSpeed *= 1.10f;
+                "\nIncreases movement speed by 5%");
+            player.moveSpeed *= 1.05f;
+            player.maxRunSpeed *= 1.05f;
+            player.buffImmune[ModContent.BuffType<Buffs.Firelink>()] = true;
+            if (player.GetModPlayer<DrakSolzPlayer>().HurtWait <= 0){
+            player.GetModPlayer<DrakSolzPlayer>().Hollow += 1;
+            }
         }
 
         public class HollowMaskNPC : GlobalNPC {

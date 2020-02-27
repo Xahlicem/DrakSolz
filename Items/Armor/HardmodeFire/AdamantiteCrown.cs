@@ -7,8 +7,9 @@ namespace DrakSolz.Items.Armor.HardmodeFire {
     public class AdamantiteCrown : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Adamantite Crown");
-            Tooltip.SetDefault("14% increased throwing damage" +
-                "\n8% increased throwing critical strike chance");
+            Tooltip.SetDefault("6% increased fire damage" +
+                "\n8% increased fire critical strike chance" +
+                "\nincreases maximum mana by 70");
         }
 
         public override void SetDefaults() {
@@ -16,13 +17,13 @@ namespace DrakSolz.Items.Armor.HardmodeFire {
             item.height = 18;
             item.value = Item.sellPrice(0, 0, 3, 0);
             item.rare = ItemRarityID.LightRed;
-            item.defense = 11;
+            item.defense = 6;
         }
 
         public override void UpdateEquip(Player player) {
-            player.statManaMax2 += 80;
-			player.GetModPlayer<MPlayer>().pyromancyDamage += 0.11f;
-			player.GetModPlayer<MPlayer>().pyromancyCrit += 11;
+            player.statManaMax2 += 70;
+			player.GetModPlayer<MPlayer>().pyromancyDamage += 0.06f;
+			player.GetModPlayer<MPlayer>().pyromancyCrit += 8;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs) {
@@ -30,8 +31,10 @@ namespace DrakSolz.Items.Armor.HardmodeFire {
         }
 
         public override void UpdateArmorSet(Player player) {
-            player.setBonus = ("-19% mana cost");
-			player.manaCost *= 0.81f;
+            player.setBonus = ("-18% mana cost" +
+                "\n6% increased fire damage");
+			player.GetModPlayer<MPlayer>().pyromancyDamage += 0.06f;
+			player.manaCost *= 0.82f;
         }
 
         public override void ArmorSetShadows(Player player) {

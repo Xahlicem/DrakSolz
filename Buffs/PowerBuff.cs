@@ -1,4 +1,5 @@
 using Terraria;
+using Terraria.ID;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
 
@@ -20,9 +21,10 @@ namespace DrakSolz.Buffs {
             player.magicDamage *= 1.2f;
             player.rangedDamage *= 1.2f;
             player.minionDamage *= 1.2f;
+			player.GetModPlayer<MPlayer>().pyromancyDamage *= 1.20f;
             if (Main.time % 60 == 0) {
                 if (
-                    player.statLifeMax2 <= 99) {
+                    player.statLifeMax2 <= 99 && !player.HasBuff(BuffID.OnFire)) {
                     player.statLife -= 1;
                 }
                 if (

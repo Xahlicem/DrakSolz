@@ -7,8 +7,9 @@ namespace DrakSolz.Items.Armor.Cornyx {
     public class CornyxWrap : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Cornyx's Wrap");
-            Tooltip.SetDefault("Increases maximum mana by 15" +
-                "\nReduces mana usage by 5%" );
+            Tooltip.SetDefault("15% increased fire critical strike chance" +
+                "\nReduces mana usage by 5%" +
+                "\nincreases maximum mana by 50"  );
         }
 
         public override void SetDefaults() {
@@ -16,12 +17,12 @@ namespace DrakSolz.Items.Armor.Cornyx {
             item.height = 28;
             item.value = Item.sellPrice(0, 0, 20, 0);
             item.rare = ItemRarityID.Orange;
-            item.defense = 2;
+            item.defense = 8;
         }
 
         public override void UpdateEquip(Player player) {
-            player.statManaMax2 += 15;
-            player.manaCost *= 0.95f;
+            player.statManaMax2 += 50;
+			player.GetModPlayer<MPlayer>().pyromancyCrit += 15;
             player.blind = true;
         }
         public override bool DrawHead() {
@@ -33,10 +34,17 @@ namespace DrakSolz.Items.Armor.Cornyx {
         }
 
         public override void UpdateArmorSet(Player player) {
-            player.setBonus = ("5% increased fire damage" +
-                "\nreduced damage taken from lava");
-			player.GetModPlayer<MPlayer>().pyromancyDamage += 0.05f;
+            player.setBonus = ("15% increased fire damage" +
+                "\nReduces mana usage by 25%" +
+                "\nreduced damage taken from lava and immunity to on-fire effects");
+            player.manaCost *= 0.75f;
+			player.GetModPlayer<MPlayer>().pyromancyDamage += 0.15f;
             player.lavaRose = true;
+            player.fireWalk = true;
+            player.buffImmune[BuffID.OnFire] = true;
+            player.buffImmune[BuffID.Frostburn] = true;
+            player.buffImmune[BuffID.CursedInferno] = true;
+            player.buffImmune[BuffID.ShadowFlame] = true;
         }
 
         public override void AddRecipes() {

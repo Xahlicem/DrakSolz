@@ -7,8 +7,8 @@ namespace DrakSolz.Items.Armor.AbyssWatcher {
     public class WatcherLeggings : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Watcher's Leggings");
-            Tooltip.SetDefault("5% increased fire crit" +
-                "\n5% increased movement speed");
+            Tooltip.SetDefault("10% increased critical strike chance" +
+                "\n20% increased movement speed");
         }
 
         public override void SetDefaults() {
@@ -16,12 +16,17 @@ namespace DrakSolz.Items.Armor.AbyssWatcher {
             item.height = 20;
             item.value = Item.sellPrice(0, 0, 20, 0);
             item.rare = ItemRarityID.Orange;
-            item.defense = 2;
+            item.defense = 20;
         }
 
         public override void UpdateEquip(Player player) {
-			player.GetModPlayer<MPlayer>().pyromancyCrit += 5;
-            player.moveSpeed *= 1.05f;
+			player.GetModPlayer<MPlayer>().pyromancyCrit += 10;
+            player.meleeCrit += 10;
+            player.magicCrit += 10;
+            player.rangedCrit += 10;
+            player.thrownCrit += 10;
+            player.moveSpeed *= 1.20f;
+            player.maxRunSpeed *= 1.20f;
         }
 
         public override void AddRecipes() {

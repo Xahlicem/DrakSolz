@@ -7,8 +7,9 @@ namespace DrakSolz.Items.Armor.HardmodeFire {
     public class HallowedCrown : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Hallowed Crown");
-            Tooltip.SetDefault("15% increased throwing damage" +
-                "\n8% increased throwing critical strike chance");
+            Tooltip.SetDefault("5% increased fire damage" +
+                "\n7% increased fire critical strike chance" +
+                "\nincreases maximum mana by 80");
         }
 
         public override void SetDefaults() {
@@ -16,12 +17,13 @@ namespace DrakSolz.Items.Armor.HardmodeFire {
             item.height = 18;
             item.value = Item.sellPrice(0, 0, 5, 0);
             item.rare = ItemRarityID.Pink;
-            item.defense = 14;
+            item.defense = 7;
         }
 
         public override void UpdateEquip(Player player) {
-            player.thrownDamage *= 1.15f;
-            player.thrownCrit += 8;
+            player.statManaMax2 += 80;
+            player.GetModPlayer<MPlayer>().pyromancyDamage += 0.05f;
+            player.GetModPlayer<MPlayer>().pyromancyCrit += 7;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs) {
@@ -29,10 +31,10 @@ namespace DrakSolz.Items.Armor.HardmodeFire {
         }
 
         public override void UpdateArmorSet(Player player) {
-            player.setBonus = ("33% chance to not consume thrown item" +
-                "\n20% increased throwing velocity");
-            player.thrownCost33 = true;
-            player.thrownVelocity *=1.2f;
+            player.setBonus = ("-20% mana cost" +
+                "\n8% increased fire damage");
+			player.manaCost *= 0.80f;
+            player.GetModPlayer<MPlayer>().pyromancyDamage += 0.8f;
         }
 
         public override void ArmorSetShadows(Player player) {

@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
 namespace DrakSolz.Items.Magic.Pyro {
-    public class PyroScrollLingeringFlame : PyromancyItem {
+    public class PyroScrollLingeringFlame : SoulItem {
         public PyroScrollLingeringFlame() : base(80000) { }
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Lingering Flame");
@@ -27,7 +27,7 @@ namespace DrakSolz.Items.Magic.Pyro {
             item.shoot = ModContent.ProjectileType<Projectiles.LingeringProj>();
         }
         public override void AddRecipes() {
-            ModRecipe recipe = new PyromancyRecipe(mod, this);
+            ModRecipe recipe = new SoulRecipe(mod, this);
             recipe.AddIngredient(ModContent.ItemType<Items.Magic.Pyro.PyroScrollProfanedFlame>());
             recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
             recipe.AddRecipe();

@@ -7,8 +7,9 @@ namespace DrakSolz.Items.Armor.HardmodeFire {
     public class ChlorophyteCrown : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Chlorophyte Crown");
-            Tooltip.SetDefault("16% increased throwing damage" +
-                "\n6% increased throwing critical strike chance");
+            Tooltip.SetDefault("18% increased fire damage" +
+                "\n2% increased fire critical strike chance" +
+                "\nincreases maximum mana by 70");
         }
 
         public override void SetDefaults() {
@@ -16,12 +17,13 @@ namespace DrakSolz.Items.Armor.HardmodeFire {
             item.height = 18;
             item.value = Item.sellPrice(0, 0, 6, 0);
             item.rare = ItemRarityID.Lime;
-            item.defense = 16;
+            item.defense = 10;
         }
 
         public override void UpdateEquip(Player player) {
-            player.thrownDamage *= 1.16f;
-            player.thrownCrit += 6;
+            player.statManaMax2 += 70;
+            player.GetModPlayer<MPlayer>().pyromancyDamage += 0.18f;
+            player.GetModPlayer<MPlayer>().pyromancyCrit += 2;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs) {

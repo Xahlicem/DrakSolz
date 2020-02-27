@@ -8,7 +8,7 @@ namespace DrakSolz.Items.Armor.Cornyx {
         public override void SetStaticDefaults() {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Cornyx's Robe");
-            Tooltip.SetDefault("Increases fire damage by 5%");
+            Tooltip.SetDefault("Increases fire damage by 10%");
         }
 
         public override void SetDefaults() {
@@ -16,11 +16,11 @@ namespace DrakSolz.Items.Armor.Cornyx {
             item.height = 30;
             item.value = Item.sellPrice(0, 0, 20, 0);
             item.rare = ItemRarityID.Orange;
-            item.defense = 3;
+            item.defense = 22;
         }
 
         public override void UpdateEquip(Player player) {
-			player.GetModPlayer<MPlayer>().pyromancyDamage += 0.05f;
+			player.GetModPlayer<MPlayer>().pyromancyDamage += 0.10f;
         }
         public override void DrawHands(ref bool drawHands, ref bool drawArms){
             drawHands = true;

@@ -7,8 +7,7 @@ namespace DrakSolz.Items.Armor.AbyssWatcher {
     public class WatcherHelmet : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Watcher's Helmet");
-            Tooltip.SetDefault("Increases maximum mana by 15" +
-                "\nReduces mana usage by 5%" );
+            Tooltip.SetDefault("10% increased fire and melee damage");
         }
 
         public override void SetDefaults() {
@@ -16,12 +15,12 @@ namespace DrakSolz.Items.Armor.AbyssWatcher {
             item.height = 28;
             item.value = Item.sellPrice(0, 0, 20, 0);
             item.rare = ItemRarityID.Orange;
-            item.defense = 2;
+            item.defense = 14;
         }
 
         public override void UpdateEquip(Player player) {
-            player.statManaMax2 += 15;
-            player.manaCost *= 0.95f;
+			player.GetModPlayer<MPlayer>().pyromancyDamage += 0.10f;
+            player.meleeDamage += 0.10f;
         }
         public override bool DrawHead() {
             return true;
@@ -32,10 +31,21 @@ namespace DrakSolz.Items.Armor.AbyssWatcher {
         }
 
         public override void UpdateArmorSet(Player player) {
-            player.setBonus = ("5% increased fire damage" +
-                "\nreduced damage taken from lava");
-			player.GetModPlayer<MPlayer>().pyromancyDamage += 0.05f;
-            player.lavaRose = true;
+            player.setBonus = ("15% increased fire and melee damage" +
+                "\n5% increased critical strike chance" +
+                "\nweapons apply fire on hit" +
+                "\n15 increased defense while on fire");
+			player.GetModPlayer<MPlayer>().pyromancyDamage += 0.15f;
+			player.meleeDamage += 0.15f;
+			player.GetModPlayer<MPlayer>().pyromancyCrit += 5;
+            player.meleeCrit += 5;
+            player.magicCrit += 5;
+            player.rangedCrit += 5;
+            player.thrownCrit += 5;
+            player.AddBuff(BuffID.WeaponImbueFire, 1);
+            if (player.HasBuff(BuffID.OnFire) || player.HasBuff(BuffID.Frostburn) || player.HasBuff(BuffID.ShadowFlame) || player.HasBuff(BuffID.CursedInferno)){
+                player.statDefense += 15;
+            }
         }
 
         public override void AddRecipes() {

@@ -8,7 +8,7 @@ namespace DrakSolz.Items.Armor.Xanthous {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Xanthous Crown");
             Tooltip.SetDefault("Attire donned by Xanthous, the old monk." +
-                "\n+10% fire damage" +
+                "\n+6% fire damage" +
                 "\n+60 mana");
         }
 
@@ -17,11 +17,11 @@ namespace DrakSolz.Items.Armor.Xanthous {
             item.height = 18;
             item.value = Item.sellPrice(0, 50, 0, 0);
             item.rare = ItemRarityID.Lime;
-            item.defense = 12;
+            item.defense = 18;
         }
 
         public override void UpdateEquip(Player player) {
-			player.GetModPlayer<MPlayer>().pyromancyDamage += 0.10f;
+			player.GetModPlayer<MPlayer>().pyromancyDamage += 0.06f;
             player.statManaMax2 += 60;
         }
 
@@ -31,20 +31,19 @@ namespace DrakSolz.Items.Armor.Xanthous {
 
         public override void UpdateArmorSet(Player player) {
             player.setBonus = ("Yellow Madness" +
-                "\n+20% fire damage" +
+                "\n+10% fire damage" +
                 "\n30% reduced mana cost" +
-                "\n+40 mana");
-            player.statManaMax2 += 40;
-			player.GetModPlayer<MPlayer>().pyromancyDamage += 0.20f;
+                "\nfirewalking");
+			player.GetModPlayer<MPlayer>().pyromancyDamage += 0.10f;
             player.manaCost *= 0.7f;
+            player.fireWalk = true;
         }
         public override bool DrawHead() {
             return false;
         }
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.LihzahrdPowerCell, 1);
-            recipe.AddIngredient(ItemID.LivingFireBlock, 25);
+            recipe.AddIngredient(ModContent.ItemType<Items.Misc.InfernoBar>(), 20);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();

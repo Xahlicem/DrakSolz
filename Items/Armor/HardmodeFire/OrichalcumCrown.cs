@@ -7,8 +7,9 @@ namespace DrakSolz.Items.Armor.HardmodeFire {
     public class OrichalcumCrown : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Orichalcum Crown");
-            Tooltip.SetDefault("11% increased throwing damage" +
-                "\n8% increased throwing critical strike chance");
+            Tooltip.SetDefault("14% increased fire damage" +
+                "\n2% increased fire critical strike chance" +
+                "\nincreases maximum mana by 40");
         }
 
         public override void SetDefaults() {
@@ -16,12 +17,13 @@ namespace DrakSolz.Items.Armor.HardmodeFire {
             item.height = 18;
             item.value = Item.sellPrice(0, 0, 2, 25);
             item.rare = ItemRarityID.LightRed;
-            item.defense = 9;
+            item.defense = 4;
         }
 
         public override void UpdateEquip(Player player) {
-            player.thrownDamage *= 1.11f;
-            player.thrownCrit += 8;
+            player.statManaMax2 += 40;
+            player.GetModPlayer<MPlayer>().pyromancyDamage += 0.14f;
+            player.GetModPlayer<MPlayer>().pyromancyCrit +=  2;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs) {

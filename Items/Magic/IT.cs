@@ -5,8 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace DrakSolz.Items.Magic {
-    public class IT : PyromancyItem {
-        public IT() : base(0) { }
+    public class IT : MagicWeapon {
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Immolation Tinder");

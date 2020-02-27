@@ -30,11 +30,11 @@ namespace DrakSolz.Items.World {
             if (LastIndex != -1) {
                 tasks.Insert(LastIndex, new PassLegacy("Drakening the World!", delegate(GenerationProgress progress) {
 
-                    int num = NPC.NewNPC((Main.spawnTileX + 5) * 16, Main.spawnTileY * 16, ModContent.NPCType<NPCs.Town.Pilgrim>(), 0, 0f, 0f, 0f, 0f, 255);
+                    /*int num = NPC.NewNPC((Main.spawnTileX + 5) * 16, Main.spawnTileY * 16, ModContent.NPCType<NPCs.Town.Pilgrim>(), 0, 0f, 0f, 0f, 0f, 255);
                     Main.npc[num].homeTileX = Main.spawnTileX + 5;
                     Main.npc[num].homeTileY = Main.spawnTileY;
                     Main.npc[num].direction = 1;
-                    Main.npc[num].homeless = true;
+                    Main.npc[num].homeless = true;*/
                     progress.Message = "Adding shinies";
                     progress.CurrentPassWeight = Main.chest.Length;
 

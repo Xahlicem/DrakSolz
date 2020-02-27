@@ -8,7 +8,7 @@ namespace DrakSolz.Items.Armor.FireKeeper {
         public override void SetStaticDefaults() {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Fire Keeper's Shirt");
-            Tooltip.SetDefault("Increases fire damage by 5%");
+            Tooltip.SetDefault("Increases fire damage by 15%");
         }
 
         public override void SetDefaults() {
@@ -16,11 +16,11 @@ namespace DrakSolz.Items.Armor.FireKeeper {
             item.height = 30;
             item.value = Item.sellPrice(0, 0, 20, 0);
             item.rare = ItemRarityID.Orange;
-            item.defense = 3;
+            item.defense = 15;
         }
 
         public override void UpdateEquip(Player player) {
-			player.GetModPlayer<MPlayer>().pyromancyDamage += 0.05f;
+			player.GetModPlayer<MPlayer>().pyromancyDamage += 0.15f;
         }
         public override void DrawHands(ref bool drawHands, ref bool drawArms){
             drawHands = true;
@@ -31,8 +31,8 @@ namespace DrakSolz.Items.Armor.FireKeeper {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.SetResult(this);
             recipe.AddIngredient(ItemID.Silk, 15);
-            recipe.AddIngredient(ItemID.LavaBucket, 1);
-            recipe.AddTile(TileID.WorkBenches);
+            recipe.AddIngredient(ItemID.LunarBar, 10);
+            recipe.AddTile(TileID.LunarCraftingStation);
             recipe.AddRecipe();
         }
     }

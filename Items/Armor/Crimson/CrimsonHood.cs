@@ -14,9 +14,9 @@ namespace DrakSolz.Items.Armor.Crimson {
         public override void SetDefaults() {
             item.width = 40;
             item.height = 28;
-            item.value = Item.sellPrice(0, 0, 20, 0);
+            item.value = Item.sellPrice(0, 0, 25, 0);
             item.rare = ItemRarityID.Orange;
-            item.defense = 2;
+            item.defense = 3;
         }
 
         public override void UpdateEquip(Player player) {
@@ -33,9 +33,10 @@ namespace DrakSolz.Items.Armor.Crimson {
 
         public override void UpdateArmorSet(Player player) {
             player.setBonus = ("5% increased fire damage" +
-                "\nreduced damage taken from lava");
+                "\nreduced damage taken from lava and ability to walk on fire blocks");
 			player.GetModPlayer<MPlayer>().pyromancyDamage += 0.05f;
             player.lavaRose = true;
+            player.fireWalk = true;
         }
 
         public override void AddRecipes() {

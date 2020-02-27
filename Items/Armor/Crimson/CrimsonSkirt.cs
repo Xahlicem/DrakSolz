@@ -14,9 +14,9 @@ namespace DrakSolz.Items.Armor.Crimson {
         public override void SetDefaults() {
             item.width = 22;
             item.height = 20;
-            item.value = Item.sellPrice(0, 0, 20, 0);
+            item.value = Item.sellPrice(0, 0, 25, 0);
             item.rare = ItemRarityID.Orange;
-            item.defense = 2;
+            item.defense = 3;
         }
 
         public override void UpdateEquip(Player player) {

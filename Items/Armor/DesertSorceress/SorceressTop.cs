@@ -9,7 +9,7 @@ namespace DrakSolz.Items.Armor.DesertSorceress {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Desert Sorceress Top");
             Tooltip.SetDefault("Clothing worn by Desert Sorceresses. So fashionable." +
-                "\n+10% fire damage" +
+                "\n+6% fire damage" +
                 "\n+ increases mana star grab range");
         }
 
@@ -18,11 +18,11 @@ namespace DrakSolz.Items.Armor.DesertSorceress {
             item.height = 18;
             item.value = Item.sellPrice(0, 5, 0, 0);
             item.rare = ItemRarityID.Yellow;
-            item.defense = 7;
+            item.defense = 12;
         }
 
         public override void UpdateEquip(Player player) {
-			player.GetModPlayer<MPlayer>().pyromancyDamage += 0.10f;
+			player.GetModPlayer<MPlayer>().pyromancyDamage += 0.06f;
             player.manaMagnet = true;
         }
     }

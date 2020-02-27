@@ -7,8 +7,9 @@ namespace DrakSolz.Items.Armor.HardmodeFire {
     public class PalladiumCrown : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Palladium Crown");
-            Tooltip.SetDefault("9% increased throwing damage" +
-                "\n7% increased throwing critical strike chance");
+            Tooltip.SetDefault("8% increased fire damage" +
+                "\n4% increased fire critical strike chance" +
+                "\nincreases maximum mana by 20");
         }
 
         public override void SetDefaults() {
@@ -22,8 +23,9 @@ namespace DrakSolz.Items.Armor.HardmodeFire {
         }
 
         public override void UpdateEquip(Player player) {
-            player.thrownDamage *= 1.09f;
-            player.thrownCrit += 7;
+            player.statManaMax2 += 20;
+			player.GetModPlayer<MPlayer>().pyromancyDamage += 0.08f;
+			player.GetModPlayer<MPlayer>().pyromancyCrit += 4;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs) {

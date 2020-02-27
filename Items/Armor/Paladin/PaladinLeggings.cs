@@ -7,7 +7,7 @@ namespace DrakSolz.Items.Armor.Paladin {
     public class PaladinLeggings : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Paladin Leggings");
-            Tooltip.SetDefault("Attire donned by Leroy, a forgotten paladin" +
+            Tooltip.SetDefault("Attire donned by Leeroy, a forgotten paladin" +
                 "\n+10% miracle damage" +
                 "\n-1 max minions" +
                 "\n+15% movespeed");
@@ -31,8 +31,7 @@ namespace DrakSolz.Items.Armor.Paladin {
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.LihzahrdPowerCell, 1);
-            recipe.AddIngredient(ItemID.LivingFireBlock, 25);
-            recipe.AddIngredient(ModContent.ItemType<Items.Armor.Tattered.TatteredBoots>());
+            recipe.AddIngredient(ItemID.ChlorophyteBar, 17);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();

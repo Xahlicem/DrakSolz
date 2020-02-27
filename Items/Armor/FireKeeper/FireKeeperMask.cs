@@ -7,8 +7,8 @@ namespace DrakSolz.Items.Armor.FireKeeper {
     public class FireKeeperMask : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Fire Keeper's Mask");
-            Tooltip.SetDefault("Increases maximum mana by 15" +
-                "\nReduces mana usage by 5%" );
+            Tooltip.SetDefault("Increases maximum mana by 40" +
+                "\nReduces mana usage by 30%" );
         }
 
         public override void SetDefaults() {
@@ -16,12 +16,12 @@ namespace DrakSolz.Items.Armor.FireKeeper {
             item.height = 28;
             item.value = Item.sellPrice(0, 0, 20, 0);
             item.rare = ItemRarityID.Orange;
-            item.defense = 2;
+            item.defense = 20;
         }
 
         public override void UpdateEquip(Player player) {
-            player.statManaMax2 += 15;
-            player.manaCost *= 0.95f;
+            player.statManaMax2 += 40;
+            player.manaCost *= 0.70f;
             player.blind = true;
         }
         public override bool DrawHead() {
@@ -37,18 +37,18 @@ namespace DrakSolz.Items.Armor.FireKeeper {
         }
 
         public override void UpdateArmorSet(Player player) {
-            player.setBonus = ("5% increased fire damage" +
-                "\nreduced damage taken from lava");
-			player.GetModPlayer<MPlayer>().pyromancyDamage += 0.05f;
-            player.lavaRose = true;
+            player.setBonus = ("25% increased fire damage and critical strike chance" +
+                "\nreduced hollowing restoration delay");
+			player.GetModPlayer<MPlayer>().pyromancyDamage += 0.25f;
+			player.GetModPlayer<MPlayer>().pyromancyCrit += 15;
+            player.AddBuff(ModContent.BuffType<Buffs.FirelinkKeep>(), 1);
         }
 
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.SetResult(this);
-            recipe.AddIngredient(ItemID.Silk, 10);
-            recipe.AddIngredient(ItemID.LavaBucket, 1);
-            recipe.AddTile(TileID.WorkBenches);
+            recipe.AddIngredient(ItemID.LunarBar, 10);
+            recipe.AddTile(TileID.LunarCraftingStation);
             recipe.AddRecipe();
         }
     }

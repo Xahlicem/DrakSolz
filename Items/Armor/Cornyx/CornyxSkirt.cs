@@ -7,7 +7,7 @@ namespace DrakSolz.Items.Armor.Cornyx {
     public class CornyxSkirt : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Cornyx's Skirt");
-            Tooltip.SetDefault("5% increased fire crit" +
+            Tooltip.SetDefault("5% increased fire damage and critical strike chance" +
                 "\n5% increased movement speed");
         }
 
@@ -16,12 +16,15 @@ namespace DrakSolz.Items.Armor.Cornyx {
             item.height = 20;
             item.value = Item.sellPrice(0, 0, 20, 0);
             item.rare = ItemRarityID.Orange;
-            item.defense = 2;
+            item.defense = 18;
         }
 
         public override void UpdateEquip(Player player) {
+			player.GetModPlayer<MPlayer>().pyromancyDamage += 0.05f;
 			player.GetModPlayer<MPlayer>().pyromancyCrit += 5;
-            player.moveSpeed *= 1.05f;
+            player.moveSpeed *= 1.15f;
+            player.maxRunSpeed *= 1.15f;
+        
         }
         public override bool DrawLegs(){
             return true;

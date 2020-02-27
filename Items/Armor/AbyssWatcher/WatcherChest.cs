@@ -8,7 +8,7 @@ namespace DrakSolz.Items.Armor.AbyssWatcher {
         public override void SetStaticDefaults() {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Watcher's Armor");
-            Tooltip.SetDefault("Increases fire damage by 5%");
+            Tooltip.SetDefault("Increases melee speed by 20%");
         }
 
         public override void SetDefaults() {
@@ -16,11 +16,11 @@ namespace DrakSolz.Items.Armor.AbyssWatcher {
             item.height = 30;
             item.value = Item.sellPrice(0, 0, 20, 0);
             item.rare = ItemRarityID.Orange;
-            item.defense = 3;
+            item.defense = 22;
         }
 
         public override void UpdateEquip(Player player) {
-			player.GetModPlayer<MPlayer>().pyromancyDamage += 0.05f;
+			player.meleeSpeed *= 0.80f;
         }
 
         public override void AddRecipes() {

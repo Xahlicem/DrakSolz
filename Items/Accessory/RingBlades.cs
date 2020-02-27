@@ -24,6 +24,7 @@ namespace DrakSolz.Items.Accessory {
             player.magicCrit += 5;
             player.thrownCrit += 5;
             player.rangedCrit += 5;
+            player.GetModPlayer<MPlayer>().pyromancyCrit += 5;
         }
     }
 }

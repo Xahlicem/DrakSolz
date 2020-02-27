@@ -9,17 +9,12 @@ using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
 namespace DrakSolz {
-    public class PyromancyItem : ModItem {
-        public int PyromancyValue { get; internal set; }
+    public class PyromancyItem : GlobalItem {
 
-        public PyromancyItem(int value) {
-            PyromancyValue = value;
-        }
+        public bool FireWeapon(Item item) { return (item.melee || item.magic || item.ranged || item.thrown || item.summon); }
 
-        public override void ModifyTooltips(List<TooltipLine> tooltips) {
-            if (PyromancyValue >= 1) {
-                tooltips[0].text += " (" + PyromancyValue + " Souls required)";
-            }
+        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips) {
+            if (FireWeapon(item)) return;
             var tt = tooltips.FirstOrDefault(x => x.Name == "Damage" && x.mod == "Terraria");
             if (tt != null) {
                 // take reverse for 'damage',  grab translation
@@ -31,7 +26,7 @@ namespace DrakSolz {
             // todo: this can be removed when tmodloader updates
             if (item.crit > 0) {
                 int crit = item.crit;
-                GetWeaponCrit(Main.LocalPlayer, ref crit);
+                GetWeaponCrit(item, Main.LocalPlayer, ref crit);
                 tt = tooltips.FirstOrDefault(x => x.Name == "CritChance" && x.mod == "Terraria");
                 if (tt != null) {
                     tt.text = crit + "% " + string.Join(" ", tt.text.Split(' ').Skip(1).ToArray());
@@ -45,28 +40,27 @@ namespace DrakSolz {
             }
         }
 
-        public override void SetDefaults() {
-            item.melee = false;
-            item.ranged = false;
-            item.magic = false;
-            item.thrown = false;
-            item.summon = false;
-            item.crit = 4;
+        public override void SetDefaults(Item item) {
+            if (FireWeapon(item)) return;
+            //item.crit = 4;
         }
 
-        public override void GetWeaponKnockback(Player player, ref float knockback) {
+        public override void GetWeaponKnockback(Item item, Player player, ref float knockback) {
+            if (FireWeapon(item)) return;
             MPlayer modPlayer = MPlayer.GetModPlayer(player);
             knockback += modPlayer.pyromancyKbAddition;
             knockback *= modPlayer.pyromancyKbMult;
         }
 
         // todo: borked, tml requires update, manual work still needed
-        public override void GetWeaponCrit(Player player, ref int crit) {
+        public override void GetWeaponCrit(Item item, Player player, ref int crit) {
+            if (FireWeapon(item)) return;
             MPlayer modPlayer = MPlayer.GetModPlayer(player);
             crit += modPlayer.pyromancyCrit;
         }
 
-        public override void GetWeaponDamage(Player player, ref int damage) {
+        public override void GetWeaponDamage(Item item, Player player, ref int damage) {
+            if (FireWeapon(item)) return;
             MPlayer modPlayer = MPlayer.GetModPlayer(player);
             // We want to multiply the damage we do by our alchemicalDamage modifier.
             // todo: ? do we want magic damage to also have effect here?
@@ -74,27 +68,12 @@ namespace DrakSolz {
         }
 
         // todo: this can be removed when tmodloader updates
-        public override void ModifyHitNPC(Player player, NPC target, ref int damage, ref float knockBack, ref bool crit) {
+        public override void ModifyHitNPC(Item item, Player player, NPC target, ref int damage, ref float knockBack, ref bool crit) {
+            if (FireWeapon(item)) return;
             int cc = item.crit;
-            GetWeaponCrit(player, ref cc);
+            GetWeaponCrit(item, player, ref cc);
             crit = crit || Main.rand.Next(1, 101) <= cc;
         }
 
-    }
-}
-
-public class PyromancyRecipe : ModRecipe {
-    private int requiredSouls;
-    public PyromancyRecipe(Mod mod, PyromancyItem result) : base(mod) {
-        requiredSouls = result.PyromancyValue;
-        SetResult(result);
-    }
-
-    public override bool RecipeAvailable() {
-        return (Main.LocalPlayer.GetModPlayer<DrakSolzPlayer>().Souls >= requiredSouls);
-    }
-
-    public override void OnCraft(Item item) {
-        Main.LocalPlayer.GetModPlayer<DrakSolzPlayer>().UpdateSouls(-requiredSouls);
     }
 }

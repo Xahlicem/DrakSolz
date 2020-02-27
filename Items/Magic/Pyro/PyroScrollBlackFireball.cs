@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
 namespace DrakSolz.Items.Magic.Pyro {
-    public class PyroScrollBlackFireball : PyromancyItem {
+    public class PyroScrollBlackFireball : SoulItem {
         public PyroScrollBlackFireball() : base(55000) { }
 
         public override void SetStaticDefaults() {
@@ -31,7 +31,7 @@ namespace DrakSolz.Items.Magic.Pyro {
         }
 
         public override void AddRecipes() {
-            ModRecipe recipe = new PyromancyRecipe(mod, this);
+            ModRecipe recipe = new SoulRecipe(mod, this);
             recipe.AddIngredient(ModContent.ItemType<Items.Magic.Pyro.PyroScrollFireBall>());
             recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
             recipe.AddRecipe();

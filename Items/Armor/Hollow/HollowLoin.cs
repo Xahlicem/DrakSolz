@@ -7,7 +7,8 @@ namespace DrakSolz.Items.Armor.Hollow {
     public class HollowLoin : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Hollow Loincloth");
-            Tooltip.SetDefault("Increases movement speed by 5%");
+            Tooltip.SetDefault("Increases movement speed by 5%" +
+            "\ndecreases max life by 5");
         }
 
         public override void SetDefaults() {
@@ -20,6 +21,8 @@ namespace DrakSolz.Items.Armor.Hollow {
 
         public override void UpdateEquip(Player player) {
             player.moveSpeed *= 1.05f;
+            player.maxRunSpeed *= 1.05f;
+            player.GetModPlayer<DrakSolzPlayer>().MiscHP -= 5;
         }
 
         public class HollowLoinNPC : GlobalNPC {

@@ -8,7 +8,8 @@ namespace DrakSolz.Items.Armor.Hollow {
         public override void SetStaticDefaults() {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Hollow Tatters");
-            Tooltip.SetDefault("Increases movement speed by 5%");
+            Tooltip.SetDefault("Increases movement speed by 5%" +
+            "\ndecreases max life by 5");
         }
 
         public override void SetDefaults() {
@@ -21,6 +22,12 @@ namespace DrakSolz.Items.Armor.Hollow {
 
         public override void UpdateEquip(Player player) {
             player.moveSpeed *= 1.05f;
+            player.maxRunSpeed *= 1.05f;
+            player.GetModPlayer<DrakSolzPlayer>().MiscHP -= 5;
+        }
+        public override void DrawHands(ref bool drawHands, ref bool drawArms){
+            drawHands = true;
+            drawArms = true;
         }
 
         public class HollowShirtNPC : GlobalNPC {

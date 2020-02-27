@@ -16,7 +16,7 @@ namespace DrakSolz.Items.Armor.PaintingGuardian {
             item.height = 28;
             item.value = Item.sellPrice(0, 0, 20, 0);
             item.rare = ItemRarityID.Orange;
-            item.defense = 2;
+            item.defense = 3;
         }
 
         public override void UpdateEquip(Player player) {
