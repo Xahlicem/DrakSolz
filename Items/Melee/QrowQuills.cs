@@ -35,11 +35,9 @@ namespace DrakSolz.Items.Melee {
 
         public override bool UseItem(Player player) {
             if (player.altFunctionUse == 2) {
-                item.damage = 550;
                 item.melee = false;
                 item.thrown = true;
             } else {
-                item.damage = 100;
                 item.thrown = false;
                 item.melee = true;
             }
@@ -49,7 +47,6 @@ namespace DrakSolz.Items.Melee {
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack) {
             if (player.altFunctionUse == 2) {
                 item.thrown = true;
-                item.damage = 120;
                 item.melee = false;
                 float numberProjectiles = 1;
                 float d = player.thrownDamage * 10;
@@ -63,7 +60,6 @@ namespace DrakSolz.Items.Melee {
             } else {
                 float numberProjectiles = 1;
                 item.melee = true;
-                item.damage = 100;
                 item.thrown = false;
                 float d = player.meleeDamage * 10;
                 if (item.melee) {
@@ -82,9 +78,10 @@ namespace DrakSolz.Items.Melee {
 
         public override void AddRecipes() {
             ModRecipe recipe = new SoulRecipe(mod, this);
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.AddRecipeGroup("IronBar", 2);
-            recipe.AddRecipeGroup("Wood", 5);
+            recipe.AddIngredient(ItemID.Arkhalis, 1);
+            recipe.AddIngredient(ModContent.ItemType<Items.Misc.VoidFragment>(), 10);
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.SetResult(this);
             recipe.AddRecipe();
         }
     }
