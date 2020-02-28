@@ -156,24 +156,15 @@ namespace DrakSolz {
 
             switch (msgType) {
                 case MessageType.Stats:
-                    p.Str = reader.ReadInt32();
-                    p.Dex = reader.ReadInt32();
-                    p.Int = reader.ReadInt32();
-                    p.Fth = reader.ReadInt32();
-                    p.Vit = reader.ReadInt32();
-                    p.Att = reader.ReadInt32();
+                    p.Stats = reader.ReadInt64();
                     break;
                 case MessageType.Hurt:
                     p.HurtWait = reader.ReadInt32();
                     p.Hollow = reader.ReadInt32();
                     break;
-                case MessageType.Souls:
-                    p.Souls = reader.ReadInt32();
+                case MessageType.UID:
+                    p.UID = reader.ReadInt64();;
                     break;
-                case MessageType.Boss:
-                    p.BossSouls = reader.ReadInt32();
-                    break;
-
                 default:
                     Logger.Error("Drak Solz: Unknown Message type: " + msgType);
                     break;
@@ -184,7 +175,6 @@ namespace DrakSolz {
     public enum MessageType : byte {
         Stats,
         Hurt,
-        Souls,
-        Boss
+        UID
     }
 }

@@ -21,13 +21,13 @@ namespace DrakSolz.Items.Melee {
         }
 
         public override bool CanUseItem(Player player) {
-            if (item.GetGlobalItem<Items.DSGlobalItem>().FromPlayer != player.whoAmI) return false;
+            if (item.GetGlobalItem<Items.DSGlobalItem>().Owner != player.whoAmI) return false;
             if (item.GetGlobalItem<DSGlobalItem>().Used) {
                 foreach (Item i in player.inventory)
                     if (i == item) {
                         i.netDefaults(ModContent.ItemType<Items.Melee.SwordHilt>());
                         i.Prefix(PrefixID.Broken);
-                        i.GetGlobalItem<DSGlobalItem>().FromPlayer = player.whoAmI;
+                        i.GetGlobalItem<DSGlobalItem>().Owner = player.GetModPlayer<DrakSolzPlayer>().UID;
                         i.GetGlobalItem<DSGlobalItem>().Owned = true;
                         i.rare = -1;
                     }
@@ -49,8 +49,7 @@ namespace DrakSolz.Items.Melee {
         }
 
         public override bool CanPickup(Player player) {
-            int fromPlayer = item.GetGlobalItem<Items.DSGlobalItem>().FromPlayer;
-            return (player.whoAmI == fromPlayer);
+            return (player.GetModPlayer<DrakSolzPlayer>().UID == item.GetGlobalItem<Items.DSGlobalItem>().Owner);
         }
     }
 }
