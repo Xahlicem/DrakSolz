@@ -59,12 +59,12 @@ namespace DrakSolz {
             crit += modPlayer.pyromancyCrit;
         }
 
-        public override void GetWeaponDamage(Item item, Player player, ref int damage) {
+        public override void ModifyWeaponDamage(Item item, Player player, ref float add, ref float mult, ref float flat) {
             if (FireWeapon(item)) return;
             MPlayer modPlayer = MPlayer.GetModPlayer(player);
             // We want to multiply the damage we do by our alchemicalDamage modifier.
             // todo: ? do we want magic damage to also have effect here?
-            damage = (int)(damage * modPlayer.pyromancyDamage + 5E-06f);
+            mult = modPlayer.pyromancyDamage;
         }
 
         // todo: this can be removed when tmodloader updates

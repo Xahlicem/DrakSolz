@@ -26,13 +26,13 @@ namespace DrakSolz.Items.Summon.Consumable {
         }
 
         public override bool CanPickup(Player player) {
-            int fromPlayer = item.GetGlobalItem<Items.DSGlobalItem>().FromPlayer;
-            return (fromPlayer == -1) ? true : (player.whoAmI == fromPlayer);
+            long fromPlayer = item.GetGlobalItem<Items.DSGlobalItem>().Owner;
+            return (fromPlayer == -1) ? true : (player.GetModPlayer<DrakSolzPlayer>().UID == fromPlayer);
         }
 
         public override void GrabRange(Player player, ref int grabRange) {
-            int fromPlayer = item.GetGlobalItem<Items.DSGlobalItem>().FromPlayer;
-            if (fromPlayer != player.whoAmI) return;
+            long fromPlayer = item.GetGlobalItem<Items.DSGlobalItem>().Owner;
+            if (player.GetModPlayer<DrakSolzPlayer>().UID != fromPlayer) return;
             grabRange = (int) player.Distance(item.Center);
         }
 

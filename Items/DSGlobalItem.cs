@@ -7,8 +7,7 @@ using Terraria.ModLoader.IO;
 
 namespace DrakSolz.Items {
     public class DSGlobalItem : GlobalItem {
-        private int fromPlayer;
-        public int FromPlayer { get { return fromPlayer; } set { fromPlayer = value; } }
+        public long Owner { get; set; }
 
         public bool Owned { get; set; }
         public bool ArcaneRolled { get; set; }
@@ -18,8 +17,8 @@ namespace DrakSolz.Items {
         public override bool InstancePerEntity { get { return true; } }
 
         public DSGlobalItem() {
-            if (Main.netMode == NetmodeID.SinglePlayer) fromPlayer = -1;
-            else fromPlayer = -2;
+            if (Main.netMode == NetmodeID.SinglePlayer) Owner = -1L;
+            else Owner = -2L;
 
             ArcaneRolled = false;
         }
@@ -30,7 +29,7 @@ namespace DrakSolz.Items {
             if (source != null && destination != null) {
                 destination.Owned = source.Owned;
                 destination.Used = source.Used;
-                destination.FromPlayer = fromPlayer;
+                destination.Owner = Owner;
                 destination.ArcaneRolled = ArcaneRolled;
                 destination.ArcaneMana = ArcaneMana;
             }
@@ -49,13 +48,13 @@ namespace DrakSolz.Items {
 
         public override void PostReforge(Item item) {
             ReRoll(item);
-            fromPlayer = item.owner;
+            Owner = Main.player[item.owner].GetModPlayer<DrakSolzPlayer>().UID;
             Owned = true;
         }
 
         public override bool OnPickup(Item item, Player player) {
             ReRoll(item);
-            fromPlayer = player.whoAmI;
+            Owner = player.GetModPlayer<DrakSolzPlayer>().UID;
             Owned = true;
             return true;
         }
@@ -64,6 +63,9 @@ namespace DrakSolz.Items {
             ReRoll(item);
             if (ArcaneRolled)
                 player.statManaMax2 += ArcaneMana * 5 + 5;
+        }
+        public override void Update(Item item, ref float gravity, ref float maxFallSpeed) {
+            item.SetNameOverride(Owner.ToString());
         }
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips) {
@@ -94,14 +96,14 @@ namespace DrakSolz.Items {
         }
 
         public override void NetSend(Item item, System.IO.BinaryWriter writer) {
-            writer.Write(fromPlayer);
+            writer.Write(Owner);
             writer.Write(Used);
             writer.Write(ArcaneRolled);
             writer.Write(ArcaneMana);
         }
 
         public override void NetReceive(Item item, System.IO.BinaryReader reader) {
-            fromPlayer = reader.ReadInt32();
+            Owner = reader.ReadInt64();
             Used = reader.ReadBoolean();
             ArcaneRolled = reader.ReadBoolean();
             ArcaneMana = reader.ReadInt32();
@@ -118,14 +120,14 @@ namespace DrakSolz.Items {
             if (item.type == 0 || item.type == ModLoader.GetMod("ModLoader").ItemType("MysteryItem")) {
                 return null;
             }
-            return new TagCompound { { "owned", Owned }, { "used", Used }, { "fromPlayer", fromPlayer }, { "ArcaneRolled", ArcaneRolled }, { "ArcaneMana", ArcaneMana } };
+            return new TagCompound { { "owned", Owned }, { "used", Used }, { "FromPlayer", Owner }, { "ArcaneRolled", ArcaneRolled }, { "ArcaneMana", ArcaneMana } };
         }
 
         public override void Load(Item item, TagCompound tag) {
             Owned = tag.GetBool("owned");
             Used = tag.GetBool("used");
-            fromPlayer = tag.GetInt("fromPlayer");
-            if (fromPlayer == 0) fromPlayer = Main.LocalPlayer.whoAmI;
+            Owner = tag.GetLong("FromPlayer");
+            if (Owner == 0) Owner = Main.LocalPlayer.GetModPlayer<DrakSolzPlayer>().UID;;
             ArcaneRolled = tag.GetBool("ArcaneRolled");
             ArcaneMana = tag.GetInt("ArcaneMana");
         }
@@ -163,7 +165,7 @@ namespace DrakSolz.Items {
         }
 
         public override void OnCraft(Item item) {
-            Main.LocalPlayer.GetModPlayer<DrakSolzPlayer>().UpdateSouls(-requiredSouls);
+            Main.LocalPlayer.GetModPlayer<DrakSolzPlayer>().Souls -= requiredSouls;
         }
     }
 }

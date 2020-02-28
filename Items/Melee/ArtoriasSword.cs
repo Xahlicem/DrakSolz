@@ -53,7 +53,7 @@ namespace DrakSolz.Items.Melee {
                         i.knockBack = iknock;
                         i.scale = isize;
                         i.prefix = ipref;
-                        i.GetGlobalItem<DSGlobalItem>().FromPlayer = player.whoAmI;
+                        i.GetGlobalItem<DSGlobalItem>().Owner = player.GetModPlayer<DrakSolzPlayer>().UID;
                         i.GetGlobalItem<DSGlobalItem>().Owned = true;
                     };
             }

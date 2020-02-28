@@ -11,7 +11,9 @@ using Terraria.ModLoader.IO;
 namespace DrakSolz {
 
     public class DrakSolzPlayer : ModPlayer {
-        private readonly int HurtWaitMax = 3600;
+        private long _uid;
+        public long UID { get { if (_uid == 0) _uid = DateTime.Now.Ticks; return _uid; } set { _uid = value; } }
+        private static readonly int HURT_WAIT_MAX = 3600;
         public int HurtWait { get; internal set; }
         public int HurtWaitDec { get; internal set; }
         public int Hollow { get; internal set; }
@@ -21,28 +23,39 @@ namespace DrakSolz {
         public int Souls { get; set; }
         public int SoulCost(int level) {
             if (level < 20) {
-                return (int)(Math.Round((Math.Pow(0.02 * level, 3) + Math.Pow(4.06 * level, 2) + 105.6 * level) * 0.1, 0) * 4);
+                return (int) (Math.Round((Math.Pow(0.02 * level, 3) + Math.Pow(4.06 * level, 2) + 105.6 * level) * 0.1, 0) * 4);
             } else if (level < 40) {
-                return (int)(Math.Round((Math.Pow(0.02 * level, 3) + Math.Pow(4.06 * level, 2) + 105.6 * level) * 0.1, 0) * 10);
+                return (int) (Math.Round((Math.Pow(0.02 * level, 3) + Math.Pow(4.06 * level, 2) + 105.6 * level) * 0.1, 0) * 10);
             } else if (level < 60) {
-                return (int)(Math.Round((Math.Pow(0.02 * level, 3) + Math.Pow(4.06 * level, 2) + 105.6 * level) * 0.1, 0) * 17);
+                return (int) (Math.Round((Math.Pow(0.02 * level, 3) + Math.Pow(4.06 * level, 2) + 105.6 * level) * 0.1, 0) * 17);
             } else if (level < 80) {
-                return (int)(Math.Round((Math.Pow(0.02 * level, 3) + Math.Pow(4.06 * level, 2) + 105.6 * level) * 0.1, 0) * 25);
+                return (int) (Math.Round((Math.Pow(0.02 * level, 3) + Math.Pow(4.06 * level, 2) + 105.6 * level) * 0.1, 0) * 25);
             } else {
-                return (int)(Math.Round((Math.Pow(0.02 * level, 3) + Math.Pow(4.06 * level, 2) + 105.6 * level) * 0.1, 0) * 30);
+                return (int) (Math.Round((Math.Pow(0.02 * level, 3) + Math.Pow(4.06 * level, 2) + 105.6 * level) * 0.1, 0) * 30);
             }
         }
-        public int Str { get; set; }
-        public int Dex { get; set; }
-        public int Int { get; set; }
-        public int Fth { get; set; }
-        public int Vit { get; set; }
-        public int Att { get; set; }
+
+        public long Stats { get; set; }
+        private static readonly byte VIT = 0 * 7;
+        private static readonly byte STR = 1 * 7;
+        private static readonly byte DEX = 2 * 7;
+        private static readonly byte ATT = 3 * 7;
+        private static readonly byte INT = 4 * 7;
+        private static readonly byte FTH = 5 * 7;
+        private static readonly byte BOSS_SOULS = 6 * 7;
+        private static readonly byte COALS = 6 * 7 + 17;
+
+        public int Vit { get { return (int) (Stats >> VIT & 127L); } set { Stats = Stats & ~(127L << VIT) | ((uint) value & 127L) << VIT; } }
+        public int Str { get { return (int) (Stats >> STR & 127L); } set { Stats = Stats & ~(127L << STR) | ((uint) value & 127L) << STR; } }
+        public int Dex { get { return (int) (Stats >> DEX & 127L); } set { Stats = Stats & ~(127L << DEX) | ((uint) value & 127L) << DEX; } }
+        public int Att { get { return (int) (Stats >> ATT & 127L); } set { Stats = Stats & ~(127L << ATT) | ((uint) value & 127L) << ATT; } }
+        public int Int { get { return (int) (Stats >> INT & 127L); } set { Stats = Stats & ~(127L << INT) | ((uint) value & 127L) << INT; } }
+        public int Fth { get { return (int) (Stats >> FTH & 127L); } set { Stats = Stats & ~(127L << FTH) | ((uint) value & 127L) << FTH; } }
+        public int BossSouls { get { return (int) (Stats >> BOSS_SOULS & 127L); } set { Stats = Stats & ~(127L << BOSS_SOULS) | ((uint) value & 127L) << BOSS_SOULS; } }
+        public int Coals { get { return (int) (Stats >> COALS & 127L); } set { Stats = Stats & ~(127L << COALS) | ((uint) value & 127L) << COALS; } }
 
         public float SoulTicks { get; set; }
         public int BossSoulTicks { get; set; }
-        public int BossSouls { get; set; }
-        public int Coals { get; set; }
 
         public bool ZoneTowerVoidPillar;
         public bool VoidMonolith = false;
@@ -65,23 +78,18 @@ namespace DrakSolz {
         public float Rotation { get; set; }
 
         public override void Initialize() {
+            UID = 0;
+
             HurtWait = 0;
             HurtWaitDec = 1;
             Hollow = 0;
             HollowDec = 1;
 
             Souls = 0;
-            Str = 0;
-            Dex = 0;
-            Int = 0;
-            Fth = 0;
-            Vit = 0;
-            Att = 0;
+            Stats = 0;
 
             SoulTicks = 0;
             BossSoulTicks = 0;
-            BossSouls = 0;
-            Coals = 0;
 
             SoulSummon = false;
             HumSummon = false;
@@ -115,18 +123,9 @@ namespace DrakSolz {
             player.fullRotation = Rotation;
         }
 
-        public void UpdateSouls(int inc) {
-            SetSouls(Souls + inc);
-        }
-
-        public void SetSouls(int num) {
-            Souls = num;
-            SendPacket(MessageType.Souls);
-        }
-
         public void SetBossSouls(int place) {
             BossSouls |= place;
-            SendPacket(MessageType.Boss);
+            SendPacket(MessageType.Stats);
         }
 
         public override void PreUpdate() {
@@ -138,14 +137,14 @@ namespace DrakSolz {
                 else if (SoulTicks >= 10) num = 5;
                 SoulTicks -= num;
                 if (num == 0.5f && SoulTicks % 1 != 0f) num = 1;
-                UpdateSouls((int) Math.Floor(num));
+                Souls += ((int) Math.Floor(num));
             }
 
             if (BossSoulTicks > 0) {
-                if (BossSoulTicks <= 40) UpdateSouls(25);
-                else if (BossSoulTicks <= 80) UpdateSouls(100);
-                else if (BossSoulTicks <= 130) UpdateSouls(500);
-                else UpdateSouls(1000);
+                if (BossSoulTicks <= 40) Souls += 25;
+                else if (BossSoulTicks <= 80) Souls += 100;
+                else if (BossSoulTicks <= 130) Souls += 500;
+                else Souls += 1000;
                 BossSoulTicks--;
                 Main.dust[Dust.NewDust(player.position, player.width, player.height, DustID.AncientLight)].noGravity = true;
             }
@@ -227,15 +226,15 @@ namespace DrakSolz {
         }
 
         public override void PostUpdate() {
-            if (player.Equals(Main.LocalPlayer))(mod as DrakSolz).ui.updateValue(Souls, Level);
+            if (player.Equals(Main.LocalPlayer)) (mod as DrakSolz).ui.updateValue(Souls, Level);
 
             if (Rotate) Rotation += player.velocity.X * 0.025f;
             else Rotation = 0f;
         }
 
         public override void Hurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit) {
-            HurtWait = HurtWaitMax;
-            Hollow += (int)(damage * 120.0);
+            HurtWait = HURT_WAIT_MAX;
+            Hollow += (int) (damage * 120.0);
 
             if (Main.netMode != NetmodeID.SinglePlayer)
                 SendPacket(MessageType.Hurt);
@@ -243,16 +242,15 @@ namespace DrakSolz {
 
         public override void UpdateDead() {
             Hollow += 30;
-            HurtWait = HurtWaitMax;
+            HurtWait = HURT_WAIT_MAX;
             UpdateHollow();
             SendPacket(MessageType.Hurt);
 
             if (Souls != 0) {
                 int i = Item.NewItem((int) player.position.X, (int) player.position.Y, player.width, player.height, ModContent.ItemType<Items.Souls.Soul>(), Souls);
-                Main.item[i].GetGlobalItem<Items.DSGlobalItem>().FromPlayer = player.whoAmI;
-                SetSouls(0);
-                if (player.Equals(Main.LocalPlayer))(mod as DrakSolz).ui.updateValue(Souls, Level);
-                SendPacket(MessageType.Souls);
+                Main.item[i].GetGlobalItem<Items.DSGlobalItem>().Owner = UID;
+                Souls = 0;
+                if (player.Equals(Main.LocalPlayer)) (mod as DrakSolz).ui.updateValue(Souls, Level);
             }
         }
 
@@ -270,7 +268,7 @@ namespace DrakSolz {
             player.meleeDamage *= 0.6f + Str * 0.02f;;
             player.rangedDamage *= 0.6f + Dex * 0.02f;;
             player.thrownDamage *= 0.6f + ((Str < Dex) ? Str : Dex) * 0.04f;;
-            player.GetModPlayer<MPlayer>().pyromancyDamage  *= 0.6f + ((Int < Fth) ? Int : Fth) * 0.04f;;
+            player.GetModPlayer<MPlayer>().pyromancyDamage *= 0.6f + ((Int < Fth) ? Int : Fth) * 0.04f;;
             player.magicDamage *= 0.6f + Int * 0.02f;;
             player.minionDamage *= 0.6f + Fth * 0.02f;;
             player.statLifeMax = Level * 4 + 100 + MiscHP;
@@ -309,7 +307,7 @@ namespace DrakSolz {
             if (HurtWait == 0 && Hollow > 0) DecreaseHollow(HollowDec);
 
             if (Hollow > 0) player.AddBuff(ModContent.BuffType<Buffs.Hollow>(), (Hollow / HollowDec) + (HurtWait / HurtWaitDec));
-            int life = (int)((Hollow + 1) / 300f);
+            int life = (int) ((Hollow + 1) / 300f);
             player.statLifeMax2 -= life;
             int min = 20 + Vit * 5;
             if (player.statLifeMax2 < min) player.statLifeMax2 = min;
@@ -319,33 +317,21 @@ namespace DrakSolz {
 
         public override TagCompound Save() {
             TagCompound save = new TagCompound();
+            save.Add("UID", UID);
             save.Add("HurtWait", HurtWait);
             save.Add("Hollow", Hollow);
             save.Add("Souls", Souls);
-            save.Add("Str", Str);
-            save.Add("Dex", Dex);
-            save.Add("Int", Int);
-            save.Add("Fth", Fth);
-            save.Add("Vit", Vit);
-            save.Add("Att", Att);
-            save.Add("BossSouls", BossSouls);
-            save.Add("Coals", Coals);
+            save.Add("Stats", Stats);
             save.Add("Estus", Estus);
             return save;
         }
 
         public override void Load(TagCompound tag) {
+            _uid = tag.GetLong("UID");
             HurtWait = tag.GetInt("HurtWait");
             Hollow = tag.GetInt("Hollow");
             Souls = tag.GetInt("Souls");
-            Str = tag.GetInt("Str");
-            Dex = tag.GetInt("Dex");
-            Int = tag.GetInt("Int");
-            Fth = tag.GetInt("Fth");
-            Vit = tag.GetInt("Vit");
-            Att = tag.GetInt("Att");
-            BossSouls = tag.GetInt("BossSouls");
-            Coals = tag.GetInt("Coals");
+            Stats = tag.GetLong("Stats");
             Estus = tag.GetInt("Estus");
 
         }
@@ -355,48 +341,42 @@ namespace DrakSolz {
             Item item = new Item();
             item.netDefaults(ModContent.ItemType<Items.Melee.Sword>());
             item.GetGlobalItem<DSGlobalItem>().Owned = true;
-            item.GetGlobalItem<DSGlobalItem>().FromPlayer = player.whoAmI;
+            item.GetGlobalItem<DSGlobalItem>().Owner = UID;
             items.Add(item);
             Item item2 = new Item();
             item2.netDefaults(ModContent.ItemType<Items.Misc.EstusFlask>());
             item2.GetGlobalItem<DSGlobalItem>().Owned = true;
-            item2.GetGlobalItem<DSGlobalItem>().FromPlayer = player.whoAmI;
+            item2.GetGlobalItem<DSGlobalItem>().Owner = UID;
             items.Add(item2);
             Item item3 = new Item();
             item3.netDefaults(ModContent.ItemType<Items.Misc.Classes.ClassEmpty>());
             item3.GetGlobalItem<DSGlobalItem>().Owned = true;
-            item3.GetGlobalItem<DSGlobalItem>().FromPlayer = player.whoAmI;
+            item3.GetGlobalItem<DSGlobalItem>().Owner = UID;
             items.Add(item3);
         }
 
         public override void SyncPlayer(int toWho, int fromWho, bool newPlayer) {
             SendPacket(MessageType.Hurt, toWho, fromWho);
             SendPacket(MessageType.Stats, toWho, fromWho);
-            SendPacket(MessageType.Souls, toWho, fromWho);
-            SendPacket(MessageType.Boss, toWho, fromWho);
+            SendPacket(MessageType.UID, toWho, fromWho);
         }
 
         public override void clientClone(ModPlayer clone) {
             base.clientClone(clone);
             DrakSolzPlayer p = clone as DrakSolzPlayer;
-            p.Str = Str;
-            p.Dex = Dex;
-            p.Int = Int;
-            p.Fth = Fth;
-            p.Vit = Vit;
-            p.Att = Att;
-            p.Hollow = Hollow;
-            p.BossSouls = BossSouls;
-            p.Souls = Souls;
+            p.Stats = Stats;
+            p.UID = UID;
         }
 
         public override void SendClientChanges(ModPlayer clientPlayer) {
             if ((clientPlayer as DrakSolzPlayer).Level != Level) SendPacket(MessageType.Stats);
+            if ((clientPlayer as DrakSolzPlayer).UID != UID) SendPacket(MessageType.UID);
         }
 
         public override void OnEnterWorld(Player player) {
+            Main.NewText(UID);
             foreach (Item i in player.inventory)
-                if (i.type > 0 && i.GetGlobalItem<DSGlobalItem>().FromPlayer == 0) i.GetGlobalItem<DSGlobalItem>().FromPlayer = this.player.whoAmI;
+                if (i.type > 0 && i.GetGlobalItem<DSGlobalItem>().Owner == 0) i.GetGlobalItem<DSGlobalItem>().Owner = UID;
         }
 
         public void SendPacket(MessageType packetType, int toWho = -1, int fromWho = -1) {
@@ -407,22 +387,14 @@ namespace DrakSolz {
             packet.Write((byte) packetType);
             packet.Write((byte) this.player.whoAmI);
             if (packetType == MessageType.Stats) {
-                packet.Write(Str);
-                packet.Write(Dex);
-                packet.Write(Int);
-                packet.Write(Fth);
-                packet.Write(Vit);
-                packet.Write(Att);
+                packet.Write(Stats);
             }
             if (packetType == MessageType.Hurt) {
                 packet.Write(HurtWait);
                 packet.Write(Hollow);
             }
-            if (packetType == MessageType.Boss) {
-                packet.Write(BossSouls);
-            }
-            if (packetType == MessageType.Souls) {
-                packet.Write(Souls);
+            if (packetType == MessageType.UID) {
+                packet.Write(UID);
             }
             packet.Send(toWho, fromWho);
         }
