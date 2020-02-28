@@ -30,9 +30,9 @@ namespace DrakSolz.Items.Armor.Cornyx {
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.SetResult(this);
-            recipe.AddIngredient(ItemID.Silk, 15);
-            recipe.AddIngredient(ItemID.LavaBucket, 1);
-            recipe.AddTile(TileID.WorkBenches);
+            recipe.AddIngredient(ModContent.ItemType<Items.Misc.InfernoBar>(), 20);
+            recipe.AddIngredient(ItemID.LihzahrdPowerCell, 1);
+            recipe.AddTile(TileID.MythrilAnvil);
             recipe.AddRecipe();
         }
     }
