@@ -165,6 +165,9 @@ namespace DrakSolz {
                 case MessageType.UID:
                     p.UID = reader.ReadInt64();;
                     break;
+                case MessageType.Souls:
+                    p.Souls = reader.ReadInt32();;
+                    break;
                 default:
                     Logger.Error("Drak Solz: Unknown Message type: " + msgType);
                     break;
@@ -175,6 +178,7 @@ namespace DrakSolz {
     public enum MessageType : byte {
         Stats,
         Hurt,
-        UID
+        UID,
+        Souls
     }
 }

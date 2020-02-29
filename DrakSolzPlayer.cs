@@ -247,6 +247,7 @@ namespace DrakSolz {
             SendPacket(MessageType.Hurt);
 
             if (Souls != 0) {
+                SendPacket(MessageType.Souls);
                 int i = Item.NewItem((int) player.position.X, (int) player.position.Y, player.width, player.height, ModContent.ItemType<Items.Souls.Soul>(), Souls);
                 Main.item[i].GetGlobalItem<Items.DSGlobalItem>().Owner = UID;
                 Souls = 0;
@@ -359,6 +360,7 @@ namespace DrakSolz {
             SendPacket(MessageType.Hurt, toWho, fromWho);
             SendPacket(MessageType.Stats, toWho, fromWho);
             SendPacket(MessageType.UID, toWho, fromWho);
+            SendPacket(MessageType.Souls, toWho, fromWho);
         }
 
         public override void clientClone(ModPlayer clone) {
@@ -366,11 +368,14 @@ namespace DrakSolz {
             DrakSolzPlayer p = clone as DrakSolzPlayer;
             p.Stats = Stats;
             p.UID = UID;
+            p.Souls = Souls;
         }
 
         public override void SendClientChanges(ModPlayer clientPlayer) {
-            if ((clientPlayer as DrakSolzPlayer).Level != Level) SendPacket(MessageType.Stats);
-            if ((clientPlayer as DrakSolzPlayer).UID != UID) SendPacket(MessageType.UID);
+            DrakSolzPlayer client = clientPlayer as DrakSolzPlayer;
+            if (client.Stats != Stats) SendPacket(MessageType.Stats);
+            if (client.UID != UID) SendPacket(MessageType.UID);
+            if (client.Souls != Souls) SendPacket(MessageType.Souls);
         }
 
         public override void OnEnterWorld(Player player) {
@@ -395,6 +400,9 @@ namespace DrakSolz {
             }
             if (packetType == MessageType.UID) {
                 packet.Write(UID);
+            }
+            if (packetType == MessageType.Souls) {
+                packet.Write(Souls);
             }
             packet.Send(toWho, fromWho);
         }
