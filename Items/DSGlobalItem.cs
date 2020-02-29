@@ -64,9 +64,6 @@ namespace DrakSolz.Items {
             if (ArcaneRolled)
                 player.statManaMax2 += ArcaneMana * 5 + 5;
         }
-        public override void Update(Item item, ref float gravity, ref float maxFallSpeed) {
-            item.SetNameOverride(Owner.ToString());
-        }
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips) {
             ReRoll(item);
