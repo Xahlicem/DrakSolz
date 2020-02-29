@@ -55,7 +55,7 @@ namespace DrakSolz.Items.Melee {
                         i.knockBack = iknock;
                         i.scale = isize;
                         i.prefix = ipref;
-                        i.GetGlobalItem<DSGlobalItem>().FromPlayer = player.whoAmI;
+                        i.GetGlobalItem<DSGlobalItem>().Owner = player.GetModPlayer<DrakSolzPlayer>().UID;
                         i.GetGlobalItem<DSGlobalItem>().Owned = true;
                         Main.PlaySound(SoundID.Shatter, player.Center);
                     }
@@ -67,7 +67,6 @@ namespace DrakSolz.Items.Melee {
         }
 
         public override bool CanPickup(Player player) {
-            int fromPlayer = item.GetGlobalItem<Items.DSGlobalItem>().FromPlayer;
             return false;
         }
         public override void MeleeEffects(Player player, Rectangle hitbox) {

@@ -46,8 +46,8 @@ namespace DrakSolz.Items.Souls {
         }
 
         public override bool CanPickup(Player player) {
-            int fromPlayer = item.GetGlobalItem<Items.DSGlobalItem>().FromPlayer;
-            return (fromPlayer == -1) ? true : (player.whoAmI == fromPlayer);
+            long owner = item.GetGlobalItem<Items.DSGlobalItem>().Owner;
+            return (owner == -1) ? true : (player.GetModPlayer<DrakSolzPlayer>().UID == owner);
         }
 
         public override void GrabRange(Player player, ref int grabRange) {
@@ -57,7 +57,7 @@ namespace DrakSolz.Items.Souls {
         public override bool OnPickup(Player player) {
             if (!player.Equals(Main.LocalPlayer)) return false;
             DrakSolzPlayer mPlayer = player.GetModPlayer<DrakSolzPlayer>();
-            item.stack += (int)((float) item.stack * .1f * mPlayer.Avarice);
+            item.stack += (int) ((float) item.stack * .1f * mPlayer.Avarice);
             mPlayer.SoulTicks += item.stack;
             player.ManaEffect(item.stack);
             if (mPlayer.EvilEye) {
@@ -97,11 +97,11 @@ namespace DrakSolz.Items.Souls {
             num = Math.Ceiling(num / ((players.Count == 0) ? 1d : (double) players.Count));
             if (players.Count == 0) {
                 int item = Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ModContent.ItemType<Items.Souls.Soul>(), (int) num);
-                Main.item[item].GetGlobalItem<Items.DSGlobalItem>().FromPlayer = -1;
+                Main.item[item].GetGlobalItem<Items.DSGlobalItem>().Owner = -1;
             } else
                 for (int i = 0; i < players.Count; i++) {
                     int item = Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ModContent.ItemType<Items.Souls.Soul>(), (int) num);
-                    Main.item[item].GetGlobalItem<Items.DSGlobalItem>().FromPlayer = players[i];
+                    Main.item[item].GetGlobalItem<Items.DSGlobalItem>().Owner = Main.player[players[i]].GetModPlayer<DrakSolzPlayer>().UID;
                 }
         }
     }

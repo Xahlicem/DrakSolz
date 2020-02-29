@@ -55,7 +55,7 @@ namespace DrakSolz.Items.Magic {
                     i.alpha = ialpha;
                     i.knockBack = iknock;
                     i.prefix = ipref;
-                    i.GetGlobalItem<DSGlobalItem>().FromPlayer = player.whoAmI;
+                    i.GetGlobalItem<DSGlobalItem>().Owner = player.GetModPlayer<DrakSolzPlayer>().UID;
                     i.GetGlobalItem<DSGlobalItem>().Owned = true;
                 };
 

@@ -121,7 +121,7 @@ namespace DrakSolz.UI {
         private void Apply(UIMouseEvent evt, UIElement listeningElement) {
             if (int.Parse(Cost.Text) > Player.Souls) return;
             visible = false;
-            Player.UpdateSouls(-int.Parse(Cost.Text));
+            Player.Souls -= int.Parse(Cost.Text);
 
             Player.LevelUp(Str.StatAdd, Dex.StatAdd, Int.StatAdd, Fth.StatAdd, Vit.StatAdd, Att.StatAdd);
 

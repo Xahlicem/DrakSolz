@@ -41,7 +41,7 @@ namespace DrakSolz.Items.Souls {
         }
 
         public override bool CanUseItem(Player player) {
-            if (item.GetGlobalItem<Items.DSGlobalItem>().FromPlayer != player.whoAmI) return false;
+            if (item.GetGlobalItem<Items.DSGlobalItem>().Owner != player.whoAmI) return false;
             item.useAnimation = Ticks;
             item.useTime = Ticks;
             return true;
@@ -54,8 +54,7 @@ namespace DrakSolz.Items.Souls {
         }
 
         public override bool CanPickup(Player player) {
-            int fromPlayer = item.GetGlobalItem<Items.DSGlobalItem>().FromPlayer;
-            return (player.whoAmI == fromPlayer);
+            return (player.GetModPlayer<DrakSolzPlayer>().UID == item.GetGlobalItem<Items.DSGlobalItem>().Owner);
         }
 
         public override void AddRecipes() {
@@ -185,7 +184,7 @@ namespace DrakSolz.Items.Souls {
                     if ((Main.player[players[i]].GetModPlayer<DrakSolzPlayer>().BossSouls & soul.Place) > 0) continue;
                     int index = Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, item.type);
                     int index2 = Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, item2.type);
-                    Main.item[index].GetGlobalItem<Items.DSGlobalItem>().FromPlayer = players[i];
+                    Main.item[index].GetGlobalItem<Items.DSGlobalItem>().Owner = Main.player[players[i]].GetModPlayer<DrakSolzPlayer>().UID;
                     Main.player[players[i]].GetModPlayer<DrakSolzPlayer>().SetBossSouls(soul.Place);
                 }
         }
