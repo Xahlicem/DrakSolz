@@ -19,7 +19,7 @@ namespace DrakSolz.Items.Magic.Pyro {
             item.magic = false;
             item.useStyle = 5;
             item.noUseGraphic = true;
-            item.damage = 52;
+            item.damage = 34;
             item.useTime = 10;
             item.useAnimation = 10;
             item.mana = 6;

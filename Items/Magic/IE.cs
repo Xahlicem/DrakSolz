@@ -28,6 +28,14 @@ namespace DrakSolz.Items.Magic {
             item.shoot = ModContent.ProjectileType<Projectiles.Magic.FlameMageProj2>();
         }
 
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack) {
+            position = new Vector2(Main.mouseX + Main.screenPosition.X, Main.mouseY + Main.screenPosition.Y);
+            speedY = 40;
+            damage = (int)(damage * 0.8f);
+            knockBack = 0f;
+            return base.Shoot(player, ref position, ref speedX, ref speedY, ref type, ref damage, ref knockBack);
+        }
+
         public override void MeleeEffects(Player player, Rectangle hitbox)
 		{
 			if (Main.rand.Next(1) == 0)

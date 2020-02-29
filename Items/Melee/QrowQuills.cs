@@ -4,14 +4,13 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace DrakSolz.Items.Melee {
-    public class QrowQuills : SoulItem {
-        public QrowQuills() : base(200000) { }
+    public class QrowQuills : ModItem {
 
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault("Qrow Quills");
-            Tooltip.SetDefault("Sword wielded by Corvian Knights, brandishing four thin-edge blades in the left hand." + 
+            DisplayName.SetDefault("Krow Quills");
+            Tooltip.SetDefault("Sword wielded by Korvian Knights, brandishing four thin-edge blades in the left hand." + 
             "\nPrimary attack deals melee damage." + 
-            "\nAlternate attack deals 20% increased throwing damage.");
+            "\nAlternate attack deals throwing damage.");
         }
 
         public override void SetDefaults() {
@@ -27,7 +26,7 @@ namespace DrakSolz.Items.Melee {
             item.useStyle = 1;
             item.useAnimation = 16;
             item.useTime = 4;
-            item.reuseDelay = 30;
+            item.reuseDelay = 24;
             /*item.melee = false;
             item.thrown = true;*/
             return true;
@@ -52,8 +51,9 @@ namespace DrakSolz.Items.Melee {
                 float d = player.thrownDamage * 10;
                 if (item.thrown) {
                     for (int i = 0; i < numberProjectiles; i++) {
+                        Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(5)); // 30 degree spread.
                         damage = (item.damage * (int)d) /10;
-                        int pro = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ModContent.ProjectileType<Projectiles.QrowQuillsProj>(), damage, knockBack / 2, player.whoAmI);
+                        int pro = Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, ModContent.ProjectileType<Projectiles.QrowQuillsProj>(), damage, knockBack / 2, player.whoAmI);
                     }
                 }
                 return false;
@@ -77,10 +77,9 @@ namespace DrakSolz.Items.Melee {
         }
 
         public override void AddRecipes() {
-            ModRecipe recipe = new SoulRecipe(mod, this);
-            recipe.AddIngredient(ItemID.Arkhalis, 1);
-            recipe.AddIngredient(ModContent.ItemType<Items.Misc.VoidFragment>(), 10);
-            recipe.AddTile(TileID.MythrilAnvil);
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ModContent.ItemType<Items.Misc.VoidFragment>(), 15);
+            recipe.AddTile(TileID.LunarCraftingStation);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

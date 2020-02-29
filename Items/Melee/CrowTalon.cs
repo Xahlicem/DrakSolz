@@ -8,8 +8,8 @@ namespace DrakSolz.Items.Melee {
     public class CrowTalon : ModItem {
 
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault("Crow Talon");
-            Tooltip.SetDefault("Talons used by Corvian Knights.");
+            DisplayName.SetDefault("Krow Talon");
+            Tooltip.SetDefault("Talons used by Korvian Knights.");
         }
         public override void SetDefaults() {
             item.CloneDefaults(ItemID.BladedGlove);
