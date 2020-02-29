@@ -247,7 +247,6 @@ namespace DrakSolz {
             SendPacket(MessageType.Hurt);
 
             if (Souls != 0) {
-                SendPacket(MessageType.Souls);
                 int i = Item.NewItem((int) player.position.X, (int) player.position.Y, player.width, player.height, ModContent.ItemType<Items.Souls.Soul>(), Souls);
                 Main.item[i].GetGlobalItem<Items.DSGlobalItem>().Owner = UID;
                 Souls = 0;
