@@ -41,7 +41,7 @@ namespace DrakSolz.Items.Souls {
         }
 
         public override bool CanUseItem(Player player) {
-            if (item.GetGlobalItem<Items.DSGlobalItem>().Owner != player.whoAmI) return false;
+            if (item.GetGlobalItem<Items.DSGlobalItem>().Owner != player.GetModPlayer<DrakSolzPlayer>().UID) return false;
             item.useAnimation = Ticks;
             item.useTime = Ticks;
             return true;
