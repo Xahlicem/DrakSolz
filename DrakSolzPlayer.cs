@@ -379,7 +379,6 @@ namespace DrakSolz {
         }
 
         public override void OnEnterWorld(Player player) {
-            Main.NewText(UID);
             foreach (Item i in player.inventory)
                 if (i.type > 0 && i.GetGlobalItem<DSGlobalItem>().Owner == 0) i.GetGlobalItem<DSGlobalItem>().Owner = UID;
         }
