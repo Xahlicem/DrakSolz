@@ -27,7 +27,7 @@ namespace DrakSolz.Items.Melee {
         }
 
         public override bool CanUseItem(Player player) {
-            return (player.GetModPlayer<DrakSolzPlayer>().UID == item.GetGlobalItem<Items.DSGlobalItem>().Owner);
+            return (item.GetGlobalItem<Items.DSGlobalItem>().Owner == player.GetModPlayer<DrakSolzPlayer>().UID);
         }
 
         public override bool CanPickup(Player player) {

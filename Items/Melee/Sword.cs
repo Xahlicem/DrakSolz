@@ -21,7 +21,7 @@ namespace DrakSolz.Items.Melee {
         }
 
         public override bool CanUseItem(Player player) {
-            if (item.GetGlobalItem<Items.DSGlobalItem>().Owner != player.whoAmI) return false;
+            if (item.GetGlobalItem<Items.DSGlobalItem>().Owner != player.GetModPlayer<DrakSolzPlayer>().UID) return false;
             if (item.GetGlobalItem<DSGlobalItem>().Used) {
                 foreach (Item i in player.inventory)
                     if (i == item) {
