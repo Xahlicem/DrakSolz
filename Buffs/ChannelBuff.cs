@@ -19,11 +19,7 @@ namespace DrakSolz.Buffs {
             player.jumpSpeedBoost += 1.5f;
             player.pickSpeed += 0.20f;
             player.meleeSpeed += 0.10f;
-            player.magicDamage *= increase;
-            player.thrownDamage *= increase;
-            player.rangedDamage *= increase;
-            player.minionDamage *= increase;
-            player.meleeDamage *= increase;
+            player.allDamage *= increase;
         }
     }
 }

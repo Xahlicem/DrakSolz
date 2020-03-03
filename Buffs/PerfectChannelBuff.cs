@@ -19,11 +19,7 @@ namespace DrakSolz.Buffs {
             player.jumpSpeedBoost += 2.50f;
             player.pickSpeed += 0.50f;
             player.meleeSpeed += 0.25f;
-            player.magicDamage *= increase;
-            player.thrownDamage *= increase;
-            player.rangedDamage *= increase;
-            player.minionDamage *= increase;
-            player.meleeDamage *= increase;
+            player.allDamage *= increase;
 
             int index = player.FindBuffIndex(ModContent.BuffType<Buffs.ChannelBuff>());
             if (index != -1) player.buffTime[index] = 0;
