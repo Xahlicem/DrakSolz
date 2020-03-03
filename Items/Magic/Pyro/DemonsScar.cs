@@ -17,9 +17,9 @@ namespace DrakSolz.Items.Magic.Pyro {
             item.CloneDefaults(ItemID.Muramasa);
             item.melee = false;
             item.useStyle = 1;
-            item.damage = 132;
-            item.useTime = 18;
-            item.useAnimation = 18;
+            item.damage = 172;
+            item.useTime = 14;
+            item.useAnimation = 14;
             item.mana = 4;
             item.crit = 8;
             item.knockBack = 5.0f;

@@ -8,8 +8,9 @@ namespace DrakSolz.Items.Magic.Pyro {
     public class PyroScrollFloatingChaos : ModItem {
 
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault("Soul Blades");
-            Tooltip.SetDefault("Sorcery that projects blades from above toward your target.");
+            DisplayName.SetDefault("Floating Chaos");
+            Tooltip.SetDefault("Pyromancy which summons a flaming orb that projects fireballs toward your target." +
+                "\nHolding causes summoned fireballs to follow the cursor");
         }
 
         public override void SetDefaults() {

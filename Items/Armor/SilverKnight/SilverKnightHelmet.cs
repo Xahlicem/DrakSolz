@@ -37,12 +37,10 @@ namespace DrakSolz.Items.Armor.SilverKnight {
             player.rangedCrit += 15;
             player.meleeCrit += 15;
             player.thrownCrit += 35;
-            player.magicDamage *= 1.5f;
-            player.thrownDamage *= 1.5f;
-            player.minionDamage *= 1.7f;
+			player.GetModPlayer<MPlayer>().pyromancyCrit += 15;
+            player.allDamage += 0.5f;
+            player.minionDamage += 0.20f;
             player.thrownVelocity *= 1.3f;
-            player.meleeDamage *= 1.5f;
-            player.rangedDamage *= 1.5f;
             player.statManaMax2 += player.statManaMax;
         }
         public override bool DrawHead() {

@@ -33,15 +33,8 @@ namespace DrakSolz.Items.Armor.Ringed {
             player.rangedCrit += 95;
             player.meleeCrit += 95;
             player.thrownCrit += 95;
-            player.magicDamage *= 2f;
-            player.thrownDamage *= 2f;
-            player.meleeDamage *= 2f;
-            player.rangedDamage *= 2f;
-            player.bulletDamage *= 2f;
-            player.arrowDamage *= 2f;
-            player.rocketDamage *= 2f;
-            player.minionDamage *= 2f;
-            player.manaCost *= 0.01f;
+			player.GetModPlayer<MPlayer>().pyromancyCrit += 95;
+            player.manaCost *= 0.65f;
             player.statManaMax2 += 250;
             player.statLifeMax2 += 500;
             player.meleeSpeed *= 1.5f;
@@ -78,7 +71,8 @@ namespace DrakSolz.Items.Armor.Ringed {
         }
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ModContent.ItemType<Items.Banners.RingedKnightBanner>(), 5);
+            recipe.AddIngredient(ModContent.ItemType<Items.Banners.RingedKnightBanner>(), 1);
+            recipe.AddIngredient(ModContent.ItemType<Items.Misc.Titanite>(), 20);
             recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
             recipe.SetResult(this);
             recipe.AddRecipe();

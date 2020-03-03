@@ -12,7 +12,7 @@ namespace DrakSolz.Items.Armor {
     public class FireWitchHelmet : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Flame Warmage Helmet");
-            Tooltip.SetDefault("A steady helmet, usually paired with a blue pyromancy robe... How do a get a matching color?" +
+            Tooltip.SetDefault("A steady helmet, usually paired with a light blue pyromancy robe... But any matching color should work." +
                 "\n20% increased fire damage");
         }
 
@@ -42,12 +42,22 @@ namespace DrakSolz.Items.Armor {
 
         public override void UpdateArmorSet(Player player) {
             if (player.dye[1].type == ItemID.SkyBlueDye && player.dye[2].type == ItemID.SkyBlueDye){
-            player.setBonus = ("30% increased fire damage and critical strike chance" +
+                 player.setBonus = ("30% increased fire damage and critical strike chance" +
                 "\nincreases mana usage by 50%");
-			player.GetModPlayer<MPlayer>().pyromancyDamage += 0.30f;
-			player.GetModPlayer<MPlayer>().pyromancyCrit += 30;
-            player.manaCost *= 1.5f;}
+			    player.GetModPlayer<MPlayer>().pyromancyDamage += 0.30f;
+			    player.GetModPlayer<MPlayer>().pyromancyCrit += 30;
+                player.manaCost *= 1.5f;
+                }
+            if (player.dye[1].type == player.dye[0].type && player.dye[2].type == player.dye[0].type && player.dye[1].type != ItemID.None && player.dye[2].type != ItemID.None ){
+                 player.setBonus = ("30% increased fire damage and critical strike chance" +
+                "\nincreases mana usage by 50%");
+			    player.GetModPlayer<MPlayer>().pyromancyDamage += 0.30f;
+			    player.GetModPlayer<MPlayer>().pyromancyCrit += 30;
+                player.manaCost *= 1.5f;
+                }
+            
         }
+        
         public class FireWitchHeadNPC : GlobalNPC {
             public override void NPCLoot(NPC npc) {
                 if (Main.rand.Next(25) == 0) {

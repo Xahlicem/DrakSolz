@@ -10,7 +10,7 @@ namespace DrakSolz.Items.Melee {
             DisplayName.SetDefault("Krow Quills");
             Tooltip.SetDefault("Sword wielded by Korvian Knights, brandishing four thin-edge blades in the left hand." + 
             "\nPrimary attack deals melee damage." + 
-            "\nAlternate attack deals throwing damage.");
+            "\nAlternate attack deals throwing damage. 20% bonus damage dealt.");
         }
 
         public override void SetDefaults() {
@@ -48,11 +48,11 @@ namespace DrakSolz.Items.Melee {
                 item.thrown = true;
                 item.melee = false;
                 float numberProjectiles = 1;
-                float d = player.thrownDamage * 10;
+                float d = player.thrownDamage * 12;
                 if (item.thrown) {
                     for (int i = 0; i < numberProjectiles; i++) {
                         Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(5)); // 30 degree spread.
-                        damage = (item.damage * (int)d) /10;
+                        damage = ((item.damage * (int)d) /10);
                         int pro = Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, ModContent.ProjectileType<Projectiles.QrowQuillsProj>(), damage, knockBack / 2, player.whoAmI);
                     }
                 }

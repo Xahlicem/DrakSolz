@@ -36,13 +36,11 @@ namespace DrakSolz.Items.Armor.BlackKnight {
             player.magicCrit += 20;
             player.rangedCrit += 20;
             player.meleeCrit += 20;
+			player.GetModPlayer<MPlayer>().pyromancyCrit += 20;
             player.thrownCrit += 40;
-            player.magicDamage *= 1.55f;
-            player.thrownDamage *= 1.55f;
-            player.minionDamage *= 1.75f;
+            player.allDamage += 0.55f;
+            player.minionDamage += 0.20f;
             player.thrownVelocity *= 1.5f;
-            player.meleeDamage *= 1.55f;
-            player.rangedDamage *= 1.55f;
             player.statManaMax2 += player.statManaMax;
         }
         public override bool DrawHead() {

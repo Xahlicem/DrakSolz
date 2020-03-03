@@ -28,7 +28,13 @@ namespace DrakSolz.Items.Misc.Classes {
         }
         public override bool UseItem(Player player) {
             Main.NewText(TEXT + " has been chosen!", 255, 255, 255);
-            player.GetModPlayer<DrakSolzPlayer>().LevelUp(STR, DEX, INT, FTH, VIT, ATT);
+            //player.GetModPlayer<DrakSolzPlayer>().LevelUp(STR, DEX, INT, FTH, VIT, ATT);
+            player.GetModPlayer<DrakSolzPlayer>().Str = (STR);
+            player.GetModPlayer<DrakSolzPlayer>().Dex = (DEX);
+            player.GetModPlayer<DrakSolzPlayer>().Int = (INT);
+            player.GetModPlayer<DrakSolzPlayer>().Fth = (FTH);
+            player.GetModPlayer<DrakSolzPlayer>().Vit = (VIT);
+            player.GetModPlayer<DrakSolzPlayer>().Att = (ATT);
             return true;
         }
         public override void AddRecipes() {
