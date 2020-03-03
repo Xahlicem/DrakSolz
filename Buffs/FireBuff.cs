@@ -1,11 +1,13 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
+using Terraria.ID;
 
 namespace DrakSolz.Buffs {
-    public class ThrowingBuff : ModBuff {
+    public class FireBuff : ModBuff {
         public override void SetDefaults() {
-            DisplayName.SetDefault("Throwing Practice");
-            Description.SetDefault("Thrown velocity increased by 100%");
+            DisplayName.SetDefault("Burning Soul");
+            Description.SetDefault("On Fire damage increased");
             Main.buffNoSave[Type] = false;
             Main.debuff[Type] = true;
 

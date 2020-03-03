@@ -17,6 +17,8 @@ namespace DrakSolz.Buffs {
                 player.statLife += (int)(player.statLifeMax2 * 0.01);
                 player.HealEffect((int)(player.statLifeMax2 * 0.01));
             }
+            int index = player.FindBuffIndex(ModContent.BuffType<Buffs.Hollow>());
+            if (index != -1) player.buffTime[index]--;
         }
     }
 }

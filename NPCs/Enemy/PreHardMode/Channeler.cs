@@ -205,7 +205,7 @@ namespace DrakSolz.NPCs.Enemy.PreHardMode {
             DrakSolz.CreateGore(mod, npc, "Gores/Channeler/Body");
             DrakSolz.CreateGore(mod, npc, "Gores/Channeler/Legs");
 
-            DrakSolz.DropItem(npc, 6.666f, ModContent.ItemType<Items.Melee.ChannelT>());
+            DrakSolz.DropItem(npc, 7.5f, ModContent.ItemType<Items.Melee.ChannelT>());
             if (Main.hardMode)
                 DrakSolz.DropItem(npc, 25f, ModContent.ItemType<Items.Armor.Channeler.ChannelerHelmet>(), ModContent.ItemType<Items.Armor.Channeler.ChannelerRobe>(), ModContent.ItemType<Items.Armor.Channeler.ChannelerSkirt>());
             if (NPC.downedMoonlord)

@@ -32,14 +32,6 @@ namespace DrakSolz.Tiles {
             item.consumable = true;
             item.createTile = ModContent.TileType<Tiles.ThrowingTargetTile>();
         }
-
-        public override void AddRecipes() {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ModContent.ItemType<Items.Melee.SwordHilt>());
-            recipe.AddIngredient(ModContent.ItemType<Items.Misc.HomewardBone>(), 5);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-        }
     }
 
     public class ThrowingTargetTile : ModTile {
@@ -58,7 +50,7 @@ namespace DrakSolz.Tiles {
 
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Throwing Target");
-            AddMapEntry(new Color(125, 200, 0), name);
+            AddMapEntry(new Color(200, 200, 100), name);
 
             dustType = DustID.Dirt;
             disableSmartCursor = true;
@@ -119,6 +111,15 @@ namespace DrakSolz.Tiles {
                 Wiring.SkipWire(x + 1, y + 1);
             }
             NetMessage.SendTileSquare(-1, x, y + 1, 2);
+        }
+        public class ThrowingTargetGlobalNPC : GlobalNPC {
+            public override void NPCLoot(NPC npc) {
+                if (Main.rand.Next(15) == 0) {
+                    if (npc.type == NPCID.SkeletonArcher) {
+                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ModContent.ItemType<Tiles.ThrowingTarget>(), 1);
+                    }
+                }
+            }
         }
     }
 }

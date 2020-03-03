@@ -18,14 +18,14 @@ namespace DrakSolz.Projectiles {
         }
 
         public override void SetDefaults() {
-            projectile.width = 20; //The width of projectile hitbox
-            projectile.height = 20; //The height of projectile hitbox
+            projectile.width = 15; //The width of projectile hitbox
+            projectile.height = 15; //The height of projectile hitbox
             projectile.aiStyle = 29; //The ai style of the projectile, please reference the source code of Terraria
             projectile.friendly = false; //Can the projectile deal damage to enemies?
             projectile.hostile = true; //Can the projectile deal damage to the player?
             projectile.damage = 0;
             projectile.penetrate = -1; //How many monsters the projectile can penetrate. (OnTileCollide below also decrements penetrate for bounces as well)
-            projectile.timeLeft = 1200; //The live time for the projectile (60 = 1 second, so 600 is 10 seconds)
+            projectile.timeLeft = 3600; //The live time for the projectile (60 = 1 second, so 600 is 10 seconds)
             projectile.alpha = 255; //The transparency of the projectile, 255 for completely transparent. (aiStyle 1 quickly fades the projectile in)
             //projectile.light = 1.0f;            //How much light emit around the projectile
             projectile.ignoreWater = true; //Does the projectile's speed be influenced by water?

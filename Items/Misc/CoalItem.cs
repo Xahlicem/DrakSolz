@@ -34,7 +34,7 @@ namespace DrakSolz.Items.Misc {
             if (npc.type == ModContent.NPCType<NPCs.Enemy.PreHardMode.Channeler>() && Main.rand.Next(10) == 0) Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ModContent.ItemType<CoalWhite>(), 1);
             if (npc.type == ModContent.NPCType<NPCs.Enemy.HardMode.DragonSlayer>() && Main.rand.Next(3) == 0) Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ModContent.ItemType<CoalYellow>(), 1);
             if (npc.type == ModContent.NPCType<NPCs.Enemy.PostPlantera.GiantCrystalLizard>() && Main.rand.Next(2) == 0) Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ModContent.ItemType<CoalBlue>(), 1);
-            if (npc.type == ModContent.NPCType<NPCs.Enemy.Boss.AbyssStalker>()) Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ModContent.ItemType<CoalLord>(), 1);
+            if (npc.type == ModContent.NPCType<NPCs.Enemy.Boss.TitaniteDemon>()) Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ModContent.ItemType<CoalLord>(), 1);
         }
     }
 }

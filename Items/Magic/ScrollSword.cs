@@ -62,8 +62,8 @@ namespace DrakSolz.Items.Magic {
         }
         public class ScrollSwordGlobalNPC : GlobalNPC {
             public override void NPCLoot(NPC npc) {
-                if (Main.rand.Next(15) == 0) {
-                    if (npc.type == NPCID.DarkCaster || npc.type == ModContent.NPCType<NPCs.Enemy.PreHardMode.Spinwheel>()) {
+                if (Main.rand.Next(20) == 0) {
+                    if (npc.type == NPCID.DarkCaster) {
                         Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ModContent.ItemType<Items.Magic.ScrollSword>(), 1);
                     }
                 }
