@@ -16,7 +16,7 @@ namespace DrakSolz.Tiles {
     public class LordVessel : ModItem {
 
         public override void SetStaticDefaults () {
-            Tooltip.SetDefault ("Grants 100% increased throwing velocity.");
+            Tooltip.SetDefault ("Grants increased damage to 'On Fire' effects.");
         }
 
         public override void SetDefaults () {

@@ -186,14 +186,14 @@ namespace DrakSolz.NPCs.Town {
             if (NPC.downedBoss2) {
                 shop.item[14].SetDefaults(ItemID.PoisonedKnife);
                 shop.item[11].SetDefaults(ItemID.BoneArrow);
-                shop.item[18].SetDefaults(ItemID.DyeTradersScimitar);
+                shop.item[28].SetDefaults(ItemID.DyeTradersScimitar);
                 shop.item[6].SetDefaults(ItemID.AmberStaff);
             }
             if (NPC.downedBoss3) {
                 shop.item[24].SetDefaults(ItemID.BoneDagger);
                 shop.item[15].SetDefaults(ItemID.Javelin);
                 shop.item[12].SetDefaults(ItemID.UnholyArrow);
-                shop.item[18].SetDefaults(ItemID.FalconBlade);
+                shop.item[38].SetDefaults(ItemID.FalconBlade);
                 shop.item[6].SetDefaults(ItemID.DiamondStaff);
             }
             if ((modPlayer.Coals & CoalItem.COAL_RED) != 0) {
@@ -204,7 +204,7 @@ namespace DrakSolz.NPCs.Town {
             }
             if ((modPlayer.Coals & CoalItem.COAL_WHITE) != 0) {
                 shop.item[33].SetDefaults(ItemID.DD2LightningAuraT1Popper);
-                shop.item[17].SetDefaults(ItemID.Arkhalis);
+                shop.item[27].SetDefaults(ItemID.Arkhalis);
                 shop.item[35].SetDefaults(ItemID.BoneGlove);
                 shop.item[31].SetDefaults(ItemID.JestersArrow);
                 shop.item[25].SetDefaults(ItemID.BoneJavelin);
@@ -226,6 +226,7 @@ namespace DrakSolz.NPCs.Town {
                 shop.item[36].SetDefaults(ModContent.ItemType<Items.Magic.ADagger>());
             }
             if ((modPlayer.Coals & CoalItem.COAL_BLUE) != 0) {
+                shop.item[18].SetDefaults(ModContent.ItemType<Items.Melee.OnyxBlade>());
                 shop.item[33].SetDefaults(ItemID.DD2LightningAuraT3Popper);
                 shop.item[32].SetDefaults(ItemID.MoonlordArrow);
                 shop.item[36].SetDefaults(ModContent.ItemType<Items.Magic.MoonGS>());

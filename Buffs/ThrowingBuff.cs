@@ -7,7 +7,7 @@ namespace DrakSolz.Buffs {
             DisplayName.SetDefault("Throwing Practice");
             Description.SetDefault("Thrown velocity increased by 100%");
             Main.buffNoSave[Type] = false;
-            Main.debuff[Type] = true;
+            Main.debuff[Type] = false;
 
         }
 

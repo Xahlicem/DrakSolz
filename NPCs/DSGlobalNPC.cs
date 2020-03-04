@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace DrakSolz.NPCs {
     class DSGlobalNPC : GlobalNPC {
@@ -14,6 +15,11 @@ namespace DrakSolz.NPCs {
 
         public override void ResetEffects(NPC npc) {
             Healp = false;
+            if (npc.HasBuff(BuffID.OnFire) || npc.HasBuff(BuffID.ShadowFlame) || npc.HasBuff(BuffID.CursedInferno) || npc.HasBuff(BuffID.Frostburn)){
+            if (Main.LocalPlayer.HasBuff(ModContent.BuffType<Buffs.FireBuff>())){
+            npc.AddBuff(204, 20 , true);
+            }
+            }
         }
 
         public override void UpdateLifeRegen(NPC npc, ref int damage) {
