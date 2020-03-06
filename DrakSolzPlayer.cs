@@ -22,16 +22,26 @@ namespace DrakSolz {
         public int Level { get { return Vit + Str + Dex + Att + Int + Fth; } }
         public int Souls { get; set; }
         public int SoulCost(int level) {
-            if (level < 20) {
-                return (int) (Math.Round((Math.Pow(0.02 * level, 3) + Math.Pow(4.06 * level, 2) + 105.6 * level) * 0.1, 0) * 4);
+            if (level < 10) {
+            return (int) (Math.Round((Math.Pow(0.03 * level, 3) + Math.Pow(4.06 * level, 2) + 80 * level) * 0.1, 0) * 8);
+            } else if (level < 20) {
+            return (int) (Math.Round((Math.Pow(0.03 * level, 3) + Math.Pow(4.26 * level, 2) + 80 * level) * 0.1, 0) * 8);
+            } else if (level < 30) {
+            return (int) (Math.Round((Math.Pow(0.035 * level, 3) + Math.Pow(4.46 * level, 2) + 80 * level) * 0.1, 0) * 8);
             } else if (level < 40) {
-                return (int) (Math.Round((Math.Pow(0.02 * level, 3) + Math.Pow(4.06 * level, 2) + 105.6 * level) * 0.1, 0) * 10);
+            return (int) (Math.Round((Math.Pow(0.04 * level, 3) + Math.Pow(4.66 * level, 2) + 80 * level) * 0.1, 0) * 8);
+            } else if (level < 50) {
+            return (int) (Math.Round((Math.Pow(0.055 * level, 3) + Math.Pow(5.15 * level, 2) + 82 * level) * 0.1, 0) * 8.1);
             } else if (level < 60) {
-                return (int) (Math.Round((Math.Pow(0.02 * level, 3) + Math.Pow(4.06 * level, 2) + 105.6 * level) * 0.1, 0) * 17);
+            return (int) (Math.Round((Math.Pow(0.085 * level, 3) + Math.Pow(6.0 * level, 2) + 88 * level) * 0.1, 0) * 8.3);
+            } else if (level < 70) {
+            return (int) (Math.Round((Math.Pow(0.11 * level, 3) + Math.Pow(7.3 * level, 2) + 96 * level) * 0.1, 0) * 8.5);
             } else if (level < 80) {
-                return (int) (Math.Round((Math.Pow(0.02 * level, 3) + Math.Pow(4.06 * level, 2) + 105.6 * level) * 0.1, 0) * 25);
+            return (int) (Math.Round((Math.Pow(0.14 * level, 3) + Math.Pow(8.8 * level, 2) + 106 * level) * 0.1, 0) * 8.75);
+            } else if (level < 90) {
+            return (int) (Math.Round((Math.Pow(0.175 * level, 3) + Math.Pow(10.4 * level, 2) + 118 * level) * 0.1, 0) * 9);
             } else {
-                return (int) (Math.Round((Math.Pow(0.02 * level, 3) + Math.Pow(4.06 * level, 2) + 105.6 * level) * 0.1, 0) * 30);
+            return (int) (Math.Round((Math.Pow(0.215 * level, 3) + Math.Pow(14.0 * level, 2) + 132 * level) * 0.1, 0) * 9.5);
             }
         }
 
@@ -265,12 +275,42 @@ namespace DrakSolz {
             SendPacket(MessageType.Stats);
         }
         private void UpdateStats() {
+            if (Str <= 40){
             player.meleeDamage *= 0.6f + Str * 0.02f;;
+            }
+            else {
+            player.meleeDamage *= 1.4f + ((Str - 40) * 0.01f);;
+            }
+            if (Dex <= 40){
             player.rangedDamage *= 0.6f + Dex * 0.02f;;
+            }
+            else {
+            player.rangedDamage *= 1.4f + ((Dex - 40) * 0.01f);;
+            }
+            if (((Str < Dex) ? Str : Dex) <= 20){
             player.thrownDamage *= 0.6f + ((Str < Dex) ? Str : Dex) * 0.04f;;
+            }
+            else {
+            player.thrownDamage *= 1.4f + (((Str < Dex) ? Str : Dex) - 20) * 0.02f;;
+            }
+            if (((Int < Fth) ? Int : Fth) <= 20){
             player.GetModPlayer<MPlayer>().pyromancyDamage *= 0.6f + ((Int < Fth) ? Int : Fth) * 0.04f;;
+            }
+            else {
+            player.GetModPlayer<MPlayer>().pyromancyDamage *= 1.4f + (((Int < Fth) ? Int : Fth) - 20) * 0.02f;;
+            }
+            if (Int <= 40){
             player.magicDamage *= 0.6f + Int * 0.02f;;
+            }
+            else {
+            player.magicDamage *= 1.4f + ((Int - 40) * 0.01f);;
+            }
+            if (Fth <= 40){
             player.minionDamage *= 0.6f + Fth * 0.02f;;
+            }
+            else {
+            player.minionDamage *= 1.4f + ((Fth - 40) * 0.01f);;
+            }
             player.statLifeMax = Level * 4 + 100 + MiscHP;
             player.statLifeMax2 = player.statLifeMax + Vit * 11;
             player.statManaMax = 0;

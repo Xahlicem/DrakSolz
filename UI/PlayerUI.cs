@@ -169,11 +169,13 @@ namespace DrakSolz.UI {
                 defense = true;
             } else if (Str.icon.ContainsPoint(MousePosition)) {
                 tooltipTitle.SetText("Strength");
-                s = ("+" + (Str.Stat + Str.StatAdd - 20) * 2 + "% Melee Damage");
+                if (Str.Stat + Str.StatAdd <= 40) {s = ("+" + (Str.Stat + Str.StatAdd - 20) * 2 + "% Melee Damage");}
+                else {s = ("+" + (40 + (Str.Stat + Str.StatAdd - 40)) + "% Melee Damage");}
                 throwing = true;
             } else if (Dex.icon.ContainsPoint(MousePosition)) {
                 tooltipTitle.SetText("Dexterity");
-                s = ("+" + (Dex.Stat + Dex.StatAdd - 20) * 2 + "% Ranged Damage");
+                if (Dex.Stat + Dex.StatAdd <= 40) {s = ("+" + (Dex.Stat + Dex.StatAdd - 20) * 2 + "% Ranged Damage");}
+                else {s = ("+" + (40 + (Dex.Stat + Dex.StatAdd - 40)) + "% Ranged Damage");}
                 throwing = true;
             } else if (Att.icon.ContainsPoint(MousePosition)) {
                 tooltipTitle.SetText("Attunement");
@@ -181,19 +183,29 @@ namespace DrakSolz.UI {
                 MCost = true;
             } else if (Int.icon.ContainsPoint(MousePosition)) {
                 tooltipTitle.SetText("Intelligence");
-                s = ("+" + (Int.Stat + Int.StatAdd - 20) * 2 + "% Magic Damage");
+                if (Int.Stat + Int.StatAdd <= 40) {s = ("+" + (Int.Stat + Int.StatAdd - 20) * 2 + "% Magic Damage");}
+                else {s = ("+" + (40 + (Int.Stat + Int.StatAdd - 40)) + "% Magic Damage");}
                 pyro = true;
             } else if (Fth.icon.ContainsPoint(MousePosition)) {
                 tooltipTitle.SetText("Faith");
-                s = ("+" + (Fth.Stat + Fth.StatAdd - 20) * 2 + "% Miracle Damage");
+                if (Fth.Stat + Fth.StatAdd <= 40) {s = ("+" + (Fth.Stat + Fth.StatAdd - 20) * 2 + "% Miracle Damage");}
+                else {s = ("+" + (40 + (Fth.Stat + Fth.StatAdd - 40)) + "% Miracle Damage");}
                 pyro = true;
             } else RemoveChild(tooltip);
             if (HasChild(tooltip)) {
                 tooltipText.SetText((s[1] == '-') ? s.Substring(1) : s);
                 if (throwing) {
+                    
+                    if (((Dex.Stat + Dex.StatAdd < Str.Stat + Str.StatAdd) ? (Dex.Stat + Dex.StatAdd) : (Str.Stat + Str.StatAdd)) <= 20) {
                     string t = ("+" + ((Dex.Stat + Dex.StatAdd < Str.Stat + Str.StatAdd) ? (Dex.Stat + Dex.StatAdd - 10) : (Str.Stat + Str.StatAdd - 10)) * 4 + "% Thrown Damage");
                     tooltipText1.SetText((t[1] == '-') ? t.Substring(1) : t);
                     tooltip.Height.Set(85, 0f);
+                    }
+                    else {
+                    string t = ("+" + (40 + ((Dex.Stat + Dex.StatAdd < Str.Stat + Str.StatAdd) ? (Dex.Stat + Dex.StatAdd - 40) : (Str.Stat + Str.StatAdd - 40))) * 2 + "% Thrown Damage");
+                    tooltipText1.SetText((t[1] == '-') ? t.Substring(1) : t);
+                    tooltip.Height.Set(85, 0f);
+                    }
                 } else if (defense) {
                     string t = ("+" + (int) Math.Floor(((Vit.Stat + Vit.StatAdd) * 0.25)) + " Defense");
                     tooltipText1.SetText((t[1] == '-') ? t.Substring(1) : t);
@@ -203,9 +215,16 @@ namespace DrakSolz.UI {
                     tooltipText1.SetText((t[1] == '+') ? t.Substring(1) : t);
                     tooltip.Height.Set(85, 0f);
                 } else if (pyro) {
+                    if (((Fth.Stat + Fth.StatAdd < Int.Stat + Int.StatAdd) ? (Fth.Stat + Fth.StatAdd) : (Int.Stat + Int.StatAdd)) <= 20){
                     string t = ("+" + ((Fth.Stat + Fth.StatAdd < Int.Stat + Int.StatAdd) ? (Fth.Stat + Fth.StatAdd - 10) : (Int.Stat + Int.StatAdd - 10)) * 4 + "% Fire Damage");
                     tooltipText1.SetText((t[1] == '-') ? t.Substring(1) : t);
                     tooltip.Height.Set(85, 0f);
+                    }
+                    else {
+                    string t = ("+" + (40 + ((Fth.Stat + Fth.StatAdd < Int.Stat + Int.StatAdd) ? (Fth.Stat + Fth.StatAdd - 40) : (Int.Stat + Int.StatAdd - 40))) * 2 + "% Fire Damage");
+                    tooltipText1.SetText((t[1] == '-') ? t.Substring(1) : t);
+                    tooltip.Height.Set(85, 0f);
+                    }
                 } else {
                     tooltipText1.SetText(string.Empty);
                     tooltip.Height.Set(60, 0f);
