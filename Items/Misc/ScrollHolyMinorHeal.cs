@@ -16,7 +16,7 @@ namespace DrakSolz.Items.Misc {
         public override void SetDefaults() {
             item.scale *= 0.8f;
             item.useStyle = 4;
-            item.value = Item.sellPrice(0, 0, 50, 0);
+            item.value = Item.sellPrice(0, 0, 60, 0);
             item.rare = ItemRarityID.Green;
             item.consumable = false;
             item.mana = 15;

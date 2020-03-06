@@ -26,7 +26,7 @@ namespace DrakSolz.Items.Magic.Pyro {
 			item.crit = 4;
             item.knockBack = 7f;
             item.shootSpeed = 10.0f;
-            item.value = Item.sellPrice(0, 15, 0, 0);
+            item.value = Item.sellPrice(0, 12, 0, 0);
             item.shoot = ModContent.ProjectileType<Projectiles.BlackFireballProj>();
         }
 

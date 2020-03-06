@@ -21,7 +21,7 @@ namespace DrakSolz.Items.Misc {
             item.knockBack = 7f;
             item.shootSpeed = 0;
             item.shoot = ModContent.ProjectileType<Projectiles.WarmthProj>();
-            item.value = Item.sellPrice(0, 20, 0, 0);
+            item.value = Item.sellPrice(0, 10, 0, 0);
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack) {

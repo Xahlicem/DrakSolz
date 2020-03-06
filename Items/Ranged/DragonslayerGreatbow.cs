@@ -20,7 +20,7 @@ namespace DrakSolz.Items.Ranged {
 			item.useStyle = 5;
 			item.noMelee = true; //so the item's animation doesn't do damage
 			item.knockBack = 10;
-			item.value = Item.sellPrice(0, 35, 0, 0);
+			item.value = Item.sellPrice(0, 30, 0, 0);
 			item.rare = ItemRarityID.Green;
 			item.UseSound = SoundID.Item11;
 			item.autoReuse = true;

@@ -14,7 +14,7 @@ namespace DrakSolz.Items.Armor.AbyssWatcher {
         public override void SetDefaults() {
             item.width = 22;
             item.height = 20;
-            item.value = Item.sellPrice(0, 0, 20, 0);
+            item.value = Item.sellPrice(0, 1, 20, 0);
             item.rare = ItemRarityID.Orange;
             item.defense = 20;
         }

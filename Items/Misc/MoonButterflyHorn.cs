@@ -16,7 +16,7 @@ namespace DrakSolz.Items.Misc {
             item.width = refItem.width;
             item.height = refItem.height;
             item.maxStack = 99;
-            item.value = Item.sellPrice(0, 2, 0, 0);
+            item.value = Item.sellPrice(0, 1, 40, 0);
             item.rare = ItemRarityID.Cyan;
         }
     }

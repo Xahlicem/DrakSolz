@@ -13,7 +13,7 @@ namespace DrakSolz.Items.Armor.Tattered {
         public override void SetDefaults() {
             item.width = 40;
             item.height = 28;
-            item.value = Item.sellPrice(0, 1, 0, 0);
+            item.value = Item.sellPrice(0, 0, 50, 0);
             item.rare = ItemRarityID.LightRed;
             item.defense = 5;
         }

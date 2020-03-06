@@ -15,7 +15,7 @@ namespace DrakSolz.Items.Armor.Cornyx {
         public override void SetDefaults() {
             item.width = 40;
             item.height = 28;
-            item.value = Item.sellPrice(0, 0, 20, 0);
+            item.value = Item.sellPrice(0, 1, 20, 0);
             item.rare = ItemRarityID.Orange;
             item.defense = 8;
         }

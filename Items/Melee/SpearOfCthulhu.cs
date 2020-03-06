@@ -25,7 +25,7 @@ namespace DrakSolz.Items.Melee {
             item.rare = ItemRarityID.Lime;
             item.UseSound = SoundID.Item1;
             item.shoot = ModContent.ProjectileType<Projectiles.SpearOfCthulhuProj>();
-            item.value = Item.sellPrice(0, 15, 0, 0);
+            item.value = Item.sellPrice(0, 10, 0, 0);
             item.noMelee = true;
             item.noUseGraphic = true;
             item.melee = true;

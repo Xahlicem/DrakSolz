@@ -15,7 +15,7 @@ namespace DrakSolz.Items.Armor.Artorias {
         public override void SetDefaults() {
             item.width = 18;
             item.height = 18;
-            item.value = Item.sellPrice(99, 0, 0, 0);
+            item.value = Item.sellPrice(1, 0, 0, 0);
             item.rare = ItemRarityID.Red;
             item.defense = 40;
         }

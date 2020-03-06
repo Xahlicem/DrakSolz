@@ -21,7 +21,7 @@ namespace DrakSolz.Items.Magic {
             item.rare = ItemRarityID.Cyan;
             item.mana = 10;
             item.knockBack = 3.5f;
-            item.value = Item.sellPrice(0, 20, 0, 0);
+            item.value = Item.sellPrice(0, 18, 0, 0);
             item.shootSpeed = 5f;
             item.autoReuse = true;
             item.shoot = ModContent.ProjectileType<Projectiles.Magic.ArcaneShivProj>();

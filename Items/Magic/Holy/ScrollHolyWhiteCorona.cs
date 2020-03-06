@@ -26,7 +26,7 @@ namespace DrakSolz.Items.Magic.Holy {
             item.mana = 15;
             item.knockBack = 1.0f;
             item.shootSpeed = 8.0f;
-            item.value = Item.sellPrice(0, 50, 0, 0);
+            item.value = Item.sellPrice(0, 40, 0, 0);
             item.autoReuse = true;
             item.shoot = ModContent.ProjectileType<Projectiles.WhiteCoronaProj>();
             item.summon = true;

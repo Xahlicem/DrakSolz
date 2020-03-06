@@ -23,7 +23,7 @@ namespace DrakSolz.Items.Magic.Pyro {
             item.mana = 4;
             item.crit = 8;
             item.knockBack = 5.0f;
-            item.value = Item.sellPrice(0, 4, 0, 0);
+            item.value = Item.sellPrice(0, 8, 0, 0);
             item.autoReuse = true;
         }
         public override void MeleeEffects(Player player, Rectangle hitbox) {

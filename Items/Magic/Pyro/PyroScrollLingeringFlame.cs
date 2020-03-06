@@ -23,7 +23,7 @@ namespace DrakSolz.Items.Magic.Pyro {
             item.knockBack = 5f;
 			item.crit = 4;
             item.shootSpeed = 1.0f;
-            item.value = Item.sellPrice(0, 15, 0, 0);
+            item.value = Item.sellPrice(0, 13, 0, 0);
             item.shoot = ModContent.ProjectileType<Projectiles.LingeringProj>();
         }
         public override void AddRecipes() {

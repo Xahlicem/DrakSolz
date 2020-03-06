@@ -15,7 +15,7 @@ namespace DrakSolz.Items.Armor.FireKeeper {
         public override void SetDefaults() {
             item.width = 22;
             item.height = 20;
-            item.value = Item.sellPrice(0, 0, 20, 0);
+            item.value = Item.sellPrice(0, 0, 50, 0);
             item.rare = ItemRarityID.Orange;
             item.defense = 15;
         }

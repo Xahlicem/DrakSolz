@@ -15,10 +15,10 @@ namespace DrakSolz.Items.Magic.SoulBlades {
 
         public override void SetDefaults() {
             item.CloneDefaults(ModContent.ItemType<Items.Magic.SoulBlades.ScrollSoulBlades>());
-            item.damage = 55;
+            item.damage = 44;
             item.useTime = 16;
             item.useAnimation = 16;
-            item.value = Item.sellPrice(0, 3, 25, 0);
+            item.value = Item.sellPrice(0, 1, 25, 0);
             item.mana += 3;
         }
 

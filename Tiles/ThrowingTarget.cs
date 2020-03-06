@@ -30,6 +30,7 @@ namespace DrakSolz.Tiles {
             item.useTime = 10;
             item.useStyle = 1;
             item.consumable = true;
+            item.value = Item.sellPrice(0, 2, 0, 0);
             item.createTile = ModContent.TileType<Tiles.ThrowingTargetTile>();
         }
     }

@@ -15,7 +15,7 @@ namespace DrakSolz.Items.Misc {
             item.useTime = 120;
             item.useStyle = 4;
             item.maxStack = 99;
-            item.value = Item.buyPrice(0, 0, 50, 0);
+            item.value = Item.buyPrice(0, 0, 30, 0);
             item.rare = ItemRarityID.Green;
             item.consumable = true;
         }

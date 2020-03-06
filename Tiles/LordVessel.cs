@@ -30,6 +30,9 @@ namespace DrakSolz.Tiles {
             item.useTime = 10;
             item.useStyle = 1;
             item.consumable = true;
+            item.value = Item.sellPrice(0, 2, 0, 0);
+            item.rare = ItemRarityID.Yellow;
+            item.lavaWet = true;
             item.createTile = ModContent.TileType<Tiles.LordVesselTile> ();
         }
     }
@@ -40,7 +43,7 @@ namespace DrakSolz.Tiles {
             Main.tileFrameImportant[Type] = true;
             Main.tileNoAttach[Type] = true;
             Main.tileTable[Type] = false;
-            Main.tileLavaDeath[Type] = true;
+            Main.tileLavaDeath[Type] = false;
 
             TileObjectData.newTile.CopyFrom (TileObjectData.Style2x2);
             TileObjectData.newTile.Height = 2;

@@ -14,7 +14,7 @@ namespace DrakSolz.Items.Armor.HardmodeThrow {
         public override void SetDefaults() {
             item.width = 18;
             item.height = 18;
-            item.value = Item.sellPrice(0, 0, 3, 0);
+            item.value = Item.sellPrice(0, 3, 0, 0);
             item.rare = ItemRarityID.LightRed;
             item.defense = 13;
         }

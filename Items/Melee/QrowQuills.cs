@@ -19,7 +19,7 @@ namespace DrakSolz.Items.Melee {
             item.width = 28;
             item.height = 28;
             //item.knockBack = 0;
-            item.value = Item.sellPrice(0, 0, 2, 50);
+            item.value = Item.sellPrice(0, 25, 0, 0);
             item.rare = ItemRarityID.Green;
         }
         public override bool AltFunctionUse(Player player) {

@@ -27,7 +27,7 @@ namespace DrakSolz.Items.Magic.Holy {
             item.mana = 24;
             item.knockBack = 3.0f;
             item.shootSpeed = 4.0f;
-            item.value = Item.buyPrice(0, 12, 0, 0);
+            item.value = Item.buyPrice(0, 6, 0, 0);
             item.autoReuse = true;
             item.shoot = 307;
             item.summon = true;

@@ -23,7 +23,7 @@ namespace DrakSolz.Items.Magic {
             item.mana = 8;
             item.knockBack = 1.5f;
             item.shootSpeed = 8f;
-            item.value = Item.buyPrice(0, 15, 0, 0);
+            item.value = Item.buyPrice(0, 12, 0, 0);
             item.autoReuse = true;
             item.shoot = ModContent.ProjectileType<Projectiles.Magic.ADaggerProj>();
         }

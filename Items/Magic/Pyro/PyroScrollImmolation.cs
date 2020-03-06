@@ -14,7 +14,7 @@ namespace DrakSolz.Items.Magic.Pyro {
             item.useStyle = 1;
             item.useTime = 30;
             item.useAnimation = 30;
-            item.value = Item.sellPrice(0, 5, 0, 0);
+            item.value = Item.sellPrice(0, 3, 0, 0);
             item.rare = ItemRarityID.LightRed;
             item.consumable = false;
             item.noUseGraphic = true;

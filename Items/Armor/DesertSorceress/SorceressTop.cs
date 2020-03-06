@@ -16,7 +16,7 @@ namespace DrakSolz.Items.Armor.DesertSorceress {
         public override void SetDefaults() {
             item.width = 18;
             item.height = 18;
-            item.value = Item.sellPrice(0, 5, 0, 0);
+            item.value = Item.sellPrice(0, 1, 10, 0);
             item.rare = ItemRarityID.Yellow;
             item.defense = 12;
         }

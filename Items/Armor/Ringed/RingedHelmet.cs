@@ -15,7 +15,7 @@ namespace DrakSolz.Items.Armor.Ringed {
         public override void SetDefaults() {
             item.width = 18;
             item.height = 18;
-            item.value = Item.sellPrice(0, 50, 0, 0);
+            item.value = Item.sellPrice(0, 25, 0, 0);
             item.rare = ItemRarityID.Red;
             item.defense = 28;
         }

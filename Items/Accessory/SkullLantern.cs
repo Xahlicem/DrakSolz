@@ -18,7 +18,7 @@ namespace DrakSolz.Items.Accessory {
             item.useAnimation = 5;
             item.width = 22;
             item.height = 20;
-            item.value = Item.sellPrice(0, 2, 50, 0);
+            item.value = Item.sellPrice(0, 1, 0, 0);
             item.rare = ItemRarityID.Green;
             item.accessory = true;
             item.autoReuse = true;

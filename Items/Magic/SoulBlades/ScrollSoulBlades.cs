@@ -17,7 +17,7 @@ namespace DrakSolz.Items.Magic.SoulBlades {
             item.CloneDefaults(ItemID.IceRod);
             item.useStyle = 5;
             item.noUseGraphic = true;
-            item.damage = 24;
+            item.damage = 22;
             item.useTime = 22;
             item.useAnimation = 22;
             item.mana = 5;
