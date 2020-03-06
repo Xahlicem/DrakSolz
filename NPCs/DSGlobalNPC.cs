@@ -50,13 +50,10 @@ namespace DrakSolz.NPCs {
 
 		public override void SetupShop(int type, Chest shop, ref int nextSlot) {
 			if (type == NPCID.TravellingMerchant) {
+                if (Main.hardMode){
 				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Tiles.LotteryMachine>());
-				nextSlot++;
-
-				// We can use shopCustomPrice and shopSpecialCurrency to support custom prices and currency. Usually a shop sells an item for item.value. 
-				// Editing item.value in SetupShop is an incorrect approach.
-				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Tiles.LotteryMachine>());
-				shop.item[nextSlot].shopCustomPrice = 1000000;
+				shop.item[nextSlot].shopCustomPrice = 2000000;
+                }
 			}
     }
     }

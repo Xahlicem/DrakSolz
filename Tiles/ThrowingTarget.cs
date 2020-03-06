@@ -84,6 +84,7 @@ namespace DrakSolz.Tiles {
             HitWire(i, j);
             Player player = Main.LocalPlayer;
             player.AddBuff(ModContent.BuffType<Buffs.ThrowingBuff>(), 36000);
+            Main.PlaySound(SoundID.Grass, player.position);
             return true;
         }
 

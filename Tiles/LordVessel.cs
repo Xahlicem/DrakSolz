@@ -84,6 +84,7 @@ namespace DrakSolz.Tiles {
             HitWire (i, j);
             Player player = Main.LocalPlayer;
             player.AddBuff (ModContent.BuffType<Buffs.FireBuff> (), 36000);
+            Main.PlaySound(SoundID.LiquidsWaterLava, player.position);
             return true;
         }
 
