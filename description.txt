@@ -1,5 +1,4 @@
-Drak Solz is a mod inspired by Dark Souls, this mod changes a lot of in-game mechanics; or how you usually play the game anyway. Dying? Yeah, that'll happen a lot... But beware, if you die you will definitely pay the price.
-
+Drak Solz is a mod inspired by Dark Souls, this mod changes some game mechanics; or how you usually play the game anyway.
 Main adjustments:
 Early-Game is much harder, especially if you manage to die. As long as you play carefully then you won't notice too much of a difference outside of dealing less damage.
 Scaling stats allow you to grow and become stronger for late-game enemies, as well as choose a specific build for your character(you'll start with an item to help choose your class).
@@ -9,24 +8,26 @@ Currently souls last until you leave the world, so don't worry too much(unless a
 Minion/Summon is changed into Miracle Damage, with special miracle spells.
 Summon/Miracle damage is adjusted to be more balanced, especially sentry summons(nice damage buff here).
 Throwing is now a class, with a unique celestial pillar to supply end-game throwing gear.
-Life Crystals and Mana Crystals function entirely differently than before, and will NOT increase the respective stat.
-Spawn rate is adjusted in reference to how many bosses have been defeated. Increasing for each boss and then dialing back a bit after defeating WoF and Cultist to stop it from getting too crazy.
+Fire is now a class, without a unique celestial pillar but still supplied with end-game fire gear via Solar Fragments.
+Life Crystals and Mana Crystals function entirely differently from before, and will NOT increase the respective stat.
+Enemy spawn rate is adjusted in reference to how many bosses have been defeated. Increasing for each boss and then dialing back a bit after defeating WoF and Cultist to stop it from getting too crazy.
 
 Additions:
-+26 Accessories
-+58 Armor Pieces(+16 full sets)
-+37 Magic Weapons
-+21 Summon Weapons
-+17 Melee Weapons
++27 Accessories
++88 Armor Pieces(+23 full sets)
++22 Magic Weapons
++21 Summon/Miracle Weapons
++21 Fire Weapons(+12 vanilla items converted to fire damage)
++20.5 Melee Weapons
 +13 Ranged Weapons
-+7 Throwing Weapons
++7.5 Throwing Weapons(+all yoyos, boomerangs, and other thrown melee weapons converted into throwing damage)
 +2 Ammo
 +1 Mount
 +1 Pet
-+39 Misc Items
-+26 Buffs
++44 Misc Items
++16 Buffs(Not including summons/mounts and whatnot)
 +1 Micro Biome
-+1 Tile
++4 Tiles
 +3 TownNPCs
 +2 Bosses
 +1 Celestial Pillar
@@ -35,8 +36,7 @@ Additions:
 
 Future changes:
 Boss Rework. The bosses do need to actually function like bosses, but for now we're not focusing on that.
-Potentially adding in some exclusive "Pyromancy" and "Sorcery" armors/accessories, to add diversity in magic itself.
-Potentially splitting Pyromancy and Sorcery into 2 different damage types. New Armor Sets is the main problem here... Damage types require at least 6-8 armors.
+Potentially adding in some more exclusive Pyromancy armors/accessories, might nerf the stupid meteor armor set bonus.
 
 Bugs/Issues:
 Currently magic helmets on Hard-Mode ore armors (Cobalt, Mythril, Adamantite, etc.) have 2 versions, and only the DrakSolz version grants the proper bonuses. So WMITF is preferred to avoid confusion.
