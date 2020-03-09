@@ -34,7 +34,7 @@ namespace DrakSolz.Items.Armor.HardmodeFire {
             player.setBonus = ("-20% mana cost" +
                 "\n8% increased fire damage");
 			player.manaCost *= 0.80f;
-            player.GetModPlayer<MPlayer>().pyromancyDamage += 0.8f;
+            player.GetModPlayer<MPlayer>().pyromancyDamage += 0.08f;
         }
 
         public override void ArmorSetShadows(Player player) {

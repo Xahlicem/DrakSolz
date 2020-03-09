@@ -32,7 +32,7 @@ namespace DrakSolz.NPCs.Enemy.HardMode {
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
             if (NPC.downedMechBossAny)
-                return SpawnCondition.DesertCave.Chance * 0.15f;
+                return SpawnCondition.DesertCave.Chance * 0.06f;
             else return 0f;
         }
         public override void FindFrame(int frameHeight) {
