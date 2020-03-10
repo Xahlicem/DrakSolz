@@ -52,6 +52,9 @@ namespace DrakSolz.Items.Souls {
 
         public override void GrabRange(Player player, ref int grabRange) {
             grabRange *= 7;
+            if (player.GetModPlayer<DrakSolzPlayer>().Agape){
+            grabRange *= 2;
+            }
         }
 
         public override bool OnPickup(Player player) {

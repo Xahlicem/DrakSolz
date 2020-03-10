@@ -128,8 +128,24 @@ namespace DrakSolz.NPCs.Town {
         }
 
         public override void SetupShop(Chest shop, ref int nextSlot) {
+            if(NPC.downedMechBoss1){
+            shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Accessory.RingAvarice>());}
             shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Accessory.RingCat>());
+            if(NPC.downedBoss2){
+            shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Accessory.RingRuby>());
+            shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Accessory.RingSapphire>());}
+            shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Accessory.RingEstus>());
+            shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Accessory.RingAshenEstus>());
             shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Accessory.RingCloranthy>());
+            if(NPC.downedSlimeKing){
+            shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Accessory.RingBinding>());}
+            shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Accessory.RingReversal>());
+            if(NPC.downedBoss3){
+            shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Accessory.RingThorns>());}
+            if(NPC.downedBoss1){
+            shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Accessory.RingAgape>());
+            shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Accessory.RingKnuckleBrace>());}
+            shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Accessory.RingRusty>());
             shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Misc.ScrollHolyHomeward>());
             shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Misc.ScrollHoly>());
             shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Misc.PyroScroll>());

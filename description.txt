@@ -13,14 +13,14 @@ Life Crystals and Mana Crystals function entirely differently from before, and w
 Enemy spawn rate is adjusted in reference to how many bosses have been defeated. Increasing for each boss and then dialing back a bit after defeating WoF and Cultist to stop it from getting too crazy.
 
 Additions:
-+27 Accessories
++37 Accessories
 +88 Armor Pieces(+23 full sets)
 +22 Magic Weapons
 +21 Summon/Miracle Weapons
 +21 Fire Weapons(+12 vanilla items converted to fire damage)
 +20.5 Melee Weapons
 +13 Ranged Weapons
-+7.5 Throwing Weapons(+all yoyos, boomerangs, and other thrown melee weapons converted into throwing damage)
++7.5 Throwing Weapons(+all yoyos, boomerangs, and other thrown melee weapons converted to throwing damage)
 +2 Ammo
 +1 Mount
 +1 Pet
