@@ -21,4 +21,11 @@ namespace DrakSolz.Items.Accessory {
             player.GetModPlayer<DrakSolzPlayer>().MiscHP += 50;
         }
     }
+
+    public class RingTinyBeingDrop : GlobalNPC {
+        public override void NPCLoot(NPC npc) {
+            if (npc.type == NPCID.Pinky && Main.rand.Next(2) == 0)
+                Item.NewItem(npc.position, npc.width, npc.height, ModContent.ItemType<Items.Accessory.RingTinyBeing>());
+        }
+    }
 }

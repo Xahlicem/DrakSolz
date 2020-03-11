@@ -58,6 +58,16 @@ namespace DrakSolz.NPCs {
                 npc.damage = 44;
                 }
             }
+            if (npc.type == NPCID.Pinky) {
+                if (Main.hardMode){
+                npc.damage = 12;
+                npc.knockBackResist = 0.4f;
+                }
+                else {
+                npc.damage = 24;
+                npc.knockBackResist = 0.3f;
+                }
+            }
         }
 
         public override void SetupShop(int type, Chest shop, ref int nextSlot) {
