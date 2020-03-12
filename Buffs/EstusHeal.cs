@@ -51,8 +51,13 @@ namespace DrakSolz.Buffs {
                 player.GetModPlayer<DrakSolzPlayer>().DecreaseHollow(240 + (i2 * 80));
             }
             if (Main.time % 10 == 5) {
-                player.statLife += (1 + i2);
-                player.HealEffect(1 + i2);
+                player.statLife += (1 + i2 + player.GetModPlayer<DrakSolzPlayer>().REstus);
+                player.HealEffect(1 + i2 + player.GetModPlayer<DrakSolzPlayer>().REstus);
+            }
+            if (Main.time % 10 == 5 && player.GetModPlayer<DrakSolzPlayer>().RAEstus >= 1) {
+                if (player.statMana < player.statManaMax2 + player.statManaMax)
+                player.statMana += (10);
+                player.ManaEffect (10);
             }
             if (player.buffTime[buffIndex] == 1) {
                 if (!player.HasBuff(BuffID.PotionSickness)) {

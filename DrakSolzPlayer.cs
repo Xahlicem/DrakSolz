@@ -23,25 +23,25 @@ namespace DrakSolz {
         public int Souls { get; set; }
         public int SoulCost(int level) {
             if (level < 10) {
-            return (int) (Math.Round((Math.Pow(0.03 * level, 3) + Math.Pow(4.06 * level, 2) + 80 * level) * 0.1, 0) * 8);
+                return (int)(Math.Round((Math.Pow(0.03 * level, 3) + Math.Pow(4.06 * level, 2) + 80 * level) * 0.1, 0) * 8);
             } else if (level < 20) {
-            return (int) (Math.Round((Math.Pow(0.03 * level, 3) + Math.Pow(4.26 * level, 2) + 80 * level) * 0.1, 0) * 8);
+                return (int)(Math.Round((Math.Pow(0.03 * level, 3) + Math.Pow(4.26 * level, 2) + 80 * level) * 0.1, 0) * 8);
             } else if (level < 30) {
-            return (int) (Math.Round((Math.Pow(0.035 * level, 3) + Math.Pow(4.46 * level, 2) + 80 * level) * 0.1, 0) * 8);
+                return (int)(Math.Round((Math.Pow(0.035 * level, 3) + Math.Pow(4.46 * level, 2) + 80 * level) * 0.1, 0) * 8);
             } else if (level < 40) {
-            return (int) (Math.Round((Math.Pow(0.04 * level, 3) + Math.Pow(4.66 * level, 2) + 80 * level) * 0.1, 0) * 8);
+                return (int)(Math.Round((Math.Pow(0.04 * level, 3) + Math.Pow(4.66 * level, 2) + 80 * level) * 0.1, 0) * 8);
             } else if (level < 50) {
-            return (int) (Math.Round((Math.Pow(0.055 * level, 3) + Math.Pow(5.15 * level, 2) + 82 * level) * 0.1, 0) * 8.1);
+                return (int)(Math.Round((Math.Pow(0.055 * level, 3) + Math.Pow(5.15 * level, 2) + 82 * level) * 0.1, 0) * 8.1);
             } else if (level < 60) {
-            return (int) (Math.Round((Math.Pow(0.085 * level, 3) + Math.Pow(6.0 * level, 2) + 88 * level) * 0.1, 0) * 8.3);
+                return (int)(Math.Round((Math.Pow(0.085 * level, 3) + Math.Pow(6.0 * level, 2) + 88 * level) * 0.1, 0) * 8.3);
             } else if (level < 70) {
-            return (int) (Math.Round((Math.Pow(0.11 * level, 3) + Math.Pow(7.3 * level, 2) + 96 * level) * 0.1, 0) * 8.5);
+                return (int)(Math.Round((Math.Pow(0.11 * level, 3) + Math.Pow(7.3 * level, 2) + 96 * level) * 0.1, 0) * 8.5);
             } else if (level < 80) {
-            return (int) (Math.Round((Math.Pow(0.14 * level, 3) + Math.Pow(8.8 * level, 2) + 106 * level) * 0.1, 0) * 8.75);
+                return (int)(Math.Round((Math.Pow(0.14 * level, 3) + Math.Pow(8.8 * level, 2) + 106 * level) * 0.1, 0) * 8.75);
             } else if (level < 90) {
-            return (int) (Math.Round((Math.Pow(0.175 * level, 3) + Math.Pow(10.4 * level, 2) + 118 * level) * 0.1, 0) * 9);
+                return (int)(Math.Round((Math.Pow(0.175 * level, 3) + Math.Pow(10.4 * level, 2) + 118 * level) * 0.1, 0) * 9);
             } else {
-            return (int) (Math.Round((Math.Pow(0.215 * level, 3) + Math.Pow(14.0 * level, 2) + 132 * level) * 0.1, 0) * 9.5);
+                return (int)(Math.Round((Math.Pow(0.215 * level, 3) + Math.Pow(14.0 * level, 2) + 132 * level) * 0.1, 0) * 9.5);
             }
         }
 
@@ -55,14 +55,14 @@ namespace DrakSolz {
         private static readonly byte BOSS_SOULS = 6 * 7;
         private static readonly byte COALS = 6 * 7 + 17;
 
-        public int Vit { get { return (int) (Stats >> VIT & 127L); } set { Stats = Stats & ~(127L << VIT) | ((uint) value & 127L) << VIT; } }
-        public int Str { get { return (int) (Stats >> STR & 127L); } set { Stats = Stats & ~(127L << STR) | ((uint) value & 127L) << STR; } }
-        public int Dex { get { return (int) (Stats >> DEX & 127L); } set { Stats = Stats & ~(127L << DEX) | ((uint) value & 127L) << DEX; } }
-        public int Att { get { return (int) (Stats >> ATT & 127L); } set { Stats = Stats & ~(127L << ATT) | ((uint) value & 127L) << ATT; } }
-        public int Int { get { return (int) (Stats >> INT & 127L); } set { Stats = Stats & ~(127L << INT) | ((uint) value & 127L) << INT; } }
-        public int Fth { get { return (int) (Stats >> FTH & 127L); } set { Stats = Stats & ~(127L << FTH) | ((uint) value & 127L) << FTH; } }
-        public int BossSouls { get { return (int) (Stats >> BOSS_SOULS & 127L); } set { Stats = Stats & ~(127L << BOSS_SOULS) | ((uint) value & 127L) << BOSS_SOULS; } }
-        public int Coals { get { return (int) (Stats >> COALS & 127L); } set { Stats = Stats & ~(127L << COALS) | ((uint) value & 127L) << COALS; } }
+        public int Vit { get { return (int)(Stats >> VIT & 127L); } set { Stats = Stats & ~(127L << VIT) | ((uint) value & 127L) << VIT; } }
+        public int Str { get { return (int)(Stats >> STR & 127L); } set { Stats = Stats & ~(127L << STR) | ((uint) value & 127L) << STR; } }
+        public int Dex { get { return (int)(Stats >> DEX & 127L); } set { Stats = Stats & ~(127L << DEX) | ((uint) value & 127L) << DEX; } }
+        public int Att { get { return (int)(Stats >> ATT & 127L); } set { Stats = Stats & ~(127L << ATT) | ((uint) value & 127L) << ATT; } }
+        public int Int { get { return (int)(Stats >> INT & 127L); } set { Stats = Stats & ~(127L << INT) | ((uint) value & 127L) << INT; } }
+        public int Fth { get { return (int)(Stats >> FTH & 127L); } set { Stats = Stats & ~(127L << FTH) | ((uint) value & 127L) << FTH; } }
+        public int BossSouls { get { return (int)(Stats >> BOSS_SOULS & 127L); } set { Stats = Stats & ~(127L << BOSS_SOULS) | ((uint) value & 127L) << BOSS_SOULS; } }
+        public int Coals { get { return (int)(Stats >> COALS & 127L); } set { Stats = Stats & ~(127L << COALS) | ((uint) value & 127L) << COALS; } }
 
         public float SoulTicks { get; set; }
         public int BossSoulTicks { get; set; }
@@ -82,8 +82,14 @@ namespace DrakSolz {
 
         public bool EvilEye { get; set; }
         public int Avarice { get; set; }
+        public int REstus { get; set; }
+        public int RAEstus { get; set; }
+        public bool Agape { get; set; }
+        public int Binding { get; set; }
         public int MiscHP { get; set; }
         public int Estus { get; set; }
+        public int MtoF { get; set; }
+        public bool StartF { get; set; }
         public bool Rotate { get; set; }
         public float Rotation { get; set; }
 
@@ -110,10 +116,22 @@ namespace DrakSolz {
             SoulMassSum = false;
             CrystalPet = false;
             EvilEye = false;
+            REstus = 0;
+            RAEstus = 0;
+            Agape = false;
             Avarice = 0;
+            Binding = 0;
             Estus = 0;
 
             Rotation = 0f;
+            
+            if (player.Male) { StartF = false; } else { StartF = true; }
+
+            if (StartF) {
+                MtoF = 1;
+            } else {
+                MtoF = 0;
+            }
         }
 
         public override void ResetEffects() {
@@ -126,11 +144,21 @@ namespace DrakSolz {
             DungeonSummon = false;
             SoulMassSum = false;
             EvilEye = false;
+            REstus = 0;
+            RAEstus = 0;
+            Agape = false;
             Avarice = 0;
+            Binding = 0;
             Rotate = false;
 
             player.fullRotationOrigin = player.Center - player.position;
             player.fullRotation = Rotation;
+
+            if (StartF) {
+                MtoF = 1;
+            } else {
+                MtoF = 0;
+            }
         }
 
         public void SetBossSouls(int place) {
@@ -233,10 +261,13 @@ namespace DrakSolz {
 
         public override void PostUpdateEquips() {
             UpdateStats();
+            if (MtoF == 1) {
+                player.Male = false;
+            } else player.Male = true;
         }
 
         public override void PostUpdate() {
-            if (player.Equals(Main.LocalPlayer)) (mod as DrakSolz).ui.updateValue(Souls, Level);
+            if (player.Equals(Main.LocalPlayer))(mod as DrakSolz).ui.updateValue(Souls, Level);
 
             if (Rotate) Rotation += player.velocity.X * 0.025f;
             else Rotation = 0f;
@@ -244,7 +275,7 @@ namespace DrakSolz {
 
         public override void Hurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit) {
             HurtWait = HURT_WAIT_MAX;
-            Hollow += (int) (damage * 120.0);
+            Hollow += (int)(damage * 120.0);
 
             if (Main.netMode != NetmodeID.SinglePlayer)
                 SendPacket(MessageType.Hurt);
@@ -260,7 +291,7 @@ namespace DrakSolz {
                 int i = Item.NewItem((int) player.position.X, (int) player.position.Y, player.width, player.height, ModContent.ItemType<Items.Souls.Soul>(), Souls);
                 Main.item[i].GetGlobalItem<Items.DSGlobalItem>().Owner = UID;
                 Souls = 0;
-                if (player.Equals(Main.LocalPlayer)) (mod as DrakSolz).ui.updateValue(Souls, Level);
+                if (player.Equals(Main.LocalPlayer))(mod as DrakSolz).ui.updateValue(Souls, Level);
             }
         }
 
@@ -275,41 +306,35 @@ namespace DrakSolz {
             SendPacket(MessageType.Stats);
         }
         private void UpdateStats() {
-            if (Str <= 40){
-            player.meleeDamage *= 0.6f + Str * 0.02f;;
+            if (Str <= 40) {
+                player.meleeDamage *= 0.6f + Str * 0.02f;;
+            } else {
+                player.meleeDamage *= 1.4f + ((Str - 40) * 0.01f);;
             }
-            else {
-            player.meleeDamage *= 1.4f + ((Str - 40) * 0.01f);;
+            if (Dex <= 40) {
+                player.rangedDamage *= 0.6f + Dex * 0.02f;;
+            } else {
+                player.rangedDamage *= 1.4f + ((Dex - 40) * 0.01f);;
             }
-            if (Dex <= 40){
-            player.rangedDamage *= 0.6f + Dex * 0.02f;;
+            if (((Str < Dex) ? Str : Dex) <= 20) {
+                player.thrownDamage *= 0.6f + ((Str < Dex) ? Str : Dex) * 0.04f;;
+            } else {
+                player.thrownDamage *= 1.4f + (((Str < Dex) ? Str : Dex) - 20) * 0.02f;;
             }
-            else {
-            player.rangedDamage *= 1.4f + ((Dex - 40) * 0.01f);;
+            if (((Int < Fth) ? Int : Fth) <= 20) {
+                player.GetModPlayer<MPlayer>().pyromancyDamage *= 0.6f + ((Int < Fth) ? Int : Fth) * 0.04f;;
+            } else {
+                player.GetModPlayer<MPlayer>().pyromancyDamage *= 1.4f + (((Int < Fth) ? Int : Fth) - 20) * 0.02f;;
             }
-            if (((Str < Dex) ? Str : Dex) <= 20){
-            player.thrownDamage *= 0.6f + ((Str < Dex) ? Str : Dex) * 0.04f;;
+            if (Int <= 40) {
+                player.magicDamage *= 0.6f + Int * 0.02f;;
+            } else {
+                player.magicDamage *= 1.4f + ((Int - 40) * 0.01f);;
             }
-            else {
-            player.thrownDamage *= 1.4f + (((Str < Dex) ? Str : Dex) - 20) * 0.02f;;
-            }
-            if (((Int < Fth) ? Int : Fth) <= 20){
-            player.GetModPlayer<MPlayer>().pyromancyDamage *= 0.6f + ((Int < Fth) ? Int : Fth) * 0.04f;;
-            }
-            else {
-            player.GetModPlayer<MPlayer>().pyromancyDamage *= 1.4f + (((Int < Fth) ? Int : Fth) - 20) * 0.02f;;
-            }
-            if (Int <= 40){
-            player.magicDamage *= 0.6f + Int * 0.02f;;
-            }
-            else {
-            player.magicDamage *= 1.4f + ((Int - 40) * 0.01f);;
-            }
-            if (Fth <= 40){
-            player.minionDamage *= 0.6f + Fth * 0.02f;;
-            }
-            else {
-            player.minionDamage *= 1.4f + ((Fth - 40) * 0.01f);;
+            if (Fth <= 40) {
+                player.minionDamage *= 0.6f + Fth * 0.02f;;
+            } else {
+                player.minionDamage *= 1.4f + ((Fth - 40) * 0.01f);;
             }
             player.statLifeMax = Level * 4 + 100 + MiscHP;
             player.statLifeMax2 = player.statLifeMax + Vit * 11;
@@ -347,9 +372,9 @@ namespace DrakSolz {
             if (HurtWait == 0 && Hollow > 0) DecreaseHollow(HollowDec);
 
             if (Hollow > 0) player.AddBuff(ModContent.BuffType<Buffs.Hollow>(), (Hollow / HollowDec) + (HurtWait / HurtWaitDec));
-            int life = (int) ((Hollow + 1) / 300f);
+            int life = (int)((Hollow + 1) / 300f);
             player.statLifeMax2 -= life;
-            int min = 20 + Vit * 5;
+            int min = 20 + Binding + Vit * 5;
             if (player.statLifeMax2 < min) player.statLifeMax2 = min;
 
             if (Hollow == 0 && player.FindBuffIndex(ModContent.BuffType<Buffs.Hollow>()) != -1) player.ClearBuff(ModContent.BuffType<Buffs.Hollow>());

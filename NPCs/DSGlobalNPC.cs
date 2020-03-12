@@ -1,6 +1,7 @@
 using Terraria;
-using Terraria.ModLoader;
 using Terraria.ID;
+using Terraria.ModLoader;
+
 
 namespace DrakSolz.NPCs {
     class DSGlobalNPC : GlobalNPC {
@@ -15,18 +16,18 @@ namespace DrakSolz.NPCs {
 
         public override void ResetEffects(NPC npc) {
             Healp = false;
-            if (npc.HasBuff(BuffID.OnFire) || npc.HasBuff(BuffID.ShadowFlame) || npc.HasBuff(BuffID.CursedInferno) || npc.HasBuff(BuffID.Frostburn)){
-            if (Main.LocalPlayer.HasBuff(ModContent.BuffType<Buffs.FireBuff>())){
-            npc.AddBuff(204, 20 , true);
-            }
+            if (npc.HasBuff(BuffID.OnFire) || npc.HasBuff(BuffID.ShadowFlame) || npc.HasBuff(BuffID.CursedInferno) || npc.HasBuff(BuffID.Frostburn)) {
+                if (Main.LocalPlayer.HasBuff(ModContent.BuffType<Buffs.FireBuff>())) {
+                    npc.AddBuff(204, 20, true);
+                }
             }
         }
 
         public override void UpdateLifeRegen(NPC npc, ref int damage) {
             if (Healp) {
                 npc.lifeRegen += 10000;
-                }
             }
+        }
         public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns) {
             float mul = 1f;
             if (NPC.downedSlimeKing) mul *= 1.1f;
@@ -46,15 +47,36 @@ namespace DrakSolz.NPCs {
             spawnRate = (int)(spawnRate / mul);
             maxSpawns = (int)(maxSpawns * mul);
         }
-        
-
-		public override void SetupShop(int type, Chest shop, ref int nextSlot) {
-			if (type == NPCID.TravellingMerchant) {
+        public override void SetDefaults(NPC npc) {
+            if (npc.type == NPCID.KingSlime) {
                 if (Main.hardMode){
-				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Tiles.LotteryMachine>());
-				shop.item[nextSlot].shopCustomPrice = 2000000;
+                npc.lifeMax = 1600;
+                npc.damage = 26;
                 }
-			}
-    }
+                else {
+                npc.lifeMax = 2250;
+                npc.damage = 44;
+                }
+            }
+            if (npc.type == NPCID.Pinky) {
+                if (Main.hardMode){
+                npc.damage = 12;
+                npc.knockBackResist = 0.4f;
+                }
+                else {
+                npc.damage = 24;
+                npc.knockBackResist = 0.3f;
+                }
+            }
+        }
+
+        public override void SetupShop(int type, Chest shop, ref int nextSlot) {
+            if (type == NPCID.TravellingMerchant) {
+                if (Main.hardMode) {
+                    shop.item[nextSlot].SetDefaults(ModContent.ItemType<Tiles.LotteryMachine>());
+                    shop.item[nextSlot].shopCustomPrice = 2000000;
+                }
+            }
+        }
     }
 }
