@@ -143,7 +143,6 @@ namespace DrakSolz.NPCs.Town {
             if(NPC.downedBoss3){
             shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Accessory.RingThorns>());}
             if(NPC.downedBoss1){
-            shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Accessory.RingAgape>());
             shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Accessory.RingKnuckleBrace>());}
             shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Accessory.RingRusty>());
             shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Misc.ScrollHolyHomeward>());

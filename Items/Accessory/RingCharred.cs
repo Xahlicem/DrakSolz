@@ -23,9 +23,10 @@ namespace DrakSolz.Items.Accessory {
             player.fireWalk = true;
             player.AddBuff(BuffID.WeaponImbueFire, 2);
             player.AddBuff(BuffID.Warmth, 2);
-
-            int index = player.FindBuffIndex(BuffID.OnFire);
-            if (index != -1) player.buffTime[index] = 0;
+            player.buffImmune[BuffID.OnFire] = true;
+            player.buffImmune[BuffID.Frostburn] = true;
+            player.buffImmune[BuffID.CursedInferno] = true;
+            player.buffImmune[BuffID.ShadowFlame] = true;
         }
     }
 }

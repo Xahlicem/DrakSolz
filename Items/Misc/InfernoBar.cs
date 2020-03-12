@@ -21,7 +21,7 @@ namespace DrakSolz.Items.Misc {
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.ChlorophyteBar, 1);
-            recipe.AddIngredient(ItemID.LivingFireBlock, 1);
+            recipe.AddIngredient(ItemID.LivingFireBlock, 5);
             recipe.AddTile(TileID.AdamantiteForge);
             recipe.SetResult(this);
             recipe.AddRecipe();
