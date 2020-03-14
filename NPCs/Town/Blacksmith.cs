@@ -67,10 +67,7 @@ namespace DrakSolz.NPCs.Town {
         }
 
         public override bool CheckConditions(int left, int right, int top, int bottom) {
-            foreach (Item i in Main.LocalPlayer.inventory) {
-                if (i.type == ItemID.IronAnvil || i.type == ItemID.LeadAnvil) return true;
-            }
-            return false;
+            return true;
         }
 
         public override string TownNPCName() {

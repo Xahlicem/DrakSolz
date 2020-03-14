@@ -153,6 +153,9 @@ namespace DrakSolz.NPCs.Town {
             shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Misc.Lifegem>());
             shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Misc.GreenBlossom>());
             shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Misc.PrismStone>());
+            if(NPC.downedBoss3){
+            shop.item[nextSlot++].SetDefaults(ItemID.UnholyWater);
+            shop.item[nextSlot++].SetDefaults(ItemID.BloodWater);}
             if (Main.hardMode) {
                 shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Throwing.FireBomb>());
             }

@@ -24,7 +24,7 @@ namespace DrakSolz.Items.Accessory {
 
     public class RingTinyBeingDrop : GlobalNPC {
         public override void NPCLoot(NPC npc) {
-            if (npc.type == NPCID.Pinky && Main.rand.Next(2) == 0)
+            if (npc.type == NPCID.Pinky && Main.rand.Next(1) == 0)
                 Item.NewItem(npc.position, npc.width, npc.height, ModContent.ItemType<Items.Accessory.RingTinyBeing>());
         }
     }

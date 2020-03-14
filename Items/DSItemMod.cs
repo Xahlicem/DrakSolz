@@ -191,9 +191,13 @@ namespace DrakSolz.Items {
             if (item.shoot != 0 || item.shoot != -1) p.CloneDefaults(item.shoot);
             if (ItemID.Sets.Yoyo[item.type] || p.aiStyle == 99 || p.aiStyle == 3 ||
                 item.type == ItemID.VampireKnives || item.type == ItemID.ShadowFlameKnife ||
-                item.type == ItemID.FlyingKnife || item.type == ItemID.DayBreak) {
+                item.type == ItemID.FlyingKnife || item.type == ItemID.DayBreak ||
+                item.type == ItemID.UnholyWater || item.type == ItemID.BloodWater) {
                 item.melee = false;
                 item.thrown = true;
+                if (item.type == ItemID.UnholyWater || item.type == ItemID.BloodWater) {
+                    item.value = Item.buyPrice (0, 0, 6, 0);
+                }
             }
         }
     }

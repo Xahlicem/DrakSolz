@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace DrakSolz.Items.Magic.SoulArrow {
     public class ScrollSoulArrowGreat : SoulItem {
-        public ScrollSoulArrowGreat() : base(8000) { }
+        public ScrollSoulArrowGreat() : base(4500) { }
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Great Soul Arrow");
@@ -15,7 +15,7 @@ namespace DrakSolz.Items.Magic.SoulArrow {
         public override void SetDefaults() {
             item.CloneDefaults(ModContent.ItemType<Items.Magic.SoulArrow.ScrollSoulArrow>());
             item.noUseGraphic = true;
-            item.damage = 36;
+            item.damage = 30;
             item.mana = 7;
             item.value = Item.sellPrice(0, 0, 80, 0);
             item.knockBack = 2.5f;
