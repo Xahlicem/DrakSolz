@@ -10,6 +10,10 @@ namespace DrakSolz.Items.Misc {
             Tooltip.SetDefault("Used to reinforce Estus Flask, increasing uses.");
         }
 
+        public override bool CanPickup(Player player) {
+            return (player.GetModPlayer<DrakSolzPlayer>().UID == item.GetGlobalItem<Items.DSGlobalItem>().Owner);
+        }
+
         public override void SetDefaults() {
             Item refItem = new Item();
             refItem.SetDefaults(ItemID.Book);
