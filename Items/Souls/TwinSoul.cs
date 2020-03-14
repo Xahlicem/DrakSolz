@@ -11,6 +11,10 @@ namespace DrakSolz.Items.Souls {
 
         public TwinSoul() : base(30, 100000, "RingAvarice") { }
 
+        public override bool OnPickup(Player player) {
+            return true;
+        }
+
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ModContent.ItemType<Items.Souls.RetSoul>());
