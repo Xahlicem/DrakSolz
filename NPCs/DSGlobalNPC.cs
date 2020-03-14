@@ -74,7 +74,7 @@ namespace DrakSolz.NPCs {
             if (type == NPCID.TravellingMerchant) {
                 if (Main.hardMode) {
                     shop.item[nextSlot].SetDefaults(ModContent.ItemType<Tiles.LotteryMachine>());
-                    shop.item[nextSlot].shopCustomPrice = 2000000;
+                    shop.item[nextSlot].shopCustomPrice = 4000000;
                 }
             }
         }

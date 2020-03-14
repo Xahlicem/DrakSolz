@@ -19,7 +19,7 @@ namespace DrakSolz.NPCs.Enemy.PostPlantera {
             aiType = NPCID.Moth;
             animationType = NPCID.Moth;
             npc.height = 70;
-            npc.damage = 100;
+            npc.damage = 50;
             npc.defense = 40;
             npc.lifeMax = 6000;
             npc.HitSound = SoundID.NPCHit1;
@@ -71,7 +71,7 @@ namespace DrakSolz.NPCs.Enemy.PostPlantera {
                     float rotation = MathHelper.ToRadians(30);
                     for (int i = 0; i < numberProjectiles; i++) {
                         Vector2 perturbedSpeed = new Vector2(vector.X, vector.Y).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1))) * .2f; // Watch out for dividing by 0 if there is only 1 projectile.
-                        int proj = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, perturbedSpeed.X * 15, perturbedSpeed.Y * 15, ModContent.ProjectileType<Projectiles.Magic.MoonButterflyProj>(), npc.damage, 0);
+                        int proj = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, perturbedSpeed.X * 12, perturbedSpeed.Y * 12, ModContent.ProjectileType<Projectiles.Magic.MoonButterflyProj>(), npc.damage, 0);
                         Main.projectile[proj].scale *= 0.4f;
                         Main.projectile[proj].friendly = false;
                         Main.projectile[proj].hostile = true;

@@ -23,6 +23,8 @@ namespace DrakSolz.Items.Misc {
         }
 
         public override bool UseItem(Player player) {
+            int index = player.FindBuffIndex(ModContent.BuffType<Buffs.Hollow>());
+            player.GetModPlayer<DrakSolzPlayer>().DecreaseHollow(3600);
             for (int i = 0; i < 2; i++);
             player.statLife += 30;
             player.HealEffect(30);

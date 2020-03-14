@@ -7,7 +7,7 @@ using Terraria.ModLoader.IO;
 
 namespace DrakSolz.Items.Misc {
     public class ScrollHolyMajorHeal : SoulItem {
-        public ScrollHolyMajorHeal() : base(50000) { }
+        public ScrollHolyMajorHeal() : base(90000) { }
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Major Heal");
             Tooltip.SetDefault("Restores a moderate amount of health.");
@@ -23,6 +23,8 @@ namespace DrakSolz.Items.Misc {
         }
 
         public override bool UseItem(Player player) {
+            int index = player.FindBuffIndex(ModContent.BuffType<Buffs.Hollow>());
+            player.GetModPlayer<DrakSolzPlayer>().DecreaseHollow(28800);
             for (int i = 0; i < 2; i++);
             player.statLife += 200;
             player.HealEffect(200);
