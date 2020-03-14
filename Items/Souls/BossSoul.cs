@@ -57,6 +57,11 @@ namespace DrakSolz.Items.Souls {
             return (player.GetModPlayer<DrakSolzPlayer>().UID == item.GetGlobalItem<Items.DSGlobalItem>().Owner);
         }
 
+        public override bool OnPickup(Player player) {
+            player.GetModPlayer<DrakSolzPlayer>().SetBossSouls(Place);
+            return true;
+        }
+
         public override void AddRecipes() {
             if (Ring == string.Empty) return;
             ModRecipe recipe = new ModRecipe(mod);
@@ -177,7 +182,7 @@ namespace DrakSolz.Items.Souls {
             List<int> players = new List<int>();
             for (int i = 0; i < Main.player.Length; i++)
                 if (Main.player[i] != null)
-                    if (npc.WithinRange(Main.player[i].Center, 800f))
+                    if (npc.WithinRange(Main.player[i].Center, 1600f))
                         players.Add(Main.player[i].whoAmI);
             if (players.Count != 0)
                 for (int i = 0; i < players.Count; i++) {
@@ -185,7 +190,6 @@ namespace DrakSolz.Items.Souls {
                     int index = Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, item.type);
                     int index2 = Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, item2.type);
                     Main.item[index].GetGlobalItem<Items.DSGlobalItem>().Owner = Main.player[players[i]].GetModPlayer<DrakSolzPlayer>().UID;
-                    Main.player[players[i]].GetModPlayer<DrakSolzPlayer>().SetBossSouls(soul.Place);
                 }
         }
     }
