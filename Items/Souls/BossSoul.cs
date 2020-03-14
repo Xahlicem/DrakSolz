@@ -5,6 +5,28 @@ using Terraria.ModLoader;
 
 namespace DrakSolz.Items.Souls {
     public abstract class BossSoul : ModItem {
+        /// <summary>
+        /// First Boss
+        /// </summary>
+        public const int SOUL_SLIME = 1<<0;
+        public const int SOUL_EYE = 1<<1;
+        public const int SOUL_EATER = 1<<2;
+        public const int SOUL_BRAIN = 1<<3;
+        public const int SOUL_BEE = 1<<4;
+        public const int SOUL_SKELETRON = 1<<5;
+        public const int SOUL_WALL = 1<<6;
+        public const int SOUL_DESTROYER = 1<<7;
+        public const int SOUL_RETINAZER = 1<<8;
+        public const int SOUL_SPAZMATISM = 1<<9;
+        public const int SOUL_SKELETRON_PRIME = 1<<10;
+        public const int SOUL_PLANTERA = 1<<11;
+        public const int SOUL_GOLEM = 1<<12;
+        public const int SOUL_LUNATIC_CULTIST = 1<<13;
+        public const int SOUL_DUKE_FISHRON = 1<<14;
+        public const int SOUL_MOON_LORD = 1<<15;
+        public const int SOUL_ARTORIAS = 1<<16;
+        public const int SOUL_TITIANITE_DEMON = 1<<17;
+        
         public int Place { get; internal set; }
         public string Ring { get; internal set; }
         public int Ticks { get; internal set; }
