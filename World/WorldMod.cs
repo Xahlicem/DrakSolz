@@ -41,12 +41,14 @@ namespace DrakSolz.Items.World {
                     foreach (Chest chest in Main.chest) {
                         if (chest == null) continue;
                         Tile tile = Main.tile[chest.x, chest.y];
-                        if (tile.type == TileID.Containers) continue;
-                        if (WorldGen.genRand.Next(20) == 0 && tile.frameX != CHEST_X_GOLD) {
-                            chest.item[0].SetDefaults(ModContent.ItemType<Items.Accessory.RingCat>());
-                            chest.item[0].Prefix(-1);
-
-                        }
+                        if (tile.type != TileID.Containers) continue;
+                        if (WorldGen.genRand.Next(20) == 0 && tile.frameX != CHEST_X_SHADOW_LOCKED)
+                            for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
+						        if (chest.item[inventoryIndex].type == 0) {
+                                    chest.item[inventoryIndex].SetDefaults(ModContent.ItemType<Items.Accessory.RingCat>());
+                                    chest.item[inventoryIndex].Prefix(-1);
+                                    break;
+                                }
                         if (tile.frameX == CHEST_X_SHADOW_LOCKED) {
                             int[] shadow = { ItemID.DarkLance, ItemID.Flamelash, ItemID.FlowerofFire, ItemID.Sunfury, ItemID.HellwingBow, ModContent.ItemType<Items.Accessory.RingCloranthy>() };
                             chest.item[0].SetDefaults(Utils.SelectRandom(WorldGen.genRand, shadow));
@@ -184,6 +186,8 @@ namespace DrakSolz.Items.World {
             if (wall) tile.wall = WallID.BlueDungeon;
         }
 
-        public override void PostWorldGen() { }
+        public override void PostWorldGen() {
+
+        }
     }
 }
