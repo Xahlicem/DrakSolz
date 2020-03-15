@@ -74,7 +74,7 @@ namespace DrakSolz.Items.World {
 
         private void MakeRoom(GenerationProgress progress) {
             float widthScale = (Main.maxTilesX / 2100f);
-            int numberToGenerate = WorldGen.genRand.Next(1, (int) (2f * widthScale));
+            int numberToGenerate = WorldGen.genRand.Next((int) (2f * widthScale), (int) (4f * widthScale));
             progress.CurrentPassWeight = numberToGenerate;
             for (int k = 0; k < numberToGenerate; k++) {
                 bool success = false;
