@@ -42,7 +42,7 @@ namespace DrakSolz.Items.Armor.FireKeeper {
 			player.GetModPlayer<MPlayer>().pyromancyDamage += 0.25f;
 			player.GetModPlayer<MPlayer>().pyromancyCrit += 15;
             player.AddBuff(ModContent.BuffType<Buffs.FirelinkKeep>(), 1);
-            player.GetModPlayer<DrakSolzPlayer>().REstus += 1;
+            player.GetModPlayer<DrakSolzPlayer>().EstusHealth += 1;
         }
 
         public override void AddRecipes() {

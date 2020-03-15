@@ -18,7 +18,7 @@ namespace DrakSolz.Items.Accessory {
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual) {
-            player.GetModPlayer<DrakSolzPlayer>().REstus += 1;
+            player.GetModPlayer<DrakSolzPlayer>().EstusHealth += 1;
         }
     }
 }
