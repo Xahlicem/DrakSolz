@@ -19,9 +19,6 @@ namespace DrakSolz.Items {
         public override bool InstancePerEntity { get { return true; } }
 
         public DSGlobalItem() {
-            if (Main.netMode == NetmodeID.SinglePlayer) Owner = -1L;
-            else Owner = -2L;
-
             ArcaneRolled = false;
             Restricted = false;
             WrongOwner = false;
@@ -39,6 +36,10 @@ namespace DrakSolz.Items {
                 destination.ArcaneMana = ArcaneMana;
             }
             return destination;
+        }
+
+        public override void Update(Item item, ref float gravity, ref float maxFallSpeed) {
+            if (Owner == 0L) Owner = -1L;
         }
 
         public override bool CanPickup(Item item, Player player) {
