@@ -19,23 +19,23 @@ namespace DrakSolz.Buffs {
             player.accRunSpeed = 0;
             player.moveSpeed = 0;
             player.jump = 0;
-            int extra = 0;
-            if (HasDownedBoss(modPlayer, BossSoul.SOUL_MOON_LORD)) extra++;
-            if (HasDownedBoss(modPlayer, BossSoul.SOUL_LUNATIC_CULTIST)) extra++;
-            if (HasDownedBoss(modPlayer, BossSoul.SOUL_GOLEM)) extra++;
-            if (HasDownedBoss(modPlayer, BossSoul.SOUL_PLANTERA)) extra++;
-            if (HasDownedBoss(modPlayer, BossSoul.SOUL_DESTROYER)) extra++;
-            if (HasDownedBoss(modPlayer, BossSoul.SOUL_WALL)) extra++;
-            if (HasDownedBoss(modPlayer, BossSoul.SOUL_SKELETRON)) extra++;
-            if (HasDownedBoss(modPlayer, BossSoul.SOUL_EATER)) extra++;
-            if (HasDownedBoss(modPlayer, BossSoul.SOUL_BRAIN)) extra++;
-            if (HasDownedBoss(modPlayer, BossSoul.SOUL_EYE)) extra++;
+            int amount = 1 + modPlayer.REstus;
+            if (HasDownedBoss(modPlayer, BossSoul.SOUL_MOON_LORD)) amount++;
+            if (HasDownedBoss(modPlayer, BossSoul.SOUL_LUNATIC_CULTIST)) amount++;
+            if (HasDownedBoss(modPlayer, BossSoul.SOUL_GOLEM)) amount++;
+            if (HasDownedBoss(modPlayer, BossSoul.SOUL_PLANTERA)) amount++;
+            if (HasDownedBoss(modPlayer, BossSoul.SOUL_DESTROYER)) amount++;
+            if (HasDownedBoss(modPlayer, BossSoul.SOUL_WALL)) amount++;
+            if (HasDownedBoss(modPlayer, BossSoul.SOUL_SKELETRON)) amount++;
+            if (HasDownedBoss(modPlayer, BossSoul.SOUL_EATER)) amount++;
+            if (HasDownedBoss(modPlayer, BossSoul.SOUL_BRAIN)) amount++;
+            if (HasDownedBoss(modPlayer, BossSoul.SOUL_EYE)) amount++;
             if (Main.time % 10 == 1) {
-                modPlayer.DecreaseHollow(240 + (extra * 80));
+                modPlayer.DecreaseHollow(240 + (amount * 80));
             }
             if (Main.time % 10 == 5) {
-                player.statLife += (1 + extra + modPlayer.REstus);
-                player.HealEffect(1 + extra + modPlayer.REstus);
+                player.statLife += (amount);
+                player.HealEffect(amount);
                 if (player.statMana < player.statManaMax2 + player.statManaMax && modPlayer.RAEstus > 0) {
                     player.statMana += (modPlayer.RAEstus);
                     player.ManaEffect (modPlayer.RAEstus);

@@ -144,8 +144,6 @@ namespace DrakSolz {
             DungeonSummon = false;
             SoulMassSum = false;
             EvilEye = false;
-            REstus = 0;
-            RAEstus = 0;
             Agape = false;
             Avarice = 0;
             Binding = 0;
@@ -272,6 +270,8 @@ namespace DrakSolz {
                     }
                 }
             }
+            REstus = 0;
+            RAEstus = 0;
         }
 
         public override void PostUpdateEquips() {
