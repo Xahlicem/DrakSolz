@@ -302,6 +302,7 @@ namespace DrakSolz {
             SendPacket(MessageType.Hurt);
 
             if (Souls != 0) {
+                if (Main.netMode == NetmodeID.MultiplayerClient) return;
                 int i = Item.NewItem((int) player.position.X, (int) player.position.Y, player.width, player.height, ModContent.ItemType<Items.Souls.Soul>(), Souls);
                 Main.item[i].GetGlobalItem<Items.DSGlobalItem>().Owner = UID;
                 Souls = 0;
@@ -349,6 +350,7 @@ namespace DrakSolz {
             }
             Hollow -= amount;
             if (Hollow < 0) Hollow = 0;
+            if (amount > 10 && Main.netMode == NetmodeID.Server) SendPacket(MessageType.Hurt);
         }
 
         public void DecreaseHurtWait(int amount) {
