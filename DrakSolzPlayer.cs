@@ -82,8 +82,8 @@ namespace DrakSolz {
 
         public bool EvilEye { get; set; }
         public int Avarice { get; set; }
-        public int REstus { get; set; }
-        public int RAEstus { get; set; }
+        public int EstusHealth { get; set; }
+        public int EstusMana { get; set; }
         public bool Agape { get; set; }
         public int Binding { get; set; }
         public int MiscHP { get; set; }
@@ -116,8 +116,8 @@ namespace DrakSolz {
             SoulMassSum = false;
             CrystalPet = false;
             EvilEye = false;
-            REstus = 0;
-            RAEstus = 0;
+            EstusHealth = 1;
+            EstusMana = 0;
             Agape = false;
             Avarice = 0;
             Binding = 0;
@@ -270,8 +270,8 @@ namespace DrakSolz {
                     }
                 }
             }
-            REstus = 0;
-            RAEstus = 0;
+            EstusHealth = 1;
+            EstusMana = 0;
         }
 
         public override void PostUpdateEquips() {

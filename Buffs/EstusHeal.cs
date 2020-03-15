@@ -19,7 +19,7 @@ namespace DrakSolz.Buffs {
             player.accRunSpeed = 0;
             player.moveSpeed = 0;
             player.jump = 0;
-            int amount = 1 + modPlayer.REstus;
+            int amount = modPlayer.EstusHealth;
             if (HasDownedBoss(modPlayer, BossSoul.SOUL_MOON_LORD)) amount++;
             if (HasDownedBoss(modPlayer, BossSoul.SOUL_LUNATIC_CULTIST)) amount++;
             if (HasDownedBoss(modPlayer, BossSoul.SOUL_GOLEM)) amount++;
@@ -36,9 +36,9 @@ namespace DrakSolz.Buffs {
             if (Main.time % 10 == 5) {
                 player.statLife += (amount);
                 player.HealEffect(amount);
-                if (player.statMana < player.statManaMax2 + player.statManaMax && modPlayer.RAEstus > 0) {
-                    player.statMana += (modPlayer.RAEstus);
-                    player.ManaEffect (modPlayer.RAEstus);
+                if (player.statMana < player.statManaMax2 + player.statManaMax && modPlayer.EstusMana > 0) {
+                    player.statMana += (modPlayer.EstusMana);
+                    player.ManaEffect (modPlayer.EstusMana);
                 }
             }
             if (player.buffTime[buffIndex] == 1) {
