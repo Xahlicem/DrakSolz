@@ -55,7 +55,7 @@ namespace DrakSolz.Items {
         }
 
         public override void UpdateInventory(Item item, Player player) {
-            if (Owner < 0) Owner = player.GetModPlayer<DrakSolzPlayer>().UID;
+            if (Owner <= 0) Owner = player.GetModPlayer<DrakSolzPlayer>().UID;
             if (!Restricted) return;
             WrongOwner = (item.GetGlobalItem<DSGlobalItem>().Owner != player.GetModPlayer<DrakSolzPlayer>().UID);
         }
