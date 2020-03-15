@@ -56,6 +56,7 @@ namespace DrakSolz.Items.Souls {
             item.value = 0;
             item.rare = ItemRarityID.LightRed;
             item.consumable = true;
+            item.GetGlobalItem<DSGlobalItem>().Restricted = true;
         }
 
         public override void ModifyTooltips(List<TooltipLine> tooltips) {
@@ -63,7 +64,6 @@ namespace DrakSolz.Items.Souls {
         }
 
         public override bool CanUseItem(Player player) {
-            if (item.GetGlobalItem<Items.DSGlobalItem>().Owner != player.GetModPlayer<DrakSolzPlayer>().UID) return false;
             item.useAnimation = Ticks;
             item.useTime = Ticks;
             return true;
@@ -73,10 +73,6 @@ namespace DrakSolz.Items.Souls {
             player.ManaEffect(Total);
             player.GetModPlayer<DrakSolzPlayer>().BossSoulTicks += Ticks;
             return true;
-        }
-
-        public override bool CanPickup(Player player) {
-            return (player.GetModPlayer<DrakSolzPlayer>().UID == item.GetGlobalItem<Items.DSGlobalItem>().Owner);
         }
 
         public override bool OnPickup(Player player) {

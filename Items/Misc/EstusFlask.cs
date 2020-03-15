@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace DrakSolz.Items.Misc {
     public class EstusFlask : ModItem {
-        public int Place { get; internal set; }
+        public bool Owner { get; internal set; }
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Estus Flask");
@@ -26,14 +26,9 @@ namespace DrakSolz.Items.Misc {
             item.rare = ItemRarityID.Yellow;
             item.consumable = true;
             item.lavaWet = true;
+            item.GetGlobalItem<DSGlobalItem>().Restricted = true;
         }
 
-        public override bool CanUseItem(Player player) {
-            if (player.HasBuff(BuffID.PotionSickness)) return false;
-            else {
-                return true;
-            }
-        }
         public override bool UseItem(Player player) {
             player.AddBuff(BuffID.PotionSickness, 154);
             player.AddBuff(ModContent.BuffType<Buffs.EstusHeal>(), 155);

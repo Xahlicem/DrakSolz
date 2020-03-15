@@ -30,6 +30,7 @@ namespace DrakSolz.Items.Souls {
             item.useAnimation = 20;
             item.useTime = 20;
             item.useStyle = 4;
+            item.GetGlobalItem<DSGlobalItem>().Restricted = true;
         }
 
         public override bool ItemSpace(Player player) {
@@ -43,11 +44,6 @@ namespace DrakSolz.Items.Souls {
         public override bool UseItem(Player player) {
             player.GetModPlayer<DrakSolzPlayer>().Initialize();
             return true;
-        }
-
-        public override bool CanPickup(Player player) {
-            long owner = item.GetGlobalItem<Items.DSGlobalItem>().Owner;
-            return (owner == -1) ? true : (player.GetModPlayer<DrakSolzPlayer>().UID == owner);
         }
 
         public override void GrabRange(Player player, ref int grabRange) {
@@ -100,7 +96,6 @@ namespace DrakSolz.Items.Souls {
             num = Math.Ceiling(num / ((players.Count == 0) ? 1d : (double) players.Count));
             if (players.Count == 0) {
                 int item = Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ModContent.ItemType<Items.Souls.Soul>(), (int) num);
-                Main.item[item].GetGlobalItem<Items.DSGlobalItem>().Owner = -1;
             } else
                 for (int i = 0; i < players.Count; i++) {
                     int item = Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ModContent.ItemType<Items.Souls.Soul>(), (int) num);

@@ -257,6 +257,21 @@ namespace DrakSolz {
                 player.armor[1].type == ModContent.ItemType<Items.Armor.Channeler.ChannelerRobe>() &&
                 player.armor[2].type == ModContent.ItemType<Items.Armor.Channeler.ChannelerSkirt>())
                 player.extraAccessorySlots += 1;
+
+            if (player.HasBuff(ModContent.BuffType<Buffs.Firelink>())) {
+                foreach (Item i in player.inventory) {
+                    if (i.type == ModContent.ItemType<Items.Misc.EstusFlask>() && Estus >= 1) {
+                        i.stack++;
+                        Estus--;
+                    }
+                    if (i.type == ModContent.ItemType<Items.Misc.EmptyFlask>()) {
+                        i.netDefaults(ModContent.ItemType<Items.Misc.EstusFlask>());
+                        i.GetGlobalItem<DSGlobalItem>().Owned = true;
+                        i.GetGlobalItem<DSGlobalItem>().Restricted = true;
+                        i.GetGlobalItem<DSGlobalItem>().Owner = UID;
+                    }
+                }
+            }
         }
 
         public override void PostUpdateEquips() {
@@ -306,36 +321,19 @@ namespace DrakSolz {
             SendPacket(MessageType.Stats);
         }
         private void UpdateStats() {
-            if (Str <= 40) {
-                player.meleeDamage *= 0.6f + Str * 0.02f;;
-            } else {
-                player.meleeDamage *= 1.4f + ((Str - 40) * 0.01f);;
-            }
-            if (Dex <= 40) {
-                player.rangedDamage *= 0.6f + Dex * 0.02f;;
-            } else {
-                player.rangedDamage *= 1.4f + ((Dex - 40) * 0.01f);;
-            }
-            if (((Str < Dex) ? Str : Dex) <= 20) {
-                player.thrownDamage *= 0.6f + ((Str < Dex) ? Str : Dex) * 0.04f;;
-            } else {
-                player.thrownDamage *= 1.4f + (((Str < Dex) ? Str : Dex) - 20) * 0.02f;;
-            }
-            if (((Int < Fth) ? Int : Fth) <= 20) {
-                player.GetModPlayer<MPlayer>().pyromancyDamage *= 0.6f + ((Int < Fth) ? Int : Fth) * 0.04f;;
-            } else {
-                player.GetModPlayer<MPlayer>().pyromancyDamage *= 1.4f + (((Int < Fth) ? Int : Fth) - 20) * 0.02f;;
-            }
-            if (Int <= 40) {
-                player.magicDamage *= 0.6f + Int * 0.02f;;
-            } else {
-                player.magicDamage *= 1.4f + ((Int - 40) * 0.01f);;
-            }
-            if (Fth <= 40) {
-                player.minionDamage *= 0.6f + Fth * 0.02f;;
-            } else {
-                player.minionDamage *= 1.4f + ((Fth - 40) * 0.01f);;
-            }
+            if (Str <= 40) player.meleeDamage *= 0.6f + Str * 0.02f;
+            else player.meleeDamage *= 1.4f + ((Str - 40) * 0.01f);
+            if (Dex <= 40) player.rangedDamage *= 0.6f + Dex * 0.02f;
+            else player.rangedDamage *= 1.4f + ((Dex - 40) * 0.01f);
+            if (((Str < Dex) ? Str : Dex) <= 20) player.thrownDamage *= 0.6f + ((Str < Dex) ? Str : Dex) * 0.04f;
+            else player.thrownDamage *= 1.4f + (((Str < Dex) ? Str : Dex) - 20) * 0.02f;
+            if (Int <= 40) player.magicDamage *= 0.6f + Int * 0.02f;
+            else player.magicDamage *= 1.4f + ((Int - 40) * 0.01f);
+            if (Fth <= 40) player.minionDamage *= 0.6f + Fth * 0.02f;
+            else player.minionDamage *= 1.4f + ((Fth - 40) * 0.01f);
+            if (((Int < Fth) ? Int : Fth) <= 20) player.GetModPlayer<MPlayer>().pyromancyDamage *= 0.6f + ((Int < Fth) ? Int : Fth) * 0.04f;
+            else player.GetModPlayer<MPlayer>().pyromancyDamage *= 1.4f + (((Int < Fth) ? Int : Fth) - 20) * 0.02f;
+            
             player.statLifeMax = Level * 4 + 100 + MiscHP;
             player.statLifeMax2 = player.statLifeMax + Vit * 11;
             player.statManaMax = 0;
@@ -403,21 +401,21 @@ namespace DrakSolz {
 
         public override void SetupStartInventory(IList<Item> items, bool mediumcoreDeath) {
             items.Clear();
-            Item item = new Item();
-            item.netDefaults(ModContent.ItemType<Items.Melee.Sword>());
-            item.GetGlobalItem<DSGlobalItem>().Owned = true;
-            item.GetGlobalItem<DSGlobalItem>().Owner = UID;
-            items.Add(item);
-            Item item2 = new Item();
-            item2.netDefaults(ModContent.ItemType<Items.Misc.EstusFlask>());
-            item2.GetGlobalItem<DSGlobalItem>().Owned = true;
-            item2.GetGlobalItem<DSGlobalItem>().Owner = UID;
-            items.Add(item2);
-            Item item3 = new Item();
-            item3.netDefaults(ModContent.ItemType<Items.Misc.Classes.ClassEmpty>());
-            item3.GetGlobalItem<DSGlobalItem>().Owned = true;
-            item3.GetGlobalItem<DSGlobalItem>().Owner = UID;
-            items.Add(item3);
+            Item sword = new Item();
+            sword.netDefaults(ModContent.ItemType<Items.Melee.Sword>());
+            sword.GetGlobalItem<DSGlobalItem>().Owned = true;
+            sword.GetGlobalItem<DSGlobalItem>().Owner = UID;
+            items.Add(sword);
+            Item flask = new Item();
+            flask.netDefaults(ModContent.ItemType<Items.Misc.EstusFlask>());
+            flask.GetGlobalItem<DSGlobalItem>().Owned = true;
+            flask.GetGlobalItem<DSGlobalItem>().Owner = UID;
+            items.Add(flask);
+            Item classItem = new Item();
+            classItem.netDefaults(ModContent.ItemType<Items.Misc.Classes.ClassEmpty>());
+            classItem.GetGlobalItem<DSGlobalItem>().Owned = true;
+            classItem.GetGlobalItem<DSGlobalItem>().Owner = UID;
+            items.Add(classItem);
         }
 
         public override void SyncPlayer(int toWho, int fromWho, bool newPlayer) {

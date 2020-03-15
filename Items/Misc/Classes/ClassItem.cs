@@ -25,6 +25,7 @@ namespace DrakSolz.Items.Misc.Classes {
             item.rare = ItemRarityID.Blue;
             item.maxStack = 1;
             item.consumable = true;
+            item.GetGlobalItem<DSGlobalItem>().Restricted = true;
         }
         public override bool UseItem(Player player) {
             Main.NewText(TEXT + " has been chosen!", 255, 255, 255);
@@ -38,7 +39,7 @@ namespace DrakSolz.Items.Misc.Classes {
             return true;
         }
         public override void AddRecipes() {
-            if (ModContent.ItemType<Items.Misc.Classes.ClassEmpty>() == this.item.netID) return;
+            if (ModContent.ItemType<Items.Misc.Classes.ClassEmpty>() == this.item.type) return;
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ModContent.GetModItem(ModContent.ItemType<Items.Misc.Classes.ClassEmpty>()), 1);
             recipe.SetResult(this);

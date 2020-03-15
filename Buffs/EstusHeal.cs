@@ -1,7 +1,7 @@
-using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using DrakSolz.Items.Souls;
 
 namespace DrakSolz.Buffs {
     public class EstusHeal : ModBuff {
@@ -19,63 +19,41 @@ namespace DrakSolz.Buffs {
             player.accRunSpeed = 0;
             player.moveSpeed = 0;
             player.jump = 0;
-            int i2 = 0;
-            if (NPC.downedMoonlord) {
-                i2 += 1;
-            }
-            if (NPC.downedAncientCultist) {
-                i2 += 1;
-            }
-            if (NPC.downedGolemBoss) {
-                i2 += 1;
-            }
-            if (NPC.downedPlantBoss) {
-                i2 += 1;
-            }
-            if (NPC.downedMechBossAny) {
-                i2 += 1;
-            }
-            if (Main.hardMode) {
-                i2 += 1;
-            }
-            if (NPC.downedBoss3) {
-                i2 += 1;
-            }
-            if (NPC.downedBoss2) {
-                i2 += 1;
-            }
-            if (NPC.downedBoss1) {
-                i2 += 1;
-            }
+            int extra = 0;
+            if (HasDownedBoss(modPlayer, BossSoul.SOUL_MOON_LORD)) extra++;
+            if (HasDownedBoss(modPlayer, BossSoul.SOUL_LUNATIC_CULTIST)) extra++;
+            if (HasDownedBoss(modPlayer, BossSoul.SOUL_GOLEM)) extra++;
+            if (HasDownedBoss(modPlayer, BossSoul.SOUL_PLANTERA)) extra++;
+            if (HasDownedBoss(modPlayer, BossSoul.SOUL_DESTROYER)) extra++;
+            if (HasDownedBoss(modPlayer, BossSoul.SOUL_WALL)) extra++;
+            if (HasDownedBoss(modPlayer, BossSoul.SOUL_SKELETRON)) extra++;
+            if (HasDownedBoss(modPlayer, BossSoul.SOUL_EATER)) extra++;
+            if (HasDownedBoss(modPlayer, BossSoul.SOUL_BRAIN)) extra++;
+            if (HasDownedBoss(modPlayer, BossSoul.SOUL_EYE)) extra++;
             if (Main.time % 10 == 1) {
-                player.GetModPlayer<DrakSolzPlayer>().DecreaseHollow(240 + (i2 * 80));
+                modPlayer.DecreaseHollow(240 + (extra * 80));
             }
             if (Main.time % 10 == 5) {
-                player.statLife += (1 + i2 + player.GetModPlayer<DrakSolzPlayer>().REstus);
-                player.HealEffect(1 + i2 + player.GetModPlayer<DrakSolzPlayer>().REstus);
-            }
-            if (Main.time % 10 == 5 && player.GetModPlayer<DrakSolzPlayer>().RAEstus >= 1) {
-                if (player.statMana < player.statManaMax2 + player.statManaMax)
-                player.statMana += (10);
-                player.ManaEffect (10);
-            }
-            if (player.buffTime[buffIndex] == 1) {
-                if (!player.HasBuff(BuffID.PotionSickness)) {
-                    foreach (Item i in player.inventory) {
-                        if (i.type == ModContent.ItemType<Items.Misc.EstusFlask>()) {
-                            if (i.stack > 1) {
-                                i.stack -= 1;
-                                modPlayer.Estus += 1;
-                                return;
-                            } else {
-                                i.netDefaults(ModContent.ItemType<Items.Misc.EmptyFlask>());
-                                modPlayer.Estus += 1;
-                                return;
-                            }
-                        }
-                    }
+                player.statLife += (1 + extra + modPlayer.REstus);
+                player.HealEffect(1 + extra + modPlayer.REstus);
+                if (player.statMana < player.statManaMax2 + player.statManaMax && modPlayer.RAEstus > 0) {
+                    player.statMana += (modPlayer.RAEstus);
+                    player.ManaEffect (modPlayer.RAEstus);
                 }
             }
+            if (player.buffTime[buffIndex] == 1) {
+                if (!player.HasBuff(BuffID.PotionSickness)) foreach (Item i in player.inventory)
+                        if (i.type == ModContent.ItemType<Items.Misc.EstusFlask>()) {
+                            if (i.stack > 1) {
+                                i.stack--;
+                                modPlayer.Estus++;
+                            }
+                            else i.netDefaults(ModContent.ItemType<Items.Misc.EmptyFlask>());
+                        }
+            }
+        }
+        public static bool HasDownedBoss(DrakSolzPlayer modPlayer, int bossSoulPlace) {
+            return ((modPlayer.BossSouls & bossSoulPlace) > 0);
         }
     }
 }

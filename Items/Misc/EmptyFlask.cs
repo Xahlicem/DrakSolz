@@ -18,6 +18,11 @@ namespace DrakSolz.Items.Misc {
             item.maxStack = 1;
             item.value = Item.sellPrice(0, 0, 0, 0);
             item.rare = ItemRarityID.Yellow;
+            item.GetGlobalItem<DSGlobalItem>().Restricted = true;
+        }
+
+        public override bool CanPickup(Player player) {
+            return (player.GetModPlayer<DrakSolzPlayer>().UID == item.GetGlobalItem<Items.DSGlobalItem>().Owner);
         }
     }
 }

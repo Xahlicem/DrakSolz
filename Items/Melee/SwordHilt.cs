@@ -20,18 +20,11 @@ namespace DrakSolz.Items.Melee {
             item.knockBack = 1f;
             item.useTime += 3;
             item.useAnimation += 3;
+            item.GetGlobalItem<DSGlobalItem>().Restricted = true;
         }
 
         public override Vector2? HoldoutOffset() {
             return new Vector2(0, 0);
-        }
-
-        public override bool CanUseItem(Player player) {
-            return (item.GetGlobalItem<Items.DSGlobalItem>().Owner == player.GetModPlayer<DrakSolzPlayer>().UID);
-        }
-
-        public override bool CanPickup(Player player) {
-            return (player.GetModPlayer<DrakSolzPlayer>().UID == item.GetGlobalItem<Items.DSGlobalItem>().Owner);
         }
     }
 }

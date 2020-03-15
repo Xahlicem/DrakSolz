@@ -13,6 +13,8 @@ namespace DrakSolz.Items {
         public bool ArcaneRolled { get; set; }
         public int ArcaneMana { get; set; }
         public bool Used { get; set; }
+        public bool Restricted { get; set; }
+        public bool WrongOwner { get; set; }
         public override bool CloneNewInstances { get { return true; } }
         public override bool InstancePerEntity { get { return true; } }
 
@@ -21,6 +23,8 @@ namespace DrakSolz.Items {
             else Owner = -2L;
 
             ArcaneRolled = false;
+            Restricted = false;
+            WrongOwner = false;
         }
 
         public override GlobalItem Clone(Item item, Item itemClone) {
@@ -28,12 +32,31 @@ namespace DrakSolz.Items {
             var destination = itemClone.GetGlobalItem<DSGlobalItem>();
             if (source != null && destination != null) {
                 destination.Owned = source.Owned;
+                destination.Restricted = Restricted;
                 destination.Used = source.Used;
                 destination.Owner = Owner;
                 destination.ArcaneRolled = ArcaneRolled;
                 destination.ArcaneMana = ArcaneMana;
             }
             return destination;
+        }
+
+        public override bool CanPickup(Item item, Player player) {
+            bool owner = true;
+            if (Restricted) owner = player.GetModPlayer<DrakSolzPlayer>().UID == Owner || Owner < 0;
+            return base.CanPickup(item, player) && owner;
+        }
+
+        public override bool CanUseItem(Item item, Player player) {
+            bool owner = true;
+            if (Restricted) owner = player.GetModPlayer<DrakSolzPlayer>().UID == Owner;
+            return base.CanUseItem(item, player) && owner;
+        }
+
+        public override void UpdateInventory(Item item, Player player) {
+            if (Owner < 0) Owner = player.GetModPlayer<DrakSolzPlayer>().UID;
+            if (!Restricted) return;
+            WrongOwner = (item.GetGlobalItem<DSGlobalItem>().Owner != player.GetModPlayer<DrakSolzPlayer>().UID);
         }
 
         public override void OnCraft(Item item, Recipe recipe) {
@@ -90,10 +113,16 @@ namespace DrakSolz.Items {
                 t.isModifier = true;
                 tooltips.Add(t);
             }
+            if (WrongOwner) {
+                tooltips.Insert(0, new TooltipLine(mod, "DSOwner", "This Does not belong to you!"));
+                tooltips[0].overrideColor = Color.Red;
+            } else if (tooltips[0].Name == "DSOwner") tooltips.RemoveAt(0);
+            //tooltips.Add(new TooltipLine(mod, "Owners", "Restricted:" + Restricted + " | Owner:" + Owner));
         }
 
         public override void NetSend(Item item, System.IO.BinaryWriter writer) {
             writer.Write(Owner);
+            writer.Write(Restricted);
             writer.Write(Used);
             writer.Write(ArcaneRolled);
             writer.Write(ArcaneMana);
@@ -101,12 +130,14 @@ namespace DrakSolz.Items {
 
         public override void NetReceive(Item item, System.IO.BinaryReader reader) {
             Owner = reader.ReadInt64();
+            Restricted = reader.ReadBoolean();
             Used = reader.ReadBoolean();
             ArcaneRolled = reader.ReadBoolean();
             ArcaneMana = reader.ReadInt32();
         }
 
         public override bool NeedsSaving(Item item) {
+            if (Restricted) return true;
             if ((item.type == 0 || item.consumable || item.ammo > 0 || item.type == ModLoader.GetMod("ModLoader").ItemType("MysteryItem")) && !(item.modItem is SoulItem)) {
                 return false;
             }
@@ -117,11 +148,12 @@ namespace DrakSolz.Items {
             if (item.type == 0 || item.type == ModLoader.GetMod("ModLoader").ItemType("MysteryItem")) {
                 return null;
             }
-            return new TagCompound { { "owned", Owned }, { "used", Used }, { "FromPlayer", Owner }, { "ArcaneRolled", ArcaneRolled }, { "ArcaneMana", ArcaneMana } };
+            return new TagCompound { { "owned", Owned }, { "restricted", Restricted }, { "used", Used }, { "FromPlayer", Owner }, { "ArcaneRolled", ArcaneRolled }, { "ArcaneMana", ArcaneMana } };
         }
 
         public override void Load(Item item, TagCompound tag) {
             Owned = tag.GetBool("owned");
+            Restricted = tag.GetBool("restricted");
             Used = tag.GetBool("used");
             Owner = tag.GetLong("FromPlayer");
             if (Owner == 0) Owner = Main.LocalPlayer.GetModPlayer<DrakSolzPlayer>().UID;;
