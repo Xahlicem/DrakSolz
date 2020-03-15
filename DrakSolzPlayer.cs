@@ -290,10 +290,9 @@ namespace DrakSolz {
 
         public override void Hurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit) {
             HurtWait = HURT_WAIT_MAX;
-            Hollow += (int)(damage * 120.0);
+            Hollow += (int)(damage * 75.0);
 
-            if (Main.netMode != NetmodeID.SinglePlayer)
-                SendPacket(MessageType.Hurt);
+            if (Main.netMode == NetmodeID.Server) SendPacket(MessageType.Hurt);
         }
 
         public override void UpdateDead() {
