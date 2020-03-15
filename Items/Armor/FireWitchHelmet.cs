@@ -21,7 +21,7 @@ namespace DrakSolz.Items.Armor {
             item.height = 28;
             item.value = Item.sellPrice(0, 1, 0, 0);
             item.rare = ItemRarityID.LightRed;
-            item.defense = 8;
+            item.defense = 14;
         }
 
         public override void UpdateEquip(Player player) {
@@ -43,7 +43,8 @@ namespace DrakSolz.Items.Armor {
         public override void UpdateArmorSet(Player player) {
             if (player.dye[1].type == ItemID.SkyBlueDye && player.dye[2].type == ItemID.SkyBlueDye){
                  player.setBonus = ("30% increased fire damage and critical strike chance" +
-                "\nincreases mana usage by 50%");
+                "\nincreases mana usage by 50%" +
+                "\n+20 defense");
 			    player.GetModPlayer<MPlayer>().pyromancyDamage += 0.30f;
 			    player.GetModPlayer<MPlayer>().pyromancyCrit += 30;
                 player.manaCost *= 1.5f;
@@ -54,6 +55,7 @@ namespace DrakSolz.Items.Armor {
 			    player.GetModPlayer<MPlayer>().pyromancyDamage += 0.30f;
 			    player.GetModPlayer<MPlayer>().pyromancyCrit += 30;
                 player.manaCost *= 1.5f;
+                player.statDefense += 20;
                 }
             
         }

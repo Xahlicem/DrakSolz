@@ -23,7 +23,7 @@ namespace DrakSolz.Items.Misc {
         public class CrystalPetNPC : GlobalNPC {
             public override void NPCLoot(NPC npc) {
                 if (Main.rand.Next(20) == 0) {
-                    if (npc.type == ModContent.NPCType<NPCs.Enemy.PreHardMode.CrystalLizard>() ) {
+                    if (npc.type == ModContent.NPCType<NPCs.Enemy.PreHardMode.CrystalLizard>() || npc.type == ModContent.NPCType<NPCs.Enemy.PostPlantera.GiantCrystalLizard>() ) {
                         Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ModContent.ItemType<Items.Misc.CrystalPet>(), 1);
                     }
                 }
