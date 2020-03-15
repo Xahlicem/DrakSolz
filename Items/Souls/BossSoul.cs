@@ -197,10 +197,7 @@ namespace DrakSolz.Items.Souls {
             if (soul == null) return;
 
             List<int> players = new List<int>();
-            for (int i = 0; i < Main.player.Length; i++)
-                if (Main.player[i] != null)
-                    if (npc.WithinRange(Main.player[i].Center, 1600f))
-                        players.Add(Main.player[i].whoAmI);
+            for (int i = 0; i < Main.player.Length; i++) if (Main.player[i] != null) players.Add(Main.player[i].whoAmI);
             if (players.Count != 0)
                 for (int i = 0; i < players.Count; i++) {
                     if ((Main.player[players[i]].GetModPlayer<DrakSolzPlayer>().BossSouls & soul.Place) > 0) continue;
