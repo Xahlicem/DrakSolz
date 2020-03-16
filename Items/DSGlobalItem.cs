@@ -138,17 +138,10 @@ namespace DrakSolz.Items {
         }
 
         public override bool NeedsSaving(Item item) {
-            if (Restricted) return true;
-            if ((item.type == 0 || item.consumable || item.ammo > 0 || item.type == ModLoader.GetMod("ModLoader").ItemType("MysteryItem")) && !(item.modItem is SoulItem)) {
-                return false;
-            }
-            return true;
+            return (Restricted || item.modItem is SoulItem);
         }
 
         public override TagCompound Save(Item item) {
-            if (item.type == 0 || item.type == ModLoader.GetMod("ModLoader").ItemType("MysteryItem")) {
-                return null;
-            }
             return new TagCompound { { "owned", Owned }, { "restricted", Restricted }, { "used", Used }, { "FromPlayer", Owner }, { "ArcaneRolled", ArcaneRolled }, { "ArcaneMana", ArcaneMana } };
         }
 
@@ -157,7 +150,7 @@ namespace DrakSolz.Items {
             Restricted = tag.GetBool("restricted");
             Used = tag.GetBool("used");
             Owner = tag.GetLong("FromPlayer");
-            if (Owner == 0) Owner = Main.LocalPlayer.GetModPlayer<DrakSolzPlayer>().UID;;
+            if (Owner <= 0) Owner = Main.LocalPlayer.GetModPlayer<DrakSolzPlayer>().UID;;
             ArcaneRolled = tag.GetBool("ArcaneRolled");
             ArcaneMana = tag.GetInt("ArcaneMana");
         }
