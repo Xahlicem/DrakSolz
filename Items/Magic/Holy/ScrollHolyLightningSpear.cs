@@ -7,7 +7,7 @@ using Terraria.ModLoader.IO;
 
 namespace DrakSolz.Items.Magic.Holy {
     public class ScrollHolyLightningSpear : SoulItem {
-        public ScrollHolyLightningSpear() : base(1500) { }
+        public ScrollHolyLightningSpear() : base(4000) { }
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Lightning Spear");

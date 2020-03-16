@@ -19,12 +19,7 @@ namespace DrakSolz.Items.Accessory {
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual) {
-            int life = 0;
-            if (player.statLifeMax2 <= 20) life = 15;
-            else if (player.statLifeMax2 <= 100) life = 20;
-            else life = (int) (player.statLifeMax2 * 0.2f);
-
-            if (player.statLife <= life) {
+            if (player.statLife <= (player.statLifeMax) * 0.5f) {
                 player.statDefense += 20;
             }
         }

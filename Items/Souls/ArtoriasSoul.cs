@@ -18,7 +18,7 @@ namespace DrakSolz.Items.Souls {
 
     public class ArtoriasRecipe : ModRecipe {
         public ArtoriasRecipe(Mod mod, BossSoul soul) : base(mod) {
-            SetResult(ModContent.ItemType<Items.Melee.MorianBlade>());
+            SetResult(ModContent.ItemType<Items.Melee.ArtoriasSword>());
             AddIngredient(soul);
             AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
             AddIngredient(ModContent.ItemType<Items.Melee.Sword>());

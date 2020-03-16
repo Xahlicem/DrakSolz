@@ -44,7 +44,6 @@ namespace DrakSolz.Items.Armor {
             player.meleeSpeed *= 1.40f;
             player.statLifeMax2 += 100;
             player.statManaMax2 += 40;
-            player.endurance += 5;
             player.accRunSpeed += 5;
             player.jumpSpeedBoost += 4;
             player.moveSpeed += 0.20f;

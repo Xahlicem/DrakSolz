@@ -7,7 +7,7 @@ using Terraria.ModLoader.IO;
 
 namespace DrakSolz.Items.Magic.Holy {
     public class ScrollHolyGreatLightningSpear : SoulItem {
-        public ScrollHolyGreatLightningSpear() : base(35000) { }
+        public ScrollHolyGreatLightningSpear() : base(40000) { }
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Great Lightning Spear");
@@ -36,6 +36,7 @@ namespace DrakSolz.Items.Magic.Holy {
         public override void AddRecipes() {
         ModRecipe recipe = new SoulRecipe(mod, this);
         recipe.AddIngredient(ModContent.ItemType<Items.Magic.Holy.ScrollHolyLightningSpear>());
+        recipe.AddIngredient(ItemID.PixieDust, 50);
         recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
         recipe.AddRecipe();
         }

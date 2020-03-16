@@ -60,14 +60,6 @@ namespace DrakSolz.Items.Melee {
 
             return true;
         }
-        public override void AddRecipes() {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ModContent.ItemType<Items.Melee.Sword>());
-            recipe.AddIngredient(ModContent.ItemType<Items.Souls.ArtoriasSoul>());
-            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-        }
 
         /*public override bool UseItem(Player player) {
             item.damage = 30 + (int)((player.statLifeMax2 - player.statLife) * 0.1f);

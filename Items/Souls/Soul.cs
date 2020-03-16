@@ -60,8 +60,9 @@ namespace DrakSolz.Items.Souls {
             mPlayer.SoulTicks += item.stack;
             player.ManaEffect(item.stack);
             if (mPlayer.EvilEye) {
+                mPlayer.DecreaseHollow(1500);
                 player.statLife += 5;
-                player.HealEffect(5);
+                player.HealEffect(5); 
             }
             return false;
         }
@@ -91,7 +92,7 @@ namespace DrakSolz.Items.Souls {
             List<int> players = new List<int>();
             for (int i = 0; i < Main.player.Length; i++)
                 if (Main.player[i] != null)
-                    if (npc.WithinRange(Main.player[i].Center, 800f))
+                    if (npc.WithinRange(Main.player[i].Center, 1600f))
                         players.Add(Main.player[i].whoAmI);
             num = Math.Ceiling(num / ((players.Count == 0) ? 1d : (double) players.Count));
             if (players.Count == 0) {

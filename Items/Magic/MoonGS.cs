@@ -13,7 +13,7 @@ namespace DrakSolz.Items.Magic {
         }
 
         public override void SetDefaults() {
-            item.damage = 250;
+            item.damage = 120;
             item.magic = true;
             item.mana = 20;
             item.width = 90;
@@ -31,7 +31,7 @@ namespace DrakSolz.Items.Magic {
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack) {
-            damage *= 2;
+            damage *= 1;
             return base.Shoot(player, ref position, ref speedX, ref speedY, ref type, ref damage, ref knockBack);
         }
     }

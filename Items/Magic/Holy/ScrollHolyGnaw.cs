@@ -19,7 +19,7 @@ namespace DrakSolz.Items.Magic.Holy {
             item.CloneDefaults(ItemID.ShadowbeamStaff);
             item.useStyle = 1;
             item.magic = false;
-            item.damage = 30;
+            item.damage = 26;
             item.noMelee = true;
             item.noUseGraphic = true;
             item.useTime = 30;
@@ -37,6 +37,12 @@ namespace DrakSolz.Items.Magic.Holy {
             ModRecipe recipe = new SoulRecipe(mod, this);
             recipe.AddIngredient(ModContent.ItemType<Items.Misc.ScrollHoly>());
             recipe.AddIngredient(ModContent.ItemType<Items.Souls.EaterSoul>());
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
+            recipe.AddRecipe();
+            
+            ModRecipe recipe2 = new SoulRecipe(mod, this);
+            recipe.AddIngredient(ModContent.ItemType<Items.Misc.ScrollHoly>());
+            recipe.AddIngredient(ItemID.SoulofNight, 20);
             recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
             recipe.AddRecipe();
         }

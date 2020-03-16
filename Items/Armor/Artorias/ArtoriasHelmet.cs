@@ -44,7 +44,6 @@ namespace DrakSolz.Items.Armor.Artorias {
             player.statManaMax2 += 250;
             player.GetModPlayer<DrakSolzPlayer>().MiscHP += 500;
             player.meleeSpeed *= 1.5f;
-            player.endurance += 5;
             player.accRunSpeed += 5;
             player.jumpSpeedBoost += 4;
             player.moveSpeed += 0.20f;
@@ -55,7 +54,6 @@ namespace DrakSolz.Items.Armor.Artorias {
             player.ammoCost80 = true;
             player.buffImmune[BuffID.WitheredArmor] = true;
             player.buffImmune[BuffID.WitheredWeapon] = true;
-            player.AddBuff(BuffID.Battle, 2);
             player.AddBuff(BuffID.WaterCandle, 2);
             player.armorPenetration += 20;
             player.onHitDodge = true;

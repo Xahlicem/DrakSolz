@@ -38,7 +38,6 @@ namespace DrakSolz.Items.Armor.Ringed {
             player.statManaMax2 += 250;
             player.statLifeMax2 += 500;
             player.meleeSpeed *= 1.5f;
-            player.endurance += 5;
             player.accRunSpeed += 5;
             player.jumpSpeedBoost += 4;
             player.moveSpeed += 0.20f;
