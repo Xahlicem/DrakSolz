@@ -94,6 +94,7 @@ namespace DrakSolz.Tiles {
                         return true;
                     } else if (c >= 997) {
                         int[] DSItems = {
+                        ModContent.ItemType<Items.Accessory.RejuvenatorShield> (),
                         ModContent.ItemType<Items.Accessory.RingCalamity> (),
                         ModContent.ItemType<Items.Accessory.RingAvarice> (),
                         ModContent.ItemType<Items.Accessory.RingDarkGrain> (),
@@ -181,6 +182,7 @@ namespace DrakSolz.Tiles {
                         ModContent.ItemType<Items.Melee.QrowQuills> (),
                         ModContent.ItemType<Items.Melee.SplitLeaf> (),
                         ModContent.ItemType<Items.Melee.TitanitePole> (),
+                        ModContent.ItemType<Items.Melee.RejuvenatorSword> (),
                         ModContent.ItemType<Items.Misc.CoalBlue> (),
                         ModContent.ItemType<Items.Misc.CoalLord> (),
                         ModContent.ItemType<Items.Misc.CovenentArterRias> (),
@@ -334,6 +336,8 @@ namespace DrakSolz.Tiles {
                         ModContent.ItemType<Items.Magic.SoulArrow.ScrollSoulDart> (),
                         ModContent.ItemType<Items.Magic.SoulBlades.ScrollSoulBlades> (),
                         ModContent.ItemType<Items.Magic.SoulBlades.ScrollSoulBlades1> (),
+                        ModContent.ItemType<Items.Melee.GibbetSword> (),
+                        ModContent.ItemType<Items.Melee.SwordNineMoons> (),
                         ModContent.ItemType<Items.Melee.ChannelT> (),
                         ModContent.ItemType<Items.Melee.DragonSlayerSpear> (),
                         ModContent.ItemType<Items.Melee.GravelordSword> (),
@@ -367,6 +371,7 @@ namespace DrakSolz.Tiles {
                         ModContent.ItemType<Items.Misc.ScrollRemedy> (),
                         ModContent.ItemType<Items.Misc.ScrollVelocity> (),
                         ModContent.ItemType<Items.Misc.Twink> (),
+                        ModContent.ItemType<Items.Ranged.SolpiercerBow> (),
                         ModContent.ItemType<Items.Ranged.GoldenSlingshot> (),
                         ModContent.ItemType<Items.Ranged.Moltenshot> (),
                         ModContent.ItemType<Items.Ranged.ReinforcedSlingshot> (),
@@ -400,6 +405,22 @@ namespace DrakSolz.Tiles {
                         return true;
                     } else {
                         int r = (Main.rand.Next (3929));
+                        if (r == 1230 || r == 1231 || r == 1254 || r == 1260 || r == 1266 || r == 1292 || r == 1293 || r == 1294
+                        || r == 1295 || r == 1296 || r == 1297 || r == 1316 || r == 1317 || r == 1318 || r == 1326 || r == 1327
+                        || r == 1444 || r == 1445 || r == 1446 || r == 1506 || r == 1503 || r == 1504 || r == 1505 || r == 1513
+                        || r == 1546 || r == 1547 || r == 1548 || r == 1549 || r == 1550 || r == 1553 || r == 1571 || r == 1572
+                        || r == 1801 || r == 1802 || r == 1826 || r == 1832 || r == 1833 || r == 1834 || r == 1835 || r == 1928
+                        || r == 1929 || r == 1931 || r == 1947 || r == 2176 || r == 2189 || r == 2199 || r == 2200 || r == 2201
+                        || r == 2202 || r == 2223 || r == 2611 || r == 2622 || r == 2623 || r == 2624 || r == 2749 || r == 2757
+                        || r == 2758 || r == 2759 || r == 2760 || r == 2761 || r == 2762 || r == 2763 || r == 2764 || r == 2765
+                        || r == 2768 || r == 2769 || r == 2771 || r == 2774 || r == 2776 || r == 2779 || r == 2781 || r == 2784
+                        || r == 2786 || r == 2795 || r == 2796 || r == 2797 || r == 2798 || r == 2880 || r == 2881 || r == 2882
+                        || r == 3063 || r == 3065 || r == 3107 || r == 3249 || r == 3291 || r == 3292 || r == 3329 || r == 3330
+                        || r == 3331 || r == 3332 || r == 3335 || r == 3381 || r == 3382 || r == 3383 || r == 3384 || r == 3389
+                        || r == 3464 || r == 3466 || r == 3473 || r == 3474 || r == 3475 || r == 3476 || r == 3531 || r == 3540
+                        || r == 3541 || r == 3542 || r == 3543 || r == 3569 || r == 3570 || r == 3571 || r == 3820 || r == 3826
+                        || r == 3827 || r == 3831 || r == 3834 || r == 3858 || r == 3859 || r == 3860 || r == 3870){
+                        r = (Main.rand.Next (3929));}
                         Item.NewItem (player.position, player.width, player.height, r);
                         g.stack -= 1;
                         Main.PlaySound (SoundID.CoinPickup, player.position);
