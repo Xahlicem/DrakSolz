@@ -38,6 +38,10 @@ namespace DrakSolz.Items {
             return destination;
         }
 
+        public override void GrabRange(Item item, Player player, ref int grabRange) {
+            if (player.GetModPlayer<DrakSolzPlayer>().Agape) grabRange *= 2;
+        }
+
         public override void Update(Item item, ref float gravity, ref float maxFallSpeed) {
             if (Owner == 0L) Owner = -1L;
         }
