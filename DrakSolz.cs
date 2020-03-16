@@ -175,10 +175,10 @@ namespace DrakSolz {
                     p.Hollow = reader.ReadInt32();
                     break;
                 case MessageType.UID:
-                    p.UID = reader.ReadInt64();;
+                    p.UID = reader.ReadInt64();
                     break;
                 case MessageType.Souls:
-                    p.Souls = reader.ReadInt32();;
+                    p.Souls = reader.ReadInt32();
                     if (p.player.Equals(Main.LocalPlayer))ui.updateValue(p.Souls, p.Level);
                     break;
                 default:

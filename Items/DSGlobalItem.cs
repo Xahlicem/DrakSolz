@@ -150,7 +150,7 @@ namespace DrakSolz.Items {
             Restricted = tag.GetBool("restricted");
             Used = tag.GetBool("used");
             Owner = tag.GetLong("FromPlayer");
-            if (Owner <= 0) Owner = Main.LocalPlayer.GetModPlayer<DrakSolzPlayer>().UID;;
+            if (Owner <= 0) Owner = Main.LocalPlayer.GetModPlayer<DrakSolzPlayer>().UID;
             ArcaneRolled = tag.GetBool("ArcaneRolled");
             ArcaneMana = tag.GetInt("ArcaneMana");
         }

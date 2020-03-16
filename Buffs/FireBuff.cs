@@ -7,7 +7,7 @@ namespace DrakSolz.Buffs {
     public class FireBuff : ModBuff {
         public override void SetDefaults() {
             DisplayName.SetDefault("Burning Soul");
-            Description.SetDefault("'On Fire'' effects deal increased damage.");
+            Description.SetDefault("'On Fire' effects deal increased damage.");
             Main.buffNoSave[Type] = false;
             Main.debuff[Type] = false;
 
