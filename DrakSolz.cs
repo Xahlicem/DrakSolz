@@ -99,7 +99,19 @@ namespace DrakSolz {
             ListBossSoul = null;
             instance = null;
             if (!Main.dedServ) {
-                //VoidPillarGlowMask.Unload();
+                ui = null;
+                userInterface = null;
+                playerUI = null;
+                userInterfacePlayer = null;
+                VoidPillarSky.PlanetTexture.Dispose();
+                VoidPillarSky.PlanetTexture = null;
+                /*
+                try {
+                    Filters.Scene["DrakSolz:VoidPillar"] = null;
+                    SkyManager.Instance["DrakSolz:VoidPillar"] = null;
+                    //VoidPillarGlowMask.Unload();
+                } catch (Exception) {}
+                */
             }
         }
 
