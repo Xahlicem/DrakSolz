@@ -306,7 +306,7 @@ namespace DrakSolz {
                 int i = Item.NewItem((int) player.position.X, (int) player.position.Y, player.width, player.height, ModContent.ItemType<Items.Souls.Soul>(), Souls);
                 Main.item[i].GetGlobalItem<Items.DSGlobalItem>().Owner = UID;
                 Souls = 0;
-                if (player.Equals(Main.LocalPlayer))(mod as DrakSolz).ui.updateValue(Souls, Level);
+                SendPacket(MessageType.Souls);
             }
         }
 

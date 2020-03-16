@@ -179,6 +179,7 @@ namespace DrakSolz {
                     break;
                 case MessageType.Souls:
                     p.Souls = reader.ReadInt32();;
+                    if (p.player.Equals(Main.LocalPlayer))ui.updateValue(p.Souls, p.Level);
                     break;
                 default:
                     Logger.Error("Drak Solz: Unknown Message type: " + msgType);
