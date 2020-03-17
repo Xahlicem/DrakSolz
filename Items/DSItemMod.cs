@@ -131,12 +131,10 @@ namespace DrakSolz.Items {
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips) {
             for (int i = 0; i < tooltips.Count; i++) {
-                if (tooltips[i].text.Contains("summon damage"))
+                if (tooltips[i].text.Contains("summon") && tooltips[i].text.Contains("damage"))
                     tooltips[i].text = tooltips[i].text.Replace("summon", "miracle");
-                if (tooltips[i].text.Contains("minion damage"))
+                if (tooltips[i].text.Contains("minion") && tooltips[i].text.Contains("damage"))
                     tooltips[i].text = tooltips[i].text.Replace("minion", "miracle");
-                if (tooltips[i].text.Contains("minions damage"))
-                    tooltips[i].text = tooltips[i].text.Replace("minions", "miracle");
             }
         }
     }
@@ -147,7 +145,7 @@ namespace DrakSolz.Items {
             if (item.type == ItemID.WandofSparking || item.type == ItemID.Flamelash || item.type == ItemID.FlowerofFire ||
                 item.type == ItemID.SpaceGun || item.type == ItemID.ClingerStaff || item.type == ItemID.MeteorStaff ||
                 item.type == ItemID.InfernoFork || item.type == ItemID.HeatRay || item.type == ItemID.CursedFlames ||
-                item.type == ItemID.StaffofEarth || item.type == ItemID.SpiritFlame || item.type == ItemID.ShadowFlameHexDoll ) {
+                item.type == ItemID.StaffofEarth || item.type == ItemID.SpiritFlame || item.type == ItemID.ShadowFlameHexDoll) {
                 item.magic = false;
                 item.crit = 4;
             }
@@ -196,7 +194,7 @@ namespace DrakSolz.Items {
                 item.melee = false;
                 item.thrown = true;
                 if (item.type == ItemID.UnholyWater || item.type == ItemID.BloodWater) {
-                    item.value = Item.buyPrice (0, 0, 6, 0);
+                    item.value = Item.buyPrice(0, 0, 6, 0);
                 }
             }
         }
