@@ -9,22 +9,25 @@ namespace DrakSolz.Items.Melee {
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Shinkage's Katana");
-            Tooltip.SetDefault("???.");
+            Tooltip.SetDefault("Brains over brawn? Only the weak choose one when both are available.");
         }
         public override void SetDefaults() {
             item.CloneDefaults(ItemID.Muramasa);
-            item.damage = 1800;
+            item.melee = true;
+            item.magic = true;
+            item.damage = 125;
             item.knockBack = 10f;
             item.useTime = 20;
             item.useAnimation = 20;
-            item.value = Item.sellPrice(0, 50, 0, 0);
+            item.scale *= 0.9f;
+            item.value = Item.sellPrice(0, 7, 50, 0);
             item.autoReuse = true;
         }
         public override void MeleeEffects(Player player, Rectangle hitbox) {
             if (Main.rand.Next(1) == 0) {
                 //Emit dusts when swing the sword
                 int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.Shadowflame);
-                Main.dust[dust].scale *= 2f + Main.rand.NextFloat();
+                Main.dust[dust].scale *= 1.5f + Main.rand.NextFloat();
                 Main.dust[dust].noGravity = true;
             }
         }
@@ -32,6 +35,13 @@ namespace DrakSolz.Items.Melee {
             // Add Onfire buff to the NPC for 1 second
             // 60 frames = 1 second
             target.AddBuff(BuffID.ShadowFlame, 180);
+        }
+        public override void AddRecipes() {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ModContent.ItemType<Items.Souls.LunaticSoul>());
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
         public class SoulShatterGlobalNPC : GlobalNPC {
             public override void NPCLoot(NPC npc) {

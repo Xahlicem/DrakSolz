@@ -6,8 +6,7 @@ using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
 namespace DrakSolz.Items.Magic.Holy {
-    public class ScrollHolyGnaw : SoulItem {
-        public ScrollHolyGnaw() : base(10000) { }
+    public class ScrollHolyGnaw : ModItem {
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Gnaw");
@@ -19,12 +18,12 @@ namespace DrakSolz.Items.Magic.Holy {
             item.CloneDefaults(ItemID.ShadowbeamStaff);
             item.useStyle = 1;
             item.magic = false;
-            item.damage = 26;
+            item.damage = 24;
             item.noMelee = true;
             item.noUseGraphic = true;
             item.useTime = 30;
             item.useAnimation = 30;
-            item.mana = 18;
+            item.mana = 22;
             item.knockBack = 2.0f;
             item.shootSpeed = 3.0f;
             item.value = Item.buyPrice(0, 3, 0, 0);
@@ -34,16 +33,11 @@ namespace DrakSolz.Items.Magic.Holy {
         }
 
         public override void AddRecipes() {
-            ModRecipe recipe = new SoulRecipe(mod, this);
+            ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ModContent.ItemType<Items.Misc.ScrollHoly>());
             recipe.AddIngredient(ModContent.ItemType<Items.Souls.EaterSoul>());
             recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
-            recipe.AddRecipe();
-            
-            ModRecipe recipe2 = new SoulRecipe(mod, this);
-            recipe.AddIngredient(ModContent.ItemType<Items.Misc.ScrollHoly>());
-            recipe.AddIngredient(ItemID.SoulofNight, 20);
-            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
+            recipe.SetResult(this);
             recipe.AddRecipe();
         }
 

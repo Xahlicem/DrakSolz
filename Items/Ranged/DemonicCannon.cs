@@ -10,12 +10,12 @@ namespace DrakSolz.Items.Ranged
 		public override void SetStaticDefaults()
 		{
             DisplayName.SetDefault("Demonic Cannon");
-			Tooltip.SetDefault("???");
+			Tooltip.SetDefault("The darkness grabs at the guilty");
 		}
 
 		public override void SetDefaults()
 		{
-			item.damage = 1200;
+			item.damage = 100;
 			item.ranged = true;
 			item.width = 40;
 			item.height = 20;
@@ -24,7 +24,7 @@ namespace DrakSolz.Items.Ranged
 			item.useStyle = 5;
 			item.noMelee = true; //so the item's animation doesn't do damage
 			item.knockBack = 3;
-            item.value = Item.sellPrice(0, 50, 0, 0);
+            item.value = Item.sellPrice(0, 7, 50, 0);
 			item.rare = ItemRarityID.Pink;
 			item.UseSound = SoundID.Item11;
 			item.autoReuse = true;
@@ -125,6 +125,13 @@ namespace DrakSolz.Items.Ranged
 			speedY = perturbedSpeed.Y;
 			return true;
 		}
+        public override void AddRecipes() {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ModContent.ItemType<Items.Souls.LunaticSoul>());
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
 		        public class DemonicCannonGlobalNPC : GlobalNPC {
             public override void NPCLoot(NPC npc) {
                 if (npc.type == ModContent.NPCType<NPCs.Enemy.Endgame.Secret.DemonicSister>()) {

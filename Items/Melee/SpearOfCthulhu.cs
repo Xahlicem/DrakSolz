@@ -13,10 +13,10 @@ namespace DrakSolz.Items.Melee {
         }
 
         public override void SetDefaults() {
-            item.damage = 55;
+            item.damage = 58;
             item.useStyle = 5;
-            item.useAnimation = 40;
-            item.useTime = 44;
+            item.useAnimation = 36;
+            item.useTime = 38;
             item.shootSpeed = 4.4f;
             item.knockBack = 3f;
             item.width = 28;

@@ -5,8 +5,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace DrakSolz.Items.Magic {
-    public class ArcaneShiv : ModItem {
-
+    public class ArcaneShiv : SoulItem {
+        public ArcaneShiv() : base(100000) { }
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Illusory Shiv");
             Tooltip.SetDefault("Leaves an illusory trail that damages foes.");
@@ -27,10 +27,9 @@ namespace DrakSolz.Items.Magic {
             item.shoot = ModContent.ProjectileType<Projectiles.Magic.ArcaneShivProj>();
         }
         public override void AddRecipes() {
-            ModRecipe recipe = new ModRecipe(mod);
+            ModRecipe recipe = new SoulRecipe(mod, this);
             recipe.AddIngredient(ItemID.MagicDagger);
-            recipe.AddIngredient(ModContent.ItemType<Items.Souls.LunaticSoul>());
-            recipe.SetResult(this);
+            recipe.AddTile(TileID.LunarCraftingStation);
             recipe.AddRecipe();
         }
     }

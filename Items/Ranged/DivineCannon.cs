@@ -12,12 +12,12 @@ namespace DrakSolz.Items.Ranged
 		public override void SetStaticDefaults()
 		{
             DisplayName.SetDefault("Divine Cannon");
-			Tooltip.SetDefault("???");
+			Tooltip.SetDefault("Prime's cannon needed a few improvements");
 		}
 
 		public override void SetDefaults()
 		{
-			item.damage = 1500;
+			item.damage = 84;
 			item.ranged = true;
 			item.width = 40;
 			item.height = 20;
@@ -26,7 +26,7 @@ namespace DrakSolz.Items.Ranged
 			item.useStyle = 5;
 			item.noMelee = true; //so the item's animation doesn't do damage
 			item.knockBack = 3;
-            item.value = Item.sellPrice(0, 50, 0, 0);
+            item.value = Item.sellPrice(0, 5, 0, 0);
 			item.rare = ItemRarityID.Pink;
 			item.UseSound = SoundID.Item11;
 			item.autoReuse = false;
@@ -111,6 +111,13 @@ namespace DrakSolz.Items.Ranged
 			}
 			return true;
 		}*/
+        public override void AddRecipes() {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ModContent.ItemType<Items.Souls.SkeletronPrimeSoul>());
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
 		        public class AridCannonGlobalNPC : GlobalNPC {
             public override void NPCLoot(NPC npc) {
                 if (npc.type == ModContent.NPCType<NPCs.Enemy.Endgame.Secret.DivineSister>()) {

@@ -7,7 +7,7 @@ using Terraria.ModLoader.IO;
 
 namespace DrakSolz.Items.Magic.Holy {
     public class ScrollHolyGnash : SoulItem {
-        public ScrollHolyGnash() : base(70000) { }
+        public ScrollHolyGnash() : base(80000) { }
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Gnash");
@@ -19,12 +19,12 @@ namespace DrakSolz.Items.Magic.Holy {
             item.CloneDefaults(ItemID.ShadowbeamStaff);
             item.useStyle = 1;
             item.magic = false;
-            item.damage = 45;
+            item.damage = 42;
             item.noMelee = true;
             item.noUseGraphic = true;
             item.useTime = 30;
             item.useAnimation = 30;
-            item.mana = 24;
+            item.mana = 28;
             item.knockBack = 3.0f;
             item.shootSpeed = 4.0f;
             item.value = Item.buyPrice(0, 6, 0, 0);

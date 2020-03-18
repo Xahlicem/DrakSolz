@@ -9,15 +9,15 @@ namespace DrakSolz.Items.Melee {
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Soulshatter");
-            Tooltip.SetDefault("???.");
+            Tooltip.SetDefault("Large fractured sword, said to burn the souls of those struck.");
         }
         public override void SetDefaults() {
             item.CloneDefaults(ItemID.Muramasa);
-            item.damage = 1800;
+            item.damage = 74;
             item.knockBack = 10f;
             item.useTime = 25;
             item.useAnimation = 25;
-            item.value = Item.sellPrice(0, 50, 0, 0);
+            item.value = Item.sellPrice(0, 5, 0, 0);
             item.autoReuse = true;
         }
         public override void MeleeEffects(Player player, Rectangle hitbox) {
@@ -32,6 +32,13 @@ namespace DrakSolz.Items.Melee {
             // Add Onfire buff to the NPC for 1 second
             // 60 frames = 1 second
             target.AddBuff(BuffID.ShadowFlame, 180);
+        }
+        public override void AddRecipes() {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ModContent.ItemType<Items.Souls.SpazSoul>());
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
         public class SoulShatterGlobalNPC : GlobalNPC {
             public override void NPCLoot(NPC npc) {

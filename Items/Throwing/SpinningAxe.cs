@@ -10,12 +10,12 @@ namespace DrakSolz.Items.Throwing
 		public override void SetStaticDefaults()
 		{
             DisplayName.SetDefault("Spinning Axe");
-			Tooltip.SetDefault("???");
+			Tooltip.SetDefault("Welcome to the league of Terraria");
 		}
 
 		public override void SetDefaults()
 		{
-			item.damage = 1550;
+			item.damage = 61;
 			item.thrown = true;
 			item.width = 40;
 			item.height = 20;
@@ -25,7 +25,7 @@ namespace DrakSolz.Items.Throwing
 			item.noUseGraphic = true;
 			item.noMelee = true; //so the item's animation doesn't do damage
 			item.knockBack = 4;
-            item.value = Item.sellPrice(0, 50, 0, 0);
+            item.value = Item.sellPrice(0, 5, 0, 0);
 			item.rare = ItemRarityID.Pink;
 			item.UseSound = SoundID.Item11;
 			item.autoReuse = true;
@@ -38,6 +38,13 @@ namespace DrakSolz.Items.Throwing
                 position += muzzleOffset;
             }
             return true;
+        }
+        public override void AddRecipes() {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ModContent.ItemType<Items.Souls.DestSoul>());
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
 
 

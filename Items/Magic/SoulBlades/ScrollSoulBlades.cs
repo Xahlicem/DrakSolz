@@ -23,7 +23,7 @@ namespace DrakSolz.Items.Magic.SoulBlades {
             item.mana = 5;
             item.knockBack = 3f;
             item.shootSpeed = 25.0f;
-            item.value = Item.sellPrice(0, 0, 45, 0);
+            item.value = Item.sellPrice(0, 1, 0, 0);
             item.shoot = ModContent.ProjectileType<Projectiles.Magic.SorcSwordProj>();
         }
 
@@ -35,7 +35,7 @@ namespace DrakSolz.Items.Magic.SoulBlades {
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack) {
-            int pro = Projectile.NewProjectile(position.X, position.Y - 50, speedX, speedY, type, damage, knockBack, player.whoAmI);
+            int pro = Projectile.NewProjectile(position.X, position.Y - 40, speedX, speedY, type, damage, knockBack, player.whoAmI);
             Main.projectile[pro].ai[1] = 1;
             return false;
         }

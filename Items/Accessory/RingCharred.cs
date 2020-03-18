@@ -28,5 +28,12 @@ namespace DrakSolz.Items.Accessory {
             player.buffImmune[BuffID.CursedInferno] = true;
             player.buffImmune[BuffID.ShadowFlame] = true;
         }
+        public override void AddRecipes() {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ModContent.ItemType<Items.Souls.WallSoul>());
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
     }
 }

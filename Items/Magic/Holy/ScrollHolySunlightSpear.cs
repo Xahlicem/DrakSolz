@@ -23,7 +23,7 @@ namespace DrakSolz.Items.Magic.Holy {
             item.noUseGraphic = true;
             item.useTime = 20;
             item.useAnimation = 20;
-            item.mana = 12;
+            item.mana = 16;
             item.knockBack = 6.0f;
             item.shootSpeed = 20.0f;
             item.autoReuse = true;

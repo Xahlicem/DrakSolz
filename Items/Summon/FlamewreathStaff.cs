@@ -13,16 +13,16 @@ namespace DrakSolz.Items.Summon {
 
         public override void SetDefaults() {
             item.CloneDefaults(ItemID.RavenStaff);
-            item.damage = 1200;
+            item.damage = 72;
             item.summon = true;
-            item.mana = 225;
+            item.mana = 100;
             item.scale = 1f;
             item.width = 28;
             item.height = 28;
             item.useStyle = 1;
             item.noMelee = true;
             item.knockBack = 0;
-            item.value = Item.sellPrice(0, 50, 0, 0);
+            item.value = Item.sellPrice(0, 10, 0, 0);
             item.rare = ItemRarityID.Yellow;
             item.UseSound = SoundID.Item44;
             item.shoot = ModContent.ProjectileType<Projectiles.Minion.FlameSum>();
@@ -51,6 +51,13 @@ namespace DrakSolz.Items.Summon {
 
         public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> tooltips) {
             tooltips.RemoveAt(tooltips.Count - 1);
+        }
+        public override void AddRecipes() {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ModContent.ItemType<Items.Souls.GolemSoul>());
+            recipe.AddTile(ModContent.TileType<Tiles.FirelinkShrineTile>());
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
         public class SunWispStaffGlobalNPC : GlobalNPC {
             public override void NPCLoot(NPC npc) {

@@ -24,7 +24,7 @@ namespace DrakSolz.Items.Magic.Holy {
             item.noUseGraphic = true;
             item.useTime = 25;
             item.useAnimation = 25;
-            item.mana = 10;
+            item.mana = 13;
             item.knockBack = 5.0f;
             item.shootSpeed = 17.0f;
             item.value = Item.sellPrice(0, 4, 0, 0);

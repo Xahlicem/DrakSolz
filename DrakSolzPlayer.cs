@@ -336,6 +336,7 @@ namespace DrakSolz {
             
             player.statLifeMax = Level * 4 + 100 + MiscHP;
             player.statLifeMax2 = player.statLifeMax + Vit * 11;
+            if (HasAccessory(ModContent.ItemType<Items.Accessory.RingDuskCrown>())) player.statLifeMax2 /= 2;
             player.statManaMax = 0;
             player.statManaMax2 += Att * 5;
             player.manaCost *= 1 - (Att * 0.005f);
@@ -467,6 +468,16 @@ namespace DrakSolz {
                 packet.Write(Souls);
             }
             packet.Send(toWho, fromWho);
+        }
+
+        bool HasArmor(int itemType, bool isAccessory = false) {
+            bool ret = false;
+            for (int i = (isAccessory?3:0); i < 8 + player.extraAccessorySlots; i++) if (player.armor[i].type == itemType) return true;
+            return ret;
+        }
+        
+        bool HasAccessory(int itemType) {
+            return HasArmor(itemType, true);
         }
     }
 }
