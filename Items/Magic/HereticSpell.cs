@@ -17,12 +17,12 @@ namespace DrakSolz.Items.Magic {
             item.scale *= 1;
             item.magic = true;
             item.noMelee = true;
-            item.damage = 68;
-            item.useTime = 30;
-            item.useAnimation = 30;
+            item.damage = 50;
+            item.useTime = 40;
+            item.useAnimation = 40;
             item.rare = ItemRarityID.LightRed;
             item.mana = 24;
-            item.knockBack = 8f;
+            item.knockBack = 6f;
             item.value = Item.sellPrice(0, 5, 0, 0);
             item.shootSpeed = 0f;
             item.autoReuse = false;

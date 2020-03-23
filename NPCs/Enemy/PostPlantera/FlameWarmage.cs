@@ -37,7 +37,7 @@ namespace DrakSolz.NPCs.Enemy.PostPlantera {
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
             if (NPC.downedPlantBoss)
-                return SpawnCondition.Cavern.Chance * 0.15f;
+                return SpawnCondition.Cavern.Chance * 0.12f;
             else return 0f;
         }
 
@@ -81,7 +81,7 @@ namespace DrakSolz.NPCs.Enemy.PostPlantera {
                 }
 
                 npc.TargetClosest(true);
-                if (AI_Timer >= 60) {
+                if (AI_Timer >= 120) {
                     AI_State = State_Spell;
                     AI_Timer = 0;
                 }
@@ -90,16 +90,16 @@ namespace DrakSolz.NPCs.Enemy.PostPlantera {
                 if (AI_Timer == 10 && Main.netMode != 1) {
                     Vector2 playerpos = Main.player[npc.target].Center;
                     playerpos.Y -= 5;
-                    int proj = Projectile.NewProjectile(playerpos, Vector2.Zero, ModContent.ProjectileType<Projectiles.Magic.FlameMageProj>(), npc.damage, 0f);
+                    int proj = Projectile.NewProjectile(playerpos, Vector2.Zero, ModContent.ProjectileType<Projectiles.Magic.FlameWarMageProj>(), npc.damage, 0f);
                 }
 
-                if (AI_Timer >= 120) {
+                if (AI_Timer >= 240) {
                     AI_Timer = 0;
                     AI_State = State_Dance;
                 }
             } else {
                 AI_Timer++;
-                if (AI_Timer >= 60) {
+                if (AI_Timer >= 120) {
                     AI_State = State_Dance;
                     AI_Timer = 0;
                 }
@@ -137,7 +137,7 @@ namespace DrakSolz.NPCs.Enemy.PostPlantera {
         }
 
         public override void NPCLoot() {
-            if (Main.rand.Next(20) == 0) Item.NewItem(npc.position, npc.width, npc.height, ModContent.ItemType<Items.Magic.IT>());
+            if (Main.rand.Next(18) == 0) Item.NewItem(npc.position, npc.width, npc.height, ModContent.ItemType<Items.Magic.IT>());
         }
     }
 }

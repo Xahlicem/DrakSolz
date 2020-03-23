@@ -25,11 +25,7 @@ namespace DrakSolz.Items.Armor.Father {
             player.rangedCrit += 5;
             player.meleeCrit += 5;
             player.thrownCrit += 5;
-            player.magicDamage *= 1.05f;
-            player.minionDamage *= 1.05f;
-            player.thrownDamage *= 1.05f;
-            player.meleeDamage *= 1.05f;
-            player.rangedDamage *= 1.05f;
+            player.allDamage *= 1.05f;
             player.thrownVelocity *= 1.2f;
 
         }
@@ -45,17 +41,13 @@ namespace DrakSolz.Items.Armor.Father {
             player.rangedCrit += 10;
             player.meleeCrit += 10;
             player.thrownCrit += 10;
-            player.magicDamage *= 1.20f;
-            player.minionDamage *= 1.20f;
-            player.thrownDamage *= 1.20f;
+			player.GetModPlayer<MPlayer>().pyromancyCrit += 10;
+            player.allDamage *= 1.20f;
             player.thrownVelocity *= 1.3f;
-            player.meleeDamage *= 1.20f;
-            player.rangedDamage *= 1.20f;
             player.manaCost *= 0.80f;
             player.meleeSpeed *= 1.20f;
             player.GetModPlayer<DrakSolzPlayer>().MiscHP += 100;
             player.statManaMax2 += 40;
-            player.endurance += 5;
             player.accRunSpeed += 5;
             player.jumpSpeedBoost += 4;
             player.moveSpeed += 0.20f;

@@ -13,7 +13,7 @@ namespace DrakSolz.Buffs {
         }
 
         public override void Update(Player player, ref int buffIndex) {
-            if (Main.time % 30 == 0 && player.statLife < player.statLifeMax2) {
+            if (Main.time % 20 == 0 && player.statLife < player.statLifeMax2) {
                 player.statLife += (int)(player.statLifeMax2 * 0.01);
                 player.HealEffect((int)(player.statLifeMax2 * 0.01));
             }

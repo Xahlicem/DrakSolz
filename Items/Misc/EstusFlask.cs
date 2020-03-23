@@ -28,6 +28,12 @@ namespace DrakSolz.Items.Misc {
             item.lavaWet = true;
             item.GetGlobalItem<DSGlobalItem>().Restricted = true;
         }
+        public override bool CanUseItem(Player player){
+            if (player.HasBuff(BuffID.PotionSickness)){
+                return false;
+            }
+            else {return true;}
+        }
 
         public override bool UseItem(Player player) {
             player.AddBuff(BuffID.PotionSickness, 154);

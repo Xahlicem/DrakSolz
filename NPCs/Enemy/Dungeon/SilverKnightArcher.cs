@@ -12,7 +12,7 @@ namespace DrakSolz.NPCs.Enemy.Dungeon {
         }
 
         public override void SetDefaults() {
-            npc.CloneDefaults(NPCID.CultistArcherBlue);
+            npc.CloneDefaults(NPCID.SkeletonArcher);
             npc.scale = 1;
             npc.width = 40;
             npc.height = 38;
@@ -63,7 +63,7 @@ namespace DrakSolz.NPCs.Enemy.Dungeon {
                     Vector2 vector = target - npc.Center;
                     DrakSolz.AdjustMagnitude(ref vector, 12.5f);
                     if (Main.netMode != 1 && AI_Timer > 90) {
-                        int proj = Projectile.NewProjectile(npc.Center, vector, ModContent.ProjectileType<Projectiles.DragonslayerGreatarrowProj>(), (int) (npc.damage *0.5), 20);
+                        int proj = Projectile.NewProjectile(npc.Center, vector, ModContent.ProjectileType<Projectiles.DragonslayerGreatarrowProjcopy>(), (int) (npc.damage *0.5), 20);
                         Main.projectile[proj].friendly = false;
                         Main.projectile[proj].hostile = true;
                         Main.projectile[proj].netUpdate = true;

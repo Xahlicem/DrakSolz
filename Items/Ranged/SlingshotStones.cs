@@ -5,8 +5,8 @@ using Terraria.ModLoader;
 namespace DrakSolz.Items.Ranged {
     public class SlingshotStones : ModItem {
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault("Small Stones");
-            Tooltip.SetDefault("Large metal arrows used to penetrate the flesh of dragons.");
+            DisplayName.SetDefault("Small Stone");
+            Tooltip.SetDefault("Very small stones. Might need a large slingshot to compensate...");
         }
 
         public override void SetDefaults() {
@@ -27,7 +27,7 @@ namespace DrakSolz.Items.Ranged {
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.StoneBlock, 1);
-            recipe.SetResult(this, 5);
+            recipe.SetResult(this, 10);
             recipe.AddRecipe();
         }
     }

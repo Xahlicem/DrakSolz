@@ -8,8 +8,7 @@ namespace DrakSolz.Items.Armor {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Crown of the Dark Sun");
             Tooltip.SetDefault("A peculiar crown, would fit nicely with some kind white robe... Just the robe." +
-                "\n-1 max minions" +
-                "\n+20 mana");
+                "\n-1 max minions");
         }
 
         public override void SetDefaults() {
@@ -38,11 +37,11 @@ namespace DrakSolz.Items.Armor {
 
         public override void UpdateArmorSet(Player player) {
             player.setBonus = ("35% increased miracle damage" +
-                "\nReduces mana usage by 25%" +
-                "\n+15 armor");
-            player.minionDamage *= 1.35f;
-            player.manaCost *= 0.75f;
-            player.statDefense += 15;
+                "\nReduces mana usage by 10%" +
+                "\n+8 armor");
+            player.minionDamage += 1.35f;
+            player.manaCost *= 0.90f;
+            player.statDefense += 8;
         }
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);

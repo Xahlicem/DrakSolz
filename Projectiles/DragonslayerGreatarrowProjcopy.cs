@@ -6,7 +6,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace DrakSolz.Projectiles {
-    public class DragonslayerGreatarrowProj : ModProjectile {
+    public class DragonslayerGreatarrowProjcopy : ModProjectile {
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Dragonslayer Arrow"); //The English name of the projectile
@@ -18,8 +18,8 @@ namespace DrakSolz.Projectiles {
             projectile.width = 8; //The width of projectile hitbox
             projectile.height = 16; //The height of projectile hitbox
             projectile.aiStyle = 1; //The ai style of the projectile, please reference the source code of Terraria
-            projectile.friendly = true; //Can the projectile deal damage to enemies?
-            projectile.hostile = false; //Can the projectile deal damage to the player?
+            projectile.friendly = false; //Can the projectile deal damage to enemies?
+            projectile.hostile = true; //Can the projectile deal damage to the player?
             projectile.ranged = true; //Is the projectile shoot by a ranged weapon?
             projectile.penetrate = 3; //How many monsters the projectile can penetrate. (OnTileCollide below also decrements penetrate for bounces as well)
             projectile.timeLeft = 600; //The live time for the projectile (60 = 1 second, so 600 is 10 seconds)

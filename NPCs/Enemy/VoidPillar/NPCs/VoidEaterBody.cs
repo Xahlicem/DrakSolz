@@ -13,7 +13,7 @@ namespace DrakSolz.NPCs.Enemy.VoidPillar.NPCs {
 
         public override void SetDefaults() {
             npc.lifeMax = 1;
-            npc.damage = 100;
+            npc.damage = 80;
             npc.defense = 60;
             npc.width = 44;
             npc.height = 46;

@@ -96,7 +96,7 @@ namespace DrakSolz.Tiles {
                 int c = (Main.rand.Next(999));
                 if (c >= 999) {
                     itemType = ItemID.GoldCoin;
-                    stack = Main.rand.Next(99) + 1;
+                    stack = Main.rand.Next(90) + 10;
                     text += " just hit the jackpot!";
                     soundType = SoundID.CoinPickup;
                 } else if (c >= 997) {
@@ -167,7 +167,7 @@ namespace DrakSolz.Tiles {
                     ModContent.ItemType<Items.Magic.Holy.ScrollHolySunlightSpear>(),
                     ModContent.ItemType<Items.Magic.Holy.ScrollHolyWhiteCorona>(),
                     ModContent.ItemType<Items.Magic.Holy.ScrollHolyWrathofGods>(),
-                    ModContent.ItemType<Items.Magic.IT>(),
+                    ModContent.ItemType<Items.Magic.IE>(),
                     ModContent.ItemType<Items.Magic.MagnetSphere.FulminatingSphere>(),
                     ModContent.ItemType<Items.Magic.MoonGS>(),
                     ModContent.ItemType<Items.Magic.Pyro.DemonsScar>(),
@@ -211,7 +211,7 @@ namespace DrakSolz.Tiles {
                     itemType = Utils.SelectRandom(Main.rand, DSItems);
                     text += " just got a powerful dark item.";
                     color = new Color(0, 0, 0);
-                    soundType = SoundID.DD2_EtherianPortalSpawnEnemy.SoundId;
+                    soundType = SoundID.MoonLord;
                 } else if (c >= 975) {
                     int[] DItems = {
                     ModContent.ItemType<Items.Accessory.RingAgape>(),
@@ -316,7 +316,7 @@ namespace DrakSolz.Tiles {
                     ModContent.ItemType<Items.Magic.Holy.ScrollHolyGnaw>(),
                     ModContent.ItemType<Items.Magic.Holy.ScrollHolyGreatLightningSpear>(),
                     ModContent.ItemType<Items.Magic.Holy.ScrollHolyLightningSpear>(),
-                    ModContent.ItemType<Items.Magic.IE>(),
+                    ModContent.ItemType<Items.Magic.IT>(),
                     ModContent.ItemType<Items.Magic.MagnetSphere.ElectricSphere>(),
                     ModContent.ItemType<Items.Magic.Pyro.FlameFan>(),
                     ModContent.ItemType<Items.Magic.Pyro.PyroScrollAcidSurge>(),
@@ -402,7 +402,7 @@ namespace DrakSolz.Tiles {
                     itemType = Utils.SelectRandom(Main.rand, DItems);
                     text += " just got a dark item.";
                     color = new Color(0, 0, 0);
-                    soundType = SoundID.DD2_EtherianPortalSpawnEnemy.SoundId;
+                    soundType = SoundID.MoonLord;
                 } else if (c >= 650) {
                     itemType = ItemID.SilverCoin;
                     stack = Main.rand.Next(99) + 1;
