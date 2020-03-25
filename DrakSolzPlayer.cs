@@ -61,7 +61,7 @@ namespace DrakSolz {
         public int Att { get { return (int)(Stats >> ATT & 127L); } set { Stats = Stats & ~(127L << ATT) | ((uint) value & 127L) << ATT; } }
         public int Int { get { return (int)(Stats >> INT & 127L); } set { Stats = Stats & ~(127L << INT) | ((uint) value & 127L) << INT; } }
         public int Fth { get { return (int)(Stats >> FTH & 127L); } set { Stats = Stats & ~(127L << FTH) | ((uint) value & 127L) << FTH; } }
-        public int BossSouls { get { return (int)(Stats >> BOSS_SOULS & 127L); } set { Stats = Stats & ~(127L << BOSS_SOULS) | ((uint) value & 127L) << BOSS_SOULS; } }
+        public int BossSouls { get { return (int)(Stats >> BOSS_SOULS & 131071L); } set { Stats = Stats & ~(131071L << BOSS_SOULS) | ((uint) value & 131071L) << BOSS_SOULS; } }
         public int Coals { get { return (int)(Stats >> COALS & 127L); } set { Stats = Stats & ~(127L << COALS) | ((uint) value & 127L) << COALS; } }
 
         public float SoulTicks { get; set; }
