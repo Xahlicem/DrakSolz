@@ -49,24 +49,37 @@ namespace DrakSolz.NPCs {
         }
         public override void SetDefaults(NPC npc) {
             if (npc.type == NPCID.KingSlime) {
-                if (Main.hardMode){
                 npc.lifeMax = 1600;
                 npc.damage = 26;
-                }
-                else {
-                npc.lifeMax = 2250;
-                npc.damage = 44;
-                }
+                Main.expertLife = 2;
+                Main.expertDamage = 2;
+                
             }
             if (npc.type == NPCID.Pinky) {
-                if (Main.hardMode){
                 npc.damage = 12;
-                npc.knockBackResist = 0.4f;
-                }
-                else {
-                npc.damage = 24;
-                npc.knockBackResist = 0.3f;
-                }
+                npc.knockBackResist = 0.35f;
+                Main.expertDamage = 2.2f;
+                
+            }
+            if (npc.type == NPCID.Plantera) {
+                npc.lifeMax = 42000;
+                Main.expertLife = 2;
+            }
+            if (npc.type == NPCID.Golem) {
+                npc.lifeMax = 15000;
+                Main.expertLife = 2;
+            }
+            if (npc.type == NPCID.CultistBoss) {
+                npc.lifeMax = 50000;
+                Main.expertLife = 2;
+            }
+            if (npc.type == NPCID.DukeFishron) {
+                npc.lifeMax = 60000;
+                Main.expertLife = 2;
+            }
+            if (npc.type == NPCID.MoonLordCore) {
+                npc.lifeMax = 80000;
+                Main.expertLife = 2;
             }
         }
 

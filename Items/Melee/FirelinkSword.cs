@@ -13,9 +13,9 @@ namespace DrakSolz.Items.Melee {
         }
         public override void SetDefaults() {
             item.CloneDefaults(ItemID.BladedGlove);
-            item.damage = 20;
+            item.damage = 17;
             item.crit = 10;
-            item.knockBack = 8f;
+            item.knockBack = 6.5f;
             item.useTime = 32;
             item.useAnimation = 32;
             item.scale *= 0.8f;
@@ -46,8 +46,8 @@ namespace DrakSolz.Items.Melee {
             item.crit = 10 + (amount);
             int c = 10 + (amount);
             if (HasDownedBoss(modPlayer, BossSoul.SOUL_ARTORIAS)) { mult = 150; } else if (HasDownedBoss(modPlayer, BossSoul.SOUL_TITIANITE_DEMON)) { mult = 60; } else if (HasDownedBoss(modPlayer, BossSoul.SOUL_MOON_LORD)) { mult = 12; } else if (HasDownedBoss(modPlayer, BossSoul.SOUL_LUNATIC_CULTIST)) { mult = 10; } else if (HasDownedBoss(modPlayer, BossSoul.SOUL_GOLEM)) { mult = 8; } else if (HasDownedBoss(modPlayer, BossSoul.SOUL_PLANTERA)) { mult = 6; } else if (HasDownedBoss(modPlayer, BossSoul.SOUL_WALL)) { mult = 5; } else { mult = 4; }
-            item.damage = 20 + (amount * mult);
-            int d = 20 + (amount * mult);
+            item.damage = 17 + (amount * mult);
+            int d = 17 + (amount * mult);
             if (item.prefix == 39) {
                 item.damage = (int)(d * 0.7f);
             }
@@ -100,8 +100,24 @@ namespace DrakSolz.Items.Melee {
         public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit) {
             // Add Onfire buff to the NPC for 1 second
             // 60 frames = 1 second
-            target.AddBuff(BuffID.OnFire, 120);
-            player.AddBuff(ModContent.BuffType<Buffs.FirelinkKeep>(), 120);
+            
+            DrakSolzPlayer modPlayer = (DrakSolzPlayer) player.GetModPlayer<DrakSolzPlayer>();
+            int burn = 1;
+            if (HasDownedBoss(modPlayer, BossSoul.SOUL_ARTORIAS)) burn++;
+            if (HasDownedBoss(modPlayer, BossSoul.SOUL_TITIANITE_DEMON)) burn++;
+            if (HasDownedBoss(modPlayer, BossSoul.SOUL_MOON_LORD)) burn++;
+            if (HasDownedBoss(modPlayer, BossSoul.SOUL_DUKE_FISHRON)) burn++;
+            if (HasDownedBoss(modPlayer, BossSoul.SOUL_LUNATIC_CULTIST)) burn++;
+            if (HasDownedBoss(modPlayer, BossSoul.SOUL_GOLEM)) burn++;
+            if (HasDownedBoss(modPlayer, BossSoul.SOUL_PLANTERA)) burn++;
+            if (HasDownedBoss(modPlayer, BossSoul.SOUL_DESTROYER)) burn++;
+            if (HasDownedBoss(modPlayer, BossSoul.SOUL_WALL)) burn++;
+            if (HasDownedBoss(modPlayer, BossSoul.SOUL_SKELETRON)) burn++;
+            if ((HasDownedBoss(modPlayer, BossSoul.SOUL_EATER)) || (HasDownedBoss(modPlayer, BossSoul.SOUL_BRAIN))) burn++;
+            if (HasDownedBoss(modPlayer, BossSoul.SOUL_BRAIN)) burn++;
+            if (HasDownedBoss(modPlayer, BossSoul.SOUL_SLIME)) burn++;
+            target.AddBuff(BuffID.OnFire, burn * 20);
+            player.AddBuff(ModContent.BuffType<Buffs.FirelinkKeep>(), burn * 30, false);
         }
 
         public override void AddRecipes() {

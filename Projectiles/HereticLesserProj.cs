@@ -6,7 +6,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace DrakSolz.Projectiles {
-    public class HereticProj : ModProjectile {
+    public class HereticLesserProj : ModProjectile {
         public override string Texture { get { return "Terraria/Projectile_579"; } }
 
         public override void SetStaticDefaults() {
@@ -24,7 +24,7 @@ namespace DrakSolz.Projectiles {
         public override void AI() {
             projectile.ai[0]++;
 
-            if (projectile.timeLeft == 120 || projectile.timeLeft == 116 || projectile.timeLeft == 112 || projectile.timeLeft == 108 || projectile.timeLeft == 104 || projectile.timeLeft == 100 || projectile.timeLeft == 96 || projectile.timeLeft == 92) {
+            if (projectile.timeLeft == 120 || projectile.timeLeft == 112 || projectile.timeLeft == 104 || projectile.timeLeft == 96) {
                 Vector2 mouse = new Vector2(Main.mouseX + Main.screenPosition.X, Main.mouseY + Main.screenPosition.Y);
                 mouse = mouse - projectile.Center;
                 DrakSolz.AdjustMagnitude(ref mouse, 18f);
@@ -32,7 +32,7 @@ namespace DrakSolz.Projectiles {
                 Main.projectile[proj].magic = true;
                 Main.projectile[proj].hostile = false;
                 Main.projectile[proj].friendly = true;
-                Main.projectile[proj].velocity *= 0.5f;
+                Main.projectile[proj].velocity *= 0.4f;
             }
             return;
         }
