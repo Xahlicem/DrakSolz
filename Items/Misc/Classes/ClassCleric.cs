@@ -1,3 +1,5 @@
+using Terraria.ModLoader;
+
 namespace DrakSolz.Items.Misc.Classes {
     public class ClassCleric : ClassItem {
         protected override string TEXT { get { return "A Cleric"; } }
@@ -11,6 +13,12 @@ namespace DrakSolz.Items.Misc.Classes {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Cleric Rune");
             Tooltip.SetDefault("Consume to focus on faith.");
+        }
+
+        public override bool ConsumeItem(Terraria.Player player) {
+            //player.QuickSpawnItem()
+            player.QuickSpawnItem(ModContent.ItemType<Items.Magic.Holy.ScrollHolyForce>());
+            return true;
         }
     }
 }

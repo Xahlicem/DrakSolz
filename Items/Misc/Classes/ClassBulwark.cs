@@ -1,3 +1,5 @@
+using Terraria.ID;
+
 namespace DrakSolz.Items.Misc.Classes {
     public class ClassBulwark : ClassItem {
         protected override string TEXT { get { return "A Bulwark"; } }
@@ -11,6 +13,12 @@ namespace DrakSolz.Items.Misc.Classes {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Bulwark Rune");
             Tooltip.SetDefault("Consume to focus on vitality and defense.");
+        }
+
+        public override bool ConsumeItem(Terraria.Player player) {
+            //player.QuickSpawnItem()
+            player.QuickSpawnItem(ItemID.Shackle);
+            return true;
         }
     }
 }

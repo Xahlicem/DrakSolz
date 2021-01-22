@@ -1,3 +1,5 @@
+using Terraria.ModLoader;
+
 namespace DrakSolz.Items.Misc.Classes {
     public class ClassWizard: ClassItem {
         protected override string TEXT { get { return "A Wizard"; } }
@@ -11,6 +13,12 @@ namespace DrakSolz.Items.Misc.Classes {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Wizard Rune");
             Tooltip.SetDefault("Consume to focus on attunement.");
+        }
+
+        public override bool ConsumeItem(Terraria.Player player) {
+            //player.QuickSpawnItem()
+            player.QuickSpawnItem(ModContent.ItemType<Items.Misc.ScrollCastLight>());
+            return true;
         }
     }
 }

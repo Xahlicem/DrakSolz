@@ -1,3 +1,5 @@
+using Terraria.ID;
+
 namespace DrakSolz.Items.Misc.Classes {
     public class ClassWarrior: ClassItem {
         protected override string TEXT { get { return "A Warrior"; } }
@@ -11,6 +13,12 @@ namespace DrakSolz.Items.Misc.Classes {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Warrior Rune");
             Tooltip.SetDefault("Consume to focus on strength.");
+        }
+
+        public override bool ConsumeItem(Terraria.Player player) {
+            //player.QuickSpawnItem()
+            player.QuickSpawnItem(ItemID.TinBroadsword);
+            return true;
         }
     }
 }

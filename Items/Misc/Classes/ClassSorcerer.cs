@@ -1,3 +1,5 @@
+using Terraria.ModLoader;
+
 namespace DrakSolz.Items.Misc.Classes {
     public class ClassSorcerer : ClassItem {
         protected override string TEXT { get { return "A Sorcerer"; } }
@@ -11,6 +13,12 @@ namespace DrakSolz.Items.Misc.Classes {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Sorcerer Rune");
             Tooltip.SetDefault("Consume to focus on intelligence.");
+        }
+
+        public override bool ConsumeItem(Terraria.Player player) {
+            //player.QuickSpawnItem()
+            player.QuickSpawnItem(ModContent.ItemType<Items.Magic.SoulArrow.ScrollSoulDart>());
+            return true;
         }
     }
 }

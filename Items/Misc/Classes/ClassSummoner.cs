@@ -1,3 +1,5 @@
+using Terraria.ModLoader;
+
 namespace DrakSolz.Items.Misc.Classes {
     public class ClassSummoner : ClassItem {
         protected override string TEXT { get { return "A Pyromancer"; } }
@@ -11,6 +13,12 @@ namespace DrakSolz.Items.Misc.Classes {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Pyromancer Rune");
             Tooltip.SetDefault("Consume to focus on faith and intelligence.");
+        }
+
+        public override bool ConsumeItem(Terraria.Player player) {
+            //player.QuickSpawnItem()
+            player.QuickSpawnItem(ModContent.ItemType<Items.Magic.Pyro.PyroScrollCombustion>());
+            return true;
         }
     }
 }

@@ -1,3 +1,5 @@
+using Terraria.ModLoader;
+
 namespace DrakSolz.Items.Misc.Classes {
     public class ClassRogue: ClassItem {
         protected override string TEXT { get { return "A Rogue"; } }
@@ -11,6 +13,13 @@ namespace DrakSolz.Items.Misc.Classes {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Rogue Rune");
             Tooltip.SetDefault("Consume to focus on dexterity.");
+        }
+
+        public override bool ConsumeItem(Terraria.Player player) {
+            //player.QuickSpawnItem()
+            player.QuickSpawnItem(ModContent.ItemType<Items.Ranged.Slingshot>());
+            player.QuickSpawnItem(ModContent.ItemType<Items.Ranged.SlingshotStones>(), 100);
+            return true;
         }
     }
 }

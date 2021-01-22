@@ -1,3 +1,5 @@
+using Terraria.ID;
+
 namespace DrakSolz.Items.Misc.Classes {
     public class ClassAll : ClassItem {
         protected override string TEXT { get { return "An Adept"; } }
@@ -11,6 +13,12 @@ namespace DrakSolz.Items.Misc.Classes {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Adept Rune");
             Tooltip.SetDefault("Consume to focus on balance.");
+        }
+
+        public override bool ConsumeItem(Terraria.Player player) {
+            //player.QuickSpawnItem()
+            player.QuickSpawnItem(ItemID.GoldCoin);
+            return true;
         }
     }
 }
