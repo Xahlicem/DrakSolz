@@ -73,7 +73,7 @@ namespace DrakSolz.Projectiles {
                 dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 54, 0f, 0f, 150, Color.Gray, 2f);
                 Main.dust[dustIndex].velocity *= 0.25f;
                 Main.dust[dustIndex].scale *= 0.5f;
-                Item.NewItem((int) projectile.position.X, (int) projectile.position.Y, projectile.width, projectile.height, ModContent.ItemType<Items.Throwing.D6>(), 1);
+                Item.NewItem((int) projectile.position.X, (int) projectile.position.Y, projectile.width, projectile.height, ModContent.ItemType<Items.Throwing.D6L>(), 1);
             }
         }
     }

@@ -33,13 +33,14 @@ namespace DrakSolz.Items.Throwing {
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack) {
+            damage = 18;
             return base.Shoot(player, ref position, ref speedX, ref speedY, ref type, ref damage, ref knockBack);
         }
         public class D6LGlobalNPC : GlobalNPC {
             public override void NPCLoot(NPC npc) {
-                if (Main.rand.Next(10) == 0) {
+                if (Main.rand.Next(5) == 0) {
                     if (npc.type == NPCID.Mimic) {
-                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ModContent.ItemType<Items.Throwing.D6L>(), 1);
+                        Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ModContent.ItemType<Items.Throwing.D6L>(), (Main.rand.Next(5) +1 ));
                     }
                 }
             }
